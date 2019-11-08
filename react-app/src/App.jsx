@@ -26,7 +26,7 @@ export const App = () => {
             <Container fixed>
                 <Paper className={classes.paper}>
                     <Typography className={classes.typo} variant="h5">
-                        Welcome to Kansh{' '}
+                        Welcome to Kansha{' '}
                         <span aria-label="folded hands emoji" role="img">
                             🙏
                         </span>
