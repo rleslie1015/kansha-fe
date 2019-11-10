@@ -9,7 +9,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: "kansha.auth0.com",
         clientID: "7zLELHA3Jyrt7O5M561HgBg3EjRsoT5K",
-        redirectUri: "https://kansha-staging.herokuapp.com/home",
+        redirectUri: "https://kansha-staging.netlify.com/home",
         audience: "https://kansha.auth0.com/userinfo",
         responseType: "token id_token",
         scope: "openid profile"
