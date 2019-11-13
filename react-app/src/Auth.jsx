@@ -8,11 +8,10 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: "kansha.auth0.com",
         clientID: "7zLELHA3Jyrt7O5M561HgBg3EjRsoT5K",
-        redirectUri: "https://kansha-staging.netlify.com/home",
+        redirectUri: "http://localhost:3000/home",
         audience: "https://kansha.auth0.com/userinfo",
         responseType: "token id_token",
         scope: "openid profile"
-
     });
 
     constructor() {
@@ -32,6 +31,7 @@ export default class Auth {
                 localStorage.setItem("expires_at", expiresAt);
                 window.location.hash = "";
                 window.location.pathname = LOGIN_SUCCESS_PAGE;
+                console.log(authResults.accessToken)
             } else if (err) {
                 window.location.pathname = LOGIN_FAILURE_PAGE;
                 console.log(err)
