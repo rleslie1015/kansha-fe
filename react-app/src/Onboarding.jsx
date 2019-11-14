@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper, Button, FormControl, TextField, Select, MenuItem, InputLabel } from '@material-ui/core';
@@ -87,4 +88,10 @@ export default function Onboarding() {
             </Container>
         </div>
     );
+}
+
+const mapStateToProps = state => {
+    return {
+        profile: state.profile,
+    }
 }
