@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,14 +32,17 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Onboarding() {
+function Onboarding(props) {
     const classes = useStyles();
-    const [ role, setRole ] = useState("");
+    const [ form, setForm ] = useState({ first_name: "", last_name: "", job_title: "", department: "", email: "", org_name: "", user_type: "", password: ""});
 
     const handleChange = event => {
-        setRole(event.target.value);
+        setForm({ ...form, [event.target.name] : event.target.value});
       };
 
+    const handleSubmit = event => {
+        props.onboard(form);
+    }
     return (
         <div id="App" className={classes.root}>
             <CssBaseline />
@@ -50,19 +54,36 @@ export default function Onboarding() {
                     <FormControl>
                         <TextField 
                             label="First Name"
+                            name = "first_name"
+                            onChange = {handleChange}
                         />
                         <TextField 
                             label="Last Name"
+                            name = "last_name"
+                            onChange = {handleChange}
+                        />
+                        <TextField 
+                            label="email"
+                            name = "email"
+                            onChange = {handleChange}
+                        />
+                        <TextField 
+                            label="password"
+                            name = "password"
+                            onChange = {handleChange}
                         />
                         <TextField 
                             label="Job Title"
+                            name= "job_title"
+                            onChange = {handleChange}
                         />    
                         <FormControl>
-                            <InputLabel value={role} id="Role-label"><em>Select A Role</em></InputLabel> 
+                            <InputLabel id="Role-label"><em>Select A Role</em></InputLabel> 
                             <Select     
                                 labelId="Role-label"
                                 id="Role"
-                                value={role}
+                                name="user_type"
+                                value={form.role}
                                 onChange={handleChange}
                             >
                                 <MenuItem value="admin">Admin</MenuItem> 
@@ -72,14 +93,19 @@ export default function Onboarding() {
                         </FormControl>
                         <TextField 
                             label="Organization"
+                            name = "org_name"
+                            onChange = {handleChange}
                         />
                         <TextField 
                             label="Department"
+                            name= "department"
+                            onChange = {handleChange}
                         />
                         <Button
                             className={classes.button}
                             variant="contained"
                             color="primary"
+                            onClick={handleSubmit}
                         >
                             Register
                         </Button>
@@ -92,6 +118,8 @@ export default function Onboarding() {
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile,
+        profile: state.user.profile,
     }
 }
+
+export default connect(mapStateToProps, { onboard })(Onboarding);
