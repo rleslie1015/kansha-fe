@@ -28,7 +28,6 @@ function Home({ login, user }) {
 	useEffect(() => {
 		auth.handleAuthentication();
         login(auth.getProfile());
-        auth.getUserInfo()
     }, [login]);
 
     console.log(user.profile)

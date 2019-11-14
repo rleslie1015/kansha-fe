@@ -7,8 +7,8 @@ const LOGIN_FAILURE_PAGE = '/';
 export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: 'kansha.auth0.com',
-		clientID: process.env.CLIENT_ID,
-		redirectUri: process.env.REDIRECT_URI,
+		clientID: process.env.REACT_APP_CLIENT_ID,
+		redirectUri: "http://localhost:3000/home",
 		audience: 'https://kansha.auth0.com/userinfo',
 		responseType: 'token id_token',
 		scope: 'openid profile',
