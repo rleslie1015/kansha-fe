@@ -1,11 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import {Grid, Box, Paper, Typography, ButtonBase } from '@material-ui/core';
 import logo from './images/logo192.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { textAlign } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,6 +27,10 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
+  box: {
+    fontSize:"30px",
+    textAlign:"center"
+  }
 }));
 
 
@@ -39,7 +41,9 @@ export default function Main () {
 
     return (
         <>
-        <h2>Why Kansha?</h2>
+        <Typography>
+          <Box className={classes.box} >Why Kansha?</Box> 
+        </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
@@ -51,10 +55,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px">
                   Send a Reward
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   Send your peers a gift card with a message to show recognition.
                 </Typography>
               </Grid>
@@ -73,10 +77,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px">
                   Workspace
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   Connecting people in the same workspace, creating public recognition
                 </Typography>
               </Grid>
@@ -95,10 +99,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px" >
                   Admin Access
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   Only admin users have access to certain features to ensure moderation.
                 </Typography>
               </Grid>
@@ -117,10 +121,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px">
                   Earn Badges
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   Earn and send badges to your peers that represent their hard work.
                 </Typography>
               </Grid>
@@ -139,10 +143,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px">
                   Leave a <FavoriteIcon />
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   React to posts with your favorite emoji to show appreciation.
                 </Typography>
               </Grid>
@@ -161,10 +165,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography gutterBottom variant="subtitle1" fontSize="22px">
                   Activity
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom fontSize="14px">
                   Keep track of your recognitions with our profile activities tracker.
                 </Typography>
               </Grid>

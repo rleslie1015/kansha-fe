@@ -41,8 +41,8 @@ export function TabPanel(props) {
   
   const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
+      // flexGrow: 1,
+      // backgroundColor: theme.palette.background.paper,
     },
   }));
   
@@ -58,11 +58,15 @@ export function TabPanel(props) {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label='Kansha' {...a11yProps(0)} />
-            <Tab label="About Us" {...a11yProps(1)} />
-            <Tab label="Features" {...a11yProps(2)} />
-            <Tab label="Sign In" {...a11yProps(3)} />
-            <Tab label="Log In" {...a11yProps(4)} />
+            <div display="flex">
+              <Tab label='Kansha' {...a11yProps(0)} />
+            </div>
+            <div display="flex" justifyContent="flex-end">          
+              <Tab label="About Us" {...a11yProps(1)} />
+              <Tab label="Features" {...a11yProps(2)} />
+              <Tab label="Sign In" {...a11yProps(3)} />
+              <Tab label="Log In" {...a11yProps(4)} />
+            </div>
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
