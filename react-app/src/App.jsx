@@ -2,6 +2,8 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper } from '@material-ui/core';
+// import { Landing }  from './landing/Landing';
+import NavBar from './landing/NavBar';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,8 +24,8 @@ export const App = () => {
     const classes = useStyles()
     return (
         <div id="App" className={classes.root}>
-            <CssBaseline />
-            <Container fixed>
+             <CssBaseline /> 
+             <Container fixed>
                 <Paper className={classes.paper}>
                     <Typography className={classes.typo} variant="h5">
                         Welcome to Kansha{' '}
@@ -31,8 +33,11 @@ export const App = () => {
                             🙏
                         </span>
                     </Typography>
+                    
+
                 </Paper>
-            </Container>
+            </Container> 
+            <NavBar />
         </div>
     );
 };
