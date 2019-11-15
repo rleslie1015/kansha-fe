@@ -2,8 +2,8 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper } from '@material-ui/core';
-// import { Landing }  from './landing/Landing';
-import NavBar from './landing/NavBar';
+import { Landing }  from './landing/Landing';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -37,7 +37,7 @@ export const App = () => {
 
                 </Paper>
             </Container> 
-            <NavBar />
+            <Landing />
         </div>
     );
 };

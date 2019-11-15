@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Header from './Header';
 
 export function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -19,7 +20,7 @@ export function TabPanel(props) {
         aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
-        <Box p={4}>{children}</Box>
+        <Box p={5}>{children}</Box>
       </Typography>
     );
   }
@@ -56,25 +57,28 @@ export function TabPanel(props) {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="About Us" {...a11yProps(0)} />
-            <Tab label="Features" {...a11yProps(1)} />
-            <Tab label="Sign In" {...a11yProps(2)} />
-            <Tab label="Log In" {...a11yProps(3)} />
+            <Tab label='Kansha' {...a11yProps(0)} />
+            <Tab label="About Us" {...a11yProps(1)} />
+            <Tab label="Features" {...a11yProps(2)} />
+            <Tab label="Sign In" {...a11yProps(3)} />
+            <Tab label="Log In" {...a11yProps(4)} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          About Us
+        <Header />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Features
+          About Us
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Sign In
+          Features
         </TabPanel>
         <TabPanel value={value} index={3}>
+          Sign In
+        </TabPanel>
+        <TabPanel value={value} index={4}>
             Log In
         </TabPanel>
-
       </div> 
     )}
 

@@ -1,14 +1,15 @@
 import React from 'react';
-import {NavBar} from './NavBar';
+import NavBar from './NavBar';
+import Header from './Header'
 
 export const Landing = () => {
 
     return (
         <>
         <NavBar />
-        <p>WORK</p>
-        {/* <Header />
-        <Features />
+        
+        {/* <Header /> */}
+        {/* <Features />
         <Footer /> */}
         </>
     )
