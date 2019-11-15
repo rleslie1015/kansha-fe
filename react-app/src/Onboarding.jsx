@@ -20,12 +20,13 @@ const useStyles = makeStyles(theme => ({
         padding: '1rem .5rem',
     },
     form: {
-        width: '100%',
-        marginTop: '1rem'
+        width: '90%',
+        marginTop: '1rem',
+        marginLeft: '1.5rem'
     },
     button: {
-        width: '10%',
-        margin: '1rem 45%',
+        width: '50%',
+        margin: '1rem 8rem',
         backgroundColor: '#349AFA',
         color: 'white',
         textDecoration: 'none',
@@ -51,7 +52,7 @@ function Onboarding(props) {
                     <Typography className={classes.typo} variant="h5">
                         Welome, Please specify your role. 
                     </Typography>
-                    <FormControl>
+                    <FormControl className={classes.form}>
                         <TextField 
                             label="First Name"
                             name = "first_name"
@@ -63,12 +64,12 @@ function Onboarding(props) {
                             onChange = {handleChange}
                         />
                         <TextField 
-                            label="email"
+                            label="Email"
                             name = "email"
                             onChange = {handleChange}
                         />
                         <TextField 
-                            label="password"
+                            label="Password"
                             name = "password"
                             onChange = {handleChange}
                         />
