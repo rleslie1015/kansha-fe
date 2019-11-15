@@ -19,7 +19,7 @@ export function TabPanel(props) {
         aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
-        <Box p={3}>{children}</Box>
+        <Box p={4}>{children}</Box>
       </Typography>
     );
   }
@@ -56,20 +56,25 @@ export function TabPanel(props) {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab label="About Us" {...a11yProps(0)} />
+            <Tab label="Features" {...a11yProps(1)} />
+            <Tab label="Sign In" {...a11yProps(2)} />
+            <Tab label="Log In" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          Item One
+          About Us
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          Features
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          Sign In
         </TabPanel>
+        <TabPanel value={value} index={3}>
+            Log In
+        </TabPanel>
+
       </div> 
     )}
 
