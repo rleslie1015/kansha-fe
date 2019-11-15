@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 function Onboarding(props) {
     const classes = useStyles();
-    const [ form, setForm ] = useState({ first_name: "", last_name: "", job_title: "", department: "", email: "", org_name: "", user_type: "", password: ""});
+    const [ form, setForm ] = useState({ first_name: "", last_name: "", job_title: "", department: "", org_name: "", user_type: ""});
 
     const handleChange = event => {
         setForm({ ...form, [event.target.name] : event.target.value});
@@ -62,16 +62,7 @@ function Onboarding(props) {
                             name = "last_name"
                             onChange = {handleChange}
                         />
-                        <TextField 
-                            label="email"
-                            name = "email"
-                            onChange = {handleChange}
-                        />
-                        <TextField 
-                            label="password"
-                            name = "password"
-                            onChange = {handleChange}
-                        />
+                        
                         <TextField 
                             label="Job Title"
                             name= "job_title"
