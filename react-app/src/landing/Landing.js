@@ -1,15 +1,13 @@
 import React from 'react';
 import NavBar from './NavBar';
-import Header from './Header'
+import Footer from './Footer'
 
 export const Landing = () => {
 
     return (
         <>
         <NavBar />
-        
-        {/*
-        <Footer /> */}
+        <Footer />
         </>
     )
 }

@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper, Link } from '@material-ui/core';
 import { Landing }  from './landing/Landing';
+import { Route } from 'react-router-dom';
 
 
 
@@ -24,22 +25,8 @@ export const App = () => {
     const classes = useStyles()
     return (
         <div id="App" className={classes.root}>
-             <CssBaseline /> 
-             <Container fixed>
-                <Paper className={classes.paper}>
-                    <Typography className={classes.typo} variant="h5">
-                        Welcome to Kansha{' '}
-                        <span aria-label="folded hands emoji" role="img">
-                            🙏
-                        </span>
-                        
-
-                    </Typography>
-                    
-
-                </Paper>
-            </Container> 
-            <Landing />
+            <Route exact path='/' component={Landing} />
+            
         </div>
     );
 };
