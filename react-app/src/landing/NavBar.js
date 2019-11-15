@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Header from './Header';
+import Main from './Main';
 
 export function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -66,6 +67,7 @@ export function TabPanel(props) {
         </AppBar>
         <TabPanel value={value} index={0}>
         <Header />
+        <Main />
         </TabPanel>
         <TabPanel value={value} index={1}>
           About Us

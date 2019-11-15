@@ -8,8 +8,7 @@ export const Landing = () => {
         <>
         <NavBar />
         
-        {/* <Header /> */}
-        {/* <Features />
+        {/*
         <Footer /> */}
         </>
     )
