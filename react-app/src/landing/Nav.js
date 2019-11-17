@@ -10,13 +10,25 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     position:"absolute",
     zIndex: "1",
+    marginLeft: "90px",
+    width: "80%",
+    marginTop: "30px"
   },
   link: {
+      fontSize: "xx-large",
+      padding: "10px"
   },
   kansha: {
-
-    fontSize: "xx-large",
-  }
+    fontSize: "-webkit-xxx-large",
+  },
+  left: {
+      justifyContent: "flex-start"
+  },
+  right: {
+    display: "flex",
+    width: "80%",
+    justifyContent: "flex-end"
+}
 
 }));
 
@@ -25,21 +37,25 @@ export default function Links() {
 
   return (
     <Typography className={classes.wrapper}>
-      <Link href="#" color="inherit" className={classes.kansha}>
-        Kansha
-      </Link>
-      <Link href="#"  color="inherit" className={classes.link}>
-        About Us
-      </Link>
-      <Link href="#" color="inherit" className={classes.link}>
-      Features
-      </Link>
-      <Link href="#" color="inherit" className={classes.link}>
-       Sign In
-      </Link>
-      <Link href="#" color="inherit" className={classes.link}>
-       Sign Up
-      </Link>
+        <div className={classes.left}>
+            <Link href="#" color="inherit" className={classes.kansha}>
+                Kansha
+            </Link>
+        </div>
+        <div className={classes.right}>
+            <Link href="#"  color="inherit" className={classes.link}>
+                About Us
+            </Link>
+            <Link href="#" color="inherit" className={classes.link}>
+            Features
+            </Link>
+            <Link href="#" color="inherit" className={classes.link}>
+            Sign In
+            </Link>
+            <Link href="#" color="inherit" className={classes.link}>
+            Sign Up
+            </Link>
+        </div>
     </Typography>
   );
 }
