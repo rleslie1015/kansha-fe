@@ -1,13 +1,31 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, Typography, Box, Paper } from '@material-ui/core';
-import lorenpic from "./images/lorenpic.jpg";
+import {Button, Typography, Box, Link } from '@material-ui/core';
+import pic04 from "./images/pic04.jpg";
+import Nav from './Nav';
 
 const styles = {
   paperContainer: {
-    backgroundImage: `url(${lorenpic})`,
-    height: '50vh',
-    backgroundRepeat: 'no-repeat'
+    height: '90vh',
+    // backgroundRepeat: "no-repeat",
+    // backgroundPosition: "center center",
+    // backgroundSize: "cover",
+    // backgroundAttachment: "fixed",
+    // position: "relative"
+  
+  },
+  heading: {
+    margin: "90px",
+    position:"absolute",
+    zIndex: "1",
+    
+  },
+  img: {
+    position:"absolute",
+    zIndex: "0",
+    height:"80vh",
+    width: "100vw",
+    margin:"-10px"
   }
 } 
 
@@ -24,17 +42,18 @@ const useStyles = makeStyles(theme => ({
       const classes = useStyles();
 
       return(
-          <>
           <div style={styles.paperContainer}>
-            <Typography component='div'>
+            <img src={pic04} style={styles.img} />
+              <Nav />
+            <Typography component='div' style={styles.heading} >
               <Box fontSize="50px">Workplace Recognition Like Never Before</Box>
               <Box fontSize="16px">Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
               <Button variant='contained' className = {classes.button}>Learn More</Button>
               <Button variant = 'contained' color = 'primary' className = {classes.button}>Sign Up</Button>
 
             </Typography>
-          </div>
+        
 
-          </>
+          </div>
       )
   }
