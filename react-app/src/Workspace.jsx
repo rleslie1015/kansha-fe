@@ -17,7 +17,7 @@ import 'typeface-roboto';
 const useStyles = makeStyles(theme => ({
 	container: {
 		fontFamily: 'Montserrat',
-		backgroundColor: '#171717',
+		backgroundColor: '#202020',
 		color: 'white',
 	},
 	root: {
