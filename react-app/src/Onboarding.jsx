@@ -50,7 +50,7 @@ function Onboarding(props) {
             <Container fixed>
                 <Paper className={classes.paper}>
                     <Typography className={classes.typo} variant="h5">
-                        Welome, Please specify your role. 
+                        Welcome, Please specify your role. 
                     </Typography>
                     <FormControl className={classes.form}>
                         <TextField 
