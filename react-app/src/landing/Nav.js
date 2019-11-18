@@ -2,7 +2,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Link, AppBar,  Toolbar, Typography, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import NavMenu from './NavMenu';
+import { style } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
@@ -50,7 +51,7 @@ export default function Links() {
                 Kansha
             </Link>
         </div>
-        
+        <NavMenu className={style.hideNav}/>
         <div className={classes.hideNav} >
             <Link href="#"  color="inherit" className={classes.link}>
                 About Us

@@ -30,7 +30,22 @@ const useStyles = makeStyles(theme => ({
   box: {
     fontSize:"30px",
     textAlign:"center"
-  }
+  },
+  mobile: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "25px",
+      margin: "5% 0",
+      textAlign: "center"
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: "5% 0",
+      textAlign: "center"
+    },
+    [theme.breakpoints.up('lg')]: {
+
+    }
+  },
 }));
 
 
@@ -42,7 +57,7 @@ export default function Main () {
     return (
         <>
         <Typography>
-          <Box className={classes.box} >Why Kansha?</Box> 
+          <Box className={classes.box, classes.mobile}  >Why Kansha?</Box> 
         </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>

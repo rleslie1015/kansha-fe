@@ -83,6 +83,7 @@ const useStyles = makeStyles(theme => ({
             <img src={pic04} style={styles.img} />
               <Nav />
             <Typography component='div' style={styles.heading}  >
+              
               <Box className={classes.headingFont}>Workplace Recognition</Box>
               <Box className={classes.headingFont}>Like Never Before</Box>
               <Box>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
