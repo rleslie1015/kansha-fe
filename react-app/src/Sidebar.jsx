@@ -24,8 +24,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   menuButton: {
-    marginRight: '10%',
-    marginLeft: '5%'
+    marginRight: '5%',
+    // marginLeft: '5%'
   },
   hide: {
     display: 'none',
