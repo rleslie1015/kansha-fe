@@ -134,6 +134,7 @@ function Profile({ login, user }) {
     return (
         <div id="Profile" className={classes.profileDiv}>
             <Container fixed className={classes.root}>
+                {/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
                 <Container fixed className={classes.leftContainer}>
                     <Card className={classes.userInfo}>
                             <img src={user.profile.picture} className={classes.profilePic} />
@@ -147,6 +148,7 @@ function Profile({ login, user }) {
                                 Department
                             </Typography>
                     </Card>
+                        {/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
                         <Card className={classes.badgeCard}>
                             <Typography className={classes.header} variant="h5">
                                 Badges
@@ -167,6 +169,7 @@ function Profile({ login, user }) {
                             </Container>
                         </Card>
                 </Container>
+                {/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
                 <Container fixed className={classes.rightContainer}>
                     <Card className={classes.activityInfo}>
                         <Typography className={classes.header} variant="h5">
