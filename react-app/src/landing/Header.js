@@ -18,7 +18,7 @@ const styles = {
   img: {
     position:"absolute",
     zIndex: "0",
-    height:"80vh",
+    height:"100vh",
     width: "100%",
     margin:"-10px",
   }
@@ -35,19 +35,57 @@ const useStyles = makeStyles(theme => ({
     input: {
       display: 'none',
     },
+    headingFont: {
+      [theme.breakpoints.down('sm')]: {
+        fontSize: "25px",
+        margin: "0 auto"
+      },
+      [theme.breakpoints.up('md')]: {
+        fontSize: "25px",
+        
+      },
+      [theme.breakpoints.up('lg')]: {
+  
+      }
+    },
+    font: {
+      [theme.breakpoints.down('sm')]: {
+        fontSize: "16px"
+      },
+      [theme.breakpoints.up('md')]: {
+        
+      },
+      [theme.breakpoints.up('lg')]: {
+  
+      }
+    },
+    root: {
+      padding: theme.spacing(1),
+      [theme.breakpoints.down('sm')]: {
+        fontSize: "25px",
+    
+      },
+      [theme.breakpoints.up('md')]: {
+   
+      },
+      [theme.breakpoints.up('lg')]: {
+  
+      }
+    },
+   
   }));
 
   export default function Header () {
       const classes = useStyles();
 
       return(
-          <div style={styles.paperContainer}>
+          <div style={styles.paperContainer} className={classes.root}>
             <img src={pic04} style={styles.img} />
               <Nav />
-            <Typography component='div' style={styles.heading} >
-              <Box fontSize="5.1em">Workplace Recognition</Box>
-              <Box fontSize="5em">Like Never Before</Box>
-              <Box fontSize="1.5em">Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
+            <Typography component='div' style={styles.heading}  >
+              <Box className={classes.headingFont}>Workplace Recognition</Box>
+              <Box className={classes.headingFont}>Like Never Before</Box>
+              <Box>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
               <Button variant='contained' className = {classes.button}>Learn More</Button>
               <Button variant = 'contained' color = 'primary' className = {classes.button}>Sign Up</Button>
 

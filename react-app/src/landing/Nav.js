@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link, Box} from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
+import {Link, AppBar,  Toolbar, Typography, IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
@@ -24,10 +23,19 @@ const useStyles = makeStyles(theme => ({
   left: {
       justifyContent: "flex-start"
   },
-  right: {
-    display: "flex",
-    width: "80%",
-    justifyContent: "flex-end"
+  hideNav: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      display: "none"
+    },
+    [theme.breakpoints.up('md')]: {
+      display: "none"
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: "flex",
+      width: "80%",
+      justifyContent: "flex-end"
+    }
 }
 
 }));
@@ -42,7 +50,8 @@ export default function Links() {
                 Kansha
             </Link>
         </div>
-        <div className={classes.right}>
+        
+        <div className={classes.hideNav} >
             <Link href="#"  color="inherit" className={classes.link}>
                 About Us
             </Link>
