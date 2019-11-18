@@ -56,8 +56,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	title: {
 		fontSize: 14,
-	},
-	pos: {
+    },
+    job_title: {
+        fontFamily: 'Roboto',
+        fontSize: '1.3em'
+    },
+	department: {
+        fontFamily: 'Roboto',
+        fontWeight: '300',
 		marginBottom: 12,
 		color: 'white',
 	},
@@ -163,11 +169,11 @@ export default function Workspace() {
 								<Typography variant="h5" component="h2">
 									{users.first_name} {users.last_name}
 								</Typography>
-								<Typography variant="body2" component="p">
+								<Typography className={classes.job_title}>
 									{users.job_title}
 								</Typography>
 								<Typography
-									className={classes.pos}
+									className={classes.department}
 									color="textSecondary">
 									{users.department}
 								</Typography>
