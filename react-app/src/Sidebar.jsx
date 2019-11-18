@@ -108,7 +108,12 @@ function Sidebar() {
             <ChevronRightIcon />
           </IconButton>
         <div>
-            <IconButton onClick={handleDrawerClose} className={clsx(classes.menuButton, {[classes.hide]: !open})}>
+            <IconButton 
+              onClick={handleDrawerClose} 
+              className={clsx(classes.menuButton, {
+                [classes.hide]: !open
+              })}
+            >
                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
         </div>
