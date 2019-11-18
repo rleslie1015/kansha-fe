@@ -2,6 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper } from '@material-ui/core';
+import Sidebar from './Sidebar'
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +23,7 @@ export default function Home () {
     const classes = useStyles()
     return (
         <div id="App" className={classes.root}>
+            <Sidebar />
             <CssBaseline />
             <Container fixed>
                 <Paper className={classes.paper}>
