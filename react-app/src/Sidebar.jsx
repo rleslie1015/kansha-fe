@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import profilePic from './picture/picture.png'
 
 const drawerWidth = 240;
 
@@ -54,6 +56,22 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  signoutOpen: {
+    marginTop: '40vh'
+  },
+  signoutClosed: {
+    marginTop: '55vh'
+  },
+  header: {
+    marginLeft: '25%',
+    marginBottom: '10%'
+  },
+  img: {
+    width: '50%',
+    height: 'auto',
+    marginLeft: '11%',
+    borderRadius: '50%' 
+  }
 }));
 
 function Sidebar() {
@@ -106,6 +124,13 @@ function Sidebar() {
             >
                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
+            <div className={clsx(classes.header, {
+                [classes.hide]: !open
+              })}
+            >
+            <img src={profilePic} className={classes.img} />
+            <Typography>Your Name Here</Typography>
+            </div>
         </div>
         <Divider />
         <List>
@@ -117,7 +142,10 @@ function Sidebar() {
           ))}
         </List>
         <Divider />
-        <List>
+        <List className={clsx(classes.menuOpen, {
+                [classes.signoutOpen]: open,
+                [classes.signoutClosed]: !open
+              })}>
         {['Sign Out'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
