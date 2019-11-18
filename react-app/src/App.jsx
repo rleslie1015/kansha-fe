@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        style: "border: 1px solid red"
     },
     paper: {
         marginTop: '1rem'
