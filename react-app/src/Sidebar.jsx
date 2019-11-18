@@ -1,17 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import profilePic from './picture/picture.png'
@@ -24,7 +16,6 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: '5%',
-    // marginLeft: '5%'
   },
   hide: {
     display: 'none',
@@ -104,6 +95,7 @@ function Sidebar() {
         }}
         open={open}
       >
+          {/* This is the open menu button */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -115,6 +107,7 @@ function Sidebar() {
           >
             <ChevronRightIcon />
           </IconButton>
+          {/* this is the close menu button */}
         <div>
             <IconButton 
               onClick={handleDrawerClose} 
@@ -124,6 +117,7 @@ function Sidebar() {
             >
                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
+            {/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
             <div className={clsx(classes.header, {
                 [classes.hide]: !open
               })}
@@ -133,6 +127,7 @@ function Sidebar() {
             </div>
         </div>
         <Divider />
+        {/* this populates the icons in the closed menu and populates text also when menu is open */}
         <List>
           {['Home', 'Profile', 'Workspace', 'Send Reward', 'Rewards History', 'Settings'].map((text, index) => (
             <ListItem button key={text}>
@@ -142,10 +137,12 @@ function Sidebar() {
           ))}
         </List>
         <Divider />
+        {/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
         <List className={clsx(classes.menuOpen, {
                 [classes.signoutOpen]: open,
                 [classes.signoutClosed]: !open
               })}>
+                  {/* this populates the sign out icon on the closed menu and both icon and text on the open menu */}
         {['Sign Out'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
