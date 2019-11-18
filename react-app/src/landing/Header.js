@@ -55,9 +55,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         
       },
-      [theme.breakpoints.up('lg')]: {
-  
-      }
+     
     },
     root: {
       padding: theme.spacing(1),

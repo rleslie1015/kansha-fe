@@ -9,13 +9,16 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    justifyContent: "center",
   },
   paper: {
     padding: theme.spacing(2),
     margin: '10px',
     width: 500,
-    
+  },
+  font: {
+    fontSize: "22px",
   },
   image: {
     width: 128,
@@ -40,9 +43,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       margin: "5% 0",
-      textAlign: "center"
+      textAlign: "center",
+      fontSize: "25px",
     },
     [theme.breakpoints.up('lg')]: {
+      fontSize: "25px",
 
     }
   },
@@ -70,7 +75,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px">
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Send a Reward
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
@@ -92,7 +97,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px">
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Workspace
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
@@ -114,7 +119,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px" >
+                <Typography gutterBottom variant="subtitle1" className={classes.font} >
                   Admin Access
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
@@ -136,7 +141,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px">
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Earn Badges
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
@@ -158,7 +163,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px">
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Leave a <FavoriteIcon />
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
@@ -180,7 +185,7 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" fontSize="22px">
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Activity
                 </Typography>
                 <Typography variant="body2" gutterBottom fontSize="14px">
