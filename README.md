@@ -4,19 +4,27 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# Kansha
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [KanshaRewards](http://dev--staging.kansharewards.com/).
 
-## 4️⃣ Contributors
+## Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Sydney Crumley](https://github.com/srsimps19)                                        |                                       [Matt Masters](https://github.com/TamaHills)                                        |                                       [Andrew Goenner](https://github.com/drewgoenner)                                        |                                       [Ty Lippe](https://github.com/TyLippe)                                        |                                       [Leslie Rodriguez](https://github.com/rleslie1015)                                        |                                      
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|                      [<img src="https://avatars1.githubusercontent.com/u/47989905?s=460&v=4" width = "200" />](https://github.com/srsimps19)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UKNESELCT-23f6dded7595-512" width = "200" />](https://github.com/TamaHills)                       |                      [<img src="https://avatars1.githubusercontent.com/u/52584951?s=460&v=4" width = "200" />](https://github.com/drewgoenner)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UGGUY69GX-bd9e64b56199-512" width = "200" />](https://github.com/TyLippe)                       |                      [<img src="https://avatars1.githubusercontent.com/u/46256764?s=460&v=4" width = "200" />](https://github.com/rleslie1015)                       |                      
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/srsimps19)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TamaHills)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/drewgoenner)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TyLippe)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/rleslie1015)             |            
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sydney-crumley/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/matthew-masters-463422191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-goenner-7947a059/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ty-lippe-1432b3194/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/leslie-rodriguez1994/) | 
+
+<br>
+<br>
+
+ [Gustavo Isturiz](https://github.com/gisturiz)                                        |                                       [Nick Truson](https://github.com/NicholasTruson)                                        |                                       [Gizella Ortiz](https://dribbble.com/gizellaortiz)                                        |                                       [Ahmar Mansoor](http://ahmarsworld.blackwidowtech.com/)                                        |                                       [Cori Paris](https://github.com/coriagogo)                                        |
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+[<img src="https://avatars1.githubusercontent.com/u/48292332?s=460&v=4" width = "200" />](https://github.com/gisturiz)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJEH36GKV-77fb9457ee2b-48" width = "200" />](https://github.com/NicholasTruson)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UL60E4KFX-4b1dd9a4c63a-48" width = "200" />](https://dribbble.com/gizellaortiz)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UKVMA8EEN-cf4734914ea4-48" width = "200" />](http://ahmarsworld.blackwidowtech.com/)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UFJUS8AJ3-85fb22366b0d-48" width = "200" />](https://github.com/coriagogo)                       |
+[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/gisturiz)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NicholasTruson)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/coriagogo)             |
+[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gisturiz/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/nicholas-truson-167599191) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gizella-o-824a13161/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ahmar-mansoor-4455b6191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/pearl-paris/ ) |
 
 <br>
 <br>
@@ -33,17 +41,13 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+[Trello Board](https://trello.com/b/47q9LIO5/kansha)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Product Canvas](https://www.notion.so/Kansha-fdf86e4459934f979df4eefd5c409b4a)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[UX Design files](https://www.figma.com/file/EtD3IAhwlPsT91V1oAJ1QX/Labs18_Kansha%2C-Gizella-%26-Ahmar?node-id=533%3A1360)
 
-🚫 Replace lorem ipsum with a description of your project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Recognition app to praise your co-workers and send gift-cards.
 
 
 ### 4️⃣ Key Features
