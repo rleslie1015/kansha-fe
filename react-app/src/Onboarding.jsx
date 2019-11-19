@@ -129,9 +129,6 @@ function Onboarding(props) {
 							Register
 						</Button>
 					</FormControl>
-					<Typography>
-						{form.sub}
-					</Typography>
 				</Paper>
 			</Container>
 		</div>
