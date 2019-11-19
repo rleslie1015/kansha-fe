@@ -7,7 +7,6 @@ import InputBase from '@material-ui/core/InputBase';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
-import { typeAnnotation } from '@babel/types';
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -93,7 +92,7 @@ export default function Workspace() {
 		console.log(e.target.value);
 
 		const user = team.filter(t => {
-			if (t.first_name.toLowerCase().includes(e.target.value)) {
+			if (t.first_name.toLowerCase().includes(e.target.value) || t.last_name.toLowerCase().includes(e.target.value)) {
 				return t;
 			}
 		});
