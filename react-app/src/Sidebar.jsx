@@ -122,7 +122,7 @@ function Sidebar() {
                 [classes.hide]: !open
               })}
             >
-            <img src={profilePic} className={classes.img} />
+            <img src={profilePic} className={classes.img} alt='User' />
             <Typography>Your Name Here</Typography>
             </div>
         </div>
