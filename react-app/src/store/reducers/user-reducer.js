@@ -40,6 +40,7 @@ export const userReducer = (state = initialState, action) => {
 		case USER_ONBOARDING_SUCCESS:
 			return {
 				...state,
+				profile: action.payload,
 				isOnboarding: false,
 			}
 		case USER_ONBOARDING_FAILURE:

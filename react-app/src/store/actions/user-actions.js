@@ -12,7 +12,7 @@ export const USER_ONBOARDING_FAILURE = 'USER_ONBOARDING_FAILURE';
 export const login = userProfile => dispatch => {
 	dispatch({ type: USER_LOGIN_START });
 	axiosWithAuth()
-		.get('/login')
+		.get('/profile')
 		.then(res => {
             if (res.data.user) dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
             else dispatch({type: USER_LOGIN_NEWUSER, payload: res.data })
@@ -25,9 +25,8 @@ export const login = userProfile => dispatch => {
 
 export const onboard = creds => dispatch => {
 	dispatch({ type: USER_ONBOARDING_START });
-	// axiosWithAuth()
-	axios
-		.post('http://localhost:8000/users', creds)
+	axiosWithAuth()
+		.post('/users', creds)
 		.then(res => {
 			dispatch({ type: USER_ONBOARDING_SUCCESS, payload: res.data });
 		})

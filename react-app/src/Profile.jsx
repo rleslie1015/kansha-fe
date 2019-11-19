@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Auth from './auth';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { login } from './store/actions/user-actions';
@@ -120,17 +119,15 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const auth = new Auth();
-
 function Profile({ login, user }) {
     const classes = useStyles();
 
-    useEffect(() => {
+    /* useEffect(() => {
 		auth.handleAuthentication();
         login(auth.getProfile());
     }, [login]);
 
-    console.log({user})
+    console.log({user}) */
     return (
         <div id="Profile" className={classes.profileDiv}>
             <Container fixed className={classes.root}>

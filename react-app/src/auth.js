@@ -8,7 +8,7 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: 'kansha.auth0.com',
 		clientID: process.env.REACT_APP_CLIENT_ID,
-		redirectUri: "http://localhost:3000/home",
+		redirectUri: process.env.REACT_APP_REDIRECT_URI,
 		audience: 'https://kansha.auth0.com/userinfo',
 		responseType: 'token id_token',
 		scope: 'openid profile',

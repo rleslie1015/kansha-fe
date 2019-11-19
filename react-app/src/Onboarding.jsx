@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,7 @@ import {
 	MenuItem,
 	InputLabel,
 } from '@material-ui/core';
+import Auth from './auth'
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -43,6 +44,8 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
+const auth = new Auth();
+
 function Onboarding(props) {
 	const classes = useStyles();
 	const [form, setForm] = useState({
@@ -52,6 +55,7 @@ function Onboarding(props) {
 		department: '',
 		org_name: '',
 		user_type: '',
+		sub: ''
 	});
 
 	const handleChange = event => {
@@ -61,6 +65,12 @@ function Onboarding(props) {
 	const handleSubmit = event => {
 		props.onboard(form);
 	};
+
+	useEffect(() => {
+		const { sub } = auth.getProfile()
+		setForm(f => ({...f, sub}))
+	}, [])
+
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />
@@ -119,6 +129,9 @@ function Onboarding(props) {
 							Register
 						</Button>
 					</FormControl>
+					<Typography>
+						{form.sub}
+					</Typography>
 				</Paper>
 			</Container>
 		</div>

@@ -19,7 +19,7 @@ function Home({ login, user, history }) {
 		return (
 			<>Loading...</>
 		)
-	} else if(user.isOboarding) {
+	} else if(user.isOnboarding) {
 		return (
 			<Onboarding/>
 		)
@@ -27,12 +27,8 @@ function Home({ login, user, history }) {
 		return (
 			<Profile/>
 		)
-	} else if(user.error) {
-		history.push('/')
-		return (
-			<>Loading...</>
-		)
-	} else {
+	}
+	else {
 		return (
 			<>Loading...</>
 		)
