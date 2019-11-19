@@ -1,18 +1,37 @@
-import { USER_LOGIN, USER_ONBOARDING_START, USER_ONBOARDING_SUCCESS, USER_ONBOARDING_FAILURE } from '../actions/user-actions';
+import { USER_LOGIN_START, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_NEWUSER, USER_ONBOARDING_START, USER_ONBOARDING_SUCCESS, USER_ONBOARDING_FAILURE } from '../actions/user-actions';
 
 const initialState = {
-	profile: {},
+	profile: null,
 	isOnboarding: false,
+	isLoggingIn: false,
 	error: null,
 };
 
 export const userReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case USER_LOGIN:
+		case USER_LOGIN_START:
+			return {
+				...state,
+				isLoggingIn: true
+			}
+		case USER_LOGIN_SUCCESS:
 			return {
 				...state,
 				profile: action.payload,
+				isLoggingIn: false
 			};
+		case USER_LOGIN_NEWUSER:
+			return {
+				...state,
+				isOnboarding: true,
+				isLoggingIn: false
+			}
+		case USER_LOGIN_FAILURE:
+			return {
+				...state,
+				error: action.payload,
+				isLoggingIn: false
+			}
 		case USER_ONBOARDING_START:
 			return {
 				...state,
