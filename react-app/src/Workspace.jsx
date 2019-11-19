@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import SearchIcon from '@material-ui/icons/Search';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import InputBase from '@material-ui/core/InputBase';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import WorkspaceCard from './Workspace_Card';
+import { typeAnnotation } from '@babel/types';
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -33,52 +28,6 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-	},
-	card_container: {
-		display: 'flex',
-	},
-	card: {
-        position: 'relative',
-		minWidth: 275,
-		margin: 20,
-		backgroundColor: '#252525',
-		color: 'white',
-    },
-    vert_icon: {
-        position: "absolute",
-        top: '10px',
-        right: '10px'
-    },
-	card_content: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	title: {
-		fontSize: 14,
-    },
-    job_title: {
-        fontFamily: 'Roboto',
-        fontSize: '1.3em'
-    },
-	department: {
-        fontFamily: 'Roboto',
-        fontWeight: '300',
-		marginBottom: 12,
-		color: 'white',
-	},
-	avatar: {
-		margin: 10,
-		width: 100,
-		height: 100,
-	},
-	card_actions: {
-		display: 'flex',
-		justifyContent: 'space-evenly',
-	},
-	button_dark: {
-		backgroundColor: '#575757',
-		color: 'white',
 	},
 	search: {
 		position: 'relative',
@@ -125,6 +74,9 @@ export default function Workspace() {
 
 	const [team, setTeam] = useState([]);
 
+	const [fitleredTeam, setFilteredTeam] = useState([]);
+	console.log(fitleredTeam);
+
 	useEffect(() => {
 		axios
 			.get('http://localhost:8000/users/')
@@ -136,6 +88,17 @@ export default function Workspace() {
 				console.log(err);
 			});
 	}, []);
+
+	const searchWorkPlaceHandler = e => {
+		console.log(e.target.value);
+
+		const user = team.filter(t => {
+			if (t.first_name.toLowerCase().includes(e.target.value)) {
+				return t;
+			}
+		});
+		setFilteredTeam(user);
+	};
 
 	return (
 		<div className={classes.container}>
@@ -153,46 +116,14 @@ export default function Workspace() {
 								input: classes.inputInput,
 							}}
 							inputProps={{ 'aria-label': 'search' }}
+							onKeyUp={searchWorkPlaceHandler}
+							type="text"
 						/>
 					</div>
 				</div>
-				<div className={classes.card_container}>
-					{team.map(users => (
-						<Card className={classes.card}>
-							<CardContent className={classes.card_content}>
-									<Avatar
-										alt="profile picture"
-										src={users.profile_picture}
-										className={classes.avatar}
-									/>
-                                    <MoreVertIcon className={classes.vert_icon}/>
-								<Typography variant="h5" component="h2">
-									{users.first_name} {users.last_name}
-								</Typography>
-								<Typography className={classes.job_title}>
-									{users.job_title}
-								</Typography>
-								<Typography
-									className={classes.department}
-									color="textSecondary">
-									{users.department}
-								</Typography>
-							</CardContent>
-							<CardActions className={classes.card_actions}>
-								<Button
-									variant="contained"
-									className={classes.button_dark}>
-									Thank
-								</Button>
-								<Button
-									variant="contained"
-									className={classes.button}>
-									View Profile
-								</Button>
-							</CardActions>
-						</Card>
-					))}
-				</div>
+				<WorkspaceCard
+					team={fitleredTeam.length > 0 ? fitleredTeam : team}
+				/>
 			</Container>
 		</div>
 	);
