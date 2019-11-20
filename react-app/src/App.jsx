@@ -18,14 +18,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const App = () => {
+   const classes = useStyles()
    return (
         <div id="App" className={classes.root}>
             <Route exact path='/' component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/onboarding" component={Onboarding} />
-			      <Route path="/profile" component={Profile} />
-			      <Route path="/workspace" component={Workspace} />
+	    <Route path="/profile" component={Profile} />
+            <Route path="/workspace" component={Workspace} />
         </div>
     );
 };
