@@ -1,10 +1,9 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper, Link } from '@material-ui/core';
 import { Landing }  from './landing/Landing';
 import { Route } from 'react-router-dom';
-
+import Home from './Home';
+import Login from './Login';
 
 
 const useStyles = makeStyles(theme => ({
@@ -12,22 +11,15 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        style: "border: 1px solid red"
     },
-    paper: {
-        marginTop: '1rem'
-    },
-    typo: {
-        padding: '1rem .5rem'
-    }
 }));
 
 export const App = () => {
-    const classes = useStyles()
     return (
         <div id="App" className={classes.root}>
             <Route exact path='/' component={Landing} />
-            
+            <Route exact path="/login" component={Login} />
+            <Route path="/home" component={Home} />
         </div>
     );
 };
