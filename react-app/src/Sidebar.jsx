@@ -1,7 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   menuButton: {
+    color: 'white',
     marginRight: '5%',
   },
   hide: {
@@ -26,6 +28,8 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
+    color: 'white',
+    backgroundColor: '#2D2C35',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -33,6 +37,8 @@ const useStyles = makeStyles(theme => ({
     }),
   },
   drawerClose: {
+    color: 'white',
+    backgroundColor: '#2D2C35',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -54,6 +60,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '55vh'
   },
   header: {
+    color: 'white',
     marginLeft: '25%',
     marginBottom: '10%'
   },
@@ -62,6 +69,9 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
     marginLeft: '11%',
     borderRadius: '50%' 
+  },
+  icons: {
+    color: 'white'
   }
 }));
 
@@ -105,7 +115,7 @@ function Sidebar() {
               [classes.hide]: open,
             })}
           >
-            <ChevronRightIcon />
+            <MenuIcon />
           </IconButton>
           {/* this is the close menu button */}
         <div>
@@ -131,8 +141,8 @@ function Sidebar() {
         {/* this populates the icons in the closed menu and populates text also when menu is open */}
         <List>
           {['Home', 'Profile', 'Workspace', 'Send Reward', 'Rewards History', 'Settings'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItem button key={text} >
+              <ListItemIcon className={classes.icons}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon >
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -146,7 +156,7 @@ function Sidebar() {
                   {/* this populates the sign out icon on the closed menu and both icon and text on the open menu */}
         {['Sign Out'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon className={classes.icons}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
             ))}
