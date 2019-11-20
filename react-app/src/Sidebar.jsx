@@ -10,7 +10,7 @@ import profilePic from './picture/picture.png'
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
