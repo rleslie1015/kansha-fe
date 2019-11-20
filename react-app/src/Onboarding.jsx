@@ -133,6 +133,7 @@ function Onboarding(props) {
 			</Container>
 		</div>
 	);
+
 }
 
 const mapStateToProps = state => {
