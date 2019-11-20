@@ -24,6 +24,13 @@ describe('<Sidebar />', () => {
         wrapper.find(IconButton).first().simulate('click');
         // expect(wrapper.find({className: classes.drawerOpen}))
     })
+
+    it('it should fire a click event to close the menu', () => {
+        const wrapper = shallow(<Sidebar />);
+
+        wrapper.find(IconButton).last().simulate('click');
+        // expect(wrapper.find({className: classes.drawerOpen}))
+    })
 })
 
 
