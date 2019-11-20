@@ -3,8 +3,7 @@ import Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Sidebar from '../Sidebar';
-import useStyles from '../Sidebar';
-import { Drawer } from '@material-ui/core';
+import { Drawer, IconButton } from '@material-ui/core';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -17,7 +16,14 @@ describe('<Sidebar />', () => {
     it('it should find the word Home in the sidebar menu', () => {
         const wrapper = shallow(<Sidebar />);
         expect(wrapper.find('Home'))
-      });
+    });
+
+    it('it should fire a click event to open the menu', () => {
+        const wrapper = shallow(<Sidebar />);
+
+        wrapper.find(IconButton).first().simulate('click');
+        // expect(wrapper.find({className: classes.drawerOpen}))
+    })
 })
 
 

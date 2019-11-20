@@ -10,7 +10,7 @@ import profilePic from './picture/picture.png'
 
 const drawerWidth = 240;
 
-export const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
@@ -110,6 +110,7 @@ function Sidebar() {
           {/* this is the close menu button */}
         <div>
             <IconButton 
+              aria-label="close drawer"
               onClick={handleDrawerClose} 
               className={clsx(classes.menuButton, {
                 [classes.hide]: !open
