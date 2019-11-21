@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import {Button, Menu, MenuItem }from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
 import { styles } from 'ansi-colors';
@@ -23,6 +24,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavMenu() {
   const classes = useStyles();
+
+  const history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -50,8 +53,8 @@ export default function NavMenu() {
       >
         <MenuItem onClick={handleClose}>About Us</MenuItem>
         <MenuItem onClick={handleClose}>Features</MenuItem>
-        <MenuItem onClick={handleClose}>Sign In</MenuItem>
-        <MenuItem onClick={handleClose}>Sign Up</MenuItem>
+        <MenuItem onClick={() => history.push('/login')}>Sign In</MenuItem>
+        <MenuItem onClick={() => history.push('/login')}>Sign Up</MenuItem>
 
       </Menu>
     </div>

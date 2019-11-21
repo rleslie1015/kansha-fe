@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link, Typography, Button, ButtonBase } from '@material-ui/core';
+import {Link, AppBar,  Toolbar, Typography, IconButton } from '@material-ui/core';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
-import logo from './images/logo.png'
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
@@ -24,20 +23,6 @@ const useStyles = makeStyles(theme => ({
   },
   left: {
       justifyContent: "flex-start"
-  },
-  button: {
-    border: '1px solid black',
-    width: '150px'
-  },
-  image: {
-    width: 128,
-    height: 160,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
   },
   hideNav: {
     padding: theme.spacing(1),
@@ -61,12 +46,10 @@ export default function Links() {
 
   return (
     <Typography className={classes.wrapper}>
-        <div className={classes.left} src = {logo}>
-        <ButtonBase href='#' className={classes.image}>
-              <img className={classes.img} alt="kansha logo" src={logo} />
-        </ButtonBase>
-                
-            
+        <div className={classes.left}>
+            <Link href="#" color="inherit" className={classes.kansha}>
+                Kansha
+            </Link>
         </div>
         <NavMenu className={style.hideNav}/>
         <div className={classes.hideNav} >
@@ -76,12 +59,12 @@ export default function Links() {
             <Link href="#" color="inherit" className={classes.link}>
             Features
             </Link>
-            <Link href="#" color="inherit" className={classes.link}>
+            <Link href="/login" color="inherit" className={classes.link}>
             Sign In
             </Link>
-            <Button href="#" color="inherit" className={classes.button}>
+            <Link href="/login" color="inherit" className={classes.link}>
             Sign Up
-            </Button>
+            </Link>
         </div>
     </Typography>
   );

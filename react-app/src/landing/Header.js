@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import {Button, Typography, Box, Link } from '@material-ui/core';
 import pic04 from "./images/pic04.jpg";
@@ -76,6 +77,8 @@ const useStyles = makeStyles(theme => ({
   export default function Header () {
       const classes = useStyles();
 
+      const history = useHistory();
+
       return(
           <div style={styles.paperContainer} className={classes.root}>
             <img src={pic04} style={styles.img} />
@@ -86,7 +89,7 @@ const useStyles = makeStyles(theme => ({
               <Box className={classes.headingFont}>Like Never Before</Box>
               <Box>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
               <Button variant='contained' className = {classes.button}>Learn More</Button>
-              <Button variant = 'contained' color = 'primary' className = {classes.button}>Sign Up</Button>
+              <Button variant = 'contained' color = 'primary' className = {classes.button} onClick={() => history.push('/login')}>Sign Up</Button>
 
             </Typography>
         
