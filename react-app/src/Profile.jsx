@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import Auth from './Auth';
+import axios from 'axios';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { login } from './store/actions/user-actions';
@@ -115,37 +115,84 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#252525',
     },
     recCard: {
+        display: 'flex',
         backgroundColor: 'rgba(255, 255, 255, 0.04)',
         margin: '1rem 1rem 0 1rem',
+        height: '13%'
+    },
+    recProfilePic: {
+        borderRadius: '100%',
+        width: '10%',
+        padding: '1rem',
+        height: 'auto'
+    },
+    recSender: {
+        display: 'flex',
+    },
+    recCardUser: {
+        padding: '1rem 2rem',
+        fontFamily: 'Montserrat',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '20px',
+        color: '#FFFFFF',
+    },
+    recCardTime: {
+        fontFamily: 'Montserrat',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '20px',
+        color: 'rgba(255, 255, 255, 0.5)',
+        opacity: '0.5',
+        padding: '1rem'
+    },
+    recCardMessage: {
+        padding: '0 2rem',
+        fontFamily: 'Montserrat',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        lineHeight: '20px',
+        color: 'rgba(255, 255, 255, 0.7)',
     }
 }))
 
-const auth = new Auth();
-
-function Profile({ login, user }) {
+function Profile(id) {
     const classes = useStyles();
 
-    useEffect(() => {
-		auth.handleAuthentication();
-        login(auth.getProfile());
-    }, [login]);
+    const [user, setUser] = useState([]);
 
-    console.log({user})
+    useEffect((id) => {
+		axios
+			.get('https://kansha-staging.herokuapp.com/users/:id')
+			.then(res => {
+				setUser(res.data);
+				console.log(res);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	});
+
+    console.log(user)
+
     return (
         <div id="Profile" className={classes.profileDiv}>
             <Container fixed className={classes.root}>
                 {/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
                 <Container fixed className={classes.leftContainer}>
                     <Card className={classes.userInfo}>
-                            <img src={user.profile.picture} className={classes.profilePic} />
+                            <img src={user.profile_picture} className={classes.profilePic} />
                             <Typography className={classes.name} variant="h5">
-                                { user.profile.nickname }
+                                { user.first_name + user.last_name }
                             </Typography>
                             <Typography className={classes.jobTitle}>
-                                Job Title
+                                { user.job_title}
                             </Typography>
                             <Typography className={classes.department}>
-                                Department
+                                { user.department }
                             </Typography>
                     </Card>
                         {/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
@@ -176,9 +223,20 @@ function Profile({ login, user }) {
                             Activity
                         </Typography>        
                             <Card className={classes.recCard}>
-                                <Typography className={classes.typo}>
+                                <img src={user.profile_picture} className={classes.recProfilePic} />
+                                <Box>
+                                    <Box className={classes.recSender}>
+                                <Typography className={classes.recCardUser}>
+                                    User1
+                                </Typography>
+                                <Typography className={classes.recCardTime}>
+                                    1 Hour Ago
+                                </Typography>
+                                    </Box>
+                                <Typography className={classes.recCardMessage}>
                                     Thanks!
                                 </Typography>
+                                </Box>
                             </Card>
                             <Card className={classes.recCard}>
                                 <Typography className={classes.typo}>
