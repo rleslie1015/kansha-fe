@@ -5,6 +5,9 @@ import { Link } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
     root: {
         fontSize: "16px",
+        color: '#ffffff',
+        backgroundColor: '#26242D',
+
         [theme.breakpoints.down('sm')]: {
             display: "flex",
             flexDirection: "column-reverse",

@@ -8,7 +8,6 @@ import heartIcon from './images/heart.png';
 import heroImage from './images/hero-image.png';
 import rewardIcon from './images/reward.png';
 import workspaceIcon from './images/workspace.png';
-import logo from './images/logo.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { textAlign } from '@material-ui/system';
 
@@ -18,14 +17,17 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: "center",
+    backgroundColor: '#26242D',
   },
   paper: {
     padding: theme.spacing(2),
     margin: '10px',
     width: 500,
+    backgroundColor: '#26242D',
   },
   font: {
     fontSize: "22px",
+    color: '#ffffff',
   },
   image: {
     width: 128,
@@ -39,7 +41,9 @@ const useStyles = makeStyles(theme => ({
   },
   box: {
     fontSize:"30px",
-    textAlign:"center"
+    textAlign:"center",
+    backgroundColor: '#26242D',
+    color: '#ffffff'
   },
   mobile: {
     padding: theme.spacing(1),
@@ -68,7 +72,7 @@ export default function Main () {
 
     return (
         <>
-        <Typography>
+        <Typography font='#26242D'>
           <Box className={classes.box, classes.mobile}  >Why Kansha?</Box> 
         </Typography>
         <div className={classes.root}>
@@ -85,7 +89,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Send a Reward
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom fontSize="14px" color='#ffffff'>
                   Send your peers a gift card with a message to show recognition.
                 </Typography>
               </Grid>

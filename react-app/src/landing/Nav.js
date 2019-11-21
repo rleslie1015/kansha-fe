@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link, AppBar,  Toolbar, Typography, IconButton } from '@material-ui/core';
+import {Link, AppBar,  Toolbar, Typography, Button, ButtonBase } from '@material-ui/core';
+import logo from './images/logo.png';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
 
@@ -15,11 +16,23 @@ const useStyles = makeStyles(theme => ({
     marginTop: "30px"
   },
   link: {
-      fontSize: "xx-large",
+      fontSize: "16px",
       padding: "10px"
   },
+  image: {
+    width: 64,
+    height: 64,
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    width: '300px',
+    height: '100px'
+    // maxWidth: '100%',
+    // maxHeight: '100%',
+  },
   kansha: {
-    fontSize: "-webkit-xxx-large",
+    
   },
   left: {
       justifyContent: "flex-start"
@@ -48,7 +61,9 @@ export default function Links() {
     <Typography className={classes.wrapper}>
         <div className={classes.left}>
             <Link href="#" color="inherit" className={classes.kansha}>
-                Kansha
+                <ButtonBase classname={classes.image}>
+                  <img className={classes.img} alt="kansha" src={logo} />
+                </ButtonBase>
             </Link>
         </div>
         <NavMenu className={style.hideNav}/>
