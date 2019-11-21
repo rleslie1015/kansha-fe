@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Button, Typography, Box, Link } from '@material-ui/core';
 import pic04 from "./images/pic04.jpg";
 import Nav from './Nav';
+import Auth from '../Auth';
 
+const auth = new Auth();
 
 const styles = {
   paperContainer: {
@@ -89,7 +91,7 @@ const useStyles = makeStyles(theme => ({
               <Box className={classes.headingFont}>Like Never Before</Box>
               <Box>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
               <Button variant='contained' className = {classes.button}>Learn More</Button>
-              <Button variant = 'contained' color = 'primary' className = {classes.button} onClick={() => history.push('/login')}>Sign Up</Button>
+              <Button variant = 'contained' color = 'primary' className = {classes.button} onClick={auth.login}>Sign Up</Button>
 
             </Typography>
         
