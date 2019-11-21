@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link, Typography } from '@material-ui/core';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
-import Auth from '../Auth';
+import Auth from '../auth';
 
 const auth = new Auth();
 

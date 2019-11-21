@@ -1,28 +1,28 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
-import {Button, Menu, MenuItem }from '@material-ui/core';
+import { Button, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
-import Auth from '../Auth';
+import Auth from '../auth';
 import { makeStyles } from '@material-ui/core/styles';
 
 const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
-    hideNav: {
+  hideNav: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-        marginLeft: "50%"
+      marginLeft: "50%"
     },
     [theme.breakpoints.up('md')]: {
-        marginLeft: "50%"
+      marginLeft: "50%"
     },
-      [theme.breakpoints.up('lg')]: {
-        display: "none",
-        
-      }
+    [theme.breakpoints.up('lg')]: {
+      display: "none",
+
+    }
   }
-  
-  }));
+
+}));
 
 export default function NavMenu() {
   const classes = useStyles();
