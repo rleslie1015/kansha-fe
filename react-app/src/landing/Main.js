@@ -5,11 +5,10 @@ import activityIcon from './images/activity.png';
 import adminIcon from './images/admin.png';
 import badgeIcon from './images/badge.png';
 import heartIcon from './images/heart.png';
-import heroImage from './images/hero-image.png';
 import rewardIcon from './images/reward.png';
 import workspaceIcon from './images/workspace.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { textAlign } from '@material-ui/system';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     margin: '10px',
     width: 500,
     backgroundColor: '#26242D',
+    boxShadow: 'none'
   },
   font: {
     fontSize: "24px",
@@ -48,6 +48,9 @@ const useStyles = makeStyles(theme => ({
     textAlign:"center",
     backgroundColor: '#26242D',
     color: '#ffffff'
+  },
+  card: {
+    boxShadow: 'none'
   },
   mobile: {
     padding: theme.spacing(1),
@@ -82,7 +85,7 @@ export default function Main () {
         <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
-          <Grid item>
+          <Grid item className={classes.card}>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="reward" src={rewardIcon} />
             </ButtonBase>

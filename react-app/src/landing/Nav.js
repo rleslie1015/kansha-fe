@@ -11,9 +11,9 @@ const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
+    
     display: "flex",
-    position: "absolute",
-    zIndex: "1",
+    alignItems: 'center',
     marginLeft: "90px",
     width: "80%",
     marginTop: "30px"
@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
       display: "flex",
+      flexDirection: 'row',
       width: "80%",
       justifyContent: "flex-end"
     }
@@ -80,9 +81,7 @@ export default function Links() {
         <Link href="#" onClick={auth.login} color="inherit" className={classes.link}>
           Sign In
             </Link>
-        <Link href="#" onClick={auth.login} color="inherit" className={classes.link}>
-          Sign Up
-            </Link>
+
       </div>
     </Typography>
   );

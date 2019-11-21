@@ -11,10 +11,12 @@ const useStyles = makeStyles(theme => ({
   hideNav: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-      marginLeft: "50%"
+      display: 'flex',
+      flexDirection: 'column'
     },
     [theme.breakpoints.up('md')]: {
-      marginLeft: "50%"
+      display: 'flex',
+      flexDirection: 'column'
     },
     [theme.breakpoints.up('lg')]: {
       display: "none",
@@ -56,7 +58,6 @@ export default function NavMenu() {
         <MenuItem onClick={handleClose}>About Us</MenuItem>
         <MenuItem onClick={handleClose}>Features</MenuItem>
         <MenuItem onClick={auth.login}>Sign In</MenuItem>
-        <MenuItem onClick={auth.login}>Sign Up</MenuItem>
 
       </Menu>
     </div>
