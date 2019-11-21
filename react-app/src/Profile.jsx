@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { login } from './store/actions/user-actions';
 import badge1 from './assests/badge1.png';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 
 const useStyles = makeStyles(theme => ({
     profileDiv: {
-        backgroundColor: '#212121'
+        backgroundColor: '#26242D'
     },
     root: {
         display: 'flex',
@@ -27,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        backgroundColor: '#252525',
+        backgroundColor: '#2D2C35',
         padding: '3rem 0'
     },
     profilePic: {
@@ -36,45 +34,37 @@ const useStyles = makeStyles(theme => ({
         height: 'auto'
     },
     name: {
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '2.5rem 1rem 1.5rem 1rem',
+        paddingTop: '1.5rem',
         color: '#FFFFFF',
         fontFamily: 'Montserrat',
-        fontStyle: 'SemiBold',
-        fontSize: '35px',
-        lineHeight: '16px',
-        lineHeight: '38%',
-        align: 'Center',
-        verticalAlign: 'Top'
+        fontStyle: 'normal',
+        fontSize: '24px',
+        lineHeight: '29px',
+        textAlign: 'center',
     },
     jobTitle: {
-        display: 'flex',
-        justifyContent: 'center',
-        color: '#FFFFFF',
-        fontFamily: 'Roboto',
-        fontStyle: 'Regular',
-        fontSize: '22px',
-        lineHeight: '26px',
-        lineHeight: '100%',
-        align: 'Center',
-        verticalAlign: 'Top'
+        paddingTop: '.5rem',
+        color: 'rgba(255, 255, 255, 0.7)',
+        fontFamily: 'Montserrat',
+        fontStyle: 'normal',
+        fontSize: '24px',
+        lineHeight: '29px',
+        textAlign: 'center',
     },
     department: {
-        display: 'flex',
-        justifyContent: 'center',
-        color: '#FFFFFF',
-        fontFamily: 'Roboto',
-        fontStyle: 'Light',
-        fontSize: '16px',
-        lineHeight: '19px',
-        lineHeight: '100%',
-        align: 'Center',
+        paddingTop: '.5rem',
+        color: 'rgba(255, 255, 255, 0.5)',
+        fontFamily: 'Montserrat',
+        fontStyle: 'normal',
+        fontSize: '24px',
+        lineHeight: '29px',
+        fontWeight: '500',
+        textAlign: 'Center',
         verticalAlign: 'Top'
     },
     badgeCard: {
         marginTop: '2.5rem',
-        backgroundColor: '#252525',
+        backgroundColor: '#2D2C35',
         height: '30%',
     },
     typo: {
@@ -99,7 +89,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: '2rem'
     },
     badgeImg: {
-        backgroundColor: '#252525',
+        backgroundColor: '#2D2C35',
         width: '100%',
         height: 'auto',
         paddingTop: '1.5rem'
@@ -112,11 +102,11 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         width: '100%',
         height: '86%',
-        backgroundColor: '#252525',
+        backgroundColor: '#2D2C35',
     },
     recCard: {
         display: 'flex',
-        backgroundColor: 'rgba(255, 255, 255, 0.04)',
+        backgroundColor: '#3A3845',
         margin: '1rem 1rem 0 1rem',
         height: '13%'
     },
@@ -159,24 +149,23 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function Profile(id) {
+function Profile() {
     const classes = useStyles();
 
     const [user, setUser] = useState([]);
+    
 
-    useEffect((id) => {
-		axios
-			.get('https://kansha-staging.herokuapp.com/users/:id')
+    useEffect(() => {
+		axios({ url: 'https://kansha-staging.herokuapp.com/users/2', method: 'get', headers: {Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlFVUkVSVGhHTnpBek9USXpNelUwTlRKRE1ERkJORGMzT1RFMFFUZEdOVGRFT1RZeVJFSTRSQSJ9.eyJnaXZlbl9uYW1lIjoiS2Fuc2hhIiwiZmFtaWx5X25hbWUiOiJMYWJzIiwibmlja25hbWUiOiJsYWJzMTgua2Fuc2hhIiwibmFtZSI6IkthbnNoYSBMYWJzIiwicGljdHVyZSI6Imh0dHBzOi8vbGg2Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tMHNWRW9zZEhnY0UvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUNIaTNyZXZScmE1MVdWS2ZSczV4dG9ybXBfNm1pVlBjQS9waG90by5qcGciLCJsb2NhbGUiOiJlbiIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTIxVDE4OjMyOjQ3LjM2MloiLCJpc3MiOiJodHRwczovL2thbnNoYS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDI4MjY1MjM5NTQ4NzU5MjM1MDQiLCJhdWQiOiI3ekxFTEhBM0p5cnQ3TzVNNTYxSGdCZzNFalJzb1Q1SyIsImlhdCI6MTU3NDM2MTE2NywiZXhwIjoxNTc0Mzk3MTY3LCJhdF9oYXNoIjoicWdUcnZXYkxrSVByRm5DbS1IQnYwZyIsIm5vbmNlIjoicGV4cEVTT2NraDhBTGNpNVlhcjBjaUhoZ0MzelI5WkUifQ.ujAMQC4N0dRjS_Jey4G_vRD54iWXQH8DAgOCCAqZ5-eF77-zox9d2xFCtA0_izHqhvLiSEZJdgyvZ7Sop3W7YAOucy0RoR_yBZYFhaMUL0y2gc73NLfiBk9iM3guQ3ZrsI_A8HYv1AXmuog5HrbTFHygkhQRUhNcEI9l5WskTUElFnub1lXcVZDijepO3BYKi4lnviJHDzx_2ijvHXv3V7LJ0AWbXfwgVABPOaNpZ2qkxrujh5U7qW0-a3ggU36JsyozrzwvDT2oSwqBO2Zh6R57OjIzj1mCHKPLSWB83JHnCxmSczKLE_XjYPb4qhcQP9COA0rZ3TS0UpZTa1sjoA'} })
 			.then(res => {
-				setUser(res.data);
-				console.log(res);
+                setUser(res.data[0]);
 			})
 			.catch(err => {
 				console.log(err);
 			});
-	});
+    }, []);
 
-    console.log(user)
+    console.log({user})
 
     return (
         <div id="Profile" className={classes.profileDiv}>
@@ -186,13 +175,13 @@ function Profile(id) {
                     <Card className={classes.userInfo}>
                             <img src={user.profile_picture} className={classes.profilePic} />
                             <Typography className={classes.name} variant="h5">
-                                { user.first_name + user.last_name }
+                                { user.first_name } { user.last_name }
                             </Typography>
                             <Typography className={classes.jobTitle}>
-                                { user.job_title}
+                                { user.job_title} 
                             </Typography>
                             <Typography className={classes.department}>
-                                { user.department }
+                                { user.department } 
                             </Typography>
                     </Card>
                         {/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
@@ -250,4 +239,4 @@ function Profile(id) {
     )
 }
 
-export default connect(state => ({ ...state }), { login })(Profile);
+export default Profile;
