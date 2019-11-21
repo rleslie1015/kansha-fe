@@ -14,6 +14,7 @@ import rewardHistory from './assests/history.png';
 import settings from './assests/settings.png';
 import signOut from './assests/signout.png';
 import 'typeface-montserrat';
+import { connect } from 'react-redux';
 
 
 const drawerWidth = 240;
@@ -156,7 +157,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Sidebar() {
+function Sidebar({ user }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -214,8 +215,8 @@ function Sidebar() {
                 [classes.hide]: !open
               })}
             >
-            <img src={profilePic} className={classes.img} alt='User' />
-            <Typography className={classes.heading}>Your Name Here</Typography>
+            <img src={user.profile.profile_picture} className={classes.img} alt='User' />
+            <Typography className={classes.heading}>{`${user.profile.first_name} ${user.profile.last_name}`}</Typography>
             </div>
         </div>
         <Divider />
@@ -262,4 +263,4 @@ function Sidebar() {
     )
 }
 
-export default Sidebar;
+export default connect(state => ({...state}), {})(Sidebar);
