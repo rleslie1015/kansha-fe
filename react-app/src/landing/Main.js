@@ -26,8 +26,12 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#26242D',
   },
   font: {
-    fontSize: "22px",
+    fontSize: "24px",
     color: '#ffffff',
+  },
+  cardFont: {
+    fontSize: '16px',
+    color: 'rgba(255, 255, 255, 0.7)'
   },
   image: {
     width: 128,
@@ -40,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   box: {
-    fontSize:"30px",
+    fontSize:"36px",
     textAlign:"center",
     backgroundColor: '#26242D',
     color: '#ffffff'
@@ -89,7 +93,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Send a Reward
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px" color='#ffffff'>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   Send your peers a gift card with a message to show recognition.
                 </Typography>
               </Grid>
@@ -111,7 +115,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Workspace
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   Connecting people in the same workspace, creating public recognition
                 </Typography>
               </Grid>
@@ -133,7 +137,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font} >
                   Admin Access
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   Only admin users have access to certain features to ensure moderation.
                 </Typography>
               </Grid>
@@ -155,7 +159,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Earn Badges
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   Earn and send badges to your peers that represent their hard work.
                 </Typography>
               </Grid>
@@ -177,7 +181,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Leave a <FavoriteIcon />
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   React to posts with your favorite emoji to show appreciation.
                 </Typography>
               </Grid>
@@ -199,7 +203,7 @@ export default function Main () {
                 <Typography gutterBottom variant="subtitle1" className={classes.font}>
                   Activity
                 </Typography>
-                <Typography variant="body2" gutterBottom fontSize="14px">
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
                   Keep track of your recognitions with our profile activities tracker.
                 </Typography>
               </Grid>
