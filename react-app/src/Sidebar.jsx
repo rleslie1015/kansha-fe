@@ -2,12 +2,18 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import profilePic from './picture/picture.png'
+import profilePic from './picture/picture.png';
+import openMenu from './assests/open-menu.png';
+import closeMenu from './assests/close-menu.png';
+import home from './assests/home.png';
+import profile from './assests/profile.png';
+import workspace from './assests/workspace.png';
+import sendReward from './assests/send.png';
+import rewardHistory from './assests/history.png';
+import settings from './assests/settings.png';
+import signOut from './assests/signout.png';
+
 
 const drawerWidth = 240;
 
@@ -115,7 +121,7 @@ function Sidebar() {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
+            <img src={openMenu} alt='open menu icon' />
           </IconButton>
           {/* this is the close menu button */}
         <div>
@@ -126,7 +132,7 @@ function Sidebar() {
                 [classes.hide]: !open
               })}
             >
-               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <img src={closeMenu} alt='close menu icon' />}
             </IconButton>
             {/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
             <div className={clsx(classes.header, {
@@ -140,12 +146,30 @@ function Sidebar() {
         <Divider />
         {/* this populates the icons in the closed menu and populates text also when menu is open */}
         <List>
-          {['Home', 'Profile', 'Workspace', 'Send Reward', 'Rewards History', 'Settings'].map((text, index) => (
-            <ListItem button key={text} >
-              <ListItemIcon className={classes.icons}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon >
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key='Home' >
+            <ListItemIcon className={classes.icons}><img src={home} alt='home icon' /></ListItemIcon >
+            <ListItemText primary='Home' />
+          </ListItem>
+          <ListItem button key='Profile' >
+            <ListItemIcon className={classes.icons}><img src={profile} alt='profile icon' /></ListItemIcon >
+            <ListItemText primary='Profile' />
+          </ListItem>
+          <ListItem button key='Workspace' >
+            <ListItemIcon className={classes.icons}><img src={workspace} alt='workspace icon' /></ListItemIcon >
+            <ListItemText primary='Workspace' />
+          </ListItem>
+          <ListItem button key='Send Reward' >
+            <ListItemIcon className={classes.icons}><img src={sendReward} alt='send rewards icon' /></ListItemIcon >
+            <ListItemText primary='Send Reward' />
+          </ListItem>
+          <ListItem button key='Rewards History' >
+            <ListItemIcon className={classes.icons}><img src={rewardHistory} alt='reward history icon' /></ListItemIcon >
+            <ListItemText primary='Rewards History' />
+          </ListItem>
+          <ListItem button key='Settings' >
+            <ListItemIcon className={classes.icons}><img src={settings} alt='settings icon' /></ListItemIcon >
+            <ListItemText primary='Settings' />
+          </ListItem>
         </List>
         <Divider />
         {/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
@@ -153,13 +177,13 @@ function Sidebar() {
                 [classes.signoutOpen]: open,
                 [classes.signoutClosed]: !open
               })}>
-                  {/* this populates the sign out icon on the closed menu and both icon and text on the open menu */}
-        {['Sign Out'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon className={classes.icons}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-            ))}
+                  {/* this populates the sign out icon on the closed menu and text on the open menu */}
+            <ListItem button key='Sign Out' >
+            <ListItemIcon className={clsx(classes.menuOpen, {
+                [classes.hide]: open,
+              })}><img src={signOut} alt='sign out icon' /></ListItemIcon >
+            <ListItemText primary='Sign Out' />
+          </ListItem>
         </List>
       </Drawer>
     </div>

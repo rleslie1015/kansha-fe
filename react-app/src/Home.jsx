@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { login } from './store/actions/user-actions';
+import Sidebar from './Sidebar'
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +37,7 @@ function Home({ login, user }) {
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />
+			<Sidebar />
 			<Container fixed>
 				<Paper className={classes.paper}>
 					<Typography className={classes.typo} variant="h5">
