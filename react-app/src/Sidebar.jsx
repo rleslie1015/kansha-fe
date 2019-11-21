@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
   },
   signoutOpen: {
-    marginTop: '20vh',
+    marginTop: '19vh',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
     fontWeight: 'normal',
@@ -88,14 +88,22 @@ const useStyles = makeStyles(theme => ({
   },
   header: {
     color: 'white',
-    marginLeft: '25%',
+    marginLeft: '3%',
     marginBottom: '10%'
+  },
+  heading: {
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: '24px',
+    lineHeight: '29px',
+    textAlign: 'center',
   },
   img: {
     width: '50%',
     height: 'auto',
-    marginLeft: '11%',
-    borderRadius: '50%' 
+    marginLeft: '25%',
+    borderRadius: '50%', 
   },
   icons: {
     paddingLeft: '20%',
@@ -136,7 +144,12 @@ const useStyles = makeStyles(theme => ({
     width: '35%',
   },
   listText: {
-    marginTop: '0%',
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+    marginTop: '3%'
   },
   listItem1: {
     marginTop: '10vh'
@@ -202,7 +215,7 @@ function Sidebar() {
               })}
             >
             <img src={profilePic} className={classes.img} alt='User' />
-            <Typography>Your Name Here</Typography>
+            <Typography className={classes.heading}>Your Name Here</Typography>
             </div>
         </div>
         <Divider />
@@ -210,27 +223,27 @@ function Sidebar() {
         <List className={clsx({[classes.menuClosed]: !open, [classes.menuOpen]: open})}>
           <ListItem button key='Home' className={clsx({[classes.listItem1]: open})}>
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={home} alt='home icon' className={classes.icons}/></ListItemIcon >
-            <ListItemText primary='Home' className={classes.listText}/>
+            <p className={classes.listText}>Home</p>
           </ListItem>
           <ListItem button key='Profile' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={profile} alt='profile icon' className={classes.icons} /></ListItemIcon >
-            <ListItemText primary='Profile' className={classes.listText}/>
+            <p className={classes.listText}>Profile</p>
           </ListItem>
           <ListItem button key='Workspace' >            
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={workspace} alt='workspace icon' className={classes.icons} /></ListItemIcon >
-            <ListItemText primary='Workspace' className={classes.listText}/>
+            <p className={classes.listText}>Workspace</p>
           </ListItem>
           <ListItem button key='Send Reward' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={sendReward} alt='send rewards icon' className={classes.icons} /></ListItemIcon >
-            <ListItemText primary='Send Reward' className={classes.listText}/>
+            <p className={classes.listText}>Send Reward</p>
           </ListItem>
           <ListItem button key='Rewards History' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={rewardHistory} alt='reward history icon' className={classes.icons} /></ListItemIcon >
-            <ListItemText primary='Rewards History' className={classes.listText}/>
+            <p className={classes.listText}>Rewards History</p>
           </ListItem>
           <ListItem button key='Settings' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={settings} alt='settings icon' className={classes.icons} /></ListItemIcon >
-            <ListItemText primary='Settings' className={classes.listText}/>
+            <p className={classes.listText}>Settings</p>
           </ListItem>
         </List>
         <Divider />
@@ -241,7 +254,7 @@ function Sidebar() {
               <ListItemIcon className={clsx(classes.menuOpen, {[classes.hide]: open, [classes.closedInactive]: !open})}>
                 <img src={signOut} alt='sign out icon' className={classes.icons} />
               </ListItemIcon >
-            <ListItemText primary='Sign Out' />
+              <p>Sign Out</p>
           </ListItem>
         </List>
       </Drawer>
