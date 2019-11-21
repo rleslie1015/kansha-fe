@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from './Auth';
+import Auth from './auth';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper, Button } from '@material-ui/core';

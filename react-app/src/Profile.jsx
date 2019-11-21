@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -149,7 +150,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function Profile() {
+function Profile({ profile }) {
     const classes = useStyles();
 
     const [user, setUser] = useState([]);
@@ -173,15 +174,15 @@ function Profile() {
                 {/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
                 <Container fixed className={classes.leftContainer}>
                     <Card className={classes.userInfo}>
-                            <img src={user.profile_picture} className={classes.profilePic} />
+                            <img src={profile.profile_picture} className={classes.profilePic} />
                             <Typography className={classes.name} variant="h5">
-                                { user.first_name } { user.last_name }
+                                { profile.first_name } { profile.last_name }
                             </Typography>
                             <Typography className={classes.jobTitle}>
-                                { user.job_title} 
+                                { profile.job_title} 
                             </Typography>
                             <Typography className={classes.department}>
-                                { user.department } 
+                                { profile.department } 
                             </Typography>
                     </Card>
                         {/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
@@ -212,7 +213,7 @@ function Profile() {
                             Activity
                         </Typography>        
                             <Card className={classes.recCard}>
-                                <img src={user.profile_picture} className={classes.recProfilePic} />
+                                <img src={profile.profile_picture} className={classes.recProfilePic} />
                                 <Box>
                                     <Box className={classes.recSender}>
                                 <Typography className={classes.recCardUser}>
@@ -239,4 +240,4 @@ function Profile() {
     )
 }
 
-export default Profile;
+export default connect(({ user }) => ({...user}), {})(Profile);
