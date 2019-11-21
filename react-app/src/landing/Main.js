@@ -1,7 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Grid, Box, Paper, Typography, ButtonBase } from '@material-ui/core';
-import logo from './images/logo192.png';
+import activityIcon from './images/activity.png';
+import adminIcon from './images/admin.png';
+import badgeIcon from './images/badge.png';
+import heartIcon from './images/heart.png';
+import heroImage from './images/hero-image.png';
+import rewardIcon from './images/reward.png';
+import workspaceIcon from './images/workspace.png';
+import logo from './images/logo.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { textAlign } from '@material-ui/system';
 
@@ -69,7 +76,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="reward" src={rewardIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -91,7 +98,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="workspace" src={workspaceIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -113,7 +120,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="admin" src={adminIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -135,7 +142,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="badge" src={badgeIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -157,7 +164,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="heart" src={heartIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
@@ -179,7 +186,7 @@ export default function Main () {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="kansha" src={logo} />
+              <img className={classes.img} alt="activity" src={activityIcon} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>

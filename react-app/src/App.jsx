@@ -12,9 +12,12 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         minHeight: '100vh',
     },
+
+    
 }));
 
 export const App = () => {
+    const classes = useStyles();
     return (
         <div id="App" className={classes.root}>
             <Route exact path='/' component={Landing} />
