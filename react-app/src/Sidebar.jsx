@@ -13,6 +13,7 @@ import sendReward from './assests/send.png';
 import rewardHistory from './assests/history.png';
 import settings from './assests/settings.png';
 import signOut from './assests/signout.png';
+import 'typeface-montserrat';
 
 
 const drawerWidth = 240;
@@ -60,7 +61,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
   },
   signoutOpen: {
-    marginTop: '40vh'
+    marginTop: '40vh',
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+    color: '#EE4D71',
+    marginLeft: '25%'
   },
   signoutClosed: {
     marginTop: '55vh'
@@ -77,7 +85,17 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%' 
   },
   icons: {
-    color: 'white'
+    width: '50%',
+    height: 'auto'
+  },
+  closedActive: {
+    background: 'linear-gradient(138.01deg, #EE4D71 0%, #F15A3F 100%)',
+    borderRadius: '2px',
+    padding: '2% 3% 2% 3%'
+  },
+  openActive: {
+    background: 'linear-gradient(170.5deg, #EE4D71 0%, #F15A3F 100%)',
+    borderRadius: '2px'
   }
 }));
 
@@ -121,7 +139,7 @@ function Sidebar() {
               [classes.hide]: open,
             })}
           >
-            <img src={openMenu} alt='open menu icon' />
+            <img src={openMenu} alt='open menu icon' className={classes.icons} />
           </IconButton>
           {/* this is the close menu button */}
         <div>
@@ -132,7 +150,7 @@ function Sidebar() {
                 [classes.hide]: !open
               })}
             >
-               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <img src={closeMenu} alt='close menu icon' />}
+               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <img src={closeMenu} alt='close menu icon' className={classes.icons} />}
             </IconButton>
             {/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
             <div className={clsx(classes.header, {
@@ -147,27 +165,27 @@ function Sidebar() {
         {/* this populates the icons in the closed menu and populates text also when menu is open */}
         <List>
           <ListItem button key='Home' >
-            <ListItemIcon className={classes.icons}><img src={home} alt='home icon' /></ListItemIcon >
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={home} alt='home icon' className={classes.icons}/></ListItemIcon >
             <ListItemText primary='Home' />
           </ListItem>
           <ListItem button key='Profile' >
-            <ListItemIcon className={classes.icons}><img src={profile} alt='profile icon' /></ListItemIcon >
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={profile} alt='profile icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Profile' />
           </ListItem>
-          <ListItem button key='Workspace' >
-            <ListItemIcon className={classes.icons}><img src={workspace} alt='workspace icon' /></ListItemIcon >
+          <ListItem button key='Workspace' >            
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={workspace} alt='workspace icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Workspace' />
           </ListItem>
           <ListItem button key='Send Reward' >
-            <ListItemIcon className={classes.icons}><img src={sendReward} alt='send rewards icon' /></ListItemIcon >
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={sendReward} alt='send rewards icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Send Reward' />
           </ListItem>
           <ListItem button key='Rewards History' >
-            <ListItemIcon className={classes.icons}><img src={rewardHistory} alt='reward history icon' /></ListItemIcon >
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={rewardHistory} alt='reward history icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Rewards History' />
           </ListItem>
           <ListItem button key='Settings' >
-            <ListItemIcon className={classes.icons}><img src={settings} alt='settings icon' /></ListItemIcon >
+            <ListItemIcon className={clsx(classes.icons, {[classes.closedActive]: 'clicked'})}><img src={settings} alt='settings icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Settings' />
           </ListItem>
         </List>
@@ -181,7 +199,7 @@ function Sidebar() {
             <ListItem button key='Sign Out' >
             <ListItemIcon className={clsx(classes.menuOpen, {
                 [classes.hide]: open,
-              })}><img src={signOut} alt='sign out icon' /></ListItemIcon >
+              })}><img src={signOut} alt='sign out icon' className={classes.icons} /></ListItemIcon >
             <ListItemText primary='Sign Out' />
           </ListItem>
         </List>
