@@ -153,21 +153,6 @@ const useStyles = makeStyles(theme => ({
 function Profile({ profile }) {
     const classes = useStyles();
 
-    const [user, setUser] = useState([]);
-    
-
-    useEffect(() => {
-		axios({ url: 'https://kansha-staging.herokuapp.com/users/2', method: 'get', headers: {Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlFVUkVSVGhHTnpBek9USXpNelUwTlRKRE1ERkJORGMzT1RFMFFUZEdOVGRFT1RZeVJFSTRSQSJ9.eyJnaXZlbl9uYW1lIjoiS2Fuc2hhIiwiZmFtaWx5X25hbWUiOiJMYWJzIiwibmlja25hbWUiOiJsYWJzMTgua2Fuc2hhIiwibmFtZSI6IkthbnNoYSBMYWJzIiwicGljdHVyZSI6Imh0dHBzOi8vbGg2Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tMHNWRW9zZEhnY0UvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUNIaTNyZXZScmE1MVdWS2ZSczV4dG9ybXBfNm1pVlBjQS9waG90by5qcGciLCJsb2NhbGUiOiJlbiIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTIxVDE4OjMyOjQ3LjM2MloiLCJpc3MiOiJodHRwczovL2thbnNoYS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDI4MjY1MjM5NTQ4NzU5MjM1MDQiLCJhdWQiOiI3ekxFTEhBM0p5cnQ3TzVNNTYxSGdCZzNFalJzb1Q1SyIsImlhdCI6MTU3NDM2MTE2NywiZXhwIjoxNTc0Mzk3MTY3LCJhdF9oYXNoIjoicWdUcnZXYkxrSVByRm5DbS1IQnYwZyIsIm5vbmNlIjoicGV4cEVTT2NraDhBTGNpNVlhcjBjaUhoZ0MzelI5WkUifQ.ujAMQC4N0dRjS_Jey4G_vRD54iWXQH8DAgOCCAqZ5-eF77-zox9d2xFCtA0_izHqhvLiSEZJdgyvZ7Sop3W7YAOucy0RoR_yBZYFhaMUL0y2gc73NLfiBk9iM3guQ3ZrsI_A8HYv1AXmuog5HrbTFHygkhQRUhNcEI9l5WskTUElFnub1lXcVZDijepO3BYKi4lnviJHDzx_2ijvHXv3V7LJ0AWbXfwgVABPOaNpZ2qkxrujh5U7qW0-a3ggU36JsyozrzwvDT2oSwqBO2Zh6R57OjIzj1mCHKPLSWB83JHnCxmSczKLE_XjYPb4qhcQP9COA0rZ3TS0UpZTa1sjoA'} })
-			.then(res => {
-                setUser(res.data[0]);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-    }, []);
-
-    console.log({user})
-
     return (
         <div id="Profile" className={classes.profileDiv}>
             <Container fixed className={classes.root}>
@@ -227,11 +212,6 @@ function Profile({ profile }) {
                                     Thanks!
                                 </Typography>
                                 </Box>
-                            </Card>
-                            <Card className={classes.recCard}>
-                                <Typography className={classes.typo}>
-                                    Thanks Again!
-                                </Typography>
                             </Card>
                     </Card>
                 </Container>
