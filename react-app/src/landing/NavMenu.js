@@ -1,26 +1,28 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
-import {Button, Menu, MenuItem }from '@material-ui/core';
+import { Button, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
-import { styles } from 'ansi-colors';
+import Auth from '../auth';
 import { makeStyles } from '@material-ui/core/styles';
 
+const auth = new Auth();
+
 const useStyles = makeStyles(theme => ({
-    hideNav: {
+  hideNav: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-        marginLeft: "50%"
+      marginLeft: "50%"
     },
     [theme.breakpoints.up('md')]: {
-        marginLeft: "50%"
+      marginLeft: "50%"
     },
-      [theme.breakpoints.up('lg')]: {
-        display: "none",
-        
-      }
+    [theme.breakpoints.up('lg')]: {
+      display: "none",
+
+    }
   }
-  
-  }));
+
+}));
 
 export default function NavMenu() {
   const classes = useStyles();
@@ -53,8 +55,8 @@ export default function NavMenu() {
       >
         <MenuItem onClick={handleClose}>About Us</MenuItem>
         <MenuItem onClick={handleClose}>Features</MenuItem>
-        <MenuItem onClick={() => history.push('/login')}>Sign In</MenuItem>
-        <MenuItem onClick={() => history.push('/login')}>Sign Up</MenuItem>
+        <MenuItem onClick={auth.login}>Sign In</MenuItem>
+        <MenuItem onClick={auth.login}>Sign Up</MenuItem>
 
       </Menu>
     </div>

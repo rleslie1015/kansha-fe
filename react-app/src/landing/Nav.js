@@ -5,11 +5,14 @@ import {Link, AppBar,  Toolbar, Typography, Button, ButtonBase } from '@material
 import logo from './images/logo.png';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
+import Auth from '../auth';
+
+const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
     display: "flex",
-    position:"absolute",
+    position: "absolute",
     zIndex: "1",
     marginLeft: "90px",
     width: "80%",
@@ -35,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     
   },
   left: {
-      justifyContent: "flex-start"
+    justifyContent: "flex-start"
   },
   hideNav: {
     padding: theme.spacing(1),
@@ -50,7 +53,7 @@ const useStyles = makeStyles(theme => ({
       width: "80%",
       justifyContent: "flex-end"
     }
-}
+  }
 
 }));
 
@@ -65,22 +68,22 @@ export default function Links() {
                   <img className={classes.img} alt="kansha" src={logo} />
                 </ButtonBase>
             </Link>
-        </div>
-        <NavMenu className={style.hideNav}/>
-        <div className={classes.hideNav} >
-            <Link href="#"  color="inherit" className={classes.link}>
-                About Us
+      </div>
+      <NavMenu className={style.hideNav} />
+      <div className={classes.hideNav} >
+        <Link href="#" color="inherit" className={classes.link}>
+          About Us
             </Link>
-            <Link href="#" color="inherit" className={classes.link}>
-            Features
+        <Link href="#" color="inherit" className={classes.link}>
+          Features
             </Link>
-            <Link href="/login" color="inherit" className={classes.link}>
-            Sign In
+        <Link href="#" onClick={auth.login} color="inherit" className={classes.link}>
+          Sign In
             </Link>
-            <Link href="/login" color="inherit" className={classes.link}>
-            Sign Up
+        <Link href="#" onClick={auth.login} color="inherit" className={classes.link}>
+          Sign Up
             </Link>
-        </div>
+      </div>
     </Typography>
   );
 }
