@@ -1,38 +1,37 @@
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import Auth from './auth';
+import { connect } from 'react-redux';
+import { login } from './store/actions/user-actions';
+import Onboarding from './Onboarding';
+import Profile from './Profile';
 
+const auth = new Auth();
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-    },
-    paper: {
-        marginTop: '1rem'
-    },
-    typo: {
-        padding: '1rem .5rem'
-    }
-}));
+function Home({ login, user, history }) {
+	useEffect(() => {
+		auth.handleAuthentication();
+        login(auth.getProfile());
+    }, [login]);
 
-export default function Home () {
-    const classes = useStyles()
-    return (
-        <div id="App" className={classes.root}>
-            <CssBaseline />
-            <Container fixed>
-                <Paper className={classes.paper}>
-                    <Typography className={classes.typo} variant="h5">
-                        Welcome to Kansha{' '}
-                        <span aria-label="folded hands emoji" role="img">
-                            🙏
-                        </span>
-                    </Typography>
-                </Paper>
-            </Container>
-        </div>
-    );
-};
+    console.log(user.profile)
+
+	if (user.isLoggingIn) {
+		return (
+			<>Loading...</>
+		)
+	} else if(user.isOnboarding) {
+		return (
+			<Onboarding/>
+		)
+	} else if(user.profile) {
+		return (
+			<Profile/>
+		)
+	}
+	else {
+		return (
+			<>Loading...</>
+		)
+	}
+}
+export default connect(state => ({ ...state }), { login })(Home);
