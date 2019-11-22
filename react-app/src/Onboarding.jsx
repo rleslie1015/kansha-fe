@@ -3,7 +3,7 @@ import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper, Button, FormControl, TextField, MenuItem } from '@material-ui/core';
+import { Container, Typography, Paper, Button, FormControl, TextField, MenuItem, Select } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 
@@ -45,30 +45,41 @@ const useStyles = makeStyles(theme => ({
 				borderColor: '#EE4D71',
 			  },
 			'& label.Mui-focused': {
-				color: '#EE4D71',
+				color: '#FFFFFF',
+				fontFamily: 'Montserrat',
+				fontStyle: 'normal',
+				fontWeight: 'normal',
+				fontSize: '16px',
+				lineHeight: '20px',
 			},
 	},
 	label: {
-		color: '#FFFFFF',
-	},
-	select: {
-		'& .MuiSelect-outline': {
-			borderColor: '#EE4D71',
-		},
+		color: 'rgba(255, 255, 255, 0.7)',
 	},
 	input: {
 		color: '#FFFFFF',
+		borderRadius: '0',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+		fontSize: '16px',
+		lineHeight: '20px',
 	},
     form: {
         width: '100%',
-        marginTop: '1rem'
-    },
+	},
     button: {
-        width: '10%',
-        margin: '1rem 45%',
-        backgroundColor: '#349AFA',
-        color: 'white',
-        textDecoration: 'none',
+        width: '100%',
+		borderRadius: '0',
+		backgroundColor: '#2D2C35',
+		boxShadow: 'none',
+		border: '1px solid #EE4D71',
+        color: '#EE4D71',
+		textDecoration: 'none',
+			'&:hover': {
+				background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+				color: '#FFFFFF'
+			},
     },
 }));
 
@@ -145,15 +156,12 @@ function Onboarding(props) {
 							value={form.role}
 							onChange={handleChange}
 							margin="normal"
-							// InputProps={{
-							// 	className: classes.input
-							//   }}
-							// InputLabelProps={{
-							// 	className: classes.label
-							// }}
-							SelectProps={{
-								  className: classes.select
+							InputProps={{
+								className: classes.input
 							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
 							variant="outlined">
 								<MenuItem value="standard">Standard</MenuItem> 
                                 <MenuItem value="mod">Mod</MenuItem> 
