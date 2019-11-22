@@ -3,22 +3,62 @@ import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper, Button, FormControl, TextField, Select, MenuItem, InputLabel } from '@material-ui/core';
+import { Container, Typography, Paper, Button, FormControl, TextField, MenuItem } from '@material-ui/core';
+import 'typeface-montserrat';
+import 'typeface-roboto';
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh',
+		minHeight: '100vh',
+		backgroundColor: '#26242D',
     },
-    paper: {
-        marginTop: '1rem',
+    onboardContainer: {
+		marginTop: '1rem',
+		backgroundColor: '#2D2C35',
+		boxShadow: '0px 0px 25px rgba(33, 32, 40, 0.1)',
+		borderRadius: '2px',
     },
-    typo: {
+    getStarted: {
         display: 'flex',
         justifyContent: 'center',
-        padding: '1rem .5rem',
-    },
+		padding: '1rem .5rem',
+		color: '#EE4D71',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: '600',
+		fontSize: '24px',
+		lineHeight: '24px',
+		letterSpacing: '0.15px',
+	},
+	textField: {
+		width: '200',
+			'& input:valid + fieldset': {
+			  borderColor: 'rgba(255, 255, 255, 0.7)',
+			  borderWidth: '2',
+			},
+			'& input:valid:hover + fieldset': {
+				borderColor: '#FFFFFF',
+			},
+			'& input:valid:focus + fieldset': {
+				borderColor: '#EE4D71',
+			  },
+			'& label.Mui-focused': {
+				color: '#EE4D71',
+			},
+	},
+	label: {
+		color: '#FFFFFF',
+	},
+	select: {
+		'& .MuiSelect-outline': {
+			borderColor: '#EE4D71',
+		},
+	},
+	input: {
+		color: '#FFFFFF',
+	},
     form: {
         width: '100%',
         marginTop: '1rem'
@@ -47,50 +87,107 @@ function Onboarding(props) {
         <div id="App" className={classes.root}>
             <CssBaseline />
             <Container fixed>
-                <Paper className={classes.paper}>
-                    <Typography className={classes.typo} variant="h5">
-                        Welome, Please specify your role. 
+                <Paper className={classes.onboardContainer}>
+                    <Typography className={classes.getStarted} variant="h5">
+                        Let's Get Started! 
                     </Typography>
                     <FormControl>
                         <TextField 
-                            label="First Name"
-                            name = "first_name"
-                            onChange = {handleChange}
+							label="First Name*"
+							placeholder="e.g. Jane"
+							className={classes.textField}
+							variant="outlined"
+							name='first_name'
+							margin="normal"
+							onChange={handleChange}
+							InputProps={{
+								className: classes.input
+							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
                         />
                         <TextField 
-                            label="Last Name"
-                            name = "last_name"
-                            onChange = {handleChange}
+							label="Last Name*"
+							placeholder="e.g. Doe"
+							className={classes.textField}
+							variant="outlined"
+							name='last_name'
+							margin="normal"
+							onChange={handleChange}
+							InputProps={{
+								className: classes.input
+							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
                         />
-                        
                         <TextField 
-                            label="Job Title"
-                            name= "job_title"
-                            onChange = {handleChange}
+							label="Job Title*"
+							placeholder="e.g. Manager"
+							className={classes.textField}
+							variant="outlined"
+							name='job_title'
+							margin="normal"
+							onChange={handleChange}
+							InputProps={{
+								className: classes.input
+							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
                         />    
-                        <FormControl>
-                            <InputLabel id="Role-label"><em>Select A Role</em></InputLabel> 
-                            <Select     
-                                labelId="Role-label"
-                                id="Role"
-                                name="user_type"
-                                value={form.role}
-                                onChange={handleChange}
-                            >
-                                <MenuItem value="admin">Admin</MenuItem> 
+						<TextField
+          					select
+							label="Select a Role*" 
+							defaultValue="standard"
+							className={classes.textField}
+							value={form.role}
+							onChange={handleChange}
+							margin="normal"
+							// InputProps={{
+							// 	className: classes.input
+							//   }}
+							// InputLabelProps={{
+							// 	className: classes.label
+							// }}
+							SelectProps={{
+								  className: classes.select
+							  }}
+							variant="outlined">
+								<MenuItem value="standard">Standard</MenuItem> 
                                 <MenuItem value="mod">Mod</MenuItem> 
-                                <MenuItem value="standard">Standard</MenuItem> 
-                            </Select>
-                        </FormControl>
+                                <MenuItem value="admin">Admin</MenuItem> 
+        				</TextField>
                         <TextField 
-                            label="Organization"
-                            name = "org_name"
-                            onChange = {handleChange}
+							label="Organization"
+							placeholder="Organization Name"
+							className={classes.textField}
+							variant="outlined"
+							name = "org_name"
+							margin="normal"
+							onChange = {handleChange}
+							InputProps={{
+								className: classes.input
+							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
                         />
                         <TextField 
-                            label="Department"
-                            name= "department"
-                            onChange = {handleChange}
+							label="Department"
+							placeholder="e.g. Marketing Department"
+							className={classes.textField}
+							variant="outlined"
+							name= "department"
+							margin="normal"
+							onChange = {handleChange}
+							InputProps={{
+								className: classes.input
+							  }}
+							InputLabelProps={{
+								className: classes.label
+							}}
                         />
                         <Button
                             className={classes.button}
@@ -98,7 +195,7 @@ function Onboarding(props) {
                             color="primary"
                             onClick={handleSubmit}
                         >
-                            Register
+                            Confirm
                         </Button>
                     </FormControl>
                 </Paper>
