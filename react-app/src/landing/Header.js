@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-      fontSize: "25px",
+      fontSize: "15px",
       margin: "0 auto"
     },
     [theme.breakpoints.up('md')]: {
@@ -101,8 +101,31 @@ const useStyles = makeStyles(theme => ({
 
   },
   desc: {
-    margin: '5% 0 5% 0',
-    fontSize: '16px'
+    
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      margin: '5% 0 5% 0',
+      fontSize: '16px',
+      textAlign: 'center',
+      width: '50%',
+      paddingLeft: '25%'
+      
+
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: '5% 0 5% 0',
+      fontSize: '16px',
+      textAlign: 'center',
+      width: '50%'
+
+    },
+    [theme.breakpoints.up('lg')]: {
+      margin: '5% 0 5% 0',
+      fontSize: '16px',
+      width: '100%',
+      textAlign: 'left'
+    
+    },
   },
   font: {
     [theme.breakpoints.down('sm')]: {
@@ -132,6 +155,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
+    
       
 
     }
@@ -142,14 +166,16 @@ const useStyles = makeStyles(theme => ({
       fontSize: "25px",
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      textAlign: 'center'
       
 
     },
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      textAlign: 'center'
 
 
     },
@@ -157,7 +183,8 @@ const useStyles = makeStyles(theme => ({
       margin: "90px",
     paddingTop: "96px",
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    textAlign: 'left'
 
     }
   }

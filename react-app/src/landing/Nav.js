@@ -65,7 +65,7 @@ export default function Links() {
     <Typography className={classes.wrapper}>
         <div className={classes.left}>
             <Link href="#" color="inherit" className={classes.kansha}>
-                <ButtonBase classname={classes.image}>
+                <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="kansha" src={logo} />
                 </ButtonBase>
             </Link>

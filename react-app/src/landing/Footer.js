@@ -92,7 +92,6 @@ export default function Footer() {
                 <Link className={classes.link} href = '#'>About us</Link>
                 <Link className={classes.link} href = '#'>Features</Link>
                 <Link className={classes.link} href = '#'>Sign in</Link>
-                <Link className={classes.link} href = '#'>Sign up</Link>
             </div>
         </div>
             <small className={classes.small}>© All Rights Reserved 2019 Kansha</small>

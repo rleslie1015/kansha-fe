@@ -54,10 +54,12 @@ const useStyles = makeStyles(theme => ({
   },
   mobile: {
     padding: theme.spacing(1),
+    
     [theme.breakpoints.down('sm')]: {
       fontSize: "25px",
-      margin: "5% 0",
-      textAlign: "center"
+      // margin: "5% 0",
+      textAlign: "center",
+      
     },
     [theme.breakpoints.up('md')]: {
       margin: "5% 0",
