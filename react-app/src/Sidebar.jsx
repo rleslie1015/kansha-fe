@@ -1,12 +1,21 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { Typography, Drawer, List, CssBaseline, Divider, IconButton, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import profilePic from './picture/picture.png'
+import profilePic from './picture/picture.png';
+import openMenu from './assests/open-menu.png';
+import closeMenu from './assests/close-menu.png';
+import home from './assests/home.png';
+import profile from './assests/profile.png';
+import workspace from './assests/workspace.png';
+import sendReward from './assests/send.png';
+import rewardHistory from './assests/history.png';
+import settings from './assests/settings.png';
+import signOut from './assests/signout.png';
+import 'typeface-montserrat';
+import { connect } from 'react-redux';
+
 
 const drawerWidth = 240;
 
@@ -15,7 +24,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   menuButton: {
-    marginRight: '5%',
+    color: 'white',
+    marginLeft: '-4%',
+    width: '100%',
+    height: 'auto'
+  },
+  closeMenuButton: {
+    marginLeft: '-75%',
+    width: '15%',
+    height: 'auto'
   },
   hide: {
     display: 'none',
@@ -26,6 +43,8 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
+    color: 'white',
+    backgroundColor: '#2D2C35',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -33,6 +52,8 @@ const useStyles = makeStyles(theme => ({
     }),
   },
   drawerClose: {
+    color: 'white',
+    backgroundColor: '#2D2C35',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -48,24 +69,95 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
   },
   signoutOpen: {
-    marginTop: '40vh'
+    marginTop: '19vh',
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+    color: '#EE4D71',
+    marginLeft: '25%'
   },
   signoutClosed: {
-    marginTop: '55vh'
+    marginTop: '20vh'
+  },
+  menuClosed: {
+    marginTop: '25vh'
+  },
+  menuOpen: {
+    marginTop: '0'
   },
   header: {
-    marginLeft: '25%',
+    color: 'white',
+    marginLeft: '3%',
     marginBottom: '10%'
+  },
+  heading: {
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: '24px',
+    lineHeight: '29px',
+    textAlign: 'center',
   },
   img: {
     width: '50%',
     height: 'auto',
-    marginLeft: '11%',
-    borderRadius: '50%' 
+    marginLeft: '25%',
+    borderRadius: '50%', 
+  },
+  icons: {
+    paddingLeft: '20%',
+    width: '75%',
+    height: 'auto',
+    marginTop: '15%'
+  },
+  iconsOpen: {
+    paddingLeft: '20%',
+    width: '75%',
+    height: 'auto',
+    marginTop: '0%'
+  },
+  closedActive: {
+    background: 'linear-gradient(138.01deg, #EE4D71 0%, #F15A3F 100%)',
+    borderRadius: '2px',
+    padding: '2% 3% 2% 3%',
+    width: '75%',
+    marginLeft: '-15%',
+    marginRight: '15%',
+  },
+  openActive: {
+    background: 'linear-gradient(170.5deg, #EE4D71 0%, #F15A3F 100%)',
+    borderRadius: '2px',
+    padding: '2% 3% 2% 3%',
+    width: '75%',
+    marginLeft: '-15%',
+    marginRight: '15%'
+  },
+  closedInactive: {
+    padding: '2% 3% 2% 3%',
+    width: '75%',
+    marginLeft: '-15%',
+    marginRight: '15%'
+  },
+  openInactive: {
+    padding: '2% 3% 2% 3%',
+    width: '35%',
+  },
+  listText: {
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+    marginTop: '3%'
+  },
+  listItem1: {
+    marginTop: '10vh'
   }
 }));
 
-function Sidebar() {
+function Sidebar({ user }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -105,7 +197,7 @@ function Sidebar() {
               [classes.hide]: open,
             })}
           >
-            <ChevronRightIcon />
+            <img src={openMenu} alt='open menu icon' className={classes.icons} />
           </IconButton>
           {/* this is the close menu button */}
         <div>
@@ -116,44 +208,59 @@ function Sidebar() {
                 [classes.hide]: !open
               })}
             >
-               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <img src={closeMenu} alt='close menu icon' className={classes.closeMenuButton} />}
             </IconButton>
             {/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
             <div className={clsx(classes.header, {
                 [classes.hide]: !open
               })}
             >
-            <img src={profilePic} className={classes.img} alt='User' />
-            <Typography>Your Name Here</Typography>
+            <img src={user.profile.profile_picture} className={classes.img} alt='User' />
+            <Typography className={classes.heading}>{`${user.profile.first_name} ${user.profile.last_name}`}</Typography>
             </div>
         </div>
         <Divider />
         {/* this populates the icons in the closed menu and populates text also when menu is open */}
-        <List>
-          {['Home', 'Profile', 'Workspace', 'Send Reward', 'Rewards History', 'Settings'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+        <List className={clsx({[classes.menuClosed]: !open, [classes.menuOpen]: open})}>
+          <ListItem button key='Home' className={clsx({[classes.listItem1]: open})}>
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={home} alt='home icon' className={classes.icons}/></ListItemIcon >
+            <p className={classes.listText}>Home</p>
+          </ListItem>
+          <ListItem button key='Profile' >
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={profile} alt='profile icon' className={classes.icons} /></ListItemIcon >
+            <p className={classes.listText}>Profile</p>
+          </ListItem>
+          <ListItem button key='Workspace' >            
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={workspace} alt='workspace icon' className={classes.icons} /></ListItemIcon >
+            <p className={classes.listText}>Workspace</p>
+          </ListItem>
+          <ListItem button key='Send Reward' >
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={sendReward} alt='send rewards icon' className={classes.icons} /></ListItemIcon >
+            <p className={classes.listText}>Send Reward</p>
+          </ListItem>
+          <ListItem button key='Rewards History' >
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={rewardHistory} alt='reward history icon' className={classes.icons} /></ListItemIcon >
+            <p className={classes.listText}>Rewards History</p>
+          </ListItem>
+          <ListItem button key='Settings' >
+            <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={settings} alt='settings icon' className={classes.icons} /></ListItemIcon >
+            <p className={classes.listText}>Settings</p>
+          </ListItem>
         </List>
         <Divider />
         {/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
-        <List className={clsx(classes.menuOpen, {
-                [classes.signoutOpen]: open,
-                [classes.signoutClosed]: !open
-              })}>
-                  {/* this populates the sign out icon on the closed menu and both icon and text on the open menu */}
-        {['Sign Out'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-            ))}
+        <List className={clsx({[classes.signoutOpen]: open, [classes.signoutClosed]: !open})}>
+            {/* this populates the sign out icon on the closed menu and text on the open menu */}
+            <ListItem button key='Sign Out' >
+              <ListItemIcon className={clsx(classes.menuOpen, {[classes.hide]: open, [classes.closedInactive]: !open})}>
+                <img src={signOut} alt='sign out icon' className={classes.icons} />
+              </ListItemIcon >
+              <p>Sign Out</p>
+          </ListItem>
         </List>
       </Drawer>
     </div>
     )
 }
 
-export default Sidebar;
+export default connect(state => ({...state}), {})(Sidebar);
