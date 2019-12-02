@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import badge1 from './assests/badge1.png';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { RecognitionCard } from './Components/RecognitionCard';
+import { RecognitionCard } from './RecognitionCard';
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
