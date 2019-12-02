@@ -14,8 +14,6 @@ export const Landing = () => {
 
     return (
         <>
-        {/* <NavBar /> */}
-        
         <Header />
         <Main />
         <Footer />

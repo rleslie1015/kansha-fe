@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#26242D',
   },
   paper: {
-    // padding: theme.spacing(2),
     margin: '10px',
     width: '600px',
     backgroundColor: '#26242D',
@@ -60,7 +59,6 @@ const useStyles = makeStyles(theme => ({
     
     [theme.breakpoints.down('sm')]: {
       fontSize: "25px",
-      // margin: "5% 0",
       textAlign: "center",
       
     },

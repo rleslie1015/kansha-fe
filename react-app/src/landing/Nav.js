@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link, AppBar,  Toolbar, Typography, Button, ButtonBase } from '@material-ui/core';
+import {Link, Typography, ButtonBase } from '@material-ui/core';
 import logo from './images/logo.png';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
@@ -32,12 +32,8 @@ const useStyles = makeStyles(theme => ({
     display: 'block',
     width: '300px',
     height: '100px'
-    // maxWidth: '100%',
-    // maxHeight: '100%',
   },
-  kansha: {
-    
-  },
+  
   left: {
     justifyContent: "flex-start"
   },
@@ -67,7 +63,7 @@ export default function Links() {
   return (
     <Typography className={classes.wrapper}>
         <div className={classes.left}>
-            <Link href="#" color="inherit" className={classes.kansha}>
+            <Link href="#" color="inherit">
                 <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="kansha" src={logo} />
                 </ButtonBase>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography, Box, Link } from '@material-ui/core';
+import { Button, Typography, Box } from '@material-ui/core';
 import hero from "./images/hero-image.png";
 import Nav from './Nav';
 import Auth from '../auth';
@@ -12,8 +12,6 @@ const auth = new Auth();
 const styles = {
   paperContainer: {
     display: 'flex',
-    // height: '100vh',
-    // width: '100%'
   },
   headerContainer: {
     display: 'flex',
@@ -31,11 +29,7 @@ const styles = {
     margin: '0',
     justifyContent: 'center'
   },
-  // img: {
-  //   width: '70%',
-  //   height: '70%',
-  //   margin: '0'
-  // },
+
   info: {
     flexDirection: 'column',
     margin: '7% 5% 0 0',
@@ -62,7 +56,7 @@ const useStyles = makeStyles(theme => ({
       
     },
     [theme.breakpoints.up('md')]: {
-      // margin: '0 0 0 25%'
+ 
       background: '#26242D',
       boxShadow: 'none',
       border: '2px solid #ee4d71',
@@ -106,7 +100,7 @@ const useStyles = makeStyles(theme => ({
       fontFamily: 'montserrat'
     },
     [theme.breakpoints.up('md')]: {
-      // margin: '0 0 0 25%'
+ 
       background: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
       boxShadow: 'none',
       borderRadius: '2px',
@@ -167,8 +161,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       width: '420.79px',
       height: '394.79px',
-      // display: 'flex',
-      // justifyContent: 'center'
       margin: '0 0 0 5%'
 
     }
@@ -180,9 +172,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: '5% 0 5% 0',
       fontSize: '16px',
-      // textAlign: 'center',
-      // width: '50%',
-      // paddingLeft: '25%'
       padding: '0',
       fontFamily: 'montserrat'
       
@@ -191,8 +180,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       margin: '5% 0 5% 0',
       fontSize: '16px',
-      // textAlign: 'center',
-      // width: '50%'
       padding: '0',
       fontFamily: 'montserrat'
 
@@ -246,26 +233,19 @@ const useStyles = makeStyles(theme => ({
       fontSize: "25px",
       display: 'flex',
       flexDirection: 'column',
-      // alignItems: 'center',
-      // textAlign: 'center'
-      
-
     },
+
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       flexDirection: 'column',
-      // alignItems: 'center',
-      // textAlign: 'center'
-
-
     },
+
     [theme.breakpoints.up('lg')]: {
       margin: "90px",
     paddingTop: "96px",
     display: 'flex',
     flexDirection: 'row',
     textAlign: 'left'
-
     }
   }
 
