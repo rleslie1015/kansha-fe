@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Card, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
-import { timeAgo } from '../utils/timeago'
+import { timeAgo } from '../../utils/timeago'
 
 const useStyles = makeStyles(theme => ({
     recCard: {
