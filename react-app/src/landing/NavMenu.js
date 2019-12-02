@@ -12,11 +12,12 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'row'
     },
     [theme.breakpoints.up('lg')]: {
       display: "none",
@@ -57,7 +58,7 @@ export default function NavMenu() {
       >
         <MenuItem onClick={handleClose}>About Us</MenuItem>
         <MenuItem onClick={handleClose}>Features</MenuItem>
-        <MenuItem onClick={auth.login}>Sign In</MenuItem>
+        <MenuItem onClick={auth.login}>Get Started</MenuItem>
 
       </Menu>
     </div>

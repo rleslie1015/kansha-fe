@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   wrapper: {
     
     display: "flex",
-    alignItems: 'center',
+    justifyContent: 'space-between',
     marginLeft: "90px",
     width: "80%",
     marginTop: "30px"
@@ -79,7 +79,7 @@ export default function Links() {
           Features
             </Link>
         <Link href="#" onClick={auth.login} color="inherit" className={classes.link}>
-          Sign In
+          Get Started
             </Link>
 
       </div>

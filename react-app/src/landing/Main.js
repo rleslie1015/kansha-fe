@@ -19,9 +19,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#26242D',
   },
   paper: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     margin: '10px',
-    width: 500,
+    width: '600px',
     backgroundColor: '#26242D',
     boxShadow: 'none'
   },
@@ -69,6 +69,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       fontSize: "25px",
 
+
     }
   },
 }));
@@ -86,7 +87,7 @@ export default function Main () {
         </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} container direction = 'row'>
           <Grid item className={classes.card}>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="reward" src={rewardIcon} />
