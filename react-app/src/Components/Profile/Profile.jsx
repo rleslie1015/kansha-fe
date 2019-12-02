@@ -161,8 +161,8 @@ function Profile({ profile }) {
 					<Card className={classes.userInfo}>
 						<img
 							src={profile.profile_picture}
-                            className={classes.profilePic}
-                            alt="user profile"
+							className={classes.profilePic}
+							alt="user profile"
 						/>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
@@ -221,6 +221,7 @@ function Profile({ profile }) {
 							profile.rec.map(recognition => (
 								<RecognitionCard
 									key={recognition.id}
+									sent={profile.id === recognition.sender}
 									profile={profile}
 									recognition={recognition}
 								/>
