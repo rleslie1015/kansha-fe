@@ -150,8 +150,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       justifyContent: 'center',
-      width: '40%',
-      height: '40%',
+      width: '260.61px',
+      height: '244.51px',
       margin: '10% 25%'
       
     },

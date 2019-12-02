@@ -38,6 +38,14 @@ const useStyles = makeStyles(theme => ({
             alignItems: "center",
             margin: "10px 0",
           },
+          [theme.breakpoints.up('md')]: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "10px 0",
+          },
+          
           [theme.breakpoints.up('lg')]: {
             display: "flex",
             fontSize: "16px",
@@ -49,7 +57,12 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
            margin: "15px 0"
           },
-          [theme.breakpoints.up('lg')]: {
+        
+        [theme.breakpoints.up('sm')]: {
+            margin: '15px 0'
+        },
+
+        [theme.breakpoints.up('lg')]: {
             display: "flex",
             fontSize: "16px",
             margin: "6px 0",
