@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Loader from 'react-loader-spinner'
 
 class FileUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       success: false,
       url: ""
     }
@@ -16,6 +18,7 @@ class FileUpload extends Component {
   }
   // Perform the upload
   handleUpload = (ev) => {
+    this.setState({ loading: true })
     let file = this.uploadInput.files[0];
     const data = new FormData();
     data.append('image', file)
@@ -31,7 +34,7 @@ class FileUpload extends Component {
         //   var signedRequest = returnData.signedRequest;
         var url = response.data.url;
         this.setState({ url: url })
-        this.setState({ success: true });
+        this.setState({ success: true, loading: false });
 
         //   console.log("Recieved a signed request " + signedRequest);
 
@@ -55,8 +58,8 @@ class FileUpload extends Component {
       })
   }
 
-
   render() {
+
     const SuccessMessage = () => (
       <div style={{ padding: 50 }}>
         <h3 style={{ color: 'green' }}>SUCCESSFUL UPLOAD</h3>
@@ -67,14 +70,22 @@ class FileUpload extends Component {
     return (
       <div className="App">
         <center>
-          <h1>UPLOAD A FILE</h1>
+          <h1>Upload Your Profile Picture</h1>
+          {this.state.loading ? <Loader
+            type="Rings"
+            color="#EE4D71"
+            height={100}
+            width={100}
+            timeout={10000}
+
+          /> : null}
           {this.state.success ? <SuccessMessage />
             :
-            <>
+            <div className="file-upload">
               <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" />
               <br />
-              <button onClick={this.handleUpload}>UPLOAD</button>
-            </>
+              <button onClick={this.handleUpload}>Upload</button>
+            </div>
           }
         </center>
       </div>
