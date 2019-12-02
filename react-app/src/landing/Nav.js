@@ -6,6 +6,7 @@ import logo from './images/logo.png';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
 import Auth from '../auth';
+import 'typeface-montserrat';
 
 const auth = new Auth();
 
@@ -52,7 +53,8 @@ const useStyles = makeStyles(theme => ({
       display: "flex",
       flexDirection: 'row',
       width: "80%",
-      justifyContent: "flex-end"
+      justifyContent: "flex-end",
+      fontFamily: 'montserrat'
     }
   }
 
@@ -60,6 +62,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Links() {
   const classes = useStyles();
+  
 
   return (
     <Typography className={classes.wrapper}>

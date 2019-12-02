@@ -13,18 +13,21 @@ const useStyles = makeStyles(theme => ({
             flexDirection: "column-reverse",
             justifyContent: "center",
             alignItems: "center",
+            fontFamily: 'montserrat'
           },
           [theme.breakpoints.up('md')]: {
             display: "flex",
             flexDirection: "column-reverse",
             justifyContent: "center",
             alignItems: "center",
+            fontFamily: 'montserrat'
           },
           [theme.breakpoints.up('lg')]: {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            margin: "0 6%"
+            margin: "0 6%",
+            fontFamily: 'montserrat'
         }
     },
     nav: {
@@ -33,7 +36,7 @@ const useStyles = makeStyles(theme => ({
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            margin: "10px 0"
+            margin: "10px 0",
           },
           [theme.breakpoints.up('lg')]: {
             display: "flex",
@@ -70,10 +73,12 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             marginTop: "15px",
             textAlign: "center",
+            fontFamily: 'montserrat'
           },
           [theme.breakpoints.up('md')]: {
             marginTop: "15px",
-            textAlign: "center",        
+            textAlign: "center",
+            fontFamily: 'montserrat'        
         },
     }
 }))

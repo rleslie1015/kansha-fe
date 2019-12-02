@@ -5,6 +5,7 @@ import { Button, Typography, Box, Link } from '@material-ui/core';
 import hero from "./images/hero-image.png";
 import Nav from './Nav';
 import Auth from '../auth';
+import 'typeface-montserrat';
 
 const auth = new Auth();
 
@@ -27,7 +28,8 @@ const styles = {
   hero: {
     display: 'flex',
     flexDirection: 'row',
-    margin: '0'
+    margin: '0',
+    justifyContent: 'center'
   },
   // img: {
   //   width: '70%',
@@ -46,27 +48,48 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
       fontSize: "15px",
-      margin: "0 auto",
+      margin: "0 2%",
       background: '#26242D',
       boxShadow: 'none',
-      borderRadius: '2px',
-      borderColor: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
-      color: 'linear-gradient(167.6deg, #EE4D71 0%, #F15A3F 100%)'
+      border: '2px solid #ee4d71',
+      fontFamily: 'montserrat',
+      color: '#ee4d71',
+      '&:hover': {
+				background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+				color: '#FFFFFF'
+			},
+
+      
     },
     [theme.breakpoints.up('md')]: {
       // margin: '0 0 0 25%'
       background: '#26242D',
       boxShadow: 'none',
-      border: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)'
+      border: '2px solid #ee4d71',
+      fontFamily: 'montserrat',
+      '&:hover': {
+				background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+				color: '#FFFFFF'
+      },
+      margin: '0 2%',
+      color: '#ee4d71'
 
     },
     [theme.breakpoints.up('lg')]: {
-      marginLeft: "0",
+      
       padding: "15px",
       fontFamily: "inherit",
       fontWeight: "900",
       background: '#26242D',
       boxShadow: 'none',
+      border: '2px solid #ee4d71',
+      fontFamily: 'montserrat',
+      '&:hover': {
+				background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+        color: '#FFFFFF'
+      },
+      margin: '0 2%',
+      color: '#ee4d71'
 
     }
     
@@ -79,14 +102,16 @@ const useStyles = makeStyles(theme => ({
       fontSize: "15px",
       background: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
       margin: "0 auto",
-      color: 'white'
+      color: 'white',
+      fontFamily: 'montserrat'
     },
     [theme.breakpoints.up('md')]: {
       // margin: '0 0 0 25%'
       background: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
       boxShadow: 'none',
       borderRadius: '2px',
-      color: 'white'
+      color: 'white',
+      fontFamily: 'montserrat'
 
     },
     [theme.breakpoints.up('lg')]: {
@@ -95,7 +120,8 @@ const useStyles = makeStyles(theme => ({
       fontFamily: "inherit",
       fontWeight: "900",
       background: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
-      color: 'white'
+      color: 'white',
+      fontFamily: 'montserrat'
 
     }
     
@@ -112,10 +138,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       fontSize: "25px",
-      justifyContent: 'center'
+      justifyContent: 'left'
 
     },
     [theme.breakpoints.up('lg')]: {
+      justifyContent: 'left'
 
     }
   },
@@ -131,15 +158,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       justifyContent: 'center',
-      width: '30%',
-      height: '30%'
+      width: '260.61px',
+      height: '244.51px'
 
       
 
     },
     [theme.breakpoints.up('lg')]: {
-      width: '50%',
-      height: '75%',
+      width: '420.79px',
+      height: '394.79px',
       // display: 'flex',
       // justifyContent: 'center'
       margin: '0 0 0 5%'
@@ -151,26 +178,32 @@ const useStyles = makeStyles(theme => ({
     
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-      // margin: '5% 0 5% 0',
+      margin: '5% 0 5% 0',
       fontSize: '16px',
       // textAlign: 'center',
       // width: '50%',
       // paddingLeft: '25%'
+      padding: '0',
+      fontFamily: 'montserrat'
       
 
     },
     [theme.breakpoints.up('md')]: {
-      // margin: '5% 0 5% 0',
+      margin: '5% 0 5% 0',
       fontSize: '16px',
       // textAlign: 'center',
       // width: '50%'
+      padding: '0',
+      fontFamily: 'montserrat'
 
     },
     [theme.breakpoints.up('lg')]: {
       margin: '5% 0 5% 0',
       fontSize: '16px',
       width: '100%',
-      textAlign: 'left'
+      textAlign: 'left',
+      padding: '0',
+      fontFamily: 'montserrat'
     
     },
   },
@@ -250,11 +283,11 @@ export default function Header() {
       <div style={styles.headerContainer}>
         <Typography component='div' className={classes.heading}  >
           <div style={styles.info}>
-            <Box className={classes.headingFont}>Workplace Recognition</Box>
-            <Box className={classes.headingFont}>Like Never Before</Box>
-            <Box className={classes.desc}>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
-            <Button variant='contained' className={classes.signButton} onClick={auth.login}>Sign Up</Button>
-            <Button variant='contained' className={classes.learnButton}>Learn More</Button>
+            <Box className={classes.headingFont} fontFamily='montserrat'>Workplace Recognition</Box>
+            <Box className={classes.headingFont} fontFamily='montserrat'>Like Never Before</Box>
+            <Box className={classes.desc} fontFamily='montserrat'>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
+            <Button variant='contained' className={classes.signButton} onClick={auth.login} fontFamily='montserrat'>Sign Up</Button>
+            <Button variant='contained' className={classes.learnButton} fontFamily='montserrat'>Learn More</Button>
             
           </div>
           <div style={styles.hero}>

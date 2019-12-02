@@ -8,6 +8,7 @@ import heartIcon from './images/heart.png';
 import rewardIcon from './images/reward.png';
 import workspaceIcon from './images/workspace.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import 'typeface-montserrat';
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,10 +29,12 @@ const useStyles = makeStyles(theme => ({
   font: {
     fontSize: "24px",
     color: '#ffffff',
+    fontFamily: 'montserrat'
   },
   cardFont: {
     fontSize: '16px',
-    color: 'rgba(255, 255, 255, 0.7)'
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontFamily: 'montserrat'
   },
   image: {
     width: 128,
@@ -83,7 +86,7 @@ export default function Main () {
     return (
         <>
         <Typography font='#26242D'>
-          <Box className={classes.box, classes.mobile}  >Why Kansha?</Box> 
+          <Box className={classes.box, classes.mobile} fontFamily='montserrat'  >Why Kansha?</Box> 
         </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -96,10 +99,10 @@ export default function Main () {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" className={classes.font}>
+                <Typography gutterBottom variant="subtitle1" className={classes.font} fontFamily='montserrat'>
                   Send a Reward
                 </Typography>
-                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                <Typography variant="body2" gutterBottom className={classes.cardFont} fontFamily='montserrat'>
                   Send your peers a gift card with a message to show recognition.
                 </Typography>
               </Grid>

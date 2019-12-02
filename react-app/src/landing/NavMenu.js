@@ -4,6 +4,7 @@ import { Button, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
 import Auth from '../auth';
 import { makeStyles } from '@material-ui/core/styles';
+import 'typeface-montserrat';
 
 const auth = new Auth();
 
@@ -22,6 +23,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       display: "none",
 
+    }
+  },
+
+  menuIcon: {
+    color: 'white',
+    '&:hover': {
+      color: '#ee4d71'
     }
   }
 
@@ -46,7 +54,7 @@ export default function NavMenu() {
 
   return (
     <div className={classes.hideNav}>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.menuIcon}>
         <MenuIcon />
       </Button>
       <Menu
