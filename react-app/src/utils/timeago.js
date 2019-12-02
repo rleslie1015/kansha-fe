@@ -1,11 +1,15 @@
 /* Generates realative time strings */
 
+//accepts any valid Date timestamp string!!
 export const timeAgo = timestamp => {
+    // get time in milliseconds
     const currentTime = new Date(Date.now()).getTime();
     const eventTime = new Date(timestamp).getTime()
 
-	const elapsedTime = currentTime - eventTime;
-
+    // get time elapsed in milliseconds
+    const elapsedTime = currentTime - eventTime;
+    
+    // create time units in milliseconds
 	const minute = 60 * 1000;
 	const hour = minute * 60;
 	const day = hour * 24;
