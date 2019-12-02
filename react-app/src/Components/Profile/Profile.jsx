@@ -220,6 +220,7 @@ function Profile({ profile }) {
 						{profile &&
 							profile.rec.map(recognition => (
 								<RecognitionCard
+									key={recognition.id}
 									profile={profile}
 									recognition={recognition}
 								/>
