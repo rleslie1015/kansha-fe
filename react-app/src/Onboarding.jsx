@@ -15,7 +15,7 @@ import {
 	MenuItem,
 	Select,
 	Box,
-	InputBase,
+	InputBase
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
@@ -24,10 +24,9 @@ const StyledBase = withStyles(theme =>
 	createStyles({
 		input: {
 			width: '100%',
+			height: '53%',
+			marginTop: '.3rem',
 			border: '1px solid rgba(255, 255, 255, 0.7)',
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'center',
 			padding: '1rem',
 			color: '#FFFFFF',
 			borderRadius: '0',
@@ -69,7 +68,6 @@ const useStyles = makeStyles(theme => ({
 		width: '80%',
 		height: '80%',
 		backgroundColor: '#2D2C35',
-		// boxShadow: '0px 0px 25px rgba(33, 32, 40, 0.1)',
 		borderRadius: '2px',
 		padding: '2rem 2rem',
 	},
@@ -123,6 +121,11 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '24px',
 		lineHeight: '20px',
 	},
+	dropdownStyle: {
+		backgroundColor:'#3A3845',
+		color: '#FFFFFF',
+		fontSize: '24px',
+	  },
 	twoInput: {
 		display: 'flex',
 		flexDirection: 'row',
@@ -241,23 +244,22 @@ function Onboarding(props) {
 								}}
 							/>
 							<FormControl
-								variant="outlined"
 								className={classes.textField}>
 								<Select
+									variant="outlined"
 									defaultValue="standard"
 									value={form.role}
 									onChange={handleChange}
 									margin="normal"
-									input={<StyledBase label="Select a Role"/>}
+									MenuProps={{ classes: { paper: classes.dropdownStyle } }}
+									input={<StyledBase />}
 									InputProps={{
 										className: classes.input,
 									}}
 									InputLabelProps={{
 										className: classes.label,
 									}}>
-									<MenuItem value="standard">
-										Standard
-									</MenuItem>
+									<MenuItem value="standard">Standard</MenuItem>
 									<MenuItem value="mod">Mod</MenuItem>
 									<MenuItem value="admin">Admin</MenuItem>
 								</Select>
