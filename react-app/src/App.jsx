@@ -7,6 +7,7 @@ import Login from './Login';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
 import Workspace from './Workspace';
+import FileUpload from './FileUpload';
 
 const useStyles = makeStyles(theme => ({
 
@@ -32,6 +33,7 @@ export const App = () => {
 			<Route path="/onboarding" component={Onboarding} />
 			<Route path="/profile" component={Profile} />
 			<Route path="/workspace" component={Workspace} />
+			<Route path="/upload" component={FileUpload} />
 		</div>
 	);
 };
