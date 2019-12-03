@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from './Auth';
+import Auth from './auth';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Paper, Button } from '@material-ui/core';
@@ -31,30 +31,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Login() {
     const classes = useStyles();
-
-    const state = {
-        credentials: {
-            username: '',
-            password: '',
-            auth,
-        },
-    };
-
-    const handleChange = e => {
-        this.setState({
-            credentials: {
-                ...this.state.credentials,
-                [e.target.name]: e.target.value,
-            },
-        });
-    };
-
-    const login = e => {
-        e.preventDefault();
-        this.props.login(this.state.credentials).then(() => {
-            this.props.history.push('/');
-        });
-    };
 
     return (
         <div id="App" className={classes.root}>
