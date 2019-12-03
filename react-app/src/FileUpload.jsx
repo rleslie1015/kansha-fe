@@ -27,7 +27,7 @@ class FileUpload extends Component {
     // let fileName = fileParts[0];
     // let fileType = fileParts[1];
     console.log("Preparing the upload");
-    axios.post("http://localhost:8000/profile-pic", data)
+    axios.post("https://kansha-staging.herokuapp.com/profile-pic", data)
       .then(response => {
         // console.log(response.data.url)
         //   var returnData = response.data.data.returnData;
