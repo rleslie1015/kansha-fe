@@ -1,0 +1,153 @@
+import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import { useSpring, animated } from 'react-spring/web.cjs';
+import {TextField, Button, FormControl} from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: '#2D2C35',
+    border: '2px solid #000',
+    boxShadow: 'none',
+    padding: theme.spacing(2, 4, 3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    color: 'white'
+  },
+  button: {
+      width: '50%',
+      margin: '1rem 8rem',
+      backgroundColor: '#2D2C35',
+      color: '#EE4D71',
+      textDecoration: 'none',
+      border: '2px solid #EE4d71'
+  },
+  recogButton: {
+    width: '50%',
+    margin: '1rem 8rem',
+    background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
+    color: 'white',
+    textDecoration: 'none',
+    
+},
+  form: {
+      width: '90%',
+      backgroundColor: 'white'
+  }
+}));
+
+const Fade = React.forwardRef(function Fade(props, ref) {
+  const { in: open, children, onEnter, onExited, ...other } = props;
+  const style = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
+    onStart: () => {
+      if (open && onEnter) {
+        onEnter();
+      }
+    },
+    onRest: () => {
+      if (!open && onExited) {
+        onExited();
+      }
+    },
+  });
+
+  return (
+    <animated.div ref={ref} style={style} {...other}>
+      {children}
+    </animated.div>
+  );
+});
+
+Fade.propTypes = {
+  children: PropTypes.element,
+  in: PropTypes.bool.isRequired,
+  onEnter: PropTypes.func,
+  onExited: PropTypes.func,
+};
+
+export default function RecogModal(props) {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [recog, setRecog] = useState({
+      recog_message: ''
+  });
+  const {first_name, last_name, job_title, department, profile_pic} = props
+
+  const handleChange = event => {
+      setRecog({ ...recog, [event.target.name]: event.target.value});
+  };
+
+  const handleSubmit = event => {
+      console.log(props)
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button type="button" onClick={handleOpen} className={classes.button}>
+        Thank
+      </Button>
+      <Modal
+        // aria-labelledby="spring-modal-title"
+        // aria-describedby="spring-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+              <img src = {profile_pic} />
+              <p>{first_name} {last_name}</p>
+              <p>{job_title}</p>
+              <p>{department}</p>
+            
+            {/* <h2 id="spring-modal-title">Recognition Form</h2>
+            <p id="spring-modal-description">react-spring animates me.</p> */}
+            <FormControl className={classes.form}>
+            <TextField
+				// label="Type Your Message Here"
+				name="recog_message"
+                onChange={handleChange}
+                id="standard-multiline-static"
+                multiline
+                rows="4"
+                defaultValue="Type your message here"
+                margin="normal"
+                variant='outlined'
+			/>
+            </FormControl>
+            <Button
+				className={classes.recogButton}
+				variant="contained"
+				color="primary"
+				onClick={handleSubmit}>
+				Send
+			</Button>
+          </div>
+        </Fade>
+      </Modal>
+    </div>
+  );
+}
