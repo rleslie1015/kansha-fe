@@ -5,6 +5,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import {TextField, Button, FormControl} from '@material-ui/core';
+import { sendRecog } from '../../store/actions/recog-actions';
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -75,7 +77,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function RecogModal(props) {
+function RecogModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [recog, setRecog] = useState({
@@ -88,7 +90,7 @@ export default function RecogModal(props) {
   };
 
   const handleSubmit = event => {
-      console.log(props)
+      props.sendRecog(recog);
   };
 
   const handleOpen = () => {
@@ -151,3 +153,11 @@ export default function RecogModal(props) {
     </div>
   );
 }
+
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+}
+
+export default connect(mapStateToProps, { sendRecog })(RecogModal);
