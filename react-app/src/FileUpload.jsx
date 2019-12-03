@@ -63,7 +63,7 @@ class FileUpload extends Component {
     const SuccessMessage = () => (
       <div style={{ padding: 50 }}>
         <h3 style={{ color: 'green' }}>SUCCESSFUL UPLOAD</h3>
-        <img src={this.state.url} style={{ maxWidth: '90%' }} alt="uploaded profile" />
+        <img src={this.state.url} style={{ maxWidth: '70%', imageOrientation: "from-image" }} alt="uploaded profile" />
         <br />
       </div>
     )
