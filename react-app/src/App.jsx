@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Onboarding from './Onboarding';
-import Profile from './Profile';
+import { Profile } from './Components/Profile';
 import Workspace from './Workspace';
 
 const useStyles = makeStyles(theme => ({

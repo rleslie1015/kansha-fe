@@ -3,7 +3,7 @@ import Auth from './auth';
 import { connect } from 'react-redux';
 import { login } from './store/actions/user-actions';
 import Onboarding from './Onboarding';
-import Profile from './Profile';
+import { Profile } from './Components/Profile';
 
 const auth = new Auth();
 

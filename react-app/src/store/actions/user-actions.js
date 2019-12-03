@@ -13,7 +13,7 @@ export const login = userProfile => dispatch => {
 	axiosWithAuth()
 		.get('/profile')
 		.then(res => {
-            if (res.data.user) dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
+            if (res.data.user) dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data.user });
             else dispatch({type: USER_LOGIN_NEWUSER, payload: res.data })
 		})
 		.catch(err => {
