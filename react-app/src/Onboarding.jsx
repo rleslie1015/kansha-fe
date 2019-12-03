@@ -2,13 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
-<<<<<<< HEAD
 import { makeStyles, withStyles, createStyles } from '@material-ui/core/styles';
 import logo from './assets/logo38.png';
 import kanshaLogo from './assets/logo39.png';
-=======
-import { makeStyles } from '@material-ui/core/styles';
->>>>>>> 7d0e4e738085353d1c6d2f6923df9a0c1c128c8a
 import {
 	Container,
 	Typography,
@@ -16,14 +12,15 @@ import {
 	Button,
 	FormControl,
 	TextField,
-<<<<<<< HEAD
 	MenuItem,
 	Select,
 	Box,
-	InputBase
+	InputBase,
+	InputLabel
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import Auth from './auth'
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -43,18 +40,10 @@ const StyledBase = withStyles(theme =>
 		},
 	}),
 )(InputBase);
-=======
-	Select,
-	MenuItem,
-	InputLabel,
-} from '@material-ui/core';
-import Auth from './auth'
->>>>>>> 7d0e4e738085353d1c6d2f6923df9a0c1c128c8a
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
-<<<<<<< HEAD
 		flexDirection: 'row',
 		minHeight: '100vh',
 		backgroundColor: '#26242D',
@@ -164,11 +153,8 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: 'none',
 		'&:hover': {
 			background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
-			color: '#FFFFFF',
+			color: '#FFFFFF',		
 		},
-=======
-		flexDirection: 'column',
-		minHeight: '100vh',
 	},
 	paper: {
 		marginTop: '1rem',
@@ -183,14 +169,6 @@ const useStyles = makeStyles(theme => ({
 		marginTop: '1rem',
 		marginLeft: '1.5rem',
 	},
-	button: {
-		width: '50%',
-		margin: '1rem 8rem',
-		backgroundColor: '#349AFA',
-		color: 'white',
-		textDecoration: 'none',
->>>>>>> 7d0e4e738085353d1c6d2f6923df9a0c1c128c8a
-	},
 }));
 
 const auth = new Auth();
@@ -204,7 +182,6 @@ function Onboarding(props) {
 		department: '',
 		org_name: '',
 		user_type: '',
-<<<<<<< HEAD
 	});
 
 	const handleChange = event => {
@@ -351,87 +328,6 @@ function Onboarding(props) {
 			</Container>
 		</div>
 	);
-=======
-		sub: ''
-	});
-
-	const handleChange = event => {
-		setForm({ ...form, [event.target.name]: event.target.value });
-	};
-
-	const handleSubmit = event => {
-		props.onboard(form);
-	};
-
-	useEffect(() => {
-		const { sub } = auth.getProfile()
-		setForm(f => ({...f, sub}))
-	}, [])
-
-	return (
-		<div id="App" className={classes.root}>
-			<CssBaseline />
-			<Container fixed>
-				<Paper className={classes.paper}>
-					<Typography className={classes.typo} variant="h5">
-						Welome, Please specify your role.
-					</Typography>
-					<FormControl className={classes.form}>
-						<TextField
-							label="First Name"
-							name="first_name"
-							onChange={handleChange}
-						/>
-						<TextField
-							label="Last Name"
-							name="last_name"
-							onChange={handleChange}
-						/>
-
-						<TextField
-							label="Job Title"
-							name="job_title"
-							onChange={handleChange}
-						/>
-						<FormControl>
-							<InputLabel id="Role-label">
-								<em>Select A Role</em>
-							</InputLabel>
-							<Select
-								labelId="Role-label"
-								id="Role"
-								name="user_type"
-								value={form.role}
-								onChange={handleChange}>
-								<MenuItem value="admin">Admin</MenuItem>
-								<MenuItem value="mod">Mod</MenuItem>
-								<MenuItem value="standard">Standard</MenuItem>
-							</Select>
-						</FormControl>
-						<TextField
-							label="Organization"
-							name="org_name"
-							onChange={handleChange}
-						/>
-						<TextField
-							label="Department"
-							name="department"
-							onChange={handleChange}
-						/>
-						<Button
-							className={classes.button}
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}>
-							Register
-						</Button>
-					</FormControl>
-				</Paper>
-			</Container>
-		</div>
-	);
-
->>>>>>> 7d0e4e738085353d1c6d2f6923df9a0c1c128c8a
 }
 
 const mapStateToProps = state => {
