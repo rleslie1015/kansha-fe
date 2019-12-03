@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
+import { AuthLoader } from './Components/Auth'
 import Workspace from './Workspace';
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +33,7 @@ export const App = () => {
 			<Route path="/onboarding" component={Onboarding} />
 			<Route path="/profile" component={Profile} />
 			<Route path="/workspace" component={Workspace} />
+			<Route path="/auth" component={AuthLoader} />
 		</div>
 	);
 };

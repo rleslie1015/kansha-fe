@@ -1,6 +1,9 @@
 import auth0 from 'auth0-js';
 import jwtDecode from 'jwt-decode';
-
+import {
+	USER_AUTH_SUCCESS,
+	USER_AUTH_FAILURE,
+} from '../store/actions/user-actions';
 const LOGIN_SUCCESS_PAGE = '/home';
 const LOGIN_FAILURE_PAGE = '/';
 
@@ -8,7 +11,7 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: process.env.REACT_APP_AUTH_DOMAIN,
 		clientID: process.env.REACT_APP_CLIENT_ID,
-		redirectUri: process.env.REACT_APP_REDIRECT_URI,
+		redirectUri: `${process.env.REACT_APP_REDIRECT_URI_BASE}/auth`,
 		audience: `https://${process.env.REACT_APP_AUTH_DOMAIN}/userinfo`,
 		responseType: 'token id_token',
 		scope: 'openid profile',
@@ -22,8 +25,8 @@ export default class Auth {
 		this.auth0.authorize();
 	}
 
-	handleAuthentication() {
-		this.auth0.parseHash((err, authResults) => {
+	async handleAuthentication(dispatch) {
+		await this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
 					authResults.expiresIn * 1000 + new Date().getTime(),
@@ -33,10 +36,11 @@ export default class Auth {
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
 				window.location.pathname = LOGIN_SUCCESS_PAGE;
-				console.log(authResults.accessToken);
+				dispatch({ type: USER_AUTH_SUCCESS });
 			} else if (err) {
 				window.location.pathname = LOGIN_FAILURE_PAGE;
-				console.log(err);
+				console.log(err)
+				dispatch({ type: USER_AUTH_FAILURE });
 			}
 		});
 	}
