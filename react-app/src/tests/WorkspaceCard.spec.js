@@ -3,7 +3,7 @@ import Enzyme from 'enzyme';
 import { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Workspace_Card from '../Workspace_Card';
-import { Avatar, Button } from '@material-ui/core';
+import { Avatar, Button, Typography } from '@material-ui/core';
 
 const fitleredTeam = [
     { first_name: 'Matt', last_name: 'Masters', email: 'matt@mattmasters.dev', password: 'IamMatt!123', job_title: 'Dev God', department: 'Department of Gods', org_name: 'Ion', user_type: 'Admin'},
@@ -16,6 +16,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Workspace Card', () => {
     it('it should find an avatar in the workspace card', () => {
         const wrapper = shallow(<Workspace_Card team={fitleredTeam}/>);
+
         expect(wrapper.find(Avatar))
     });
 
@@ -24,5 +25,11 @@ describe('Workspace Card', () => {
 
         wrapper.find(Button).first().simulate('click');
         expect(wrapper.prop('onClick'))
+    })
+
+    it('it should find seeded user data', () => {
+        const wrapper = shallow(<Workspace_Card team={fitleredTeam} />);
+        
+        wrapper.find(Typography).find('Dev God')
     })
 })
