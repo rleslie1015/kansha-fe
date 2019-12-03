@@ -7,15 +7,15 @@ import { Avatar, Button } from '@material-ui/core';
 
 const fitleredTeam = [
     { first_name: 'Matt', last_name: 'Masters', email: 'matt@mattmasters.dev', password: 'IamMatt!123', job_title: 'Dev God', department: 'Department of Gods', org_name: 'Ion', user_type: 'Admin'},
-        { first_name: 'Ty', last_name: 'Lippe', email: 'ty@tylippe.dev', password: 'IamTy!123', job_title: 'Dev Apprentice', department: 'Department of Devs', org_name: 'Ion', user_type: 'Mod'},
-        { first_name: 'Andrew', last_name: 'Goenner', email: 'andrew@andrewgoenner.dev', password: 'IamAndrew!123', job_title: 'Dev Popcicle', department: 'Department of Popcicles', org_name: 'Ion', user_type: 'Standard'}
+    { first_name: 'Ty', last_name: 'Lippe', email: 'ty@tylippe.dev', password: 'IamTy!123', job_title: 'Dev Apprentice', department: 'Department of Devs', org_name: 'Ion', user_type: 'Mod'},
+    { first_name: 'Andrew', last_name: 'Goenner', email: 'andrew@andrewgoenner.dev', password: 'IamAndrew!123', job_title: 'Dev Popcicle', department: 'Department of Popcicles', org_name: 'Ion', user_type: 'Standard'}
 ]
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Workspace Card', () => {
     it('it should find an avatar in the workspace card', () => {
-        const wrapper = shallow(<Workspace_Card team={fitleredTeam} />);
+        const wrapper = shallow(<Workspace_Card team={fitleredTeam}/>);
         expect(wrapper.find(Avatar))
     });
 
