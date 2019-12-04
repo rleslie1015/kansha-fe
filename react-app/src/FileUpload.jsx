@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
+import { axiosWithAuth } from './utils/axiosWithAuth'
 
 class FileUpload extends Component {
   constructor(props) {
@@ -27,7 +28,8 @@ class FileUpload extends Component {
     // let fileName = fileParts[0];
     // let fileType = fileParts[1];
     console.log("Preparing the upload");
-    axios.post("https://kansha-staging.herokuapp.com/profile-pic", data)
+    axiosWithAuth()
+      .post("/profile-pic", data)
       .then(response => {
         // console.log(response.data.url)
         //   var returnData = response.data.data.returnData;
@@ -36,7 +38,7 @@ class FileUpload extends Component {
         this.setState({ url: url })
         this.setState({ success: true, loading: false });
 
-        //   console.log("Recieved a signed request " + signedRequest);
+        //   console.log("Received a signed request " + signedRequest);
 
         // Put the fileType in the headers for the upload
         //   var options = {
