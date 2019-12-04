@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
+import ProtectedRoute from './utils/ProtectedRoute'
 import Workspace from './Workspace';
 
 const useStyles = makeStyles(theme => ({

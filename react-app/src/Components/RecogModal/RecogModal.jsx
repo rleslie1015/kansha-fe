@@ -78,12 +78,16 @@ Fade.propTypes = {
 };
 
 function RecogModal(props) {
+  console.log(props)
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [recog, setRecog] = useState({
-      recog_message: ''
+      message: '',
+      sender: 4,
+      recipient: props.id,
+      date: new Date(Date.now()).toDateString()
   });
-  const {first_name, last_name, job_title, department, profile_pic} = props
+  const {first_name, last_name, job_title, department, profile_picture} = props
 
   const handleChange = event => {
       setRecog({ ...recog, [event.target.name]: event.target.value});
@@ -120,7 +124,7 @@ function RecogModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-              <img src = {profile_pic} />
+              <img src = {profile_picture} />
               <p>{first_name} {last_name}</p>
               <p>{job_title}</p>
               <p>{department}</p>
@@ -130,7 +134,7 @@ function RecogModal(props) {
             <FormControl className={classes.form}>
             <TextField
 				// label="Type Your Message Here"
-				name="recog_message"
+				name="message"
                 onChange={handleChange}
                 id="standard-multiline-static"
                 multiline
