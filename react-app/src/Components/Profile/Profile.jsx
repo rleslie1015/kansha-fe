@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -155,6 +156,7 @@ function Profile({ profile }) {
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
+			<Link to="/workspace">workspace</Link>
 			<Container fixed className={classes.root}>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>

@@ -6,7 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
-import ProtectedRoute from './utils/ProtectedRoute'
+import { AuthLoader } from './Components/Auth'
 import Workspace from './Workspace';
 
 const useStyles = makeStyles(theme => ({
@@ -18,8 +18,6 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#26242D',
         color: '#ffffff'
     },
-
-    
 
 }));
 
@@ -33,6 +31,7 @@ export const App = () => {
 			<Route path="/onboarding" component={Onboarding} />
 			<Route path="/profile" component={Profile} />
 			<Route path="/workspace" component={Workspace} />
+			<Route path="/auth" component={AuthLoader} />
 		</div>
 	);
 };

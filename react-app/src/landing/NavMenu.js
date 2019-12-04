@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
-import Auth from '../auth';
+import Auth from '../utils/auth';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 

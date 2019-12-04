@@ -83,7 +83,7 @@ function RecogModal(props) {
   const [open, setOpen] = useState(false);
   const [recog, setRecog] = useState({
       message: '',
-      sender: 4,
+      sender: props.user.profile.id,
       recipient: props.id,
       date: new Date(Date.now()).toDateString()
   });

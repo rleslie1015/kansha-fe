@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, Box } from '@material-ui/core';
 import hero from "./images/hero-image.png";
 import Nav from './Nav';
-import Auth from '../auth';
+import Auth from '../utils/auth';
 import 'typeface-montserrat';
 import RecogModal from '../Components/RecogModal/RecogModal';
 
