@@ -5,7 +5,7 @@ import {Link, Typography, ButtonBase } from '@material-ui/core';
 import logo from './images/logo.png';
 import NavMenu from './NavMenu';
 import { style } from '@material-ui/system';
-import Auth from '../auth';
+import Auth from '../utils/auth';
 import 'typeface-montserrat';
 
 const auth = new Auth();

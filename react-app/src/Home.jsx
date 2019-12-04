@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
-import Auth from './auth';
 import { connect } from 'react-redux';
 import { login } from './store/actions/user-actions';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
 
-const auth = new Auth();
-
 function Home({ login, user, history }) {
 	useEffect(() => {
-		auth.handleAuthentication();
-        login(auth.getProfile());
+        login();
     }, [login]);
 
     console.log(user.profile)
@@ -30,7 +26,7 @@ function Home({ login, user, history }) {
 	}
 	else {
 		return (
-			<>Loading...</>
+			<>An Error Occured</>
 		)
 	}
 }
