@@ -270,8 +270,6 @@ export default function Header() {
             <Box className={classes.desc} fontFamily='montserrat'>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
             <Button variant='contained' className={classes.signButton} onClick={auth.login} fontFamily='montserrat'>Sign Up</Button>
             <Button variant='contained' className={classes.learnButton} fontFamily='montserrat'>Learn More</Button>
-            <RecogModal setOpen={setOpen} sender={4} recipient={39} open={open} first_name='Andrew' last_name='Goenner' job_title='Slapper of Fish' department='Fishslappery' profile_pic='https://www.sackettwaconia.com/wp-content/uploads/default-profile.png
-' />
           </div>
           <div style={styles.hero}>
             <img src={hero} className={classes.img} />
