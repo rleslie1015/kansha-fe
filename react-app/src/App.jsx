@@ -10,13 +10,15 @@ import Workspace from './Workspace';
 import FileUpload from './FileUpload';
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		minHeight: '100vh',
-		backgroundColor: '#26242D',
-		color: '#ffffff',
-	},
+
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: '#26242D',
+        color: '#ffffff'
+    },
+
 }));
 
 export const App = () => {
