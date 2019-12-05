@@ -13,7 +13,7 @@ describe('<Profile />', () => {
         expect(wrapper.find(Container));
     });
 
-    it('', () => {
+    it('it should find typography in the profile', () => {
       const wrapper = shallow(<provider><Profile /></provider>);
       expect(wrapper.exists(Typography))
     });
