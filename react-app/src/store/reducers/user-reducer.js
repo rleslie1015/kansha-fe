@@ -9,18 +9,25 @@ import {
 	USER_ONBOARDING_START,
 	USER_ONBOARDING_SUCCESS,
 	USER_ONBOARDING_FAILURE,
+	USER_UPDATE_PICTURE_START,
+	USER_UPDATE_PICTURE_SUCCESS,
+	USER_UPDATE_PICTURE_FAILURE,
 } from '../actions/user-actions';
 
 const initialState = {
 	profile: null,
 	isOnboarding: false,
 	isLoggingIn: false,
+	isUploading: false,
 	error: null,
 	authenticated: false,
 };
 
 export const userReducer = (state = initialState, action) => {
 	switch (action.type) {
+		/*
+		dispatched by the authrizeUser action creator
+		*/
 		case USER_AUTH_START:
 			return {
 				...state,
@@ -35,13 +42,19 @@ export const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				authenticated: false,
-				error: action.payload
+				error: action.payload,
 			};
+		/*
+		dispatched by the login action creator
+		*/
 		case USER_LOGIN_START:
 			return {
 				...state,
 				isLoggingIn: true,
 			};
+		/*
+		dispatched by the finish action creator
+		*/
 		case USER_LOGIN_SUCCESS:
 			return {
 				...state,
@@ -60,6 +73,9 @@ export const userReducer = (state = initialState, action) => {
 				error: action.payload,
 				isLoggingIn: false,
 			};
+		/*
+		dispatched by the onboard action creator
+		*/
 		case USER_ONBOARDING_START:
 			return {
 				...state,
@@ -75,6 +91,28 @@ export const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isOnboarding: false,
+				error: action.payload,
+			};
+		/*
+		dispatched by the uploadPicture action creator
+		*/
+		case USER_UPDATE_PICTURE_START:
+			return {
+				...state,
+				isUploading: true,
+				error: null,
+			};
+		case USER_UPDATE_PICTURE_SUCCESS:
+			return {
+				...state,
+				profile: { ...state.profile, profile_picture: action.payload },
+				isUploading: false,
+				error: null,
+			};
+		case USER_UPDATE_PICTURE_FAILURE:
+			return {
+				...state,
+				isUploading: false,
 				error: action.payload,
 			};
 		default:
