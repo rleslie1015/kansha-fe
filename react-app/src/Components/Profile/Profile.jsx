@@ -40,28 +40,25 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		'&:hover': {
 			cursor: 'pointer',
-			transition: '0.5s ease',
 		},
 	},
 	profilePic: {
 		borderRadius: '100%',
 		width: '100%',
 		height: 'auto',
-		transition: '0.5s ease',
-		backfaceVisibility: 'hidden',
 	},
 	camera: {
 		width: '100%',
 		height: 'auto',
 	},
 	addPic: {
-		transition: '0.5s ease',
 		opacity: 0,
 		borderRadius: '100%',
 		position: 'absolute',
 		transform: 'translate(0, -100%)',
 		'&:hover': {
 			opacity: 1,
+			transition: '0.5s ease',
 		},
 	},
 	name: {
