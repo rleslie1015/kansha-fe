@@ -86,7 +86,8 @@ export default function Workspace_Card(props) {
 							<CardActions className={classes.card_actions}>
 								<Button
 									variant="contained"
-									className={classes.button_dark}>
+									className={classes.button_dark}
+									onClick={null}>
 									Thank
 								</Button>
 								<Button

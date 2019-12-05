@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Landing }  from './landing/Landing';
+import { Landing } from './landing/Landing';
 import { Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
@@ -8,13 +8,18 @@ import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
 import Workspace from './Workspace';
 
-
 const useStyles = makeStyles(theme => ({
+
     root: {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        backgroundColor: '#26242D',
+        color: '#ffffff'
     },
+
+    
+
 }));
 
 export const App = () => {
