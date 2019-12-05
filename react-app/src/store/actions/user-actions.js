@@ -48,7 +48,7 @@ Login refers to retrieving intial user data from our backend
 It is expected a user is already authenticated at this point
 User data is everything needed to render a users profile
 */
-export const login = userProfile => dispatch => {
+export const login = () => dispatch => {
 	dispatch({ type: USER_LOGIN_START });
 	/* 
 	login is split in to two functions this allows us to delay finishing login process until after onboarding 

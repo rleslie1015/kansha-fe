@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Landing } from './landing/Landing';
 import { Route } from 'react-router-dom';
-import Home from './Home';
-import Login from './Login';
+import { Login } from './Components/Auth';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
 import { AuthLoader } from './Components/Auth'
@@ -29,13 +28,11 @@ export const App = () => {
 	return (
 		<div id="App" className={classes.root}>
 			<Route exact path="/" component={Landing} />
-			<Route exact path="/login" component={Login} />
-			<Route path="/home" component={Home} />
+			<Route path="/auth" component={AuthLoader}/>
 			<Route path="/onboarding" component={Onboarding} />
-			<Route path="/profile" component={Profile} />
-			<Route path="/workspace" component={Workspace} />
-			<Route path="/upload" component={FileUpload} />
-			<Route path="/auth" component={AuthLoader} />
+			<Route path="/profile" component={() => <Login component={Profile}/>} />
+			<Route path="/workspace" component={() => <Login component={Workspace}/>} />
+			<Route path="/upload" component={() => <Login  component={FileUpload}/>} />
 		</div>
 	);
 };

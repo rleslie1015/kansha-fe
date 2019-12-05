@@ -65,7 +65,6 @@ export const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isOnboarding: true,
-				isLoggingIn: false,
 			};
 		case USER_LOGIN_FAILURE:
 			return {
@@ -84,7 +83,6 @@ export const userReducer = (state = initialState, action) => {
 		case USER_ONBOARDING_SUCCESS:
 			return {
 				...state,
-				isLoggingIn: true,
 				isOnboarding: false,
 			};
 		case USER_ONBOARDING_FAILURE:
