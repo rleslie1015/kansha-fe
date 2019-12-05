@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, Box } from '@material-ui/core';
@@ -6,6 +6,7 @@ import hero from "./images/hero-image.png";
 import Nav from './Nav';
 import Auth from '../utils/auth';
 import 'typeface-montserrat';
+import RecogModal from '../Components/RecogModal/RecogModal';
 
 const auth = new Auth();
 
@@ -252,6 +253,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
 
   const history = useHistory();
@@ -268,7 +270,6 @@ export default function Header() {
             <Box className={classes.desc} fontFamily='montserrat'>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
             <Button variant='contained' className={classes.signButton} onClick={auth.login} fontFamily='montserrat'>Sign Up</Button>
             <Button variant='contained' className={classes.learnButton} fontFamily='montserrat'>Learn More</Button>
-            
           </div>
           <div style={styles.hero}>
             <img src={hero} className={classes.img} />

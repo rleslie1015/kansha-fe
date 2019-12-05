@@ -1,11 +1,5 @@
 import auth0 from 'auth0-js';
 import jwtDecode from 'jwt-decode';
-import {
-	USER_AUTH_SUCCESS,
-	USER_AUTH_FAILURE,
-} from '../store/actions/user-actions';
-const LOGIN_SUCCESS_PAGE = '/home';
-const LOGIN_FAILURE_PAGE = '/';
 
 export default class Auth {
 	auth0 = new auth0.WebAuth({
@@ -25,8 +19,9 @@ export default class Auth {
 		this.auth0.authorize();
 	}
 
-	async handleAuthentication(dispatch) {
-		await this.auth0.parseHash((err, authResults) => {
+	handleAuthentication(cb) {
+		console.log('foo')
+		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
 					authResults.expiresIn * 1000 + new Date().getTime(),
@@ -35,12 +30,11 @@ export default class Auth {
 				localStorage.setItem('id_token', authResults.idToken);
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
-				window.location.pathname = LOGIN_SUCCESS_PAGE;
-				dispatch({ type: USER_AUTH_SUCCESS });
+				console.log('hello world')
+				cb()
 			} else if (err) {
-				window.location.pathname = LOGIN_FAILURE_PAGE;
 				console.log(err)
-				dispatch({ type: USER_AUTH_FAILURE });
+				cb(err)
 			}
 		});
 	}
@@ -54,7 +48,7 @@ export default class Auth {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('expires_at');
-		window.location.pathname = LOGIN_FAILURE_PAGE;
+		window.location.pathname = '/';
 	}
 
 	getProfile() {
