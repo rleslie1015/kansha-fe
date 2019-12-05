@@ -39,29 +39,30 @@ const useStyles = makeStyles(theme => ({
 		width: '50%',
 		borderRadius: '100%',
 		'&:hover': {
-			opacity: 0.3,
 			cursor: 'pointer',
-		},
-		'&:hover': {
-			opacity: 1,
+			transition: '0.5s ease',
 		},
 	},
 	profilePic: {
-		opacity: 1,
 		borderRadius: '100%',
 		width: '100%',
 		height: 'auto',
 		transition: '0.5s ease',
 		backfaceVisibility: 'hidden',
 	},
+	camera: {
+		width: '100%',
+		height: 'auto',
+	},
 	addPic: {
 		transition: '0.5s ease',
-		opacity: 1,
+		opacity: 0,
+		borderRadius: '100%',
 		position: 'absolute',
-		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%, -50%)',
-		textAlign: 'center',
+		transform: 'translate(0, -100%)',
+		'&:hover': {
+			opacity: 1,
+		},
 	},
 	name: {
 		paddingTop: '1.5rem',
@@ -158,9 +159,8 @@ function Profile({ profile }) {
 							/>
 							<div className={classes.addPic}>
 								<img
-									style={{opacity: 0}}
-									src={camera}
-									className="camera"
+									src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png'
+									className={classes.camera}
 									// onClick={handleChange}
 									// ref={ref => {
 									// 	uploadInput = ref;
