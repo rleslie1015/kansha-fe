@@ -37,7 +37,7 @@ export const authorizeUser = auth => dispatch => {
 			dispatch({ type: USER_AUTH_SUCCESS });
 		}
 	};
-	
+
 	/* Handle reading/parsing the auth0 hash string */
 	/* Run callback after */
 	auth.handleAuthentication(authActions);
@@ -53,7 +53,7 @@ export const login = userProfile => dispatch => {
 	/* 
 	login is split in to two functions this allows us to delay finishing login process until after onboarding 
 	*/
-	finishLogin(dispatch)	
+	finishLogin(dispatch);
 };
 
 const finishLogin = dispatch => {
@@ -64,13 +64,13 @@ const finishLogin = dispatch => {
 			if (res.data.user) {
 				/* If user data exists we save that data to the store */
 				dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data.user });
-			} else { 
+			} else {
 				/* 
 					If a user has no data a new user action dispatched
 					eventually this will triger the onboarding process.
 				*/
-				dispatch({ type: USER_LOGIN_NEWUSER, payload: res.data })
-			};
+				dispatch({ type: USER_LOGIN_NEWUSER, payload: res.data });
+			}
 		})
 		.catch(err => {
 			console.log(err);
@@ -84,7 +84,7 @@ export const onboard = creds => dispatch => {
 	axiosWithAuth()
 		.post('/users', creds)
 		.then(res => {
-			/* This doesn't dispatch any state because it is only updating ui state */
+			/* This doesn't dispatch any payload because it is only updating ui state */
 			dispatch({ type: USER_ONBOARDING_SUCCESS });
 			/* If the onboarding is a success we finsih the login process */
 			finishLogin(dispatch);
@@ -95,4 +95,17 @@ export const onboard = creds => dispatch => {
 		});
 };
 
-
+/* this handles a user uploading a profile photo */
+export const uploadPicture = data => dispatch => {
+	dispatch({ type: USER_UPDATE_PICTURE_START });
+	axiosWithAuth()
+		.post('/profile-pic', data)
+		.then(({ data: { url } }) =>
+			/* returned url will be placed ins tate */
+			dispatch({ type: USER_UPDATE_PICTURE_SUCCESS, payload: url }),
+		)
+		.catch(err => {
+			console.log(err);
+			dispatch({ type: USER_UPDATE_PICTURE_FAILURE, payload: err });
+		});
+};
