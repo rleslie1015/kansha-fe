@@ -1,9 +1,5 @@
 import auth0 from 'auth0-js';
 import jwtDecode from 'jwt-decode';
-import {
-	USER_AUTH_SUCCESS,
-	USER_AUTH_FAILURE,
-} from '../store/actions/user-actions';
 const LOGIN_SUCCESS_PAGE = '/home';
 const LOGIN_FAILURE_PAGE = '/';
 
@@ -25,7 +21,7 @@ export default class Auth {
 		this.auth0.authorize();
 	}
 
-	async handleAuthentication(dispatch) {
+	async handleAuthentication(cb) {
 		await this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
@@ -36,11 +32,11 @@ export default class Auth {
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
 				window.location.pathname = LOGIN_SUCCESS_PAGE;
-				dispatch({ type: USER_AUTH_SUCCESS });
+				cb()
 			} else if (err) {
 				window.location.pathname = LOGIN_FAILURE_PAGE;
 				console.log(err)
-				dispatch({ type: USER_AUTH_FAILURE });
+				cb(err)
 			}
 		});
 	}
