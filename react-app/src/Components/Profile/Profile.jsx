@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import badge1 from '../../assests/badge1.png';
+import camera from '../../assests/camera.png';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import { RecognitionCard } from './RecognitionCard';
@@ -29,10 +30,34 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		padding: '3rem 0',
 	},
-	profilePic: {
+	pictureContainer: {
+		position: 'relative',
+		width: '50%',
 		borderRadius: '100%',
-		width: '45%',
+		'&:hover': {
+			opacity: 0.3,
+			cursor: 'pointer',
+		},
+		'&:hover': {
+			opacity: 1,
+		},
+	},
+	profilePic: {
+		opacity: 1,
+		borderRadius: '100%',
+		width: '100%',
 		height: 'auto',
+		transition: '0.5s ease',
+		backfaceVisibility: 'hidden',
+	},
+	addPic: {
+		transition: '0.5s ease',
+		opacity: 1,
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		textAlign: 'center',
 	},
 	name: {
 		paddingTop: '1.5rem',
@@ -159,11 +184,25 @@ function Profile({ profile }) {
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
 					<Card className={classes.userInfo}>
-						<img
-							src={profile.profile_picture}
-							className={classes.profilePic}
-							alt="user profile"
-						/>
+						<div className={classes.pictureContainer}>
+							<img
+								src={profile.profile_picture}
+								className={classes.profilePic}
+								alt="user profile"
+							/>
+							<div className={classes.addPic}>
+								<img
+									style={{opacity: 0}}
+									src={camera}
+									className="camera"
+									// onClick={handleChange}
+									// ref={ref => {
+									// 	uploadInput = ref;
+									// }}
+									// type="file"
+								/>
+							</div>
+						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
 						</Typography>

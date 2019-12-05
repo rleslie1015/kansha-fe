@@ -25,7 +25,7 @@ export const App = () => {
             <Route exact path="/login" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/onboarding" component={Onboarding} />
-	    <Route path="/profile" component={Profile} />
+	        <Route path="/profile" component={Profile} />
             <Route path="/workspace" component={Workspace} />
         </div>
     );
