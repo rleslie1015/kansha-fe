@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import camera from '../../assets/camera.png';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import { RecognitionCard } from './RecognitionCard';
