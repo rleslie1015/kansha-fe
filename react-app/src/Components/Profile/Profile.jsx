@@ -20,13 +20,17 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 	},
 	leftContainer: {
+		display: 'flex',
+		flexDirection: 'column',
 		width: '50%',
+		height: '90vh',
 	},
 	userInfo: {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
 		width: '100%',
+		height: '50%',
 		backgroundColor: '#2D2C35',
 		padding: '3rem 0',
 	},
@@ -67,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 	badgeCard: {
 		marginTop: '2.5rem',
 		backgroundColor: '#2D2C35',
-		height: '30%',
+		height: '44%',
 	},
 	typo: {
 		display: 'flex',
@@ -98,56 +102,18 @@ const useStyles = makeStyles(theme => ({
 	},
 	rightContainer: {
 		width: '50%',
+		height: 'auto',
 	},
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
-		height: '86%',
+		height: '90vh',
 		backgroundColor: '#2D2C35',
 	},
-	recCard: {
-		display: 'flex',
-		backgroundColor: '#3A3845',
-		margin: '1rem 1rem 0 1rem',
-		height: '13%',
-	},
-	recProfilePic: {
-		borderRadius: '100%',
-		width: '10%',
-		padding: '1rem',
-		height: 'auto',
-	},
-	recSender: {
-		display: 'flex',
-	},
-	recCardUser: {
-		padding: '1rem 2rem',
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontWeight: 'normal',
-		fontSize: '16px',
-		lineHeight: '20px',
-		color: '#FFFFFF',
-	},
-	recCardTime: {
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontWeight: 'normal',
-		fontSize: '16px',
-		lineHeight: '20px',
-		color: 'rgba(255, 255, 255, 0.5)',
-		opacity: '0.5',
-		padding: '1rem',
-	},
-	recCardMessage: {
-		padding: '0 2rem',
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontWeight: 'normal',
-		fontSize: '16px',
-		lineHeight: '20px',
-		color: 'rgba(255, 255, 255, 0.7)',
+	activityContainer: {
+		overflow: 'scroll',
+		overflowX: 'hidden',
 	},
 }));
 
@@ -181,34 +147,6 @@ function Profile({ profile }) {
 							Badges
 						</Typography>
 						<Container className={classes.badgeContainer}>
-							<Box>
-								<img
-									src={badge1}
-									className={classes.badgeImg}
-									alt="badge of recgonition"
-								/>
-							</Box>
-							<Box>
-								<img
-									src={badge1}
-									className={classes.badgeImg}
-									alt="badge of recgonition"
-								/>
-							</Box>
-							<Box>
-								<img
-									src={badge1}
-									className={classes.badgeImg}
-									alt="badge of recgonition"
-								/>
-							</Box>
-							<Box>
-								<img
-									src={badge1}
-									className={classes.badgeImg}
-									alt="badge of recgonition"
-								/>
-							</Box>
 						</Container>
 					</Card>
 				</Container>
@@ -218,6 +156,7 @@ function Profile({ profile }) {
 						<Typography className={classes.header} variant="h5">
 							Activity
 						</Typography>
+						<Box className={classes.activityContainer}>
 						{profile &&
 							profile.rec.map(recognition => (
 								<RecognitionCard
@@ -227,6 +166,7 @@ function Profile({ profile }) {
 									recognition={recognition}
 								/>
 							))}
+						</Box>
 					</Card>
 				</Container>
 			</Container>

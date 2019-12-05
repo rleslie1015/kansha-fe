@@ -8,8 +8,10 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		alignItems: 'center',
 		backgroundColor: '#3A3845',
-		margin: '1rem 1rem 0 1rem',
-		height: '13%',
+		margin: '1rem 1rem 1rem 1rem',
+		maxHeight: '30%',
+		height: 'auto',
+		padding: '.5rem',
 	},
 	recCardSent: {
 		display: 'flex',
@@ -24,30 +26,34 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 		width: '25%',
 		height: '100%',
-		padding: '1rem;',
+		padding: '1rem 1rem 1rem 0',
 	},
 	recProfilePic: {
 		borderRadius: '100%',
-		width: '75%',
+		width: '70%',
+		display: 'flex',
+		justifyContent: 'flex-start',
 	},
 	recSentLogo: {
-        boxSizing: 'border-box',
 		borderRadius: '100%',
-        width: '25%',
-        padding: '0 1rem',
-		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+        width: '70%',
 	},
 	recSender: {
 		display: 'flex',
 	},
 	recCardUser: {
-		padding: '1rem 2rem',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
-		fontSize: '16px',
+		fontSize: '20px',
 		lineHeight: '20px',
 		color: '#FFFFFF',
+	},
+	recInfo: {
+		display: 'flex',
+		flexDirection: 'column',
+		width: '70%',
+		margin: '.5rem 0 .5rem 0',
 	},
 	recCardTime: {
 		fontFamily: 'Montserrat',
@@ -57,16 +63,19 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '20px',
 		color: 'rgba(255, 255, 255, 0.5)',
 		opacity: '0.5',
-		padding: '1rem',
+		width: '100%',
+		paddingTop: '.5rem',
+
 	},
 	recCardMessage: {
-		padding: '0 2rem',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
 		fontSize: '16px',
 		lineHeight: '20px',
 		color: 'rgba(255, 255, 255, 0.7)',
+		width: '90%',
+		paddingTop: '.5rem',
 	},
 }));
 
@@ -79,7 +88,7 @@ export function RecognitionCard({ profile, recognition, sent }) {
 			<Box class={classes.recIcon}>
 				<img
 					src={
-						sent ? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/SentLogo.svg'
+						sent ? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
                         : recognition.profile_pic
 					}
 					className={
@@ -88,16 +97,20 @@ export function RecognitionCard({ profile, recognition, sent }) {
 					alt="user avatar"
 				/>
 			</Box>
-			<Box>
+			<Box className={classes.recInfo}>
 				<Box className={classes.recSender}>
 					<Typography className={classes.recCardUser}>
-						{`${recognition.first_name} ${recognition.last_name}`}
+						{ sent ? `Sent to ${recognition.first_name} ${recognition.last_name}` : `${recognition.first_name} ${recognition.last_name}`}
 					</Typography>
 				</Box>
+					<Box className={classes.message}>
 				<Typography className={classes.recCardMessage}>
 					{recognition.message}
 				</Typography>
+					</Box>
+					<Box className={classes.time}>
 				<Typography className={classes.recCardTime}>{time}</Typography>
+					</Box>
 			</Box>
 		</Card>
 	);
