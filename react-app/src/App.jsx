@@ -5,22 +5,18 @@ import { Route } from 'react-router-dom';
 import { Login } from './Components/Auth';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
-import { AuthLoader } from './Components/Auth'
+import { AuthLoader } from './Components/Auth';
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
 
 const useStyles = makeStyles(theme => ({
-
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        backgroundColor: '#26242D',
-        color: '#ffffff'
-    },
-
-    
-
+	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		minHeight: '100vh',
+		backgroundColor: '#26242D',
+		color: '#ffffff',
+	},
 }));
 
 export const App = () => {
@@ -28,11 +24,20 @@ export const App = () => {
 	return (
 		<div id="App" className={classes.root}>
 			<Route exact path="/" component={Landing} />
-			<Route path="/auth" component={AuthLoader}/>
+			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
-			<Route path="/profile" component={() => <Login component={Profile}/>} />
-			<Route path="/workspace" component={() => <Login component={Workspace}/>} />
-			<Route path="/upload" component={() => <Login  component={FileUpload}/>} />
+			<Route
+				path="/profile"
+				component={() => <Login component={Profile} />}
+			/>
+			<Route
+				path="/workspace"
+				component={() => <Login component={Workspace} />}
+			/>
+			<Route
+				path="/upload"
+				component={() => <Login component={FileUpload} />}
+			/>
 		</div>
 	);
 };
