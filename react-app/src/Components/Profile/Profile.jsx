@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import { FileUpload } from '../FileUpload'
 import { RecognitionCard } from './RecognitionCard';
 import { SideBar } from '../../Sidebar';
 
@@ -143,6 +145,7 @@ function Profile({ profile }) {
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
+			<Link to="/workspace">workspace</Link>
 			<Container fixed className={classes.root}>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
@@ -157,13 +160,11 @@ function Profile({ profile }) {
 								<img
 									src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png'
 									className={classes.camera}
-									// onClick={handleChange}
-									// ref={ref => {
-									// 	uploadInput = ref;
-									// }}
-									// type="file"
+									alt="upload icon"
 								/>
+								<FileUpload />
 							</div>
+							
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}

@@ -16,11 +16,9 @@ import {
 	Select,
 	Box,
 	InputBase,
-	InputLabel
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import Auth from './auth'
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -171,9 +169,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const auth = new Auth();
-
-function Onboarding(props) {
+function Onboarding({ onboard, history }) {
 	const classes = useStyles();
 	const [form, setForm] = useState({
 		first_name: '',
@@ -189,7 +185,8 @@ function Onboarding(props) {
 	};
 
 	const handleSubmit = event => {
-		props.onboard(form);
+		onboard(form);
+		history.push('/profile')
 	};
 	return (
 		<div id="App" className={classes.root}>
@@ -265,8 +262,9 @@ function Onboarding(props) {
 								<Select
 									variant="outlined"
 									defaultValue="standard"
-									value={form.role}
+									value={form.user_Type}
 									onChange={handleChange}
+									name="user_type"
 									margin="normal"
 									MenuProps={{ classes: { paper: classes.dropdownStyle } }}
 									input={<StyledBase />}
