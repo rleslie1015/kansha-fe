@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login';
 import Onboarding from './Onboarding';
 import { Profile } from './Components/Profile';
+import { AuthLoader } from './Components/Auth'
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
 
@@ -34,6 +35,7 @@ export const App = () => {
 			<Route path="/profile" component={Profile} />
 			<Route path="/workspace" component={Workspace} />
 			<Route path="/upload" component={FileUpload} />
+			<Route path="/auth" component={AuthLoader} />
 		</div>
 	);
 };
