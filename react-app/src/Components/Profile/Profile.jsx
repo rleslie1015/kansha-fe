@@ -10,6 +10,14 @@ import { RecognitionCard } from './RecognitionCard';
 import { SideBar } from '../../Sidebar';
 
 const useStyles = makeStyles(theme => ({
+	'@global': {
+		'*::-webkit-scrollbar': {
+		  width: '0.4em'
+		},
+		'*::-webkit-scrollbar-thumb': {
+		  backgroundColor: '#EE4D71',
+		}
+	},
 	profileDiv: {
 		backgroundColor: '#26242D',
 	},
@@ -31,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		width: '100%',
-		height: '50%',
+		height: 'auto',
 		backgroundColor: '#2D2C35',
 		padding: '3rem 0',
 	},
@@ -47,6 +55,9 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		width: '100%',
 		height: 'auto',
+		maxWidth: '272px',
+		maxHeight: '272px',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 	},
 	camera: {
 		width: '100%',
@@ -90,6 +101,7 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: '500',
 		textAlign: 'Center',
 		verticalAlign: 'Top',
+		paddingBottom: '3rem',
 	},
 	badgeCard: {
 		marginTop: '2.5rem',
@@ -136,7 +148,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	activityContainer: {
 		overflow: 'scroll',
-		overflowX: 'hidden',
+		
 	},
 }));
 
