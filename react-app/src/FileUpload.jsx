@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import { axiosWithAuth } from './utils/axiosWithAuth'
 
