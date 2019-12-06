@@ -30,12 +30,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	recProfilePic: {
 		borderRadius: '100%',
-		width: '70%',
-		maxWidth: '75px',
-		maxHeight: '75px',
+		// Hard coding until we can make a circle img cropper for users
+		width: '75px',
+		height: '75px',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+  		objectPosition: '50% 50%',
 		display: 'flex',
 		justifyContent: 'flex-start',
-		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 
 	},
 	recSentLogo: {

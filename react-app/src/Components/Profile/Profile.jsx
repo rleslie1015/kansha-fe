@@ -57,11 +57,12 @@ const useStyles = makeStyles(theme => ({
 	},
 	profilePic: {
 		borderRadius: '100%',
-		width: '100%',
-		height: 'auto',
-		maxWidth: '272px',
-		maxHeight: '272px',
+		// Hard coding until we can make a circle img cropper for users
+		width: '272px',
+		height: '272px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+  		objectPosition: '50% 50%',
 	},
 	camera: {
 		width: '100%',

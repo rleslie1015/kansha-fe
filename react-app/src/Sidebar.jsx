@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
   menuItemDiv: {
     backgroundColor: '#2D2C35',
     '&:hover': {
-			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+      background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
     },
   },
   signoutOpen: {
@@ -131,10 +131,12 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   img: {
-    width: '50%',
-    height: 'auto',
-    maxWidth: '115px',
-    maxHeight: '115px',
+    // Hard coding until we can make a circle img cropper for users
+    width: '115px',
+    height: '115px',
+		objectFit: 'cover',
+    objectPosition: '50% 50%',
+    marginTop: '4%',
     marginLeft: '25%',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)', 
