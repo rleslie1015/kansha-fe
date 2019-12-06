@@ -12,14 +12,15 @@ import RecogModal from './Components/RecogModal/RecogModal'
 const useStyles = makeStyles(theme => ({
 	card_container: {
 		display: 'flex',
-		flexWrap: 'wrap'
+		flexWrap: 'wrap',
 	},
 	card: {
 		position: 'relative',
 		minWidth: 275,
 		margin: 10,
-		backgroundColor: '#252525',
+		backgroundColor: '#2D2C35',
 		color: 'white',
+		width: '30%',
 	},
 	vert_icon: {
 		position: "absolute",
