@@ -62,20 +62,20 @@ export default function Workspace_Card(props) {
     return (
         <div>
             <div className={classes.card_container}>
-					{props.team.map(users => (
+					{props.team.map(user => (
 						<Card className={classes.card}>
 							<CardContent className={classes.card_content}>
 									<Avatar
 										alt="profile picture"
-										src={users.profile_picture}
+										src={user.profile_picture}
 										className={classes.avatar}
 									/>
                                     <MoreVertIcon className={classes.vert_icon}/>
 								<Typography variant="h5" component="h2">
-									{users.first_name} {users.last_name}
+									{user.first_name} {user.last_name}
 								</Typography>
 								<Typography className={classes.job_title}>
-									{users.job_title}
+									{user.job_title}
 								</Typography>
 								<Typography
 									className={classes.department}
