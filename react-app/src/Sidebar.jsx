@@ -85,6 +85,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  menuItemDiv: {
+    backgroundColor: '#2D2C35',
+    '&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+    },
+  },
   signoutOpen: {
     marginTop: '13vh',
     fontFamily: 'Montserrat',
@@ -94,9 +100,16 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '20px',
     color: '#EE4D71',
     marginLeft: '25%',
+    '&:hover': {
+      backgroundColor: '#2D2C35',
+      color: '#FFFFFF'
+    },
   },
   signoutClosed: {
-    marginTop: '20vh'
+    marginTop: '20vh',
+    '&:hover': {
+      color: '#EE4D71'
+    },
   },
   menuClosed: {
     marginTop: '25vh'
@@ -246,41 +259,55 @@ function Sidebar({ user }) {
         <Divider />
         {/* this populates the icons in the closed menu and populates text also when menu is open */}
         <List className={clsx({[classes.menuClosed]: !open, [classes.menuOpen]: open})}>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Home' className={clsx({[classes.listItem1]: open})}>
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={home} alt='home icon' className={classes.icons}/></ListItemIcon >
             <p className={classes.listText}>Home</p>
           </ListItem>
+          </div>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Profile' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={profile} alt='profile icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Profile</p>
           </ListItem>
+          </div>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Workspace' >          
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={workspace} alt='workspace icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Workspace</p>
           </ListItem>
+          </div>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Send Reward' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={sendReward} alt='send rewards icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Send Reward</p>
           </ListItem>
+          </div>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Rewards History' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={rewardHistory} alt='reward history icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Rewards History</p>
           </ListItem>
+          </div>
+          <div className={classes.menuItemDiv}>
           <ListItem button key='Settings' >
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={settings} alt='settings icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Settings</p>
           </ListItem>
+          </div>
         </List>
         <Divider />
         {/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
         <List className={clsx({[classes.signoutOpen]: open, [classes.signoutClosed]: !open})}>
             {/* this populates the sign out icon on the closed menu and text on the open menu */}
+            <div className={classes.signoutDiv}>
             <ListItem button key='Sign Out' >
               <ListItemIcon className={clsx(classes.menuOpen, {[classes.hide]: open, [classes.closedInactive]: !open})}>
                 <img src={signOut} alt='sign out icon' className={classes.icons} />
               </ListItemIcon >
               <p>Sign Out</p>
           </ListItem>
+          </div>
         </List>
       </Drawer>
     </div>

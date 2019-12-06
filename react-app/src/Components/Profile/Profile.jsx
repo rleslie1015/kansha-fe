@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 			  backgroundColor: 'transparent'	
 			},
 			'*::-webkit-scrollbar-thumb': {
-			  backgroundColor: '#EE4D71',
+			  backgroundColor: '#3A3845',
 			  borderRadius: '10px',
 			}
 		},
