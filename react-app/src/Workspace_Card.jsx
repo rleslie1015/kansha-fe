@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import RecogModal from './Components/RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
     card_container: {
@@ -67,29 +68,24 @@ export default function Workspace_Card(props) {
 							<CardContent className={classes.card_content} >
 									<Avatar
 										alt="profile picture"
-										src={users.profile_picture}
+										src={user.profile_picture}
 										className={classes.avatar}
 									/>
                                     <MoreVertIcon className={classes.vert_icon}/>
 								<Typography variant="h5" component="h2">
-									{users.first_name} {users.last_name}
+									{user.first_name} {user.last_name}
 								</Typography>
 								<Typography className={classes.job_title}>
-									{users.job_title}
+									{user.job_title}
 								</Typography>
 								<Typography
 									className={classes.department}
 									color="textSecondary">
-									{users.department}
+									{user.department}
 								</Typography>
 							</CardContent>
 							<CardActions className={classes.card_actions}>
-								<Button
-									variant="contained"
-									className={classes.button_dark}
-									onClick={null}>
-									Thank
-								</Button>
+								<RecogModal {...user}/>
 								<Button
 									variant="contained"
 									className={classes.button}>
