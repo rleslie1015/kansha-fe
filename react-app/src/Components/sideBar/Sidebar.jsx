@@ -24,10 +24,10 @@ import settings from '../../assests/settings.png';
 import signOut from '../../assests/signout.png';
 import 'typeface-montserrat';
 import { connect } from 'react-redux';
-import { SidebarLink } from './SidebarLink'
-​
+import { SidebarLink } from './SideBarLink'
+
 const drawerWidth = 240;
-​
+
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
@@ -165,20 +165,20 @@ const useStyles = makeStyles(theme => ({
 		marginTop: '10vh',
 	},
 }));
-​
+
 function Sidebar({ user }) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
-​
+
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
-​
+
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
-​
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -315,5 +315,5 @@ function Sidebar({ user }) {
 		</div>
 	);
 }
-​
+
 export default connect(state => ({ ...state }), {})(Sidebar);

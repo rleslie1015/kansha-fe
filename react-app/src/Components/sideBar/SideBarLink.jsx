@@ -7,9 +7,9 @@ import {
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
-​
+
 const drawerWidth = 240;
-​
+
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
@@ -149,11 +149,11 @@ const useStyles = makeStyles(theme => ({
 		marginTop: '10vh',
 	},
 }));
-​
+
 export function SidebarLink({ name, path, open, icon }) {
     const classes = useStyles()
     const history = useHistory()
-​
+    
 	return (
 		<ListItem button key={name} onClick={()=> history.push(path)}>
 			<ListItemIcon

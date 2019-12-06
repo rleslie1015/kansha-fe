@@ -7,6 +7,7 @@ import { login } from './store/actions/user-actions';
 import badge1 from './assests/badge1.png';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import Sidebar from './Components/sideBar/Sidebar'
 
 const useStyles = makeStyles(theme => ({
     profileDiv: {
