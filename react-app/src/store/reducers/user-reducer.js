@@ -12,6 +12,7 @@ import {
 	USER_UPDATE_PICTURE_START,
 	USER_UPDATE_PICTURE_SUCCESS,
 	USER_UPDATE_PICTURE_FAILURE,
+	USER_UPDATE_PICTURE_BAD_CONTENT,
 } from '../actions/user-actions';
 
 const initialState = {
@@ -112,6 +113,12 @@ export const userReducer = (state = initialState, action) => {
 				...state,
 				isUploading: false,
 				error: action.payload,
+			};
+		case USER_UPDATE_PICTURE_BAD_CONTENT:
+			return {
+				...state,
+				isUploading: false,
+				uploadError: { type: action.type, message: `Invalid filetype: ${action.payload}. ` }
 			};
 		default:
 			return state;
