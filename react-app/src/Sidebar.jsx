@@ -101,14 +101,14 @@ const useStyles = makeStyles(theme => ({
     color: '#EE4D71',
     marginLeft: '25%',
     '&:hover': {
-      backgroundColor: '#2D2C35',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
     },
   },
   signoutClosed: {
     marginTop: '20vh',
+    backgroundColor: '#2D2C35',
     '&:hover': {
-      color: '#EE4D71'
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
     },
   },
   menuClosed: {
@@ -187,7 +187,7 @@ const useStyles = makeStyles(theme => ({
   },
   listItem1: {
     marginTop: '10vh'
-  }
+  },
 }));
 
 function Sidebar({ user }) {
@@ -300,14 +300,12 @@ function Sidebar({ user }) {
         {/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
         <List className={clsx({[classes.signoutOpen]: open, [classes.signoutClosed]: !open})}>
             {/* this populates the sign out icon on the closed menu and text on the open menu */}
-            <div className={classes.signoutDiv}>
             <ListItem button key='Sign Out' >
               <ListItemIcon className={clsx(classes.menuOpen, {[classes.hide]: open, [classes.closedInactive]: !open})}>
                 <img src={signOut} alt='sign out icon' className={classes.icons} />
               </ListItemIcon >
               <p>Sign Out</p>
           </ListItem>
-          </div>
         </List>
       </Drawer>
     </div>
