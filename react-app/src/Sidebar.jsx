@@ -16,10 +16,14 @@ import signOut from './assests/signout.png';
 import 'typeface-montserrat';
 import { connect } from 'react-redux';
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+  '@global': {
+		'*::-webkit-scrollbar': {
+      display: 'none',
+    }
+	},
   root: {
     display: 'flex',
   },
@@ -27,12 +31,17 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     marginLeft: '-4%',
     width: '100%',
-    height: 'auto'
+    height: 'auto',
+  },
+  menuBottonDiv: {
+    '&:hover': {
+			backgroundColor: 'red',
+		},
   },
   closeMenuButton: {
     marginLeft: '-75%',
     width: '15%',
-    height: 'auto'
+    height: 'auto',
   },
   hide: {
     display: 'none',
@@ -103,6 +112,8 @@ const useStyles = makeStyles(theme => ({
   img: {
     width: '50%',
     height: 'auto',
+    maxWidth: '115px',
+    maxHeight: '115px',
     marginLeft: '25%',
     borderRadius: '50%',
     background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)', 
@@ -202,6 +213,7 @@ function Sidebar({ user }) {
           </IconButton>
           {/* this is the close menu button */}
         <div>
+          <div className={classes.menuBottonDiv}>
             <IconButton 
               aria-label="close drawer"
               onClick={handleDrawerClose} 
@@ -211,6 +223,7 @@ function Sidebar({ user }) {
             >
                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <img src={closeMenu} alt='close menu icon' className={classes.closeMenuButton} />}
             </IconButton>
+          </div>
             {/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
             <div className={clsx(classes.header, {
                 [classes.hide]: !open
@@ -231,7 +244,7 @@ function Sidebar({ user }) {
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={profile} alt='profile icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Profile</p>
           </ListItem>
-          <ListItem button key='Workspace' >            
+          <ListItem button key='Workspace' >          
             <ListItemIcon className={clsx({[classes.closedInactive]: !open, [classes.openInactive]: open, [classes.icons]: !open, [classes.iconsOpen]: open})}><img src={workspace} alt='workspace icon' className={classes.icons} /></ListItemIcon >
             <p className={classes.listText}>Workspace</p>
           </ListItem>

@@ -31,12 +31,16 @@ const useStyles = makeStyles(theme => ({
 	recProfilePic: {
 		borderRadius: '100%',
 		width: '70%',
+		maxWidth: '75px',
+		maxHeight: '75px',
 		display: 'flex',
 		justifyContent: 'flex-start',
 	},
 	recSentLogo: {
 		borderRadius: '100%',
-        width: '70%',
+		width: '70%',
+		maxWidth: '75px',
+		maxHeight: '75px',
 	},
 	recSender: {
 		display: 'flex',
