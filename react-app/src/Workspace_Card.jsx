@@ -63,8 +63,8 @@ export default function Workspace_Card(props) {
     return (
         <div>
             <div className={classes.card_container} >
-					{props.team.map(users => (
-						<Card className={classes.card} key={users.id}>
+					{props.team.map(user => (
+						<Card className={classes.card} key={user.id}>
 							<CardContent className={classes.card_content} >
 									<Avatar
 										alt="profile picture"
