@@ -35,6 +35,8 @@ const useStyles = makeStyles(theme => ({
 		maxHeight: '75px',
 		display: 'flex',
 		justifyContent: 'flex-start',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+
 	},
 	recSentLogo: {
 		borderRadius: '100%',

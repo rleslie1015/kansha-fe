@@ -10,18 +10,6 @@ import { RecognitionCard } from './RecognitionCard';
 import { SideBar } from '../../Sidebar';
 
 const useStyles = makeStyles(theme => ({
-	'@global': {
-		'*::-webkit-scrollbar': {
-		  width: '.5rem',
-		},
-		'*::-webkit-scrollbar-corner': {
-		  backgroundColor: 'transparent'	
-		},
-		'*::-webkit-scrollbar-thumb': {
-		  backgroundColor: '#EE4D71',
-		  borderRadius: '10px',
-		}
-	},
 	profileDiv: {
 		backgroundColor: '#26242D',
 	},
@@ -31,6 +19,18 @@ const useStyles = makeStyles(theme => ({
 		width: '100vw',
 		maxHeight: '100vh',
 		paddingTop: '2.5rem',
+		'@global': {
+			'*::-webkit-scrollbar': {
+			  width: '.5rem',
+			},
+			'*::-webkit-scrollbar-corner': {
+			  backgroundColor: 'transparent'	
+			},
+			'*::-webkit-scrollbar-thumb': {
+			  backgroundColor: '#EE4D71',
+			  borderRadius: '10px',
+			}
+		},
 	},
 	leftContainer: {
 		display: 'flex',

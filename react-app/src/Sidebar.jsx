@@ -19,24 +19,29 @@ import { connect } from 'react-redux';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
-		'*::-webkit-scrollbar': {
-      display: 'none',
-    }
-	},
+  
   root: {
     display: 'flex',
+    '@global': {
+      '*::-webkit-scrollbar': {
+        display: 'none',
+      }
+    },
   },
   menuButton: {
     color: 'white',
-    marginLeft: '-4%',
+    margin: '1%',
     width: '100%',
     height: 'auto',
+    '&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
   },
   menuBottonDiv: {
+    backgroundColor: '#2D2C35',
     '&:hover': {
-			backgroundColor: 'red',
-		},
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+    },
   },
   closeMenuButton: {
     marginLeft: '-75%',
@@ -53,6 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerOpen: {
     color: 'white',
+    overflow:'hidden',
     backgroundColor: '#2D2C35',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -62,6 +68,8 @@ const useStyles = makeStyles(theme => ({
   },
   drawerClose: {
     color: 'white',
+    overflow:'hidden',
+    border: 'none',
     backgroundColor: '#2D2C35',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -122,7 +130,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '20%',
     width: '75%',
     height: 'auto',
-    marginTop: '15%'
+    marginTop: '15%',
   },
   iconsOpen: {
     paddingLeft: '20%',
@@ -150,7 +158,7 @@ const useStyles = makeStyles(theme => ({
     padding: '2% 3% 2% 3%',
     width: '75%',
     marginLeft: '-15%',
-    marginRight: '15%'
+    marginRight: '15%',
   },
   openInactive: {
     padding: '2% 3% 2% 3%',
@@ -200,6 +208,7 @@ function Sidebar({ user }) {
         open={open}
       >
           {/* This is the open menu button */}
+          <div className={classes.menuBottonDiv}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -211,6 +220,7 @@ function Sidebar({ user }) {
           >
             <img src={openMenu} alt='open menu icon' className={classes.icons} />
           </IconButton>
+          </div>
           {/* this is the close menu button */}
         <div>
           <div className={classes.menuBottonDiv}>
