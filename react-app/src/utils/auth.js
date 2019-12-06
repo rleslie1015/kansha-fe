@@ -1,15 +1,12 @@
 import auth0 from 'auth0-js';
 import jwtDecode from 'jwt-decode';
 
-const LOGIN_SUCCESS_PAGE = '/home';
-const LOGIN_FAILURE_PAGE = '/';
-
 export default class Auth {
 	auth0 = new auth0.WebAuth({
-		domain: 'kansha.auth0.com',
+		domain: process.env.REACT_APP_AUTH_DOMAIN,
 		clientID: process.env.REACT_APP_CLIENT_ID,
-		redirectUri: process.env.REACT_APP_REDIRECT_URI,
-		audience: 'https://kansha.auth0.com/userinfo',
+		redirectUri: `${process.env.REACT_APP_REDIRECT_URI_BASE}/auth`,
+		audience: `https://${process.env.REACT_APP_AUTH_DOMAIN}/userinfo`,
 		responseType: 'token id_token',
 		scope: 'openid profile',
 	});
@@ -22,7 +19,8 @@ export default class Auth {
 		this.auth0.authorize();
 	}
 
-	handleAuthentication() {
+	handleAuthentication(cb) {
+		console.log('foo')
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
@@ -32,11 +30,11 @@ export default class Auth {
 				localStorage.setItem('id_token', authResults.idToken);
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
-				window.location.pathname = LOGIN_SUCCESS_PAGE;
-				console.log(authResults.accessToken);
+				console.log('hello world')
+				cb()
 			} else if (err) {
-				window.location.pathname = LOGIN_FAILURE_PAGE;
-				console.log(err);
+				console.log(err)
+				cb(err)
 			}
 		});
 	}
@@ -50,7 +48,7 @@ export default class Auth {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('expires_at');
-		window.location.pathname = LOGIN_FAILURE_PAGE;
+		window.location.pathname = '/';
 	}
 
 	getProfile() {
