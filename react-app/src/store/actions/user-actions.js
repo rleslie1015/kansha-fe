@@ -20,6 +20,8 @@ export const USER_ONBOARDING_FAILURE = 'USER_ONBOARDING_FAILURE';
 export const USER_UPDATE_PICTURE_START = 'USER_UPDATE_PICTURE_START';
 export const USER_UPDATE_PICTURE_SUCCESS = 'USER_UPDATE_PICTURE_SUCCESS';
 export const USER_UPDATE_PICTURE_FAILURE = 'USER_UPDATE_PICTURE_FAILURE';
+export const USER_UPDATE_PICTURE_BAD_CONTENT = 'USER_UPDATE_PICTURE_BAD_CONTENT';/* <- for when users attempt to upload bad file types */
+
 
 // ACTION CREATORS
 
@@ -109,3 +111,9 @@ export const uploadPicture = data => dispatch => {
 			dispatch({ type: USER_UPDATE_PICTURE_FAILURE, payload: err });
 		});
 };
+
+
+export const uploadBadContent = (badType, types) => dispatch => {
+	let payload = { badType, types }
+	dispatch({ type: USER_UPDATE_PICTURE_BAD_CONTENT, payload })
+}
