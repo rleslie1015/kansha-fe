@@ -30,8 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   button: {
-      width: '50%',
-      margin: '1rem 8rem',
+      padding: '0.5em 3em',
       backgroundColor: '#2D2C35',
       color: '#EE4D71',
       textDecoration: 'none',

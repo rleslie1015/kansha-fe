@@ -10,21 +10,23 @@ import Avatar from '@material-ui/core/Avatar';
 import RecogModal from './Components/RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
-    card_container: {
+	card_container: {
 		display: 'flex',
+		flexWrap: 'wrap',
 	},
 	card: {
-        position: 'relative',
+		position: 'relative',
 		minWidth: 275,
-		margin: 20,
-		backgroundColor: '#252525',
+		margin: 10,
+		backgroundColor: '#2D2C35',
 		color: 'white',
-    },
-    vert_icon: {
-        position: "absolute",
-        top: '10px',
-        right: '10px'
-    },
+		width: '30%',
+	},
+	vert_icon: {
+		position: "absolute",
+		top: '10px',
+		right: '10px'
+	},
 	card_content: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -32,14 +34,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	title: {
 		fontSize: 14,
-    },
-    job_title: {
-        fontFamily: 'Roboto',
-        fontSize: '1.3em'
-    },
+	},
+	job_title: {
+		fontFamily: 'Roboto',
+		fontSize: '1.3em'
+	},
 	department: {
-        fontFamily: 'Roboto',
-        fontWeight: '300',
+		fontFamily: 'Roboto',
+		fontWeight: '300',
 		marginBottom: 12,
 		color: 'white',
 	},
@@ -50,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	card_actions: {
 		display: 'flex',
-		justifyContent: 'space-evenly',
+		justifyContent: 'center'
 	},
 	button_dark: {
 		backgroundColor: '#575757',
@@ -59,42 +61,42 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Workspace_Card(props) {
-    const classes = useStyles();
-    return (
-        <div>
-            <div className={classes.card_container} >
-					{props.team.map(user => (
-						<Card className={classes.card} key={user.id}>
-							<CardContent className={classes.card_content} >
-									<Avatar
-										alt="profile picture"
-										src={user.profile_picture}
-										className={classes.avatar}
-									/>
-                                    <MoreVertIcon className={classes.vert_icon}/>
-								<Typography variant="h5" component="h2">
-									{user.first_name} {user.last_name}
-								</Typography>
-								<Typography className={classes.job_title}>
-									{user.job_title}
-								</Typography>
-								<Typography
-									className={classes.department}
-									color="textSecondary">
-									{user.department}
-								</Typography>
-							</CardContent>
-							<CardActions className={classes.card_actions}>
-								<RecogModal {...user}/>
-								<Button
+	const classes = useStyles();
+	return (
+		<div>
+			<div className={classes.card_container} >
+				{props.team.map(user => (
+					<Card className={classes.card} key={user.id}>
+						<CardContent className={classes.card_content} >
+							<Avatar
+								alt="profile picture"
+								src={user.profile_picture}
+								className={classes.avatar}
+							/>
+							<MoreVertIcon className={classes.vert_icon} />
+							<Typography variant="h5" component="h2">
+								{user.first_name} {user.last_name}
+							</Typography>
+							<Typography className={classes.job_title}>
+								{user.job_title}
+							</Typography>
+							<Typography
+								className={classes.department}
+								color="textSecondary">
+								{user.department}
+							</Typography>
+						</CardContent>
+						<CardActions className={classes.card_actions}>
+							<RecogModal {...user} />
+							{/* <Button
 									variant="contained"
 									className={classes.button}>
 									View Profile
-								</Button>
-							</CardActions>
-						</Card>
-					))}
-				</div>
-        </div>
-    )
+								</Button> */}
+						</CardActions>
+					</Card>
+				))}
+			</div>
+		</div>
+	)
 }
