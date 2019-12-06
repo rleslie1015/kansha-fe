@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { login } from '../../store/actions/user-actions';
 import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import SideBar from '../Sidebar'
+import { SideBar } from '../sideBar'
 
 function Login({ isLoggingIn, isOnboarding, login, profile, component: Component, history }) {
 	useEffect(() => {
-		login();
-	}, [login]);
+		if (!profile) {
+			login();
+		}
+	}, [login, profile]);
 
-	if (localStorage.getItem('id_token') && !isLoggingIn && profile) {
+	if (!isLoggingIn && profile) {
 		return (<>
         <SideBar />
         <Component history={ history } />
