@@ -62,10 +62,10 @@ export default function Workspace_Card(props) {
     const classes = useStyles();
     return (
         <div>
-            <div className={classes.card_container}>
+            <div className={classes.card_container} >
 					{props.team.map(user => (
-						<Card className={classes.card}>
-							<CardContent className={classes.card_content}>
+						<Card className={classes.card} key={user.id}>
+							<CardContent className={classes.card_content} >
 									<Avatar
 										alt="profile picture"
 										src={user.profile_picture}

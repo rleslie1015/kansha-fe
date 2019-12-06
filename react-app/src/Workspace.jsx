@@ -74,7 +74,7 @@ export default function Workspace() {
 	const [team, setTeam] = useState([]);
 
 	const [fitleredTeam, setFilteredTeam] = useState([]);
-	console.log(fitleredTeam);
+	// console.log(fitleredTeam);
 
 	useEffect(() => {
 		axiosWithAuth()
