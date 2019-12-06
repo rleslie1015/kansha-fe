@@ -24,6 +24,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     color: 'white'
   },
+
+  cancelButton: {
+    alignSelf: 'flex-start'
+  },
+
   button: {
       width: '50%',
       margin: '1rem 8rem',
@@ -111,8 +116,6 @@ function RecogModal(props) {
         Thank
       </Button>
       <Modal
-        // aria-labelledby="spring-modal-title"
-        // aria-describedby="spring-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -124,16 +127,13 @@ function RecogModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+              <img src = 'https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png' onClick = {handleClose} className={classes.cancelButton} />
               <img src = {profile_picture} />
               <p>{first_name} {last_name}</p>
               <p>{job_title}</p>
               <p>{department}</p>
-            
-            {/* <h2 id="spring-modal-title">Recognition Form</h2>
-            <p id="spring-modal-description">react-spring animates me.</p> */}
             <FormControl className={classes.form}>
             <TextField
-				// label="Type Your Message Here"
 				name="message"
                 onChange={handleChange}
                 id="standard-multiline-static"
@@ -142,7 +142,7 @@ function RecogModal(props) {
                 defaultValue="Type your message here"
                 margin="normal"
                 variant='outlined'
-			/>
+			      />
             </FormControl>
             <Button
 				className={classes.recogButton}
