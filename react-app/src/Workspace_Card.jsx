@@ -11,11 +11,12 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles(theme => ({
     card_container: {
 		display: 'flex',
+		flexWrap: 'wrap'
 	},
 	card: {
         position: 'relative',
 		minWidth: 275,
-		margin: 20,
+		margin: 10,
 		backgroundColor: '#252525',
 		color: 'white',
     },
@@ -90,11 +91,11 @@ export default function Workspace_Card(props) {
 									onClick={null}>
 									Thank
 								</Button>
-								<Button
+								{/* <Button
 									variant="contained"
 									className={classes.button}>
 									View Profile
-								</Button>
+								</Button> */}
 							</CardActions>
 						</Card>
 					))}
