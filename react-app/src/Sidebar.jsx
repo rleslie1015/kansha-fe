@@ -69,14 +69,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
   },
   signoutOpen: {
-    marginTop: '19vh',
+    marginTop: '13vh',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '16px',
     lineHeight: '20px',
     color: '#EE4D71',
-    marginLeft: '25%'
+    marginLeft: '25%',
   },
   signoutClosed: {
     marginTop: '20vh'
@@ -104,7 +104,8 @@ const useStyles = makeStyles(theme => ({
     width: '50%',
     height: 'auto',
     marginLeft: '25%',
-    borderRadius: '50%', 
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)', 
   },
   icons: {
     paddingLeft: '20%',

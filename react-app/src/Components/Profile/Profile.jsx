@@ -12,10 +12,14 @@ import { SideBar } from '../../Sidebar';
 const useStyles = makeStyles(theme => ({
 	'@global': {
 		'*::-webkit-scrollbar': {
-		  width: '0.4em'
+		  width: '.5rem',
+		},
+		'*::-webkit-scrollbar-corner': {
+		  backgroundColor: 'transparent'	
 		},
 		'*::-webkit-scrollbar-thumb': {
 		  backgroundColor: '#EE4D71',
+		  borderRadius: '10px',
 		}
 	},
 	profileDiv: {
@@ -25,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'row',
 		width: '100vw',
-		minHeight: '100vh',
+		maxHeight: '100vh',
 		paddingTop: '2.5rem',
 	},
 	leftContainer: {
