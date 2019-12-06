@@ -24,19 +24,34 @@ import settings from '../../assests/settings.png';
 import signOut from '../../assests/signout.png';
 import 'typeface-montserrat';
 import { connect } from 'react-redux';
-import { SidebarLink } from './SideBarLink'
+import { SidebarLink } from './SideBarLink';
+import { signout } from '../Auth';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
+		'@global': {
+			'*::-webkit-scrollbar': {
+				display: 'none',
+			},
+		},
 	},
 	menuButton: {
 		color: 'white',
-		marginLeft: '-4%',
+		margin: '1%',
 		width: '100%',
 		height: 'auto',
+		'&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
+	},
+	menuBottonDiv: {
+		backgroundColor: '#2D2C35',
+		'&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
 	},
 	closeMenuButton: {
 		marginLeft: '-75%',
@@ -53,6 +68,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	drawerOpen: {
 		color: 'white',
+		overflow: 'hidden',
 		backgroundColor: '#2D2C35',
 		width: drawerWidth,
 		transition: theme.transitions.create('width', {
@@ -62,6 +78,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	drawerClose: {
 		color: 'white',
+		overflow: 'hidden',
+		border: 'none',
 		backgroundColor: '#2D2C35',
 		transition: theme.transitions.create('width', {
 			easing: theme.transitions.easing.sharp,
@@ -77,8 +95,14 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1,
 		padding: theme.spacing(3),
 	},
+	menuItemDiv: {
+		backgroundColor: '#2D2C35',
+		'&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
+	},
 	signoutOpen: {
-		marginTop: '19vh',
+		marginTop: '13vh',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
@@ -86,9 +110,16 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '20px',
 		color: '#EE4D71',
 		marginLeft: '25%',
+		'&:hover': {
+			color: '#FFFFFF',
+		},
 	},
 	signoutClosed: {
 		marginTop: '20vh',
+		backgroundColor: '#2D2C35',
+		'&:hover': {
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
 	},
 	menuClosed: {
 		marginTop: '25vh',
@@ -110,10 +141,15 @@ const useStyles = makeStyles(theme => ({
 		textAlign: 'center',
 	},
 	img: {
-		width: '50%',
-		height: 'auto',
+		// Hard coding until we can make a circle img cropper for users
+		width: '115px',
+		height: '115px',
+		objectFit: 'cover',
+		objectPosition: '50% 50%',
+		marginTop: '4%',
 		marginLeft: '25%',
 		borderRadius: '50%',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 	},
 	icons: {
 		paddingLeft: '20%',
@@ -196,38 +232,42 @@ function Sidebar({ user }) {
 				}}
 				open={open}>
 				{/* This is the open menu button */}
-				<IconButton
-					color="inherit"
-					aria-label="open drawer"
-					onClick={handleDrawerOpen}
-					edge="start"
-					className={clsx(classes.menuButton, {
-						[classes.hide]: open,
-					})}>
-					<img
-						src={openMenu}
-						alt="open menu icon"
-						className={classes.icons}
-					/>
-				</IconButton>
+				<div className={classes.menuBottonDiv}>
+					<IconButton
+						color="inherit"
+						aria-label="open drawer"
+						onClick={handleDrawerOpen}
+						edge="start"
+						className={clsx(classes.menuButton, {
+							[classes.hide]: open,
+						})}>
+						<img
+							src={openMenu}
+							alt="open menu icon"
+							className={classes.icons}
+						/>
+					</IconButton>
+				</div>
 				{/* this is the close menu button */}
 				<div>
-					<IconButton
-						aria-label="close drawer"
-						onClick={handleDrawerClose}
-						className={clsx(classes.menuButton, {
-							[classes.hide]: !open,
-						})}>
-						{theme.direction === 'rtl' ? (
-							<ChevronRightIcon />
-						) : (
-							<img
-								src={closeMenu}
-								alt="close menu icon"
-								className={classes.closeMenuButton}
-							/>
-						)}
-					</IconButton>
+					<div className={classes.menuBottonDiv}>
+						<IconButton
+							aria-label="close drawer"
+							onClick={handleDrawerClose}
+							className={clsx(classes.menuButton, {
+								[classes.hide]: !open,
+							})}>
+							{theme.direction === 'rtl' ? (
+								<ChevronRightIcon />
+							) : (
+								<img
+									src={closeMenu}
+									alt="close menu icon"
+									className={classes.closeMenuButton}
+								/>
+							)}
+						</IconButton>
+					</div>
 					{/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
 					<div
 						className={clsx(classes.header, {
@@ -252,7 +292,7 @@ function Sidebar({ user }) {
 						[classes.menuOpen]: open,
 					})}>
 					<SidebarLink
-						path="/profile"
+						path="/home"
 						name="Home"
 						icon={home}
 						open={open}
@@ -270,19 +310,19 @@ function Sidebar({ user }) {
 						open={open}
 					/>
 					<SidebarLink
-						path="/workspace"
+						path="/workspace#send_reward"
 						name="Send Reward"
 						icon={sendReward}
 						open={open}
 					/>
 					<SidebarLink
-						path="/profile"
+						path="/profile#history"
 						name="Rewards History"
 						icon={rewardHistory}
 						open={open}
 					/>
 					<SidebarLink
-						path="/profile"
+						path="/profile#settings"
 						name="Settings"
 						icon={settings}
 						open={open}
@@ -295,8 +335,8 @@ function Sidebar({ user }) {
 						[classes.signoutOpen]: open,
 						[classes.signoutClosed]: !open,
 					})}>
-					{/* this p  opulates the sign out icon on the closed menu and text on the open menu */}
-					<ListItem button key="Sign Out">
+					{/* this populates the sign out icon on the closed menu and text on the open menu */}
+					<ListItem button onClick={() => signout()} key="Sign Out">
 						<ListItemIcon
 							className={clsx(classes.menuOpen, {
 								[classes.hide]: open,
