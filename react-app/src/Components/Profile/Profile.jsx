@@ -210,7 +210,7 @@ function Profile({ profile }) {
 						</Typography>
 						<Box className={classes.activityContainer}>
 						{profile &&
-							profile.rec.map(recognition => (
+							profile.rec.reverse().map(recognition => (
 								<RecognitionCard
 									key={recognition.id}
 									sent={profile.id === recognition.sender}
