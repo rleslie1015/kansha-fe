@@ -7,7 +7,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import { FileUpload } from '../FileUpload'
 import { RecognitionCard } from './RecognitionCard';
-import { SideBar } from '../../Sidebar';
+import { SideBar } from '../Sidebar';
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
@@ -147,13 +147,13 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
+		
 		width: '100%',
-		height: '90vh',
+		height: '100%',
 		backgroundColor: '#2D2C35',
 	},
 	activityContainer: {
 		overflow: 'scroll',
-		
 	},
 }));
 

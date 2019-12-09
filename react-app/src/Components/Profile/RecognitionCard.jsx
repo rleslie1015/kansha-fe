@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		backgroundColor: '#3A3845',
 		margin: '1rem 1rem 1rem 1rem',
-		maxHeight: '30%',
+		// maxHeight: '30%',
 		height: 'auto',
 		padding: '.5rem',
 	},
@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
   		objectPosition: '50% 50%',
 		display: 'flex',
 		justifyContent: 'flex-start',
-
 	},
 	recSentLogo: {
 		borderRadius: '100%',
@@ -73,7 +72,6 @@ const useStyles = makeStyles(theme => ({
 		opacity: '0.5',
 		width: '100%',
 		paddingTop: '.5rem',
-
 	},
 	recCardMessage: {
 		fontFamily: 'Montserrat',
