@@ -24,7 +24,16 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     color: 'white'
   },
-
+  profPic: {
+    width: '240px',
+    height: '240px',
+    borderRadius: '100%',
+    maxHeight: '200px',
+    maxWidth: '200px',
+    background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+  	objectPosition: '50% 50%',
+  },
   cancelButton: {
     alignSelf: 'flex-start'
   },
@@ -98,7 +107,9 @@ function RecogModal(props) {
   };
 
   const handleSubmit = event => {
-      props.sendRecog(recog);
+      props.sendRecog(recog)
+      alert('Recognition Sent!')
+      handleClose();
   };
 
   const handleOpen = () => {
@@ -111,7 +122,7 @@ function RecogModal(props) {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen} className={classes.button}>
+      <Button type="button" onClick={handleOpen}  className={classes.button}>
         Thank
       </Button>
       <Modal
@@ -127,7 +138,7 @@ function RecogModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
               <img src = 'https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png' onClick = {handleClose} className={classes.cancelButton} />
-              <img src = {profile_picture} />
+              <img src = {profile_picture} className={classes.profPic} />
               <p>{first_name} {last_name}</p>
               <p>{job_title}</p>
               <p>{department}</p>
@@ -138,7 +149,7 @@ function RecogModal(props) {
                 id="standard-multiline-static"
                 multiline
                 rows="4"
-                defaultValue="Type your message here"
+                placeholder="Type your message here"
                 margin="normal"
                 variant='outlined'
 			      />
