@@ -3,7 +3,7 @@ import Enzyme from 'enzyme';
 import { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Workspace from '../Workspace';
-import { InputBase } from '@material-ui/core';
+import { InputBase, SearchIcon } from '@material-ui/core';
 import { act } from 'react-dom/test-utils';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -25,18 +25,17 @@ describe('Workspace', () => {
         expect(wrapper.find('Workspace'))
     });
 
-    it('it should fire a click event to open the menu', () => {
+    it('it should fire a key press event in the search bar ', () => {
         const wrapper = shallow(<Workspace />);
 
         wrapper.find(InputBase).first().simulate('keypress', { key: 'a' });
         expect(wrapper.prop('onKeyUp'))
-    })
+    });
 
-    it("fetches and displays data", async () => {
-        let component;
-        act(() => {
-            component = mount(<Workspace />);
-        });
-        expect(component.text()).toBe("Workspace")
+    it('it should find the icon in the search bar', () => {
+        const wrapper = shallow(<Workspace />);
+
+        expect(wrapper.find(<div><SearchIcon/></div>))
+
     })
 })
