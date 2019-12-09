@@ -7,7 +7,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import { FileUpload } from '../FileUpload'
 import { RecognitionCard } from './RecognitionCard';
-import { SideBar } from '../Sidebar';
+import { SideBar } from '../../Sidebar';
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../../store/actions/user-actions';
 import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import SideBar from '../Sidebar'
+import SideBar from '../../Sidebar'
 
 function Login({ isLoggingIn, isOnboarding, login, profile, component: Component, history }) {
 	useEffect(() => {
