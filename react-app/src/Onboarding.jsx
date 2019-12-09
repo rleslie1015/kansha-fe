@@ -170,7 +170,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Onboarding({ onboard, history }) {
+function Onboarding({ onboard }) {
 	const classes = useStyles();
 
   const history = useHistory();
