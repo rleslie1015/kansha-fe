@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,12 +6,12 @@ import InputBase from '@material-ui/core/InputBase';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
 	container: {
 		fontFamily: 'Montserrat',
-		backgroundColor: '#202020',
-		color: 'white',
+		backgroundColor: '#26242D',
 	},
 	root: {
 		width: '100vw',
@@ -74,11 +73,11 @@ export default function Workspace() {
 	const [team, setTeam] = useState([]);
 
 	const [fitleredTeam, setFilteredTeam] = useState([]);
-	console.log(fitleredTeam);
+	// console.log(fitleredTeam);
 
 	useEffect(() => {
-		axios
-			.get('http://localhost:8000/users/')
+		axiosWithAuth()
+			.get('/users')
 			.then(res => {
 				setTeam(res.data);
 				console.log(res);
