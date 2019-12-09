@@ -162,7 +162,7 @@ function Profile({ profile }) {
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
-			<Link to="/workspace">workspace</Link>
+			{/* <Link to="/workspace">workspace</Link> */}
 			<Container fixed className={classes.root}>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
