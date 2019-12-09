@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -175,6 +176,9 @@ const auth = new Auth();
 
 function Onboarding(props) {
 	const classes = useStyles();
+
+	const history = useHistory();
+
 	const [form, setForm] = useState({
 		first_name: '',
 		last_name: '',
@@ -190,6 +194,8 @@ function Onboarding(props) {
 
 	const handleSubmit = event => {
 		props.onboard(form);
+		history.push('/profile')
+
 	};
 	return (
 		<div id="App" className={classes.root}>
