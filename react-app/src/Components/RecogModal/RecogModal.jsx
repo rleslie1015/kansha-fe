@@ -8,6 +8,7 @@ import {TextField, Button, FormControl} from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
 import { connect } from 'react-redux'
 
+
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    color: 'white'
+    color: 'white',
   },
   profPic: {
     width: '240px',
@@ -32,12 +33,12 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '200px',
     background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
-  	objectPosition: '50% 50%',
+    objectPosition: '50% 50%',
   },
   cancelButton: {
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    cursor: 'pointer',
   },
-
   button: {
       width: '50%',
       margin: '1rem 8rem',
@@ -51,13 +52,20 @@ const useStyles = makeStyles(theme => ({
     margin: '1rem 8rem',
     background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
     color: 'white',
-    textDecoration: 'none',
-    
+    textDecoration: 'none',  
 },
-  form: {
-      width: '90%',
-      backgroundColor: 'white'
-  }
+  textField: {
+      width: '568px',
+      backgroundColor: 'white',
+      padding: '.5rem',
+  },
+	input: {
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+	},
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -143,16 +151,23 @@ function RecogModal(props) {
               <p>{first_name} {last_name}</p>
               <p>{job_title}</p>
               <p>{department}</p>
-            <FormControl className={classes.form}>
+            <FormControl>
             <TextField
-				name="message"
+                className= {classes.textField}
+				        name="message"
                 onChange={handleChange}
                 id="standard-multiline-static"
                 multiline
                 rows="4"
-                placeholder="Type your message here"
+                placeholder="Type your message here..."
                 margin="normal"
-                variant='outlined'
+                InputProps={{
+                  disableUnderline: true,
+									className: classes.input,
+								}}
+								InputLabelProps={{
+									className: classes.label,
+								}}
 			      />
             </FormControl>
             <Button
