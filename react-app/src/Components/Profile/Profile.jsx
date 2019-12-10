@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
@@ -7,6 +7,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import { FileUpload } from '../FileUpload'
 import { RecognitionCard } from './RecognitionCard';
+import { login} from '../../store/actions/user-actions'
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
@@ -156,8 +157,12 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Profile({ profile }) {
+function Profile({ profile, login }) {
 	const classes = useStyles();
+
+	useEffect(() => {
+		
+	}, [login])
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
@@ -225,4 +230,4 @@ function Profile({ profile }) {
 	);
 }
 
-export default connect(({ user }) => ({ ...user }), {})(Profile);
+export default connect(({ user }) => ({ ...user }), { login })(Profile);

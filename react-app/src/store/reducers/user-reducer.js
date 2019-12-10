@@ -15,16 +15,7 @@ import {
 	USER_UPDATE_PICTURE_BAD_CONTENT,
 } from '../actions/user-actions';
 
-const initialState = {
-	profile: null,
-	isOnboarding: false,
-	isLoggingIn: false,
-	isUploading: false,
-	error: null,
-	authenticated: false,
-};
-
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = {}, action) => {
 	switch (action.type) {
 		/*
 		dispatched by the authrizeUser action creator

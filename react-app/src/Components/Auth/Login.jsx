@@ -5,12 +5,12 @@ import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import { SideBar } from '../sideBar'
 
-function Login({ isLoggingIn, isOnboarding, login, profile, component: Component, history }) {
+function Login({ isLoggingIn, isOnboarding, login, profile, component: Component, history}) {
 	useEffect(() => {
-		if (!profile) {
-			login();
-		}
-	}, [login, profile]);
+		login();
+	}, [login]);
+
+	
 
 	if (!isLoggingIn && profile) {
 		return (<>
