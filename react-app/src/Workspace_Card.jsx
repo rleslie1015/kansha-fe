@@ -49,6 +49,10 @@ const useStyles = makeStyles(theme => ({
 		margin: 10,
 		width: 100,
 		height: 100,
+		borderRadius: '100%',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+  		objectPosition: '50% 50%',
 	},
 	card_actions: {
 		display: 'flex',

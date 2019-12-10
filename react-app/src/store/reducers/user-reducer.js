@@ -15,7 +15,19 @@ import {
 	USER_UPDATE_PICTURE_BAD_CONTENT,
 } from '../actions/user-actions';
 
-export const userReducer = (state = {}, action) => {
+
+const initialState = {
+	profile: null,
+	isOnboarding: false,
+	isOnboardingLoading: false,
+	isLoggingIn: false,
+	isUploading: false,
+	error: null,
+	authenticated: false,
+};
+
+export const userReducer = (state = initialState, action) => {
+
 	switch (action.type) {
 		/*
 		dispatched by the authrizeUser action creator
@@ -70,11 +82,12 @@ export const userReducer = (state = {}, action) => {
 		case USER_ONBOARDING_START:
 			return {
 				...state,
-				isOnboarding: true,
+				isOnboardingLoading: true,
 			};
 		case USER_ONBOARDING_SUCCESS:
 			return {
 				...state,
+				isOnboardingLoading: false,
 				isOnboarding: false,
 			};
 		case USER_ONBOARDING_FAILURE:
