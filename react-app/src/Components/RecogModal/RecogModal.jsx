@@ -106,7 +106,7 @@ function RecogModal(props) {
       message: '',
       sender: props.user.profile.id,
       recipient: props.id,
-      date: new Date(Date.now())
+      date: new Date(Date.now()).toDateString()
   });
   const {first_name, last_name, job_title, department, profile_picture} = props
 
@@ -116,8 +116,7 @@ function RecogModal(props) {
 
   const handleSubmit = event => {
       props.sendRecog(recog)
-      console.log(recog)
-      alert(`Recognition Sent at ${recog.date}!`)
+      alert('Recognition Sent!')
       handleClose();
   };
 
