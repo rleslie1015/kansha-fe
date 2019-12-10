@@ -8,6 +8,7 @@ import {TextField, Button, FormControl} from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
 import { connect } from 'react-redux'
 
+
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -22,11 +23,24 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    color: 'white'
+    color: 'white',
+  },
+  profPic: {
+    width: '240px',
+    height: '240px',
+    borderRadius: '100%',
+    maxHeight: '200px',
+    maxWidth: '200px',
+    background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+    objectPosition: '50% 50%',
+  },
+  cancelButton: {
+    alignSelf: 'flex-start',
+    cursor: 'pointer',
   },
   button: {
-      width: '50%',
-      margin: '1rem 8rem',
+      padding: '0.5em 3em',
       backgroundColor: '#2D2C35',
       color: '#EE4D71',
       textDecoration: 'none',
@@ -37,13 +51,20 @@ const useStyles = makeStyles(theme => ({
     margin: '1rem 8rem',
     background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
     color: 'white',
-    textDecoration: 'none',
-    
+    textDecoration: 'none',  
 },
-  form: {
-      width: '90%',
-      backgroundColor: 'white'
-  }
+  textField: {
+      width: '568px',
+      backgroundColor: 'white',
+      padding: '.5rem',
+  },
+	input: {
+    fontFamily: 'Montserrat',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '16px',
+    lineHeight: '20px',
+	},
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -94,7 +115,9 @@ function RecogModal(props) {
   };
 
   const handleSubmit = event => {
-      props.sendRecog(recog);
+      props.sendRecog(recog)
+      alert('Recognition Sent!')
+      handleClose();
   };
 
   const handleOpen = () => {
@@ -107,12 +130,10 @@ function RecogModal(props) {
 
   return (
     <div>
-      <Button type="button" onClick={handleOpen} className={classes.button}>
+      <Button type="button" onClick={handleOpen}  className={classes.button}>
         Thank
       </Button>
       <Modal
-        // aria-labelledby="spring-modal-title"
-        // aria-describedby="spring-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -124,25 +145,29 @@ function RecogModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-              <img src = {profile_picture} />
+              <img src = 'https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png' onClick = {handleClose} className={classes.cancelButton} />
+              <img src = {profile_picture} className={classes.profPic} />
               <p>{first_name} {last_name}</p>
               <p>{job_title}</p>
               <p>{department}</p>
-            
-            {/* <h2 id="spring-modal-title">Recognition Form</h2>
-            <p id="spring-modal-description">react-spring animates me.</p> */}
-            <FormControl className={classes.form}>
+            <FormControl>
             <TextField
-				// label="Type Your Message Here"
-				name="message"
+                className= {classes.textField}
+				        name="message"
                 onChange={handleChange}
                 id="standard-multiline-static"
                 multiline
                 rows="4"
-                defaultValue="Type your message here"
+                placeholder="Type your message here..."
                 margin="normal"
-                variant='outlined'
-			/>
+                InputProps={{
+                  disableUnderline: true,
+									className: classes.input,
+								}}
+								InputLabelProps={{
+									className: classes.label,
+								}}
+			      />
             </FormControl>
             <Button
 				className={classes.recogButton}

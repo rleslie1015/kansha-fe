@@ -1,12 +1,11 @@
-import React, {useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, Box } from '@material-ui/core';
 import hero from "./images/hero-image.png";
 import Nav from './Nav';
 import Auth from '../utils/auth';
 import 'typeface-montserrat';
-import RecogModal from '../Components/RecogModal/RecogModal';
+
 
 const auth = new Auth();
 
@@ -73,7 +72,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       
       padding: "15px",
-      fontFamily: "inherit",
       fontWeight: "900",
       background: '#26242D',
       boxShadow: 'none',
@@ -112,7 +110,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       marginLeft: "0",
       padding: "15px",
-      fontFamily: "inherit",
       fontWeight: "900",
       background: 'linear-gradient(164.05deg, #EE4D71 0%, #F15A3F 100%)',
       color: 'white',
@@ -253,10 +250,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const classes = useStyles();
-
-  const history = useHistory();
 
   return (
     <div style={styles.paperContainer} className={classes.root}>
@@ -272,7 +266,7 @@ export default function Header() {
             <Button variant='contained' className={classes.learnButton} fontFamily='montserrat'>Learn More</Button>
           </div>
           <div style={styles.hero}>
-            <img src={hero} className={classes.img} />
+            <img src={hero} alt='' className={classes.img} />
           </div>
         </Typography>
       </div> 

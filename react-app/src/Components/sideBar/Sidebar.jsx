@@ -10,20 +10,22 @@ import {
 	IconButton,
 	ListItem,
 	ListItemIcon,
-	ListItemText,
 } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import openMenu from '../assests/open-menu.png';
-import closeMenu from '../assests/close-menu.png';
-import home from '../assests/home.png';
-import profile from '../assests/profile.png';
-import workspace from '../assests/workspace.png';
-import sendReward from '../assests/send.png';
-import rewardHistory from '../assests/history.png';
-import settings from '../assests/settings.png';
-import signOut from '../assests/signout.png';
+import profilePic from '../../picture/picture.png';
+import openMenu from '../../assests/open-menu.png';
+import closeMenu from '../../assests/close-menu.png';
+import home from '../../assests/home.png';
+import profile from '../../assests/profile.png';
+import workspace from '../../assests/workspace.png';
+import sendReward from '../../assests/send.png';
+import rewardHistory from '../../assests/history.png';
+import settings from '../../assests/settings.png';
+import signOut from '../../assests/signout.png';
 import 'typeface-montserrat';
 import { connect } from 'react-redux';
+import { SidebarLink } from './SideBarLink';
+import { signout } from '../Auth';
 
 const drawerWidth = 240;
 
@@ -47,8 +49,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	menuBottonDiv: {
 		backgroundColor: '#2D2C35',
-		display: 'flex',
-		alignItems: 'center',
 		'&:hover': {
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		},
@@ -96,19 +96,20 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(3),
 	},
 	menuItemDiv: {
-    backgroundColor: '#2D2C35',
+		backgroundColor: '#2D2C35',
 		'&:hover': {
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		},
 	},
 	signoutOpen: {
-		margin: '13vh auto',
+		marginTop: '13vh',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
 		fontSize: '16px',
 		lineHeight: '20px',
 		color: '#EE4D71',
+		marginLeft: '25%',
 		'&:hover': {
 			color: '#FFFFFF',
 		},
@@ -121,8 +122,7 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	menuClosed: {
-    marginTop: '25vh',
-    padding: '0%'
+		marginTop: '25vh',
 	},
 	menuOpen: {
 		marginTop: '0',
@@ -150,19 +150,16 @@ const useStyles = makeStyles(theme => ({
 		marginLeft: '25%',
 		borderRadius: '50%',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
-  },
-  openMenu: {
-    width: '50%'
-  },
+	},
 	icons: {
-		marginLeft: '20%',
-		width: '50%',
+		paddingLeft: '20%',
+		width: '75%',
 		height: 'auto',
-		margin: '10% 0%',
+		marginTop: '15%',
 	},
 	iconsOpen: {
 		paddingLeft: '20%',
-		width: '50%',
+		width: '75%',
 		height: 'auto',
 		marginTop: '0%',
 	},
@@ -247,7 +244,7 @@ function Sidebar({ user }) {
 						<img
 							src={openMenu}
 							alt="open menu icon"
-							className={classes.openMenu}
+							className={classes.icons}
 						/>
 					</IconButton>
 				</div>
@@ -294,117 +291,42 @@ function Sidebar({ user }) {
 						[classes.menuClosed]: !open,
 						[classes.menuOpen]: open,
 					})}>
-					<div className={classes.menuItemDiv}>
-						<ListItem
-							button
-							key="Home"
-							className={clsx({ [classes.listItem1]: open })}>
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={home}
-									alt="home icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Home</p>
-						</ListItem>
-					</div>
-					<div className={classes.menuItemDiv}>
-						<ListItem button key="Profile">
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={profile}
-									alt="profile icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Profile</p>
-						</ListItem>
-					</div>
-					<div className={classes.menuItemDiv}>
-						<ListItem button key="Workspace">
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={workspace}
-									alt="workspace icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Workspace</p>
-						</ListItem>
-					</div>
-					<div className={classes.menuItemDiv}>
-						<ListItem button key="Send Reward">
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={sendReward}
-									alt="send rewards icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Send Reward</p>
-						</ListItem>
-					</div>
-					<div className={classes.menuItemDiv}>
-						<ListItem button key="Rewards History">
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={rewardHistory}
-									alt="reward history icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Rewards History</p>
-						</ListItem>
-					</div>
-					<div className={classes.menuItemDiv}>
-						<ListItem button key="Settings">
-							<ListItemIcon
-								className={clsx({
-									[classes.closedInactive]: !open,
-									[classes.openInactive]: open,
-									[classes.icons]: !open,
-									[classes.iconsOpen]: open,
-								})}>
-								<img
-									src={settings}
-									alt="settings icon"
-									className={classes.icons}
-								/>
-							</ListItemIcon>
-							<p className={classes.listText}>Settings</p>
-						</ListItem>
-					</div>
+					<SidebarLink
+						path="/home"
+						name="Home"
+						icon={home}
+						open={open}
+					/>
+					<SidebarLink
+						path="/profile"
+						name="Profile"
+						icon={profile}
+						open={open}
+					/>
+					<SidebarLink
+						path="/workspace"
+						name="Workspace"
+						icon={workspace}
+						open={open}
+					/>
+					<SidebarLink
+						path="/workspace#send_reward"
+						name="Send Reward"
+						icon={sendReward}
+						open={open}
+					/>
+					<SidebarLink
+						path="/profile#history"
+						name="Rewards History"
+						icon={rewardHistory}
+						open={open}
+					/>
+					<SidebarLink
+						path="/profile#settings"
+						name="Settings"
+						icon={settings}
+						open={open}
+					/>
 				</List>
 				<Divider />
 				{/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
@@ -414,7 +336,7 @@ function Sidebar({ user }) {
 						[classes.signoutClosed]: !open,
 					})}>
 					{/* this populates the sign out icon on the closed menu and text on the open menu */}
-					<ListItem button key="Sign Out">
+					<ListItem button onClick={() => signout()} key="Sign Out">
 						<ListItemIcon
 							className={clsx(classes.menuOpen, {
 								[classes.hide]: open,
