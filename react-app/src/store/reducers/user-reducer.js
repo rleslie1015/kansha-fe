@@ -18,6 +18,7 @@ import {
 const initialState = {
 	profile: null,
 	isOnboarding: false,
+	isOnboardingLoading: false,
 	isLoggingIn: false,
 	isUploading: false,
 	error: null,
@@ -79,11 +80,12 @@ export const userReducer = (state = initialState, action) => {
 		case USER_ONBOARDING_START:
 			return {
 				...state,
-				isOnboarding: true,
+				isOnboardingLoading: true,
 			};
 		case USER_ONBOARDING_SUCCESS:
 			return {
 				...state,
+				isOnboardingLoading: false,
 				isOnboarding: false,
 			};
 		case USER_ONBOARDING_FAILURE:
