@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -159,10 +158,6 @@ const useStyles = makeStyles(theme => ({
 
 function Profile({ profile, login }) {
 	const classes = useStyles();
-
-	useEffect(() => {
-		
-	}, [login])
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
