@@ -1,62 +1,95 @@
 import React, { useMemo } from 'react';
 import { Card, Box, Typography } from '@material-ui/core';
+
 import { makeStyles } from '@material-ui/core/styles'
 import { timeAgo } from '../../utils/timeago'
 import moment from 'moment'
 
-
 const useStyles = makeStyles(theme => ({
-    recCard: {
-        display: 'flex',
-        backgroundColor: '#3A3845',
-        margin: '1rem 1rem 0 1rem',
-        height: '13%'
-    },
-    recCardSent: {
-        display: 'flex',
-        flexDirection: "row-reverse",
-        backgroundColor: '#3A3845',
-        margin: '1rem 1rem 0 1rem',
-        height: '13%'
-    },
-    recProfilePic: {
-        borderRadius: '100%',
-        width: '10%',
-        padding: '1rem',
-        height: 'auto'
-    },
-    recSender: {
-        display: 'flex',
-    },
-    recCardUser: {
-        padding: '1rem 2rem',
-        fontFamily: 'Montserrat',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: '16px',
-        lineHeight: '20px',
-        color: '#FFFFFF',
-    },
-    recCardTime: {
-        fontFamily: 'Montserrat',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: '16px',
-        lineHeight: '20px',
-        color: 'rgba(255, 255, 255, 0.5)',
-        opacity: '0.5',
-        padding: '1rem'
-    },
-    recCardMessage: {
-        padding: '0 2rem',
-        fontFamily: 'Montserrat',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: '16px',
-        lineHeight: '20px',
-        color: 'rgba(255, 255, 255, 0.7)',
-    }
-}))
+	recCard: {
+		display: 'flex',
+		alignItems: 'center',
+		backgroundColor: '#3A3845',
+		margin: '1rem 1rem 1rem 1rem',
+		// maxHeight: '30%',
+		height: 'auto',
+		padding: '.5rem',
+	},
+	recCardSent: {
+		display: 'flex',
+		flexDirection: 'row-reverse',
+		backgroundColor: '#3A3845',
+		margin: '1rem 1rem 0 1rem',
+		height: '13%',
+	},
+	recIcon: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '25%',
+		height: '100%',
+		padding: '1rem 1rem 1rem 0',
+	},
+	recProfilePic: {
+		borderRadius: '100%',
+		// Hard coding until we can make a circle img cropper for users
+		width: '75px',
+		height: '75px',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+  		objectPosition: '50% 50%',
+		display: 'flex',
+		justifyContent: 'flex-start',
+	},
+	recSentLogo: {
+		borderRadius: '100%',
+		width: '70%',
+		maxWidth: '75px',
+		maxHeight: '75px',
+	},
+	recSender: {
+		display: 'flex',
+	},
+	recCardUser: {
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+		fontSize: '20px',
+		lineHeight: '20px',
+		color: '#FFFFFF',
+	},
+	recInfo: {
+		display: 'flex',
+		flexDirection: 'column',
+		width: '70%',
+		margin: '.5rem 0 .5rem 0',
+	},
+	recCardTime: {
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+		fontSize: '16px',
+		lineHeight: '20px',
+		color: 'rgba(255, 255, 255, 0.5)',
+		opacity: '0.5',
+		width: '100%',
+		paddingTop: '.5rem',
+	},
+	recCardMessage: {
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+		fontSize: '16px',
+		lineHeight: '20px',
+		color: 'rgba(255, 255, 255, 0.7)',
+		width: '90%',
+		paddingTop: '.5rem',
+	},
+}));
+
+export function RecognitionCard({ profile, recognition, sent }) {
+	const classes = useStyles();
+	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 export function RecognitionCard({profile, recognition}) {
     const classes = useStyles()
@@ -92,27 +125,36 @@ export function RecognitionCard({profile, recognition}) {
     }
 
     console.log(createdAt)
+
 	return (
 		<Card className={classes.recCard}>
-			<img
-				src={recognition.profile_pic}
-                className={classes.recProfilePic}
-                alt="user avatar"
-			/>
-			<Box>
+			<Box class={classes.recIcon}>
+				<img
+					src={
+						sent ? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+                        : recognition.profile_pic
+					}
+					className={
+						sent ? classes.recSentLogo : classes.recProfilePic
+					}
+					alt="user avatar"
+				/>
+			</Box>
+			<Box className={classes.recInfo}>
 				<Box className={classes.recSender}>
 					<Typography className={classes.recCardUser}>
-						{`${recognition.first_name} ${recognition.last_name}`}
-					</Typography>
-					<Typography className={classes.recCardTime}>
-						{timeDiff}
+						{ sent ? `Sent to ${recognition.first_name} ${recognition.last_name}` : `${recognition.first_name} ${recognition.last_name}`}
 					</Typography>
 				</Box>
+					<Box className={classes.message}>
 				<Typography className={classes.recCardMessage}>
 					{recognition.message}
 				</Typography>
+					</Box>
+					<Box className={classes.time}>
+				<Typography className={classes.recCardTime}>{timeDiff}</Typography>
+					</Box>
 			</Box>
 		</Card>
 	);
 }
-
