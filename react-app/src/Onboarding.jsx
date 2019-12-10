@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
