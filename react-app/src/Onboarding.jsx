@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -170,7 +170,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Onboarding({ onboard }) {
+function Onboarding({ onboard, profile, isOnboarding }) {
 	const classes = useStyles();
 
   const history = useHistory();
@@ -186,6 +186,8 @@ function Onboarding({ onboard }) {
 		onboard(form);
 		history.push('/profile')
 	};
+
+	if(!isOnboarding && profile) return <Redirect to="profile" />
 
 	return (
 		<div id="App" className={classes.root}>
@@ -327,9 +329,9 @@ function Onboarding({ onboard }) {
 	);
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ user }) => {
 	return {
-		profile: state.user.profile,
+		...user
 	};
 };
 
