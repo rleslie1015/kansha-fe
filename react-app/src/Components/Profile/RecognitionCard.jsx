@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { Card, Box, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { timeAgo } from '../../utils/timeago';
+
+import { makeStyles } from '@material-ui/core/styles'
+import { timeAgo } from '../../utils/timeago'
+import moment from 'moment'
 
 const useStyles = makeStyles(theme => ({
 	recCard: {
@@ -89,6 +91,41 @@ export function RecognitionCard({ profile, recognition, sent }) {
 	const classes = useStyles();
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
+export function RecognitionCard({profile, recognition}) {
+    const classes = useStyles()
+
+    const createdAt = recognition.date;
+    const currentTime = moment();
+    const postTime = moment(createdAt);
+    let timeDiff;
+    if (currentTime.diff(postTime, 'days') < 1) {
+      if (currentTime.diff(postTime, 'hours') < 1) {
+        if (currentTime.diff(postTime, 'minutes') < 1) {
+          timeDiff = 'just now';
+        } else {
+          if (currentTime.diff(postTime, 'minutes') === 1) {
+            timeDiff = `${currentTime.diff(postTime, 'minutes')} MINUTE AGO`;
+          } else {
+            timeDiff = `${currentTime.diff(postTime, 'minutes')} MINUTES AGO`;
+          }
+        }
+      } else {
+        if (currentTime.diff(postTime, 'hours') === 1) {
+          timeDiff = `${currentTime.diff(postTime, 'hours')} HOUR AGO`;
+        } else {
+          timeDiff = `${currentTime.diff(postTime, 'hours')} HOURS AGO`;
+        }
+      }
+    } else {
+      if (currentTime.diff(postTime, 'days') === 1) {
+        timeDiff = `${currentTime.diff(postTime, 'days')} DAY AGO`;
+      } else {
+        timeDiff = `${currentTime.diff(postTime, 'days')} DAYS AGO`;
+      }
+    }
+
+    console.log(createdAt)
+
 	return (
 		<Card className={classes.recCard}>
 			<Box class={classes.recIcon}>
@@ -115,7 +152,7 @@ export function RecognitionCard({ profile, recognition, sent }) {
 				</Typography>
 					</Box>
 					<Box className={classes.time}>
-				<Typography className={classes.recCardTime}>{time}</Typography>
+				<Typography className={classes.recCardTime}>{timeDiff}</Typography>
 					</Box>
 			</Box>
 		</Card>
