@@ -1,38 +1,34 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Paper } from '@material-ui/core';
-
+import { Landing } from './landing/Landing';
+import { Route } from 'react-router-dom';
+import { ProtectedRoute } from './Components/Auth';
+import Onboarding from './Onboarding';
+import { Profile } from './Components/Profile';
+import { AuthLoader } from './Components/Auth';
+import Workspace from './Workspace';
+import FileUpload from './FileUpload';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-    },
-    paper: {
-        marginTop: '1rem'
-    },
-    typo: {
-        padding: '1rem .5rem'
-    }
+	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		minHeight: '100vh',
+		backgroundColor: '#26242D',
+		color: '#ffffff',
+	},
 }));
 
 export const App = () => {
-    const classes = useStyles()
-    return (
-        <div id="App" className={classes.root}>
-            <CssBaseline />
-            <Container fixed>
-                <Paper className={classes.paper}>
-                    <Typography className={classes.typo} variant="h5">
-                        Welcome to Kansha{' '}
-                        <span aria-label="folded hands emoji" role="img">
-                            🙏
-                        </span>
-                    </Typography>
-                </Paper>
-            </Container>
-        </div>
-    );
+	const classes = useStyles();
+	return (
+		<div id="App" className={classes.root}>
+			<Route exact path="/" component={Landing} />
+			<Route path="/auth" component={AuthLoader} />
+			<Route path="/onboarding" component={Onboarding} />
+			<ProtectedRoute path="/profile" component={Profile} refresh={true}/>
+			<ProtectedRoute path="/workspace" component={Workspace} />
+			<ProtectedRoute path="/upload" component={FileUpload} />
+		</div>
+	);
 };
