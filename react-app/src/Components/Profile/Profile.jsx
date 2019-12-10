@@ -146,13 +146,13 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
+		
 		width: '100%',
-		height: '90vh',
+		height: '100%',
 		backgroundColor: '#2D2C35',
 	},
 	activityContainer: {
 		overflow: 'scroll',
-		
 	},
 }));
 
@@ -161,7 +161,7 @@ function Profile({ profile }) {
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
-			<Link to="/workspace">workspace</Link>
+			{/* <Link to="/workspace">workspace</Link> */}
 			<Container fixed className={classes.root}>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
@@ -209,7 +209,7 @@ function Profile({ profile }) {
 						</Typography>
 						<Box className={classes.activityContainer}>
 						{profile &&
-							profile.rec.map(recognition => (
+							profile.rec.reverse().map(recognition => (
 								<RecognitionCard
 									key={recognition.id}
 									sent={profile.id === recognition.sender}
