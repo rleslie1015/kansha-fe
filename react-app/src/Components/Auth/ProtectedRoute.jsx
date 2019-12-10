@@ -6,6 +6,7 @@ export const ProtectedRoute = ({ path, component: Component, ...props }) => {
 	return (
 		<Route
 			path={path}
+			{...props}
 			component={props => <Login {...props} component={Component} />}
 		/>
 	);

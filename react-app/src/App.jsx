@@ -26,7 +26,7 @@ export const App = () => {
 			<Route exact path="/" component={Landing} />
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
-			<ProtectedRoute path="/profile" component={Profile} />
+			<ProtectedRoute path="/profile" component={Profile} refresh={true}/>
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />
 		</div>
