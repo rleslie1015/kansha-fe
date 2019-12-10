@@ -171,14 +171,7 @@ const useStyles = makeStyles(theme => ({
 
 function Onboarding({ onboard, history }) {
 	const classes = useStyles();
-	const [form, setForm] = useState({
-		first_name: '',
-		last_name: '',
-		job_title: '',
-		department: '',
-		org_name: '',
-		user_type: '',
-	});
+	const [form, setForm] = useState({});
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
@@ -188,6 +181,7 @@ function Onboarding({ onboard, history }) {
 		onboard(form);
 		history.push('/profile')
 	};
+
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />

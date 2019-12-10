@@ -11,8 +11,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 const useStyles = makeStyles(theme => ({
 	container: {
 		fontFamily: 'Montserrat',
-		backgroundColor: '#202020',
-		color: 'white',
+		backgroundColor: '#26242D',
 	},
 	root: {
 		width: '100vw',
@@ -74,7 +73,7 @@ export default function Workspace() {
 	const [team, setTeam] = useState([]);
 
 	const [fitleredTeam, setFilteredTeam] = useState([]);
-	console.log(fitleredTeam);
+	// console.log(fitleredTeam);
 
 	useEffect(() => {
 		axiosWithAuth()
