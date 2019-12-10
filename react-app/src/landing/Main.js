@@ -76,7 +76,7 @@ export default function Main() {
 
 	return (
 		<>
-			<Typography font="#26242D">
+			<Typography font="#26242D" id="learn-more">
 				<Box
 					className={(classes.box, classes.mobile)}
 					fontFamily="montserrat">
