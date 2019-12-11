@@ -1,27 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Profile } from './Profile'
-import { connect } from 'react-redux'
-import { axiosWithAuth } from '../../utils/axiosWithAuth'
-
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { Profile } from './Profile';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useSelector } from 'react-redux';
 
 export const PeerProfile = ({ match }) => {
-    const [ profile, setProfile ] = useState()
+	const [profile, setProfile] = useState();
 
-    const { id } = match.params;
+	const { id } = match.params;
+    const { profile: userProfile } = useSelector(state => state.user);
 
     useEffect(() => {
-        axiosWithAuth().get(`/profile/${id}`)
-            .then(({data}) => setProfile(data.peer))
-    }, [id])
+        if (userProfile.id.toString() !== id) {
+		    axiosWithAuth()
+			.get(`/profile/${id}`)
+            .then(({ data }) => setProfile(data.peer));
+        }
+	}, [id, userProfile]);
 
-    if (profile) {
-        console.log(profile)
-        return <Profile {...{ profile }} isPeer/>
-    } else {
-        return <>loading...</>
-    }
-}
+	if (userProfile.id.toString() === id) {
+		return <Redirect to="/profile" />;
+	}
 
-export const UserProfile = connect(({user}) =>({...user}), {})(Profile)
+	
 
-export { Profile }
+	if (profile) {
+		console.log(profile);
+		return <Profile {...{ profile }} isPeer />;
+	} else {
+		return <>loading...</>;
+	}
+};
+
+export const UserProfile = connect(({ user }) => ({ ...user }), {})(Profile);
+
+export { Profile };
