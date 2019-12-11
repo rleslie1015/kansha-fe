@@ -73,8 +73,8 @@ function Workspace(props) {
 
 	const [team, setTeam] = useState([]);
 
-	const [fitleredTeam, setFilteredTeam] = useState([]);
-	// console.log(fitleredTeam);
+	const [filteredTeam, setFilteredTeam] = useState([]);
+	// console.log(filteredTeam);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -121,8 +121,9 @@ function Workspace(props) {
 					</div>
 				</div>
 				<WorkspaceCard
-					team={fitleredTeam.length > 0 ? fitleredTeam : team}
+					team={filteredTeam.length > 0 ? filteredTeam : team}
 					profile={props.profile}
+					setTeam={setTeam}
 				/>
 			</Container>
 		</div>
