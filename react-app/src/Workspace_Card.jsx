@@ -7,7 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import RecogModal from './Components/RecogModal/RecogModal'
+import RecogModal from './Components/RecogModal/RecogModal';
+import trashcan from './assests/Trashcan.png';
 
 const useStyles = makeStyles(theme => ({
 	card_container: {
@@ -21,11 +22,9 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: 'white',
 		width: '30%',
-	},
-	vert_icon: {
-		position: "absolute",
-		top: '10px',
-		right: '10px'
+		'&:hover': {
+			zIndex: '-2'
+		}
 	},
 	card_content: {
 		display: 'flex',
@@ -62,44 +61,94 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#575757',
 		color: 'white',
 	},
+	div: {
+		zIndex: '-1',
+		position: 'absolute',
+		top: '10px',
+		right: '10px',
+	},
+	// span: {
+	// 	'span:hover + div': {
+	// 		display: 'block'
+	// 	}
+	// }
 }));
 
 export default function Workspace_Card(props) {
 	const classes = useStyles();
+
 	return (
 		<div>
 			<div className={classes.card_container} >
-				{props.team.map(user => (
-					<Card className={classes.card} key={user.id}>
-						<CardContent className={classes.card_content} >
-							<Avatar
-								alt="profile picture"
-								src={user.profile_picture}
-								className={classes.avatar}
-							/>
-							<MoreVertIcon className={classes.vert_icon} />
-							<Typography variant="h5" component="h2">
-								{user.first_name} {user.last_name}
-							</Typography>
-							<Typography className={classes.job_title}>
-								{user.job_title}
-							</Typography>
-							<Typography
-								className={classes.department}
-								color="textSecondary">
-								{user.department}
-							</Typography>
-						</CardContent>
-						<CardActions className={classes.card_actions}>
-							<RecogModal {...user} />
-							{/* <Button
-									variant="contained"
-									className={classes.button}>
-									View Profile
-								</Button> */}
-						</CardActions>
-					</Card>
-				))}
+				{props.team.map(user => {
+					if(props.profile.user_type === 'admin'){
+						return(
+							<Card className={classes.card} key={user.id}>
+							<CardContent className={classes.card_content} >
+								<Avatar
+									alt="profile picture"
+									src={user.profile_picture}
+									className={classes.avatar}
+								/>
+								<div className={classes.div}>
+									<img src={trashcan} alt='trash can icon'  />
+								</div>
+								<Typography variant="h5" component="h2">
+									{user.first_name} {user.last_name}
+								</Typography>
+								<Typography className={classes.job_title}>
+									{user.job_title}
+								</Typography>
+								<Typography
+									className={classes.department}
+									color="textSecondary">
+									{user.department}
+								</Typography>
+							</CardContent>
+							<CardActions className={classes.card_actions}>
+								<RecogModal {...user} />
+								{/* <Button
+										variant="contained"
+										className={classes.button}>
+										View Profile
+									</Button> */}
+							</CardActions>
+						</Card>
+						)
+					} else {
+						return(
+							<Card className={classes.card} key={user.id}>
+								<CardContent className={classes.card_content} >
+									<Avatar
+										alt="profile picture"
+										src={user.profile_picture}
+										className={classes.avatar}
+									/>
+									<MoreVertIcon className={classes.vert_icon} />
+									<Typography variant="h5" component="h2">
+										{user.first_name} {user.last_name}
+									</Typography>
+									<Typography className={classes.job_title}>
+										{user.job_title}
+									</Typography>
+									<Typography
+										className={classes.department}
+										color="textSecondary">
+										{user.department}
+									</Typography>
+								</CardContent>
+								<CardActions className={classes.card_actions}>
+									<RecogModal {...user} />
+									{/* <Button
+											variant="contained"
+											className={classes.button}>
+											View Profile
+										</Button> */}
+								</CardActions>
+							</Card>
+						)
+					}
+				})}
 			</div>
 		</div>
 	)

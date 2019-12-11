@@ -7,6 +7,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function Workspace() {
+function Workspace(props) {
 	const classes = useStyles();
 
 	const [team, setTeam] = useState([]);
@@ -121,8 +122,10 @@ export default function Workspace() {
 				</div>
 				<WorkspaceCard
 					team={fitleredTeam.length > 0 ? fitleredTeam : team}
+					profile={props.profile}
 				/>
 			</Container>
 		</div>
 	);
 }
+export default connect(({user}) => ({...user}), {})(Workspace) 
