@@ -4,7 +4,7 @@ import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload'
+import { FileUpload } from '../FileUpload/FileUpload'
 import { RecognitionCard } from './RecognitionCard';
 import { login} from '../../store/actions/user-actions'
 

@@ -8,6 +8,7 @@ import { Profile } from './Components/Profile';
 import { AuthLoader } from './Components/Auth';
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
+import Cropper from './Components/FileUpload/FileCrop';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -29,6 +30,7 @@ export const App = () => {
 			<ProtectedRoute path="/profile" component={Profile} refresh={true}/>
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />
+			<ProtectedRoute path="/crop" component={Cropper} />
 		</div>
 	);
 };
