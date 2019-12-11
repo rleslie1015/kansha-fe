@@ -13,6 +13,9 @@ import {
 	USER_UPDATE_PICTURE_SUCCESS,
 	USER_UPDATE_PICTURE_FAILURE,
 	USER_UPDATE_PICTURE_BAD_CONTENT,
+	USER_UPDATE_START,
+	USER_UPDATE_SUCCESS,
+	USER_UPDATE_FAILURE
 } from '../actions/user-actions';
 
 
@@ -22,6 +25,7 @@ const initialState = {
 	isOnboardingLoading: false,
 	isLoggingIn: false,
 	isUploading: false,
+	isUpdating: false,
 	error: null,
 	authenticated: false,
 };
@@ -96,6 +100,26 @@ export const userReducer = (state = initialState, action) => {
 				isOnboarding: false,
 				error: action.payload,
 			};
+		/*
+		dispatched by the update action creator
+		*/
+		case USER_UPDATE_START:
+			return {
+				...state,
+				isUpdating: true,
+			};
+		case USER_UPDATE_SUCCESS:
+			return {
+				...state,
+				isUpdating: false,
+			};
+		case USER_UPDATE_FAILURE:
+			return {
+				...state,
+				isUpdating: false,
+				error: action.payload,
+			};
+
 		/*
 		dispatched by the uploadPicture action creator
 		*/
