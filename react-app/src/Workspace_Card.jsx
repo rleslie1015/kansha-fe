@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('sm')]: {
 			display: 'flex',
 			flexWrap: 'wrap',
-			justifyContent: 'center'
+			justifyContent: 'center',
 		},
 		[theme.breakpoints.up('md')]: {
 			display: 'flex',
 			flexWrap: 'wrap',
-			justifyContent: 'center'
+			justifyContent: 'center',
 
 		},
 		[theme.breakpoints.up('lg')]: {
@@ -40,24 +40,81 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: 'white',
 		width: '30%',
+		[theme.breakpoints.down('sm')]: {
+			position: 'relative',
+			minWidth: 275,
+			margin: 10,
+			backgroundColor: '#2D2C35',
+			color: 'white',
+			width: '100%',
+			display: 'flex',
+		},
+
+
 	},
 	card_content: {
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'row',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.down('xlg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+		}
+
+
 	},
 	title: {
 		fontSize: 14,
 	},
 	job_title: {
-		fontFamily: 'Roboto',
-		fontSize: '1.3em'
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('md')]: {
+			fontFamily: 'Roboto',
+			fontSize: '1.3em',
+			display: 'block',
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontFamily: 'Roboto',
+			fontSize: '1.3em',
+			display: 'block'
+		},
 	},
 	department: {
-		fontFamily: 'Roboto',
-		fontWeight: '300',
-		marginBottom: 12,
-		color: 'white',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('md')]: {
+			fontFamily: 'Roboto',
+			fontWeight: '300',
+			marginBottom: 12,
+			color: 'white',
+			display: 'block',
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontFamily: 'Roboto',
+			fontWeight: '300',
+			marginBottom: 12,
+			color: 'white',
+			display: 'block',
+
+		},
 	},
 	avatar: {
 		margin: 10,

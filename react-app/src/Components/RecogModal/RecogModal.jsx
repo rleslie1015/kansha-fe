@@ -6,6 +6,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import { TextField, Button, FormControl } from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
+import send from '../../assests/send.png';
+
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
@@ -138,7 +140,8 @@ function RecogModal(props) {
 				type="button"
 				onClick={handleOpen}
 				className={classes.button}>
-				Thank
+				
+				<img src={send} alt='thank button' />
 			</Button>
 			<Modal
 				className={classes.modal}
