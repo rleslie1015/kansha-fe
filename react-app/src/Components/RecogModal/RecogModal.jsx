@@ -46,6 +46,12 @@ const useStyles = makeStyles(theme => ({
 		color: '#EE4D71',
 		textDecoration: 'none',
 		border: '2px solid #EE4d71',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%',
+			height: '100px',
+			borderRadius: '50%',
+		},
+		
 	},
 	recogButton: {
 		width: '50%',
