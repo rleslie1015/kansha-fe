@@ -21,7 +21,7 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				feed: [...action.payload, ...state.feed],
+				feed: [...action.payload],
 			};
 		case FEED_LOAD_FAILURE:
 			return {
