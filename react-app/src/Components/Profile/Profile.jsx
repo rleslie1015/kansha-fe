@@ -11,38 +11,130 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#26242D',
 	},
 	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		width: '100vw',
-		maxHeight: '100vh',
-		paddingTop: '2.5rem',
-		'@global': {
-			'*::-webkit-scrollbar': {
-				width: '.5rem',
-			},
-			'*::-webkit-scrollbar-corner': {
-				backgroundColor: 'transparent',
-			},
-			'*::-webkit-scrollbar-thumb': {
-				backgroundColor: '#3A3845',
-				borderRadius: '10px',
-			},
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
 		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'row',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
+			
+		}
+		
 	},
 	leftContainer: {
-		display: 'flex',
-		flexDirection: 'column',
-		width: '50%',
-		height: '90vh',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '90%',
+			marginLeft: '3rem',
+			
+			
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '50%',
+			height: '90vh',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '50%',
+			height: '90vh',
+			
+		}
+		
 	},
 	userInfo: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		width: '100%',
-		height: 'auto',
-		backgroundColor: '#2D2C35',
-		padding: '3rem 0',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: 'auto',
+			backgroundColor: '#2D2C35',
+			paddingTop: '3rem',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: 'auto',
+			backgroundColor: '#2D2C35',
+			paddingTop: '3rem',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: 'auto',
+			backgroundColor: '#2D2C35',
+			padding: '3rem 0',
+			
+		}
+		
 	},
 	pictureContainer: {
 		position: 'relative',
