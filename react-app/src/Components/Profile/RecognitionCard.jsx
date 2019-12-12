@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { Card, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { timeAgo } from '../../utils/timeago';
+import trashcan from '../../assests/trashcan.png'
 
 const useStyles = makeStyles(theme => ({
 	recCard: {
@@ -89,6 +90,8 @@ export function RecognitionCard({ profile, recognition, sent }) {
 	const classes = useStyles();
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
+
+	if(profile.user_type === 'admin'){
 	return (
 		<Card className={classes.recCard}>
 			<Box class={classes.recIcon}>
@@ -109,15 +112,17 @@ export function RecognitionCard({ profile, recognition, sent }) {
 						{ sent ? `Sent to ${recognition.first_name} ${recognition.last_name}` : `${recognition.first_name} ${recognition.last_name}`}
 					</Typography>
 				</Box>
-					<Box className={classes.message}>
-				<Typography className={classes.recCardMessage}>
-					{recognition.message}
-				</Typography>
-					</Box>
-					<Box className={classes.time}>
-				<Typography className={classes.recCardTime}>{time}</Typography>
-					</Box>
+				<img src={trashcan} alt='trash can icon' />
+				<Box className={classes.message}>
+					<Typography className={classes.recCardMessage}>
+						{recognition.message}
+					</Typography>
+				</Box>
+				<Box className={classes.time}>
+					<Typography className={classes.recCardTime}>{time}</Typography>
+				</Box>
 			</Box>
 		</Card>
 	);
+}
 }
