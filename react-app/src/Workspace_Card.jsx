@@ -12,8 +12,26 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
 	card_container: {
-		display: 'flex',
-		flexWrap: 'wrap',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexWrap: 'wrap',
+			justifyContent: 'center'
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexWrap: 'wrap',
+			justifyContent: 'center'
+
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexWrap: 'wrap',
+		},
+		[theme.breakpoints.down('xlg')]: {
+			display: 'flex',
+			flexWrap: 'wrap',
+		}
+
 	},
 	card: {
 		position: 'relative',

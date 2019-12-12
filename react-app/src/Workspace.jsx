@@ -8,7 +8,6 @@ import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { connect } from 'react-redux';
-import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -21,24 +20,35 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 	},
 	main_header: {
-		margin: '40px 20px',
-		fontSize: '3rem',
 		[theme.breakpoints.down('sm')]: {
 			display: 'none',
 		},
 		[theme.breakpoints.up('md')]: {
-			display: 'block',
+			display: 'none',
 		},
-		// [theme.breakpoints.down('lg')]: {
-		// 	display: 'block',
-
-		// },
-
+		[theme.breakpoints.up('lg')]: {
+			margin: '40px 20px',
+			fontSize: '3rem',	
+			display: 'block'
+		}
+					
 	},
-	header_container: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
+	header_container: {	
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		}
 	},
 	search: {
 		position: 'relative',
@@ -66,11 +76,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	inputRoot: {
 		color: '#959595',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '25px',
-			textAlign: 'center',
-			border: '2px solid red',
-		},
 	},
 	inputInput: {
 		padding: theme.spacing(1, 1, 1, 7),
@@ -80,25 +85,7 @@ const useStyles = makeStyles(theme => ({
 			width: 200,
 			'&:focus': {
 				width: 250,
-			
 			},
-		},
-	},
-	mobile: {
-		padding: theme.spacing(1),
-
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '25px',
-			textAlign: 'center',
-			border: '2px solid red',
-		},
-		[theme.breakpoints.up('md')]: {
-			margin: '5% 0',
-			textAlign: 'center',
-			fontSize: '25px',
-		},
-		[theme.breakpoints.up('lg')]: {
-			fontSize: '25px',
 		},
 	},
 }));
