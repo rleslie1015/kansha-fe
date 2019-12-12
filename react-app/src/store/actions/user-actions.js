@@ -101,13 +101,13 @@ export const onboard = creds => dispatch => {
 };
 
 /* This handles user updates */
-export const update = creds => dispatch => {
+export const update = (id, creds) => dispatch => {
 	dispatch({ type: USER_UPDATE_START });
 	axiosWithAuth()
-		.put('users/:id', creds)
+		.put(`users/${id}`, creds)
 		.then(res => {
 			/* This doesn't dispatch any payload because it is only updating state */
-			dispatch({ type: USER_UPDATE_SUCCESS });
+			dispatch({ type: USER_UPDATE_SUCCESS, payload: res.data });
 		})
 		.catch(err => {
 			console.log(err);

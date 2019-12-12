@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { update } from './store/actions/user-actions';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles, withStyles, createStyles } from '@material-ui/core/styles';
@@ -21,7 +21,6 @@ import {
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import Loader from 'react-loader-spinner';
-import {axiosWithAuth} from './utils/axiosWithAuth';
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -67,14 +66,15 @@ const useStyles = makeStyles(theme => ({
 	onboard: {
 		position: 'relative',
 		display: 'flex',
-		flexDirection: 'column',
+        flexDirection: 'column',
+        justifyContent: 'center',
 		margin: '7rem 3rem 0 3rem',
 		width: '80%',
-		height: '80%',
+		height: '70%',
 		backgroundColor: '#2D2C35',
 		borderRadius: '2px',
 		padding: '2rem 2rem',
-	},
+    },
 	getStarted: {
 		display: 'flex',
 		justifyContent: 'center',
@@ -83,8 +83,8 @@ const useStyles = makeStyles(theme => ({
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: '600',
-		fontSize: '42px',
-		lineHeight: '24px',
+		fontSize: '2.2rem',
+		lineHeight: '2rem',
 		letterSpacing: '0.15px',
 	},
 	textField: {
@@ -146,7 +146,7 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		width: '70%',
 		fontSize: '24px',
-		margin: '2rem 6rem',
+		margin: '2rem auto',
 		borderRadius: '0',
 		backgroundColor: '#2D2C35',
 		boxShadow: 'none',
@@ -180,24 +180,35 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Settings({ update, isUpdating, user }) {
+function Settings({ update, isUpdating, profile, user }) {
 
     const classes = useStyles();
 
     const history = useHistory();
+
+    const initialState = {
+        first_name: user.profile.first_name,
+        last_name: user.profile.last_name,
+        job_title: user.profile.job_title,
+        department: user.profile.department,
+        org_name: user.profile.org_name,
+        user_type: user.profile.user_type
+    }
+
     
-    const [form, setForm] = useState(user.profile);
+    const [form, setForm] = useState(initialState);
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
     };
+
+    const id = user.profile.id;
     
     const handleSubmit = event => {
-		update(form);
+        console.log(form)
+		update(id, form);
 		history.push('/profile');
     };
-
-    // if (!isUpdating && profile) return <Redirect to="profile" />;
 
 	return (
 		<div id="App" className={classes.root}>
@@ -232,9 +243,9 @@ function Settings({ update, isUpdating, user }) {
 							<Typography
 								className={classes.getStarted}
 								variant="h5">
-								Update your Settings
+								Settings
 							</Typography>
-							<FormControl>
+							<FormControl className={classes.formControl}>
 								<Box className={classes.twoInput}>
 									<TextField
 										label="First Name*"
@@ -358,7 +369,7 @@ function Settings({ update, isUpdating, user }) {
 									variant="contained"
 									color="primary"
 									onClick={handleSubmit}>
-									Confirm
+									Save
 								</Button>
 							</FormControl>
 						</>

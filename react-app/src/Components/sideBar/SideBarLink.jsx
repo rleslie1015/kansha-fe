@@ -63,8 +63,6 @@ export function SidebarLink({ name, path, open, icon }) {
 	const history = useHistory();
 	const match = useRouteMatch(path);
 
-	console.log(path, match);
-
 	let { isExact } = match ? match : { isExact: false }
 
 	return (

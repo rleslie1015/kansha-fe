@@ -111,6 +111,7 @@ export const userReducer = (state = initialState, action) => {
 		case USER_UPDATE_SUCCESS:
 			return {
 				...state,
+				profile: {...state.profile, ...action.payload},
 				isUpdating: false,
 			};
 		case USER_UPDATE_FAILURE:
