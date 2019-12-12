@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { timeAgo } from '../../utils/timeago';
 import trashcan from '../../assests/Trashcan.png'
 import { useSelector } from 'react-redux';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
 	recCard: {
@@ -105,6 +106,17 @@ export function RecognitionCard({ recognition, sent }) {
 	const history = useHistory()
 	const profile = useSelector(state => state.user.profile)
 	
+	const handleDelete = id => {
+		axiosWithAuth()
+			.delete(`/rec/${id}`)
+			.then(id => {
+				// i dunno how to get the user id of said profile.... 
+				// is coming up object object
+				// will figure out later... 
+				history.push(`/profile/${id}`)
+			})
+	}
+
 	if(profile.user_type === 'admin'){
 	return (
 		<Card className={classes.recCard}>
@@ -123,8 +135,8 @@ export function RecognitionCard({ recognition, sent }) {
 				/>
 			</Box>
 			<Box className={classes.recInfo}>
-				<Box className={classes.deleteIcon}>
-					<img src={trashcan} alt='trash can icon' className={classes.trashcan}/>
+				<Box className={classes.deleteIcon} >
+					<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition.id)}/>
 				</Box>
 				<Box className={classes.recSender}>
 					<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>
