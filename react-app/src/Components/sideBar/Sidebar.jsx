@@ -12,7 +12,6 @@ import {
 	ListItemIcon,
 } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import profilePic from '../../picture/picture.png';
 import openMenu from '../../assests/open-menu.png';
 import closeMenu from '../../assests/close-menu.png';
 import home from '../../assests/home.png';

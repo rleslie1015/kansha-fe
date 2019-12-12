@@ -1,10 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, ListItemIcon } from '@material-ui/core';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	icons: {

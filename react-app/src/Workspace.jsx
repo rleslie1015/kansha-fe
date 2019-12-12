@@ -90,11 +90,11 @@ export default function Workspace() {
 	const searchWorkPlaceHandler = e => {
 		console.log(e.target.value);
 
-		const user = team.filter(t => {
-			if (t.first_name.toLowerCase().includes(e.target.value) || t.last_name.toLowerCase().includes(e.target.value)) {
-				return t;
-			}
-		});
+		const user = team.filter(
+			t =>
+				t.first_name.toLowerCase().includes(e.target.value) ||
+				t.last_name.toLowerCase().includes(e.target.value),
+		);
 		setFilteredTeam(user);
 	};
 
