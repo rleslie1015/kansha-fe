@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory, Redirect } from 'react-router-dom';
 import { update } from './store/actions/user-actions';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles, withStyles, createStyles } from '@material-ui/core/styles';
@@ -19,6 +20,8 @@ import {
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import Loader from 'react-loader-spinner';
+import {axiosWithAuth} from './utils/axiosWithAuth';
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -170,20 +173,31 @@ const useStyles = makeStyles(theme => ({
 	},
 	loaderContainer: {
 		position: 'absolute',
-		top: "calc(50% - 50px)",
-		left: "calc(50% - 50px)",
+		top: 'calc(50% - 50px)',
+		left: 'calc(50% - 50px)',
 		width: 100,
-		height: 100
+		height: 100,
 	},
 }));
 
-function Settings({update}) {
+function Settings({ update, isUpdating, user }) {
 
     const classes = useStyles();
 
-    const handleChange = event => {
+    const history = useHistory();
+    
+    const [form, setForm] = useState(user.profile);
+
+	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
-	};
+    };
+    
+    const handleSubmit = event => {
+		update(form);
+		history.push('/profile');
+    };
+
+    // if (!isUpdating && profile) return <Redirect to="profile" />;
 
 	return (
 		<div id="App" className={classes.root}>
@@ -202,7 +216,7 @@ function Settings({update}) {
 			</Container>
 			<Container className={classes.formContainer}>
 				<Paper className={classes.onboard}>
-					{isOnboardingLoading ? (
+					{isUpdating ? (
 						<>
 							<Box className={classes.loaderContainer}>
 								<Loader
@@ -218,7 +232,7 @@ function Settings({update}) {
 							<Typography
 								className={classes.getStarted}
 								variant="h5">
-								Let's Get Started!
+								Update your Settings
 							</Typography>
 							<FormControl>
 								<Box className={classes.twoInput}>
@@ -235,7 +249,8 @@ function Settings({update}) {
 										}}
 										InputLabelProps={{
 											className: classes.label,
-										}}
+                                        }}
+                                        value={form.first_name}
 									/>
 									<TextField
 										label="Last Name*"
@@ -250,7 +265,8 @@ function Settings({update}) {
 										}}
 										InputLabelProps={{
 											className: classes.label,
-										}}
+                                        }}
+                                        value={form.last_name}
 									/>
 								</Box>
 								<Box className={classes.twoInput}>
@@ -267,13 +283,14 @@ function Settings({update}) {
 										}}
 										InputLabelProps={{
 											className: classes.label,
-										}}
+                                        }}
+                                        value={form.job_title}
 									/>
 									<FormControl className={classes.textField}>
 										<Select
 											variant="outlined"
 											defaultValue="standard"
-											value={form.user_Type}
+											value={form.user_type}
 											onChange={handleChange}
 											name="user_type"
 											margin="normal"
@@ -314,7 +331,8 @@ function Settings({update}) {
 										}}
 										InputLabelProps={{
 											className: classes.label,
-										}}
+                                        }}
+                                        value={form.org_name}
 									/>
 								</Box>
 								<Box className={classes.oneInput}>
@@ -331,7 +349,8 @@ function Settings({update}) {
 										}}
 										InputLabelProps={{
 											className: classes.label,
-										}}
+                                        }}
+                                        value={form.department}
 									/>
 								</Box>
 								<Button
@@ -350,9 +369,9 @@ function Settings({update}) {
 	);
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = state => {
 	return {
-		...user,
+		...state,
 	};
 };
 

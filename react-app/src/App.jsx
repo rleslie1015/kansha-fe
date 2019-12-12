@@ -30,7 +30,7 @@ export const App = () => {
 			<ProtectedRoute path="/profile" component={Profile} refresh={true}/>
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />
-			<ProtectedRoute path="/settings/:id" component={Settings} />
+			<ProtectedRoute path="/settings" component={Settings} />
 		</div>
 	);
 };
