@@ -4,6 +4,8 @@ export const FEED_LOAD_START = 'FEED_LOAD_START';
 export const FEED_LOAD_SUCCESS = 'FEED_LOAD_SUCCESS';
 export const FEED_LOAD_FAILURE = 'FEED_LOAD_FAILURE';
 export const FEED_EVENT_NEW_REC = 'FEED_EVENT_NEW_REC';
+export const FEED_EVENT_NEW_COMMENT = 'FEED_EVENT_NEW_COMMENT';
+export const FEED_EVENT_NEW_REACTION = 'FEED_EVENT_NEW_REACTION';
 
 export const loadLiveFeed = () => dispatch => {
     dispatch({ type: FEED_LOAD_START})

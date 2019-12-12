@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	loadLiveFeed,
 	FEED_EVENT_NEW_REC,
+	FEED_EVENT_NEW_REACTION,
+	FEED_EVENT_NEW_COMMENT,
 } from '../../store/actions/feed-actions';
 
 export const Feed = () => {
@@ -24,6 +26,20 @@ export const Feed = () => {
 			}),
 		);
 
+		sse.addEventListener('comment', event =>
+			dispatch({
+				type: FEED_EVENT_NEW_COMMENT,
+				payload: JSON.parse(event.data),
+			}),
+		);
+
+		sse.addEventListener('reaction', event =>
+			dispatch({
+				type: FEED_EVENT_NEW_REACTION,
+				payload: JSON.parse(event.data),
+			}),
+		);
+
 		return function cleanup() {
 			sse.close();
 		};
@@ -32,15 +48,13 @@ export const Feed = () => {
 	return (
 		<Container>
 			{feed.map(rec => (
-                <>
-				<Typography>
-					{rec.first_name} {rec.last_name} sent to{' '}
-					{rec.recipient_first} {rec.recipient_last}
-				</Typography>
-                <Typography>
-                    {rec.message}
-                </Typography>
-                </>
+				<>
+					<Typography>
+						{rec.first_name} {rec.last_name} sent to{' '}
+						{rec.recipient_first} {rec.recipient_last}
+					</Typography>
+					<Typography>{rec.message}</Typography>
+				</>
 			))}
 		</Container>
 	);
