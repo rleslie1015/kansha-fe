@@ -5,6 +5,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import { FileUpload } from '../FileUpload';
 import { RecognitionCard } from './RecognitionCard';
+import RecogModal from '../RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
@@ -188,6 +189,7 @@ export function Profile({ profile, isPeer }) {
 						<Typography className={classes.department}>
 							{profile.department}
 						</Typography>
+						{isPeer && <RecogModal { ...profile} />}
 					</Card>
 					{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
 					<Card className={classes.badgeCard}>
