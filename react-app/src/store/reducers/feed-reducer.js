@@ -2,11 +2,15 @@ import {
 	FEED_LOAD_START,
 	FEED_LOAD_SUCCESS,
 	FEED_LOAD_FAILURE,
-	FEED_EVENT_NEW_REC,
+    FEED_EVENT_NEW_REC,
+    POST_DATA_LOAD_SUCCESS,
+    POST_DATA_LOAD_FAILURE,
 } from '../actions/feed-actions';
 
 const initialState = {
-	feed: [],
+    feed: [],
+    reactions: {},
+    comments: {},
 	isLoading: false,
 };
 
@@ -33,7 +37,13 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				feed: [...action.payload, ...state.feed],
-			};
+            };
+        case POST_DATA_LOAD_SUCCESS:
+            let { id, type } = action.data;
+            return {
+                ...state,
+                [type]: {...state[type], [id]: action.payload} 
+            }
 		default:
 			return state;
 	}

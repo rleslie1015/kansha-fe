@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
+import { FeedCard } from './FeedCard'
 import {
 	loadLiveFeed,
 	FEED_EVENT_NEW_REC,
@@ -48,13 +49,7 @@ export const Feed = () => {
 	return (
 		<Container>
 			{feed.map(rec => (
-				<>
-					<Typography>
-						{rec.first_name} {rec.last_name} sent to{' '}
-						{rec.recipient_first} {rec.recipient_last}
-					</Typography>
-					<Typography>{rec.message}</Typography>
-				</>
+                <FeedCard rec = {rec} />
 			))}
 		</Container>
 	);
