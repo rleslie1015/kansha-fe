@@ -31,11 +31,16 @@ export const Feed = () => {
 
 	return (
 		<Container>
-			{feed.map(message => (
+			{feed.map(rec => (
+                <>
 				<Typography>
-					{message.first_name} {message.last_name} sent to{' '}
-					{message.recipient_first} {message.recipient_last}
+					{rec.first_name} {rec.last_name} sent to{' '}
+					{rec.recipient_first} {rec.recipient_last}
 				</Typography>
+                <Typography>
+                    {rec.message}
+                </Typography>
+                </>
 			))}
 		</Container>
 	);
