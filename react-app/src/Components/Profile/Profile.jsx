@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload'
+import { FileUpload } from '../FileUpload';
 import { RecognitionCard } from './RecognitionCard';
 
 const useStyles = makeStyles(theme => ({
@@ -20,15 +18,15 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 		'@global': {
 			'*::-webkit-scrollbar': {
-			  width: '.5rem',
+				width: '.5rem',
 			},
 			'*::-webkit-scrollbar-corner': {
-			  backgroundColor: 'transparent'	
+				backgroundColor: 'transparent',
 			},
 			'*::-webkit-scrollbar-thumb': {
-			  backgroundColor: '#3A3845',
-			  borderRadius: '10px',
-			}
+				backgroundColor: '#3A3845',
+				borderRadius: '10px',
+			},
 		},
 	},
 	leftContainer: {
@@ -61,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 		height: '272px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
-  		objectPosition: '50% 50%',
+		objectPosition: '50% 50%',
 	},
 	camera: {
 		width: '100%',
@@ -146,22 +144,22 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
+
 		width: '100%',
-		height: '90vh',
+		height: '100%',
 		backgroundColor: '#2D2C35',
 	},
 	activityContainer: {
 		overflow: 'scroll',
-		
 	},
 }));
 
-function Profile({ profile }) {
+export function Profile({ profile, isPeer }) {
 	const classes = useStyles();
 
 	return (
 		<div id="Profile" className={classes.profileDiv}>
-			<Link to="/workspace">workspace</Link>
+			{/* <Link to="/workspace">workspace</Link> */}
 			<Container fixed className={classes.root}>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
@@ -172,15 +170,14 @@ function Profile({ profile }) {
 								className={classes.profilePic}
 								alt="user profile"
 							/>
-							<div className={classes.addPic}>
+							{!isPeer && <div className={classes.addPic}>
 								<img
-									src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png'
+									src="https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png"
 									className={classes.camera}
 									alt="upload icon"
 								/>
 								<FileUpload />
-							</div>
-							
+							</div> }
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
@@ -197,8 +194,8 @@ function Profile({ profile }) {
 						<Typography className={classes.header} variant="h5">
 							Badges
 						</Typography>
-						<Container className={classes.badgeContainer}>
-						</Container>
+						<Container
+							className={classes.badgeContainer}></Container>
 					</Card>
 				</Container>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
@@ -208,15 +205,20 @@ function Profile({ profile }) {
 							Activity
 						</Typography>
 						<Box className={classes.activityContainer}>
-						{profile &&
-							profile.rec.map(recognition => (
-								<RecognitionCard
-									key={recognition.id}
-									sent={profile.id === recognition.sender}
-									profile={profile}
-									recognition={recognition}
-								/>
-							))}
+							{profile &&
+								profile.rec
+									.reverse()
+									.map(recognition => (
+										<RecognitionCard
+											key={recognition.id}
+											sent={
+												profile.id ===
+												recognition.sender
+											}
+											profile={profile}
+											recognition={recognition}
+										/>
+									))}
 						</Box>
 					</Card>
 				</Container>
@@ -224,5 +226,3 @@ function Profile({ profile }) {
 		</div>
 	);
 }
-
-export default connect(({ user }) => ({ ...user }), {})(Profile);

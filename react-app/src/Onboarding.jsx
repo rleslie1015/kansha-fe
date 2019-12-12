@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory, Redirect } from 'react-router-dom';
 import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +20,7 @@ import {
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
+import Loader from 'react-loader-spinner';
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -219,10 +220,10 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '20px',
 	},
 	dropdownStyle: {
-		backgroundColor:'#3A3845',
+		backgroundColor: '#3A3845',
 		color: '#FFFFFF',
 		fontSize: '24px',
-	  },
+	},
 	twoInput: {
 		display: 'flex',
 		flexDirection: 'row',
@@ -284,7 +285,6 @@ const useStyles = makeStyles(theme => ({
 					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
 					color: '#FFFFFF',		
 				}
-		
 		},
 	},
 	paper: {
@@ -300,15 +300,21 @@ const useStyles = makeStyles(theme => ({
 		marginTop: '1rem',
 		marginLeft: '1.5rem',
 	},
+	loaderContainer: {
+		position: 'absolute',
+		top: "calc(50% - 50px)",
+		left: "calc(50% - 50px)",
+		width: 100,
+		height: 100
+	},
 }));
 
-function Onboarding({ onboard }) {
+function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 	const classes = useStyles();
 
-  const history = useHistory();
+	const history = useHistory();
 
 	const [form, setForm] = useState({});
-
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
@@ -316,8 +322,10 @@ function Onboarding({ onboard }) {
 
 	const handleSubmit = event => {
 		onboard(form);
-		history.push('/profile')
+		history.push('/profile');
 	};
+
+	if (!isOnboarding && profile) return <Redirect to="profile" />;
 
 	return (
 		<div id="App" className={classes.root}>
@@ -336,132 +344,157 @@ function Onboarding({ onboard }) {
 			</Container>
 			<Container className={classes.formContainer}>
 				<Paper className={classes.onboard}>
-					<Typography className={classes.getStarted} variant="h5">
-						Let's Get Started!
-					</Typography>
-					<FormControl>
-						<Box className={classes.twoInput}>
-							<TextField
-								label="First Name*"
-								placeholder="e.g. Jane"
-								className={classes.textField}
-								variant="outlined"
-								name="first_name"
-								margin="normal"
-								onChange={handleChange}
-								InputProps={{
-									className: classes.input,
-								}}
-								InputLabelProps={{
-									className: classes.label,
-								}}
-							/>
-							<TextField
-								label="Last Name*"
-								placeholder="e.g. Doe"
-								className={classes.textField}
-								variant="outlined"
-								name="last_name"
-								margin="normal"
-								onChange={handleChange}
-								InputProps={{
-									className: classes.input,
-								}}
-								InputLabelProps={{
-									className: classes.label,
-								}}
-							/>
-						</Box>
-						<Box className={classes.twoInput}>
-							<TextField
-								label="Job Title*"
-								placeholder="e.g. Manager"
-								className={classes.textField}
-								variant="outlined"
-								name="job_title"
-								margin="normal"
-								onChange={handleChange}
-								InputProps={{
-									className: classes.input,
-								}}
-								InputLabelProps={{
-									className: classes.label,
-								}}
-							/>
-							<FormControl
-								className={classes.textField}>
-								<Select
-									variant="outlined"
-									defaultValue="standard"
-									value={form.user_Type}
-									onChange={handleChange}
-									name="user_type"
-									margin="normal"
-									MenuProps={{ classes: { paper: classes.dropdownStyle } }}
-									input={<StyledBase />}
-									InputProps={{
-										className: classes.input,
-									}}
-									InputLabelProps={{
-										className: classes.label,
-									}}>
-									<MenuItem value="standard">Standard</MenuItem>
-									<MenuItem value="mod">Mod</MenuItem>
-									<MenuItem value="admin">Admin</MenuItem>
-								</Select>
+					{isOnboardingLoading ? (
+						<>
+							<Box className={classes.loaderContainer}>
+								<Loader
+									type="Rings"
+									color="#EE4D71"
+									height={100}
+									width={100}
+								/>
+							</Box>
+						</>
+					) : (
+						<>
+							<Typography
+								className={classes.getStarted}
+								variant="h5">
+								Let's Get Started!
+							</Typography>
+							<FormControl>
+								<Box className={classes.twoInput}>
+									<TextField
+										label="First Name*"
+										placeholder="e.g. Jane"
+										className={classes.textField}
+										variant="outlined"
+										name="first_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+									/>
+									<TextField
+										label="Last Name*"
+										placeholder="e.g. Doe"
+										className={classes.textField}
+										variant="outlined"
+										name="last_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+									/>
+								</Box>
+								<Box className={classes.twoInput}>
+									<TextField
+										label="Job Title*"
+										placeholder="e.g. Manager"
+										className={classes.textField}
+										variant="outlined"
+										name="job_title"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+									/>
+									<FormControl className={classes.textField}>
+										<Select
+											variant="outlined"
+											defaultValue="standard"
+											value={form.user_Type}
+											onChange={handleChange}
+											name="user_type"
+											margin="normal"
+											MenuProps={{
+												classes: {
+													paper:
+														classes.dropdownStyle,
+												},
+											}}
+											input={<StyledBase />}
+											InputProps={{
+												className: classes.input,
+											}}
+											InputLabelProps={{
+												className: classes.label,
+											}}>
+											<MenuItem value="standard">
+												Standard
+											</MenuItem>
+											<MenuItem value="mod">Mod</MenuItem>
+											<MenuItem value="admin">
+												Admin
+											</MenuItem>
+										</Select>
+									</FormControl>
+								</Box>
+								<Box className={classes.oneInput}>
+									<TextField
+										label="Organization*"
+										placeholder="Organization Name"
+										className={classes.textField}
+										variant="outlined"
+										name="org_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+									/>
+								</Box>
+								<Box className={classes.oneInput}>
+									<TextField
+										label="Department"
+										placeholder="e.g. Marketing Department"
+										className={classes.textField}
+										variant="outlined"
+										name="department"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+									/>
+								</Box>
+								<Button
+									className={classes.button}
+									variant="contained"
+									color="primary"
+									onClick={handleSubmit}>
+									Confirm
+								</Button>
 							</FormControl>
-						</Box>
-						<Box className={classes.oneInput}>
-							<TextField
-								label="Organization*"
-								placeholder="Organization Name"
-								className={classes.textField}
-								variant="outlined"
-								name="org_name"
-								margin="normal"
-								onChange={handleChange}
-								InputProps={{
-									className: classes.input,
-								}}
-								InputLabelProps={{
-									className: classes.label,
-								}}
-							/>
-						</Box>
-						<Box className={classes.oneInput}>
-							<TextField
-								label="Department"
-								placeholder="e.g. Marketing Department"
-								className={classes.textField}
-								variant="outlined"
-								name="department"
-								margin="normal"
-								onChange={handleChange}
-								InputProps={{
-									className: classes.input,
-								}}
-								InputLabelProps={{
-									className: classes.label,
-								}}
-							/>
-						</Box>
-						<Button
-							className={classes.button}
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}>
-							Confirm
-						</Button>
-					</FormControl>
+						</>
+					)}
 				</Paper>
 			</Container>
 		</div>
 	);
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ user }) => {
 	return {
-		profile: state.user.profile,
+		...user,
 	};
 };
 

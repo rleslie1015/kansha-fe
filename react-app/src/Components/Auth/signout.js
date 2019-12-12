@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const signout = () => {
 	localStorage.removeItem('access_token');
 	localStorage.removeItem('id_token');
