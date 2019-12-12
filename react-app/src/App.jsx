@@ -6,6 +6,7 @@ import { ProtectedRoute } from './Components/Auth';
 import Onboarding from './Onboarding';
 import { UserProfile, PeerProfile } from './Components/Profile';
 import { AuthLoader } from './Components/Auth';
+import { Feed } from './Components/Feed';
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
 
@@ -26,6 +27,7 @@ export const App = () => {
 			<Route exact path="/" component={Landing} />
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
+			<ProtectedRoute path="/home" component={Feed} />
 			<ProtectedRoute path="/profile" component={UserProfile} exact/>
 			<ProtectedRoute path="/profile/:id" component={PeerProfile}/>
 			<ProtectedRoute path="/workspace" component={Workspace} />
