@@ -128,7 +128,8 @@ const useStyles = makeStyles(theme => ({
 		},
 
 		[theme.breakpoints.up('lg')]: {
-			width: '40%'
+			width: '50%',
+			paddingRight: '4rem'
 		}
 		
 	},
@@ -159,7 +160,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			margin: '7rem 3rem 0 3rem',
-			width: '80%',
 			height: '80%',
 			backgroundColor: '#2D2C35',
 			borderRadius: '2px',
@@ -271,7 +271,7 @@ const useStyles = makeStyles(theme => ({
 		},
 
 		[theme.breakpoints.up('lg')]: {
-			width: '70%',
+			
 			fontSize: '24px',
 			margin: '2rem 6rem',
 			borderRadius: '0',
