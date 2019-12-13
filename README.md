@@ -31,7 +31,7 @@ You can find the deployed project at [KanshaRewards](http://dev--staging.kanshar
 
 [UX Design files](https://www.figma.com/file/EtD3IAhwlPsT91V1oAJ1QX/Labs18_Kansha%2C-Gizella-%26-Ahmar?node-id=533%3A1360)
 
-Recognition app to praise your co-workers and send gift-cards.
+Kansha Rewards is an app that was designed to increase satisfaction and productivity in the workplace by allowing employees to send recognition and badges to their peers in an app.  The badges appear on the profile page, and the recognition appears on both the profile page and a live feed of all recognition, where employees will also be able to send a reaction and/or comment on the recognition.
 
 
 ### Key Features
