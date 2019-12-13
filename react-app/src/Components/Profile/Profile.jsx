@@ -52,7 +52,6 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		'&:hover': {
 			cursor: 'pointer',
-			opacity: '.3'
 		},
 	},
 	profilePic: {
@@ -62,21 +61,11 @@ const useStyles = makeStyles(theme => ({
 		height: '272px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
-  		objectPosition: '50% 50%',
-	},
-	camera: {
-		width: '100%',
-		height: 'auto',
+		objectPosition: '50% 50%',
 	},
 	addPic: {
-		opacity: 0,
-		borderRadius: '100%',
 		position: 'absolute',
-		transform: 'translate(0, -100%)',
-		'&:hover': {
-			opacity: 1,
-			transition: '0.5s ease',
-		},
+		transform: 'translate(0, -102%)',
 	},
 	name: {
 		paddingTop: '1.5rem',

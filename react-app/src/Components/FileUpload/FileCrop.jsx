@@ -11,9 +11,6 @@ import { useSpring, animated } from 'react-spring/web.cjs';
 import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
-    root:{
-        margin: '12rem',
-      },
       modal: {
 		display: 'flex',
 		alignItems: 'center',
@@ -27,12 +24,42 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		color: 'white',
+        color: 'white',
     },
     button: {
-        backgroundColor: 'white',
+        background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
         opacity: '1',
-    }
+        '&:hover': {
+            color: 'white',
+            transition: '0.5s ease',
+          },
+    }, 
+    cancelButton: {
+		alignSelf: 'flex-start',
+		cursor: 'pointer',
+	},
+    cameraButton: {
+        opacity: 0,
+        width: '273px',
+        height: '273px',
+        borderRadius: '100%',
+        paddingRight: '1.5rem',
+        '&:hover': {
+            opacity: 1,
+            boxShadow: 'none',
+            background: 'rgba(18, 18, 18, 0.85)',
+            transition: '0.5s ease',
+          },
+    },
+	camera: {
+		width: '70%',
+        height: 'auto',
+    },
+    picture: {
+        maxHeight: '800px',
+        maxWidth: '800px',
+        width: '100%',
+    },
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -69,7 +96,7 @@ Fade.propTypes = {
 export const Cropper = connect(({ user }) => ({ ...user }), {
 	uploadPicture,
 	uploadBadContent,
-})(({ uploadPicture, uploadBadContent, uploadError }) => {
+})(({ uploadPicture, uploadBadContent }) => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -84,12 +111,26 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
             aspect: 1/1,
     }});
 
+    const resetState = () => {
+        setImageRef()
+        setFile()
+        setSrc({})
+        setCroppedImg()
+        setTool({
+            crop: {
+               unit: 'px',
+               width: '25',
+               aspect: 1/1,
+       }})
+    }
+
     const handleOpen = () => {
 		setOpen(true);
 	};
 
 	const handleClose = () => {
-		setOpen(false);
+        setOpen(false);
+        resetState()
     };
     
     const imageTypes = types => {
@@ -118,7 +159,6 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
     }
     
     const onImageLoaded = image => {
-        console.log(image)
         setImageRef(image)
         makeClientCrop(tool.crop)
     }
@@ -181,11 +221,13 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
     return (
         <div class='crop' className={classes.root}>
             <Button
-				type="button"
+                type="button"
+                disableFocusRipple
+                disableRipple
 				onClick={handleOpen}
-				className={classes.button}>
+				className={classes.cameraButton}>
 					<img
-                        src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png'
+                        src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/cameraicon.png'
                         className={classes.camera}
 						alt="upload icon"
 					/>
@@ -201,18 +243,25 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 			}}>
             <Fade in={open}>
                 <div className={classes.paper}>
+					<img
+					src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
+					onClick={handleClose}
+                    className={classes.cancelButton}
+                    alt="close button"
+						/>
                     <input type="file" accept="image/*" onChange={onSelectFile} />   
+                    <div className={classes.picture}>
                     {src && (
                     <ReactCrop
                         src={src}
                         crop={tool.crop}
-                        // ruleOfThirds
                         circularCrop
                         onImageLoaded={onImageLoaded}
                         onComplete={onCropComplete}
                         onChange={onCropChange}
                     />
                     )}
+                    </div>
                 <Button
                 	type="button"
 				    onClick={handleUpload}
