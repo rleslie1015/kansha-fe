@@ -1,5 +1,4 @@
 import auth0 from 'auth0-js';
-import jwtDecode from 'jwt-decode';
 
 export default class Auth {
 	auth0 = new auth0.WebAuth({
@@ -44,18 +43,4 @@ export default class Auth {
 		return new Date().getTime() < expiresAt;
 	}
 
-	logout() {
-		localStorage.removeItem('access_token');
-		localStorage.removeItem('id_token');
-		localStorage.removeItem('expires_at');
-		window.location.pathname = '/';
-	}
-
-	getProfile() {
-		if (localStorage.getItem('id_token')) {
-			return jwtDecode(localStorage.getItem('id_token'));
-		} else {
-			return {};
-		}
-	}
 }
