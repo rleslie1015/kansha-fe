@@ -1,9 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # Kansha
 
 You can find the deployed project at [KanshaRewards](http://dev--staging.kansharewards.com/).
@@ -43,10 +37,10 @@ Recognition app to praise your co-workers and send gift-cards.
 ### Key Features
 
 -    Register a new user by using Auth0
--    feature two
--    feature three
--    feature four
--    feature five
+-    Send recognition and badges to peers to thank them for their hard work
+-    Admins can delete users and any recognition/comments
+-    Mods can delete recognition/comments in their own department
+-    Users can comment and like recognition in a live feed, and see what badges their peers have earned.
 
 ## Tech Stack
 
@@ -56,134 +50,79 @@ Recognition app to praise your co-workers and send gift-cards.
 
 🚫 Why did you choose this framework?
 
--    point one
--    point two
--    point three
--    point four
+-    React allows us to determine and built the best architecture for our team
+-    Already known by the entire team, thus making it the easiest to work with
 
 #### _Redux_
 
 🚫 Why did you choose this framework?
 
--    point one
--    point two
--    point three
--    point four
+-    Greatly simplifies global state management
+-    Versatile in its utility
 
 #### _Material-UI_
 
-🚫 Why did you choose this framework?
+-    Makes styling much easier, once you get past the poor documentation
+-    Lets us use CSS styling in react
+-    Makes it easy to make pages responsive
 
--    point one
--    point two
--    point three
--    point four
 
-#### _Auth0_
+#### Front end deployed to `Netlify`
 
-🚫 Why did you choose this framework?
-
--    point one
--    point two
--    point three
--    point four
-
-#### Front end deployed to `🚫insert service here`
-
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/kansha-be) built using:
 
 #### _Node_
 
--    point one
--    point two
--    point three
+-    Simpler and easier to use with Java, as its javascript.
+-    Node is what the majority of us learned for our backend unit
 
 #### _Express_
 
--    point one
--    point two
--    point three
+-    Very capable and full featured
+-    Most of the team is familiar with Express
+-    The Connect Middleware functionality makes our backend service very extensible.
 
 #### _Knex_
 
--    point one
--    point two
--    point three
+-    Extremely flexible
+-    Full featured schema and query builders
+-    lets us switch from development to staging to production with ease.
 
 # APIs
 
-## 2️⃣ Authentication API here
+## 2️⃣ auth0
 
-🚫Replace text below with a description of the API
+Authenticate and authorize apps and APIs with any identity provider running on any stack any device or cloud.  It is simple to integrate and allows users to just sign up with a Google account if they wish.
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+## 3️⃣ S3 Bucket
 
-## 2️⃣ Payment API here
+Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect any amount of data for a range of use cases, such as websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
 
-🚫Replace text below with a description of the API
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
-
-# 5️⃣ Content Licenses
-
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
-
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+    *  REACT_APP_REDIRECT_URI_BASE = "http://localhost:3000"
+    *  REACT_APP_CLIENT_ID = "7zLELHA3Jyrt7O5M561HgBg3EjRsoT5K"
+    *  REACT_APP_BASE_URL = "https://kansha-staging.herokuapp.com"
+    *  REACT_APP_AUTH_DOMAIN = "kansha.auth0.com"
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
+We used Jest and Enzyme to build our testing for Kansha.
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+1. Clone the repo to your drive
+2. cd into the kansha/kansha-fe/react-app
+3. type yarn to install the dependencies (if you use npm, it would be npm install)
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * yarn start - starts the local build of the app
+    * yarn test - runs the created tests on the build
 
 # Contributing
 
@@ -223,5 +162,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/kansha-be) for details on the backend of our project.
 .
