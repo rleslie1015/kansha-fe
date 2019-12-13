@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { update } from './store/actions/user-actions';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles, withStyles, createStyles } from '@material-ui/core/styles';
-import logo from './assets/logo38.png';
-import kanshaLogo from './assets/logo39.png';
 import {
 	Container,
 	Typography,
@@ -17,6 +15,7 @@ import {
 	Select,
 	Box,
 	InputBase,
+	Card,
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
@@ -42,50 +41,45 @@ const StyledBase = withStyles(theme =>
 )(InputBase);
 
 const useStyles = makeStyles(theme => ({
-	root: {
+	formContainer: {
+        width: '100%',
+        margin: '3rem auto',
+        maxWidth: 'auto !important'
+	},
+	formControl: {
 		display: 'flex',
 		flexDirection: 'row',
-		minHeight: '100vh',
-		backgroundColor: '#26242D',
-	},
-	imageContainer: {
-		width: '48%',
-	},
-	kanshaLogo: {
-		width: '30%',
-	},
-	logo: {
-		width: '90%',
-		height: 'auto',
-		marginTop: '1rem',
-		marginLeft: '1rem',
-	},
-	formContainer: {
-		width: '48%',
 	},
 	onboard: {
-		position: 'relative',
 		display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+		flexDirection: 'column',
+		justifyContent: 'center',
 		margin: '7rem 3rem 0 3rem',
-		width: '80%',
+		width: 'auto',
 		height: '70%',
 		backgroundColor: '#2D2C35',
 		borderRadius: '2px',
 		padding: '2rem 2rem',
-    },
+	},
 	getStarted: {
-		display: 'flex',
-		justifyContent: 'center',
-		padding: '1rem .5rem 3rem .5rem',
-		color: '#EE4D71',
+		color: 'white',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: '600',
 		fontSize: '2.2rem',
 		lineHeight: '2rem',
 		letterSpacing: '0.15px',
+		margin: '3rem 0 0 5rem',
+	},
+	editProfile: {
+		color: 'white',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontWeight: '400',
+		fontSize: '1.6rem',
+		lineHeight: '2rem',
+		letterSpacing: '0.15px',
+		padding: '1rem',
 	},
 	textField: {
 		margin: '.5rem',
@@ -135,17 +129,21 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		width: '100%',
-		padding: '1rem',
+		// padding: '0.5rem',
+		['@media(max-width: 700px)']: {
+			display: 'flex',
+			flexDirection: 'column',
+		},
 	},
 	oneInput: {
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
-		padding: '1rem',
+		// padding: '0.5rem',
 	},
 	button: {
-		width: '70%',
-		fontSize: '24px',
+		width: '30%',
+		fontSize: '1rem',
 		margin: '2rem auto',
 		borderRadius: '0',
 		backgroundColor: '#2D2C35',
@@ -178,53 +176,98 @@ const useStyles = makeStyles(theme => ({
 		width: 100,
 		height: 100,
 	},
+	userInfo: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		width: '100%',
+		height: 'auto',
+		backgroundColor: '#2D2C35',
+		padding: '3rem 0',
+	},
+	pictureContainer: {
+		position: 'relative',
+		width: '50%',
+		borderRadius: '100%',
+		'&:hover': {
+			cursor: 'pointer',
+		},
+	},
+	profilePic: {
+		borderRadius: '100%',
+		// Hard coding until we can make a circle img cropper for users
+		width: '272px',
+		height: '272px',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+		objectPosition: '50% 50%',
+	},
+	name: {
+		paddingTop: '1.5rem',
+		color: '#FFFFFF',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		textAlign: 'center',
+	},
+	jobTitle: {
+		paddingTop: '.5rem',
+		color: 'rgba(255, 255, 255, 0.7)',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		textAlign: 'center',
+	},
+	department: {
+		paddingTop: '.5rem',
+		color: 'rgba(255, 255, 255, 0.5)',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		fontWeight: '500',
+		textAlign: 'Center',
+		verticalAlign: 'Top',
+		paddingBottom: '3rem',
+	},
 }));
 
 function Settings({ update, isUpdating, profile, user }) {
+	const classes = useStyles();
 
-    const classes = useStyles();
+	const history = useHistory();
 
-    const history = useHistory();
+	const initialState = {
+		first_name: user.profile.first_name,
+		last_name: user.profile.last_name,
+		job_title: user.profile.job_title,
+		department: user.profile.department,
+		org_name: user.profile.org_name,
+		user_type: user.profile.user_type,
+	};
 
-    const initialState = {
-        first_name: user.profile.first_name,
-        last_name: user.profile.last_name,
-        job_title: user.profile.job_title,
-        department: user.profile.department,
-        org_name: user.profile.org_name,
-        user_type: user.profile.user_type
-    }
-
-    
-    const [form, setForm] = useState(initialState);
+	const [form, setForm] = useState(initialState);
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
-    };
+	};
 
-    const id = user.profile.id;
-    
-    const handleSubmit = event => {
-        console.log(form)
+	const id = user.profile.id;
+
+	const handleSubmit = event => {
+		console.log(form);
 		update(id, form);
 		history.push('/profile');
-    };
+	};
 
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />
-			<Container className={classes.imageContainer}>
-				<img
-					src={kanshaLogo}
-					alt="Kansha Logo"
-					className={classes.kanshaLogo}
-				/>
-				<img
-					src={logo}
-					alt="Kansha Logo People"
-					className={classes.logo}
-				/>
-			</Container>
+			<Typography className={classes.getStarted} variant="h5">
+				Settings
+			</Typography>
 			<Container className={classes.formContainer}>
 				<Paper className={classes.onboard}>
 					{isUpdating ? (
@@ -240,138 +283,162 @@ function Settings({ update, isUpdating, profile, user }) {
 						</>
 					) : (
 						<>
-							<Typography
-								className={classes.getStarted}
-								variant="h5">
-								Settings
-							</Typography>
 							<FormControl className={classes.formControl}>
-								<Box className={classes.twoInput}>
-									<TextField
-										label="First Name*"
-										placeholder="e.g. Jane"
-										className={classes.textField}
-										variant="outlined"
-										name="first_name"
-										margin="normal"
-										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-                                        }}
-                                        value={form.first_name}
-									/>
-									<TextField
-										label="Last Name*"
-										placeholder="e.g. Doe"
-										className={classes.textField}
-										variant="outlined"
-										name="last_name"
-										margin="normal"
-										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-                                        }}
-                                        value={form.last_name}
-									/>
-								</Box>
-								<Box className={classes.twoInput}>
-									<TextField
-										label="Job Title*"
-										placeholder="e.g. Manager"
-										className={classes.textField}
-										variant="outlined"
-										name="job_title"
-										margin="normal"
-										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-                                        }}
-                                        value={form.job_title}
-									/>
-									<FormControl className={classes.textField}>
-										<Select
+								<div className={classes.leftContainer}>
+									<Typography className={classes.editProfile}>
+										Edit Profile
+									</Typography>
+									<Box className={classes.twoInput}>
+										<TextField
+											label="First Name*"
+											placeholder="e.g. Jane"
+											className={classes.textField}
 											variant="outlined"
-											defaultValue="standard"
-											value={form.user_type}
-											onChange={handleChange}
-											name="user_type"
+											name="first_name"
 											margin="normal"
-											MenuProps={{
-												classes: {
-													paper:
-														classes.dropdownStyle,
-												},
-											}}
-											input={<StyledBase />}
+											onChange={handleChange}
 											InputProps={{
 												className: classes.input,
 											}}
 											InputLabelProps={{
 												className: classes.label,
-											}}>
-											<MenuItem value="standard">
-												Standard
-											</MenuItem>
-											<MenuItem value="mod">Mod</MenuItem>
-											<MenuItem value="admin">
-												Admin
-											</MenuItem>
-										</Select>
-									</FormControl>
-								</Box>
-								<Box className={classes.oneInput}>
-									<TextField
-										label="Organization*"
-										placeholder="Organization Name"
-										className={classes.textField}
-										variant="outlined"
-										name="org_name"
-										margin="normal"
-										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-                                        }}
-                                        value={form.org_name}
-									/>
-								</Box>
-								<Box className={classes.oneInput}>
-									<TextField
-										label="Department"
-										placeholder="e.g. Marketing Department"
-										className={classes.textField}
-										variant="outlined"
-										name="department"
-										margin="normal"
-										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-                                        }}
-                                        value={form.department}
-									/>
-								</Box>
-								<Button
-									className={classes.button}
-									variant="contained"
-									color="primary"
-									onClick={handleSubmit}>
-									Save
-								</Button>
+											}}
+											value={form.first_name}
+										/>
+										<TextField
+											label="Last Name*"
+											placeholder="e.g. Doe"
+											className={classes.textField}
+											variant="outlined"
+											name="last_name"
+											margin="normal"
+											onChange={handleChange}
+											InputProps={{
+												className: classes.input,
+											}}
+											InputLabelProps={{
+												className: classes.label,
+											}}
+											value={form.last_name}
+										/>
+									</Box>
+									<Box className={classes.twoInput}>
+										<TextField
+											label="Job Title*"
+											placeholder="e.g. Manager"
+											className={classes.textField}
+											variant="outlined"
+											name="job_title"
+											margin="normal"
+											onChange={handleChange}
+											InputProps={{
+												className: classes.input,
+											}}
+											InputLabelProps={{
+												className: classes.label,
+											}}
+											value={form.job_title}
+										/>
+										<FormControl
+											className={classes.textField}>
+											<Select
+												variant="outlined"
+												defaultValue="standard"
+												value={form.user_type}
+												onChange={handleChange}
+												name="user_type"
+												margin="normal"
+												MenuProps={{
+													classes: {
+														paper:
+															classes.dropdownStyle,
+													},
+												}}
+												input={<StyledBase />}
+												InputProps={{
+													className: classes.input,
+												}}
+												InputLabelProps={{
+													className: classes.label,
+												}}>
+												<MenuItem value="standard">
+													Standard
+												</MenuItem>
+												<MenuItem value="mod">
+													Mod
+												</MenuItem>
+												<MenuItem value="admin">
+													Admin
+												</MenuItem>
+											</Select>
+										</FormControl>
+									</Box>
+									<Box className={classes.oneInput}>
+										<TextField
+											label="Organization*"
+											placeholder="Organization Name"
+											className={classes.textField}
+											variant="outlined"
+											name="org_name"
+											margin="normal"
+											onChange={handleChange}
+											InputProps={{
+												className: classes.input,
+											}}
+											InputLabelProps={{
+												className: classes.label,
+											}}
+											value={form.org_name}
+										/>
+									</Box>
+									<Box className={classes.oneInput}>
+										<TextField
+											label="Department"
+											placeholder="e.g. Marketing Department"
+											className={classes.textField}
+											variant="outlined"
+											name="department"
+											margin="normal"
+											onChange={handleChange}
+											InputProps={{
+												className: classes.input,
+											}}
+											InputLabelProps={{
+												className: classes.label,
+											}}
+											value={form.department}
+										/>
+									</Box>
+								</div>
+								<Card className={classes.userInfo}>
+									<div className={classes.pictureContainer}>
+										<img
+											src={user.profile.profile_picture}
+											className={classes.profilePic}
+											alt="user profile"
+										/>
+									</div>
+									<Typography
+										className={classes.name}
+										variant="h5">
+										{user.profile.first_name}{' '}
+										{user.profile.last_name}
+									</Typography>
+									<Typography className={classes.jobTitle}>
+										{user.profile.job_title}
+									</Typography>
+									<Typography className={classes.department}>
+										{user.profile.department}
+									</Typography>
+								</Card>
 							</FormControl>
+							<Button
+								className={classes.button}
+								variant="contained"
+								color="primary"
+								onClick={handleSubmit}>
+								Save Changes
+							</Button>
 						</>
 					)}
 				</Paper>
