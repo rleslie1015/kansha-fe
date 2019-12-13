@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadPostData, reactToPost, removeReaction } from '../../store/actions/feed-actions';
 
-export const FeedCard = ({ rec }) => {
+export const FeedCard = memo(({ rec }) => {
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
 	const { comments, reactions, profile } = useSelector(
@@ -39,4 +39,4 @@ export const FeedCard = ({ rec }) => {
 				))}
 		</>
 	);
-};
+});

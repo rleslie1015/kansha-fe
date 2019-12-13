@@ -11,6 +11,7 @@ import {
 	FEED_REACT_REMOVE_START,
 	FEED_REACT_REMOVE_SUCCESS,
 	FEED_REACT_REMOVE_FAILURE,
+	FEED_EVENT_NEW_REACTION,
 } from '../actions/feed-actions';
 
 const initialState = {
@@ -38,11 +39,6 @@ export const feedReducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: action.payload,
-			};
-		case FEED_EVENT_NEW_REC:
-			return {
-				...state,
-				feed: [...action.payload, ...state.feed],
 			};
 		case POST_DATA_LOAD_SUCCESS:
 			let { id, type } = action.data;
@@ -87,6 +83,16 @@ export const feedReducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: action.payload,
+			};
+		case FEED_EVENT_NEW_REC:
+			return {
+				...state,
+				feed: [...action.payload, ...state.feed],
+			};
+		case FEED_EVENT_NEW_REACTION:
+			return {
+				...state,
+				reactions: { ...state.reactions, [action.payload.rec_id]:  [...state.reactions[action.payload.rec_id], action.payload] },
 			};
 		default:
 			return state;
