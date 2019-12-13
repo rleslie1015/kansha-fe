@@ -60,7 +60,7 @@ export const FeedCard = memo(({ rec }) => {
 			<button onClick={() => dispatch(addComment(rec_id, comment))}>comment</button>
 			{comments[rec_id] &&
 				comments[rec_id].map(comment => (
-					<Typography>{comment.message}</Typography>
+					<Typography>{comment.first_name} {comment.last_name} commented: {comment.message}</Typography>
 				))}
 		</>
 	);
