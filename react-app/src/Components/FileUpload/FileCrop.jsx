@@ -52,10 +52,12 @@ const useStyles = makeStyles(theme => ({
           },
     },
 	camera: {
-		width: '70%',
+		width: '60%',
         height: 'auto',
     },
     picture: {
+        display: 'flex',
+        justifyContent: 'center',
         maxHeight: '800px',
         maxWidth: '800px',
         width: '100%',
@@ -107,7 +109,7 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
     const [ tool, setTool ] = useState({
          crop: {
             unit: '%',
-            width: '30',
+            width: '60',
             aspect: 1/1,
     }});
 
@@ -118,8 +120,8 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
         setCroppedImg()
         setTool({
             crop: {
-               unit: 'px',
-               width: '25',
+                unit: '%',
+                width: '60',
                aspect: 1/1,
        }})
     }
