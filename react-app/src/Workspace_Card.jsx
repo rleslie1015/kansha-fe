@@ -73,6 +73,7 @@ export default function Workspace_Card(props) {
 		axiosWithAuth()
 			.delete(`/users/${id}`)
 			.then(() => {
+				window.alert(`You are deleting a user!`)
 				props.setTeam(props.team.filter(user => !(user.id === id)))
 			})
 	}
