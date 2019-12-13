@@ -48,14 +48,10 @@ Recognition app to praise your co-workers and send gift-cards.
 
 #### _React_
 
-🚫 Why did you choose this framework?
-
 -    React allows us to determine and built the best architecture for our team
 -    Already known by the entire team, thus making it the easiest to work with
 
 #### _Redux_
-
-🚫 Why did you choose this framework?
 
 -    Greatly simplifies global state management
 -    Versatile in its utility
