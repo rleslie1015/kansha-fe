@@ -4,7 +4,7 @@ import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload/FileUpload'
+import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
 import { login} from '../../store/actions/user-actions'
 
@@ -52,6 +52,7 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		'&:hover': {
 			cursor: 'pointer',
+			opacity: '.3'
 		},
 	},
 	profilePic: {
@@ -173,14 +174,8 @@ function Profile({ profile, login }) {
 								alt="user profile"
 							/>
 							<div className={classes.addPic}>
-								<img
-									src= 'https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png'
-									className={classes.camera}
-									alt="upload icon"
-								/>
-								<FileUpload />
+								<Cropper />
 							</div>
-							
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}

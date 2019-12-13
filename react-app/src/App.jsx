@@ -8,7 +8,7 @@ import { Profile } from './Components/Profile';
 import { AuthLoader } from './Components/Auth';
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
-import Cropper from './Components/FileUpload/FileCrop';
+import { Cropper } from './Components/FileUpload/FileCrop';
 
 const useStyles = makeStyles(theme => ({
 	root: {
