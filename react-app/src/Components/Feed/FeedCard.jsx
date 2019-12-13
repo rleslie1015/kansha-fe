@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadPostData } from '../../store/actions/feed-actions';
+import { loadPostData, reactToPost, removeReaction } from '../../store/actions/feed-actions';
 
 export const FeedCard = ({ rec }) => {
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
-	const { comments, reactions, id: user_id } = useSelector(
+	const { comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
 			...user,
@@ -22,13 +22,21 @@ export const FeedCard = ({ rec }) => {
 				{rec.recipient_last}
 			</Typography>
 			<Typography>{rec.message}</Typography>
-			{reactions[rec_id] && reactions[rec_id].reduce((a, { id }) => console.log(id === user_id), false) ? (
-				<button>unlike</button>
+			{reactions[rec_id] &&
+			reactions[rec_id].reduce(
+				(a, { user_id }) => profile.id === user_id || a,
+				false
+			) ? (
+				<button onClick={() => dispatch(removeReaction(reactions[rec_id].reduce((a, i) => i.user_id === profile.id ? i.id : a, 0 )))}>unlike</button>
 			) : (
-				<button>like</button>
+				<button onClick={() => dispatch(reactToPost(rec_id))}>like</button>
 			)}{' '}
-            {reactions[rec_id] && reactions[rec_id].length}
-            {comments[rec_id] && comments[rec_id].map(comment => <Typography>{comment.message}</Typography>)}
+			{reactions[rec_id] && reactions[rec_id].length}
+			<Typography>{'\n\n comments: \n'}</Typography>
+			{comments[rec_id] &&
+				comments[rec_id].map(comment => (
+					<Typography>{comment.message}</Typography>
+				))}
 		</>
 	);
 };
