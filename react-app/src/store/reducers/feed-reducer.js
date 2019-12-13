@@ -2,7 +2,6 @@ import {
 	FEED_LOAD_START,
 	FEED_LOAD_SUCCESS,
 	FEED_LOAD_FAILURE,
-	FEED_EVENT_NEW_REC,
 	POST_DATA_LOAD_SUCCESS,
 	POST_DATA_LOAD_FAILURE,
 	FEED_REACT_START,
@@ -11,7 +10,12 @@ import {
 	FEED_REACT_REMOVE_START,
 	FEED_REACT_REMOVE_SUCCESS,
 	FEED_REACT_REMOVE_FAILURE,
+	FEED_COMMENT_START,
+	FEED_COMMENT_SUCCESS,
+	FEED_COMMENT_FAILURE,
+	FEED_EVENT_NEW_REC,
 	FEED_EVENT_NEW_REACTION,
+	FEED_EVENT_NEW_COMMENT,
 } from '../actions/feed-actions';
 
 const initialState = {
@@ -84,6 +88,22 @@ export const feedReducer = (state = initialState, action) => {
 				isLoading: false,
 				error: action.payload,
 			};
+		case FEED_COMMENT_START:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case FEED_COMMENT_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+			};
+		case FEED_COMMENT_FAILURE:
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload,
+			};
 		case FEED_EVENT_NEW_REC:
 			return {
 				...state,
@@ -92,7 +112,24 @@ export const feedReducer = (state = initialState, action) => {
 		case FEED_EVENT_NEW_REACTION:
 			return {
 				...state,
-				reactions: { ...state.reactions, [action.payload.rec_id]:  [...state.reactions[action.payload.rec_id], action.payload] },
+				reactions: {
+					...state.reactions,
+					[action.payload.rec_id]: [
+						...state.reactions[action.payload.rec_id],
+						action.payload,
+					],
+				},
+			};
+		case FEED_EVENT_NEW_COMMENT:
+			return {
+				...state,
+				comments: {
+					...state.comments,
+					[action.payload.rec_id]: [
+						...state.comments[action.payload.rec_id],
+						action.payload,
+					],
+				},
 			};
 		default:
 			return state;
