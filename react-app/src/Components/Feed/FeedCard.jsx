@@ -5,7 +5,7 @@ import {
 	loadPostData,
 	reactToPost,
 	removeReaction,
-	addComment
+	addComment,
 } from '../../store/actions/feed-actions';
 
 export const FeedCard = memo(({ rec }) => {
@@ -34,16 +34,19 @@ export const FeedCard = memo(({ rec }) => {
 				false,
 			) ? (
 				<button
-					onClick={() =>
+					onClick={() =>{
+						const id = reactions[rec_id].reduce(
+							(a, i) =>
+								i.user_id === profile.id ? i.id : a,
+							0,
+						)
+						console.log(id)
 						dispatch(
 							removeReaction(
-								reactions[rec_id].reduce(
-									(a, i) =>
-										i.user_id === profile.id ? i.id : a,
-									0,
-								),
+								id, rec_id
 							),
 						)
+						}
 					}>
 					unlike
 				</button>
@@ -57,10 +60,15 @@ export const FeedCard = memo(({ rec }) => {
 			<input
 				value={comment}
 				onChange={e => setComment(e.target.value)}></input>
-			<button onClick={() => dispatch(addComment(rec_id, comment))}>comment</button>
+			<button onClick={() => dispatch(addComment(rec_id, comment))}>
+				comment
+			</button>
 			{comments[rec_id] &&
 				comments[rec_id].map(comment => (
-					<Typography>{comment.first_name} {comment.last_name} commented: {comment.message}</Typography>
+					<Typography>
+						{comment.first_name}
+						{comment.last_name} {comment.message}
+					</Typography>
 				))}
 		</>
 	);

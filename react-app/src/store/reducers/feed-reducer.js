@@ -81,6 +81,10 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
+				reactions: {
+					...state.reactions,
+					[action.payload.rec_id]: state.reactions[action.payload.rec_id].filter(r => !(r.id === action.payload.id)),
+				},
 			};
 		case FEED_REACT_REMOVE_FAILURE:
 			return {

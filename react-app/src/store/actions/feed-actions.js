@@ -72,12 +72,12 @@ export const reactToPost = rec_id => dispatch => {
 		});
 };
 
-export const removeReaction = id => dispatch => {
+export const removeReaction = (id, rec_id = 42) => dispatch => {
 	dispatch({ type: FEED_REACT_REMOVE_START });
 	axiosWithAuth()
 		.delete('/reactions/' + id)
 		.then(() => {
-			dispatch({ type: FEED_REACT_REMOVE_SUCCESS, payload: id });
+			dispatch({ type: FEED_REACT_REMOVE_SUCCESS, payload: { id, rec_id }});
 		})
 		.catch(err => {
 			dispatch({ type: FEED_REACT_REMOVE_FAILURE, payload: err });
