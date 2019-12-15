@@ -1,12 +1,8 @@
 import React, { useEffect, memo, useState } from 'react';
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	loadPostData,
-	reactToPost,
-	removeReaction,
-	addComment,
-} from '../../store/actions/feed-actions';
+import { loadPostData, addComment } from '../../store/actions/feed-actions';
+import { ReactionButton } from './ReactionButton';
 
 export const FeedCard = memo(({ rec }) => {
 	const [comment, setComment] = useState('');
@@ -28,41 +24,23 @@ export const FeedCard = memo(({ rec }) => {
 				{rec.recipient_last}
 			</Typography>
 			<Typography>{rec.message}</Typography>
-			{reactions[rec_id] &&
-			reactions[rec_id].reduce(
-				(a, { user_id }) => profile.id === user_id || a,
-				false,
-			) ? (
-				<button
-					onClick={() =>{
-						const id = reactions[rec_id].reduce(
-							(a, i) =>
-								i.user_id === profile.id ? i.id : a,
-							0,
-						)
-						console.log(id)
-						dispatch(
-							removeReaction(
-								id, rec_id
-							),
-						)
-						}
-					}>
-					unlike
-				</button>
-			) : (
-				<button onClick={() => dispatch(reactToPost(rec_id))}>
-					like
-				</button>
-			)}{' '}
-			{reactions[rec_id] && reactions[rec_id].length}
-			<Typography>{'\n\n comments: \n'}</Typography>
+			{reactions[rec_id] && (
+				<>
+					<ReactionButton
+						id={profile.id}
+						rec_id={rec_id}
+						reactions={reactions[rec_id]}
+					/>
+					<Typography>{'\n\n comments: \n'}</Typography>
+				</>
+			)}
 			<input
 				value={comment}
 				onChange={e => setComment(e.target.value)}></input>
 			<button onClick={() => dispatch(addComment(rec_id, comment))}>
 				comment
 			</button>
+
 			{comments[rec_id] &&
 				comments[rec_id].map(comment => (
 					<Typography>
