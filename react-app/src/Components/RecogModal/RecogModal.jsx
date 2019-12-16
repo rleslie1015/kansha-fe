@@ -6,7 +6,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import { TextField, Button, FormControl } from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
-import send from '../../assests/send.png';
+import send from '../../assets/send.png';
 
 import { connect } from 'react-redux';
 
@@ -41,16 +41,13 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 	},
 	button: {
-		padding: '0.5em 3em',
+		// padding: '0.5em 3em',
 		backgroundColor: '#2D2C35',
 		color: '#EE4D71',
 		textDecoration: 'none',
 		border: '2px solid #EE4d71',
-		[theme.breakpoints.down('sm')]: {
-			width: '100%',
-			height: '100px',
-			borderRadius: '50%',
-		},
+		borderRadius: '100%',
+	
 		
 	},
 	recogButton: {
@@ -72,6 +69,9 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '20px',
 	},
+	img: {
+		padding: '7px'
+	}
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -147,7 +147,7 @@ function RecogModal(props) {
 				onClick={handleOpen}
 				className={classes.button}>
 				
-				<img src={send} alt='thank button' />
+				<img src={send} alt='thank button' className={classes.img}/>
 			</Button>
 			<Modal
 				className={classes.modal}

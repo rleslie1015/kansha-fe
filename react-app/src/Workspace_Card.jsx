@@ -1,12 +1,14 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
+import profile from './assets/profile.png';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import RecogModal from './Components/RecogModal/RecogModal';
 import trashcan from './assets/Trashcan.png';
+import IconButton from '@material-ui/core/IconButton';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
@@ -128,6 +130,18 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'center'
 	},
+	button: {
+		// padding: '0.5em 3em',
+		backgroundColor: '#2D2C35',
+		color: '#EE4D71',
+		textDecoration: 'none',
+		border: '2px solid #EE4d71',
+		borderRadius: '100%',
+		[theme.breakpoints.down('sm')]: {
+			borderRadius: '50%',
+		},
+		
+	},
 	button_dark: {
 		backgroundColor: '#575757',
 		color: 'white',
@@ -181,11 +195,11 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<button
 											variant="contained"
 											className={classes.button}>
-											View Profile
-										</Button> */}
+											<img alt='profile icon' src={profile} />
+										</button>
 								</CardActions>
 						</Card>
 						)
@@ -212,11 +226,11 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<IconButton
 											variant="contained"
-											className={classes.button}>
-											View Profile
-										</Button> */}
+											className={classes.button} >
+											<img alt='profile icon' src={profile} />
+										</IconButton>
 								</CardActions>
 							</Card>
 						)

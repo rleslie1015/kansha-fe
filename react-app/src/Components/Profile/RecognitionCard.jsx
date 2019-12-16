@@ -3,7 +3,7 @@ import { Card, Box, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { timeAgo } from '../../utils/timeago';
-import trashcan from '../../assests/Trashcan.png'
+import trashcan from '../../assets/Trashcan.png'
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
