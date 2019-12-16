@@ -10,13 +10,16 @@ export const FeedCard = memo(({ rec }) => {
 	const dispatch = useDispatch();
 	const { comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
-			...liveFeed,
+			comments: liveFeed.comments[rec_id],
+			reactions: liveFeed.reactions[rec_id],
 			...user,
 		}),
 	);
 	useEffect(() => {
-		dispatch(loadPostData(rec_id));
-	}, [dispatch, rec_id]);
+		if (!(reactions || comments)) {
+			dispatch(loadPostData(rec_id));
+		}
+	}, [dispatch, rec_id, reactions, comments]);
 	return (
 		<>
 			<Typography>
@@ -24,12 +27,12 @@ export const FeedCard = memo(({ rec }) => {
 				{rec.recipient_last}
 			</Typography>
 			<Typography>{rec.message}</Typography>
-			{reactions[rec_id] && (
+			{reactions && (
 				<>
 					<ReactionButton
 						id={profile.id}
 						rec_id={rec_id}
-						reactions={reactions[rec_id]}
+						reactions={reactions}
 					/>
 					<Typography>{'\n\n comments: \n'}</Typography>
 				</>
@@ -41,8 +44,8 @@ export const FeedCard = memo(({ rec }) => {
 				comment
 			</button>
 
-			{comments[rec_id] &&
-				comments[rec_id].map(comment => (
+			{comments &&
+				comments.map(comment => (
 					<Typography>
 						{comment.first_name}
 						{comment.last_name} {comment.message}

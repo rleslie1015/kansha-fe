@@ -72,7 +72,7 @@ export const reactToPost = rec_id => dispatch => {
 		});
 };
 
-export const removeReaction = (id, rec_id = 42) => dispatch => {
+export const removeReaction = (id, rec_id) => dispatch => {
 	dispatch({ type: FEED_REACT_REMOVE_START });
 	axiosWithAuth()
 		.delete('/reactions/' + id)
