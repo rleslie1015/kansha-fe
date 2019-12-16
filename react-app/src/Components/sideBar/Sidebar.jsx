@@ -114,14 +114,41 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	signoutClosed: {
-		marginTop: '20vh',
-		backgroundColor: '#2D2C35',
-		'&:hover': {
-			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
 		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'none'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'block',
+			marginTop: '20vh',
+			backgroundColor: '#2D2C35',
+			'&:hover': {
+				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		},
+			
+		}
+		
 	},
-	menuClosed: {
+	menuClosed: {[theme.breakpoints.down('sm')]: {
+		display: 'none'
+
+	},
+
+	[theme.breakpoints.up('md')]: {
+		display: 'none'
+
+	},
+
+	[theme.breakpoints.up('lg')]: {
+		display: 'block',
 		marginTop: '25vh',
+		
+	}
+		
 	},
 	menuOpen: {
 		marginTop: '0',

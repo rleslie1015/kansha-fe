@@ -3,6 +3,9 @@ import { Card, Box, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { timeAgo } from '../../utils/timeago';
+import trashcan from '../../assests/Trashcan.png'
+import { useSelector } from 'react-redux';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
 	recCard: {
@@ -58,6 +61,7 @@ const useStyles = makeStyles(theme => ({
 		color: '#FFFFFF',
 	},
 	recInfo: {
+		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
 		width: '70%',
@@ -85,14 +89,35 @@ const useStyles = makeStyles(theme => ({
 		width: '90%',
 		paddingTop: '.5rem',
 	},
+	deleteIcon: {
+		position: 'absolute',
+		top: '0px',
+		right: '0px',
+	},
+	trashcan: {
+		width: '20px',
+		height: 'auto',
+	},
 }));
 
 export function RecognitionCard({ recognition, sent }) {
 	const classes = useStyles();
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
-
 	const history = useHistory()
+	const profile = useSelector(state => state.user.profile)
+	
+	const handleDelete = id => {
+		axiosWithAuth()
+			.delete(`/rec/${id}`)
+			.then(id => {
+				// i dunno how to get the user id of said profile.... 
+				// is coming up object object
+				// will figure out later... 
+				history.push(`/profile/${id}`)
+			})
+	}
 
+	if(profile.user_type === 'admin'){
 	return (
 		<Card className={classes.recCard}>
 			<Box class={classes.recIcon}>
@@ -110,6 +135,9 @@ export function RecognitionCard({ recognition, sent }) {
 				/>
 			</Box>
 			<Box className={classes.recInfo}>
+				<Box className={classes.deleteIcon} >
+					<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition.id)}/>
+				</Box>
 				<Box className={classes.recSender}>
 					<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>
 						{sent
@@ -130,4 +158,84 @@ export function RecognitionCard({ recognition, sent }) {
 			</Box>
 		</Card>
 	);
+	} else if(profile.user_type === 'mod' && profile.department === recognition.department) {
+		return (
+			<Card className={classes.recCard}>
+				<Box class={classes.recIcon}>
+					<img
+						src={
+							sent
+								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+								: recognition.profile_pic
+						}
+						className={
+							sent ? classes.recSentLogo : classes.recProfilePic
+						}
+					onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}
+						alt="user avatar"
+					/>
+				</Box>
+				<Box className={classes.recInfo}>
+					<Box className={classes.deleteIcon} >
+						<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition.id)}/>
+					</Box>
+					<Box className={classes.recSender}>
+						<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>
+							{sent
+								? `Sent to ${recognition.first_name} ${recognition.last_name}`
+								: `${recognition.first_name} ${recognition.last_name}`}
+						</Typography>
+					</Box>
+					<Box className={classes.message}>
+						<Typography className={classes.recCardMessage}>
+							{recognition.message}
+						</Typography>
+					</Box>
+					<Box className={classes.time}>
+						<Typography className={classes.recCardTime}>
+							{time}
+						</Typography>
+					</Box>
+				</Box>
+			</Card>
+		);
+	} else {
+		return (
+			<Card className={classes.recCard}>
+				<Box class={classes.recIcon}>
+					<img
+						src={
+							sent
+								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+								: recognition.profile_pic
+						}
+						className={
+							sent ? classes.recSentLogo : classes.recProfilePic
+						}
+						onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}
+						alt="user avatar"
+					/>
+				</Box>
+				<Box className={classes.recInfo}>
+					<Box className={classes.recSender}>
+						<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>
+							{sent
+								? `Sent to ${recognition.first_name} ${recognition.last_name}`
+								: `${recognition.first_name} ${recognition.last_name}`}
+						</Typography>
+					</Box>
+					<Box className={classes.message}>
+						<Typography className={classes.recCardMessage}>
+							{recognition.message}
+						</Typography>
+					</Box>
+					<Box className={classes.time}>
+						<Typography className={classes.recCardTime}>
+							{time}
+						</Typography>
+					</Box>
+				</Box>
+			</Card>
+		);
+	}
 }
