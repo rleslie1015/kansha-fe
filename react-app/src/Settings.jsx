@@ -19,7 +19,6 @@ import {
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import Loader from 'react-loader-spinner';
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -41,10 +40,13 @@ const StyledBase = withStyles(theme =>
 )(InputBase);
 
 const useStyles = makeStyles(theme => ({
+	mainContainer: {
+		display: 'flex',
+		flexDirection: 'column'
+	},
 	formContainer: {
-        width: '100%',
-        margin: '3rem auto',
-        maxWidth: 'auto !important'
+		margin: '3rem 0',
+		maxWidth: 'auto',
 	},
 	formControl: {
 		display: 'flex',
@@ -54,8 +56,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
-		margin: '7rem 3rem 0 3rem',
-		width: 'auto',
+		width: '100%',
 		height: '70%',
 		backgroundColor: '#2D2C35',
 		borderRadius: '2px',
@@ -69,7 +70,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '2.2rem',
 		lineHeight: '2rem',
 		letterSpacing: '0.15px',
-		margin: '3rem 0 0 5rem',
+		marginTop: '3rem',
 	},
 	editProfile: {
 		color: 'white',
@@ -130,7 +131,7 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 		width: '100%',
 		// padding: '0.5rem',
-		['@media(max-width: 700px)']: {
+		'@media(max-width: 700px)': {
 			display: 'flex',
 			flexDirection: 'column',
 		},
@@ -195,7 +196,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	profilePic: {
 		borderRadius: '100%',
-		// Hard coding until we can make a circle img cropper for users
 		width: '272px',
 		height: '272px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
@@ -265,183 +265,167 @@ function Settings({ update, isUpdating, profile, user }) {
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />
-			<Typography className={classes.getStarted} variant="h5">
-				Settings
-			</Typography>
-			<Container className={classes.formContainer}>
-				<Paper className={classes.onboard}>
-					{isUpdating ? (
-						<>
-							<Box className={classes.loaderContainer}>
-								<Loader
-									type="Rings"
-									color="#EE4D71"
-									height={100}
-									width={100}
-								/>
-							</Box>
-						</>
-					) : (
-						<>
-							<FormControl className={classes.formControl}>
-								<div className={classes.leftContainer}>
-									<Typography className={classes.editProfile}>
-										Edit Profile
-									</Typography>
-									<Box className={classes.twoInput}>
-										<TextField
-											label="First Name*"
-											placeholder="e.g. Jane"
-											className={classes.textField}
+			<Container className={classes.mainContainer}>
+				<Typography className={classes.getStarted} variant="h5">
+					Settings
+				</Typography>
+				<Container className={classes.formContainer}>
+					<Paper className={classes.onboard}>
+						<FormControl className={classes.formControl}>
+							<div className={classes.leftContainer}>
+								<Typography className={classes.editProfile}>
+									Edit Profile
+								</Typography>
+								<Box className={classes.twoInput}>
+									<TextField
+										label="First Name*"
+										placeholder="e.g. Jane"
+										className={classes.textField}
+										variant="outlined"
+										name="first_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+										value={form.first_name}
+									/>
+									<TextField
+										label="Last Name*"
+										placeholder="e.g. Doe"
+										className={classes.textField}
+										variant="outlined"
+										name="last_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+										value={form.last_name}
+									/>
+								</Box>
+								<Box className={classes.twoInput}>
+									<TextField
+										label="Job Title*"
+										placeholder="e.g. Manager"
+										className={classes.textField}
+										variant="outlined"
+										name="job_title"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+										value={form.job_title}
+									/>
+									<FormControl className={classes.textField}>
+										<Select
 											variant="outlined"
-											name="first_name"
-											margin="normal"
+											defaultValue="standard"
+											value={form.user_type}
 											onChange={handleChange}
+											name="user_type"
+											margin="normal"
+											MenuProps={{
+												classes: {
+													paper:
+														classes.dropdownStyle,
+												},
+											}}
+											input={<StyledBase />}
 											InputProps={{
 												className: classes.input,
 											}}
 											InputLabelProps={{
 												className: classes.label,
-											}}
-											value={form.first_name}
-										/>
-										<TextField
-											label="Last Name*"
-											placeholder="e.g. Doe"
-											className={classes.textField}
-											variant="outlined"
-											name="last_name"
-											margin="normal"
-											onChange={handleChange}
-											InputProps={{
-												className: classes.input,
-											}}
-											InputLabelProps={{
-												className: classes.label,
-											}}
-											value={form.last_name}
-										/>
-									</Box>
-									<Box className={classes.twoInput}>
-										<TextField
-											label="Job Title*"
-											placeholder="e.g. Manager"
-											className={classes.textField}
-											variant="outlined"
-											name="job_title"
-											margin="normal"
-											onChange={handleChange}
-											InputProps={{
-												className: classes.input,
-											}}
-											InputLabelProps={{
-												className: classes.label,
-											}}
-											value={form.job_title}
-										/>
-										<FormControl
-											className={classes.textField}>
-											<Select
-												variant="outlined"
-												defaultValue="standard"
-												value={form.user_type}
-												onChange={handleChange}
-												name="user_type"
-												margin="normal"
-												MenuProps={{
-													classes: {
-														paper:
-															classes.dropdownStyle,
-													},
-												}}
-												input={<StyledBase />}
-												InputProps={{
-													className: classes.input,
-												}}
-												InputLabelProps={{
-													className: classes.label,
-												}}>
-												<MenuItem value="standard">
-													Standard
-												</MenuItem>
-												<MenuItem value="mod">
-													Mod
-												</MenuItem>
-												<MenuItem value="admin">
-													Admin
-												</MenuItem>
-											</Select>
-										</FormControl>
-									</Box>
-									<Box className={classes.oneInput}>
-										<TextField
-											label="Organization*"
-											placeholder="Organization Name"
-											className={classes.textField}
-											variant="outlined"
-											name="org_name"
-											margin="normal"
-											onChange={handleChange}
-											InputProps={{
-												className: classes.input,
-											}}
-											InputLabelProps={{
-												className: classes.label,
-											}}
-											value={form.org_name}
-										/>
-									</Box>
-									<Box className={classes.oneInput}>
-										<TextField
-											label="Department"
-											placeholder="e.g. Marketing Department"
-											className={classes.textField}
-											variant="outlined"
-											name="department"
-											margin="normal"
-											onChange={handleChange}
-											InputProps={{
-												className: classes.input,
-											}}
-											InputLabelProps={{
-												className: classes.label,
-											}}
-											value={form.department}
-										/>
-									</Box>
+											}}>
+											<MenuItem value="standard">
+												Standard
+											</MenuItem>
+											<MenuItem value="mod">Mod</MenuItem>
+											<MenuItem value="admin">
+												Admin
+											</MenuItem>
+										</Select>
+									</FormControl>
+								</Box>
+								<Box className={classes.oneInput}>
+									<TextField
+										label="Organization*"
+										placeholder="Organization Name"
+										className={classes.textField}
+										variant="outlined"
+										name="org_name"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+										value={form.org_name}
+									/>
+								</Box>
+								<Box className={classes.oneInput}>
+									<TextField
+										label="Department"
+										placeholder="e.g. Marketing Department"
+										className={classes.textField}
+										variant="outlined"
+										name="department"
+										margin="normal"
+										onChange={handleChange}
+										InputProps={{
+											className: classes.input,
+										}}
+										InputLabelProps={{
+											className: classes.label,
+										}}
+										value={form.department}
+									/>
+								</Box>
+							</div>
+							<Card className={classes.userInfo}>
+								<div className={classes.pictureContainer}>
+									<img
+										src={user.profile.profile_picture}
+										className={classes.profilePic}
+										alt="user profile"
+									/>
 								</div>
-								<Card className={classes.userInfo}>
-									<div className={classes.pictureContainer}>
-										<img
-											src={user.profile.profile_picture}
-											className={classes.profilePic}
-											alt="user profile"
-										/>
-									</div>
-									<Typography
-										className={classes.name}
-										variant="h5">
-										{user.profile.first_name}{' '}
-										{user.profile.last_name}
-									</Typography>
-									<Typography className={classes.jobTitle}>
-										{user.profile.job_title}
-									</Typography>
-									<Typography className={classes.department}>
-										{user.profile.department}
-									</Typography>
-								</Card>
-							</FormControl>
-							<Button
-								className={classes.button}
-								variant="contained"
-								color="primary"
-								onClick={handleSubmit}>
-								Save Changes
-							</Button>
-						</>
-					)}
-				</Paper>
+								<Typography
+									className={classes.name}
+									variant="h5">
+									{user.profile.first_name}{' '}
+									{user.profile.last_name}
+								</Typography>
+								<Typography className={classes.jobTitle}>
+									{user.profile.job_title}
+								</Typography>
+								<Typography className={classes.department}>
+									{user.profile.department}
+								</Typography>
+							</Card>
+						</FormControl>
+						<Button
+							className={classes.button}
+							variant="contained"
+							color="primary"
+							onClick={handleSubmit}>
+							Save Changes
+						</Button>
+					</Paper>
+				</Container>
 			</Container>
 		</div>
 	);
