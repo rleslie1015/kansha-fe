@@ -41,9 +41,11 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: 'white',
 		width: '30%',
+		justifyContent: 'center',
 		[theme.breakpoints.down('sm')]: {
 			position: 'relative',
 			minWidth: 275,
+			height: '102px',
 			margin: 10,
 			backgroundColor: '#2D2C35',
 			color: 'white',
