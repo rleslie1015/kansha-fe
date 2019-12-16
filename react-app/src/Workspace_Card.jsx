@@ -144,12 +144,13 @@ export default function Workspace_Card(props) {
 	const classes = useStyles();
 
 	const handleDelete = id => {
+		if(window.confirm('Are you sure you would like to delete this user?')){
 		axiosWithAuth()
 			.delete(`/users/${id}`)
 			.then(() => {
-				window.alert(`You are deleting a user!`)
 				props.setTeam(props.team.filter(user => !(user.id === id)))
 			})
+		}
 	}
 	return (
 		<div>
