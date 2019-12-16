@@ -20,13 +20,35 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 	},
 	main_header: {
-		margin: '40px 20px',
-		fontSize: '3rem',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('lg')]: {
+			margin: '40px 20px',
+			fontSize: '3rem',	
+			display: 'block'
+		}
+					
 	},
-	header_container: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
+	header_container: {	
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		}
 	},
 	search: {
 		position: 'relative',
