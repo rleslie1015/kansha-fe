@@ -6,7 +6,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import { TextField, Button, FormControl } from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
-import send from '../../assests/send.png';
+import send from '../../assets/send.png';
 
 import { connect } from 'react-redux';
 
