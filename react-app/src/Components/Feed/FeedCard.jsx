@@ -1,20 +1,13 @@
 import React, { useEffect, memo, useState } from 'react';
 import { Typography } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loadPostData, addComment } from '../../store/actions/feed-actions';
 import { ReactionButton } from './ReactionButton';
 
-export const FeedCard = memo(({ rec }) => {
+export const FeedCard = memo(({ rec, comments, reactions, profile }) => {
 	const [comment, setComment] = useState('');
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
-	const { comments, reactions, profile } = useSelector(
-		({ liveFeed, user }) => ({
-			comments: liveFeed.comments[rec_id],
-			reactions: liveFeed.reactions[rec_id],
-			...user,
-		}),
-	);
 	useEffect(() => {
 		if (!(reactions || comments)) {
 			dispatch(loadPostData(rec_id));
