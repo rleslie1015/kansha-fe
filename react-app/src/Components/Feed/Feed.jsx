@@ -4,9 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FeedCard } from './FeedCard';
 import {
 	loadLiveFeed,
-	FEED_EVENT_NEW_REC,
-	FEED_EVENT_NEW_REACTION,
-	FEED_EVENT_NEW_COMMENT,
+	liveFeedListeners
 } from '../../store/actions/feed-actions';
 
 // Adds compatibility for SSE to older browsers
@@ -42,27 +40,8 @@ export const Feed = () => {
 		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
 		const sse = new EventSource(src);
 
-		// Listening for new events
-		sse.addEventListener('recognition', event =>
-			dispatch({
-				type: FEED_EVENT_NEW_REC,
-				payload: JSON.parse(event.data),
-			}),
-		);
-
-		sse.addEventListener('comment', event =>
-			dispatch({
-				type: FEED_EVENT_NEW_COMMENT,
-				payload: JSON.parse(event.data),
-			}),
-		);
-
-		sse.addEventListener('reaction', event =>
-			dispatch({
-				type: FEED_EVENT_NEW_REACTION,
-				payload: JSON.parse(event.data),
-			}),
-		);
+		// Set's up event listeners inside of redux ac
+		dispatch(liveFeedListeners(sse))
 
 		// Close the EventStream when component unmounts
 		return function cleanup() {

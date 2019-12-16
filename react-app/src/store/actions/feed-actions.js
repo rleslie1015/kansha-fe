@@ -95,3 +95,49 @@ export const addComment = (rec_id, message) => dispatch => {
 			dispatch({ type: FEED_COMMENT_FAILURE, payload: err });
 		});
 };
+
+export const liveFeedListeners = (sse) => dispatch => {
+	// Listening for NEW events
+	sse.addEventListener(FEED_EVENT_NEW_REC, event =>
+		dispatch({
+			type: FEED_EVENT_NEW_REC,
+			payload: JSON.parse(event.data),
+		}),
+	);
+
+	sse.addEventListener(FEED_EVENT_NEW_COMMENT, event =>
+		dispatch({
+			type: FEED_EVENT_NEW_COMMENT,
+			payload: JSON.parse(event.data),
+		}),
+	);
+
+	sse.addEventListener(FEED_EVENT_NEW_REACTION, event =>
+		dispatch({
+			type: FEED_EVENT_NEW_REACTION,
+			payload: JSON.parse(event.data),
+		}),
+	);
+
+	// Listening for REMOVE events
+	sse.addEventListener(FEED_EVENT_REMOVE_REC, event =>
+		dispatch({
+			type: FEED_EVENT_REMOVE_REC,
+			payload: JSON.parse(event.data),
+		}),
+	);
+
+	sse.addEventListener(FEED_EVENT_REMOVE_COMMENT, event =>
+		dispatch({
+			type: FEED_EVENT_REMOVE_COMMENT,
+			payload: JSON.parse(event.data),
+		}),
+	);
+
+	sse.addEventListener(FEED_EVENT_REMOVE_REACTION, event =>
+		dispatch({
+			type: FEED_EVENT_REMOVE_REACTION,
+			payload: JSON.parse(event.data),
+		}),
+	);
+}

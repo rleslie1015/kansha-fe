@@ -11,17 +11,18 @@ import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 const useSyles = makeStyles(theme => ({
 	ReactionButton: {
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
-		padding: '5px',
+		padding: '2px 8px',
+		borderRadius: '30px',
 	},
 	IconReacted: {
 		color: '#EE4D71',
-		height: '30px',
+		height: '22px',
 		margin: 0,
 		padding: 0,
 	},
 	IconNonReacted: {
 		color: '#FFFFFF;',
-		height: '28px',
+		height: '22px',
 		margin: 0,
 		padding: 0,
 	},
@@ -30,14 +31,15 @@ const useSyles = makeStyles(theme => ({
 		fontStyle: 'normal',
 		fontWeight: '500',
 		fontSize: '16px',
-		lineHeight: '30px',
+		lineHeight: '22px',
 		display: 'flex',
 		alignItems: 'center',
 		letterSpacing: '0.1px',
 		color: 'rgba(255, 255, 255, 0.7)',
 		margin: 0,
 		padding: 0,
-		paddingLeft: '5px'
+		paddingLeft: '5px',
+		paddingTop: '1px',
 	},
 }));
 
@@ -75,7 +77,9 @@ export const ReactionButton = ({ reactions, rec_id, id }) => {
 					className={classes.IconNonReacted}
 				/>
 			)}
-			<Typography className={classes.Count}>{reactions && reactions.length}</Typography>
+			<Typography className={classes.Count}>
+				{reactions && reactions.length}
+			</Typography>
 		</IconButton>
 	);
 };
