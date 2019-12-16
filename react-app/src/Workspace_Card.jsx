@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import RecogModal from './Components/RecogModal/RecogModal';
-import trashcan from './assests/Trashcan.png';
+import trashcan from './assets/Trashcan.png';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
