@@ -12,15 +12,15 @@ import {
 	ListItemIcon,
 } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import openMenu from '../../assests/open-menu.png';
-import closeMenu from '../../assests/close-menu.png';
-import home from '../../assests/home.png';
-import profile from '../../assests/profile.png';
-import workspace from '../../assests/workspace.png';
-import sendReward from '../../assests/send.png';
-import rewardHistory from '../../assests/history.png';
-import settings from '../../assests/settings.png';
-import signOut from '../../assests/signout.png';
+import openMenu from '../../assets/open-menu.png';
+import closeMenu from '../../assets/close-menu.png';
+import home from '../../assets/home.png';
+import profile from '../../assets/profile.png';
+import workspace from '../../assets/workspace.png';
+import sendReward from '../../assets/send.png';
+import rewardHistory from '../../assets/history.png';
+import settings from '../../assets/settings.png';
+import signOut from '../../assets/signout.png';
 import 'typeface-montserrat';
 import { connect } from 'react-redux';
 import { SidebarLink } from './SideBarLink';
