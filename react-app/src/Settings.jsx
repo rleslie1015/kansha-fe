@@ -52,6 +52,11 @@ const useStyles = makeStyles(theme => ({
 	formControl: {
 		display: 'flex',
 		flexDirection: 'row',
+		'@media(max-width: 700px)': {
+			display: 'flex',
+			flexDirection: 'column-reverse',
+			alignItems: 'center'
+		},
 	},
 	onboard: {
 		display: 'flex',
@@ -79,6 +84,9 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'space-between',
 		width: '50%',
 		marginRight: '2em',
+		'@media(max-width: 700px)': {
+			width: '100%',
+		},
 	},
 	editProfile: {
 		color: 'white',
@@ -145,6 +153,10 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
+		'@media(max-width: 700px)': {
+			display: 'flex',
+			flexDirection: 'column',
+		},
 	},
 	button: {
 		width: '50%',
@@ -192,6 +204,11 @@ const useStyles = makeStyles(theme => ({
 		boxShadow: 'none',
 		borderRadius: '0%',
 		marginLeft: '2em',
+		'@media(max-width: 700px)': {
+			width: '100%',
+			padding: '1.5rem 0 0 0',
+			margin: '2rem 0'
+		},
 	},
 	pictureContainer: {
 		width: 'auto',
