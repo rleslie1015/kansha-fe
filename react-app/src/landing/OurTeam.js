@@ -15,9 +15,24 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#26242D'
     },
     paper: {
-        backgroundColor: '#26242D',
-        display: 'flex',
-        flexDirection: 'row'
+        [theme.breakpoints.down('sm')]: {
+            backgroundColor: '#26242D',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
+        [theme.breakpoints.up('md')]: {
+            backgroundColor: '#26242D',
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap'
+        },
+        [theme.breakpoints.up('lg')]: {
+            backgroundColor: '#26242D',
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap'           
+        }
     },
     ourTeam: {
         display: 'flex',
@@ -27,7 +42,33 @@ const useStyles = makeStyles(theme => ({
     },
 
     grid: {
-        width: '20%'
+        [theme.breakpoints.down('sm')]: {
+            width: '50%',
+            margin: '2%'
+        },
+        [theme.breakpoints.up('md')]: {
+            width: '20%',
+            margin: '2%'
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: '20%',
+            margin: '2%'
+        }
+    },
+
+    bottomRow: {
+        [theme.breakpoints.down('sm')]: {
+            width: '50%',
+            margin: '2%'
+        },
+        [theme.breakpoints.up('md')]: {
+            width: '20%',
+            margin: '2% 2% 2% 27%'
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: '20%',
+            margin: '2% 2% 2% 27%'
+        }
     },
     iconBox: {
         width: '50%',
@@ -190,7 +231,7 @@ export default function OurTeam () {
                     {/* </Grid> */}
                 </Grid>
 
-                <Grid container spacing={2} container direction='column' className={classes.grid}>
+                <Grid container spacing={2} container direction='column' className={classes.bottomRow}>
                     <Grid item className={classes.profilePic}>
                         <img src={ty} alt='' className={classes.pic} />
                     </Grid>
