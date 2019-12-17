@@ -73,6 +73,19 @@ const useStyles = makeStyles(theme => ({
 
     }
   },
+  container: {
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'nowrap',
+      padding: '5%'
+    },
+    [theme.breakpoints.up('md')]: {
+      flexWrap: 'nowrap',
+      padding: '5%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      flexWrap: 'wrap'
+    }
+  }
 }));
 
 
@@ -88,7 +101,7 @@ export default function Main () {
         </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container spacing={2} container direction = 'row'>
+        <Grid container spacing={2} container direction = 'row' className={classes.container}>
           <Grid item className={classes.card}>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="reward" src={rewardIcon} />
@@ -110,7 +123,7 @@ export default function Main () {
         </Paper>
 
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.container}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="workspace" src={workspaceIcon} />
@@ -132,7 +145,7 @@ export default function Main () {
         </Paper>
 
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.container}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="admin" src={adminIcon} />
@@ -154,7 +167,7 @@ export default function Main () {
         </Paper>
 
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.container}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="badge" src={badgeIcon} />
@@ -176,7 +189,7 @@ export default function Main () {
         </Paper>
 
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.container}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="heart" src={heartIcon} />
@@ -198,7 +211,7 @@ export default function Main () {
         </Paper>
 
         <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.container}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="activity" src={activityIcon} />

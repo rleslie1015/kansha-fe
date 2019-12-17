@@ -12,26 +12,52 @@ const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
+    [theme.breakpoints.down('sm')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      marginTop: "30px"
+
+    },
+    [theme.breakpoints.up('md')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      marginTop: "30px"
+
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      width: "80%",
+      marginTop: "30px"
+
+    }
     
-    display: "flex",
-    justifyContent: 'space-between',
-    marginLeft: "90px",
-    width: "80%",
-    marginTop: "30px"
+
   },
   link: {
       fontSize: "16px",
       padding: "10px"
   },
   image: {
-    width: 64,
-    height: 64,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '100%'
+
+    },
+    [theme.breakpoints.up('lg')]: {
+     
+
+    }
+    
   },
   img: {
     margin: 'auto',
     display: 'block',
-    width: '300px',
-    height: '100px'
+    width: '100%',
+    height: '100%'
   },
   
   left: {
