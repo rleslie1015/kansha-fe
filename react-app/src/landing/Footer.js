@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
+import Auth from '../auth';
+
+const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -113,7 +116,7 @@ export default function Footer() {
             <div className={classes.nav}>
                 <Link className={classes.link} href = '#'>About us</Link>
                 <Link className={classes.link} href = '#'>Features</Link>
-                <Link className={classes.link} href = '#'>Get Started</Link>
+                <Link className={classes.link} href = '#' onClick={auth.login}>Get Started</Link>
             </div>
         </div>
             <small className={classes.small}>© All Rights Reserved 2019 Kansha</small>
