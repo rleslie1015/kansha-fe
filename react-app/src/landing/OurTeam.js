@@ -99,7 +99,7 @@ export default function OurTeam () {
 
     return (
         <Box className={classes.root}>
-            <Typography className={classes.ourTeam}>
+            <Typography className={classes.ourTeam} a id='our_team'>
                 <Box>Our Team!</Box>
             </Typography>
             <Paper className={classes.paper}>

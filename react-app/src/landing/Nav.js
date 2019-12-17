@@ -116,10 +116,10 @@ export default function Links() {
 			</div>
 			<NavMenu className={style.hideNav} />
 			<div className={classes.hideNav}>
-				<Link href="#" color="inherit" className={classes.link}>
+				<Link href="#features" color="inherit" className={classes.link}>
 					Learn More
 				</Link>
-				<Link href="#" color="inherit" className={classes.link}>
+				<Link href="#our_team" color="inherit" className={classes.link}>
 					Our Team
 				</Link>
 				<Link

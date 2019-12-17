@@ -60,8 +60,8 @@ export default function NavMenu() {
 				keepMounted
 				open={Boolean(anchorEl)}
 				onClose={handleClose}>
-				<MenuItem onClick={handleClose}>About Us</MenuItem>
-				<MenuItem onClick={handleClose}>Features</MenuItem>
+				<MenuItem onClick= {()=>window.location.hash='features'}>Learn More</MenuItem>
+				<MenuItem onClick={()=>window.location.hash='our_team'}>Our Team</MenuItem>
 				<MenuItem onClick={auth.login}>Get Started</MenuItem>
 			</Menu>
 		</div>

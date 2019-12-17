@@ -94,7 +94,7 @@ export default function Main () {
     return (
         <>
         <Typography font='#26242D'>
-          <Box className={classes.box, classes.mobile} fontFamily='montserrat'  >Why Kansha?</Box> 
+          <Box className={classes.box, classes.mobile} fontFamily='montserrat'  a id='features'>Features</Box> 
         </Typography>
         <div className={classes.root}>
       <Paper className={classes.paper}>
