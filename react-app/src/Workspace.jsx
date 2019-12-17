@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,12 +6,13 @@ import InputBase from '@material-ui/core/InputBase';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
+import { axiosWithAuth } from './utils/axiosWithAuth';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	container: {
 		fontFamily: 'Montserrat',
-		backgroundColor: '#202020',
-		color: 'white',
+		backgroundColor: '#26242D',
 	},
 	root: {
 		width: '100vw',
@@ -20,13 +20,35 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 	},
 	main_header: {
-		margin: '40px 20px',
-		fontSize: '3rem',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('lg')]: {
+			margin: '40px 20px',
+			fontSize: '3rem',	
+			display: 'block'
+		}
+					
 	},
-	header_container: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
+	header_container: {	
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		}
 	},
 	search: {
 		position: 'relative',
@@ -68,17 +90,17 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function Workspace() {
+function Workspace(props) {
 	const classes = useStyles();
 
 	const [team, setTeam] = useState([]);
 
-	const [fitleredTeam, setFilteredTeam] = useState([]);
-	console.log(fitleredTeam);
+	const [filteredTeam, setFilteredTeam] = useState([]);
+	// console.log(filteredTeam);
 
 	useEffect(() => {
-		axios
-			.get('http://localhost:8000/users/')
+		axiosWithAuth()
+			.get('/users')
 			.then(res => {
 				setTeam(res.data);
 				console.log(res);
@@ -91,11 +113,11 @@ export default function Workspace() {
 	const searchWorkPlaceHandler = e => {
 		console.log(e.target.value);
 
-		const user = team.filter(t => {
-			if (t.first_name.toLowerCase().includes(e.target.value) || t.last_name.toLowerCase().includes(e.target.value)) {
-				return t;
-			}
-		});
+		const user = team.filter(
+			t =>
+				t.first_name.toLowerCase().includes(e.target.value) ||
+				t.last_name.toLowerCase().includes(e.target.value),
+		);
 		setFilteredTeam(user);
 	};
 
@@ -121,9 +143,12 @@ export default function Workspace() {
 					</div>
 				</div>
 				<WorkspaceCard
-					team={fitleredTeam.length > 0 ? fitleredTeam : team}
+					team={filteredTeam.length > 0 ? filteredTeam : team}
+					profile={props.profile}
+					setTeam={setTeam}
 				/>
 			</Container>
 		</div>
 	);
 }
+export default connect(({user}) => ({...user}), {})(Workspace) 

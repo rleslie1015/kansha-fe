@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, Box, Paper, Typography, ButtonBase } from '@material-ui/core';
+import { Grid, Box, Paper, Typography, ButtonBase } from '@material-ui/core';
 import activityIcon from './images/activity.png';
 import adminIcon from './images/admin.png';
 import badgeIcon from './images/badge.png';
@@ -10,69 +10,66 @@ import workspaceIcon from './images/workspace.png';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import 'typeface-montserrat';
 
-
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: "center",
-    backgroundColor: '#26242D',
-  },
-  paper: {
-    margin: '10px',
-    width: '600px',
-    backgroundColor: '#26242D',
-    boxShadow: 'none'
-  },
-  font: {
-    fontSize: "24px",
-    color: '#ffffff',
-    fontFamily: 'montserrat'
-  },
-  cardFont: {
-    fontSize: '16px',
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontFamily: 'montserrat'
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-  box: {
-    fontSize:"36px",
-    textAlign:"center",
-    backgroundColor: '#26242D',
-    color: '#ffffff'
-  },
-  card: {
-    boxShadow: 'none'
-  },
-  mobile: {
-    padding: theme.spacing(1),
+	root: {
+		flexGrow: 1,
+		display: 'flex',
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		backgroundColor: '#26242D',
+	},
+	paper: {
+		margin: '10px',
+		width: '600px',
+		backgroundColor: '#26242D',
+		boxShadow: 'none',
+	},
+	font: {
+		fontSize: '24px',
+		color: '#ffffff',
+		fontFamily: 'montserrat',
+	},
+	cardFont: {
+		fontSize: '16px',
+		color: 'rgba(255, 255, 255, 0.7)',
+		fontFamily: 'montserrat',
+	},
+	image: {
+		width: 128,
+		height: 128,
+	},
+	img: {
+		margin: 'auto',
+		display: 'block',
+		maxWidth: '100%',
+		maxHeight: '100%',
+	},
+	box: {
+		fontSize: '36px',
+		textAlign: 'center',
+		backgroundColor: '#26242D',
+		color: '#ffffff',
+	},
+	card: {
+		boxShadow: 'none',
+	},
+	mobile: {
+		padding: theme.spacing(1),
+
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '25px',
+			textAlign: 'center',
+		},
+		[theme.breakpoints.up('md')]: {
+			margin: '5% 0',
+			textAlign: 'center',
+			fontSize: '25px',
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontSize: '25px',
+		},
+	},
     
-    [theme.breakpoints.down('sm')]: {
-      fontSize: "25px",
-      textAlign: "center",
-      
-    },
-    [theme.breakpoints.up('md')]: {
-      margin: "5% 0",
-      textAlign: "center",
-      fontSize: "25px",
-    },
-    [theme.breakpoints.up('lg')]: {
-      fontSize: "25px",
-
-
-    }
-  },
   container: {
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'nowrap',
@@ -86,10 +83,8 @@ const useStyles = makeStyles(theme => ({
       flexWrap: 'wrap'
     }
   }
+
 }));
-
-
-
 
 export default function Main () {
     const classes = useStyles();
@@ -236,6 +231,6 @@ export default function Main () {
       
     </div>
 
-        </>
-    )
+		</>
+	);
 }
