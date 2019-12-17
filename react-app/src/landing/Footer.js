@@ -114,7 +114,7 @@ export default function Footer() {
                 <h5 className={classes.order}>Lambda Labs Project</h5>
             </div>
             <div className={classes.nav}>
-                <Link className={classes.link} href = '#'>About us</Link>
+                <Link className={classes.link} href = '#'>Our Team</Link>
                 <Link className={classes.link} href = '#'>Features</Link>
                 <Link className={classes.link} href = '#' onClick={auth.login}>Get Started</Link>
             </div>
