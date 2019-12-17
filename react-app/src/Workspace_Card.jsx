@@ -1,13 +1,12 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+import profile from './assets/profile.png';
+import {CardActions, CardContent, Typography, Avatar, IconButton} from '@material-ui/core';
 import RecogModal from './Components/RecogModal/RecogModal';
 import trashcan from './assets/Trashcan.png';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
 	card_container: {
@@ -39,9 +38,11 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: 'white',
 		width: '30%',
+		justifyContent: 'space-between',
 		[theme.breakpoints.down('sm')]: {
 			position: 'relative',
 			minWidth: 275,
+			height: '102px',
 			margin: 10,
 			backgroundColor: '#2D2C35',
 			color: 'white',
@@ -128,6 +129,18 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'center'
 	},
+	button: {
+		// padding: '0.5em 3em',
+		backgroundColor: '#2D2C35',
+		color: '#EE4D71',
+		textDecoration: 'none',
+		border: '2px solid #EE4d71',
+		borderRadius: '100%',
+		[theme.breakpoints.down('sm')]: {
+			borderRadius: '50%',
+		},
+		
+	},
 	button_dark: {
 		backgroundColor: '#575757',
 		color: 'white',
@@ -181,11 +194,13 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<Link to={`/profile/${user.id}`}>
+										<button
 											variant="contained"
 											className={classes.button}>
-											View Profile
-										</Button> */}
+											<img alt='profile icon' src={profile} />
+										</button>
+									</Link>
 								</CardActions>
 						</Card>
 						)
@@ -212,11 +227,13 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<Link to={`/profile/${user.id}`}>
+										<IconButton
 											variant="contained"
-											className={classes.button}>
-											View Profile
-										</Button> */}
+											className={classes.button} >
+											<img alt='profile icon' src={profile} />
+										</IconButton>
+									</Link>
 								</CardActions>
 							</Card>
 						)
