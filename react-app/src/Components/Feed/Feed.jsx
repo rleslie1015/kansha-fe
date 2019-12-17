@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { FeedCard } from './FeedCard';
 import {
 	loadLiveFeed,
-	liveFeedListeners
+	liveFeedListeners,
 } from '../../store/actions/feed-actions';
 
 // Adds compatibility for SSE to older browsers
 import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 
 const EventSource = NativeEventSource || EventSourcePolyfill;
+
+const useStyles = makeStyles(theme => ({
+	RecFeed: {
+		margin: '20px',
+	},
+}));
 
 export const Feed = () => {
 	const { feed, comments, reactions, profile } = useSelector(
@@ -22,6 +29,7 @@ export const Feed = () => {
 
 	const dispatch = useDispatch();
 
+	const classes = useStyles();
 	useEffect(() => {
 		// Loads most current batch feed data
 		dispatch(loadLiveFeed());
@@ -41,7 +49,7 @@ export const Feed = () => {
 		const sse = new EventSource(src);
 
 		// Set's up event listeners inside of redux ac
-		dispatch(liveFeedListeners(sse))
+		dispatch(liveFeedListeners(sse));
 
 		// Close the EventStream when component unmounts
 		return function cleanup() {
@@ -51,15 +59,17 @@ export const Feed = () => {
 
 	return (
 		<Container>
-			{feed.map(rec => (
-				<FeedCard
-					key={rec.id} 
-					rec={rec}
-					comments={comments[rec.id]}
-					reactions={reactions[rec.id]}
-					profile={profile}
-				/>
-			))}
+			<Box className={classes.RecFeed}>
+				{feed.map(rec => (
+					<FeedCard
+						key={rec.id}
+						rec={rec}
+						comments={comments[rec.id]}
+						reactions={reactions[rec.id]}
+						profile={profile}
+					/>
+				))}
+			</Box>
 		</Container>
 	);
 };
