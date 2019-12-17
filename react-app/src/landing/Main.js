@@ -55,6 +55,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	mobile: {
 		padding: theme.spacing(1),
+
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '25px',
 			textAlign: 'center',
@@ -67,10 +68,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			fontSize: '25px',
 		},
-
-
-    },
-  
+	},
+    
   container: {
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'nowrap',

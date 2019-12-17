@@ -11,6 +11,7 @@ import 'typeface-montserrat';
 const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
+
   wrapper: {
     [theme.breakpoints.down('sm')]: {
       display: "flex",
