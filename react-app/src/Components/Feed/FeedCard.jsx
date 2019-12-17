@@ -17,40 +17,51 @@ import AddCommentOutlinedIcon from '@material-ui/icons/AddCommentOutlined';
 
 const useStyles = makeStyles(theme => ({
 	FeedCard: {
+		boxSizing: 'border-box',
+		maxWidth: '100%',
 		display: 'flex',
 		padding: '20px',
 		color: '#FFFFFF',
 		background: '#2D2C35',
-		margin: '10px 0',
+		margin: '10px 10px',
+		'&:first-child': {
+			marginTop: '0px'
+		}
 	},
 	FeedCardPicture: {
+		boxSizing: 'border-box',
 		position: 'relative',
 		width: '100px',
 	},
 	FeedCardContent: {
+		boxSizing: 'border-box',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 	},
 	ButtonBox: {
+		boxSizing: 'border-box',
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
 		width: '100%',
 	},
 	CommentButton: {
+		boxSizing: 'border-box',
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
 		padding: '2px 8px',
 		borderRadius: '30px',
 		marginRight: '5px',
 	},
 	CommentIcon: {
+		boxSizing: 'border-box',
 		color: '#FFFFFF;',
 		height: '22px',
 		margin: 0,
 		padding: 0,
 	},
 	Count: {
+		boxSizing: 'border-box',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: '500',
@@ -66,6 +77,7 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '1px',
 	},
 	Name: {
+		boxSizing: 'border-box',
 		color: '#EE4D71',
 		textDecoration: 'none',
 		'& :visited': {
@@ -73,6 +85,7 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	SentProfilePic: {
+		boxSizing: 'border-box',
 		position: 'absolute',
 		borderRadius: '100%',
 		// Hard coding until we can make a circle img cropper for users
@@ -84,6 +97,7 @@ const useStyles = makeStyles(theme => ({
 		left: '10px',
 	},
 	RecievedProfilePic: {
+		boxSizing: 'border-box',
 		position: 'absolute',
 		borderRadius: '100%',
 		// Hard coding until we can make a circle img cropper for users
@@ -95,6 +109,7 @@ const useStyles = makeStyles(theme => ({
 		right: '10px',
 	},
 	Info: {
+		boxSizing: 'border-box',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: '500',
@@ -103,6 +118,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	TimeStamp: {
 		/* Body */
+		boxSizing: 'border-box',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontHeight: 'normal',
@@ -113,7 +129,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export const FeedCard = memo(({ rec, comments, reactions, profile }) => {
+export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRec }) => {
 	const classes = useStyles();
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
@@ -130,12 +146,12 @@ export const FeedCard = memo(({ rec, comments, reactions, profile }) => {
 					<img
 						className={classes.SentProfilePic}
 						src={rec.profile_picture}
-						alt=""
+						alt="sender"
 					/>
 					<img
 						className={classes.RecievedProfilePic}
 						src={rec.recipient_picture}
-						alt=""
+						alt="recipient"
 					/>
 				</Box>
 			</Container>
@@ -157,7 +173,7 @@ export const FeedCard = memo(({ rec, comments, reactions, profile }) => {
 				<Typography>{rec.message}</Typography>
 				<Box className={classes.ButtonBox}>
 					{comments && (
-						<IconButton className={classes.CommentButton}>
+						<IconButton onClick={() => setSelectedRec(rec_id)} className={classes.CommentButton}>
 							<AddCommentOutlinedIcon
 								className={classes.CommentIcon}
 							/>

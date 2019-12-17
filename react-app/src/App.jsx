@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 		minHeight: '100vh',
 		backgroundColor: '#26242D',
 		color: '#ffffff',
+		maxWidth: '100vw',
 	},
 }));
 
