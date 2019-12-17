@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
+import Auth from '../utils/auth';
+
+const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -55,17 +58,20 @@ const useStyles = makeStyles(theme => ({
     },
     link: {
         [theme.breakpoints.down('sm')]: {
-           margin: "15px 0"
+           margin: "15px 0",
+           color: 'white'
           },
         
         [theme.breakpoints.up('sm')]: {
-            margin: '15px 0'
+            margin: '15px 0',
+            color: 'white'
         },
 
         [theme.breakpoints.up('lg')]: {
             display: "flex",
             fontSize: "16px",
             margin: "6px 0",
+            color: 'white'
         }
     },
     kansha: {
@@ -84,12 +90,13 @@ const useStyles = makeStyles(theme => ({
     },
     small: {
         [theme.breakpoints.down('sm')]: {
-            marginTop: "15px",
+            margin: "15px 0",
             textAlign: "center",
-            fontFamily: 'montserrat'
+            fontFamily: 'montserrat',
+            
           },
           [theme.breakpoints.up('md')]: {
-            marginTop: "15px",
+            margin: "15px 0",
             textAlign: "center",
             fontFamily: 'montserrat'        
         },
@@ -109,7 +116,7 @@ export default function Footer() {
             <div className={classes.nav}>
                 <Link className={classes.link} href = '#'>About us</Link>
                 <Link className={classes.link} href = '#'>Features</Link>
-                <Link className={classes.link} href = '#'>Sign in</Link>
+                <Link className={classes.link} href = '#' onClick={auth.login}>Get Started</Link>
             </div>
         </div>
             <small className={classes.small}>© All Rights Reserved 2019 Kansha</small>
