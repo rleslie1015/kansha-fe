@@ -59,7 +59,6 @@ const useStyles = makeStyles(theme => ({
 		
 	},
 	textField: {
-		width: '568px',
 		backgroundColor: 'white',
 		padding: '.5rem',
 	},
