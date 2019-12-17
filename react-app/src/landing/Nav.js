@@ -117,10 +117,10 @@ export default function Links() {
 			<NavMenu className={style.hideNav} />
 			<div className={classes.hideNav}>
 				<Link href="#" color="inherit" className={classes.link}>
-					About Us
+					Learn More
 				</Link>
 				<Link href="#" color="inherit" className={classes.link}>
-					Features
+					Our Team
 				</Link>
 				<Link
 					href="#"
