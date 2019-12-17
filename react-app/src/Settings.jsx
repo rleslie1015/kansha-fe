@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		width: '50%',
-		marginRight: '2em'
+		marginRight: '2em',
 	},
 	editProfile: {
 		color: 'white',
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '1.6rem',
 		lineHeight: '2rem',
 		letterSpacing: '0.15px',
-		marginBottom: '2rem'
+		marginBottom: '2rem',
 	},
 	textField: {
 		margin: '.5rem',
@@ -191,7 +191,7 @@ const useStyles = makeStyles(theme => ({
 		padding: '3rem 0',
 		boxShadow: 'none',
 		borderRadius: '0%',
-		marginLeft: '2em'
+		marginLeft: '2em',
 	},
 	pictureContainer: {
 		width: 'auto',
@@ -265,7 +265,9 @@ function Settings({ update, isUpdating, profile, user }) {
 	const handleSubmit = event => {
 		console.log(form);
 		update(id, form);
-		history.push('/profile');
+		window.setTimeout(() => {
+			history.push('/profile');
+		}, 50);
 	};
 
 	return (
