@@ -42,11 +42,12 @@ const StyledBase = withStyles(theme =>
 const useStyles = makeStyles(theme => ({
 	mainContainer: {
 		display: 'flex',
-		flexDirection: 'column'
+		flexDirection: 'column',
+		maxWidth: '90%',
 	},
 	formContainer: {
-		margin: '3rem 0',
-		maxWidth: 'auto',
+		maxWidth: '100%',
+		padding: 0,
 	},
 	formControl: {
 		display: 'flex',
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '2px',
 		padding: '2rem 2rem',
 	},
-	getStarted: {
+	header: {
 		color: 'white',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
@@ -70,17 +71,22 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '2.2rem',
 		lineHeight: '2rem',
 		letterSpacing: '0.15px',
-		marginTop: '3rem',
+		margin: '3rem 0',
+	},
+	leftContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		width: '50%',
+		marginRight: '2em'
 	},
 	editProfile: {
 		color: 'white',
 		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontWeight: '400',
 		fontSize: '1.6rem',
 		lineHeight: '2rem',
 		letterSpacing: '0.15px',
-		padding: '1rem',
+		marginBottom: '2rem'
 	},
 	textField: {
 		margin: '.5rem',
@@ -130,7 +136,6 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		width: '100%',
-		// padding: '0.5rem',
 		'@media(max-width: 700px)': {
 			display: 'flex',
 			flexDirection: 'column',
@@ -140,10 +145,9 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
-		// padding: '0.5rem',
 	},
 	button: {
-		width: '30%',
+		width: '50%',
 		fontSize: '1rem',
 		margin: '2rem auto',
 		borderRadius: '0',
@@ -181,14 +185,16 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		width: '100%',
+		width: '50%',
 		height: 'auto',
-		backgroundColor: '#2D2C35',
+		backgroundColor: '#3A3845',
 		padding: '3rem 0',
+		boxShadow: 'none',
+		borderRadius: '0%',
+		marginLeft: '2em'
 	},
 	pictureContainer: {
-		position: 'relative',
-		width: '50%',
+		width: 'auto',
 		borderRadius: '100%',
 		'&:hover': {
 			cursor: 'pointer',
@@ -266,16 +272,16 @@ function Settings({ update, isUpdating, profile, user }) {
 		<div id="App" className={classes.root}>
 			<CssBaseline />
 			<Container className={classes.mainContainer}>
-				<Typography className={classes.getStarted} variant="h5">
+				<Typography className={classes.header} variant="h5">
 					Settings
 				</Typography>
 				<Container className={classes.formContainer}>
 					<Paper className={classes.onboard}>
+						<Typography className={classes.editProfile}>
+							Edit Profile
+						</Typography>
 						<FormControl className={classes.formControl}>
 							<div className={classes.leftContainer}>
-								<Typography className={classes.editProfile}>
-									Edit Profile
-								</Typography>
 								<Box className={classes.twoInput}>
 									<TextField
 										label="First Name*"
@@ -394,6 +400,13 @@ function Settings({ update, isUpdating, profile, user }) {
 										value={form.department}
 									/>
 								</Box>
+								<Button
+									className={classes.button}
+									variant="contained"
+									color="primary"
+									onClick={handleSubmit}>
+									Save Changes
+								</Button>
 							</div>
 							<Card className={classes.userInfo}>
 								<div className={classes.pictureContainer}>
@@ -417,13 +430,6 @@ function Settings({ update, isUpdating, profile, user }) {
 								</Typography>
 							</Card>
 						</FormControl>
-						<Button
-							className={classes.button}
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}>
-							Save Changes
-						</Button>
 					</Paper>
 				</Container>
 			</Container>
