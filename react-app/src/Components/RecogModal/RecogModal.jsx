@@ -5,10 +5,9 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import { TextField, Button, FormControl, Fab } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 import { sendRecog } from '../../store/actions/recog-actions';
 import send from '../../assets/send.png';
-import AddBadge from '../../assets/AddBadge.png'
+import BadgeModal from './BadgeModal';
 
 import { connect } from 'react-redux';
 
@@ -75,15 +74,6 @@ const useStyles = makeStyles(theme => ({
 		fontWeight: 'normal',
 		fontSize: '16px',
 		lineHeight: '20px',
-	},
-	fab: {
-		position: 'absolute',
-		transform: 'translate(900%, 250%)',
-		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
-	},
-	addBadge: {
-		width: '60%',
-		height: 'auto',
 	},
 }));
 
@@ -207,9 +197,7 @@ function RecogModal(props) {
 									className: classes.label,
 								}}
 							/>
-							<Fab className={classes.fab}>
-        						<img src={AddBadge} className={classes.addBadge}/>
-      						</Fab>
+							<BadgeModal />
 						</FormControl>
 						<Button
 							className={classes.recogButton}
