@@ -4,10 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
-import { TextField, Button, FormControl, Fab } from '@material-ui/core';
+import { TextField, Button, FormControl, Fab, Box } from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
 import send from '../../assets/send.png';
-import BadgeModal from './BadgeModal';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import { connect } from 'react-redux';
 
@@ -16,6 +17,18 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		'@global': {
+            '*::-webkit-scrollbar': {
+                width: '.5rem',
+            },
+            '*::-webkit-scrollbar-corner': {
+                backgroundColor: 'transparent',
+            },
+            '*::-webkit-scrollbar-thumb': {
+                backgroundColor: '#2D2C35',
+                borderRadius: '10px',
+            },
+        },
 	},
 	paper: {
 		backgroundColor: '#2D2C35',
@@ -52,7 +65,6 @@ const useStyles = makeStyles(theme => ({
 			height: '100px',
 			borderRadius: '50%',
 		},
-		
 	},
 	recogButton: {
 		width: '50%',
@@ -60,6 +72,18 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
 		color: 'white',
 		textDecoration: 'none',
+	},
+	badgeBox: {
+		backgroundColor: '#3A3845',
+		borderRadius: '10px 10px 0 10px',
+		width: '568px',
+		height: '189px',
+		padding: '.5rem',
+		display: 'flex',
+		alignItems: 'center',
+		flexWrap: 'wrap',
+        justifyContent: 'center',
+        overflow: 'scroll',
 	},
 	textField: {
 		borderRadius: '10px 10px 0 10px',
@@ -75,6 +99,20 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '20px',
 	},
+	fab: {
+		position: 'absolute',
+		transform: 'translate(450%, 795%)',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+    },
+    fabIcon: {
+        width: '80%',
+		height: 'auto',
+		color: '#FFFFFF',
+	},
+	badge: {
+        width: '150px',
+        height: '150px',
+    },
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -111,6 +149,7 @@ Fade.propTypes = {
 function RecogModal(props) {
 	console.log(props);
 	const classes = useStyles();
+	const [isTyping, setIsTyping] = useState(true);
 	const [open, setOpen] = useState(false);
 	const [recog, setRecog] = useState({
 		message: '',
@@ -143,6 +182,15 @@ function RecogModal(props) {
 		setOpen(false);
 	};
 
+	const textField = () => {
+		setIsTyping(true)
+	}
+
+	const badgePrompt = () => {
+		setIsTyping(false)
+	}
+
+	if (isTyping) {
 	return (
 		<div>
 			<Button
@@ -197,8 +245,12 @@ function RecogModal(props) {
 									className: classes.label,
 								}}
 							/>
-							<BadgeModal />
 						</FormControl>
+						<Fab 
+							className={classes.fab}
+							onClick={badgePrompt}>
+							<AddCircleOutlineIcon className={classes.fabIcon} />
+						</Fab> 
 						<Button
 							className={classes.recogButton}
 							variant="contained"
@@ -211,6 +263,94 @@ function RecogModal(props) {
 			</Modal>
 		</div>
 	);
+	} else {
+		return(
+			<div>
+			<Button
+				type="button"
+				onClick={handleOpen}
+				className={classes.button}>
+				
+				<img src={send} alt='thank button' />
+			</Button>
+			<Modal
+				className={classes.modal}
+				open={open}
+				onClose={handleClose}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}>
+				<Fade in={open}>
+					<div className={classes.paper}>
+						<img
+							src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
+							onClick={handleClose}
+			className={classes.cancelButton}
+			alt="close button"
+						/>
+						<img
+							src={profile_picture}
+			className={classes.profPic}
+			alt="user profile"
+						/>
+						<p>
+							{first_name} {last_name}
+						</p>
+						<p>{job_title}</p>
+						<p>{department}</p>
+                <Box className={classes.badgeBox}>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Over+Achiever.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Problem+Solver.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Team+Leader.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/MVP.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Helping+Hand.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/All+Day+Everyday.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jupiter+recognize!.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Class+Clown.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/High+Five.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
+                    </Button>
+                </Box>
+						<Fab 
+							className={classes.fab}
+							onClick={textField}>
+							<HighlightOffIcon className={classes.fabIcon} />
+						</Fab> 
+						<Button
+							className={classes.recogButton}
+							variant="contained"
+							color="primary"
+							onClick={handleSubmit}>
+							Send
+						</Button>
+					</div>
+				</Fade>
+			</Modal>
+		</div>
+	)}
+
+
 }
 
 const mapStateToProps = state => {

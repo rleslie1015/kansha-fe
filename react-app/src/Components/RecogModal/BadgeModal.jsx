@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Fab, Modal, Box, Button } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import { useSpring, animated } from 'react-spring/web.cjs';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+
 
 const useStyles = makeStyles(theme => ({
-    modal: {
+    root: {
+        border: 'none',
         display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-        position: 'absolute',
-        transform: 'translate(0, 13%)',
         '@global': {
             '*::-webkit-scrollbar': {
                 width: '.5rem',
@@ -44,6 +42,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         overflow: 'scroll',
         width: '530px',
+        height: 'auto',
     },
     openFab: {
 		position: 'absolute',
@@ -102,64 +101,52 @@ Fade.propTypes = {
 	onExited: PropTypes.func,
 };
 
-function BadgeModal(props) {
+function BadgePrompt(props) {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
+    const [isTyping, setIsTyping] = useState(false)
 
-    const handleOpen = () => {
-		setOpen(true);
-	};
+    const handleClose = event => {
+        setIsTyping(true)
+    }
 
-	const handleClose = () => {
-		setOpen(false);
-    };
-    
     return (
         <div className={classes.root}>
-            <Fab 
-            className={classes.openFab}
-            onClick={handleOpen}>
-        		<AddCircleOutlineIcon className={classes.addBadge} />
-      		</Fab>
-            <Modal 
-            	className={classes.modal}
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                hideBackdrop
-            >
-                <Fade in={open}>
-					<div className={classes.paper}>
-                        <Box className={classes.badgeBox}>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                            <Button onClick={handleClose}>
-                            <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                            </Button>
-                        </Box>
-                        <Fab 
-                            className={classes.closeFab}
-                            onClick={handleClose}>
-        		                <HighlightOffIcon className={classes.closeBadge} />
-      		                </Fab>
-                    </div>
-                </Fade>
-            </Modal>
+			<div className={classes.paper}>
+                <Box className={classes.badgeBox}>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Over+Achiever.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Problem+Solver.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Team+Leader.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/MVP.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Helping+Hand.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/All+Day+Everyday.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jupiter+recognize!.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Class+Clown.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/High+Five.png`} className={classes.badge} />
+                    </Button>
+                    <Button onClick={handleClose}>
+                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
+                    </Button>
+                </Box>
+            </div>
         </div>
     )
 }
 
-export default BadgeModal
+export default BadgePrompt
