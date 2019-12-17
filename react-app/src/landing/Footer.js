@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
-import Auth from '../auth';
+import Auth from '../utils/auth';
 
 const auth = new Auth();
 
