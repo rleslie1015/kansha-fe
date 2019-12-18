@@ -79,6 +79,8 @@ export const Feed = () => {
 		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
 		const sse = new EventSource(src);
 
+		sse.addEventListener('HEARTBEAT', console.dir)
+
 		// Set's up event listeners inside of redux ac
 		dispatch(liveFeedListeners(sse));
 
@@ -103,7 +105,7 @@ export const Feed = () => {
 					/>
 				))}
 			</Box>
-			{ selectedRec && <FeedComments comments={comments[selectedRec]} id={selectedRec} />}
+			{ selectedRec && <FeedComments profile={profile} comments={comments[selectedRec]} id={selectedRec} />}
 		</Container>
 	);
 };

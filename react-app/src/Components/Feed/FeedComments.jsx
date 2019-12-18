@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export const FeedComments = ({ comments, id }) => {
+export const FeedComments = ({ comments, id, profile }) => {
 	const classes = useStyles();
 	return (
 		<Card className={classes.CommentCard}>
@@ -97,7 +97,7 @@ export const FeedComments = ({ comments, id }) => {
 					<Comment comment={comment} />
 				))}
 			</div>
-			<SendComments />
+			<SendComments id={id}/>
 		</Card>
 	);
 };
