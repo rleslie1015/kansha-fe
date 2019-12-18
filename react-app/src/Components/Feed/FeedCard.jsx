@@ -9,6 +9,7 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import clsx from 'clsx';
 import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from './ReactionButton';
 import { timeAgo } from '../../utils/timeago';
@@ -18,6 +19,7 @@ import AddCommentOutlinedIcon from '@material-ui/icons/AddCommentOutlined';
 const useStyles = makeStyles(theme => ({
 	FeedCard: {
 		boxSizing: 'border-box',
+		justifyContent: 'flex-start',
 		maxWidth: '100%',
 		display: 'flex',
 		padding: '20px',
@@ -32,12 +34,14 @@ const useStyles = makeStyles(theme => ({
 		boxSizing: 'border-box',
 		position: 'relative',
 		width: '100px',
+		padding: 0
 	},
 	FeedCardContent: {
 		boxSizing: 'border-box',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
+		width: 'calc(100% - 100px)'
 	},
 	ButtonBox: {
 		boxSizing: 'border-box',
@@ -47,11 +51,12 @@ const useStyles = makeStyles(theme => ({
 		width: '100%',
 	},
 	CommentButton: {
-		boxSizing: 'border-box',
+		display: 'flex',
+		justifyContent: 'space-between',
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
 		padding: '2px 8px',
 		borderRadius: '30px',
-		marginRight: '5px',
+		width: '55px'
 	},
 	CommentIcon: {
 		boxSizing: 'border-box',
@@ -84,29 +89,21 @@ const useStyles = makeStyles(theme => ({
 			color: '#EE4D71',
 		},
 	},
-	SentProfilePic: {
+	ProfilePic: {
 		boxSizing: 'border-box',
 		position: 'absolute',
 		borderRadius: '100%',
-		// Hard coding until we can make a circle img cropper for users
 		width: '40px',
 		height: '40px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
 		objectPosition: '50% 50%',
-		left: '10px',
 	},
-	RecievedProfilePic: {
-		boxSizing: 'border-box',
-		position: 'absolute',
-		borderRadius: '100%',
-		// Hard coding until we can make a circle img cropper for users
-		width: '40px',
-		height: '40px',
-		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
-		objectFit: 'cover',
-		objectPosition: '50% 50%',
-		right: '10px',
+	SentProfilePic: {
+		left: '15px',
+	},
+	ReceivedProfilePic: {
+		right: '15px',
 	},
 	Info: {
 		boxSizing: 'border-box',
@@ -114,7 +111,7 @@ const useStyles = makeStyles(theme => ({
 		fontStyle: 'normal',
 		fontWeight: '500',
 		fontSize: '16px',
-		lineHeight: '20px',
+		lineHeight: '15px',
 	},
 	TimeStamp: {
 		/* Body */
@@ -144,12 +141,12 @@ export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRe
 			<Container className={classes.FeedCardPicture}>
 				<Box>
 					<img
-						className={classes.SentProfilePic}
+						className={clsx(classes.SentProfilePic, classes.ProfilePic)}
 						src={rec.profile_picture}
 						alt="sender"
 					/>
 					<img
-						className={classes.RecievedProfilePic}
+						className={clsx(classes.ReceivedProfilePic, classes.ProfilePic)}
 						src={rec.recipient_picture}
 						alt="recipient"
 					/>

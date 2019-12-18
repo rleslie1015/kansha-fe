@@ -10,14 +10,16 @@ const useStyles = makeStyles(theme => ({
 		maxWidth: '100%',
         display: 'flex',
 		color: '#FFFFFF',
-		background: '#2D2C35',
+        background: '#34323E',
+        padding: '20px',
 		'&:first-child': {
-			marginTop: '0px',
+            paddingTop: 'unset'
+        },
+        '&:last-child': {
+            paddingBottom: '80px'
         },
         width: '100%',
-        padding: 0,
         justifyContent: 'stretch',
-        margin: '10px 0'
 	},
 	CommentPicture: {
         boxSizing: 'border-box',

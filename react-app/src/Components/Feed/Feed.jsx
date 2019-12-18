@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { FeedCard } from './FeedCard';
 import { FeedComments } from './FeedComments'
 import {
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 		maxHeight: '100vh',
 		overflowY: 'scroll',
 		overflowx: 'hidden',
-		marginTop: '10px'
+		marginTop: '10px',
 	},
 	'@global': {
 			'*::-webkit-scrollbar': {
@@ -38,12 +39,12 @@ const useStyles = makeStyles(theme => ({
 		},
 	FeedContainer: {
 		display: 'flex',
-		justifyContent: 'stretch',
-		paddingLeft: '50px',
+		padding: '0',
+		paddingLeft: '20px',
 		maxWidth: '100vw',
 		margin: '0',
 		height: '100vh',
-		maxHeight: '100vh',	
+		maxHeight: '100vh',
 	},
 }));
 
@@ -97,10 +98,11 @@ export const Feed = () => {
 						reactions={reactions[rec.id]}
 						profile={profile}
 						setSelectedRec={setSelectedRec}
+						active={rec.id === selectedRec}
 					/>
 				))}
 			</Box>
-			{ selectedRec && <FeedComments comments={comments[selectedRec]} />}
+			{ selectedRec && <FeedComments comments={comments[selectedRec]} id={selectedRec} />}
 		</Container>
 	);
 };

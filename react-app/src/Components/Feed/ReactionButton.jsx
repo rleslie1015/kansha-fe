@@ -10,9 +10,13 @@ import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 
 const useSyles = makeStyles(theme => ({
 	ReactionButton: {
+		display: 'flex',
+		justifyContent: 'space-between',
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
 		padding: '2px 8px',
 		borderRadius: '30px',
+		width: '55px',
+		marginLeft: '10px'
 	},
 	IconReacted: {
 		color: '#EE4D71',
