@@ -190,6 +190,10 @@ function RecogModal(props) {
 		setIsTyping(false)
 	}
 
+	const handleSwitch = () => {
+		setIsTyping(true)
+	}
+
 	if (isTyping) {
 	return (
 		<div>
@@ -301,34 +305,34 @@ function RecogModal(props) {
 						<p>{job_title}</p>
 						<p>{department}</p>
                 <Box className={classes.badgeBox}>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Over+Achiever.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Problem+Solver.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Team+Leader.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/MVP.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Helping+Hand.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/All+Day+Everyday.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jupiter+recognize!.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Class+Clown.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/High+Five.png`} className={classes.badge} />
                     </Button>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleSwitch}>
                         <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
                     </Button>
                 </Box>
