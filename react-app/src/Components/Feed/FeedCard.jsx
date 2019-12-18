@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
 		margin: '10px 10px',
 		'&:first-child': {
 			marginTop: '0px'
+		},
+		'&:last-child': {
+			marginBottom: '0px'
 		}
 	},
 	FeedCardActive: {
@@ -59,7 +62,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
 		padding: '2px 8px',
 		borderRadius: '30px',
-		width: '55px'
+		width: '60px'
 	},
 	CommentIcon: {
 		boxSizing: 'border-box',

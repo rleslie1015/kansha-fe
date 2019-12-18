@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 		overflowY: 'scroll',
 		overflowx: 'hidden',
 		marginTop: '10px',
+		marginBottom: '10px'
 	},
 	'@global': {
 			'*::-webkit-scrollbar': {

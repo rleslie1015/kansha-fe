@@ -15,7 +15,7 @@ const useSyles = makeStyles(theme => ({
 		backgroundColor: 'rgba(80, 80, 80, 0.21)',
 		padding: '2px 8px',
 		borderRadius: '30px',
-		width: '55px',
+		width: '60px',
 		marginLeft: '10px'
 	},
 	IconReacted: {
