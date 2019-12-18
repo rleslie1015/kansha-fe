@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
-import { onboard } from './store/actions/user-actions';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { update } from './store/actions/user-actions';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles, withStyles, createStyles } from '@material-ui/core/styles';
-import logo from './assets/logo38.png';
-import kanshaLogo from './assets/logo39.png';
 import {
 	Container,
 	Typography,
@@ -17,10 +15,10 @@ import {
 	Select,
 	Box,
 	InputBase,
+	Card,
 } from '@material-ui/core';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import Loader from 'react-loader-spinner';
 
 const StyledBase = withStyles(theme =>
 	createStyles({
@@ -42,144 +40,61 @@ const StyledBase = withStyles(theme =>
 )(InputBase);
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		[theme.breakpoints.down('sm')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			backgroundColor: '#26242D',
-			padding: '0 1rem'
-		},
-
-		[theme.breakpoints.up('md')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			backgroundColor: '#26242D',
-			padding: '0 1rem'
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			display: 'flex',
-			flexDirection: 'row',
-			minHeight: '100vh',
-			backgroundColor: '#26242D',
-		}
-		
-	},
-	imageContainer: {
-		[theme.breakpoints.down('sm')]: {
-			width: '48%',
-			margin: '0',
-			padding: '0'
-		},
-
-		[theme.breakpoints.up('md')]: {
-			width: '48%',
-			margin: '0',
-			padding: '0'
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			width: '48%'
-		}
-		
-	},
-	kanshaLogo: {
-		[theme.breakpoints.down('sm')]: {
-			width: '100%'
-		},
-
-		[theme.breakpoints.up('md')]: {
-			width: '50%',
-			marginLeft: '1rem'
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			width: '30%'
-		}
-		
-	},
-	logo: {
-		[theme.breakpoints.down('sm')]: {
-			display: 'none'
-		},
-
-		[theme.breakpoints.up('md')]: {
-			display: 'none'
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			display: 'block',
-			width: '90%',
-			height: 'auto',
-			marginTop: '1rem',
-			marginLeft: '1rem',
-		}
-	
+	mainContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		maxWidth: '90%',
 	},
 	formContainer: {
-
-		[theme.breakpoints.down('sm')]: {
-			width: '100%',
-			marginTop: '3rem'
+		maxWidth: '100%',
+		padding: 0,
+	},
+	formControl: {
+		display: 'flex',
+		flexDirection: 'row',
+		'@media(max-width: 700px)': {
+			display: 'flex',
+			flexDirection: 'column-reverse',
+			alignItems: 'center'
 		},
-
-		[theme.breakpoints.up('md')]: {
-			width: '100%',
-			marginTop: '3rem'
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			width: '50%',
-			paddingRight: '4rem'
-		}
-		
 	},
 	onboard: {
-
-		[theme.breakpoints.down('sm')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			width: '100%',
-			height: '100%',
-			backgroundColor: '#2D2C35',
-			borderRadius: '2px',
-
-		},
-
-		[theme.breakpoints.up('md')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			width: '100%',
-			height: '100%',
-			backgroundColor: '#2D2C35',
-			borderRadius: '2px',
-			
-		},
-
-		[theme.breakpoints.up('lg')]: {
-
-			display: 'flex',
-			flexDirection: 'column',
-			margin: '7rem 3rem 0 3rem',
-			height: '80%',
-			backgroundColor: '#2D2C35',
-			borderRadius: '2px',
-			padding: '2rem 2rem',
-			
-		}
-		
-	},
-	getStarted: {
 		display: 'flex',
+		flexDirection: 'column',
 		justifyContent: 'center',
-		padding: '1rem .5rem 3rem .5rem',
-		color: '#EE4D71',
+		width: '100%',
+		height: '70%',
+		backgroundColor: '#2D2C35',
+		borderRadius: '2px',
+		padding: '2rem 2rem',
+	},
+	header: {
+		color: 'white',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: '600',
-		fontSize: '42px',
-		lineHeight: '24px',
+		fontSize: '2.2rem',
+		lineHeight: '2rem',
 		letterSpacing: '0.15px',
+		margin: '3rem 0',
+	},
+	leftContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		width: '50%',
+		marginRight: '2em',
+		'@media(max-width: 700px)': {
+			width: '100%',
+		},
+	},
+	editProfile: {
+		color: 'white',
+		fontFamily: 'Montserrat',
+		fontSize: '1.6rem',
+		lineHeight: '2rem',
+		letterSpacing: '0.15px',
+		marginBottom: '2rem',
 	},
 	textField: {
 		margin: '.5rem',
@@ -229,62 +144,33 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		width: '100%',
-		padding: '1rem',
+		'@media(max-width: 700px)': {
+			display: 'flex',
+			flexDirection: 'column',
+		},
 	},
 	oneInput: {
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
-		padding: '1rem',
+		'@media(max-width: 700px)': {
+			display: 'flex',
+			flexDirection: 'column',
+		},
 	},
 	button: {
-
-		[theme.breakpoints.down('sm')]: {
-			
-			fontSize: '24px',
-			margin: '2rem 6rem',
-			borderRadius: '0',
-			backgroundColor: '#2D2C35',
-			boxShadow: 'none',
-			border: '1px solid #EE4D71',
-			color: '#EE4D71',
-			textDecoration: 'none',
-				'&:hover': {
-					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
-					color: '#FFFFFF',		
-			}
-		},
-
-		[theme.breakpoints.up('md')]: {
-			
-			fontSize: '24px',
-			margin: '2rem 6rem',
-			borderRadius: '0',
-			backgroundColor: '#2D2C35',
-			boxShadow: 'none',
-			border: '1px solid #EE4D71',
-			color: '#EE4D71',
-			textDecoration: 'none',
-				'&:hover': {
-					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
-					color: '#FFFFFF',		
-			},
-		},
-
-		[theme.breakpoints.up('lg')]: {
-			
-			fontSize: '24px',
-			margin: '2rem 6rem',
-			borderRadius: '0',
-			backgroundColor: '#2D2C35',
-			boxShadow: 'none',
-			border: '1px solid #EE4D71',
-			color: '#EE4D71',
-			textDecoration: 'none',
-				'&:hover': {
-					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
-					color: '#FFFFFF',		
-				}
+		width: '50%',
+		fontSize: '1rem',
+		margin: '2rem auto',
+		borderRadius: '0',
+		backgroundColor: '#2D2C35',
+		boxShadow: 'none',
+		border: '1px solid #EE4D71',
+		color: '#EE4D71',
+		textDecoration: 'none',
+		'&:hover': {
+			background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+			color: '#FFFFFF',
 		},
 	},
 	paper: {
@@ -302,67 +188,119 @@ const useStyles = makeStyles(theme => ({
 	},
 	loaderContainer: {
 		position: 'absolute',
-		top: "calc(50% - 50px)",
-		left: "calc(50% - 50px)",
+		top: 'calc(50% - 50px)',
+		left: 'calc(50% - 50px)',
 		width: 100,
-		height: 100
+		height: 100,
+	},
+	userInfo: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		width: '50%',
+		height: 'auto',
+		backgroundColor: '#3A3845',
+		padding: '3rem 0',
+		boxShadow: 'none',
+		borderRadius: '0%',
+		marginLeft: '2em',
+		'@media(max-width: 700px)': {
+			width: '100%',
+			padding: '1.5rem 0 0 0',
+			margin: '2rem 0'
+		},
+	},
+	pictureContainer: {
+		width: 'auto',
+		borderRadius: '100%',
+		'&:hover': {
+			cursor: 'pointer',
+		},
+	},
+	profilePic: {
+		borderRadius: '100%',
+		width: '272px',
+		height: '272px',
+		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		objectFit: 'cover',
+		objectPosition: '50% 50%',
+	},
+	name: {
+		paddingTop: '1.5rem',
+		color: '#FFFFFF',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		textAlign: 'center',
+	},
+	jobTitle: {
+		paddingTop: '.5rem',
+		color: 'rgba(255, 255, 255, 0.7)',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		textAlign: 'center',
+	},
+	department: {
+		paddingTop: '.5rem',
+		color: 'rgba(255, 255, 255, 0.5)',
+		fontFamily: 'Montserrat',
+		fontStyle: 'normal',
+		fontSize: '24px',
+		lineHeight: '29px',
+		fontWeight: '500',
+		textAlign: 'Center',
+		verticalAlign: 'Top',
+		paddingBottom: '3rem',
 	},
 }));
 
-function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
+function Settings({ update, isUpdating, profile, user }) {
 	const classes = useStyles();
 
 	const history = useHistory();
 
-	const [form, setForm] = useState({});
+	const initialState = {
+		first_name: user.profile.first_name,
+		last_name: user.profile.last_name,
+		job_title: user.profile.job_title,
+		department: user.profile.department,
+		org_name: user.profile.org_name,
+		user_type: user.profile.user_type,
+	};
+
+	const [form, setForm] = useState(initialState);
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	const handleSubmit = event => {
-		onboard(form);
-		history.push('/profile');
-	};
+	const id = user.profile.id;
 
-	if (!isOnboarding && profile) return <Redirect to="profile" />;
+	const handleSubmit = event => {
+		console.log(form);
+		update(id, form);
+		window.setTimeout(() => {
+			history.push('/profile');
+		}, 50);
+	};
 
 	return (
 		<div id="App" className={classes.root}>
 			<CssBaseline />
-			<Container className={classes.imageContainer}>
-				<img
-					src={kanshaLogo}
-					alt="Kansha Logo"
-					className={classes.kanshaLogo}
-				/>
-				<img
-					src={logo}
-					alt="Kansha Logo People"
-					className={classes.logo}
-				/>
-			</Container>
-			<Container className={classes.formContainer}>
-				<Paper className={classes.onboard}>
-					{isOnboardingLoading ? (
-						<>
-							<Box className={classes.loaderContainer}>
-								<Loader
-									type="Rings"
-									color="#EE4D71"
-									height={100}
-									width={100}
-								/>
-							</Box>
-						</>
-					) : (
-						<>
-							<Typography
-								className={classes.getStarted}
-								variant="h5">
-								Let's Get Started!
-							</Typography>
-							<FormControl>
+			<Container className={classes.mainContainer}>
+				<Typography className={classes.header} variant="h5">
+					Settings
+				</Typography>
+				<Container className={classes.formContainer}>
+					<Paper className={classes.onboard}>
+						<Typography className={classes.editProfile}>
+							Edit Profile
+						</Typography>
+						<FormControl className={classes.formControl}>
+							<div className={classes.leftContainer}>
 								<Box className={classes.twoInput}>
 									<TextField
 										label="First Name*"
@@ -378,6 +316,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										InputLabelProps={{
 											className: classes.label,
 										}}
+										value={form.first_name}
 									/>
 									<TextField
 										label="Last Name*"
@@ -393,6 +332,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										InputLabelProps={{
 											className: classes.label,
 										}}
+										value={form.last_name}
 									/>
 								</Box>
 								<Box className={classes.twoInput}>
@@ -410,12 +350,13 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										InputLabelProps={{
 											className: classes.label,
 										}}
+										value={form.job_title}
 									/>
 									<FormControl className={classes.textField}>
 										<Select
 											variant="outlined"
 											defaultValue="standard"
-											value={form.user_Type}
+											value={form.user_type}
 											onChange={handleChange}
 											name="user_type"
 											margin="normal"
@@ -457,6 +398,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										InputLabelProps={{
 											className: classes.label,
 										}}
+										value={form.org_name}
 									/>
 								</Box>
 								<Box className={classes.oneInput}>
@@ -474,6 +416,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										InputLabelProps={{
 											className: classes.label,
 										}}
+										value={form.department}
 									/>
 								</Box>
 								<Button
@@ -481,21 +424,42 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 									variant="contained"
 									color="primary"
 									onClick={handleSubmit}>
-									Confirm
+									Save Changes
 								</Button>
-							</FormControl>
-						</>
-					)}
-				</Paper>
+							</div>
+							<Card className={classes.userInfo}>
+								<div className={classes.pictureContainer}>
+									<img
+										src={user.profile.profile_picture}
+										className={classes.profilePic}
+										alt="user profile"
+									/>
+								</div>
+								<Typography
+									className={classes.name}
+									variant="h5">
+									{user.profile.first_name}{' '}
+									{user.profile.last_name}
+								</Typography>
+								<Typography className={classes.jobTitle}>
+									{user.profile.job_title}
+								</Typography>
+								<Typography className={classes.department}>
+									{user.profile.department}
+								</Typography>
+							</Card>
+						</FormControl>
+					</Paper>
+				</Container>
 			</Container>
 		</div>
 	);
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = state => {
 	return {
-		...user,
+		...state,
 	};
 };
 
-export default connect(mapStateToProps, { onboard })(Onboarding);
+export default connect(mapStateToProps, { update })(Settings);

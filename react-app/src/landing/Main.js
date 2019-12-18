@@ -69,251 +69,166 @@ const useStyles = makeStyles(theme => ({
 			fontSize: '25px',
 		},
 	},
+    
+  container: {
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'nowrap',
+      padding: '5%'
+    },
+    [theme.breakpoints.up('md')]: {
+      flexWrap: 'nowrap',
+      padding: '5%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      flexWrap: 'wrap'
+    }
+  }
+
+		
+	
 }));
 
-export default function Main() {
-	const classes = useStyles();
+export default function Main () {
+    const classes = useStyles();
 
-	return (
-		<>
-			<Typography font="#26242D" id="learn-more">
-				<Box
-					className={(classes.box, classes.mobile)}
-					fontFamily="montserrat">
-					Why Kansha?
-				</Box>
-			</Typography>
-			<div className={classes.root}>
-				<Paper className={classes.paper}>
-					<Grid container spacing={2} direction="row">
-						<Grid item className={classes.card}>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="reward"
-									src={rewardIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}
-										fontFamily="montserrat">
-										Send a Reward
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}
-										fontFamily="montserrat">
-										Send your peers a gift card with a
-										message to show recognition.
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
+    return (
+        <>
+        <Typography font='#26242D'>
+          <Box className={classes.box, classes.mobile} fontFamily='montserrat'  a id='features'>Features</Box> 
+        </Typography>
+        <div className={classes.root}>
+      <Paper className={classes.paper}>
+        <Grid container spacing={2} container direction = 'row' className={classes.container}>
+          <Grid item className={classes.card}>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="reward" src={rewardIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font} fontFamily='montserrat'>
+                  Send a Reward
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont} fontFamily='montserrat'>
+                  Send your peers a gift card with a message to show recognition.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
 
-				<Paper className={classes.paper}>
-					<Grid container spacing={2}>
-						<Grid item>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="workspace"
-									src={workspaceIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}>
-										Workspace
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}>
-										Connecting people in the same workspace,
-										creating public recognition
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
+        <Paper className={classes.paper}>
+        <Grid container spacing={2} className={classes.container}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="workspace" src={workspaceIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
+                  Workspace
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                  Connecting people in the same workspace, creating public recognition
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
 
-				<Paper className={classes.paper}>
-					<Grid container spacing={2}>
-						<Grid item>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="admin"
-									src={adminIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}>
-										Admin Access
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}>
-										Only admin users have access to certain
-										features to ensure moderation.
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
+        <Paper className={classes.paper}>
+        <Grid container spacing={2} className={classes.container}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="admin" src={adminIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font} >
+                  Admin Access
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                  Only admin users have access to certain features to ensure moderation.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
 
-				<Paper className={classes.paper}>
-					<Grid container spacing={2}>
-						<Grid item>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="badge"
-									src={badgeIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}>
-										Earn Badges
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}>
-										Earn and send badges to your peers that
-										represent their hard work.
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
+        <Paper className={classes.paper}>
+        <Grid container spacing={2} className={classes.container}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="badge" src={badgeIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
+                  Earn Badges
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                  Earn and send badges to your peers that represent their hard work.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
 
-				<Paper className={classes.paper}>
-					<Grid container spacing={2}>
-						<Grid item>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="heart"
-									src={heartIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}>
-										Leave a <FavoriteIcon />
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}>
-										React to posts with your favorite emoji
-										to show appreciation.
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
+        <Paper className={classes.paper}>
+        <Grid container spacing={2} className={classes.container}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="heart" src={heartIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
+                  Leave a <FavoriteIcon />
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                  React to posts with your favorite emoji to show appreciation.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
 
-				<Paper className={classes.paper}>
-					<Grid container spacing={2}>
-						<Grid item>
-							<ButtonBase className={classes.image}>
-								<img
-									className={classes.img}
-									alt="activity"
-									src={activityIcon}
-								/>
-							</ButtonBase>
-						</Grid>
-						<Grid item xs={12} sm container>
-							<Grid
-								item
-								xs
-								container
-								direction="column"
-								spacing={2}>
-								<Grid item xs>
-									<Typography
-										gutterBottom
-										variant="subtitle1"
-										className={classes.font}>
-										Activity
-									</Typography>
-									<Typography
-										variant="body2"
-										gutterBottom
-										className={classes.cardFont}>
-										Keep track of your recognitions with our
-										profile activities tracker.
-									</Typography>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Paper>
-			</div>
-		</>
+        <Paper className={classes.paper}>
+        <Grid container spacing={2} className={classes.container}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="activity" src={activityIcon} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1" className={classes.font}>
+                  Activity
+                </Typography>
+                <Typography variant="body2" gutterBottom className={classes.cardFont}>
+                  Keep track of your recognitions with our profile activities tracker.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        </Paper>
+    </div>
+</>
 	);
 }
