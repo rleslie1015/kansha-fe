@@ -94,7 +94,7 @@ export const FeedComments = ({ comments, id, profile }) => {
 			</Box>
 			<div className={classes.CommentsContainer}>
 				{comments.map(comment => (
-					<Comment comment={comment} />
+					<Comment comment={comment} profile={profile}/>
 				))}
 			</div>
 			<SendComments id={id}/>
