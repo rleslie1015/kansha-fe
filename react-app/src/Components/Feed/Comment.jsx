@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { makeStyles, Box, Typography, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
+import Trashcan from '../../assets/Trashcan.png';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 
 const useStyles = makeStyles(theme => ({
@@ -92,32 +94,78 @@ const useStyles = makeStyles(theme => ({
 		color: 'rgba(255, 255, 255, 0.5)',
 		marginLeft: '10px',
 	},
+	TrashCan: {
+		width: '17px',
+		height: 'auto',
+		marginLeft: '10px',
+	},
 }));
 
-export const Comment = ({ comment }) => {
+export const Comment = ({ comment, profile }) => {
 	const classes = useStyles();
 	const time = useMemo(() => timeAgo(comment.date), [comment]);
 
-	return (
-		<Container className={classes.Comment}>
-			<Container className={classes.CommentPicture}>
-					<img
-						className={classes.ProfilePic}
-						src={comment.profile_picture}
-						alt="sender"
-					/>
+	const handleDelete = id => {
+		if(window.confirm('Are you sure you would like to delete this comment?')){
+		axiosWithAuth()
+			.delete(`/comments/${id}`)
+			.then(() => {
+				//matt do work here.... :) 
+			})
+		}
+	}
+
+	if(profile.user_type === 'admin'){
+		return (
+			<Container className={classes.Comment}>
+				<Container className={classes.CommentPicture}>
+						<img
+							className={classes.ProfilePic}
+							src={comment.profile_picture}
+							alt="sender"
+						/>
+				</Container>
+				<Container className={classes.CommentContent}>
+					<Box className={classes.CommentContentTop}>
+						<Link
+							className={classes.Name}
+							to={`/profile/${comment.user_id}`}>
+							{comment.first_name} {comment.last_name}
+						</Link>
+						<span className={classes.TimeStamp}>{time}</span>
+						<img 
+							src={Trashcan} 
+							alt='trash can icon' 
+							onClick={() => handleDelete(comment.id)} 
+							className={classes.TrashCan}
+						/>
+					</Box>
+					<Typography>{comment.message}</Typography>
+				</Container>
 			</Container>
-			<Container className={classes.CommentContent}>
-				<Box className={classes.CommentContentTop}>
-					<Link
-						className={classes.Name}
-						to={`/profile/${comment.user_id}`}>
-						{comment.first_name} {comment.last_name}
-					</Link>
-					<span className={classes.TimeStamp}>{time}</span>
-				</Box>
-				<Typography>{comment.message}</Typography>
+		)	
+	} else {
+		return (
+			<Container className={classes.Comment}>
+				<Container className={classes.CommentPicture}>
+						<img
+							className={classes.ProfilePic}
+							src={comment.profile_picture}
+							alt="sender"
+						/>
+				</Container>
+				<Container className={classes.CommentContent}>
+					<Box className={classes.CommentContentTop}>
+						<Link
+							className={classes.Name}
+							to={`/profile/${comment.user_id}`}>
+							{comment.first_name} {comment.last_name}
+						</Link>
+						<span className={classes.TimeStamp}>{time}</span>
+					</Box>
+					<Typography>{comment.message}</Typography>
+				</Container>
 			</Container>
-		</Container>
-	);
+		);
+	}
 };
