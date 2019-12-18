@@ -123,7 +123,11 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
-  		objectPosition: '50% 50%',
+		objectPosition: '50% 50%',
+		  [theme.breakpoints.down('sm')]: {
+			height: '50px',
+			width: '50px'
+		},
 	},
 	card_actions: {
 		display: 'flex',
@@ -138,6 +142,8 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '50%',
+			height: '50px',
+			width: '50px',
 		},
 		
 	},
@@ -150,6 +156,12 @@ const useStyles = makeStyles(theme => ({
 		top: '10px',
 		right: '10px',
 	},
+	img: {
+		[theme.breakpoints.down('sm')]: {
+			height: '25px',
+			width: '25px'
+		},
+	}
 }));
 
 export default function Workspace_Card(props) {
@@ -198,7 +210,7 @@ export default function Workspace_Card(props) {
 										<button
 											variant="contained"
 											className={classes.button}>
-											<img alt='profile icon' src={profile} />
+											<img alt='profile icon' src={profile} className={classes.img} />
 										</button>
 									</Link>
 								</CardActions>
@@ -231,7 +243,7 @@ export default function Workspace_Card(props) {
 										<IconButton
 											variant="contained"
 											className={classes.button} >
-											<img alt='profile icon' src={profile} />
+											<img alt='profile icon' src={profile} className={classes.img} />
 										</IconButton>
 									</Link>
 								</CardActions>

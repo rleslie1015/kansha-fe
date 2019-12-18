@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
 		width: '25%',
 		height: '100%',
 		padding: '1rem 1rem 1rem 0',
+		
 	},
 	recProfilePic: {
 		borderRadius: '100%',

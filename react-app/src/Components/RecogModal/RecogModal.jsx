@@ -56,9 +56,9 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
 		color: 'white',
 		textDecoration: 'none',
+		
 	},
 	textField: {
-		width: '568px',
 		backgroundColor: 'white',
 		padding: '.5rem',
 	},
@@ -70,7 +70,11 @@ const useStyles = makeStyles(theme => ({
 		lineHeight: '20px',
 	},
 	img: {
-		padding: '7px'
+		padding: '7px',
+		[theme.breakpoints.down('sm')]: {
+			height: '38px',
+			width: '38px'
+		},
 	}
 }));
 
