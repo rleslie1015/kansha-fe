@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -9,6 +9,8 @@ import { sendRecog } from '../../store/actions/recog-actions';
 import send from '../../assets/send.png';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
 
 import { connect } from 'react-redux';
 
@@ -150,12 +152,14 @@ function RecogModal(props) {
 	console.log(props);
 	const classes = useStyles();
 	const [isTyping, setIsTyping] = useState(true);
+	const [badges, setBadges] = useState()
 	const [open, setOpen] = useState(false);
 	const [recog, setRecog] = useState({
 		message: '',
 		sender: props.user.profile.id,
 		recipient: props.id,
 		date: new Date(Date.now()),
+		badge_id: null,
 	});
 	const {
 		first_name,
@@ -164,6 +168,17 @@ function RecogModal(props) {
 		department,
 		profile_picture,
 	} = props;
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
 
 	const handleChange = event => {
 		setRecog({ ...recog, [event.target.name]: event.target.value });
@@ -190,9 +205,12 @@ function RecogModal(props) {
 		setIsTyping(false)
 	}
 
-	const handleSwitch = () => {
+	const handleSwitch = badge_id => {
+		setRecog({ ...recog, badge_id })
 		setIsTyping(true)
 	}
+
+	console.log(recog)
 
 	if (isTyping) {
 	return (
@@ -240,6 +258,7 @@ function RecogModal(props) {
 								multiline
 								rows="4"
 								placeholder="Type your message here..."
+								value={recog.message}
 								margin="normal"
 								InputProps={{
 									disableUnderline: true,
@@ -250,6 +269,10 @@ function RecogModal(props) {
 								}}
 							/>
 						</FormControl>
+						{recog.badge_id &&
+							<Box className={classes.badgeBox}>
+								<img src={badges[recog.badge_id-1].badge_URL} />
+						</Box>}
 						<Fab 
 							className={classes.fab}
 							onClick={badgePrompt}>
@@ -305,36 +328,14 @@ function RecogModal(props) {
 						<p>{job_title}</p>
 						<p>{department}</p>
                 <Box className={classes.badgeBox}>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Over+Achiever.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Problem+Solver.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Team+Leader.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/MVP.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Helping+Hand.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/All+Day+Everyday.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jupiter+recognize!.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Class+Clown.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/High+Five.png`} className={classes.badge} />
-                    </Button>
-                    <Button onClick={handleSwitch}>
-                        <img src={`https://kansha-bucket.s3-us-west-1.amazonaws.com/Jedi+Master.png`} className={classes.badge} />
-                    </Button>
+					{badges.map(badge => {
+						console.log(badge)
+							return(
+								<Button onClick={() => {handleSwitch(badge.id)}}>
+                        			<img src={badge.badge_URL} alt={badge.badge_name} className={classes.badge} />
+                    			</Button>
+							)
+					})}
                 </Box>
 						<Fab 
 							className={classes.fab}

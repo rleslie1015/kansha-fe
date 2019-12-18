@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import { FileUpload } from '../FileUpload';
 import { RecognitionCard } from './RecognitionCard';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
@@ -387,11 +388,14 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'row',
 		marginBottom: '2rem',
 	},
-	badgeImg: {
+	badgeImage: {
 		backgroundColor: '#2D2C35',
-		width: '100%',
+		width: '10%',
 		height: 'auto',
 		paddingTop: '1.5rem',
+	},
+	badgeBox: {
+		overflow: 'scroll',
 	},
 	rightContainer: {
 		[theme.breakpoints.down('sm')]: {
@@ -442,6 +446,31 @@ const useStyles = makeStyles(theme => ({
 
 export function Profile({ profile, isPeer }) {
 	const classes = useStyles();
+	const [badges, setBadges] = useState([])
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
+	const userBadges = useMemo(() => profile.rec.reduce((acc, rec) => {
+		if(profile.id === rec.sender) {
+			return acc
+		} else if(rec.badge_id && acc[rec.badge_id]){
+			acc[rec.badge_id].count++
+		} else if(badges.length && rec.badge_id) {
+			acc[rec.badge_id]={badge:badges[rec.badge_id-1].badge_URL, count:1}
+		} 
+		return acc;
+	},{}),[profile, badges])
+
+	console.log(userBadges)
 
 	return (
 		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
@@ -481,8 +510,16 @@ export function Profile({ profile, isPeer }) {
 						<Typography className={classes.header} variant="h5">
 							Badges
 						</Typography>
-						<Container
-							className={classes.badgeContainer}></Container>
+						<Container className={classes.badgeContainer}>
+						{badges &&
+							<Box className={classes.badgeBox}>
+								{Object.keys(userBadges).map(id => {
+									return ( 
+									<img src={userBadges[id].badge} className={classes.badgeImage} />
+									)
+								})}
+						</Box>}
+						</Container>
 					</Card>
 				</Container>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
