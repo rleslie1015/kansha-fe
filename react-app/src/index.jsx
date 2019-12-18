@@ -11,7 +11,7 @@ import logger from 'redux-logger';
 import './reset.css';
 import { App } from './App';
 
-const middleware = compose(applyMiddleware(thunk), applyMiddleware(logger));
+const middleware = compose(applyMiddleware(thunk), applyMiddleware(logger))
 const reduxStore = createStore(reduxReducer, middleware);
 
 ReactDOM.render(

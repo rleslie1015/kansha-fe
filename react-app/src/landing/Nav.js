@@ -11,27 +11,75 @@ import 'typeface-montserrat';
 const auth = new Auth();
 
 const useStyles = makeStyles(theme => ({
-	wrapper: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		marginLeft: '90px',
-		width: '80%',
-		marginTop: '30px',
-	},
-	link: {
-		fontSize: '16px',
-		padding: '10px',
-	},
-	image: {
-		width: 64,
-		height: 64,
-	},
-	img: {
-		margin: 'auto',
-		display: 'block',
-		width: '300px',
-		height: '100px',
-	},
+
+  wrapper: {
+    [theme.breakpoints.down('sm')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      marginTop: "30px"
+
+    },
+    [theme.breakpoints.up('md')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      marginTop: "30px"
+
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: "flex",
+      justifyContent: 'space-between',
+      width: "80%",
+      marginTop: "30px"
+
+    }
+    
+
+  },
+  link: {
+      fontSize: "16px",
+      padding: "10px"
+  },
+  image: {
+    [theme.breakpoints.down('sm')]: {
+      width: '60%'
+
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '60%'
+
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: '60%'
+
+    }
+    
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    width: '100%',
+    height: '100%'
+  },
+  
+  left: {
+    justifyContent: "flex-start"
+  },
+  hideNav: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      display: "none"
+    },
+    [theme.breakpoints.up('md')]: {
+      display: "none"
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: "flex",
+      flexDirection: 'row',
+      width: "80%",
+      justifyContent: "flex-end",
+      fontFamily: 'montserrat'
+    }
+  },
 
 	left: {
 		justifyContent: 'flex-start',
@@ -69,10 +117,10 @@ export default function Links() {
 			<NavMenu className={style.hideNav} />
 			<div className={classes.hideNav}>
 				<Link href="#" color="inherit" className={classes.link}>
-					About Us
+					Learn More
 				</Link>
 				<Link href="#" color="inherit" className={classes.link}>
-					Features
+					Our Team
 				</Link>
 				<Link
 					href="#"

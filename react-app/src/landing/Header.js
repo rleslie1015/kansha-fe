@@ -262,7 +262,7 @@ export default function Header() {
             <Box className={classes.headingFont} fontFamily='montserrat'>Workplace Recognition</Box>
             <Box className={classes.headingFont} fontFamily='montserrat'>Like Never Before</Box>
             <Box className={classes.desc} fontFamily='montserrat'>Making it easy to recognize your hardworking peers with rewards and personalized messages</Box>
-            <Button variant='contained' className={classes.signButton} onClick={auth.login} fontFamily='montserrat'>Sign Up</Button>
+            <Button variant='contained' className={classes.signButton} onClick={auth.login} fontFamily='montserrat'>Get Started</Button>
             <Button onClick={()=>window.location.hash='learn-more'} variant='contained' className={classes.learnButton} fontFamily='montserrat'>Learn More</Button>
           </div>
           <div style={styles.hero}>

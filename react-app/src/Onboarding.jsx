@@ -43,36 +43,131 @@ const StyledBase = withStyles(theme =>
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		minHeight: '100vh',
-		backgroundColor: '#26242D',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			backgroundColor: '#26242D',
+			padding: '0 1rem'
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			backgroundColor: '#26242D',
+			padding: '0 1rem'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'row',
+			minHeight: '100vh',
+			backgroundColor: '#26242D',
+		}
+		
 	},
 	imageContainer: {
-		width: '48%',
+		[theme.breakpoints.down('sm')]: {
+			width: '48%',
+			margin: '0',
+			padding: '0'
+		},
+
+		[theme.breakpoints.up('md')]: {
+			width: '48%',
+			margin: '0',
+			padding: '0'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			width: '48%'
+		}
+		
 	},
 	kanshaLogo: {
-		width: '30%',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%'
+		},
+
+		[theme.breakpoints.up('md')]: {
+			width: '50%',
+			marginLeft: '1rem'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			width: '30%'
+		}
+		
 	},
 	logo: {
-		width: '90%',
-		height: 'auto',
-		marginTop: '1rem',
-		marginLeft: '1rem',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'none'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'block',
+			width: '90%',
+			height: 'auto',
+			marginTop: '1rem',
+			marginLeft: '1rem',
+		}
+	
 	},
 	formContainer: {
-		width: '48%',
+
+		[theme.breakpoints.down('sm')]: {
+			width: '100%',
+			marginTop: '3rem'
+		},
+
+		[theme.breakpoints.up('md')]: {
+			width: '100%',
+			marginTop: '3rem'
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			width: '50%',
+			paddingRight: '4rem'
+		}
+		
 	},
 	onboard: {
-		position: 'relative',
-		display: 'flex',
-		flexDirection: 'column',
-		margin: '7rem 3rem 0 3rem',
-		width: '80%',
-		height: '80%',
-		backgroundColor: '#2D2C35',
-		borderRadius: '2px',
-		padding: '2rem 2rem',
+
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100%',
+			height: '100%',
+			backgroundColor: '#2D2C35',
+			borderRadius: '2px',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100%',
+			height: '100%',
+			backgroundColor: '#2D2C35',
+			borderRadius: '2px',
+			
+		},
+
+		[theme.breakpoints.up('lg')]: {
+
+			display: 'flex',
+			flexDirection: 'column',
+			margin: '7rem 3rem 0 3rem',
+			height: '80%',
+			backgroundColor: '#2D2C35',
+			borderRadius: '2px',
+			padding: '2rem 2rem',
+			
+		}
+		
 	},
 	getStarted: {
 		display: 'flex',
@@ -143,18 +238,53 @@ const useStyles = makeStyles(theme => ({
 		padding: '1rem',
 	},
 	button: {
-		width: '70%',
-		fontSize: '24px',
-		margin: '2rem 6rem',
-		borderRadius: '0',
-		backgroundColor: '#2D2C35',
-		boxShadow: 'none',
-		border: '1px solid #EE4D71',
-		color: '#EE4D71',
-		textDecoration: 'none',
-		'&:hover': {
-			background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
-			color: '#FFFFFF',
+
+		[theme.breakpoints.down('sm')]: {
+			
+			fontSize: '24px',
+			margin: '2rem 6rem',
+			borderRadius: '0',
+			backgroundColor: '#2D2C35',
+			boxShadow: 'none',
+			border: '1px solid #EE4D71',
+			color: '#EE4D71',
+			textDecoration: 'none',
+				'&:hover': {
+					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+					color: '#FFFFFF',		
+			}
+		},
+
+		[theme.breakpoints.up('md')]: {
+			
+			fontSize: '24px',
+			margin: '2rem 6rem',
+			borderRadius: '0',
+			backgroundColor: '#2D2C35',
+			boxShadow: 'none',
+			border: '1px solid #EE4D71',
+			color: '#EE4D71',
+			textDecoration: 'none',
+				'&:hover': {
+					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+					color: '#FFFFFF',		
+			},
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			
+			fontSize: '24px',
+			margin: '2rem 6rem',
+			borderRadius: '0',
+			backgroundColor: '#2D2C35',
+			boxShadow: 'none',
+			border: '1px solid #EE4D71',
+			color: '#EE4D71',
+			textDecoration: 'none',
+				'&:hover': {
+					background: 'linear-gradient(172.54deg, #EE4D71 0%, #F15A3F 100%);',
+					color: '#FFFFFF',		
+				}
 		},
 	},
 	paper: {
