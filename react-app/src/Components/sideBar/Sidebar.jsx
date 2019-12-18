@@ -348,7 +348,7 @@ function Sidebar({ user }) {
 						open={open}
 					/>
 					<SidebarLink
-						path="/profile#settings"
+						path="/settings"
 						name="Settings"
 						icon={settings}
 						open={open}
