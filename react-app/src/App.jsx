@@ -10,6 +10,8 @@ import { Feed } from './Components/Feed';
 import Workspace from './Workspace';
 import FileUpload from './FileUpload';
 import Settings from './Settings';
+import { Cropper } from './Components/FileUpload/FileCrop';
+
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -35,6 +37,7 @@ export const App = () => {
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />
 			<ProtectedRoute path="/settings" component={Settings} />
+			<ProtectedRoute path="/crop" component={Cropper} />
 		</div>
 	);
 };

@@ -3,7 +3,7 @@ import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload';
+import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
 import RecogModal from '../RecogModal/RecogModal'
 
@@ -224,7 +224,6 @@ const useStyles = makeStyles(theme => ({
 				transition: '0.5s ease',
 
 		}
-		
 	},
 	name: {
 		[theme.breakpoints.down('sm')]: {
@@ -461,14 +460,9 @@ export function Profile({ profile, isPeer }) {
 								className={classes.profilePic}
 								alt="user profile"
 							/>
-							{!isPeer && <div className={classes.addPic}>
-								<img
-									src="https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png"
-									className={classes.camera}
-									alt="upload icon"
-								/>
-								<FileUpload />
-							</div> }
+							<div className={classes.addPic}>
+								<Cropper />
+							</div>
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
