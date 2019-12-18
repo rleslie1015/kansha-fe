@@ -97,7 +97,7 @@ export const FeedComments = ({ comments, id }) => {
 					<Comment comment={comment} />
 				))}
 			</div>
-			<SendComments />
+			<SendComments id={id}/>
 		</Card>
 	);
 };

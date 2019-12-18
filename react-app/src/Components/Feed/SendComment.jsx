@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export const SendComments = ({ comments, id }) => {
+export const SendComments = ({ id }) => {
 	const [newComment, setNewComment] = useState('');
 	const classes = useStyles();
 	const dispatch = useDispatch();
