@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Card,
 	makeStyles,
 	Typography,
-	Box,
-	InputBase,
+	Box
 } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 import { Comment } from './Comment';
-import { addComment } from '../../store/actions/feed-actions';
+import { SendComments } from './SendComment';
 
 const useStyles = makeStyles(theme => ({
 	CommentCard: {
@@ -20,6 +18,7 @@ const useStyles = makeStyles(theme => ({
 		color: '#FFFFFF',
 		background: '#34323E',
 		margin: '10px 10px',
+		paddingBottom: '74px',
 	},
 	CommentHeading: {
 		background: '#2D2C35',
@@ -85,15 +84,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const FeedComments = ({ comments, id }) => {
-	const [newComment, setNewComment] = useState('');
 	const classes = useStyles();
-	const dispatch = useDispatch();
-	const handleSubmit = event => {
-		dispatch(addComment(id, newComment));
-	};
-	const handleInput = event => {
-		setNewComment(event.target.value);
-	};
 	return (
 		<Card className={classes.CommentCard}>
 			<Box className={classes.CommentHeading}>
@@ -106,21 +97,7 @@ export const FeedComments = ({ comments, id }) => {
 					<Comment comment={comment} />
 				))}
 			</div>
-			<Box className={classes.SendCommentsContainer}>
-				<div className={classes.SendComments}>
-					<InputBase
-						placeholder="Write a comment..."
-						className={classes.SendCommentInput}
-						value={newComment}
-						onChange={handleInput}
-					/>
-					<button
-						onClick={handleSubmit}
-						className={classes.SendCommentButton}>
-						Submit
-					</button>
-				</div>
-			</Box>
+			<SendComments />
 		</Card>
 	);
 };

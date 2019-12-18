@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
             paddingTop: 'unset'
         },
         '&:last-child': {
-            paddingBottom: '80px'
+            marginBottom: '0px'
         },
         width: '100%',
         justifyContent: 'stretch',
