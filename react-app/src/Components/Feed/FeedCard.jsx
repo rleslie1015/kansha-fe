@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
 			marginTop: '0px'
 		}
 	},
+	FeedCardActive: {
+		background: '#34323E',
+	},
 	FeedCardPicture: {
 		boxSizing: 'border-box',
 		position: 'relative',
@@ -126,7 +129,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRec }) => {
+export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRec, active }) => {
 	const classes = useStyles();
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
@@ -137,7 +140,7 @@ export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRe
 	}, [dispatch, rec_id, reactions, comments]);
 	const time = useMemo(() => timeAgo(rec.date), [rec]);
 	return (
-		<Card className={classes.FeedCard}>
+		<Card className={clsx(classes.FeedCard,{[classes.FeedCardActive]: active})}>
 			<Container className={classes.FeedCardPicture}>
 				<Box>
 					<img
