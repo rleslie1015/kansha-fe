@@ -47,10 +47,24 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	menuBottonDiv: {
-		backgroundColor: '#2D2C35',
-		'&:hover': {
-			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+		[theme.breakpoints.down('sm')]: {
+			backgroundColor: 'transparent',
+			'&:hover': {
+				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			},
 		},
+		[theme.breakpoints.up('md')]: {
+			backgroundColor: 'transparent',
+			'&:hover': {
+				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			},
+		},
+		[theme.breakpoints.up('lg')]: {
+			backgroundColor: '#2D2C35',
+			'&:hover': {
+				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			},
+		}
 	},
 	closeMenuButton: {
 		marginLeft: '-75%',
@@ -86,8 +100,9 @@ const useStyles = makeStyles(theme => ({
 		}),
 		overflowX: 'hidden',
 		width: theme.spacing(7) + 1,
-		[theme.breakpoints.up('sm')]: {
+		[theme.breakpoints.down('sm')]: {
 			width: theme.spacing(9) + 1,
+			backgroundColor: 'transparent'
 		},
 	},
 	content: {
