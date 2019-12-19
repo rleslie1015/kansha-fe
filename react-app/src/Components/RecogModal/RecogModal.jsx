@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 		'@global': {
             '*::-webkit-scrollbar': {
-                width: '.5rem',
+				width: '.5rem',
             },
             '*::-webkit-scrollbar-corner': {
                 backgroundColor: 'transparent',
@@ -78,21 +78,18 @@ const useStyles = makeStyles(theme => ({
 	},
 	badgeBox: {
 		backgroundColor: '#3A3845',
-		borderRadius: '10px 10px 0 10px',
-		width: '568px',
-		height: '189px',
-		padding: '.5rem',
 		display: 'flex',
 		alignItems: 'center',
 		flexWrap: 'wrap',
         justifyContent: 'center',
-        overflow: 'scroll',
+		overflow: 'scroll',
+		borderRadius: '10px 10px 0 10px',
+		width: '568px',
+		height: '189px',
+		padding: '.5rem',
+		position: 'relative',
+		margin: '16px 0 8px 0',
 	},
-	// formControl: {
-	// 	display: 'flex',
-	// 	position: 'relative',
-	// 	height: '189px',
-	// },
 	textField: {
 		borderRadius: '10px 10px 0 10px',
 		width: '568px',
@@ -140,7 +137,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	chosenBadge: {
 		position: 'absolute',
-		transform: 'translate(0, -95%)',
+		transform: 'translate(-1%, -95%)',
 	}
 }));
 
@@ -179,7 +176,7 @@ function RecogModal(props) {
 	console.log(props);
 	const classes = useStyles();
 	const [isTyping, setIsTyping] = useState(true);
-	const [badges, setBadges] = useState()
+	const [badges, setBadges] = useState([])
 	const [open, setOpen] = useState(false);
 	const [recog, setRecog] = useState({
 		message: '',
