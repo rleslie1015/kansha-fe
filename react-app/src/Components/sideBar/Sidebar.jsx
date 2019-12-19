@@ -140,6 +140,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			display: 'block',
 			marginTop: '5rem',
+			paddingRight: '10%',
 			backgroundColor: '#2D2C35',
 			'&:hover': {
 				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
@@ -193,7 +194,7 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 	},
 	icons: {
-		paddingLeft: '20%',
+		paddingRight: '20%',
 		width: '75%',
 		height: 'auto',
 		marginTop: '15%',
