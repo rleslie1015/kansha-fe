@@ -3,9 +3,10 @@ import { Container, Typography, Card, Box, Paper, Badge } from '@material-ui/cor
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload';
+import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import RecogModal from '../RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
@@ -214,14 +215,16 @@ const useStyles = makeStyles(theme => ({
 		height: 'auto',
 	},
 	addPic: {
-		opacity: 0,
-		borderRadius: '100%',
-		position: 'absolute',
-		transform: 'translate(0, -100%)',
-		'&:hover': {
-			opacity: 1,
-			transition: '0.5s ease',
-		},
+
+			opacity: 0,
+			borderRadius: '100%',
+			position: 'absolute',
+			// transform: 'translate(0, -100%)',
+			'&:hover': {
+				opacity: 1,
+				transition: '0.5s ease',
+
+		}
 	},
 	name: {
 		[theme.breakpoints.down('sm')]: {
@@ -492,14 +495,9 @@ export function Profile({ profile, isPeer }) {
 								className={classes.profilePic}
 								alt="user profile"
 							/>
-							{!isPeer && <div className={classes.addPic}>
-								<img
-									src="https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png"
-									className={classes.camera}
-									alt="upload icon"
-								/>
-								<FileUpload />
-							</div> }
+							<div className={classes.addPic}>
+								<Cropper />
+							</div>
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
@@ -510,6 +508,7 @@ export function Profile({ profile, isPeer }) {
 						<Typography className={classes.department}>
 							{profile.department}
 						</Typography>
+						{isPeer && <RecogModal { ...profile} />}
 					</Card>
 					{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
 					<Card className={classes.badgeCard}>

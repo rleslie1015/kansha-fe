@@ -124,7 +124,7 @@ const useStyles = makeStyles(theme => ({
 
 		[theme.breakpoints.up('lg')]: {
 			display: 'block',
-			marginTop: '20vh',
+			marginTop: '5rem',
 			backgroundColor: '#2D2C35',
 			'&:hover': {
 				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
@@ -348,7 +348,7 @@ function Sidebar({ user }) {
 						open={open}
 					/>
 					<SidebarLink
-						path="/profile#settings"
+						path="/settings"
 						name="Settings"
 						icon={settings}
 						open={open}

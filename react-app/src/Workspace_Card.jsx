@@ -1,13 +1,12 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+import profile from './assets/profile.png';
+import {CardActions, CardContent, Typography, Avatar, IconButton} from '@material-ui/core';
 import RecogModal from './Components/RecogModal/RecogModal';
 import trashcan from './assets/Trashcan.png';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
 	card_container: {
@@ -39,9 +38,11 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: 'white',
 		width: '30%',
+		justifyContent: 'space-between',
 		[theme.breakpoints.down('sm')]: {
 			position: 'relative',
 			minWidth: 275,
+			height: '102px',
 			margin: 10,
 			backgroundColor: '#2D2C35',
 			color: 'white',
@@ -122,11 +123,29 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '100%',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
-  		objectPosition: '50% 50%',
+		objectPosition: '50% 50%',
+		  [theme.breakpoints.down('sm')]: {
+			height: '50px',
+			width: '50px'
+		},
 	},
 	card_actions: {
 		display: 'flex',
 		justifyContent: 'center'
+	},
+	button: {
+		// padding: '0.5em 3em',
+		backgroundColor: '#2D2C35',
+		color: '#EE4D71',
+		textDecoration: 'none',
+		border: '2px solid #EE4d71',
+		borderRadius: '100%',
+		[theme.breakpoints.down('sm')]: {
+			borderRadius: '50%',
+			height: '50px',
+			width: '50px',
+		},
+		
 	},
 	button_dark: {
 		backgroundColor: '#575757',
@@ -137,6 +156,12 @@ const useStyles = makeStyles(theme => ({
 		top: '10px',
 		right: '10px',
 	},
+	img: {
+		[theme.breakpoints.down('sm')]: {
+			height: '25px',
+			width: '25px'
+		},
+	}
 }));
 
 export default function Workspace_Card(props) {
@@ -181,11 +206,13 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<Link to={`/profile/${user.id}`}>
+										<button
 											variant="contained"
 											className={classes.button}>
-											View Profile
-										</Button> */}
+											<img alt='profile icon' src={profile} className={classes.img} />
+										</button>
+									</Link>
 								</CardActions>
 						</Card>
 						)
@@ -212,11 +239,13 @@ export default function Workspace_Card(props) {
 								</CardContent>
 								<CardActions className={classes.card_actions}>
 									<RecogModal {...user} />
-									{/* <Button
+									<Link to={`/profile/${user.id}`}>
+										<IconButton
 											variant="contained"
-											className={classes.button}>
-											View Profile
-										</Button> */}
+											className={classes.button} >
+											<img alt='profile icon' src={profile} className={classes.img} />
+										</IconButton>
+									</Link>
 								</CardActions>
 							</Card>
 						)

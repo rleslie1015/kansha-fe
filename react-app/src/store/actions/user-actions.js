@@ -21,6 +21,9 @@ export const USER_UPDATE_PICTURE_START = 'USER_UPDATE_PICTURE_START';
 export const USER_UPDATE_PICTURE_SUCCESS = 'USER_UPDATE_PICTURE_SUCCESS';
 export const USER_UPDATE_PICTURE_FAILURE = 'USER_UPDATE_PICTURE_FAILURE';
 export const USER_UPDATE_PICTURE_BAD_CONTENT = 'USER_UPDATE_PICTURE_BAD_CONTENT';/* <- for when users attempt to upload bad file types */
+export const USER_UPDATE_START = 'type: USER_UPDATE_START';
+export const USER_UPDATE_SUCCESS = 'type: USER_UPDATE_SUCCESS';
+export const USER_UPDATE_FAILURE = 'type: USER_UPDATE_FAILURE';
 
 
 // ACTION CREATORS
@@ -96,6 +99,21 @@ export const onboard = creds => dispatch => {
 			dispatch({ type: USER_ONBOARDING_FAILURE, payload: err });
 		});
 };
+
+/* This handles user updates */
+export const update = (id, creds) => dispatch => {
+	dispatch({ type: USER_UPDATE_START });
+	axiosWithAuth()
+		.put(`users/${id}`, creds)
+		.then(res => {
+			/* This doesn't dispatch any payload because it is only updating state */
+			dispatch({ type: USER_UPDATE_SUCCESS, payload: res.data });
+		})
+		.catch(err => {
+			console.log(err);
+			dispatch({ type: USER_UPDATE_FAILURE });
+		})
+}
 
 /* this handles a user uploading a profile photo */
 export const uploadPicture = data => dispatch => {

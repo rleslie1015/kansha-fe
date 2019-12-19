@@ -58,11 +58,13 @@ const useStyles = makeStyles(theme => ({
 		cursor: 'pointer',
 	},
 	button: {
-		padding: '0.5em 3em',
+		// padding: '0.5em 3em',
 		backgroundColor: '#2D2C35',
 		color: '#EE4D71',
 		textDecoration: 'none',
 		border: '2px solid #EE4d71',
+    borderRadius: '100%',
+    
 		[theme.breakpoints.down('sm')]: {
 			width: '100%',
 			height: '100px',
@@ -75,6 +77,7 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(162.95deg, #EE4D71 0%, #F15A3F 100%)',
 		color: 'white',
 		textDecoration: 'none',
+		
 	},
 	badgeBox: {
 		backgroundColor: '#3A3845',
@@ -105,6 +108,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '20px',
 	},
+
 	fab: {
 		position: 'absolute',
 		transform: 'translate(450%, 795%)',
@@ -138,7 +142,13 @@ const useStyles = makeStyles(theme => ({
 	chosenBadge: {
 		position: 'absolute',
 		transform: 'translate(-1%, -95%)',
-	}
+	},
+   img: {
+		padding: '7px',
+		[theme.breakpoints.down('sm')]: {
+			height: '38px',
+			width: '38px'
+		},
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -255,7 +265,7 @@ function RecogModal(props) {
 				onClick={handleOpen}
 				className={classes.button}>
 				
-				<img src={send} alt='thank button' />
+				<img src={send} alt='thank button' className={classes.img}/>
 			</Button>
 			<Modal
 				className={classes.modal}
