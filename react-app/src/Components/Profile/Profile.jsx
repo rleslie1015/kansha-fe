@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '100vw',
-			maxHeight: '100vh',
-			paddingTop: '2.5rem',
+			paddingTop: '4rem',
+			paddingLeft: '0',
 				'@global': {
 					'*::-webkit-scrollbar': {
 						width: '.5rem',
@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '100vw',
-			maxHeight: '100vh',
 			paddingTop: '2.5rem',
 				'@global': {
 					'*::-webkit-scrollbar': {
@@ -113,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 			height: 'auto',
 			backgroundColor: '#2D2C35',
 			paddingTop: '3rem',
-
+			overflow: 'visible'
 		},
 
 		[theme.breakpoints.up('md')]: {
@@ -124,7 +123,7 @@ const useStyles = makeStyles(theme => ({
 			height: '500px',
 			backgroundColor: '#2D2C35',
 			paddingTop: '3rem',
-
+			overflow: 'visible'
 		},
 
 		[theme.breakpoints.up('lg')]: {
@@ -135,7 +134,7 @@ const useStyles = makeStyles(theme => ({
 			height: 'auto',
 			backgroundColor: '#2D2C35',
 			padding: '3rem 0',
-			
+			overflow: 'visible'
 		}
 		
 	},
