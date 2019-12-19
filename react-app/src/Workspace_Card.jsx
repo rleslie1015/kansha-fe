@@ -126,7 +126,8 @@ const useStyles = makeStyles(theme => ({
 		objectPosition: '50% 50%',
 		  [theme.breakpoints.down('sm')]: {
 			height: '50px',
-			width: '50px'
+			width: '50px',
+			margin: '25%',
 		},
 	},
 	card_actions: {
@@ -155,6 +156,10 @@ const useStyles = makeStyles(theme => ({
 		position: 'absolute',
 		top: '10px',
 		right: '10px',
+		[theme.breakpoints.down('sm')]: {
+			top: '30px',
+			left: '10px',
+		},
 	},
 	img: {
 		[theme.breakpoints.down('sm')]: {
