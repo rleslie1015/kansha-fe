@@ -149,6 +149,7 @@ const useStyles = makeStyles(theme => ({
 			height: '38px',
 			width: '38px'
 		},
+   	},
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
