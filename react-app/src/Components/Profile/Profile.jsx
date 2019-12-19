@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Container, Typography, Card, Box } from '@material-ui/core';
+import { Container, Typography, Card, Box, Paper, Badge } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
@@ -363,9 +363,7 @@ const useStyles = makeStyles(theme => ({
 			backgroundColor: '#2D2C35',
 			height: '44%',
 			
-			
 		}
-		
 	},
 	typo: {
 		display: 'flex',
@@ -384,18 +382,27 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '25px',
 	},
 	badgeContainer: {
+		height: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-		marginBottom: '2rem',
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		overflow: 'scroll',
+		padding: '0 0 50px 0',
 	},
 	badgeImage: {
 		backgroundColor: '#2D2C35',
-		width: '10%',
+		width: '100%',
 		height: 'auto',
 		paddingTop: '1.5rem',
 	},
-	badgeBox: {
-		overflow: 'scroll',
+	badgeDiv: {
+		width: '33%',
+	},
+	badgeCount: {
+		
+		color: '#FFFFFF',
+		
 	},
 	rightContainer: {
 		[theme.breakpoints.down('sm')]: {
@@ -434,7 +441,6 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
-
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#2D2C35',
@@ -512,13 +518,21 @@ export function Profile({ profile, isPeer }) {
 						</Typography>
 						<Container className={classes.badgeContainer}>
 						{badges &&
-							<Box className={classes.badgeBox}>
+							<>
 								{Object.keys(userBadges).map(id => {
 									return ( 
-									<img src={userBadges[id].badge} className={classes.badgeImage} />
+										<div className={classes.badgeDiv}>
+											<Badge 
+												badgeContent={'x'+ userBadges[id].count} 
+												className={classes.badgeCount}
+												overlap="circle"
+												>
+													<img src={userBadges[id].badge} className={classes.badgeImage} />
+											</Badge>
+										</div>
 									)
 								})}
-						</Box>}
+							</>}
 						</Container>
 					</Card>
 				</Container>
@@ -531,7 +545,9 @@ export function Profile({ profile, isPeer }) {
 						<Box className={classes.activityContainer}>
 							{profile &&
 								profile.rec
-									.reverse()
+									.sort(function(a,b){
+										return new Date(b.date) - new Date(a.date)
+									})
 									.map(recognition => (
 										<RecognitionCard
 											key={recognition.id}

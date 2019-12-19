@@ -9,6 +9,7 @@ import { sendRecog } from '../../store/actions/recog-actions';
 import send from '../../assets/send.png';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import RemoveIcon from '@material-ui/icons/Remove';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 
@@ -87,12 +88,18 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         overflow: 'scroll',
 	},
+	// formControl: {
+	// 	display: 'flex',
+	// 	position: 'relative',
+	// 	height: '189px',
+	// },
 	textField: {
 		borderRadius: '10px 10px 0 10px',
 		width: '568px',
 		height: '189px',
 		backgroundColor: 'white',
 		padding: '.5rem',
+		position: 'relative',
 	},
 	input: {
 		fontFamily: 'Montserrat',
@@ -114,7 +121,27 @@ const useStyles = makeStyles(theme => ({
 	badge: {
         width: '150px',
         height: '150px',
-    },
+	},
+	removeBadge: {
+		width: '25px',
+		height: '25px',
+		background: '#E13A3A',
+		borderRadius: '100%',
+		position: 'absolute',
+		top: '6px',
+		left: '72px',
+		cursor: 'pointer',
+	},
+	removeFab: {
+		color: '#FFFFFF',
+	},
+	badgeImg: {
+		width: '20%',
+	},
+	chosenBadge: {
+		position: 'absolute',
+		transform: 'translate(0, -95%)',
+	}
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -185,7 +212,7 @@ function RecogModal(props) {
 	};
 
 	const handleSubmit = event => {
-		props.sendRecog(recog);
+		props.sendRecog({ ...recog, date: new Date(Date.now())})
 		handleClose();
 	};
 
@@ -195,6 +222,13 @@ function RecogModal(props) {
 
 	const handleClose = () => {
 		setOpen(false);
+		setRecog({
+			message: '',
+			sender: props.user.profile.id,
+			recipient: props.id,
+			date: new Date(Date.now()),
+			badge_id: null,
+		})
 	};
 
 	const textField = () => {
@@ -210,6 +244,10 @@ function RecogModal(props) {
 		setIsTyping(true)
 	}
 
+	const removeBadge = () => {
+		setRecog({ ...recog, badge_id: null })
+	}
+	
 	console.log(recog)
 
 	if (isTyping) {
@@ -249,7 +287,7 @@ function RecogModal(props) {
 						</p>
 						<p>{job_title}</p>
 						<p>{department}</p>
-						<FormControl>
+						<div>
 							<TextField
 								className={classes.textField}
 								name="message"
@@ -268,11 +306,17 @@ function RecogModal(props) {
 									className: classes.label,
 								}}
 							/>
-						</FormControl>
-						{recog.badge_id &&
-							<Box className={classes.badgeBox}>
-								<img src={badges[recog.badge_id-1].badge_URL} />
-						</Box>}
+							{recog.badge_id &&
+							<Box className={classes.chosenBadge}>
+								<div
+									onClick={removeBadge}
+									className={classes.removeBadge}
+								>
+								<RemoveIcon className={classes.removeFab} />
+								</div>
+								<img src={badges[recog.badge_id-1].badge_URL} className={classes.badgeImg} />
+							</Box>}
+							</div>
 						<Fab 
 							className={classes.fab}
 							onClick={badgePrompt}>
