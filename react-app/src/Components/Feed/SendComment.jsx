@@ -50,16 +50,20 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export const SendComments = ({ id }) => {
+export const SendComments = ({ id, scrollToBottom }) => {
 	const [newComment, setNewComment] = useState('');
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const handleSubmit = event => {
-		dispatch(addComment(id, newComment));
+		dispatch(addComment(id, newComment, sendSuccess));
 	};
 	const handleInput = event => {
 		setNewComment(event.target.value);
 	};
+	const sendSuccess = () => {
+		setNewComment('');
+		scrollToBottom()
+	}
 	return (
 		<Box className={classes.SendCommentsContainer}>
 			<div className={classes.SendComments}>
@@ -69,7 +73,7 @@ export const SendComments = ({ id }) => {
 					className={classes.SendCommentInput}
 					value={newComment}
                     onChange={handleInput}
-                    inputProps={{maxlength: '255'}}
+                    inputProps={{maxLength: 255}}
 				/>
 				<button
 					onClick={handleSubmit}
