@@ -55,12 +55,15 @@ export const SendComments = ({ id, scrollToBottom }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const handleSubmit = event => {
-		dispatch(addComment(id, newComment, scrollToBottom));
-		setNewComment('');
+		dispatch(addComment(id, newComment, sendSuccess));
 	};
 	const handleInput = event => {
 		setNewComment(event.target.value);
 	};
+	const sendSuccess = () => {
+		setNewComment('');
+		scrollToBottom()
+	}
 	return (
 		<Box className={classes.SendCommentsContainer}>
 			<div className={classes.SendComments}>
