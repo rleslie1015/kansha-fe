@@ -7,6 +7,7 @@ import 'typeface-montserrat';
 import 'typeface-roboto';
 import WorkspaceCard from './Workspace_Card';
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -19,13 +20,35 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '2.5rem',
 	},
 	main_header: {
-		margin: '40px 20px',
-		fontSize: '3rem',
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
+		[theme.breakpoints.up('lg')]: {
+			margin: '40px 20px',
+			fontSize: '3rem',	
+			display: 'block'
+		}
+					
 	},
-	header_container: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
+	header_container: {	
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		}
 	},
 	search: {
 		position: 'relative',
@@ -67,13 +90,13 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function Workspace() {
+function Workspace(props) {
 	const classes = useStyles();
 
 	const [team, setTeam] = useState([]);
 
-	const [fitleredTeam, setFilteredTeam] = useState([]);
-	// console.log(fitleredTeam);
+	const [filteredTeam, setFilteredTeam] = useState([]);
+	// console.log(filteredTeam);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -120,9 +143,12 @@ export default function Workspace() {
 					</div>
 				</div>
 				<WorkspaceCard
-					team={fitleredTeam.length > 0 ? fitleredTeam : team}
+					team={filteredTeam.length > 0 ? filteredTeam : team}
+					profile={props.profile}
+					setTeam={setTeam}
 				/>
 			</Container>
 		</div>
 	);
 }
+export default connect(({user}) => ({...user}), {})(Workspace) 

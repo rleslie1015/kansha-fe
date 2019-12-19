@@ -107,7 +107,7 @@ export const FeedComments = ({ comments, id, profile, close }) => {
 			</Box>
 			<div ref={containerRef} className={classes.CommentsContainer}>
 				{comments.map(comment => (
-					<Comment comment={comment} />
+					<Comment comment={comment} profile={profile}/>
 				))}
 			</div>
 			<SendComments scrollToBottom={scrollToBottom} id={id} />

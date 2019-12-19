@@ -3,7 +3,7 @@ import { Container, Typography, Card, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
-import { FileUpload } from '../FileUpload';
+import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
 import RecogModal from '../RecogModal/RecogModal'
 
@@ -12,104 +12,362 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#26242D',
 	},
 	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		width: '100vw',
-		maxHeight: '100vh',
-		paddingTop: '2.5rem',
-		'@global': {
-			'*::-webkit-scrollbar': {
-				width: '.5rem',
-			},
-			'*::-webkit-scrollbar-corner': {
-				backgroundColor: 'transparent',
-			},
-			'*::-webkit-scrollbar-thumb': {
-				backgroundColor: '#3A3845',
-				borderRadius: '10px',
-			},
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
 		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'row',
+			width: '100vw',
+			maxHeight: '100vh',
+			paddingTop: '2.5rem',
+				'@global': {
+					'*::-webkit-scrollbar': {
+						width: '.5rem',
+					},
+					'*::-webkit-scrollbar-corner': {
+						backgroundColor: 'transparent',
+					},
+					'*::-webkit-scrollbar-thumb': {
+						backgroundColor: '#3A3845',
+						borderRadius: '10px',
+					},
+				},
+			
+		}
+		
 	},
 	leftContainer: {
-		display: 'flex',
-		flexDirection: 'column',
-		width: '50%',
-		height: '90vh',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '90%',
+			marginLeft: '3rem',
+			
+			
+			
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '50%',
+			height: '90vh',
+			
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			width: '50%',
+			height: '90vh',
+			
+		}
+		
 	},
 	userInfo: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		width: '100%',
-		height: 'auto',
-		backgroundColor: '#2D2C35',
-		padding: '3rem 0',
+		[theme.breakpoints.down('sm')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: 'auto',
+			backgroundColor: '#2D2C35',
+			paddingTop: '3rem',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: '500px',
+			backgroundColor: '#2D2C35',
+			paddingTop: '3rem',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: '100%',
+			height: 'auto',
+			backgroundColor: '#2D2C35',
+			padding: '3rem 0',
+			
+		}
+		
 	},
 	pictureContainer: {
-		position: 'relative',
-		width: '50%',
-		borderRadius: '100%',
-		'&:hover': {
-			cursor: 'pointer',
+		[theme.breakpoints.down('sm')]: {
+			position: 'relative',
+			width: '50%',
+			display: 'flex',
+			justifyContent: 'center',
+			borderRadius: '100%',
+			'&:hover': {
+				cursor: 'pointer',
+			},
+
 		},
+
+		[theme.breakpoints.up('md')]: {
+			position: 'relative',
+			width: '50%',
+			display: 'flex',
+			justifyContent: 'center',
+			borderRadius: '100%',
+			'&:hover': {
+				cursor: 'pointer',
+			},
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			position: 'relative',
+			width: '50%',
+			borderRadius: '100%',
+			'&:hover': {
+				cursor: 'pointer',
+			},
+			
+		}
+		
 	},
 	profilePic: {
-		borderRadius: '100%',
-		// Hard coding until we can make a circle img cropper for users
-		width: '272px',
-		height: '272px',
-		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
-		objectFit: 'cover',
-		objectPosition: '50% 50%',
+		[theme.breakpoints.down('sm')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '75%',
+			height: '75%',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '75%',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '272px',
+			height: '272px',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+			
+		}
+		
 	},
 	camera: {
 		width: '100%',
 		height: 'auto',
 	},
 	addPic: {
-		opacity: 0,
-		borderRadius: '100%',
-		position: 'absolute',
-		transform: 'translate(0, -100%)',
-		'&:hover': {
-			opacity: 1,
-			transition: '0.5s ease',
-		},
+
+			opacity: 0,
+			borderRadius: '100%',
+			position: 'absolute',
+			// transform: 'translate(0, -100%)',
+			'&:hover': {
+				opacity: 1,
+				transition: '0.5s ease',
+
+		}
 	},
 	name: {
-		paddingTop: '1.5rem',
-		color: '#FFFFFF',
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontSize: '24px',
-		lineHeight: '29px',
-		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			paddingTop: '1.5rem',
+			color: '#FFFFFF',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'bold',
+			fontSize: '16px',
+			lineHeight: '20px',
+			textAlign: 'center',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			paddingTop: '1.5rem',
+			color: '#FFFFFF',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'bold',
+			fontSize: '16px',
+			lineHeight: '20px',
+			textAlign: 'center',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			paddingTop: '1.5rem',
+			color: '#FFFFFF',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'bold',
+			fontSize: '24px',
+			lineHeight: '29px',
+			textAlign: 'center',
+			
+		}
+		
 	},
 	jobTitle: {
-		paddingTop: '.5rem',
-		color: 'rgba(255, 255, 255, 0.7)',
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontSize: '24px',
-		lineHeight: '29px',
-		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.7)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'normal',
+			fontSize: '16px',
+			lineHeight: '20px',
+			textAlign: 'center',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.7)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'normal',
+			fontSize: '16px',
+			lineHeight: '20px',
+			textAlign: 'center',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.7)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontWeight: 'normal',
+			fontSize: '24px',
+			lineHeight: '29px',
+			textAlign: 'center',
+			
+		}
+		
 	},
 	department: {
-		paddingTop: '.5rem',
-		color: 'rgba(255, 255, 255, 0.5)',
-		fontFamily: 'Montserrat',
-		fontStyle: 'normal',
-		fontSize: '24px',
-		lineHeight: '29px',
-		fontWeight: '500',
-		textAlign: 'Center',
-		verticalAlign: 'Top',
-		paddingBottom: '3rem',
+		[theme.breakpoints.down('sm')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.5)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontSize: '16px',
+			lineHeight: '20px',
+			fontWeight: 'normal',
+			textAlign: 'Center',
+			verticalAlign: 'Top',
+			paddingBottom: '3rem',
+
+		},
+
+		[theme.breakpoints.down('md')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.5)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontSize: '16px',
+			lineHeight: '20px',
+			fontWeight: 'normal',
+			textAlign: 'Center',
+			verticalAlign: 'Top',
+			paddingBottom: '3rem',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			paddingTop: '.5rem',
+			color: 'rgba(255, 255, 255, 0.5)',
+			fontFamily: 'Montserrat',
+			fontStyle: 'normal',
+			fontSize: '24px',
+			lineHeight: '29px',
+			fontWeight: 'normal',
+			textAlign: 'Center',
+			verticalAlign: 'Top',
+			paddingBottom: '3rem',
+			
+		}
+		
 	},
 	badgeCard: {
-		marginTop: '2.5rem',
-		backgroundColor: '#2D2C35',
-		height: '44%',
+		[theme.breakpoints.down('sm')]: {
+			marginTop: '2.5rem',
+			backgroundColor: '#2D2C35',
+			height: '44%',
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			marginTop: '2.5rem',
+			backgroundColor: '#2D2C35',
+			height: '44%',
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			marginTop: '2.5rem',
+			backgroundColor: '#2D2C35',
+			height: '44%',
+			
+			
+		}
+		
 	},
 	typo: {
 		display: 'flex',
@@ -139,8 +397,38 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '1.5rem',
 	},
 	rightContainer: {
-		width: '50%',
-		height: 'auto',
+		[theme.breakpoints.down('sm')]: {
+			width: '87%',
+			height: 'auto',
+			paddingRight: '0',
+			margin: '2rem 0 0 3rem'
+			
+
+		},
+
+		[theme.breakpoints.up('md')]: {
+			width: '50%',
+			height: 'auto',
+			marginTop: '2rem'
+			
+
+		},
+
+		[theme.breakpoints.up('lg')]: {
+			width: '50%',
+			height: 'auto',
+			margin: '0',
+			
+			
+			
+		},
+
+		[theme.breakpoints.up('xl')]: {
+			width: '50%',
+			height: 'auto',
+			margin: '0'
+		}
+		
 	},
 	activityInfo: {
 		display: 'flex',
@@ -159,6 +447,7 @@ export function Profile({ profile, isPeer }) {
 	const classes = useStyles();
 
 	return (
+		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
 		<div id="Profile" className={classes.profileDiv}>
 			{/* <Link to="/workspace">workspace</Link> */}
 			<Container fixed className={classes.root}>
@@ -171,14 +460,9 @@ export function Profile({ profile, isPeer }) {
 								className={classes.profilePic}
 								alt="user profile"
 							/>
-							{!isPeer && <div className={classes.addPic}>
-								<img
-									src="https://kansha-bucket.s3-us-west-1.amazonaws.com/hoverimage.png"
-									className={classes.camera}
-									alt="upload icon"
-								/>
-								<FileUpload />
-							</div> }
+							<div className={classes.addPic}>
+								<Cropper />
+							</div>
 						</div>
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
