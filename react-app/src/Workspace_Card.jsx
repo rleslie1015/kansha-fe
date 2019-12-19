@@ -141,10 +141,11 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: 'none',
 		border: '2px solid #EE4d71',
 		borderRadius: '100%',
+		padding: '12px 15px',
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '50%',
-			height: '50px',
-			width: '50px',
+			height: '64px',
+			width: '64px',
 		},
 		
 	},
