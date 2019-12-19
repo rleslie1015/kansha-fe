@@ -1,10 +1,11 @@
-import React from 'react';
-import { Container, Typography, Card, Box } from '@material-ui/core';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Container, Typography, Card, Box, Paper, Badge } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import RecogModal from '../RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
@@ -364,9 +365,7 @@ const useStyles = makeStyles(theme => ({
 			backgroundColor: '#2D2C35',
 			height: '44%',
 			
-			
 		}
-		
 	},
 	typo: {
 		display: 'flex',
@@ -385,15 +384,27 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '25px',
 	},
 	badgeContainer: {
+		height: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-		marginBottom: '2rem',
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		overflow: 'scroll',
+		padding: '0 0 50px 0',
 	},
-	badgeImg: {
+	badgeImage: {
 		backgroundColor: '#2D2C35',
 		width: '100%',
 		height: 'auto',
 		paddingTop: '1.5rem',
+	},
+	badgeDiv: {
+		width: '33%',
+	},
+	badgeCount: {
+		
+		color: '#FFFFFF',
+		
 	},
 	rightContainer: {
 		[theme.breakpoints.down('sm')]: {
@@ -432,7 +443,6 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
-
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#2D2C35',
@@ -444,6 +454,31 @@ const useStyles = makeStyles(theme => ({
 
 export function Profile({ profile, isPeer }) {
 	const classes = useStyles();
+	const [badges, setBadges] = useState([])
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
+	const userBadges = useMemo(() => profile.rec.reduce((acc, rec) => {
+		if(profile.id === rec.sender) {
+			return acc
+		} else if(rec.badge_id && acc[rec.badge_id]){
+			acc[rec.badge_id].count++
+		} else if(badges.length && rec.badge_id) {
+			acc[rec.badge_id]={badge:badges[rec.badge_id-1].badge_URL, count:1}
+		} 
+		return acc;
+	},{}),[profile, badges])
+
+	console.log(userBadges)
 
 	return (
 		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
@@ -479,8 +514,24 @@ export function Profile({ profile, isPeer }) {
 						<Typography className={classes.header} variant="h5">
 							Badges
 						</Typography>
-						<Container
-							className={classes.badgeContainer}></Container>
+						<Container className={classes.badgeContainer}>
+						{badges &&
+							<>
+								{Object.keys(userBadges).map(id => {
+									return ( 
+										<div className={classes.badgeDiv}>
+											<Badge 
+												badgeContent={'x'+ userBadges[id].count} 
+												className={classes.badgeCount}
+												overlap="circle"
+												>
+													<img src={userBadges[id].badge} className={classes.badgeImage} />
+											</Badge>
+										</div>
+									)
+								})}
+							</>}
+						</Container>
 					</Card>
 				</Container>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
@@ -492,7 +543,9 @@ export function Profile({ profile, isPeer }) {
 						<Box className={classes.activityContainer}>
 							{profile &&
 								profile.rec
-									.reverse()
+									.sort(function(a,b){
+										return new Date(b.date) - new Date(a.date)
+									})
 									.map(recognition => (
 										<RecognitionCard
 											key={recognition.id}
