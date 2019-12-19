@@ -63,13 +63,13 @@ const useStyles = makeStyles(theme => ({
 		color: '#EE4D71',
 		textDecoration: 'none',
 		border: '2px solid #EE4d71',
-    borderRadius: '100%',
-    
+
+		borderRadius: '100%',
 		[theme.breakpoints.down('sm')]: {
-			width: '100%',
-			height: '100px',
 			borderRadius: '50%',
-		},
+			height: '64px',
+			width: '64px',
+		}
 	},
 	recogButton: {
 		width: '50%',
