@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-	Card,
-	makeStyles,
-	Typography,
-	Box
-} from '@material-ui/core';
+import { Card, makeStyles, Typography, Box } from '@material-ui/core';
 import { Comment } from './Comment';
 import { SendComments } from './SendComment';
+import { useRef } from 'react';
 
 const useStyles = makeStyles(theme => ({
 	CommentCard: {
@@ -21,6 +17,8 @@ const useStyles = makeStyles(theme => ({
 		paddingBottom: '74px',
 	},
 	CommentHeading: {
+		display: 'flex',
+		justifyContent: 'space-between',
 		background: '#2D2C35',
 		padding: '20px',
 	},
@@ -29,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 		fontStyle: 'normal',
 		fontWeight: 'normal',
 		fontSize: '24px',
-		lineHeight: '29px',
+		lineHeight: '30px',
 		color: '#FFFFFF',
 	},
 	CommentsContainer: {
@@ -81,23 +79,38 @@ const useStyles = makeStyles(theme => ({
 		padding: '4px 0',
 		cursor: 'pointer',
 	},
+	closeButton: {
+		height: '30px',
+		cursor: 'pointer',
+	},
 }));
 
-export const FeedComments = ({ comments, id, profile }) => {
+export const FeedComments = ({ comments, id, profile, close }) => {
 	const classes = useStyles();
+	const containerRef = useRef();
+	const scrollToBottom = () => {
+		const { current } = containerRef;
+		current.scrollTop = current.scrollHeight;
+	};
 	return (
 		<Card className={classes.CommentCard}>
 			<Box className={classes.CommentHeading}>
 				<Typography className={classes.CommentHeadingText}>
 					Comments
 				</Typography>
+				<img
+					src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
+					onClick={close}
+					className={classes.closeButton}
+					alt="close button"
+				/>
 			</Box>
-			<div className={classes.CommentsContainer}>
+			<div ref={containerRef} className={classes.CommentsContainer}>
 				{comments.map(comment => (
 					<Comment comment={comment} />
 				))}
 			</div>
-			<SendComments id={id}/>
+			<SendComments scrollToBottom={scrollToBottom} id={id} />
 		</Card>
 	);
 };
