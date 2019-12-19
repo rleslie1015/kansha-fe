@@ -6,11 +6,10 @@ import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
 	icons: {
-		paddingLeft: '10%',
 		width: '75%',
 		height: 'auto',
 		marginTop: '15%',
-		paddingRight: '10%'
+		paddingRight: '20%'
 	},
 	iconsOpen: {
 		paddingLeft: '20%',
