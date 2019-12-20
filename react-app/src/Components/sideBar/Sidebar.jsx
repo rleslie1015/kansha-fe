@@ -396,6 +396,7 @@ function Sidebar({ user }) {
 							<img
 								src={signOut}
 								alt="sign out icon"
+								style={{width:'50%'}}
 								className={classes.icons}
 							/>
 						</ListItemIcon>
