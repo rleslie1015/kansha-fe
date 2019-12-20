@@ -30,6 +30,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	root: {
+		position: 'fixed',
 		display: 'flex',
 		'@global': {
 			'*::-webkit-scrollbar': {
@@ -61,6 +62,10 @@ const useStyles = makeStyles(theme => ({
 		display: 'none',
 	},
 	drawer: {
+		height: '100vh',
+		display: 'flex',
+		justifyContent: 'space-between',
+		flexDirection: 'column',
 		width: drawerWidth,
 		flexShrink: 0,
 		whiteSpace: 'nowrap',
@@ -101,54 +106,45 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	signoutOpen: {
-		marginTop: '13vh',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
 		fontSize: '16px',
 		lineHeight: '20px',
 		color: '#EE4D71',
-		marginLeft: '25%',
 		'&:hover': {
 			color: '#FFFFFF',
 		},
 	},
 	signoutClosed: {
 		[theme.breakpoints.down('sm')]: {
-			display: 'none'
+			display: 'none',
 		},
 
 		[theme.breakpoints.up('md')]: {
-			display: 'none'
+			display: 'none',
 		},
 
 		[theme.breakpoints.up('lg')]: {
 			display: 'block',
-			marginTop: '5rem',
 			backgroundColor: '#2D2C35',
 			'&:hover': {
 				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			},
 		},
-			
-		}
-		
 	},
-	menuClosed: {[theme.breakpoints.down('sm')]: {
-		display: 'none'
+	menuClosed: {
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
 
-	},
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
 
-	[theme.breakpoints.up('md')]: {
-		display: 'none'
-
-	},
-
-	[theme.breakpoints.up('lg')]: {
-		display: 'block',
-		marginTop: '25vh',
-		
-	}
-		
+		[theme.breakpoints.up('lg')]: {
+			display: 'block',
+		},
 	},
 	menuOpen: {
 		marginTop: '0',

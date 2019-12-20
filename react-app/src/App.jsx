@@ -15,6 +15,7 @@ import { Cropper } from './Components/FileUpload/FileCrop';
 
 const useStyles = makeStyles(theme => ({
 	root: {
+		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
 		minHeight: '100vh',
