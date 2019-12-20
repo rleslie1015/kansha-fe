@@ -61,6 +61,11 @@ export const Feed = () => {
 	const dispatch = useDispatch();
 
 	const classes = useStyles();
+
+	const closeFeedComments = () => {
+		setSelectedRec(null)
+	}
+
 	useEffect(() => {
 		// Loads most current batch feed data
 		dispatch(loadLiveFeed());
@@ -105,7 +110,7 @@ export const Feed = () => {
 					/>
 				))}
 			</Box>
-			{ selectedRec && <FeedComments profile={profile} comments={comments[selectedRec]} id={selectedRec} />}
+			{ selectedRec && <FeedComments close={closeFeedComments} profile={profile} comments={comments[selectedRec]} id={selectedRec} />}
 		</Container>
 	);
 };

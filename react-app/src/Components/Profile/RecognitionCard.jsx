@@ -36,8 +36,9 @@ const useStyles = makeStyles(theme => ({
 	recProfilePic: {
 		borderRadius: '100%',
 		// Hard coding until we can make a circle img cropper for users
-		width: '75px',
-		height: '75px',
+		width: '75%',
+		maxWidth: '75px',
+		maxHeight: '75px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
 		objectPosition: '50% 50%',

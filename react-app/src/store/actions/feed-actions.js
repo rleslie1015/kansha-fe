@@ -96,12 +96,13 @@ export const removeReaction = (id, rec_id) => dispatch => {
 		});
 };
 
-export const addComment = (rec_id, message) => dispatch => {
+export const addComment = (rec_id, message, cb) => dispatch => {
 	dispatch({ type: FEED_COMMENT_START });
 	axiosWithAuth()
 		.post('/comments', { rec_id, message, date: new Date(Date.now()) })
 		.then(() => {
 			dispatch({ type: FEED_COMMENT_SUCCESS });
+			cb()
 		})
 		.catch(err => {
 			dispatch({ type: FEED_COMMENT_FAILURE, payload: err });
