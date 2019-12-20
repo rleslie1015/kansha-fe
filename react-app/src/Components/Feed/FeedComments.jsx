@@ -15,6 +15,10 @@ const useStyles = makeStyles(theme => ({
 		background: '#34323E',
 		margin: '10px 10px',
 		paddingBottom: '74px',
+		[theme.breakpoints.down('sm')]: {
+			height: '50vh',
+			width: '84%',
+		}
 	},
 	CommentHeading: {
 		display: 'flex',
@@ -34,6 +38,7 @@ const useStyles = makeStyles(theme => ({
 		paddingTop: '10px',
 		overflowY: 'scroll',
 		overflowx: 'hidden',
+
 	},
 	SendCommentsContainer: {
 		width: '100%',

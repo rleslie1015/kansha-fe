@@ -6,7 +6,7 @@ import {
 	Box,
 	Container,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
@@ -33,6 +33,9 @@ const useStyles = makeStyles(theme => ({
 		},
 		'&:last-child': {
 			marginBottom: '0px'
+		},
+		[theme.breakpoints.down('sm')]: {
+			maxWidth: '85%'
 		}
 	},
 	FeedCardActive: {
@@ -51,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'space-between',
 		width: 'calc(100% - 100px)',
 		wordWrap: 'break-word',
+		
 	},
 	ButtonBox: {
 		boxSizing: 'border-box',
@@ -122,6 +126,9 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '16px',
 		lineHeight: '15px',
 		position: 'relative',
+		[theme.breakpoints.down('sm')]: {
+			maxWidth: '80%'
+		}
 	},
 	TimeStamp: {
 		/* Body */
@@ -140,6 +147,10 @@ const useStyles = makeStyles(theme => ({
 		position: 'absolute',
 		top: '0',
 		right: '10px',
+		[theme.breakpoints.down('sm')]: {
+			right: '-30px',
+		}
+		
 	},
 	feedBadgeBox: {
 		paddingTop: '1rem',

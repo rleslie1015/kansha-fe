@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 				display: 'none',
 			},
 		},
+		zIndex: '100'
 	},
 	menuButton: {
 		margin: 0,
@@ -395,6 +396,7 @@ function Sidebar({ user }) {
 							<img
 								src={signOut}
 								alt="sign out icon"
+								style={{width:'50%'}}
 								className={classes.icons}
 							/>
 						</ListItemIcon>
