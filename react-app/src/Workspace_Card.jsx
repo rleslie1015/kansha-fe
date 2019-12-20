@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		paddingBottom: '0px',
 		[theme.breakpoints.down('sm')]: {
 			display: 'flex',
 			flexDirection: 'row',
@@ -132,14 +133,15 @@ const useStyles = makeStyles(theme => ({
 	},
 	card_actions: {
 		display: 'flex',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		paddingBottom: '15px',
 	},
 	button: {
 		// padding: '0.5em 3em',
 		backgroundColor: '#2D2C35',
 		color: '#EE4D71',
 		textDecoration: 'none',
-		border: '2px solid #EE4d71',
+		border: 'none',
 		borderRadius: '100%',
 		padding: '12px 15px',
 		[theme.breakpoints.down('sm')]: {
