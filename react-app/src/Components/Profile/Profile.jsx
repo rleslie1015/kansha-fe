@@ -214,7 +214,6 @@ const useStyles = makeStyles(theme => ({
 		height: 'auto',
 	},
 	addPic: {
-
 			opacity: 0,
 			borderRadius: '100%',
 			position: 'absolute',
@@ -394,7 +393,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	badgeImage: {
 		backgroundColor: '#2D2C35',
-		width: '100%',
+		width: '90%',
 		height: 'auto',
 		paddingTop: '1.5rem',
 	},
@@ -402,7 +401,6 @@ const useStyles = makeStyles(theme => ({
 		width: '33%',
 	},
 	badgeCount: {
-		
 		color: '#FFFFFF',
 		
 	},
@@ -518,18 +516,24 @@ export function Profile({ profile, isPeer }) {
 						{badges &&
 							<>
 								{Object.keys(userBadges).map(id => {
-									return ( 
+									if(userBadges[id].count === 1){
+										return (
+											<div className={classes.badgeDiv}>
+												<img src={userBadges[id].badge} className={classes.badgeImage} />
+											</div>
+									)} else {
+											return ( 
 										<div className={classes.badgeDiv}>
-											<Badge 
-												badgeContent={'x'+ userBadges[id].count} 
-												className={classes.badgeCount}
-												overlap="circle"
-												>
-													<img src={userBadges[id].badge} className={classes.badgeImage} />
-											</Badge>
+												<Badge 
+													badgeContent={'x'+ userBadges[id].count} 
+													className={classes.badgeCount}
+													overlap="circle"
+													>
+														<img src={userBadges[id].badge} className={classes.badgeImage} />
+												</Badge>
 										</div>
 									)
-								})}
+								}})}
 							</>}
 						</Container>
 					</Card>
@@ -553,6 +557,7 @@ export function Profile({ profile, isPeer }) {
 												profile.id ===
 												recognition.sender
 											}
+											badge={badges[recognition.badge_id-1]}
 											profile={profile}
 											recognition={recognition}
 										/>
