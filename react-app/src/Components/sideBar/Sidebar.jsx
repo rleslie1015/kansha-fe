@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 				display: 'none',
 			},
 		},
+		zIndex: '100'
 	},
 	menuButton: {
 		margin: 0,

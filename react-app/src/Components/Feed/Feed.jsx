@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { FeedCard } from './FeedCard';
@@ -24,7 +24,11 @@ const useStyles = makeStyles(theme => ({
 		overflowY: 'scroll',
 		overflowx: 'hidden',
 		marginTop: '10px',
-		marginBottom: '10px'
+		marginBottom: '10px',
+		[theme.breakpoints.down('sm')]: {
+			height: 'unset',
+			marginLeft: '0'
+		}
 	},
 	'@global': {
 			'*::-webkit-scrollbar': {
@@ -46,6 +50,9 @@ const useStyles = makeStyles(theme => ({
 		margin: '0',
 		height: '100vh',
 		maxHeight: '100vh',
+		[theme.breakpoints.down('sm')]: {
+			flexDirection: 'column'
+		}
 	},
 }));
 
