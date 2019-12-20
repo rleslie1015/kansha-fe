@@ -178,8 +178,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
-			height: '75%',
+			width: '150px',
+			height: '150px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
@@ -189,7 +189,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('md')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
+			width: '250px',
+			height: '250px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
