@@ -62,8 +62,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		color: '#EE4D71',
 		textDecoration: 'none',
-		border: '2px solid #EE4d71',
-
+		// border: '2px solid #EE4d71',
 		borderRadius: '100%',
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '50%',
