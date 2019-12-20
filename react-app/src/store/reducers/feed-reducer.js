@@ -18,7 +18,7 @@ import {
 	FEED_EVENT_NEW_COMMENT,
 	FEED_EVENT_REMOVE_REACTION,
 	FEED_EVENT_REMOVE_COMMENT,
-	FEED_EVENT_REMOVE_REC
+	FEED_EVENT_REMOVE_REC,
 } from '../actions/feed-actions';
 
 const initialState = {
@@ -86,7 +86,9 @@ export const feedReducer = (state = initialState, action) => {
 				isLoading: false,
 				reactions: {
 					...state.reactions,
-					[action.payload.rec_id]: state.reactions[action.payload.rec_id].filter(r => !(r.id === action.payload.id)),
+					[action.payload.rec_id]: state.reactions[
+						action.payload.rec_id
+					].filter(r => !(r.id === action.payload.id)),
 				},
 			};
 		case FEED_REACT_REMOVE_FAILURE:
@@ -138,13 +140,21 @@ export const feedReducer = (state = initialState, action) => {
 					],
 				},
 			};
+		case FEED_EVENT_REMOVE_REC:
+			return {
+				...state,
+				isLoading: false,
+				feed: state.feed.filter(rec => !(rec.id === parseInt(action.payload.id)))
+			};
 		case FEED_EVENT_REMOVE_REACTION:
 			return {
 				...state,
 				isLoading: false,
 				reactions: {
 					...state.reactions,
-					[action.payload.rec_id]: state.reactions[action.payload.rec_id].filter(r => !(r.id === parseInt(action.payload.id))),
+					[action.payload.rec_id]: state.reactions[
+						action.payload.rec_id
+					].filter(r => !(r.id === parseInt(action.payload.id))),
 				},
 			};
 		case FEED_EVENT_REMOVE_COMMENT:
@@ -153,7 +163,9 @@ export const feedReducer = (state = initialState, action) => {
 				isLoading: false,
 				comments: {
 					...state.comments,
-					[action.payload.rec_id]: state.comments[action.payload.rec_id].filter(r => !(r.id === parseInt(action.payload.id))),
+					[action.payload.rec_id]: state.comments[
+						action.payload.rec_id
+					].filter(r => !(r.id === parseInt(action.payload.id))),
 				},
 			};
 		default:

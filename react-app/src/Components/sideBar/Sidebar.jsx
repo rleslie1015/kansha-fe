@@ -30,6 +30,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
 	root: {
+		position: 'fixed',
 		display: 'flex',
 		'@global': {
 			'*::-webkit-scrollbar': {
@@ -38,15 +39,18 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	menuButton: {
+		margin: 0,
+		padding: 0,
+		display: 'flex',
+		justifyContent: 'center',
 		color: 'white',
-		margin: '1%',
 		width: '100%',
 		height: 'auto',
 		'&:hover': {
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		},
 	},
-	menuBottonDiv: {
+	menuButtonDiv: {
 		[theme.breakpoints.down('sm')]: {
 			backgroundColor: 'transparent',
 			'&:hover': {
@@ -64,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 			'&:hover': {
 				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			},
-		}
+		},
 	},
 	closeMenuButton: {
 		marginLeft: '-75%',
@@ -75,12 +79,17 @@ const useStyles = makeStyles(theme => ({
 		display: 'none',
 	},
 	drawer: {
+		height: '100vh',
+		display: 'flex',
+		justifyContent: 'space-between',
+		flexDirection: 'column',
 		width: drawerWidth,
 		flexShrink: 0,
 		whiteSpace: 'nowrap',
 	},
 	drawerOpen: {
 		color: 'white',
+		justifyContent: 'space-between',
 		overflow: 'hidden',
 		backgroundColor: '#2D2C35',
 		width: drawerWidth,
@@ -90,6 +99,7 @@ const useStyles = makeStyles(theme => ({
 		}),
 	},
 	drawerClose: {
+		justifyContent: 'space-between',
 		color: 'white',
 		overflow: 'hidden',
 		border: 'none',
@@ -102,7 +112,11 @@ const useStyles = makeStyles(theme => ({
 		width: theme.spacing(7) + 1,
 		[theme.breakpoints.down('sm')]: {
 			width: theme.spacing(9) + 1,
-			backgroundColor: 'transparent'
+			backgroundColor: 'transparent',
+		},
+		[theme.breakpoints.down('md')]: {
+			width: theme.spacing(9) + 1,
+			backgroundColor: 'transparent',
 		},
 	},
 	content: {
@@ -116,55 +130,45 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	signoutOpen: {
-		marginTop: '13vh',
 		fontFamily: 'Montserrat',
 		fontStyle: 'normal',
 		fontWeight: 'normal',
 		fontSize: '16px',
 		lineHeight: '20px',
 		color: '#EE4D71',
-		marginLeft: '25%',
 		'&:hover': {
 			color: '#FFFFFF',
 		},
 	},
 	signoutClosed: {
 		[theme.breakpoints.down('sm')]: {
-			display: 'none'
+			display: 'none',
 		},
 
 		[theme.breakpoints.up('md')]: {
-			display: 'none'
+			display: 'none',
 		},
 
 		[theme.breakpoints.up('lg')]: {
 			display: 'block',
-			marginTop: '5rem',
-			paddingRight: '10%',
 			backgroundColor: '#2D2C35',
 			'&:hover': {
 				background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			},
 		},
-			
-		}
-		
 	},
-	menuClosed: {[theme.breakpoints.down('sm')]: {
-		display: 'none'
+	menuClosed: {
+		[theme.breakpoints.down('sm')]: {
+			display: 'none',
+		},
 
-	},
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
 
-	[theme.breakpoints.up('md')]: {
-		display: 'none'
-
-	},
-
-	[theme.breakpoints.up('lg')]: {
-		display: 'block',
-		marginTop: '25vh',
-		
-	}
-		
+		[theme.breakpoints.up('lg')]: {
+			display: 'block',
+		},
 	},
 	menuOpen: {
 		marginTop: '0',
@@ -194,10 +198,9 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 	},
 	icons: {
-		paddingRight: '20%',
-		width: '75%',
+		margin: '10px 0 10px 5px',
+		width: '50%',
 		height: 'auto',
-		marginTop: '15%',
 	},
 	iconsOpen: {
 		paddingLeft: '20%',
@@ -242,6 +245,10 @@ const useStyles = makeStyles(theme => ({
 	listItem1: {
 		marginTop: '10vh',
 	},
+	signOutListItem: {
+		textAlign: 'center',
+		paddingLeft: '65px'
+	}
 }));
 
 function Sidebar({ user }) {
@@ -274,7 +281,8 @@ function Sidebar({ user }) {
 				}}
 				open={open}>
 				{/* This is the open menu button */}
-				<div className={classes.menuBottonDiv}>
+				{ !open ? 
+				(<div className={classes.menuButtonDiv}>
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
@@ -289,10 +297,10 @@ function Sidebar({ user }) {
 							className={classes.icons}
 						/>
 					</IconButton>
-				</div>
-				{/* this is the close menu button */}
-				<div>
-					<div className={classes.menuBottonDiv}>
+				</div>) :
+				/* this is the close menu button */
+				(<div>
+					<div className={classes.menuButtonDiv}>
 						<IconButton
 							aria-label="close drawer"
 							onClick={handleDrawerClose}
@@ -325,7 +333,7 @@ function Sidebar({ user }) {
 								classes.heading
 							}>{`${user.profile.first_name} ${user.profile.last_name}`}</Typography>
 					</div>
-				</div>
+				</div>) }
 				<Divider />
 				{/* this populates the icons in the closed menu and populates text also when menu is open */}
 				<List
@@ -378,7 +386,7 @@ function Sidebar({ user }) {
 						[classes.signoutClosed]: !open,
 					})}>
 					{/* this populates the sign out icon on the closed menu and text on the open menu */}
-					<ListItem button onClick={() => signout()} key="Sign Out">
+					<ListItem  button onClick={() => signout()} key="Sign Out">
 						<ListItemIcon
 							className={clsx(classes.menuOpen, {
 								[classes.hide]: open,
@@ -390,7 +398,7 @@ function Sidebar({ user }) {
 								className={classes.icons}
 							/>
 						</ListItemIcon>
-						<p>Sign Out</p>
+						<p className={classes.signOutListItem}>Sign Out</p>
 					</ListItem>
 				</List>
 			</Drawer>
