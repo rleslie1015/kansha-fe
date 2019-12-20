@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		width: 'calc(100% - 100px)'
+		width: 'calc(100% - 100px)',
+		wordWrap: 'break-word',
 	},
 	ButtonBox: {
 		boxSizing: 'border-box',
@@ -140,6 +141,12 @@ const useStyles = makeStyles(theme => ({
 		top: '0',
 		right: '10px',
 	},
+	feedBadgeBox: {
+		paddingTop: '1rem',
+	},
+	feedBadgeImg: {
+		width: '10%',
+	},
 }));
 
 export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
@@ -203,8 +210,8 @@ export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSel
 					</Typography>
 					<Typography>{rec.message}</Typography>
 					{badge &&
-						<Box>
-							<img src={badge.badge_URL} />		
+						<Box className={classes.feedBadgeBox}>
+							<img src={badge.badge_URL} className={classes.feedBadgeImg} />		
 						</Box>
 					}
 					<Box className={classes.ButtonBox}>
@@ -270,8 +277,8 @@ export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSel
 					</Typography>
 					<Typography>{rec.message}</Typography>
 					{badge &&
-						<Box>
-							<img src={badge.badge_URL} />		
+						<Box className={classes.feedBadgeBox}>
+							<img src={badge.badge_URL} className={classes.feedBadgeImg} />		
 						</Box>
 					}
 					<Box className={classes.ButtonBox}>
