@@ -16,6 +16,9 @@ import {
 	FEED_EVENT_NEW_REC,
 	FEED_EVENT_NEW_REACTION,
 	FEED_EVENT_NEW_COMMENT,
+	FEED_EVENT_REMOVE_REACTION,
+	FEED_EVENT_REMOVE_COMMENT,
+	FEED_EVENT_REMOVE_REC
 } from '../actions/feed-actions';
 
 const initialState = {
@@ -133,6 +136,24 @@ export const feedReducer = (state = initialState, action) => {
 						...state.comments[action.payload.rec_id],
 						action.payload,
 					],
+				},
+			};
+		case FEED_EVENT_REMOVE_REACTION:
+			return {
+				...state,
+				isLoading: false,
+				reactions: {
+					...state.reactions,
+					[action.payload.rec_id]: state.reactions[action.payload.rec_id].filter(r => !(r.id === parseInt(action.payload.id))),
+				},
+			};
+		case FEED_EVENT_REMOVE_COMMENT:
+			return {
+				...state,
+				isLoading: false,
+				comments: {
+					...state.comments,
+					[action.payload.rec_id]: state.comments[action.payload.rec_id].filter(r => !(r.id === parseInt(action.payload.id))),
 				},
 			};
 		default:
