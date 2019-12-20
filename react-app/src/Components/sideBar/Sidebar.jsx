@@ -194,7 +194,6 @@ const useStyles = makeStyles(theme => ({
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 	},
 	icons: {
-		paddingRight: '20%',
 		width: '75%',
 		height: 'auto',
 		marginTop: '15%',
@@ -387,6 +386,7 @@ function Sidebar({ user }) {
 							<img
 								src={signOut}
 								alt="sign out icon"
+								style={{width:'50%'}}
 								className={classes.icons}
 							/>
 						</ListItemIcon>
