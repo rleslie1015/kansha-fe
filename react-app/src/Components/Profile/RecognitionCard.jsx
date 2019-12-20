@@ -107,14 +107,14 @@ export function RecognitionCard({ recognition, sent }) {
 	const history = useHistory()
 	const profile = useSelector(state => state.user.profile)
 	
-	const handleDelete = id => {
+	const handleDelete = (rec) => {
 		axiosWithAuth()
-			.delete(`/rec/${id}`)
-			.then(id => {
+			.delete(`/rec/${rec.id}`)
+			.then(() => {
 				// i dunno how to get the user id of said profile.... 
 				// is coming up object object
 				// will figure out later... 
-				history.push(`/profile/${id}`)
+				history.push(`/profile/${rec.sender}`)
 			})
 	}
 
@@ -137,7 +137,7 @@ export function RecognitionCard({ recognition, sent }) {
 			</Box>
 			<Box className={classes.recInfo}>
 				<Box className={classes.deleteIcon} >
-					<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition.id)}/>
+					<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition)}/>
 				</Box>
 				<Box className={classes.recSender}>
 					<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>
@@ -178,7 +178,7 @@ export function RecognitionCard({ recognition, sent }) {
 				</Box>
 				<Box className={classes.recInfo}>
 					<Box className={classes.deleteIcon} >
-						<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition.id)}/>
+						<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition)}/>
 					</Box>
 					<Box className={classes.recSender}>
 						<Typography className={classes.recCardUser} onClick={()=>{ history.push(`/profile/${sent ? recognition.recipient : recognition.sender }`)}}>

@@ -87,9 +87,12 @@ export const reactToPost = rec_id => dispatch => {
 export const removeReaction = (id, rec_id) => dispatch => {
 	dispatch({ type: FEED_REACT_REMOVE_START });
 	axiosWithAuth()
-		.delete('/reactions/' + id)
+		.delete(`/reactions/${id}?rec_id=${rec_id}`, { rec_id })
 		.then(() => {
-			dispatch({ type: FEED_REACT_REMOVE_SUCCESS, payload: { id, rec_id }});
+			dispatch({
+				type: FEED_REACT_REMOVE_SUCCESS,
+				payload: { id, rec_id },
+			});
 		})
 		.catch(err => {
 			dispatch({ type: FEED_REACT_REMOVE_FAILURE, payload: err });
@@ -102,13 +105,12 @@ export const addComment = (rec_id, message, cb) => dispatch => {
 		.post('/comments', { rec_id, message, date: new Date(Date.now()) })
 		.then(() => {
 			dispatch({ type: FEED_COMMENT_SUCCESS });
-			cb()
+			cb();
 		})
 		.catch(err => {
 			dispatch({ type: FEED_COMMENT_FAILURE, payload: err });
 		});
 };
-
 
 // These are the listeners for the ServerSentEvents
 // sse is an instance of EventSource that is subscribed to our live feed
@@ -157,4 +159,4 @@ export const liveFeedListeners = sse => dispatch => {
 			payload: JSON.parse(event.data),
 		}),
 	);
-}
+};

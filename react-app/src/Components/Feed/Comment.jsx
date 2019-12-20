@@ -106,9 +106,10 @@ export const Comment = ({ comment, profile }) => {
 	const time = useMemo(() => timeAgo(comment.date), [comment]);
 
 	const handleDelete = id => {
+		console.log(comment.rec_id)
 		if(window.confirm('Are you sure you would like to delete this comment?')){
 		axiosWithAuth()
-			.delete(`/comments/${id}`)
+			.delete(`/comments/${id}?rec_id=${comment.rec_id}`)
 			.then(() => {
 				//matt do work here.... :) 
 			})
