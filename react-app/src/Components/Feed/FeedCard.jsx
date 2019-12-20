@@ -143,9 +143,10 @@ const useStyles = makeStyles(theme => ({
 	},
 	feedBadgeBox: {
 		paddingTop: '1rem',
+		marginBottom: '-30px',
 	},
 	feedBadgeImg: {
-		width: '10%',
+		width: '17%',
 	},
 }));
 
