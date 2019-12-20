@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { Card, Box, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,13 +31,13 @@ const useStyles = makeStyles(theme => ({
 		width: '25%',
 		height: '100%',
 		padding: '1rem 1rem 1rem 0',
-		
 	},
 	recProfilePic: {
 		borderRadius: '100%',
 		// Hard coding until we can make a circle img cropper for users
-		width: '75px',
-		height: '75px',
+		width: '75%',
+		maxWidth: '75px',
+		maxHeight: '75px',
 		background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 		objectFit: 'cover',
 		objectPosition: '50% 50%',
@@ -89,6 +89,7 @@ const useStyles = makeStyles(theme => ({
 		color: 'rgba(255, 255, 255, 0.7)',
 		width: '90%',
 		paddingTop: '.5rem',
+		wordWrap: 'break-word'
 	},
 	deleteIcon: {
 		position: 'absolute',
@@ -99,9 +100,15 @@ const useStyles = makeStyles(theme => ({
 		width: '20px',
 		height: 'auto',
 	},
+	recBadgeBox: {
+		paddingTop: '.5rem'
+	},
+	recBadgeImg: {
+		width: '20%',
+	},
 }));
 
-export function RecognitionCard({ recognition, sent }) {
+export function RecognitionCard({ recognition, sent, badge }) {
 	const classes = useStyles();
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 	const history = useHistory()
@@ -135,6 +142,7 @@ export function RecognitionCard({ recognition, sent }) {
 					alt="user avatar"
 				/>
 			</Box>
+
 			<Box className={classes.recInfo}>
 				<Box className={classes.deleteIcon} >
 					<img src={trashcan} alt='trash can icon' className={classes.trashcan} onClick={() => handleDelete(recognition)}/>
@@ -151,6 +159,11 @@ export function RecognitionCard({ recognition, sent }) {
 						{recognition.message}
 					</Typography>
 				</Box>
+				{badge &&
+					<Box className={classes.recBadgeBox}>
+						<img src={badge.badge_URL} alt={badge.badge_name} className={classes.recBadgeImg} />
+					</Box>
+				}
 				<Box className={classes.time}>
 					<Typography className={classes.recCardTime}>
 						{time}
@@ -192,6 +205,11 @@ export function RecognitionCard({ recognition, sent }) {
 							{recognition.message}
 						</Typography>
 					</Box>
+					{badge &&
+						<Box className={classes.recBadgeBox}>
+							<img src={badge.badge_URL} alt={badge.badge_name} className={classes.recBadgeImg} />
+						</Box>
+					}
 					<Box className={classes.time}>
 						<Typography className={classes.recCardTime}>
 							{time}
@@ -230,6 +248,11 @@ export function RecognitionCard({ recognition, sent }) {
 							{recognition.message}
 						</Typography>
 					</Box>
+					{badge &&
+						<Box className={classes.recBadgeBox}>
+							<img src={badge.badge_URL} alt={badge.badge_name} className={classes.recBadgeImg} />
+						</Box>
+					}
 					<Box className={classes.time}>
 						<Typography className={classes.recCardTime}>
 							{time}

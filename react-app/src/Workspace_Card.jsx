@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		paddingBottom: '0px',
 		[theme.breakpoints.down('sm')]: {
 			display: 'flex',
 			flexDirection: 'row',
@@ -126,24 +127,27 @@ const useStyles = makeStyles(theme => ({
 		objectPosition: '50% 50%',
 		  [theme.breakpoints.down('sm')]: {
 			height: '50px',
-			width: '50px'
+			width: '50px',
+			margin: '25%',
 		},
 	},
 	card_actions: {
 		display: 'flex',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		paddingBottom: '15px',
 	},
 	button: {
 		// padding: '0.5em 3em',
 		backgroundColor: '#2D2C35',
 		color: '#EE4D71',
 		textDecoration: 'none',
-		border: '2px solid #EE4d71',
+		border: 'none',
 		borderRadius: '100%',
+		padding: '12px 15px',
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '50%',
-			height: '50px',
-			width: '50px',
+			height: '64px',
+			width: '64px',
 		},
 		
 	},
@@ -155,6 +159,10 @@ const useStyles = makeStyles(theme => ({
 		position: 'absolute',
 		top: '10px',
 		right: '10px',
+		[theme.breakpoints.down('sm')]: {
+			top: '30px',
+			left: '10px',
+		},
 	},
 	img: {
 		[theme.breakpoints.down('sm')]: {

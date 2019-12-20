@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		width: 'calc(100% - 100px)'
+		width: 'calc(100% - 100px)',
+		wordWrap: 'break-word',
 	},
 	ButtonBox: {
 		boxSizing: 'border-box',
@@ -140,9 +141,16 @@ const useStyles = makeStyles(theme => ({
 		top: '0',
 		right: '10px',
 	},
+	feedBadgeBox: {
+		paddingTop: '1rem',
+		marginBottom: '-30px',
+	},
+	feedBadgeImg: {
+		width: '17%',
+	},
 }));
 
-export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRec, active }) => {
+export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
 	const classes = useStyles();
 	const { id: rec_id } = rec;
 	const dispatch = useDispatch();
@@ -202,6 +210,11 @@ export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRe
 						/>
 					</Typography>
 					<Typography>{rec.message}</Typography>
+					{badge &&
+						<Box className={classes.feedBadgeBox}>
+							<img src={badge.badge_URL} className={classes.feedBadgeImg} />		
+						</Box>
+					}
 					<Box className={classes.ButtonBox}>
 						{comments && (
 							<IconButton onClick={() => setSelectedRec(rec_id)} className={classes.CommentButton}>
@@ -264,6 +277,11 @@ export const FeedCard = memo(({ rec, comments, reactions, profile, setSelectedRe
 						<span className={classes.TimeStamp}>{time}</span>
 					</Typography>
 					<Typography>{rec.message}</Typography>
+					{badge &&
+						<Box className={classes.feedBadgeBox}>
+							<img src={badge.badge_URL} className={classes.feedBadgeImg} />		
+						</Box>
+					}
 					<Box className={classes.ButtonBox}>
 						{comments && (
 							<IconButton onClick={() => setSelectedRec(rec_id)} className={classes.CommentButton}>

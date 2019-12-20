@@ -1,10 +1,11 @@
-import React from 'react';
-import { Container, Typography, Card, Box } from '@material-ui/core';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Container, Typography, Card, Box, Paper, Badge } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-montserrat';
 import 'typeface-roboto';
 import { Cropper } from '../FileUpload/FileCrop'
 import { RecognitionCard } from './RecognitionCard';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import RecogModal from '../RecogModal/RecogModal'
 
 const useStyles = makeStyles(theme => ({
@@ -16,8 +17,8 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '100vw',
-			maxHeight: '100vh',
-			paddingTop: '2.5rem',
+			paddingTop: '4rem',
+			paddingLeft: '0',
 				'@global': {
 					'*::-webkit-scrollbar': {
 						width: '.5rem',
@@ -36,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '100vw',
-			maxHeight: '100vh',
 			paddingTop: '2.5rem',
 				'@global': {
 					'*::-webkit-scrollbar': {
@@ -56,7 +56,8 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'row',
 			width: '100vw',
-			maxHeight: '100vh',
+			height: 'auto',
+			maxHeight: '150vh',
 			paddingTop: '2.5rem',
 				'@global': {
 					'*::-webkit-scrollbar': {
@@ -90,7 +91,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 
 		},
@@ -99,7 +99,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 		}
 		
@@ -113,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 			height: 'auto',
 			backgroundColor: '#2D2C35',
 			paddingTop: '3rem',
-
+			overflow: 'visible'
 		},
 
 		[theme.breakpoints.up('md')]: {
@@ -124,7 +123,7 @@ const useStyles = makeStyles(theme => ({
 			height: '500px',
 			backgroundColor: '#2D2C35',
 			paddingTop: '3rem',
-
+			overflow: 'visible'
 		},
 
 		[theme.breakpoints.up('lg')]: {
@@ -135,7 +134,7 @@ const useStyles = makeStyles(theme => ({
 			height: 'auto',
 			backgroundColor: '#2D2C35',
 			padding: '3rem 0',
-			
+			overflow: 'visible'
 		}
 		
 	},
@@ -179,8 +178,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
-			height: '75%',
+			width: '150px',
+			height: '150px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
@@ -190,7 +189,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('md')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
+			width: '250px',
+			height: '250px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
@@ -214,7 +214,6 @@ const useStyles = makeStyles(theme => ({
 		height: 'auto',
 	},
 	addPic: {
-
 			opacity: 0,
 			borderRadius: '100%',
 			position: 'absolute',
@@ -363,11 +362,9 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			marginTop: '2.5rem',
 			backgroundColor: '#2D2C35',
-			height: '44%',
-			
+			height: '220px',
 			
 		}
-		
 	},
 	typo: {
 		display: 'flex',
@@ -386,15 +383,26 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '25px',
 	},
 	badgeContainer: {
+		height: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-		marginBottom: '2rem',
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		overflow: 'scroll',
+		padding: '0 0 50px 0',
 	},
-	badgeImg: {
+	badgeImage: {
 		backgroundColor: '#2D2C35',
-		width: '100%',
+		width: '90%',
 		height: 'auto',
-		paddingTop: '1.5rem',
+		paddingTop: '.5rem',
+	},
+	badgeDiv: {
+		width: '33%',
+	},
+	badgeCount: {
+		color: '#FFFFFF',
+		
 	},
 	rightContainer: {
 		[theme.breakpoints.down('sm')]: {
@@ -417,6 +425,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			width: '50%',
 			height: 'auto',
+			maxHeight: '95vh',
 			margin: '0',
 			
 			
@@ -433,7 +442,6 @@ const useStyles = makeStyles(theme => ({
 	activityInfo: {
 		display: 'flex',
 		flexDirection: 'column',
-
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#2D2C35',
@@ -445,6 +453,31 @@ const useStyles = makeStyles(theme => ({
 
 export function Profile({ profile, isPeer }) {
 	const classes = useStyles();
+	const [badges, setBadges] = useState([])
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
+	const userBadges = useMemo(() => profile.rec.reduce((acc, rec) => {
+		if(profile.id === rec.sender) {
+			return acc
+		} else if(rec.badge_id && acc[rec.badge_id]){
+			acc[rec.badge_id].count++
+		} else if(badges.length && rec.badge_id) {
+			acc[rec.badge_id]={badge:badges[rec.badge_id-1].badge_URL, count:1}
+		} 
+		return acc;
+	},{}),[profile, badges])
+
+	console.log(userBadges)
 
 	return (
 		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
@@ -480,8 +513,30 @@ export function Profile({ profile, isPeer }) {
 						<Typography className={classes.header} variant="h5">
 							Badges
 						</Typography>
-						<Container
-							className={classes.badgeContainer}></Container>
+						<Container className={classes.badgeContainer}>
+						{badges &&
+							<>
+								{Object.keys(userBadges).map(id => {
+									if(userBadges[id].count === 1){
+										return (
+											<div className={classes.badgeDiv}>
+												<img src={userBadges[id].badge} className={classes.badgeImage} />
+											</div>
+									)} else {
+											return ( 
+										<div className={classes.badgeDiv}>
+												<Badge 
+													badgeContent={'x'+ userBadges[id].count} 
+													className={classes.badgeCount}
+													overlap="circle"
+													>
+														<img src={userBadges[id].badge} className={classes.badgeImage} />
+												</Badge>
+										</div>
+									)
+								}})}
+							</>}
+						</Container>
 					</Card>
 				</Container>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
@@ -493,7 +548,9 @@ export function Profile({ profile, isPeer }) {
 						<Box className={classes.activityContainer}>
 							{profile &&
 								profile.rec
-									.reverse()
+									.sort(function(a,b){
+										return new Date(b.date) - new Date(a.date)
+									})
 									.map(recognition => (
 										<RecognitionCard
 											key={recognition.id}
@@ -501,6 +558,7 @@ export function Profile({ profile, isPeer }) {
 												profile.id ===
 												recognition.sender
 											}
+											badge={badges[recognition.badge_id-1]}
 											profile={profile}
 											recognition={recognition}
 										/>

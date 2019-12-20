@@ -8633,6 +8633,11 @@ react-app-polyfill@^1.0.4:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-character-counter@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-character-counter/-/react-character-counter-1.0.1.tgz#ce510211776ca42e8eecb4380210140dd089eb46"
+  integrity sha512-n1S06Wauc1tMUQefmljLq3XHX2RGrZWEdrpXGynS166QTjypPaEQN96D7hwVrDyfD9hWBJYs7y39b1hXvDcLqw==
+
 react-dev-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.1.0.tgz#3ad2bb8848a32319d760d0a84c56c14bdaae5e81"
