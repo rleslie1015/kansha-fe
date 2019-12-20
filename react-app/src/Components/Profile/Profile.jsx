@@ -56,7 +56,8 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'row',
 			width: '100vw',
-			maxHeight: '100vh',
+			height: 'auto',
+			maxHeight: '150vh',
 			paddingTop: '2.5rem',
 				'@global': {
 					'*::-webkit-scrollbar': {
@@ -90,7 +91,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 
 		},
@@ -99,7 +99,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 		}
 		
@@ -362,7 +361,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			marginTop: '2.5rem',
 			backgroundColor: '#2D2C35',
-			height: '44%',
+			height: '220px',
 			
 		}
 	},
@@ -395,7 +394,7 @@ const useStyles = makeStyles(theme => ({
 		backgroundColor: '#2D2C35',
 		width: '90%',
 		height: 'auto',
-		paddingTop: '1.5rem',
+		paddingTop: '.5rem',
 	},
 	badgeDiv: {
 		width: '33%',
@@ -425,6 +424,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			width: '50%',
 			height: 'auto',
+			maxHeight: '95vh',
 			margin: '0',
 			
 			
