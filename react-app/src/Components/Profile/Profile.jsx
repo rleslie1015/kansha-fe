@@ -56,7 +56,8 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'row',
 			width: '100vw',
-			maxHeight: '100vh',
+			height: 'auto',
+			maxHeight: '150vh',
 			paddingTop: '2.5rem',
 				'@global': {
 					'*::-webkit-scrollbar': {
@@ -90,7 +91,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 
 		},
@@ -99,7 +99,6 @@ const useStyles = makeStyles(theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			width: '50%',
-			height: '90vh',
 			
 		}
 		
@@ -179,8 +178,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('sm')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
-			height: '75%',
+			width: '150px',
+			height: '150px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
@@ -190,7 +189,8 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('md')]: {
 			borderRadius: '100%',
 			// Hard coding until we can make a circle img cropper for users
-			width: '75%',
+			width: '250px',
+			height: '250px',
 			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
 			objectFit: 'cover',
 			objectPosition: '50% 50%',
@@ -214,7 +214,6 @@ const useStyles = makeStyles(theme => ({
 		height: 'auto',
 	},
 	addPic: {
-
 			opacity: 0,
 			borderRadius: '100%',
 			position: 'absolute',
@@ -363,7 +362,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			marginTop: '2.5rem',
 			backgroundColor: '#2D2C35',
-			height: '44%',
+			height: '220px',
 			
 		}
 	},
@@ -394,15 +393,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	badgeImage: {
 		backgroundColor: '#2D2C35',
-		width: '100%',
+		width: '90%',
 		height: 'auto',
-		paddingTop: '1.5rem',
+		paddingTop: '.5rem',
 	},
 	badgeDiv: {
 		width: '33%',
 	},
 	badgeCount: {
-		
 		color: '#FFFFFF',
 		
 	},
@@ -427,6 +425,7 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('lg')]: {
 			width: '50%',
 			height: 'auto',
+			maxHeight: '95vh',
 			margin: '0',
 			
 			
@@ -518,18 +517,24 @@ export function Profile({ profile, isPeer }) {
 						{badges &&
 							<>
 								{Object.keys(userBadges).map(id => {
-									return ( 
+									if(userBadges[id].count === 1){
+										return (
+											<div className={classes.badgeDiv}>
+												<img src={userBadges[id].badge} className={classes.badgeImage} />
+											</div>
+									)} else {
+											return ( 
 										<div className={classes.badgeDiv}>
-											<Badge 
-												badgeContent={'x'+ userBadges[id].count} 
-												className={classes.badgeCount}
-												overlap="circle"
-												>
-													<img src={userBadges[id].badge} className={classes.badgeImage} />
-											</Badge>
+												<Badge 
+													badgeContent={'x'+ userBadges[id].count} 
+													className={classes.badgeCount}
+													overlap="circle"
+													>
+														<img src={userBadges[id].badge} className={classes.badgeImage} />
+												</Badge>
 										</div>
 									)
-								})}
+								}})}
 							</>}
 						</Container>
 					</Card>
@@ -553,6 +558,7 @@ export function Profile({ profile, isPeer }) {
 												profile.id ===
 												recognition.sender
 											}
+											badge={badges[recognition.badge_id-1]}
 											profile={profile}
 											recognition={recognition}
 										/>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { FeedCard } from './FeedCard';
 import { FeedComments } from './FeedComments'
 import {
@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 
 export const Feed = () => {
 	const [ selectedRec, setSelectedRec ] = useState();
+	const [badges, setBadges] = useState([])
 	const { feed, comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
@@ -95,6 +96,17 @@ export const Feed = () => {
 		};
 	}, [dispatch]);
 
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
+
 	return (
 		<Container className={classes.FeedContainer}>
 			<Box className={classes.RecFeed}>
@@ -102,6 +114,7 @@ export const Feed = () => {
 					<FeedCard
 						key={rec.id}
 						rec={rec}
+						badge={badges[rec.badge_id-1]}
 						comments={comments[rec.id]}
 						reactions={reactions[rec.id]}
 						profile={profile}

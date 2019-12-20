@@ -40,18 +40,46 @@ const useStyles = makeStyles(theme => ({
 	},
     cameraButton: {
         opacity: 0,
-        width: '273px',
-        height: '273px',
-        borderRadius: '100%',
-        paddingRight: '1.5rem',
         '&:hover': {
-            opacity: 1,
-            boxShadow: 'none',
+             opacity: 1,
+             boxShadow: 'none',
             background: 'rgba(18, 18, 18, 0.85)',
-            transition: '0.5s ease',
+             transition: '0.5s ease',
           },
+        [theme.breakpoints.down('sm')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '150px',
+			height: '150px',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+
+        },
+		[theme.breakpoints.up('md')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '250px',
+			height: '250px',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+
+        },
+        [theme.breakpoints.up('lg')]: {
+			borderRadius: '100%',
+			// Hard coding until we can make a circle img cropper for users
+			width: '272px',
+			height: '272px',
+			background: 'linear-gradient(135deg, #EE4D71 0%, #F15A3F 100%)',
+			objectFit: 'cover',
+			objectPosition: '50% 50%',
+			
+		}
     },
 	camera: {
+        marginBottom: '10px',
+        marginRight: '10px',
 		width: '60%',
         height: 'auto',
     },
