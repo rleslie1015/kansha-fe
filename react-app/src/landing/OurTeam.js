@@ -2,6 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Paper, Typography, ButtonBase } from '@material-ui/core';
 import ty from './images/ty.png';
+import cori from './images/cori.png';
+import sydney from './images/sydney.png';
+import andrew from './images/andrew.png';
+import leslie from './images/leslie.png';
+import gustavo from './images/gustavo.png';
+import matt from './images/matt.png';
+import nick from './images/nick.png';
+import ahmar from './images/ahmar.png';
+import gizella from './images/gizella.png';
 import dribbble from './images/dribbble.png';
 import github from './images/github.png';
 import linkedin from './images/linkedin.png';
@@ -84,7 +93,7 @@ const useStyles = makeStyles(theme => ({
         width: '80%'
     },
     profilePic: {
-        width: '50%%',
+        width: '100%',
         margin: '2% 2% 0 2%'
         
     },
@@ -105,162 +114,183 @@ export default function OurTeam () {
             <Paper className={classes.paper}>
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={cori} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/coriagogo'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/pearl-paris/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={ty} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/TyLippe'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/ty-lippe-1432b3194/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={sydney} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/srsimps19'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/sydney-crumley/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={andrew} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/drewgoenner'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/andrew-goenner-7947a059/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={leslie} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/rleslie1015'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
+                                
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/leslie-rodriguez1994/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={gustavo} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/gisturiz'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/gisturiz/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={matt} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/TamaHills'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/matthew-masters-463422191/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={nick} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://github.com/NicholasTruson'>
+                                    <img src={github} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/nicholas-truson-167599191/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.bottomRow}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={ahmar} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='http://ahmarsworld.blackwidowtech.com/'>
+                                    <img src={website} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/ahmar-mansoor-4455b6191/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
-                        <img src={ty} alt='' className={classes.pic} />
+                        <img src={gizella} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
-                                <img src={github} alt='' className={classes.icons} />
+                                <a href='https://dribbble.com/gizellaortiz'>
+                                    <img src={dribbble} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                             <Grid item xs className={classes.iconItem}>
-                                <img src={linkedin} alt='' className={classes.icons} />
+                                <a href='https://www.linkedin.com/in/gizella-o-824a13161/'>
+                                    <img src={linkedin} alt='' className={classes.icons} />
+                                </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
             </Paper>
 

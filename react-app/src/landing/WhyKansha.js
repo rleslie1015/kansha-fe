@@ -109,7 +109,7 @@ export default function WhyKansha () {
                 <Typography className={classes.whyKansha}>Why Kansha?</Typography>
             </Box>
             <Box className={classes.box}>
-                <Typography className={classes.textBox}>Kansha is a workplace recognition tool that allows you to publically recognize your peers with a thank you message, badges, and a gift card! Kansha is an easy, fun, effective way to show your peers that you appreciate them! Our public feed displays all workplace recognition for everyone to see!</Typography>
+                <Typography className={classes.textBox}>Kansha is a workplace recognition tool that allows you to publicly recognize your peers with a thank you message, badges, and a gift card! Kansha is an easy, fun, effective way to show your peers that you appreciate them! Our public feed displays all workplace recognition for everyone to see!</Typography>
                 <img src={isometric} alt='' className={classes.isometric}/>
             </Box>
         </Paper>
