@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, ListItemIcon } from '@material-ui/core';
@@ -6,10 +6,9 @@ import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
 	icons: {
-		paddingLeft: '20%',
-		width: '75%',
+		margin: '10px 0 10px 5px',
+		width: '50%',
 		height: 'auto',
-		marginTop: '15%',
 	},
 	iconsOpen: {
 		paddingLeft: '20%',
@@ -58,27 +57,29 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export function SidebarLink({ name, path, open, icon }) {
+export const SidebarLink = memo(({ name, path, open, icon }) => {
 	const classes = useStyles();
 	const history = useHistory();
 	const match = useRouteMatch(path);
 
-	console.log(path, match);
-
-	let { isExact } = match ? match : { isExact: false }
+	let { isExact } = match ? match : { isExact: false };
 
 	return (
-		<ListItem button className={clsx({[classes.active]: isExact })} key={name} onClick={() => history.push(path)}>
+		<ListItem
+			button
+			className={clsx({ [classes.active]: isExact })}
+			key={name}
+			onClick={() => history.push(path)}>
 			<ListItemIcon
 				className={clsx({
 					[classes.closedInactive]: !open,
 					[classes.openInactive]: open,
 					[classes.icons]: !open,
-					[classes.iconsOpen]: open
+					[classes.iconsOpen]: open,
 				})}>
 				<img src={icon} alt="profile icon" className={classes.icons} />
 			</ListItemIcon>
 			<p className={classes.listText}>{name}</p>
 		</ListItem>
 	);
-}
+});

@@ -13,7 +13,7 @@ function AuthLoader({ authorizeUser, authenticated, error }) {
 	}, [authorizeUser]);
 
 	if (authenticated) {
-		return <Redirect to="/profile" />;
+		return <Redirect to="/home" />;
 	} else if (!authenticated && error) {
 		return <Redirect to="/" />;
 	} else {
