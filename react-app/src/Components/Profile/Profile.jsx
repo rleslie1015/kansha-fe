@@ -11,6 +11,7 @@ import RecogModal from '../RecogModal/RecogModal'
 const useStyles = makeStyles(theme => ({
 	profileDiv: {
 		backgroundColor: '#26242D',
+		overflowX: 'hidden',
 	},
 	root: {
 		[theme.breakpoints.down('sm')]: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 			width: '100vw',
 			paddingTop: '4rem',
 			paddingLeft: '0',
+			
 				'@global': {
 					'*::-webkit-scrollbar': {
 						width: '.5rem',

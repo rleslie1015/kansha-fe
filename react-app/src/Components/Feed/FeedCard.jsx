@@ -158,7 +158,10 @@ const useStyles = makeStyles(theme => ({
 	},
 	feedBadgeImg: {
 		width: '17%',
-	},
+	}, 
+	message: {
+		marginTop: '5px',
+	}
 }));
 
 export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
@@ -220,7 +223,7 @@ export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSel
 							className={classes.Trashcan}
 						/>
 					</Typography>
-					<Typography>{rec.message}</Typography>
+					<Typography className={classes.message}>{rec.message}</Typography>
 					{badge &&
 						<Box className={classes.feedBadgeBox}>
 							<img src={badge.badge_URL} className={classes.feedBadgeImg} />		
