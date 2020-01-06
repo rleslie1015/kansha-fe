@@ -116,7 +116,6 @@ export default function OurTeam () {
                     <Grid item className={classes.profilePic}>
                         <img src={cori} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/coriagogo'>
@@ -129,14 +128,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={ty} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/TyLippe'>
@@ -149,14 +146,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={sydney} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/srsimps19'>
@@ -169,14 +164,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={andrew} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/drewgoenner'>
@@ -189,14 +182,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={leslie} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/rleslie1015'>
@@ -210,14 +201,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={gustavo} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/gisturiz'>
@@ -230,14 +219,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={matt} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/TamaHills'>
@@ -250,14 +237,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={nick} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://github.com/NicholasTruson'>
@@ -270,14 +255,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.bottomRow}>
                     <Grid item className={classes.profilePic}>
                         <img src={ahmar} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='http://ahmarsworld.blackwidowtech.com/'>
@@ -290,14 +273,12 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
 
                 <Grid container spacing={2} container direction='column' className={classes.grid}>
                     <Grid item className={classes.profilePic}>
                         <img src={gizella} alt='' className={classes.pic} />
                     </Grid>
-                    {/* <Grid item xs={2} sm container> */}
                         <Grid item xs container className={classes.iconBox} >
                             <Grid item xs className={classes.iconItem} >
                                 <a href='https://dribbble.com/gizellaortiz'>
@@ -310,7 +291,6 @@ export default function OurTeam () {
                                 </a>
                             </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Grid>
             </Paper>
 
