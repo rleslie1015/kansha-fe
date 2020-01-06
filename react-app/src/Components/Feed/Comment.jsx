@@ -107,6 +107,7 @@ export const Comment = ({ comment, profile }) => {
 
 	const handleDelete = id => {
 		console.log(comment.rec_id)
+		// this will need to be turned into a confirmation modal, like the one on the figma.
 		if(window.confirm('Are you sure you would like to delete this comment?')){
 		axiosWithAuth()
 			.delete(`/comments/${id}?rec_id=${comment.rec_id}`)

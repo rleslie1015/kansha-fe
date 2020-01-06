@@ -176,6 +176,7 @@ export const FeedCard = memo(({ rec, badge, comments, reactions, profile, setSel
 	const time = useMemo(() => timeAgo(rec.date), [rec]);
 
 	const handleDelete = id => {
+		// this will need to be turned into a confirmation modal, like the one on the figma.
 		if(window.confirm('Are you sure you would like to delete this recognition?')){
 		axiosWithAuth()
 			.delete(`/rec/${id}`)

@@ -115,6 +115,8 @@ export function RecognitionCard({ recognition, sent, badge }) {
 	const profile = useSelector(state => state.user.profile)
 	
 	const handleDelete = (rec) => {
+		// this will need to be turned into a confirmation modal, like the one on the figma.
+		if(window.confirm('Are you sure you would like to delete this recognition?')){
 		axiosWithAuth()
 			.delete(`/rec/${rec.id}`)
 			.then(() => {
@@ -123,6 +125,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 				// will figure out later... 
 				history.push(`/profile/${rec.sender}`)
 			})
+		}
 	}
 
 	if(profile.user_type === 'admin'){
