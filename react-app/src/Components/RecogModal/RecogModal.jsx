@@ -221,6 +221,7 @@ function RecogModal(props) {
 	const handleSubmit = event => {
 		props.sendRecog({ ...recog, date: new Date(Date.now())})
 		handleClose();
+		alert('Recogniton has been sent')
 	};
 
 	const handleOpen = () => {
