@@ -489,16 +489,20 @@ export function Profile({ profile, isPeer }) {
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<Container fixed className={classes.leftContainer}>
 					<Card className={classes.userInfo}>
+						
 						<div className={classes.pictureContainer}>
 							<img
 								src={profile.profile_picture}
 								className={classes.profilePic}
 								alt="user profile"
 							/>
-							<div className={classes.addPic}>
+							{ !isPeer &&
+							(<div className={classes.addPic}>
 								<Cropper />
-							</div>
+							</div>)
+							}
 						</div>
+						
 						<Typography className={classes.name} variant="h5">
 							{profile.first_name} {profile.last_name}
 						</Typography>
