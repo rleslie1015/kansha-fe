@@ -1,6 +1,6 @@
 # Kansha
 
-You can find the deployed project at [KanshaRewards](http://dev--staging.kansharewards.com/).
+You can find the deployed project at [KanshaRewards](http://kansharewards.com/).
 
 ## Contributors
 
