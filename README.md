@@ -86,17 +86,17 @@ Kansha Rewards is an app that was designed to increase satisfaction and producti
 
 # APIs
 
-## 2️⃣ auth0
+## auth0
 
 Authenticate and authorize apps and APIs with any identity provider running on any stack any device or cloud.  It is simple to integrate and allows users to just sign up with a Google account if they wish.
 
-## 3️⃣ S3 Bucket
+## S3 Bucket
 
 Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect any amount of data for a range of use cases, such as websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
 
 
 
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
@@ -105,11 +105,11 @@ In order for the app to function correctly, the user must set up their own envir
     *  REACT_APP_BASE_URL = "https://kansha-staging.herokuapp.com"
     *  REACT_APP_AUTH_DOMAIN = "kansha.auth0.com"
 
-# 4️⃣ Testing
+# Testing
 
 We used Jest and Enzyme to build our testing for Kansha.
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
 1. Clone the repo to your drive
 2. cd into the kansha/kansha-fe/react-app
