@@ -9,16 +9,17 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 import './reset.css';
+import './CSS/index.css';
 import { App } from './App';
 
-const middleware = compose(applyMiddleware(thunk), applyMiddleware(logger))
+const middleware = compose(applyMiddleware(thunk), applyMiddleware(logger));
 const reduxStore = createStore(reduxReducer, middleware);
 
 ReactDOM.render(
-    <Provider store={reduxStore}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>,
-    document.getElementById('root'),
+	<Provider store={reduxStore}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>,
+	document.getElementById('root'),
 );
