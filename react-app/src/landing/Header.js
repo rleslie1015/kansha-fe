@@ -7,10 +7,10 @@ const auth = new Auth();
 
 export default function Header() {
 	return (
-		<div /* style="PaperContainer" */ className="root">
+		<div className="root">
 			<Nav />
-			<div /* style="headerContainer" */>
-				<div /* style="info" */>
+			<div className="headerContainer">
+				<div className="info">
 					<div className="headingFont">Workplace Recognition</div>
 					<div className="headingFont">Like Never Before</div>
 					<div className="desc">
@@ -26,7 +26,7 @@ export default function Header() {
 						Learn More
 					</button>
 				</div>
-				<div /* style="hero" */>
+				<div className="hero">
 					<img src={hero} alt="" className="img" />
 				</div>
 			</div>
