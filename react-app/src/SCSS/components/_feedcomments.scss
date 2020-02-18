@@ -1,0 +1,179 @@
+// ** FEED COMMENTS STYLING ** //
+
+.comment-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+	padding: 0;
+	color: $color-white;
+	background: $color-gray-dark;
+	margin: 1rem;
+	padding-bottom: 7.4rem;
+}
+
+.comment-heading {
+	display: flex;
+	justify-content: space-between;
+	background: $color-gray-dark;
+	padding: 2rem;
+}
+.comments-heading-text {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 2.4rem;
+	line-height: 3rem;
+	color: $color-white;
+}
+.comments-container {
+	padding-top: 1rem;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.send-comments-container {
+	width: 100%;
+	margin: 0;
+	padding: 1rem;
+	position: absolute;
+	bottom: 0;
+	background: $color-gray-dark;
+}
+.send-comments {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: stretch;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid $color-gray-light;
+	border-radius: 0.8rem;
+}
+
+.send-comment-input {
+	width: 6rem;
+	color: $color-white;
+	& ::placeholder {
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16rem;
+		line-height: 2rem;
+		color: $color-gray-light;
+	}
+}
+.send-comment-button {
+	width: 6rem;
+	background: $color-gray-dark;
+	border-radius: 3px;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1.3rem;
+	line-height: 16px;
+	text-align: center;
+	color: $color-white;
+	border: none;
+	padding: 4px 0;
+	cursor: pointer;
+}
+.closeButton {
+	height: 3rem;
+	cursor: pointer;
+}
+
+.comment {
+	box-sizing: border-box;
+	max-width: 100%;
+	display: flex;
+	color: $color-white;
+	background: $color-gray-dark;
+	padding: 20px;
+	&:first-child {
+		padding-top: unset;
+	}
+	&:last-child {
+		margin-bottom: 0px;
+	}
+	width: 100%;
+	justify-content: stretch;
+}
+.comment-picture {
+	box-sizing: border-box;
+	width: 60px;
+	padding: 0;
+	margin: 0;
+}
+.comment-content {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: auto;
+	padding: 0;
+	margin: 0;
+}
+.comment-content-top {
+	margin-bottom: 0.5rem;
+}
+.count {
+	box-sizing: border-box;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16rem;
+	line-height: 2.2rem;
+	display: flex;
+	align-items: center;
+	color: $color-gray-light;
+	margin: 0;
+	padding: 0;
+	padding-left: 5px;
+	padding-top: 1px;
+}
+
+.name {
+	box-sizing: border-box;
+	color: $color-gray-dark;
+	text-decoration: none;
+	&:visited {
+		color: $color-gray-dark;
+	}
+}
+.profile-pic {
+	box-sizing: border-box;
+	border-radius: 100%;
+	// Hard coding until we can make a circle img cropper for users
+	width: 40px;
+	height: 40px;
+	background: linear-gradient(
+		135deg,
+		$color-primary 0%,
+		$color-secondary 100%
+	);
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+.info {
+	box-sizing: border-box;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+}
+.time-stamp {
+	/* Body */
+	box-sizing: border-box;
+	font-family: Montserrat;
+	font-size: 16px;
+	line-height: 20px;
+	color: rgba(255, 255, 255, 0.5);
+	margin-left: 1rem;
+}
+.trash-can {
+	width: 17px;
+	height: auto;
+	margin-left: 10px;
+}

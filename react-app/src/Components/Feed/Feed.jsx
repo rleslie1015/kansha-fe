@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { FeedCard } from './FeedCard';
-import { FeedComments } from './FeedComments'
+import { FeedComments } from './FeedComments';
 import {
 	loadLiveFeed,
 	liveFeedListeners,
@@ -15,50 +13,9 @@ import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 
 const EventSource = NativeEventSource || EventSourcePolyfill;
 
-const useStyles = makeStyles(theme => ({
-	RecFeed: {
-		boxSizing: 'border-box',
-		marginLeft: '60px',
-		width: '100%',
-		maxHeight: '100vh',
-		overflowY: 'scroll',
-		overflowx: 'hidden',
-		marginTop: '10px',
-		marginBottom: '10px',
-		[theme.breakpoints.down('sm')]: {
-			height: 'unset',
-			marginLeft: '0'
-		}
-	},
-	'@global': {
-			'*::-webkit-scrollbar': {
-				width: '.5rem',
-			},
-			'*::-webkit-scrollbar-corner': {
-				backgroundColor: 'transparent',
-			},
-			'*::-webkit-scrollbar-thumb': {
-				backgroundColor: '#3A3845',
-				borderRadius: '10px',
-			},
-		},
-	FeedContainer: {
-		display: 'flex',
-		padding: '0',
-		paddingLeft: '20px',
-		maxWidth: '100vw',
-		margin: '0',
-		height: '100vh',
-		maxHeight: '100vh',
-		[theme.breakpoints.down('sm')]: {
-			flexDirection: 'column'
-		}
-	},
-}));
-
 export const Feed = () => {
-	const [ selectedRec, setSelectedRec ] = useState();
-	const [badges, setBadges] = useState([])
+	const [selectedRec, setSelectedRec] = useState();
+	const [badges, setBadges] = useState([]);
 	const { feed, comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
@@ -68,11 +25,9 @@ export const Feed = () => {
 
 	const dispatch = useDispatch();
 
-	const classes = useStyles();
-
 	const closeFeedComments = () => {
-		setSelectedRec(null)
-	}
+		setSelectedRec(null);
+	};
 
 	useEffect(() => {
 		// Loads most current batch feed data
@@ -92,7 +47,7 @@ export const Feed = () => {
 		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
 		const sse = new EventSource(src);
 
-		sse.addEventListener('HEARTBEAT', console.dir)
+		sse.addEventListener('HEARTBEAT', console.dir);
 
 		// Set's up event listeners inside of redux ac
 		dispatch(liveFeedListeners(sse));
@@ -115,13 +70,13 @@ export const Feed = () => {
 	}, []);
 
 	return (
-		<Container className={classes.FeedContainer}>
-			<Box className={classes.RecFeed}>
+		<div className="feed-container">
+			<div className="rec-feed">
 				{feed.map(rec => (
 					<FeedCard
 						key={rec.id}
 						rec={rec}
-						badge={badges[rec.badge_id-1]}
+						badge={badges[rec.badge_id - 1]}
 						comments={comments[rec.id]}
 						reactions={reactions[rec.id]}
 						profile={profile}
@@ -129,8 +84,15 @@ export const Feed = () => {
 						active={rec.id === selectedRec}
 					/>
 				))}
-			</Box>
-			{ selectedRec && <FeedComments close={closeFeedComments} profile={profile} comments={comments[selectedRec]} id={selectedRec} />}
-		</Container>
+			</div>
+			{selectedRec && (
+				<FeedComments
+					close={closeFeedComments}
+					profile={profile}
+					comments={comments[selectedRec]}
+					id={selectedRec}
+				/>
+			)}
+		</div>
 	);
 };
