@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 import './reset.css';
-import './CSS/index.css';
+import './SCSS/main.scss';
 import { App } from './App';
 
 const middleware = compose(applyMiddleware(thunk), applyMiddleware(logger));
