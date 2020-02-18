@@ -9,6 +9,7 @@
 		"axios": "^0.19.2",
 		"event-source-polyfill": "^1.0.12",
 		"jwt-decode": "^2.2.0",
+		"node-sass": "^4.13.1",
 		"react": "^16.12.0",
 		"react-character-counter": "^1.0.1",
 		"react-dom": "^16.12.0",
