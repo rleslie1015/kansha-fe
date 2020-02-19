@@ -8,6 +8,8 @@
 	color: $color-white;
 	background-color: $color-secondary;
 	border: 1px solid $color-secondary;
+	width: 9rem;
+	height: 2.5rem;
 }
 
 .btn-get-started:hover {
@@ -19,6 +21,9 @@
 	background-color: $color-white-dark;
 	color: $color-secondary;
 	border: 1px solid $color-secondary;
+	width: 9rem;
+	height: 2.5rem;
+	margin-left: 2rem;
 }
 
 .btn-learn-more:hover {

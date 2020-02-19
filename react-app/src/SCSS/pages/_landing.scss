@@ -5,12 +5,31 @@
 	width: 100%;
 }
 
-.main-container {
+.main-container-landing {
 	display: flex;
-}
+	justify-content: space-evenly;
+	margin-top: 7rem;
+	align-items: center;
 
-.main-img {
-	img {
-		width: 35rem;
+	.main-cta {
+		.header-main-cta {
+			font-weight: 600;
+			font-size: 3.6rem;
+			width: 45rem;
+			color: $color-black;
+		}
+
+		.text-main-cta {
+			width: 45rem;
+			font-size: $default-font-size;
+			color: $color-gray-dark;
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	.main-img {
+		img {
+			width: 42rem;
+		}
 	}
 }
