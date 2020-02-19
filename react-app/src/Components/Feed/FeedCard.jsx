@@ -39,51 +39,39 @@ export const FeedCard = memo(
 		if (profile.user_type === 'admin') {
 			return (
 				<div>
-					<div className="feed-card-picture">
+					<div>
 						<div>
 							<img src={rec.profile_picture} alt="sender" />
 							<img src={rec.recipient_picture} alt="recipient" />
 						</div>
 					</div>
-					<div className="feed-card-content">
-						<div className="info">
-							<Link
-								className="name"
-								to={`/profile/${rec.sender}`}>
+					<div>
+						<div>
+							<Link to={`/profile/${rec.sender}`}>
 								{rec.first_name} {rec.last_name}
 							</Link>{' '}
 							sent to{' '}
-							<Link
-								className="name"
-								to={`/profile/${rec.recipient}`}>
+							<Link to={`/profile/${rec.recipient}`}>
 								{rec.recipient_first} {rec.recipient_last}
 							</Link>{' '}
-							<span className="time-stamp">{time}</span>
+							<span>{time}</span>
 							<img
 								src={Trashcan}
 								alt="trash can icon"
 								onClick={() => handleDelete(rec.id)}
-								className="trash-can"
 							/>
 						</div>
-						<div className="message">{rec.message}</div>
+						<div>{rec.message}</div>
 						{badge && (
-							<div className="feed-badge-box">
-								<img
-									src={badge.badge_URL}
-									className="feed-badge-img"
-								/>
+							<div>
+								<img src={badge.badge_URL} />
 							</div>
 						)}
-						<div className="button-box">
+						<div>
 							{comments && (
-								<button
-									onClick={() => setSelectedRec(rec_id)}
-									className="comment-button">
-									<div className="comment-icon" />
-									<div className="count">
-										{comments.length}
-									</div>
+								<button onClick={() => setSelectedRec(rec_id)}>
+									<div />
+									<div>{comments.length}</div>
 								</button>
 							)}
 							{reactions && (
@@ -107,45 +95,34 @@ export const FeedCard = memo(
 		} else {
 			return (
 				<div>
-					<div className="feed-card-picture">
+					<div>
 						<div>
 							<img src={rec.profile_picture} alt="sender" />
 							<img src={rec.recipient_picture} alt="recipient" />
 						</div>
 					</div>
-					<div className="feed-card-content">
-						<div className="info">
-							<Link
-								className="name"
-								to={`/profile/${rec.sender}`}>
+					<div>
+						<div>
+							<Link to={`/profile/${rec.sender}`}>
 								{rec.first_name} {rec.last_name}
 							</Link>{' '}
 							sent to{' '}
-							<Link
-								className="name"
-								to={`/profile/${rec.recipient}`}>
+							<Link to={`/profile/${rec.recipient}`}>
 								{rec.recipient_first} {rec.recipient_last}
 							</Link>{' '}
-							<span className="time-stamp">{time}</span>
+							<span>{time}</span>
 						</div>
 						<p>{rec.message}</p>
 						{badge && (
-							<div className="feed-badge-box">
-								<img
-									src={badge.badge_URL}
-									className="feed-badge-img"
-								/>
+							<div>
+								<img src={badge.badge_URL} />
 							</div>
 						)}
-						<div className="button-box">
+						<div>
 							{comments && (
-								<button
-									onClick={() => setSelectedRec(rec_id)}
-									className="comment-button">
-									<div className="comment-icon" />
-									<div className="count">
-										{comments.length}
-									</div>
+								<button onClick={() => setSelectedRec(rec_id)}>
+									<div />
+									<div>{comments.length}</div>
 								</button>
 							)}
 							{reactions && (

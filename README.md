@@ -4,21 +4,20 @@ You can find the deployed project at [KanshaRewards](http://kansharewards.com/).
 
 ## Contributors
 
-
-|                                       [Sydney Crumley](https://github.com/srsimps19)                                        |                                       [Matt Masters](https://github.com/TamaHills)                                        |                                       [Andrew Goenner](https://github.com/drewgoenner)                                        |                                       [Ty Lippe](https://github.com/TyLippe)                                        |                                       [Leslie Rodriguez](https://github.com/rleslie1015)                                        |                                      
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/sydney.png" width = "200" />](https://github.com/srsimps19)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/matt.png" width = "200" />](https://github.com/TamaHills)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/andrew.png" width = "200" />](https://github.com/drewgoenner)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/ty.png" width = "200" />](https://github.com/TyLippe)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/leslie.png" width = "200" />](https://github.com/rleslie1015)                       |                      
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/srsimps19)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TamaHills)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/drewgoenner)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TyLippe)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/rleslie1015)             |            
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sydney-crumley/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/matthew-masters-463422191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-goenner-7947a059/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ty-lippe-1432b3194/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/leslie-rodriguez1994/) | 
+|                                         [Sydney Crumley](https://github.com/srsimps19)                                          |                                                [Matt Masters](https://github.com/TamaHills)                                                |                                             [Andrew Goenner](https://github.com/drewgoenner)                                             |                                               [Ty Lippe](https://github.com/TyLippe)                                                |                                          [Leslie Rodriguez](https://github.com/rleslie1015)                                           |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
+|     [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/sydney.png" width = "200" />](https://github.com/srsimps19)     |           [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/matt.png" width = "200" />](https://github.com/TamaHills)            |        [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/andrew.png" width = "200" />](https://github.com/drewgoenner)         |          [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/ty.png" width = "200" />](https://github.com/TyLippe)          |       [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/leslie.png" width = "200" />](https://github.com/rleslie1015)       |
+|                     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/srsimps19)                      |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TamaHills)                           |                         [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/drewgoenner)                         |                        [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TyLippe)                         |                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/rleslie1015)                        |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sydney-crumley/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/matthew-masters-463422191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-goenner-7947a059/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ty-lippe-1432b3194/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/leslie-rodriguez1994/) |
 
 <br>
 <br>
 
- [Gustavo Isturiz](https://github.com/gisturiz)                                        |                                       [Nick Truson](https://github.com/NicholasTruson)                                        |                                       [Gizella Ortiz](https://dribbble.com/gizellaortiz)                                        |                                       [Ahmar Mansoor](http://ahmarsworld.blackwidowtech.com/)                                        |                                       [Cori Paris](https://github.com/coriagogo)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-[<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/gustavo.png" width = "200" />](https://github.com/gisturiz)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/nick.png" width = "200" />](https://github.com/NicholasTruson)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/gizella.png" width = "200" />](https://dribbble.com/gizellaortiz)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/ahmar.png" width = "200" />](http://ahmarsworld.blackwidowtech.com/)                       |                      [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/cori.png" width = "200" />](https://github.com/coriagogo)                       |
-[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/gisturiz)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NicholasTruson)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)             |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/coriagogo)             |
-[ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gisturiz/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/nicholas-truson-167599191) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gizella-o-824a13161/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ahmar-mansoor-4455b6191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/pearl-paris/ ) |
+|                                      [Gustavo Isturiz](https://github.com/gisturiz)                                       |                                             [Nick Truson](https://github.com/NicholasTruson)                                              |                                          [Gizella Ortiz](https://dribbble.com/gizellaortiz)                                          |                                         [Ahmar Mansoor](http://ahmarsworld.blackwidowtech.com/)                                          |                                          [Cori Paris](https://github.com/coriagogo)                                          |
+| :-----------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: |
+|  [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/gustavo.png" width = "200" />](https://github.com/gisturiz)  |        [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/nick.png" width = "200" />](https://github.com/NicholasTruson)         |    [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/gizella.png" width = "200" />](https://dribbble.com/gizellaortiz)     |     [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/ahmar.png" width = "200" />](http://ahmarsworld.blackwidowtech.com/)     |    [<img src="https://kansha-bucket.s3-us-west-1.amazonaws.com/cori.png" width = "200" />](https://github.com/coriagogo)     |
+|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/gisturiz)                   |                        [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NicholasTruson)                        |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                             |                              [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                               |                    [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/coriagogo)                    |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gisturiz/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/nicholas-truson-167599191) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/gizella-o-824a13161/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ahmar-mansoor-4455b6191/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/pearl-paris/) |
 
 <br>
 <br>
@@ -31,16 +30,15 @@ You can find the deployed project at [KanshaRewards](http://kansharewards.com/).
 
 [UX Design files](https://www.figma.com/file/EtD3IAhwlPsT91V1oAJ1QX/Labs18_Kansha%2C-Gizella-%26-Ahmar?node-id=533%3A1360)
 
-Kansha Rewards is an app that was designed to increase satisfaction and productivity in the workplace by allowing employees to send recognition and badges to their peers in an app.  The badges appear on the profile page, and the recognition appears on both the profile page and a live feed of all recognition, where employees will also be able to send a reaction and/or comment on the recognition.
-
+Kansha Rewards is an app that was designed to increase satisfaction and productivity in the workplace by allowing employees to send recognition and badges to their peers in an app. The badges appear on the profile page, and the recognition appears on both the profile page and a live feed of all recognition, where employees will also be able to send a reaction and/or comment on the recognition.
 
 ### Key Features
 
--    Register a new user by using Auth0
--    Send recognition and badges to peers to thank them for their hard work
--    Admins can delete users and any recognition/comments
--    Mods can delete recognition/comments in their own department
--    Users can comment and like recognition in a live feed, and see what badges their peers have earned.
+- Register a new user by using Auth0
+- Send recognition and badges to peers to thank them for their hard work
+- Admins can delete users and any recognition/comments
+- Mods can delete recognition/comments in their own department
+- Users can comment and like recognition in a live feed, and see what badges their peers have earned.
 
 ## Tech Stack
 
@@ -48,20 +46,13 @@ Kansha Rewards is an app that was designed to increase satisfaction and producti
 
 #### _React_
 
--    React allows us to determine and built the best architecture for our team
--    Already known by the entire team, thus making it the easiest to work with
+- React allows us to determine and built the best architecture for our team
+- Already known by the entire team, thus making it the easiest to work with
 
 #### _Redux_
 
--    Greatly simplifies global state management
--    Versatile in its utility
-
-#### _Material-UI_
-
--    Makes styling much easier, once you get past the poor documentation
--    Lets us use CSS styling in react
--    Makes it easy to make pages responsive
-
+- Greatly simplifies global state management
+- Versatile in its utility
 
 #### Front end deployed to `Netlify`
 
@@ -69,32 +60,30 @@ Kansha Rewards is an app that was designed to increase satisfaction and producti
 
 #### _Node_
 
--    Simpler and easier to use with Java, as its javascript.
--    Node is what the majority of us learned for our backend unit
+- Simpler and easier to use with Java, as its javascript.
+- Node is what the majority of us learned for our backend unit
 
 #### _Express_
 
--    Very capable and full featured
--    Most of the team is familiar with Express
--    The Connect Middleware functionality makes our backend service very extensible.
+- Very capable and full featured
+- Most of the team is familiar with Express
+- The Connect Middleware functionality makes our backend service very extensible.
 
 #### _Knex_
 
--    Extremely flexible
--    Full featured schema and query builders
--    lets us switch from development to staging to production with ease.
+- Extremely flexible
+- Full featured schema and query builders
+- lets us switch from development to staging to production with ease.
 
 # APIs
 
 ## auth0
 
-Authenticate and authorize apps and APIs with any identity provider running on any stack any device or cloud.  It is simple to integrate and allows users to just sign up with a Google account if they wish.
+Authenticate and authorize apps and APIs with any identity provider running on any stack any device or cloud. It is simple to integrate and allows users to just sign up with a Google account if they wish.
 
 ## S3 Bucket
 
 Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect any amount of data for a range of use cases, such as websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
-
-
 
 # Environment Variables
 
@@ -127,12 +116,13 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
 ## Issue/Bug Request
-   
- **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
- - Check first to see if your issue has already been reported.
- - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
- - Create a live example of the problem.
- - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
+
+**If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
+
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 

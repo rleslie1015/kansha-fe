@@ -16,19 +16,16 @@ export const SendComments = ({ id, scrollToBottom }) => {
 		scrollToBottom();
 	};
 	return (
-		<div className="send-comments-container">
-			<div className="send-comments">
+		<div>
+			<div>
 				<input
 					multiline
 					placeholder="Write a comment..."
-					className="send-comment-input"
 					value={newComment}
 					onChange={handleInput}
 					inputProps={{ maxLength: 255 }}
 				/>
-				<button onClick={handleSubmit} className="send-comment-button">
-					Submit
-				</button>
+				<button onClick={handleSubmit}>Submit</button>
 			</div>
 		</div>
 	);

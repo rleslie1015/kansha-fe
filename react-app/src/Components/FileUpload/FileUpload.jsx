@@ -25,7 +25,5 @@ export const FileUpload = connect(({ user }) => ({ ...user }), {
 		}
 	};
 
-	return (
-		<input className="input" onChange={HandleUpload} type="file"></input>
-	);
+	return <input onChange={HandleUpload} type="file"></input>;
 });

@@ -25,27 +25,20 @@ export const Comment = ({ comment, profile }) => {
 
 	if (profile.user_type === 'admin') {
 		return (
-			<div className="comment">
-				<div className="comment-picture">
-					<img
-						className="profile-pic"
-						src={comment.profile_picture}
-						alt="sender"
-					/>
+			<div>
+				<div>
+					<img src={comment.profile_picture} alt="sender" />
 				</div>
-				<div className="comment-content">
-					<div className="comment-content-top">
-						<Link
-							className="name"
-							to={`/profile/${comment.user_id}`}>
+				<div>
+					<div>
+						<Link to={`/profile/${comment.user_id}`}>
 							{comment.first_name} {comment.last_name}
 						</Link>
-						<span className="time-stamp">{time}</span>
+						<span>{time}</span>
 						<img
 							src={Trashcan}
 							alt="trash can icon"
 							onClick={() => handleDelete(comment.id)}
-							className="trash-can"
 						/>
 					</div>
 					<p>{comment.message}</p>
@@ -54,22 +47,16 @@ export const Comment = ({ comment, profile }) => {
 		);
 	} else {
 		return (
-			<div className="comment">
-				<div className="comment-picture">
-					<img
-						className="profile-pic"
-						src={comment.profile_picture}
-						alt="sender"
-					/>
+			<div>
+				<div>
+					<img src={comment.profile_picture} alt="sender" />
 				</div>
-				<div className="comment-content">
-					<div className="comment-content-top">
-						<Link
-							className="name"
-							to={`/profile/${comment.user_id}`}>
+				<div>
+					<div>
+						<Link to={`/profile/${comment.user_id}`}>
 							{comment.first_name} {comment.last_name}
 						</Link>
-						<span className="time-stamp">{time}</span>
+						<span>{time}</span>
 					</div>
 					<p>{comment.message}</p>
 				</div>

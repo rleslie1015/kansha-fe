@@ -166,21 +166,18 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 	};
 
 	return (
-		<div class="crop" className="root">
+		<div>
 			<button
 				type="button"
 				disableFocusRipple
 				disableRipple
-				onClick={handleOpen}
-				className="camera-button">
+				onClick={handleOpen}>
 				<img
 					src="https://kansha-bucket.s3-us-west-1.amazonaws.com/cameraicon.png"
-					className="camera"
 					alt="upload icon"
 				/>
 			</button>
 			<div
-				className="modal"
 				open={open}
 				onClose={handleClose}
 				closeAfterTransition
@@ -189,11 +186,10 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 					timeout: 500,
 				}}>
 				<Fade in={open}>
-					<div className="paper">
+					<div>
 						<img
 							src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
 							onClick={handleClose}
-							className="cancel-button"
 							alt="close button"
 						/>
 						<input
@@ -201,7 +197,7 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 							accept="image/*"
 							onChange={onSelectFile}
 						/>
-						<div className="picture">
+						<div>
 							{src && (
 								<ReactCrop
 									src={src}
@@ -213,10 +209,7 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 								/>
 							)}
 						</div>
-						<button
-							type="button"
-							onClick={handleUpload}
-							className="button">
+						<button type="button" onClick={handleUpload}>
 							Upload
 						</button>
 					</div>

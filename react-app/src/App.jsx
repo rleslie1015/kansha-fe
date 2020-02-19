@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Landing } from './landing/Landing';
 import { Route } from 'react-router-dom';
 import { ProtectedRoute } from './Components/Auth';

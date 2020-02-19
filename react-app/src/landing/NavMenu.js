@@ -14,26 +14,5 @@ export default function NavMenu() {
 		setAnchorEl(null);
 	};
 
-	return (
-		<div>
-			<button
-				aria-controls="simple-menu"
-				aria-haspopup="true"
-				onClick={handleClick}></button>
-			<ul
-				id="simple-menu"
-				anchorEl={anchorEl}
-				keepMounted
-				open={Boolean(anchorEl)}
-				onClose={handleClose}>
-				<li onClick={() => (window.location.hash = 'features')}>
-					Learn More
-				</li>
-				<li onClick={() => (window.location.hash = 'our_team')}>
-					Our Team
-				</li>
-				<li onClick={auth.login}>Get Started</li>
-			</ul>
-		</div>
-	);
+	return <div></div>;
 }

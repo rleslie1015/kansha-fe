@@ -1,15 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import {
-	Container,
-	Typography,
-	Card,
-	Box,
-	Paper,
-	Badge,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import 'typeface-montserrat';
-import 'typeface-roboto';
 import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -51,66 +40,62 @@ export function Profile({ profile, isPeer }) {
 
 	return (
 		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
-		<div id="Profile" className="profile-div">
+		<div id="Profile">
 			{/* <Link to="/workspace">workspace</Link> */}
-			<div fixed className="root">
+			<div fixed>
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
-				<div fixed className="left-container">
-					<div className="user-info">
-						<div className="picture-container">
+				<div fixed>
+					<div>
+						<div>
 							<img
 								src={profile.profile_picture}
-								className="profile-pic"
 								alt="user profile"
 							/>
 							{!isPeer && (
-								<div className="add-pic">
+								<div>
 									<Cropper />
 								</div>
 							)}
 						</div>
 
-						<h5 className="name">
+						<h5>
 							{profile.first_name} {profile.last_name}
 						</h5>
-						<p className="job-title">{profile.job_title}</p>
-						<p className="department">{profile.department}</p>
+						<p>{profile.job_title}</p>
+						<p>{profile.department}</p>
 						{isPeer && <RecogModal {...profile} />}
 					</div>
 					{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
-					<div className="badge-card">
-						<h5 className="header">Badges</h5>
-						<div className="badge-container">
+					<div>
+						<h5>Badges</h5>
+						<div>
 							{badges && (
 								<>
 									{Object.keys(userBadges).map(id => {
 										if (userBadges[id].count === 1) {
 											return (
-												<div className="badge-div">
+												<div>
 													<img
 														src={
 															userBadges[id].badge
 														}
-														className="badge-image"
 													/>
 												</div>
 											);
 										} else {
 											return (
-												<div className="badge-div">
+												<div>
 													<div
 														badgeContent={
 															'x' +
 															userBadges[id].count
 														}
-														className="badge-count"
 														overlap="circle">
 														<img
 															src={
 																userBadges[id]
 																	.badge
 															}
-															className="badge-image"
 														/>
 													</div>
 												</div>
@@ -123,10 +108,10 @@ export function Profile({ profile, isPeer }) {
 					</div>
 				</div>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
-				<div className="right-container">
-					<div className="activity-info">
-						<h5 className="header">Activity</h5>
-						<div className="activity-container">
+				<div>
+					<div>
+						<h5>Activity</h5>
+						<div>
 							{profile &&
 								profile.rec
 									.sort(function(a, b) {

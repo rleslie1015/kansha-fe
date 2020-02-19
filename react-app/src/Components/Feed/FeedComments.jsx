@@ -10,17 +10,16 @@ export const FeedComments = ({ comments, id, profile, close }) => {
 		current.scrollTop = current.scrollHeight;
 	};
 	return (
-		<div className="comment-card">
-			<div className="comment-heading">
-				<div className="comment-heading-text">Comments</div>
+		<div>
+			<div>
+				<div>Comments</div>
 				<img
 					src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
 					onClick={close}
-					className="close-button"
 					alt="close button"
 				/>
 			</div>
-			<div ref={containerRef} className="comments-container">
+			<div ref={containerRef}>
 				{comments.map(comment => (
 					<Comment comment={comment} profile={profile} />
 				))}

@@ -70,8 +70,8 @@ export const Feed = () => {
 	}, []);
 
 	return (
-		<div className="feed-container">
-			<div className="rec-feed">
+		<div>
+			<div>
 				{feed.map(rec => (
 					<FeedCard
 						key={rec.id}
