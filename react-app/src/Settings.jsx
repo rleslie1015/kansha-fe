@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { update } from './store/actions/user-actions';
 
-function Settings({ update, isUpdating, profile, user }) {
-	const classes = useStyles();
-
+function Settings({ update, user }) {
 	const history = useHistory();
 
 	const initialState = {
@@ -43,145 +41,88 @@ function Settings({ update, isUpdating, profile, user }) {
 						<h5>Edit Profile</h5>
 						<div>
 							<div>
-								<div className="box">
+								<div>
 									<input
 										label="First Name*"
 										placeholder="e.g. Jane"
-										variant="outlined"
 										name="first_name"
 										margin="normal"
 										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-										}}
 										value={form.first_name}
 									/>
-									<TextField
+									<input
 										label="Last Name*"
 										placeholder="e.g. Doe"
-										variant="outlined"
 										name="last_name"
 										margin="normal"
 										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-										}}
 										value={form.last_name}
 									/>
-								</Box>
-								<Box className={classes.twoInput}>
-									<TextField
+								</div>
+								<div>
+									<input
 										label="Job Title*"
 										placeholder="e.g. Manager"
-										variant="outlined"
 										name="job_title"
 										margin="normal"
 										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-										}}
 										value={form.job_title}
 									/>
-									<FormControl className={classes.textField}>
-										<Select
-											variant="outlined"
+									<div>
+										<input
 											defaultValue="standard"
 											value={form.user_type}
 											onChange={handleChange}
 											name="user_type"
-											margin="normal"
-											MenuProps={{
-												classes: {
-													paper:
-														classes.dropdownStyle,
-												},
-											}}
-											input={<StyledBase />}
-											InputProps={{
-												className: classes.input,
-											}}
-											InputLabelProps={{
-												className: classes.label,
-											}}>
-											<MenuItem value="standard">
-												Standard
-											</MenuItem>
-											<MenuItem value="mod">Mod</MenuItem>
-											<MenuItem value="admin">
-												Admin
-											</MenuItem>
-										</Select>
-									</FormControl>
-								</Box>
-								<Box className={classes.oneInput}>
-									<TextField
+											margin="normal">
+											<select>Standard</select>
+											<select>Mod</select>
+											<select>Admin</select>
+										</input>
+									</div>
+								</div>
+								<div>
+									<input
 										label="Organization*"
 										placeholder="Organization Name"
-										variant="outlined"
 										name="org_name"
 										margin="normal"
 										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-										}}
 										value={form.org_name}
 									/>
-								</Box>
-								<Box className={classes.oneInput}>
-									<TextField
+								</div>
+								<div>
+									<input
 										label="Department"
 										placeholder="e.g. Marketing Department"
-										variant="outlined"
 										name="department"
 										margin="normal"
 										onChange={handleChange}
-										InputProps={{
-											className: classes.input,
-										}}
-										InputLabelProps={{
-											className: classes.label,
-										}}
 										value={form.department}
 									/>
-								</Box>
-								<button
-									className={classes.button}
-									variant="contained"
-									color="primary"
-									onClick={handleSubmit}>
+								</div>
+								<button onClick={handleSubmit}>
 									Save Changes
 								</button>
 							</div>
-							<Card>
+							<div>
 								<div>
 									<img
 										src={user.profile.profile_picture}
 										alt="user profile"
 									/>
 								</div>
-								<div variant="h5">
+								<div>
 									{user.profile.first_name}{' '}
 									{user.profile.last_name}
 								</div>
 								<div>{user.profile.job_title}</div>
 								<div>{user.profile.department}</div>
-							</Card>
-						</FormControl>
-					</Paper>
-				</Container>
-			</Container>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
-import { Button, Fab, Box } from '@material-ui/core';
 import { sendRecog } from '../../store/actions/recog-actions';
 import send from '../../assets/send.png';
-
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 

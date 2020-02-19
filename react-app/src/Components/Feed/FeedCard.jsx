@@ -8,8 +8,6 @@ import { timeAgo } from '../../utils/timeago';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Trashcan from '../../assets/Trashcan.png';
 
-import AddCommentOutlinedIcon from '@material-ui/icons/AddCommentOutlined';
-
 export const FeedCard = memo(
 	({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
 		const { id: rec_id } = rec;

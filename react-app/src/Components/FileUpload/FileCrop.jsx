@@ -7,7 +7,6 @@ import {
 	uploadBadContent,
 } from '../../store/actions/user-actions';
 import 'react-image-crop/dist/ReactCrop.css';
-import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs';
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -181,7 +180,6 @@ export const Cropper = connect(({ user }) => ({ ...user }), {
 				open={open}
 				onClose={handleClose}
 				closeAfterTransition
-				BackdropComponent={Backdrop}
 				BackdropProps={{
 					timeout: 500,
 				}}>
