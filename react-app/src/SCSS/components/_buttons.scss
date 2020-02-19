@@ -2,31 +2,32 @@
 	text-align: center;
 	font-size: 1.6rem;
 	border-radius: 2px;
+	cursor: pointer;
 }
 
 .btn-get-started {
 	color: $color-white;
 	background-color: $color-secondary;
-	border: 1px solid $color-secondary;
+	border: 0.7px solid $color-secondary;
 	width: 9rem;
 	height: 2.5rem;
-}
 
-.btn-get-started:hover {
-	color: $color-secondary;
-	background-color: $color-white;
+	&:hover {
+		color: $color-secondary;
+		background-color: $color-white;
+	}
 }
 
 .btn-learn-more {
 	background-color: $color-white-dark;
 	color: $color-secondary;
-	border: 1px solid $color-secondary;
+	border: 0.7px solid $color-secondary;
 	width: 9rem;
 	height: 2.5rem;
 	margin-left: 2rem;
-}
 
-.btn-learn-more:hover {
-	background-color: $color-secondary;
-	color: $color-white;
+	&:hover {
+		background-color: $color-secondary;
+		color: $color-white;
+	}
 }

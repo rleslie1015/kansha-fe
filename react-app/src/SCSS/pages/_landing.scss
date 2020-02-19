@@ -3,13 +3,16 @@
 	background-color: $color-white-dark;
 	height: 100%;
 	width: 100%;
+	border: 2px solid blue;
 }
 
+// Main Section
 .main-container-landing {
 	display: flex;
 	justify-content: space-evenly;
 	margin-top: 7rem;
 	align-items: center;
+	border: 2px solid $color-black;
 
 	.main-cta {
 		.header-main-cta {
@@ -30,6 +33,26 @@
 	.main-img {
 		img {
 			width: 42rem;
+		}
+	}
+}
+
+// Why Kansha Section
+.why-kansha-container {
+	border: 2px solid orange;
+	font-weight: 600;
+	.header-why-kansha {
+		font-size: 3.6rem;
+		text-align: center;
+	}
+
+	.title-feature-why-kansha {
+		font-size: 2.4rem;
+	}
+
+	.features-why-kansha {
+		font-size: $small;
+		.feature-why-kansha {
 		}
 	}
 }
