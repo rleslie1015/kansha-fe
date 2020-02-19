@@ -41,18 +41,36 @@
 .why-kansha-container {
 	border: 2px solid orange;
 	font-weight: 600;
+
 	.header-why-kansha {
 		font-size: 3.6rem;
 		text-align: center;
 	}
 
+	.features-why-kansha {
+		font-size: $small;
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 auto;
+		max-width: 65vw;
+		align-items: center;
+		justify-content: center;
+
+		.feature-why-kansha {
+			width: 20rem;
+			height: 8rem;
+			margin: 6rem;
+		}
+	}
+}
+
+// text boxes inside Why Kansha Features sections
+.text-container-why-kansha {
 	.title-feature-why-kansha {
 		font-size: 2.4rem;
 	}
 
-	.features-why-kansha {
-		font-size: $small;
-		.feature-why-kansha {
-		}
+	.text-feature-why-kansha {
+		font-size: 1.6rem;
 	}
 }
