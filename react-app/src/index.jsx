@@ -8,7 +8,6 @@ import { reduxReducer } from './store';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import './reset.css';
 import './SCSS/main.scss';
 import { App } from './App';
 

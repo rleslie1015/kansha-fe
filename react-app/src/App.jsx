@@ -12,29 +12,15 @@ import FileUpload from './FileUpload';
 import Settings from './Settings';
 import { Cropper } from './Components/FileUpload/FileCrop';
 
-
-const useStyles = makeStyles(theme => ({
-	root: {
-		position: 'relative',
-		display: 'flex',
-		flexDirection: 'column',
-		minHeight: '100vh',
-		backgroundColor: '#26242D',
-		color: '#ffffff',
-		maxWidth: '100vw',
-	},
-}));
-
 export const App = () => {
-	const classes = useStyles();
 	return (
-		<div id="App" className={classes.root}>
+		<div id="App">
 			<Route exact path="/" component={Landing} />
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
 			<ProtectedRoute path="/home" component={Feed} />
-			<ProtectedRoute path="/profile" component={UserProfile} exact/>
-			<ProtectedRoute path="/profile/:id" component={PeerProfile}/>
+			<ProtectedRoute path="/profile" component={UserProfile} exact />
+			<ProtectedRoute path="/profile/:id" component={PeerProfile} />
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />
 			<ProtectedRoute path="/settings" component={Settings} />
