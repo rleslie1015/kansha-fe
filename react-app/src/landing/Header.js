@@ -6,5 +6,9 @@ import Auth from '../utils/auth';
 const auth = new Auth();
 
 export default function Header() {
-	return <div className="root"></div>;
+	return (
+		<header>
+			<Nav />
+		</header>
+	);
 }

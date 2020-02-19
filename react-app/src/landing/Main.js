@@ -7,9 +7,5 @@ import rewardIcon from './images/reward.png';
 import workspaceIcon from './images/workspace.png';
 
 export default function Main() {
-	return (
-		<>
-			<div>Features</div>
-		</>
-	);
+	return <></>;
 }
