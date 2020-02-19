@@ -6,11 +6,11 @@ import WhyKansha from './WhyKansha';
 
 export const Landing = () => {
 	return (
-		<>
+		<div className="landing-page">
 			<Header />
 			<Main />
 			<WhyKansha />
 			<Footer />
-		</>
+		</div>
 	);
 };

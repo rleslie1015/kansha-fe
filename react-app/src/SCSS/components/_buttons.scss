@@ -1,0 +1,27 @@
+.btn {
+	text-align: center;
+	font-size: 1.6rem;
+	border-radius: 2px;
+}
+
+.btn-get-started {
+	color: $color-white;
+	background-color: $color-secondary;
+	border: 1px solid $color-secondary;
+}
+
+.btn-get-started:hover {
+	color: $color-secondary;
+	background-color: $color-white;
+}
+
+.btn-learn-more {
+	background-color: $color-white-dark;
+	color: $color-secondary;
+	border: 1px solid $color-secondary;
+}
+
+.btn-learn-more:hover {
+	background-color: $color-secondary;
+	color: $color-white;
+}

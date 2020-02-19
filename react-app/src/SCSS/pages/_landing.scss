@@ -1,0 +1,16 @@
+.landing-page {
+	padding: 2rem;
+	background-color: $color-white-dark;
+	height: 100%;
+	width: 100%;
+}
+
+.main-container {
+	display: flex;
+}
+
+.main-img {
+	img {
+		width: 35rem;
+	}
+}
