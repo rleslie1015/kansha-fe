@@ -10,9 +10,8 @@
 	.onboarding-image {
 		width: 55rem;
 	}
+
+	form {
+		flex-direction: column;
+	}
 }
-.right-div {
-	display: flex;
-}
-justify-content: center;
-align-items: center;
