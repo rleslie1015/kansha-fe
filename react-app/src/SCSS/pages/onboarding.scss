@@ -1,0 +1,17 @@
+.onboarding {
+	display: flex;
+	flex-direction: row;
+}
+
+.left-div {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	.onboarding-image {
+		width: 55rem;
+	}
+
+	form {
+		flex-direction: column;
+	}
+}

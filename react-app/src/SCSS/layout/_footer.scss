@@ -9,6 +9,10 @@
 		flex-direction: column;
 		a {
 			margin: 0.5rem;
+
+			&:hover {
+				color: $color-secondary;
+			}
 		}
 	}
 	.landing-footer-copyright {

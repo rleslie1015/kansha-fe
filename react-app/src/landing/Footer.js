@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../utils/auth';
-
+import { Link } from 'react-router-dom';
 const auth = new Auth();
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
 			<nav className="landing-footer-section">
 				<a href="#">Our Team</a>
 				<a href="#">Features</a>
-				<a href="#">Get Started</a>
+				<Link to="/onboarding">Get Started</Link>
 			</nav>
 		</footer>
 	);

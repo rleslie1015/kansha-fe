@@ -23,85 +23,83 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 	if (!isOnboarding && profile) return <Redirect to="profile" />;
 
 	return (
-		<div id="App">
-			<div className="onboarding">
-				<div className="left-div">
-					<div>
-						<img src={kanshaLogo} alt="Kansha Logo" />
-						<img src={logo} alt="Kansha Logo People" />
-					</div>
-				</div>
+		<div className="onboarding">
+			<div className="left-div">
 				<div>
-					{isOnboardingLoading ? (
-						<div>
-							<Loader
-								type="Rings"
-								color="#EE4D71"
-								height={100}
-								width={100}
-							/>
-						</div>
-					) : (
-						<div className="right-div">
-							<h5>Let's Get Started!</h5>
-							<div>
-								<div>
-									<input
-										label="First Name*"
-										placeholder="e.g. Jane"
-										name="first_name"
-										margin="normal"
-										onChange={handleChange}
-									/>
-									<input
-										label="Last Name*"
-										placeholder="e.g. Doe"
-										name="last_name"
-										margin="normal"
-										onChange={handleChange}
-									/>
-								</div>
-								<div>
-									<input
-										label="Job Title*"
-										placeholder="e.g. Manager"
-										name="job_title"
-										margin="normal"
-										onChange={handleChange}
-									/>
-									<input
-										defaultValue="standard"
-										value={form.user_Type}
-										onChange={handleChange}
-										name="user_type"
-										margin="normal"
-									/>
-								</div>
-								<div>
-									<input
-										label="Organization*"
-										placeholder="Organization Name"
-										name="org_name"
-										margin="normal"
-										onChange={handleChange}
-									/>
-								</div>
-								<div>
-									<input
-										label="Department"
-										placeholder="e.g. Marketing Department"
-										name="department"
-										margin="normal"
-										onChange={handleChange}
-									/>
-								</div>
-								<button className="btn" onClick={handleSubmit}>
-									Confirm
-								</button>
-							</div>
-						</div>
-					)}
+					<img src={kanshaLogo} alt="Kansha Logo" />
+					<img
+						className="onboarding-image"
+						src={logo}
+						alt="Kansha Logo People"
+					/>
 				</div>
+			</div>
+			<div>
+				{isOnboardingLoading ? (
+					<div>
+						<Loader
+							type="Rings"
+							color="#EE4D71"
+							height={100}
+							width={100}
+						/>
+					</div>
+				) : (
+					<div className="right-div">
+						<h5>Let's Get Started!</h5>
+						<form>
+							<div className="form-first-row">
+								<input
+									label="First Name*"
+									placeholder="e.g. Jane"
+									name="first_name"
+									margin="normal"
+									onChange={handleChange}
+								/>
+								<input
+									label="Last Name*"
+									placeholder="e.g. Doe"
+									name="last_name"
+									margin="normal"
+									onChange={handleChange}
+								/>
+							</div>
+							<div className="form-second-row">
+								<input
+									label="Job Title*"
+									placeholder="e.g. Manager"
+									name="job_title"
+									margin="normal"
+									onChange={handleChange}
+								/>
+								<input
+									defaultValue="standard"
+									value={form.user_Type}
+									onChange={handleChange}
+									name="user_type"
+									margin="normal"
+								/>
+							</div>
+							<input
+								label="Organization*"
+								placeholder="Organization Name"
+								name="org_name"
+								margin="normal"
+								onChange={handleChange}
+							/>
+							<input
+								label="Department"
+								placeholder="e.g. Marketing Department"
+								name="department"
+								margin="normal"
+								onChange={handleChange}
+							/>
+							<button className="btn" onClick={handleSubmit}>
+								Confirm
+							</button>
+						</form>
+					</div>
+				)}
 			</div>
 		</div>
 	);
