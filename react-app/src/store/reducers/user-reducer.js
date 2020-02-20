@@ -15,12 +15,24 @@ import {
 	USER_UPDATE_PICTURE_BAD_CONTENT,
 	USER_UPDATE_START,
 	USER_UPDATE_SUCCESS,
-	USER_UPDATE_FAILURE
+	USER_UPDATE_FAILURE,
 } from '../actions/user-actions';
 
-
 const initialState = {
-	profile: null,
+	profile: {
+		id: 4,
+		sub: 'google-oauth2|100109569064373930037',
+		first_name: 'Kevin',
+		last_name: 'Smith',
+		profile_picture:
+			'https://lh3.googleusercontent.com/a-/AAuE7mAcyihVamnNeRgjvXkCbThK9XXUrn6Wreq9Ius66g',
+		job_title: 'Dude',
+		department: 'Team Awesome',
+		user_type: 'admin',
+		org_name: 'New Org',
+		org_id: 4,
+		rec: [],
+	},
 	isOnboarding: false,
 	isOnboardingLoading: false,
 	isLoggingIn: false,
@@ -31,7 +43,6 @@ const initialState = {
 };
 
 export const userReducer = (state = initialState, action) => {
-
 	switch (action.type) {
 		/*
 		dispatched by the authrizeUser action creator
@@ -111,7 +122,7 @@ export const userReducer = (state = initialState, action) => {
 		case USER_UPDATE_SUCCESS:
 			return {
 				...state,
-				profile: {...state.profile, ...action.payload},
+				profile: { ...state.profile, ...action.payload },
 				isUpdating: false,
 			};
 		case USER_UPDATE_FAILURE:
@@ -147,7 +158,10 @@ export const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isUploading: false,
-				uploadError: { type: action.type, message: `Invalid filetype: ${action.payload}. ` }
+				uploadError: {
+					type: action.type,
+					message: `Invalid filetype: ${action.payload}. `,
+				},
 			};
 		default:
 			return state;
