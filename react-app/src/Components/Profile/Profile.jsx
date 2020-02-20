@@ -13,6 +13,7 @@ export function Profile({ profile, isPeer }) {
 			.get('/badges')
 			.then(res => {
 				setBadges(res.data);
+				console.log(badges, 'badges');
 			})
 			.catch(err => {
 				console.log(err);
@@ -58,11 +59,13 @@ export function Profile({ profile, isPeer }) {
 							</div>
 						)} */}
 						</div>
-						<h5>
-							{profile.first_name} {profile.last_name}
-						</h5>
-						<p>{profile.job_title}</p>
-						<p>{profile.department}</p>
+						<div className="profile-name-info">
+							<h5>
+								{profile.first_name} {profile.last_name}
+							</h5>
+							<p>{profile.job_title}</p>
+							<p>{profile.department}</p>
+						</div>
 					</div>
 				</div>
 				{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
@@ -76,6 +79,7 @@ export function Profile({ profile, isPeer }) {
 										return (
 											<div>
 												<img
+													className="badge badge-profile"
 													src={userBadges[id].badge}
 												/>
 											</div>
@@ -90,6 +94,7 @@ export function Profile({ profile, isPeer }) {
 													}
 													overlap="circle">
 													<img
+														className="badge badge-profile"
 														src={
 															userBadges[id].badge
 														}

@@ -25,10 +25,10 @@
 
 			.profile-info {
 				border: 2px solid purple;
-				height: 30vh;
-				width: 40vh;
+				height: 50vh;
+				width: 50vh;
 				display: flex;
-				justify-content: center;
+				justify-content: space-evenly;
 				flex-direction: column;
 				align-items: center;
 
@@ -37,8 +37,17 @@
 					justify-content: center;
 					border: 2px solid green;
 					.profilepic {
-						height: 20vh;
+						height: 30vh;
+						border-radius: 50%;
 					}
+				}
+
+				.profile-name-info {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					border: 2px solid blue;
 				}
 			}
 		}
@@ -47,6 +56,10 @@
 			border: 2px solid orange;
 			height: 30vh;
 			background-color: $color-white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
 		}
 	}
 
@@ -74,4 +87,8 @@
 
 .recognition-profile-pic {
 	width: 10rem;
+}
+
+.badge-profile {
+	width: 20rem;
 }
