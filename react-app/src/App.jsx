@@ -15,10 +15,11 @@ export const App = () => {
 	return (
 		<div id="App">
 			<Route exact path="/" component={Landing} />
+
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
 			<ProtectedRoute path="/home" component={Feed} />
-			<Route path="/profile" component={UserProfile} exact />
+			<ProtectedRoute path="/profile" component={UserProfile} exact />
 			<ProtectedRoute path="/profile/:id" component={PeerProfile} />
 			<ProtectedRoute path="/workspace" component={Workspace} />
 			<ProtectedRoute path="/upload" component={FileUpload} />

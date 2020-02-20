@@ -28,7 +28,7 @@ function Sidebar({ user }) {
 	};
 
 	return (
-		<div>
+		<div className="container-side-bar">
 			<div open={open}>
 				{/* This is the open menu button */}
 				{!open ? (
@@ -61,7 +61,7 @@ function Sidebar({ user }) {
 				)}
 				<br />
 				{/* this populates the icons in the closed menu and populates text also when menu is open */}
-				<div>
+				<div className="container-side-bar-icons">
 					<SidebarLink
 						path="/home"
 						name="Home"
@@ -108,7 +108,7 @@ function Sidebar({ user }) {
 							<img
 								src={signOut}
 								alt="sign out icon"
-								style={{ width: '50%' }}
+								style={{ width: '2rem' }}
 							/>
 						</div>
 						<p>Sign Out</p>

@@ -30,7 +30,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 
 	if (profile.user_type === 'admin') {
 		return (
-			<div>
+			<div className="container-recognition-card container-recognition-card-admin">
 				<div>
 					<img
 						src={
@@ -154,9 +154,10 @@ export function RecognitionCard({ recognition, sent, badge }) {
 		);
 	} else {
 		return (
-			<div>
+			<div className="container-recognition-card container-recognition-card-user">
 				<div>
 					<img
+						className="recognition-profile-pic"
 						src={
 							sent
 								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
@@ -196,7 +197,11 @@ export function RecognitionCard({ recognition, sent, badge }) {
 					</div>
 					{badge && (
 						<div>
-							<img src={badge.badge_URL} alt={badge.badge_name} />
+							<img
+								className="badge badge-recognition-card"
+								src={badge.badge_URL}
+								alt={badge.badge_name}
+							/>
 						</div>
 					)}
 					<div>

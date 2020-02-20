@@ -1,0 +1,77 @@
+#App .container-entire-profile {
+	display: flex;
+	justify-content: space-evenly;
+	border: 2px solid green;
+	background-color: $color-white-cement;
+	color: $color-black;
+	// background-color: $color-gray-dark;
+	// color: $color-white;
+
+	.container-profile-card-and-badges {
+		border: 2px solid pink;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 100vh;
+
+		.container-profile-card {
+			border: 2px solid red;
+			height: 60vh;
+			width: 45vw;
+			background-color: $color-white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.profile-info {
+				border: 2px solid purple;
+				height: 30vh;
+				width: 40vh;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				align-items: center;
+
+				.profile-image {
+					display: flex;
+					justify-content: center;
+					border: 2px solid green;
+					.profilepic {
+						height: 20vh;
+					}
+				}
+			}
+		}
+
+		.container-badges {
+			border: 2px solid orange;
+			height: 30vh;
+			background-color: $color-white;
+		}
+	}
+
+	.activity-card {
+		border: 2px solid yellow;
+		width: 45vw;
+		background-color: $color-white;
+	}
+}
+
+// .container-recognition-card-admin {
+// 	border: 2px solid dodgerblue;
+// }
+
+// .container-recognition-card-user {
+// 	border: 2px solid limegreen;
+// }
+.container-recognition-card {
+	border: 2px solid white;
+}
+
+.badge-recognition-card {
+	width: 10rem;
+}
+
+.recognition-profile-pic {
+	width: 10rem;
+}
