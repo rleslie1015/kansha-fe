@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 export const SidebarLink = memo(({ name, path, open, icon }) => {
@@ -9,11 +9,11 @@ export const SidebarLink = memo(({ name, path, open, icon }) => {
 	let { isExact } = match ? match : { isExact: false };
 
 	return (
-		<li button key={name} onClick={() => history.push(path)}>
-			<div>
+		<li className="side-nav-li" button key={name} onClick={() => history.push(path)}>
+			<div className="side-bar-link-div">
 				<img src={icon} alt="profile icon" />
 			</div>
-			<p>{name}</p>
+			{/* <p>{name}</p> */}
 		</li>
 	);
 });

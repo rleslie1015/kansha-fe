@@ -9,7 +9,6 @@ import sendReward from '../../assets/send.png';
 import rewardHistory from '../../assets/history.png';
 import settings from '../../assets/settings.png';
 import signOut from '../../assets/signout.png';
-import 'typeface-montserrat';
 import { connect } from 'react-redux';
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
@@ -29,17 +28,18 @@ function Sidebar({ user }) {
 
 	return (
 		<div>
-			<div open={open}>
+				{/* this populates the icons in the closed menu and populates text also when menu is open */}
+				<div open={open}>
+				<div className="side-nav">
 				{/* This is the open menu button */}
 				{!open ? (
-					<div>
-						<button
-							color="inherit"
-							aria-label="open drawer"
+					<div className="nav-open-menu">
+						{/* <button */}
+							{/* aria-label="open drawer"
 							onClick={handleDrawerOpen}
-							edge="start">
+							edge="start"> */}
 							<img src={openMenu} alt="open menu icon" />
-						</button>
+						{/* </button> */}
 					</div>
 				) : (
 					/* this is the close menu button */
@@ -59,10 +59,7 @@ function Sidebar({ user }) {
 						</div>
 					</div>
 				)}
-				<br />
-				{/* this populates the icons in the closed menu and populates text also when menu is open */}
-				<div>
-					<SidebarLink
+					<SidebarLink 
 						path="/home"
 						name="Home"
 						icon={home}
@@ -98,22 +95,20 @@ function Sidebar({ user }) {
 						icon={settings}
 						open={open}
 					/>
-				</div>
-
-				{/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
 				<ul>
 					{/* this populates the sign out icon on the closed menu and text on the open menu */}
-					<li button onClick={() => signout()} key="Sign Out">
-						<div>
+					<li className="sign-out-li" button onClick={() => signout()} key="Sign Out">
+						<div className="nav-sign-out">
 							<img
 								src={signOut}
 								alt="sign out icon"
-								style={{ width: '50%' }}
 							/>
 						</div>
-						<p>Sign Out</p>
 					</li>
 				</ul>
+				</div>
+
+				{/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
 			</div>
 		</div>
 	);

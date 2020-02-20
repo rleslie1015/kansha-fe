@@ -1,0 +1,53 @@
+.side-nav {
+    background-color: $color-primary-nav;  
+    width: 5.5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    .side-nav-li {
+        list-style-type: none;
+        cursor: pointer;
+        width: 70%;
+        padding: 0.4rem;
+     
+        &:hover {
+            background-color: $color-primary;
+            border-radius: 0.3rem;
+        }
+    }
+    .nav-open-menu {
+        img {
+            background-color: $color-primary-nav;  
+            border: none;
+            margin-bottom: 15rem;
+            width: 3rem;
+            cursor: pointer;
+        }  
+    }
+    .sign-out-li {
+       list-style-type: none;
+       
+       .nav-sign-out {
+        margin-top: 15rem;
+        img {
+            width: 3rem;
+            cursor: pointer;
+        } 
+    }
+}
+}
+
+.side-bar-link-div {
+    width: 100%;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+        width: 3rem;
+    }
+}
