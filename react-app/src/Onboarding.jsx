@@ -25,16 +25,18 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 	return (
 		<div className="onboarding">
 			<div className="left-div">
-				<div>
-					<img src={kanshaLogo} alt="Kansha Logo" />
-					<img
-						className="onboarding-image"
-						src={logo}
-						alt="Kansha Logo People"
-					/>
-				</div>
+				<img
+					className="onboarding-logo"
+					src={kanshaLogo}
+					alt="Kansha Logo"
+				/>
+				<img
+					className="onboarding-image"
+					src={logo}
+					alt="Kansha Logo People"
+				/>
 			</div>
-			<div>
+			<div className="right-div">
 				{isOnboardingLoading ? (
 					<div>
 						<Loader
@@ -45,8 +47,8 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 						/>
 					</div>
 				) : (
-					<div className="right-div">
-						<h5>Let's Get Started!</h5>
+					<div className="onboarding-form">
+						<h3>Let's Get Started!</h3>
 						<form>
 							<div className="form-first-row">
 								<input
@@ -72,13 +74,16 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 									margin="normal"
 									onChange={handleChange}
 								/>
-								<input
-									defaultValue="standard"
+								<select
 									value={form.user_Type}
 									onChange={handleChange}
-									name="user_type"
-									margin="normal"
-								/>
+									name="user_type">
+									<option value="standard">Standard</option>
+									<option value="moderator">Moderator</option>
+									<option selected value="administrator">
+										Administrator
+									</option>
+								</select>
 							</div>
 							<input
 								label="Organization*"
@@ -94,7 +99,9 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 								margin="normal"
 								onChange={handleChange}
 							/>
-							<button className="btn" onClick={handleSubmit}>
+							<button
+								className="btn-onboarding-confirm"
+								onClick={handleSubmit}>
 								Confirm
 							</button>
 						</form>

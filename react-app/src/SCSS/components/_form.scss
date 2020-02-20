@@ -1,5 +1,21 @@
 form {
 	display: flex;
-	justify-content: column;
-	background-color: black;
+	flex-direction: column;
+}
+
+input {
+	padding: 1.25rem;
+	margin: 0.5rem;
+	border-radius: 0.5rem;
+	color: $color-secondary;
+	background-color: $color-white-dark;
+}
+
+select {
+	padding: 1.25rem;
+	margin: 0.5rem;
+	width: 20rem;
+	height: 4.5rem;
+	color: grey;
+	background-color: $color-white-dark;
 }
