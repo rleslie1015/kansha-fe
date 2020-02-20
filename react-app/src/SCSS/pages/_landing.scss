@@ -1,6 +1,7 @@
 .landing-page {
 	padding: 2rem;
 	background-color: $color-white-dark;
+	background-size: cover;
 	min-height: 100%;
 	width: 100%;
 }
@@ -42,6 +43,7 @@
 	min-height: 100%;
 	font-weight: 600;
 	width: 100%;
+	margin: 12rem auto;
 
 	.header-why-kansha {
 		font-size: 3.6rem;

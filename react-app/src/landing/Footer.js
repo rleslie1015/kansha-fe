@@ -4,5 +4,22 @@ import Auth from '../utils/auth';
 const auth = new Auth();
 
 export default function Footer() {
-	return <></>;
+	return (
+		<footer className="landing-footer">
+			<div className="landing-footer-section">
+				<h3 className="landing-footer-title">Kansha</h3>
+				<h5>Lambda Labs Project</h5>
+			</div>
+			<div className="landing-footer-section">
+				<small className="landing-footer-copyright">
+					© All Rights Reserved 2019 Kansha
+				</small>
+			</div>
+			<nav className="landing-footer-section">
+				<a href="#">Our Team</a>
+				<a href="#">Features</a>
+				<a href="#">Get Started</a>
+			</nav>
+		</footer>
+	);
 }

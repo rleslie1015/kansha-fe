@@ -14,7 +14,9 @@ import { Cropper } from './Components/FileUpload/FileCrop';
 export const App = () => {
 	return (
 		<div id="App">
-			<Route exact path="/" component={Landing} />
+			<div>
+				<Route exact path="/" component={Landing} />
+			</div>
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
 			<ProtectedRoute path="/home" component={Feed} />

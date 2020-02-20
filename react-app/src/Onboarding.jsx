@@ -24,26 +24,25 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 
 	return (
 		<div id="App">
-			<div />
-			<div>
-				<img src={kanshaLogo} alt="Kansha Logo" />
-				<img src={logo} alt="Kansha Logo People" />
-			</div>
-			<div>
+			<div className="onboarding">
+				<div className="left-div">
+					<div>
+						<img src={kanshaLogo} alt="Kansha Logo" />
+						<img src={logo} alt="Kansha Logo People" />
+					</div>
+				</div>
 				<div>
 					{isOnboardingLoading ? (
-						<>
-							<div>
-								<Loader
-									type="Rings"
-									color="#EE4D71"
-									height={100}
-									width={100}
-								/>
-							</div>
-						</>
+						<div>
+							<Loader
+								type="Rings"
+								color="#EE4D71"
+								height={100}
+								width={100}
+							/>
+						</div>
 					) : (
-						<>
+						<div className="right-div">
 							<h5>Let's Get Started!</h5>
 							<div>
 								<div>
@@ -96,11 +95,11 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 										onChange={handleChange}
 									/>
 								</div>
-								<input color="primary" onClick={handleSubmit}>
+								<button className="btn" onClick={handleSubmit}>
 									Confirm
-								</input>
+								</button>
 							</div>
-						</>
+						</div>
 					)}
 				</div>
 			</div>
