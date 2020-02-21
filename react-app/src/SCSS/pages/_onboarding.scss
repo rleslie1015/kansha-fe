@@ -38,5 +38,20 @@
 
 	.onboarding-form {
 		flex-direction: column;
+		width: 100%;
+
+		#ob-flow-form {
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+
+			.form-first-row {
+				flex-direction: row;
+				width: 100%;
+			}
+			#bottom-rows {
+				width: 75%;
+			}
+		}
 	}
 }
