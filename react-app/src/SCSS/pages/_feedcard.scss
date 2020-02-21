@@ -1,13 +1,10 @@
-.container-feed-card-and-comments {
-	background-color: $color-white-cement !important;
-
-
+#App .container-feed-card-and-comments {
+	background-color: $color-white-cement;
+	display: flex;
 }
 
 .container-feed-card {
-	border: 2px solid blue;
 	background-color: $color-white-dark;
-
 }
 
 .feed-card-top {

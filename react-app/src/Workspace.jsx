@@ -34,8 +34,9 @@ function Workspace(props) {
 	};
 
 	return (
-			<div className="workspace-container">
-				<SideBar />
+		<div className="workspace">
+			<SideBar />
+			<div clasName="workspace-container">
 				<div className="workspace-search-div">
 					<h1>Workspace</h1>
 					<div className="workplace-search-bar">
@@ -52,6 +53,7 @@ function Workspace(props) {
 					setTeam={setTeam}
 				/>
 			</div>
+		</div>
 	);
 }
 export default connect(({ user }) => ({ ...user }), {})(Workspace);

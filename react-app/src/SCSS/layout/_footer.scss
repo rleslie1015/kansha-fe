@@ -2,6 +2,9 @@
 	background-color: $color-primary-nav;
 	color: $color-white;
 	height: 190px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .landing-footer {

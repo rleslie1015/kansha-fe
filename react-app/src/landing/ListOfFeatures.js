@@ -8,7 +8,7 @@ import rewardIcon from './images/reward.png';
 import workspaceIcon from './images/workspace.png';
 import Heart from '../assets/heart.png';
 
-export default function WhyKansha() {
+export default function ListOfFeatures() {
 	return (
 		<div className="list-of-features-container">
 			<h3 className="header-list-of-features">

@@ -18,6 +18,7 @@
 		justify-content: flex-start;
 		flex-direction: column;
 		align-items: center;
+		align-content: flex-start;
 
 		.header-main-cta {
 			font-size: 6rem;
@@ -78,17 +79,16 @@
 			width: 20rem;
 			height: 8rem;
 			margin: 6rem;
+
+			.text-container-list-of-features {
+				.title-feature-list-of-features {
+					font-size: 2.4rem;
+				}
+
+				.text-feature-list-of-features {
+					font-size: 1.6rem;
+				}
+			}
 		}
-	}
-}
-
-// text boxes inside Why Kansha Features sections
-.text-container-list-of-features {
-	.title-feature-list-of-features {
-		font-size: 2.4rem;
-	}
-
-	.text-feature-list-of-features {
-		font-size: 1.6rem;
 	}
 }

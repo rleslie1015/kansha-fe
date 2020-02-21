@@ -30,34 +30,34 @@ export const Feed = () => {
 		setSelectedRec(null);
 	};
 
-	useEffect(() => {
-		// Loads most current batch feed data
-		dispatch(loadLiveFeed());
-		/*
-		Constucting the url for live feed events
-		For now the token is embedded as a query param
-		This is to circumvent a limitation in the SSE API,
-		that doesn't allow setting custom headers.
+	// useEffect(() => {
+	// 	// Loads most current batch feed data
+	// 	dispatch(loadLiveFeed());
+	// 	/*
+	// 	Constucting the url for live feed events
+	// 	For now the token is embedded as a query param
+	// 	This is to circumvent a limitation in the SSE API,
+	// 	that doesn't allow setting custom headers.
 
-		This should be safe considering https still encrypts query parmas.
+	// 	This should be safe considering https still encrypts query parmas.
 
-		This token is added back to the Authorization header via a backend middleware
-		*/
-		const src = `${
-			process.env.REACT_APP_BASE_URL
-		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
-		const sse = new EventSource(src);
+	// 	This token is added back to the Authorization header via a backend middleware
+	// 	*/
+	// 	const src = `${
+	// 		process.env.REACT_APP_BASE_URL
+	// 	}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
+	// 	const sse = new EventSource(src);
 
-		sse.addEventListener('HEARTBEAT', console.dir);
+	// 	sse.addEventListener('HEARTBEAT', console.dir);
 
-		// Set's up event listeners inside of redux ac
-		dispatch(liveFeedListeners(sse));
+	// 	// Set's up event listeners inside of redux ac
+	// 	dispatch(liveFeedListeners(sse));
 
-		// Close the EventStream when component unmounts
-		return function cleanup() {
-			sse.close();
-		};
-	}, [dispatch]);
+	// 	// Close the EventStream when component unmounts
+	// 	return function cleanup() {
+	// 		sse.close();
+	// 	};
+	// }, [dispatch]);
 
 	useEffect(() => {
 		axiosWithAuth()
