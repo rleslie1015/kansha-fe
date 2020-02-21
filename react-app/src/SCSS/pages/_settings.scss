@@ -1,14 +1,3 @@
-h3 {
-	font-size: 6rem;
-	margin-left: 4.5rem;
-	margin-bottom: 2.5rem;
-}
-
-h5 {
-	font-size: 3.5rem;
-	margin-left: 4.5rem;
-}
-
 form {
 	display: flex;
 	flex-direction: row;
@@ -35,6 +24,18 @@ form {
 	.settings-container {
 		margin-top: 7rem;
 		width: 80vw;
+
+		h3 {
+			font-size: 6rem;
+			margin-left: 4.5rem;
+			margin-bottom: 2.5rem;
+		}
+
+		h5 {
+			font-size: 3.5rem;
+			margin-left: 4.5rem;
+		}
+
 		.settings-profile {
 			width: 48%;
 			display: flex;

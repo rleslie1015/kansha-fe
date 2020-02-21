@@ -17,9 +17,9 @@ export default function Footer() {
 					<a href="#">Contact</a>
 				</nav>
 			</footer>
-			<div className="landing-footer-copyright">
-				© All Rights Reserved 2019 Kansha
-			</div>
+			<p className="landing-footer-copyright">
+				© Kansha. 2020. We love our users!
+			</p>
 		</div>
 	);
 }
