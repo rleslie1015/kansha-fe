@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import WorkspaceCard from './Workspace_Card';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import { connect } from 'react-redux';
+import SideBar from './Components/sideBar/Sidebar';
 
 function Workspace(props) {
 	const [team, setTeam] = useState([]);
@@ -33,12 +34,11 @@ function Workspace(props) {
 	};
 
 	return (
-		<div>
-			<div>
-				<div>
+			<div className="workspace-container">
+				<SideBar />
+				<div className="workspace-search-div">
 					<h1>Workspace</h1>
-					<div>
-						<div></div>
+					<div className="workplace-search-bar">
 						<input
 							placeholder="Search Workspace…"
 							onKeyUp={searchWorkPlaceHandler}
@@ -46,13 +46,12 @@ function Workspace(props) {
 						/>
 					</div>
 				</div>
-				<div
+				<WorkspaceCard
 					team={filteredTeam.length > 0 ? filteredTeam : team}
 					profile={props.profile}
 					setTeam={setTeam}
 				/>
 			</div>
-		</div>
 	);
 }
 export default connect(({ user }) => ({ ...user }), {})(Workspace);

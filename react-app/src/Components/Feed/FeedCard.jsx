@@ -94,13 +94,10 @@ export const FeedCard = memo(
 			return (
 				<div className="container-feed-card">
 					<div>
-						<div>
-							<img src={rec.profile_picture} alt="sender" />
-							<img src={rec.recipient_picture} alt="recipient" />
-						</div>
-					</div>
-					<div>
-						<div>
+						<div className="feed-card-top">
+							<img className="picture-user-small" src={rec.profile_picture} alt="sender" />
+							<img className="picture-user-small" src={rec.recipient_picture} alt="recipient" />
+													<div>
 							<Link to={`/profile/${rec.sender}`}>
 								{rec.first_name} {rec.last_name}
 							</Link>{' '}
@@ -111,9 +108,13 @@ export const FeedCard = memo(
 							<span>{time}</span>
 						</div>
 						<p>{rec.message}</p>
+						</div>
+					</div>
+					<div>
+
 						{badge && (
 							<div>
-								<img src={badge.badge_URL} />
+								<img className="picture-badge-medium" src={badge.badge_URL} />
 							</div>
 						)}
 						<div>

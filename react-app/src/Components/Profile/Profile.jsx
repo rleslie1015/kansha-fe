@@ -76,7 +76,7 @@ export function Profile({ profile, isPeer }) {
 				</div>
 				{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
 				<div className="container-badges">
-					<h5>Badges</h5>
+					<h5 className="title-badges">Badges</h5>
 					<div>
 						{badges && (
 							<>

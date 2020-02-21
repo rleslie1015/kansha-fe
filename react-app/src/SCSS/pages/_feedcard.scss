@@ -1,3 +1,16 @@
+.container-feed-card-and-comments {
+	background-color: $color-white-cement !important;
+
+
+}
+
 .container-feed-card {
 	border: 2px solid blue;
+	background-color: $color-white-dark;
+
+}
+
+.feed-card-top {
+	display: flex;
+	align-items: center;
 }

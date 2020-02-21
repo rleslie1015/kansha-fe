@@ -7,6 +7,7 @@ import {
 	loadLiveFeed,
 	liveFeedListeners,
 } from '../../store/actions/feed-actions';
+import SideBar from '../sideBar/Sidebar';
 
 // Adds compatibility for SSE to older browsers
 import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
@@ -70,7 +71,8 @@ export const Feed = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="container-feed-card-and-comments">
+			<SideBar />
 			<div>
 				{feed.map(rec => (
 					<FeedCard

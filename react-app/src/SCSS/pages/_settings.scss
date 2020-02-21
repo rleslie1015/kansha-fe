@@ -1,16 +1,20 @@
 h3 {
 	font-size: 6rem;
+	margin-left: 4.5rem;
+	margin-bottom: 2.5rem;
 }
 
 h5 {
 	font-size: 3.5rem;
+	margin-left: 4.5rem;
 }
 
 form {
 	display: flex;
 	flex-direction: row;
+	width: 48%;
+	margin-left: 4rem;
 	.settings-form-changes {
-		width: 48%;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
@@ -20,35 +24,45 @@ form {
 .wrapper {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 7rem;
 }
-.settings-profile {
-	width: 48%;
+
+#settings {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: $color-gray-dark;
+	flex-direction: row;
 
-	img {
-		border-radius: 50%;
-		width: 40%;
-	}
+	.settings-container {
+		margin-top: 7rem;
+		width: 80vw;
+		.settings-profile {
+			width: 48%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: white;
+			@include boxshadow();
+			margin-bottom: 4rem;
 
-	.settings-user-info {
-		margin-top: 3rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+			img {
+				border-radius: 50%;
+				width: 40%;
+				margin-top: 3rem;
+			}
 
-		.username {
-			color: white;
-		}
+			.settings-user-info {
+				margin-top: 3rem;
+				margin-bottom: 3rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 
-		.job-description {
-			color: white;
-		}
-
-		.department {
-			color: white;
+				p {
+					color: black;
+					font-size: 2.5rem;
+					align-self: center;
+				}
+			}
 		}
 	}
 }

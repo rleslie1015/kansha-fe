@@ -117,7 +117,7 @@ function RecogModal(props) {
 	if (isTyping) {
 		return (
 			<div>
-				<button type="button" onClick={handleOpen}>
+				<button className="send-recog-btn" type="button" onClick={handleOpen}>
 					<img src={send} alt="thank button" />
 				</button>
 				{/* <Modal
