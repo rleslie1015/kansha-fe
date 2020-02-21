@@ -27,9 +27,6 @@ function Sidebar({ user }) {
 	};
 
 	return (
-		<div className="container-side-bar">
-			{/* this populates the icons in the closed menu and populates text also when menu is open */}
-			<div open={open}>
 				<div className="side-nav">
 					{/* This is the open menu button */}
 					{!open ? (
@@ -108,10 +105,6 @@ function Sidebar({ user }) {
 						</li>
 					</ul>
 				</div>
-
-				{/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
-			</div>
-		</div>
 	);
 }
 

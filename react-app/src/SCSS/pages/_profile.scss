@@ -1,21 +1,29 @@
+// this cointains the .container-entire-profile. it's so that the sidebar is displayed to the left
+.profile-main-cont {
+	display: flex;
+}
+
+
+
+// layout of the profile and peer profile page
 #App .container-entire-profile {
 	display: flex;
 	justify-content: space-evenly;
-	border: 2px solid green;
+
 	background-color: $color-white-cement;
 	color: $color-black;
 	padding: 2rem 2rem 2rem 0;
-	// background-color: $color-gray-dark;
-	// color: $color-white;
+
 
 	.container-profile-card-and-badges {
-		border: 2px solid pink;
+	
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100%;
+		margin-left: 1.6rem;
 		.container-profile-card {
-			border: 2px solid red;
+	
 			height: 60vh;
 			width: 45vw;
 			background-color: $color-white;
@@ -58,21 +66,24 @@
 		}
 	}
 	.container-badges {
-		border: 2px solid orange;
+
 		height: 30vh;
 		background-color: $color-white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+		padding: 2rem;
+
+		.title-badges {
+			font-size: 2.4rem;
+			font-weight: 500;
+		}
 	}
 }
 
+// activity section of the page
 .activity-card {
-	border: 2px solid yellow;
+
 	width: 45vw;
 	background-color: $color-white;
-
+	margin-left: 1.6rem;
 	padding: 3rem;
 	.title-activity-card {
 		font-weight: 500;
@@ -80,7 +91,7 @@
 		padding: 2rem;
 	}
 	.inner-activity-card {
-		border: 2px solid darkblue;
+
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -88,15 +99,9 @@
 	}
 }
 
-// .container-recognition-card-admin {
-// 	border: 2px solid dodgerblue;
-// }
 
-// .container-recognition-card-user {
-// 	border: 2px solid limegreen;
-// }
 .container-recognition-card {
-	border: 2px solid white;
+
 	display: flex;
 }
 
@@ -104,14 +109,4 @@
 	width: 10rem;
 }
 
-.recognition-profile-pic {
-	width: 10rem;
-}
 
-.badge-profile {
-	width: 20rem;
-}
-
-.profile-main-cont {
-	display: flex;
-}

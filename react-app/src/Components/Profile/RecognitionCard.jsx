@@ -157,7 +157,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 			<div className="container-recognition-card container-recognition-card-user">
 				<div>
 					<img
-						className="recognition-profile-pic"
+						className="picture-profile-medium"
 						src={
 							sent
 								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
