@@ -8,7 +8,7 @@ export default function EnterEmail() {
 					<input
 						className="email-input"
 						placeholder="Enter your work email address here"></input>
-					<button>Get Started</button>
+					<button className="btn-get-started">Get Started</button>
 				</form>
 			</div>
 		</div>

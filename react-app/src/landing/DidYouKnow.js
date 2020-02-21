@@ -4,7 +4,7 @@ import Laptop from '../assets/Macbook-Pro.svg';
 export default function DidYouKnow() {
 	return (
 		<div className="didyouknow">
-			<div className="left-div">
+			<div className="dyk-left-div">
 				<h1>Did you know...</h1>
 				<p>
 					Companies with robust employee recognition programs are
@@ -13,7 +13,7 @@ export default function DidYouKnow() {
 				</p>
 				<button className="btn-get-started">Get Started</button>
 			</div>
-			<div className="right-div">
+			<div className="dyk-right-div">
 				<img src={Laptop} />
 			</div>
 		</div>

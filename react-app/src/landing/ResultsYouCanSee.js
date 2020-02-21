@@ -4,7 +4,9 @@ export default function ResultsYouCanSee() {
 	return (
 		<div className="container-results">
 			<>
-				<h1>Results You Can See...</h1>
+				<h1>
+					Results You Can <span>see...</span>
+				</h1>
 				<h3>Watch it work for you.</h3>
 			</>
 			<div className="container-results-box">
