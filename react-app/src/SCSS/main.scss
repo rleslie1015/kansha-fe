@@ -11,6 +11,7 @@
 @import './components/card.scss';
 @import './components/files.scss';
 @import './components/form.scss';
+@import './components/sidebar.scss';
 
 // layout
 @import './layout/footer.scss';
@@ -19,6 +20,8 @@
 @import './layout/sidenav.scss';
 
 // pages
+@import './pages/feedcard.scss';
 @import './pages/landing.scss';
 @import './pages/onboarding.scss';
 @import './pages/settings.scss';
+@import './pages/profile.scss';

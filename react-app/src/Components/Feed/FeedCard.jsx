@@ -92,7 +92,7 @@ export const FeedCard = memo(
 			);
 		} else {
 			return (
-				<div>
+				<div className="container-feed-card">
 					<div>
 						<div>
 							<img src={rec.profile_picture} alt="sender" />

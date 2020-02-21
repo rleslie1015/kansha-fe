@@ -13,6 +13,7 @@ export default function Nav() {
 			<a href="#" onClick={auth.login}>
 				Log in
 			</a>
+
 			<Link to="/onboarding">Get Started</Link>
 		</nav>
 	);

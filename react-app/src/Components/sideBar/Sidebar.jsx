@@ -27,7 +27,7 @@ function Sidebar({ user }) {
 	};
 
 	return (
-		<div>
+		<div className="container-side-bar">
 			{/* this populates the icons in the closed menu and populates text also when menu is open */}
 			<div open={open}>
 				<div className="side-nav">
