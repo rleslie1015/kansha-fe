@@ -28,38 +28,38 @@ function Sidebar({ user }) {
 
 	return (
 		<div>
-				{/* this populates the icons in the closed menu and populates text also when menu is open */}
-				<div open={open}>
+			{/* this populates the icons in the closed menu and populates text also when menu is open */}
+			<div open={open}>
 				<div className="side-nav">
-				{/* This is the open menu button */}
-				{!open ? (
-					<div className="nav-open-menu">
-						{/* <button */}
+					{/* This is the open menu button */}
+					{!open ? (
+						<div className="nav-open-menu">
+							{/* <button */}
 							{/* aria-label="open drawer"
 							onClick={handleDrawerOpen}
 							edge="start"> */}
 							<img src={openMenu} alt="open menu icon" />
-						{/* </button> */}
-					</div>
-				) : (
-					/* this is the close menu button */
-					<div>
-						<div>
-							<button
-								aria-label="close drawer"
-								onClick={handleDrawerClose}></button>
+							{/* </button> */}
 						</div>
-						{/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
+					) : (
+						/* this is the close menu button */
 						<div>
-							<img
-								src={user.profile.profile_picture}
-								alt="User"
-							/>
-							<p>{`${user.profile.first_name} ${user.profile.last_name}`}</p>
+							<div>
+								<button
+									aria-label="close drawer"
+									onClick={handleDrawerClose}></button>
+							</div>
+							{/* this is the profile picture and name at the top of the open menu, everything in this className is a "if statement" */}
+							<div>
+								<img
+									src={user.profile.profile_picture}
+									alt="User"
+								/>
+								<p>{`${user.profile.first_name} ${user.profile.last_name}`}</p>
+							</div>
 						</div>
-					</div>
-				)}
-					<SidebarLink 
+					)}
+					<SidebarLink
 						path="/home"
 						name="Home"
 						icon={home}
@@ -95,17 +95,18 @@ function Sidebar({ user }) {
 						icon={settings}
 						open={open}
 					/>
-				<ul>
-					{/* this populates the sign out icon on the closed menu and text on the open menu */}
-					<li className="sign-out-li" button onClick={() => signout()} key="Sign Out">
-						<div className="nav-sign-out">
-							<img
-								src={signOut}
-								alt="sign out icon"
-							/>
-						</div>
-					</li>
-				</ul>
+					<ul>
+						{/* this populates the sign out icon on the closed menu and text on the open menu */}
+						<li
+							className="sign-out-li"
+							button
+							onClick={() => signout()}
+							key="Sign Out">
+							<div className="nav-sign-out">
+								<img src={signOut} alt="sign out icon" />
+							</div>
+						</li>
+					</ul>
 				</div>
 
 				{/* This "if statment" changes how far down the sign out button is on both closed and open menus */}
