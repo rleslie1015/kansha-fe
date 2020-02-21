@@ -10,7 +10,7 @@ export default function Header() {
 	return (
 		<header>
 			<div className="nav-container">
-				<img src={Logo} alt="kansha-logo" />
+				<img className="kansha-logo" src={Logo} alt="kansha-logo" />
 				<Nav />
 			</div>
 		</header>

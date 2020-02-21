@@ -2,19 +2,17 @@
 import React from 'react';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
+import HamburgerMenu from '../assets/open-menu.png';
 
 const auth = new Auth();
 
 export default function Nav() {
 	return (
 		<nav className="nav">
-			<a href="#">Learn More</a>
-			<a href="#">Our Team</a>
 			<a href="#" onClick={auth.login}>
-				Log in
+				Login
 			</a>
-
-			<Link to="/onboarding">Get Started</Link>
+			<img className="nav-logo" src={HamburgerMenu} width="30" />
 		</nav>
 	);
 }

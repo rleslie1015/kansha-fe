@@ -1,5 +1,4 @@
 .landing-page {
-	padding: 2rem;
 	background-color: $color-white-dark;
 	min-height: 100%;
 	width: 100%;
@@ -8,22 +7,35 @@
 // Main Section
 .main-container-landing {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	margin-top: 7rem;
 	align-items: center;
 	min-height: 100%;
 
 	.main-cta {
-		min-height: 100%;
+		width: 50%;
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: column;
+		align-items: center;
+
 		.header-main-cta {
-			font-weight: 600;
-			font-size: 3.6rem;
-			width: 45rem;
+			font-size: 6rem;
+			width: 62rem;
+			color: $color-black;
+			line-height: 7.2rem;
+		}
+
+		.header-secondary-cta {
+			font-size: 9.5rem;
+			font-weight: 300;
+			width: 42.5rem;
 			color: $color-black;
 		}
 
 		.text-main-cta {
-			width: 45rem;
+			width: 46rem;
+			font-size: 5.6rem;
 			font-size: $default-font-size;
 			color: $color-gray-dark;
 			margin-bottom: 1.5rem;
@@ -31,25 +43,29 @@
 	}
 
 	.main-img {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+		padding: 4rem;
 		img {
-			width: 42rem;
+			width: 54rem;
 		}
 	}
 }
 
-// Why Kansha Section
-.why-kansha-container {
+// list of features Section
+.list-of-features-container {
 	min-height: 100%;
 	font-weight: 600;
 	width: 100%;
 	margin-top: 1rem;
 
-	.header-why-kansha {
+	.header-list-of-features {
 		font-size: 3.6rem;
 		text-align: center;
 	}
 
-	.features-why-kansha {
+	.features-list-of-features {
 		font-size: $small;
 		display: flex;
 		flex-wrap: wrap;
@@ -58,7 +74,7 @@
 		align-items: center;
 		justify-content: center;
 
-		.feature-why-kansha {
+		.feature-list-of-features {
 			width: 20rem;
 			height: 8rem;
 			margin: 6rem;
@@ -67,12 +83,12 @@
 }
 
 // text boxes inside Why Kansha Features sections
-.text-container-why-kansha {
-	.title-feature-why-kansha {
+.text-container-list-of-features {
+	.title-feature-list-of-features {
 		font-size: 2.4rem;
 	}
 
-	.text-feature-why-kansha {
+	.text-feature-list-of-features {
 		font-size: 1.6rem;
 	}
 }

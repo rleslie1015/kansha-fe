@@ -1,12 +1,23 @@
+.landing-footer-container {
+	background-color: $color-primary-nav;
+	color: $color-white;
+	height: 190px;
+}
+
 .landing-footer {
 	display: flex;
+	background-color: $color-primary-nav;
+	color: $color-white;
 	justify-content: space-between;
 	align-items: flex-end;
 	font-size: 1.6rem;
 	margin: $small;
 	nav {
 		display: flex;
-		flex-direction: column;
+		font-weight: 500;
+		font-size: 24px;
+		width: 33%;
+		justify-content: space-evenly;
 		a {
 			margin: 0.5rem;
 
@@ -15,8 +26,10 @@
 			}
 		}
 	}
+
 	.landing-footer-copyright {
-		color: $color-gray-dark;
+		color: $color-white;
+		font-size: 12.8571px;
 	}
 
 	.landing-footer-title {
