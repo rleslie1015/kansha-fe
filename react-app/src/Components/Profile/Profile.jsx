@@ -60,11 +60,15 @@ export function Profile({ profile, isPeer }) {
 						)} */}
 						</div>
 						<div className="profile-name-info">
-							<h5>
+							<h5 className="profile-user-name">
 								{profile.first_name} {profile.last_name}
 							</h5>
-							<p>{profile.job_title}</p>
-							<p>{profile.department}</p>
+							<p className="profile-user-info">
+								{profile.job_title}
+							</p>
+							<p className="profile-user-info">
+								{profile.department}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -111,8 +115,8 @@ export function Profile({ profile, isPeer }) {
 			</div>
 			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
 			<div className="activity-card">
-				<h5>Activity</h5>
-				<div className="title-activity-card">
+				<h5 className="title-activity-card">Activity</h5>
+				<div className="inner-activity-card">
 					{profile &&
 						profile.rec
 							.sort(function(a, b) {

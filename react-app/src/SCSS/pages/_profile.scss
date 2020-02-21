@@ -4,6 +4,7 @@
 	border: 2px solid green;
 	background-color: $color-white-cement;
 	color: $color-black;
+	padding: 2rem 2rem 2rem 0;
 	// background-color: $color-gray-dark;
 	// color: $color-white;
 
@@ -11,9 +12,8 @@
 		border: 2px solid pink;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-evenly;
-		height: 100vh;
-
+		justify-content: space-between;
+		height: 100%;
 		.container-profile-card {
 			border: 2px solid red;
 			height: 60vh;
@@ -24,7 +24,6 @@
 			align-items: center;
 
 			.profile-info {
-				border: 2px solid purple;
 				height: 50vh;
 				width: 50vh;
 				display: flex;
@@ -35,7 +34,6 @@
 				.profile-image {
 					display: flex;
 					justify-content: center;
-					border: 2px solid green;
 					.profilepic {
 						height: 30vh;
 						border-radius: 50%;
@@ -47,26 +45,46 @@
 					flex-direction: column;
 					justify-content: center;
 					align-items: center;
-					border: 2px solid blue;
+
+					.profile-user-name {
+						font-size: 2.5rem;
+					}
+
+					.profile-user-info {
+						font-size: 2.2rem;
+					}
 				}
 			}
 		}
-
-		.container-badges {
-			border: 2px solid orange;
-			height: 30vh;
-			background-color: $color-white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
 	}
-
-	.activity-card {
-		border: 2px solid yellow;
-		width: 45vw;
+	.container-badges {
+		border: 2px solid orange;
+		height: 30vh;
 		background-color: $color-white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+.activity-card {
+	border: 2px solid yellow;
+	width: 45vw;
+	background-color: $color-white;
+
+	padding: 3rem;
+	.title-activity-card {
+		font-weight: 500;
+		font-size: 2.4rem;
+		padding: 2rem;
+	}
+	.inner-activity-card {
+		border: 2px solid darkblue;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 2rem;
 	}
 }
 
@@ -79,6 +97,7 @@
 // }
 .container-recognition-card {
 	border: 2px solid white;
+	display: flex;
 }
 
 .badge-recognition-card {
