@@ -18,12 +18,10 @@ export const SendComments = ({ id, scrollToBottom }) => {
 	return (
 		<div>
 			<div>
-				<input
-					multiline
+				<textarea
 					placeholder="Write a comment..."
 					value={newComment}
 					onChange={handleInput}
-					inputProps={{ maxLength: 255 }}
 				/>
 				<button onClick={handleSubmit}>Submit</button>
 			</div>

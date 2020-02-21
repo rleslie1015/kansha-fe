@@ -63,7 +63,7 @@ export default function Workspace_Card(props) {
 					} else {
 						return (
 							<div className="workspace-card" key={user.id}>
-								<div >
+								<div className= "user-info-container" >
 									<img
 										className="workspace-card-image"
 										alt="profile picture"

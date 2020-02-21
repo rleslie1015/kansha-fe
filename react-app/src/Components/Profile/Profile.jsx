@@ -48,8 +48,6 @@ export function Profile({ profile, isPeer }) {
 			{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 			<div className="container-profile-card-and-badges">
 				<div className="container-profile-card">
-					<div className="profile-info">
-						<div className="profile-image">
 							<img
 								className="profilepic"
 								src={profile.profile_picture}
@@ -60,7 +58,6 @@ export function Profile({ profile, isPeer }) {
 								<Cropper />
 							</div>
 						)} */}
-						</div>
 						<div className="profile-name-info">
 							<h5 className="profile-user-name">
 								{profile.first_name} {profile.last_name}
@@ -72,7 +69,6 @@ export function Profile({ profile, isPeer }) {
 								{profile.department}
 							</p>
 						</div>
-					</div>
 				</div>
 				{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
 				<div className="container-badges">

@@ -36,7 +36,7 @@ function Workspace(props) {
 	return (
 		<div className="workspace">
 			<SideBar />
-			<div clasName="workspace-container">
+			<div className="workspace-container">
 				<div className="workspace-search-div">
 					<h1>Workspace</h1>
 					<div className="workplace-search-bar">

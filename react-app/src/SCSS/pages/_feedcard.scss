@@ -1,10 +1,12 @@
 #App .container-feed-card-and-comments {
-	background-color: $color-white-cement;
 	display: flex;
 }
 
 .container-feed-card {
 	background-color: $color-white-dark;
+	margin-left: 8rem;
+	@include boxshadow();
+	
 }
 
 .feed-card-top {
