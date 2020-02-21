@@ -1,13 +1,18 @@
 .workspace {
 	display: flex;
+	.workspace-container {	
+		margin-left: 8rem;
+		width: 100%;
+		
 	.workspace-search-div {
 		display: flex;
 		justify-content: flex-end;
 		justify-content: space-between;
 		align-items: center;
+		width: 100%;
+		margin: 20px 0;
 
 		h1 {
-			margin-left: 8.4rem;
 			font-size: 3.6rem;
 		}
 
@@ -21,35 +26,48 @@
 	.workspace-card-container {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
-		margin-left: 8rem;
+		justify-content: space-between;
+		min-height: min-content;
+
 		// margin-top: 3rem;
 
-		.workspace-card {
+		.workspace-card {	
 			height: 20rem;
 			text-align: center;
+			margin-right: 5rem;
 			width: 25.2rem;
-			height: 24.6rem;
-			border: 0.01rem solid gray;
+			height: 33rem;
 			margin-bottom: 5rem;
 			border-radius: 0.1rem;
 			@include boxshadow();
+			display:flex;
+			flex-direction: column;
+			justify-content:space-between;
 
+			h5 {
+				margin: 0;
+			}
+			
+			.user-info-container {
+				height: 7rem;
+			}
+			
 			.workspace-profile-icons {
 				display: flex;
-				justify-content: center;
 				justify-content: space-evenly;
-				margin-top: 1rem;
+				margin-bottom: 10px;
+				
 
 				.send-recog-btn {
 					border: none;
 					cursor: pointer;
 				}
 				img {
+					filter:invert(100%);
 					&:hover {
-						background-color: $color-primary;
 						border-radius: 100%;
 						border: none;
+						
 					}
 				}
 			}
@@ -63,4 +81,5 @@
 			}
 		}
 	}
+}
 }

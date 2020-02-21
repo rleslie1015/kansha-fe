@@ -30,9 +30,9 @@ export const Feed = () => {
 		setSelectedRec(null);
 	};
 
-	// useEffect(() => {
+	useEffect(() => {
 	// 	// Loads most current batch feed data
-	// 	dispatch(loadLiveFeed());
+		dispatch(loadLiveFeed());
 	// 	/*
 	// 	Constucting the url for live feed events
 	// 	For now the token is embedded as a query param
@@ -57,7 +57,7 @@ export const Feed = () => {
 	// 	return function cleanup() {
 	// 		sse.close();
 	// 	};
-	// }, [dispatch]);
+	}, [dispatch]);
 
 	useEffect(() => {
 		axiosWithAuth()
