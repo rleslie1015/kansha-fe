@@ -49,7 +49,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 				) : (
 					<div className="onboarding-form">
 						<h3>Let's Get Started!</h3>
-						<form>
+						<form id="ob-flow-form">
 							<div className="form-first-row">
 								<input
 									label="First Name*"
@@ -86,6 +86,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 								</select>
 							</div>
 							<input
+								id="bottom-rows"
 								label="Organization*"
 								placeholder="Organization Name"
 								name="org_name"
@@ -93,6 +94,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 								onChange={handleChange}
 							/>
 							<input
+								id="bottom-rows"
 								label="Department"
 								placeholder="e.g. Marketing Department"
 								name="department"

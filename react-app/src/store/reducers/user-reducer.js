@@ -19,20 +19,7 @@ import {
 } from '../actions/user-actions';
 
 const initialState = {
-	profile: {
-		id: 4,
-		sub: 'google-oauth2|100109569064373930037',
-		first_name: 'Kevin',
-		last_name: 'Smith',
-		profile_picture:
-			'https://lh3.googleusercontent.com/a-/AAuE7mAcyihVamnNeRgjvXkCbThK9XXUrn6Wreq9Ius66g',
-		job_title: 'Dude',
-		department: 'Team Awesome',
-		user_type: 'admin',
-		org_name: 'New Org',
-		org_id: 4,
-		rec: [],
-	},
+	profile: null,
 	isOnboarding: false,
 	isOnboardingLoading: false,
 	isLoggingIn: false,
@@ -45,7 +32,7 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		/*
-		dispatched by the authrizeUser action creator
+		dispatched by the authorizeUser action creator
 		*/
 		case USER_AUTH_START:
 			return {

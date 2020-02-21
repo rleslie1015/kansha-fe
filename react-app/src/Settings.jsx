@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { update } from './store/actions/user-actions';
+import SideBar from './Components/sideBar/Sidebar';
 
 function Settings({ update, user }) {
 	const history = useHistory();
@@ -32,81 +33,92 @@ function Settings({ update, user }) {
 
 	return (
 		<div id="settings">
-			<h5>Settings</h5>
-			<h5>Edit Profile</h5>
-			<form>
-				<div className="form-first-row">
-					<input
-						label="First Name*"
-						placeholder="e.g. Jane"
-						name="first_name"
-						margin="normal"
-						onChange={handleChange}
-						value={form.first_name}
-					/>
-					<input
-						label="Last Name*"
-						placeholder="e.g. Doe"
-						name="last_name"
-						margin="normal"
-						onChange={handleChange}
-						value={form.last_name}
-					/>
+			<SideBar />
+			<div className="settings-container">
+				<h3>Settings</h3>
+				<h5>Edit Profile</h5>
+				<div className="wrapper">
+					<form>
+						<div className="settings-form-changes">
+							<div>
+								<div className="form-first-row">
+									<input
+										label="First Name*"
+										placeholder="e.g. Jane"
+										name="first_name"
+										margin="normal"
+										onChange={handleChange}
+										value={form.first_name}
+									/>
+									<input
+										label="Last Name*"
+										placeholder="e.g. Doe"
+										name="last_name"
+										margin="normal"
+										onChange={handleChange}
+										value={form.last_name}
+									/>
+								</div>
+								<div className="form-second-row">
+									<input
+										label="Job Title*"
+										placeholder="e.g. Manager"
+										name="job_title"
+										margin="normal"
+										onChange={handleChange}
+										value={form.job_title}
+									/>
+									<select
+										defaultValue="standard"
+										value={form.user_type}
+										onChange={handleChange}
+										name="user_type"
+										margin="normal">
+										<option value="standard">
+											Standard
+										</option>
+										<option value="moderator">
+											Moderator
+										</option>
+										<option value="administrator">
+											Administrator
+										</option>
+									</select>
+								</div>
+								<div>
+									<input
+										label="Organization*"
+										placeholder="Organization Name"
+										name="org_name"
+										margin="normal"
+										onChange={handleChange}
+										value={form.org_name}
+									/>
+								</div>
+
+								<button
+									className="btn-onboarding-confirm"
+									onClick={handleSubmit}>
+									Save Changes
+								</button>
+							</div>
+						</div>
+					</form>
+					<div className="settings-profile">
+						<img
+							src={user.profile.profile_picture}
+							alt="user profile"
+						/>
+						<div className="settings-user-info">
+							<p>
+								{user.profile.first_name}{' '}
+								{user.profile.last_name}
+							</p>
+							<p>{user.profile.job_title}</p>
+						</div>
+					</div>
 				</div>
-				<div className="form-second-row">
-					<input
-						label="Job Title*"
-						placeholder="e.g. Manager"
-						name="job_title"
-						margin="normal"
-						onChange={handleChange}
-						value={form.job_title}
-					/>
-					<select
-						defaultValue="standard"
-						value={form.user_type}
-						onChange={handleChange}
-						name="user_type"
-						margin="normal"
-					/>
-					<option value="standard">Standard</option>
-					<option value="moderator">Mod</option>
-					<option value="administrator">Admin</option>
-					/>
-				</div>
-				<div>
-					<input
-						label="Organization*"
-						placeholder="Organization Name"
-						name="org_name"
-						margin="normal"
-						onChange={handleChange}
-						value={form.org_name}
-					/>
-				</div>
-				<div>
-					<input
-						label="Department"
-						placeholder="e.g. Marketing Department"
-						name="department"
-						margin="normal"
-						onChange={handleChange}
-						value={form.department}
-					/>
-				</div>
-				<button onClick={handleSubmit}>Save Changes</button>
-				<div>
-					<img
-						src={user.profile.profile_picture}
-						alt="user profile"
-					/>
-				</div>
-				<div>
-					{user.profile.first_name} {user.profile.last_name}
-				</div>
-				<div>{user.profile.job_title}</div>
-				<div>{user.profile.department}</div>
-			</form>
+			</div>
 		</div>
 	);
 }
