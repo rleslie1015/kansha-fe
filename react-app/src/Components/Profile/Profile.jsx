@@ -3,6 +3,7 @@ import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import RecogModal from '../RecogModal/RecogModal';
+import SideBar from '../sideBar/Sidebar';
 
 export function Profile({ profile, isPeer }) {
 	const [badges, setBadges] = useState([]);
@@ -41,7 +42,8 @@ export function Profile({ profile, isPeer }) {
 	console.log(userBadges);
 
 	return (
-		//This may need to be refactored in a future build if things are added in order to make it more mobile-friendly
+		<div className="profile-main-cont">
+		<SideBar/>
 		<div className="container-entire-profile">
 			{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 			<div className="container-profile-card-and-badges">
@@ -133,6 +135,7 @@ export function Profile({ profile, isPeer }) {
 							))}
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 }
