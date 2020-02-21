@@ -21,7 +21,7 @@ function Login({
 	if (!isLoggingIn && profile) {
 		return (
 			<>
-				{/* <SideBar /> */}
+				<SideBar />
 				<Component {...{ history, match }} />
 			</>
 		);
