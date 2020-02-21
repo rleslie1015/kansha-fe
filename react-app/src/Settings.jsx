@@ -24,7 +24,6 @@ function Settings({ update, user }) {
 	const id = user.profile.id;
 
 	const handleSubmit = event => {
-		console.log(form);
 		update(id, form);
 		window.setTimeout(() => {
 			history.push('/profile');
@@ -32,97 +31,82 @@ function Settings({ update, user }) {
 	};
 
 	return (
-		<div id="App">
-			<div />
-			<div>
-				<h5>Settings</h5>
-				<div>
-					<div>
-						<h5>Edit Profile</h5>
-						<div>
-							<div>
-								<div>
-									<input
-										label="First Name*"
-										placeholder="e.g. Jane"
-										name="first_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.first_name}
-									/>
-									<input
-										label="Last Name*"
-										placeholder="e.g. Doe"
-										name="last_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.last_name}
-									/>
-								</div>
-								<div>
-									<input
-										label="Job Title*"
-										placeholder="e.g. Manager"
-										name="job_title"
-										margin="normal"
-										onChange={handleChange}
-										value={form.job_title}
-									/>
-									<div>
-										<input
-											defaultValue="standard"
-											value={form.user_type}
-											onChange={handleChange}
-											name="user_type"
-											margin="normal">
-											<select>Standard</select>
-											<select>Mod</select>
-											<select>Admin</select>
-										</input>
-									</div>
-								</div>
-								<div>
-									<input
-										label="Organization*"
-										placeholder="Organization Name"
-										name="org_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.org_name}
-									/>
-								</div>
-								<div>
-									<input
-										label="Department"
-										placeholder="e.g. Marketing Department"
-										name="department"
-										margin="normal"
-										onChange={handleChange}
-										value={form.department}
-									/>
-								</div>
-								<button onClick={handleSubmit}>
-									Save Changes
-								</button>
-							</div>
-							<div>
-								<div>
-									<img
-										src={user.profile.profile_picture}
-										alt="user profile"
-									/>
-								</div>
-								<div>
-									{user.profile.first_name}{' '}
-									{user.profile.last_name}
-								</div>
-								<div>{user.profile.job_title}</div>
-								<div>{user.profile.department}</div>
-							</div>
-						</div>
-					</div>
+		<div id="settings">
+			<h5>Settings</h5>
+			<h5>Edit Profile</h5>
+			<form>
+				<div className="form-first-row">
+					<input
+						label="First Name*"
+						placeholder="e.g. Jane"
+						name="first_name"
+						margin="normal"
+						onChange={handleChange}
+						value={form.first_name}
+					/>
+					<input
+						label="Last Name*"
+						placeholder="e.g. Doe"
+						name="last_name"
+						margin="normal"
+						onChange={handleChange}
+						value={form.last_name}
+					/>
 				</div>
-			</div>
+				<div className="form-second-row">
+					<input
+						label="Job Title*"
+						placeholder="e.g. Manager"
+						name="job_title"
+						margin="normal"
+						onChange={handleChange}
+						value={form.job_title}
+					/>
+					<select
+						defaultValue="standard"
+						value={form.user_type}
+						onChange={handleChange}
+						name="user_type"
+						margin="normal"
+					/>
+					<option value="standard">Standard</option>
+					<option value="moderator">Mod</option>
+					<option value="administrator">Admin</option>
+					/>
+				</div>
+				<div>
+					<input
+						label="Organization*"
+						placeholder="Organization Name"
+						name="org_name"
+						margin="normal"
+						onChange={handleChange}
+						value={form.org_name}
+					/>
+				</div>
+				<div>
+					<input
+						label="Department"
+						placeholder="e.g. Marketing Department"
+						name="department"
+						margin="normal"
+						onChange={handleChange}
+						value={form.department}
+					/>
+				</div>
+				<button onClick={handleSubmit}>Save Changes</button>
+				<div>
+					<img
+						src={user.profile.profile_picture}
+						alt="user profile"
+					/>
+				</div>
+				<div>
+					{user.profile.first_name} {user.profile.last_name}
+				</div>
+				<div>{user.profile.job_title}</div>
+				<div>{user.profile.department}</div>
+			</form>
 		</div>
 	);
 }

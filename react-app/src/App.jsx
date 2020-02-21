@@ -15,7 +15,6 @@ export const App = () => {
 	return (
 		<div id="App">
 			<Route exact path="/" component={Landing} />
-
 			<Route path="/auth" component={AuthLoader} />
 			<Route path="/onboarding" component={Onboarding} />
 			<ProtectedRoute path="/home" component={Feed} />

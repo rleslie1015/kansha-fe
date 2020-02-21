@@ -31,3 +31,19 @@
 		color: $color-white;
 	}
 }
+
+.btn-onboarding-confirm {
+	color: $color-white;
+	background-color: $color-secondary;
+	border: 0.7px solid $color-secondary;
+	width: 12rem;
+	height: 4rem;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	border-radius: 0.5rem;
+
+	&:hover {
+		color: $color-secondary;
+		background-color: $color-white-dark;
+	}
+}
