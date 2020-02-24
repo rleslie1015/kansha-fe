@@ -6,12 +6,11 @@ import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from './ReactionButton';
 import { timeAgo } from '../../utils/timeago';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-// import Trashcan from '../../assets/Trashcan.png';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
 export const FeedCard = memo(
-	({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
+	({ rec, badge, comments, reactions, profile, setSelectedRec }) => {
 		const { id: rec_id } = rec;
 		const dispatch = useDispatch();
 		useEffect(() => {
@@ -102,5 +101,4 @@ export const FeedCard = memo(
 			</section>
 		);
 	},
-	// },
 );
