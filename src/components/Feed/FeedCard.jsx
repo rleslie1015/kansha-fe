@@ -53,7 +53,7 @@ export const FeedCard = memo(
 				<div className="feed-card-content" role="main">
 					<section className="feed-card-top">
 						{profile.user_type.toLowerCase() === 'admin' && (
-							<button>
+							<button onClick={handleDelete}>
 								<Trashcan />
 							</button>
 						)}
