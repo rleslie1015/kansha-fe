@@ -1,0 +1,17 @@
+.nav {
+	padding-right: 2rem;
+	display: flex;
+	align-items: center;
+	a {
+		margin: 2rem;
+		font-size: 1.8rem;
+		color: $color-white;
+
+		&:hover {
+			color: $color-secondary;
+		}
+	}
+	img {
+		margin-left: 3rem;
+	}
+}

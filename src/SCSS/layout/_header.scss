@@ -1,0 +1,12 @@
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $color-primary-nav;
+	height: 6rem;
+
+	.kansha-logo {
+		width: 20rem;
+		padding-left: 5rem;
+	}
+}

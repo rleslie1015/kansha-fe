@@ -1,0 +1,96 @@
+// this cointains the .container-entire-profile. it's so that the sidebar is displayed to the left
+.profile-main-cont {
+	display: flex;
+}
+
+// layout of the profile and peer profile page
+#App .container-entire-profile {
+	display: flex;
+	justify-content: space-evenly;
+	color: $color-black;
+	padding: 2rem 2rem 2rem 0;
+	width: 100%;
+	height: 100vh;
+	
+
+	.container-profile-card-and-badges {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+		width: 45%;
+		margin-left: 8rem;
+		
+		
+		.container-profile-card {
+			height: 45%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			@include boxshadow();				
+
+			.profilepic {
+				height: 70%;
+				border-radius: 50%;
+			}
+
+			.profile-name-info {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				.profile-user-name {
+					font-size: 2.5rem;
+					margin: 0;
+				}
+
+				.profile-user-info {
+					font-size: 2.2rem;
+				}
+			}
+		}
+	}
+	.container-badges {
+		height: 45%;
+		background-color: $color-white;
+		padding: 2rem;
+		@include boxshadow();
+
+		.title-badges {
+			font-size: 2.4rem;
+			font-weight: 500;
+		}
+	}
+}
+
+// activity section of the page
+.activity-card {
+	width: 45%;
+	background-color: $color-white;
+	margin-left: 1.6rem;
+	padding: 3rem;	
+	@include boxshadow(); 
+	
+	.title-activity-card {
+		font-weight: 500;
+		font-size: 2.4rem;
+		padding: 2rem;
+	}
+	.inner-activity-card {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 2rem;
+	}
+}
+
+.container-recognition-card {
+	display: flex;
+}
+
+.badge-recognition-card {
+	width: 10rem;
+}

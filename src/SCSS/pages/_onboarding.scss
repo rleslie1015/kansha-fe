@@ -1,0 +1,57 @@
+.onboarding {
+	display: flex;
+	flex-direction: row;
+	background-color: $color-white-dark;
+}
+
+.left-div {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+	padding: 2rem;
+	background-color: $color-white-dark;
+
+	.onboarding-logo {
+		padding-bottom: 4rem;
+		width: 35rem;
+		height: 18rem;
+	}
+
+	.onboarding-image {
+		width: 55rem;
+	}
+}
+
+.right-div {
+	padding: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50vw;
+	background-color: $color-white-dark;
+	h3 {
+		font-size: $h3-font-size;
+		padding-bottom: 1.6rem;
+		padding-left: 0.3rem;
+		color: $color-secondary;
+	}
+
+	.onboarding-form {
+		flex-direction: column;
+		width: 100%;
+
+		#ob-flow-form {
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+
+			.form-first-row {
+				flex-direction: row;
+				width: 100%;
+			}
+			#bottom-rows {
+				width: 75%;
+			}
+		}
+	}
+}

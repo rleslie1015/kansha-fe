@@ -1,0 +1,40 @@
+.landing-footer-container {
+	background-color: $color-primary-nav;
+	color: $color-white;
+	height: 190px;
+	display: flex;
+	flex-direction: column;
+	padding-left: 0.5rem;
+}
+
+.landing-footer {
+	display: flex;
+	background-color: $color-primary-nav;
+	color: $color-white;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin: $small;
+	nav {
+		display: flex;
+		font-weight: 500;
+		margin-bottom: 1.3rem;
+		width: 33%;
+		justify-content: space-evenly;
+		a {
+			margin: 0.5rem;
+			height: 2.9rem;
+			font-size: 2.4rem;
+			&:hover {
+				color: $color-secondary;
+			}
+		}
+	}
+}
+
+.landing-footer-copyright {
+	color: $color-white;
+	font-size: 0.8rem;
+	line-height: 1.3rem;
+	letter-spacing: -0.015em;
+	margin-left: 3%;
+}

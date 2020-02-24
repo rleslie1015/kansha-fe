@@ -1,0 +1,50 @@
+.btn {
+	text-align: center;
+	font-size: 1.6rem;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.btn-get-started {
+	color: $color-white;
+	background-color: $color-secondary;
+	border: 0.7px solid $color-secondary;
+	border-radius: 0.6rem;
+	width: 19.2rem;
+	height: 4.4rem;
+
+	&:hover {
+		color: $color-secondary;
+		background-color: $color-white;
+	}
+}
+
+.btn-learn-more {
+	background-color: $color-white-dark;
+	color: $color-secondary;
+	border: 0.7px solid $color-secondary;
+	width: 9rem;
+	height: 2.5rem;
+	margin-left: 2rem;
+
+	&:hover {
+		background-color: $color-secondary;
+		color: $color-white;
+	}
+}
+
+.btn-onboarding-confirm {
+	color: $color-white;
+	background-color: $color-secondary;
+	border: 0.7px solid $color-secondary;
+	width: 12rem;
+	height: 4rem;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	border-radius: 0.5rem;
+
+	&:hover {
+		color: $color-secondary;
+		background-color: $color-white-dark;
+	}
+}
