@@ -9,21 +9,17 @@ export const FeedComments = ({ comments, id, profile, close }) => {
 		current.scrollTop = current.scrollHeight;
 	};
 	return (
-		<div>
-			<div>
-				<div>Comments</div>
-				<img
-					src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
-					onClick={close}
-					alt="close button"
-				/>
-			</div>
-			<div ref={containerRef}>
+		<aside className={id ? 'open' : 'closed'}>
+			<button type="button" onClick={close}>
+				&#9587;
+			</button>
+			<h3>Comments</h3>
+			<section ref={containerRef}>
 				{comments.map(comment => (
 					<Comment comment={comment} profile={profile} />
 				))}
-			</div>
+			</section>
 			<SendComments scrollToBottom={scrollToBottom} id={id} />
-		</div>
+		</aside>
 	);
 };

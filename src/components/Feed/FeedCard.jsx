@@ -1,12 +1,14 @@
 import React, { useEffect, memo, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import clsx from 'clsx';
+
 import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from './ReactionButton';
 import { timeAgo } from '../../utils/timeago';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import Trashcan from '../../assets/Trashcan.png';
+// import Trashcan from '../../assets/Trashcan.png';
+import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
+import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
 export const FeedCard = memo(
 	({ rec, badge, comments, reactions, profile, setSelectedRec, active }) => {
@@ -34,104 +36,55 @@ export const FeedCard = memo(
 			}
 		};
 
-		if (profile.user_type === 'admin') {
-			return (
-				<div>
-					<div>
-						<div>
-							<img src={rec.profile_picture} alt="sender" />
-							<img src={rec.recipient_picture} alt="recipient" />
-						</div>
-					</div>
-					<div>
-						<div>
+		return (
+			<section className="container-feed-card">
+				<div className="feed-card-pics" role="presentation">
+					<img
+						className="picture-user-small sender"
+						src={rec.profile_picture}
+						alt="sender"
+					/>
+					<img
+						className="picture-user-small recipient"
+						src={rec.recipient_picture}
+						alt="recipient"
+					/>
+				</div>
+				<div className="feed-card-content" role="main">
+					<section className="feed-card-top">
+						{profile.user_type.toLowerCase() === 'admin' && (
+							<button>
+								<Trashcan />
+							</button>
+						)}
+						<p>
 							<Link to={`/profile/${rec.sender}`}>
 								{rec.first_name} {rec.last_name}
-							</Link>{' '}
-							sent to{' '}
+							</Link>
+							&nbsp;sent to&nbsp;
 							<Link to={`/profile/${rec.recipient}`}>
 								{rec.recipient_first} {rec.recipient_last}
-							</Link>{' '}
-							<span>{time}</span>
-							<img
-								src={Trashcan}
-								alt="trash can icon"
-								onClick={() => handleDelete(rec.id)}
-							/>
-						</div>
-						<div>{rec.message}</div>
+							</Link>
+							&nbsp;
+							<span className="time" role="presentation">
+								{time}
+							</span>
+						</p>
+					</section>
+					<p>{rec.message}</p>
+					<section className="feed-card-bottom">
 						{badge && (
-							<div>
-								<img src={badge.badge_URL} />
-							</div>
+							<img
+								className="picture-badge-medium"
+								src={badge.badge_URL}
+								alt=""
+							/>
 						)}
-						<div>
+						<section className="reaction-buttons">
 							{comments && (
 								<button onClick={() => setSelectedRec(rec_id)}>
-									<div />
-									<div>{comments.length}</div>
-								</button>
-							)}
-							{reactions && (
-								<>
-									<button
-										id={profile.id}
-										rec_id={rec_id}
-										reactions={reactions}
-									/>
-								</>
-							)}
-						</div>
-					</div>
-					{/*
-				<button onClick={() => dispatch(addComment(rec_id, comment))}>
-					comment
-				</button>
-				*/}
-				</div>
-			);
-		} else {
-			return (
-				<div className="container-feed-card">
-					<div>
-						<div className="feed-card-top">
-							<img
-								className="picture-user-small"
-								src={rec.profile_picture}
-								alt="sender"
-							/>
-							<img
-								className="picture-user-small"
-								src={rec.recipient_picture}
-								alt="recipient"
-							/>
-							<div>
-								<Link to={`/profile/${rec.sender}`}>
-									{rec.first_name} {rec.last_name}
-								</Link>{' '}
-								sent to{' '}
-								<Link to={`/profile/${rec.recipient}`}>
-									{rec.recipient_first} {rec.recipient_last}
-								</Link>{' '}
-								<span>{time}</span>
-							</div>
-							<p>{rec.message}</p>
-						</div>
-					</div>
-					<div>
-						{badge && (
-							<div>
-								<img
-									className="picture-badge-medium"
-									src={badge.badge_URL}
-								/>
-							</div>
-						)}
-						<div>
-							{comments && (
-								<button onClick={() => setSelectedRec(rec_id)}>
-									<div />
-									<div>{comments.length}</div>
+									<AddComment />
+									<p>{comments.length}</p>
 								</button>
 							)}
 							{reactions && (
@@ -143,15 +96,11 @@ export const FeedCard = memo(
 									/>
 								</>
 							)}
-						</div>
-					</div>
-					{/*
-				<button onClick={() => dispatch(addComment(rec_id, comment))}>
-					comment
-				</button>
-				*/}
+						</section>
+					</section>
 				</div>
-			);
-		}
+			</section>
+		);
 	},
+	// },
 );

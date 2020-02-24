@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeReaction, reactToPost } from '../../store/actions/feed-actions';
+import { ReactComponent as Heart } from '../../assets/singleheart.svg';
 
 export const ReactionButton = ({ reactions, rec_id, id }) => {
 	const dispatch = useDispatch();
@@ -26,14 +27,9 @@ export const ReactionButton = ({ reactions, rec_id, id }) => {
 			aria-label={
 				userReaction ? 'remove reaction to post' : 'react to post'
 			}
-			onClick={handleReaction}
-			className="reaction-button">
-			{userReaction ? (
-				<div className="icon-reacted" />
-			) : (
-				<div className="icon-non-reacted" />
-			)}
-			<div className="count">{reactions && reactions.length}</div>
+			onClick={handleReaction}>
+			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
+			{reactions && reactions.length}
 		</button>
 	);
 };
