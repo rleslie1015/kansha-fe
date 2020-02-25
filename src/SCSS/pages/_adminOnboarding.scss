@@ -186,6 +186,71 @@ button {
 	width: 47%;
 }
 
+.admin-user-add-container{
+	.user-upload-title{
+		font-size: 4.8rem;
+		line-height: 5.8rem;
+		padding-bottom: 7rem;
+		font-weight: 300;
+	}
+
+	.admin-add-employee-form{
+		height: 22rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.upload-now-question{
+			height: 8rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.how-upload-question{
+			height: 8rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		h6{
+			font-size:1.8rem;
+		}
+
+		label{
+			font-size: 1.6rem;
+		}
+	}
+}
+
+.employee-add-container{
+	.employee-upload-title{
+		font-size: 4.8rem;
+		line-height: 5.8rem;
+		padding-bottom: 7rem;
+		font-weight: 300;
+		}
+
+	.add-employee-form{
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		margin-left: 0rem;
+
+		.employee-image-upload{
+			display: flex;
+			align-items: center;
+			font-size: 1.4rem;
+			padding-top: 3rem;
+
+			span{
+				color: #757575;
+				margin-left: 0rem;
+				margin-right: 2rem;
+			}
+		}
+	}
+	
+}
+
 .bulk-upload-container {
 	.bulk-upload-title {
 		font-size: 4.8rem;
@@ -222,7 +287,7 @@ button {
 		width: 51.5rem;
 		padding-top: 2rem;
 	}
-	
+
 	button {
 	cursor: pointer;}
 	
