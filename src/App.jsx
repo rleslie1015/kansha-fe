@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Landing from './components/Landing';
 import { ProtectedRoute } from './components/Auth';
-import Onboarding from './components/Onboarding';
+import Onboarding from './components/Onboarding/Onboarding';
 import { UserProfile, PeerProfile } from './components/Profile';
 import { AuthLoader } from './components/Auth';
 import Feed from './components/Feed';
