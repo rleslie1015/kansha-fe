@@ -5,6 +5,7 @@ import S4BUserUpload from '../Onboarding/S4BUserUpload';
 import S4CUserUpload from '../Onboarding/S4CUserUpload';
 import { Link } from 'react-router-dom';
 import onboardingPic from '../../assets/onboardingPic.png';
+import ProgressBar from './ProgressBar';
 
 function S4AUserUpload() {
 	return (
@@ -58,6 +59,15 @@ function S4AUserUpload() {
 			<Link to="/onboarding/step-5">
 				<button>Next</button>
 			</Link>
+			<div className="step-p-container">
+				<span className="previousarrow">
+					<i class="fas fa-arrow-left" />
+					<Link to="/onboarding/step-3">
+						<p>Previous step</p>
+					</Link>
+				</span>
+			</div>
+			<p>Continue later</p>
 		</>
 	);
 }

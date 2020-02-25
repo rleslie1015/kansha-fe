@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import onboardingPic from '../../assets/onboardingPic.png';
+import ProgressBar from './ProgressBar';
 
 function S4CUserUpload(props) {
 	const onDrop = useCallback(acceptedFiles => {
@@ -22,7 +23,7 @@ function S4CUserUpload(props) {
 
 	const [files, setFiles] = useState([]);
 	const { getRootProps, getInputProps } = useDropzone({
-		// accept: 'text/*',
+		//accept: 'csv/*',
 		onDrop: acceptedFiles => {
 			setFiles(
 				acceptedFiles.map(file =>
@@ -36,9 +37,7 @@ function S4CUserUpload(props) {
 
 	const thumbs = files.map(file => (
 		<div key={file.name}>
-			<div>
-				<img src={file.preview} />
-			</div>
+			<div>{file.path}</div>
 		</div>
 	));
 
@@ -51,21 +50,14 @@ function S4CUserUpload(props) {
 
 	return (
 		<div>
-			<div className="s1-parent-container">
-				<div className="s1-img">
-					<img src={onboardingPic} />
+			<div className="bulk-upload-container">
+				<h1 className="bulk-upload-title">Upload your spreadsheet.</h1>
+				<div {...getRootProps({ className: 'dropzone' })}>
+					<input {...getInputProps()} />
+					<i class="fas fa-cloud-upload-alt fa-3x"></i>
+					<p>Drag and drop file or browse</p>
 				</div>
-				<div className="bulk-upload-container">
-					<h1 className="bulk-upload-title">
-						Upload your spreadsheet.
-					</h1>
-					<div {...getRootProps({ className: 'dropzone' })}>
-						<input {...getInputProps()} />
-						<i class="fas fa-cloud-upload-alt fa-3x"></i>
-						<p>Drag and drop file or browse</p>
-					</div>
-					<div className="file-preview">{thumbs}</div>
-				</div>
+				<div className="file-preview">{thumbs} </div>
 			</div>
 		</div>
 	);

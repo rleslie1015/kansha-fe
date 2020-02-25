@@ -1,23 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import onboardingPic from '../../assets/onboardingPic.png';
+import ProgressBar from './ProgressBar';
 
 function S6AllDone() {
 	return (
-		<>
-			<div className="s1-parent-container">
-				<div className="s1-img">
-					<img src={onboardingPic} />
-				</div>
-				<div className="s1-getting-started">
-					<h1>All done!</h1>
-					<h5>
-						To make the most of your experience we recommend taking
-						a quick tour of your dashboard and finish organizing
-						your teams.
-					</h5>
-				</div>
-			</div>
+		<div>
+			<h1>All done!</h1>
+			<h5>
+				To make the most of your experience we recommend taking a quick
+				tour of your dashboard and finish organizing your teams.
+			</h5>
+
 			<div className="button-container">
 				<button>Take the tour</button>
 				<button>Let me explore</button>
@@ -30,7 +24,7 @@ function S6AllDone() {
 					</Link>
 				</span>
 			</div>
-		</>
+		</div>
 	);
 }
 

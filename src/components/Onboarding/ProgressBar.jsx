@@ -1,13 +1,21 @@
-import React from 'react';
+// import React from 'react';
 
-function ProgressBar() {
-	return (
-		<>
-			<div className="progress-container">
-				<progress id="file" value="20" max="100"></progress>
-			</div>
-		</>
-	);
-}
+// const ProgressBar = props => {
+// 	let step = match.url;
+// 	console.log('this is the step', step);
+// 	function progress() {
+// 		if (step === 'step-2') {
+// 			return 80;
+// 		}
+// 	}
 
-export default ProgressBar;
+// 	return (
+// 		<>
+// 			<div className="progress-container">
+// 				<progress id="file" value={progress()} max="100"></progress>
+// 			</div>
+// 		</>
+// 	);
+// };
+
+// export default ProgressBar;
