@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-import {ReactComponent as CloudUpload} from '../../assets/cloud-upload.svg';
+import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 
 function S4CUserUpload() {
 	const [error, setError] = useState('');
@@ -10,24 +10,23 @@ function S4CUserUpload() {
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if(file.type === 'text/csv'){
+			if (file.type === 'text/csv') {
 				const reader = new FileReader();
 
-			reader.onabort = () => setError('file reading was aborted');
-			reader.onerror = () => setError('file reading has failed');
-			reader.onload = () => {
-				const binaryStr = reader.result;
-				setFile(file);
-			};
-			reader.readAsArrayBuffer(file);	
+				reader.onabort = () => setError('file reading was aborted');
+				reader.onerror = () => setError('file reading has failed');
+				reader.onload = () => {
+					const binaryStr = reader.result;
+					setFile(file);
+				};
+				reader.readAsArrayBuffer(file);
 			} else {
 				setError('Please choose a CSV file.');
 			}
 		});
 	}, []);
 
-	
-	const { getRootProps, getInputProps } = useDropzone({onDrop});
+	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
 	return (
 			<div className="bulk-upload-container">
@@ -35,8 +34,10 @@ function S4CUserUpload() {
 				<p>View sample format</p>
 				<div {...getRootProps({ className: 'dropzone' })}>
 					<input {...getInputProps()} />
-					<CloudUpload/>
-					<p>Drag and drop file or <span>browse</span></p>
+					<CloudUpload />
+					<p>
+						Drag and drop file or <span>browse</span>
+					</p>
 				</div>
 				<div className="file-preview">{file?.path} </div>
 				<div>{file && <button>Upload</button>}</div>

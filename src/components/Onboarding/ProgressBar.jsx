@@ -1,21 +1,16 @@
-// import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-// const ProgressBar = props => {
-// 	let step = match.url;
-// 	console.log('this is the step', step);
-// 	function progress() {
-// 		if (step === 'step-2') {
-// 			return 80;
-// 		}
-// 	}
+const ProgressBar = props => {
+	let location = useLocation();
+	const [progress, setProgress] = useState(0);
 
-// 	return (
-// 		<>
-// 			<div className="progress-container">
-// 				<progress id="file" value={progress()} max="100"></progress>
-// 			</div>
-// 		</>
-// 	);
-// };
+	useEffect(() => {
+		const [page] = location.pathname.match(/\d+/g);
+		setProgress(page);
+		return () => {};
+	}, [location]);
+	return <progress value={progress} max="6"></progress>;
+};
 
-// export default ProgressBar;
+export default ProgressBar;

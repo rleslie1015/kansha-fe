@@ -4,7 +4,11 @@ import React from 'react';
 import S4BUserUpload from '../Onboarding/S4BUserUpload';
 import S4CUserUpload from '../Onboarding/S4CUserUpload';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 
+=======
+import onboardingPic from '../../assets/onboardingPic.png';
+>>>>>>> 20e3abbc88315de85828175cf0f3cd36a316cfd1
 
 function S4AUserUpload() {
 	return (
