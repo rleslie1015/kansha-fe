@@ -2,23 +2,54 @@
 	background-color: $color-white-dark;
 	min-height: 100%;
 	width: 100%;
+	overflow: hidden;
 
-	.did-you-know {
+	.didyouknow {
+		width: 95%;
+		max-width: 1440px;
+		margin: 0 auto;
 		display: flex;
-		flex-direction: row;
+		position: relative;
+		height: 400px;
 
-		.dyk-left-div {
-			width: 40vw;
+		> section {
 			display: flex;
 			flex-direction: column;
-
-			h1 {
-				font-size: 10rem;
+			justify-content: center;
+			h2 {
+				font-size: 4.8rem;
+				font-weight: normal;
+				color: $color-black;
+				margin-bottom: 10px;
+			}
+			p {
+				width: 45%;
+				font-size: 2rem;
+				line-height: 3.4rem;
+				color: rgba(0, 13, 34, 0.7);
+				margin-bottom: 10px;
 			}
 		}
 
-		.dyk-right-div {
-			width: 40vw;
+		> figure {
+			position: absolute;
+			background-image: url('../../assets/Macbook-Pro.svg');
+			background-size: cover;
+			right: -20vw;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 800px;
+			height: 500px;
+			svg {
+				position: absolute;
+			}
+			iframe {
+				position: absolute;
+				top: 31px;
+				left: 82px;
+				width: 660px;
+				height: 414px;
+			}
 		}
 	}
 }
@@ -27,108 +58,113 @@
 .main-container-landing {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 7rem;
-	align-items: center;
-	min-height: 100%;
+	align-items: flex-end;
+	margin: 7rem auto 0;
+	width: 95%;
+	max-width: 1440px;
 
-	.main-cta {
-		width: 50%;
+	> section {
 		display: flex;
 		flex-direction: column;
-		padding-left: 4rem;
+		justify-content: space-between;
+		align-items: flex-start;
+		height: 100%;
 
-		.header-main-cta {
-			font-size: 6rem;
-			width: 62rem;
+		h2 {
+			font-weight: normal;
+			font-size: 4.9rem;
+			line-height: 7rem;
+			letter-spacing: -0.5px;
 			color: $color-black;
-			line-height: 7.2rem;
 		}
 
-		.header-secondary-cta {
-			font-size: 9.6rem;
+		h3 {
 			font-weight: 300;
-			width: 42.5rem;
-			color: $color-black;
+			font-size: 9rem;
+			line-height: 98%;
+			letter-spacing: -1.5px;
+			color: $color-primary-nav;
 		}
 
-		.text-main-cta {
-			width: 46rem;
+		p {
 			font-size: 1.8rem;
 			line-height: 2.8rem;
-			font-size: $default-font-size;
-			color: $color-gray-dark;
-			padding: 1.8rem 0rem;
-			margin-bottom: 1.5rem;
+			width: 75%;
+			letter-spacing: 0.5px;
+			color: $color-gray-light;
+			margin-top: 20px;
 		}
 
-		.btn-get-started {
+		button {
+			background: $color-secondary;
+			color: $color-white;
+			border-radius: 8px;
+			border: 0;
 			font-size: 2rem;
 			line-height: 2.4rem;
-			font-weight: 500;
+			padding: 7px 40px;
+			margin-top: 20px;
+			cursor: pointer;
 		}
 	}
 
-	.main-img {
-		width: 43%;
-		display: flex;
-
-		padding: 4rem;
-		img {
-			width: 54rem;
-		}
+	img {
+		width: 40%;
 	}
 }
 
 // list of features Section
 .list-of-features-container {
-	min-height: 100%;
-	width: 100%;
-	margin-top: 1rem;
-	background-color: $color-white;
-	padding-top: 5rem;
-	padding-bottom: 5rem;
+	margin: 15rem auto 0;
+	width: 95%;
+	max-width: 1440px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-	.header-list-of-features {
-		font-size: 6rem;
-		text-align: center;
-		line-height: 7.2rem;
-		font-weight: normal;
+	h2 {
+		font-size: 5.7rem;
+		line-height: 7rem;
 		letter-spacing: -0.5px;
+		font-weight: normal;
+		text-align: center;
 	}
 
-	.features-list-of-features {
-		font-size: $small;
+	> section {
 		display: flex;
+		justify-content: space-between;
 		flex-wrap: wrap;
-		margin-bottom: 5rem;
-		width: 100%;
-		padding: 2rem;
-		align-items: center;
-		justify-content: center;
+		margin: 50px 0 0;
 
-		.feature-list-of-features {
+		> section {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			width: 26%;
-			height: 8rem;
-			margin: 4rem;
+			height: 150px;
+			margin-bottom: 50px;
 
-			.feature-text-and-image {
-				display: flex;
-				align-items: center;
+			> img {
+				width: 40%;
+				margin: 0 10px;
+			}
 
-				// img {
-				// 	padding: 1rem;
-				// }
-				.text-container-list-of-features {
-					padding: 1rem;
-					.title-feature-list-of-features {
-						font-size: 2.4rem;
-					}
+			> div {
+				margin-left: 20px;
+				h3 {
+					color: $color-primary-nav;
+					font-weight: 500;
+					font-size: 2.4rem;
+					line-height: 2.8rem;
+					letter-spacing: 0.15px;
+				}
 
-					.text-feature-list-of-features {
-						font-size: 1.6rem;
-						width: 19rem;
-						color: $color-gray-light;
-					}
+				p {
+					color: rgba(0, 13, 34, 0.7);
+					font-size: 1.6rem;
+					line-height: 1.9rem;
+					letter-spacing: 0.15px;
+					width: 90%;
 				}
 			}
 		}
@@ -138,17 +174,19 @@
 // Why Kansha section
 
 .container-why-kansha {
+	width: 95%;
+	max-width: 1440px;
+	margin: 50px auto 100px;
 	height: 20%;
-	background-color: $color-white;
-	padding-left: 49px;
-	padding-top: 7%;
-	padding-bottom: 7%;
+	padding: 7% 0;
 
-	.why-kansha {
-		font-size: 3rem;
+	h2 {
+		font-size: 4.8rem;
+		font-weight: normal;
 		margin-bottom: 3%;
 	}
-	.kansha-info {
+
+	p {
 		font-size: 2.1rem;
 		color: $color-gray-light;
 		line-height: 144.9%;
@@ -158,47 +196,58 @@
 }
 
 .container-results {
+	width: 95%;
+	max-width: 1440px;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	padding-top: 5rem;
 
-	h1 {
+	h2 {
 		font-size: 4.8rem;
-		padding: 1rem;
-		margin-left: 3rem;
+		line-height: 5.8rem;
 		font-weight: normal;
 
 		span {
 			font-size: 6.4rem;
 			font-style: italic;
-			font-weight: 300;
+			font-weight: semibold;
+			color: $color-secondary;
 		}
 	}
 
 	h3 {
 		font-size: 3.4rem;
-		padding: 1rem;
-		margin-left: 3rem;
+		font-weight: normal;
+		line-height: 4.1rem;
+		color: rgba(0, 13, 34, 0.7);
+		padding-left: 1%;
 	}
 
-	.container-results-box {
+	ul {
 		display: flex;
 		justify-content: space-evenly;
 		margin-top: 5rem;
 		margin-bottom: 5rem;
 
-		.results-box {
+		li {
 			display: flex;
-			justify-content: center;
+			flex-direction: column;
 			align-items: center;
-			width: 15rem;
-			height: 15rem;
+			width: 25%;
 			align-content: center;
-			@include boxshadow();
+			min-height: 430px;
+
+			img {
+				width: 100%;
+			}
 
 			p {
-				width: 80%;
-				font-size: 2.4;
+				font-size: 2.2rem;
+				line-height: 144.1%;
+				letter-spacing: 0.18195px;
+				color: $color-primary-nav;
+				margin-top: 15px;
 			}
 		}
 	}
@@ -206,29 +255,56 @@
 
 // Enter Email Section
 .container-enter-email {
+	width: 80%;
+	margin: 75px auto;
+	max-width: 1440px;
 	display: flex;
 	justify-content: center;
-	height: 45rem;
-	background-color: white;
-	padding-bottom: 20rem;
+	align-items: center;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 2px 2px 2px rgba(15, 15, 51, 0.5),
+		-2px -2px 2px rgba(15, 15, 51, 0.5);
+	background: $color-white-dark;
 
-	.enter-email {
-		width: 85%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+	label {
+		position: absolute;
+		left: -99999px;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
 
-		.email-form {
-			width: 80%;
-			padding: 2.5rem;
-			border: 1px black solid;
-			border-radius: 1rem;
-			@include boxshadow();
+	input {
+		border: 0;
+		margin: 0;
+		border-radius: 0;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		width: 80%;
+		height: 50px;
+		background: $color-white;
+		color: $color-black;
 
-			.email-input {
-				width: 90%;
-			}
+		&::placeholder {
+			color: rgba(0, 13, 34, 0.7);
+			letter-spacing: 0.25px;
+			font-size: 1.4rem;
+			line-height: 2rem;
 		}
+	}
+
+	button {
+		border: 0;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		background: $color-secondary;
+		color: $color-white;
+		font-size: 2rem;
+		font-weight: 500;
+		line-height: 2.4rem;
+		letter-spacing: 0.15px;
+		height: 50px;
+		width: 15%;
 	}
 }

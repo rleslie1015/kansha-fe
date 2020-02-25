@@ -2,15 +2,13 @@ import React from 'react';
 
 export default function EnterEmail() {
 	return (
-		<div className="container-enter-email">
-			<div className="enter-email">
-				<form className="email-form">
-					<input
-						className="email-input"
-						placeholder="Enter your work email address here"></input>
-					<button className="btn-get-started">Get Started</button>
-				</form>
-			</div>
-		</div>
+		<form className="container-enter-email">
+			<label htmlFor="landing-email">Enter your work email address</label>
+			<input
+				placeholder="Enter your work email address"
+				id="landing-email"
+			/>
+			<button>Get Started</button>
+		</form>
 	);
 }
