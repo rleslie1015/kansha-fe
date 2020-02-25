@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
 
 function S6AllDone() {
 	return (

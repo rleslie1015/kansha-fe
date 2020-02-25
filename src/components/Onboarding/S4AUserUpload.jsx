@@ -5,7 +5,6 @@ import S4BUserUpload from '../Onboarding/S4BUserUpload';
 import S4CUserUpload from '../Onboarding/S4CUserUpload';
 import { Link, useHistory } from 'react-router-dom';
 import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
 
 function S4AUserUpload() {
 	let history = useHistory();
