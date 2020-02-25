@@ -3,7 +3,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
 
 function S4CUserUpload(props) {
 	const onDrop = useCallback(acceptedFiles => {

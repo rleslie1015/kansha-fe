@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Router } from 'react-router-dom';
 
 import Nav from '../Landing/Nav';
-// import ProgressBar from './ProgressBar';
+import ProgressBar from './ProgressBar';
 
 //nested router goes here
 import S1GetStarted from './S1GetStarted';
@@ -27,7 +27,7 @@ function Onboarding() {
 	return (
 		<>
 			<Nav />
-			{/* <ProgressBar /> */}
+			<ProgressBar />
 			<div className="s1-parent-container">
 				<div className="s1-img">
 					<img src={onboardingPic}></img>
