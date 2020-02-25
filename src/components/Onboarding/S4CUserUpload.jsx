@@ -30,9 +30,9 @@ function S4CUserUpload() {
 	const { getRootProps, getInputProps } = useDropzone({onDrop});
 
 	return (
-		<div>
 			<div className="bulk-upload-container">
 				<h2 className="bulk-upload-title">Upload your spreadsheet.</h2>
+				<p>View sample format</p>
 				<div {...getRootProps({ className: 'dropzone' })}>
 					<input {...getInputProps()} />
 					<CloudUpload/>
@@ -42,7 +42,6 @@ function S4CUserUpload() {
 				<div>{file && <button>Upload</button>}</div>
 				<div>{error}</div>
 			</div>
-		</div>
 	);
 }
 export default S4CUserUpload;
