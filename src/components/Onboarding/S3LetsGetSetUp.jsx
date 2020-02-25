@@ -1,49 +1,73 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
+import { useHistory } from 'react-router-dom';
 
-function S3LetsGetSetUp() {
+function S3LetsGetSetUp({ user, handleUser }) {
+	console.log(user);
+	let history = useHistory();
+
+	const handleClick = () => {
+		history.push('/onboarding/step-4');
+	};
+
+	const handlePrevious = () => {
+		history.push('/onboarding/step-2');
+	};
+
+	const handleSubmit = () => {
+		console.log('this is the user', user);
+	};
+
 	return (
 		<div>
 			<h1>Let's Get Set Up</h1>
 
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div>
 					<h6>What's your organization name?</h6>
-					<input type="text" placeholder="organization name" />
+					<input
+						type="text"
+						placeholder="organization name"
+						name="org_name"
+						value={user.org_name}
+						onChange={handleUser}
+					/>
 					<h6>How big is your organization?</h6>
 					<div>
 						<input
 							type="radio"
 							id="lessthan20"
-							name="drone"
-							value="lessthan20"
-							checked
+							name="company_size"
+							value="less than 20"
+							onChange={handleUser}
 						/>
-						<label for="lessthan20">Less than 20</label>
+						<label htmlFor="lessthan20">Less than 20</label>
 					</div>
 
 					<div>
 						<input
 							type="radio"
 							id="21100"
-							name="drone"
-							value="21100"
+							name="company_size"
+							value="21 to 100"
+							onChange={handleUser}
 						/>
-						<label for="21100">21-100</label>
+						<label htmlFor="21100">21-100</label>
 					</div>
 
 					<div>
 						<input
 							type="radio"
 							id="over100"
-							name="drone"
-							value="over100"
+							name="company_size"
+							value="over 100"
+							onChange={handleUser}
 						/>
-						<label for="over100">Over 100</label>
+						<label htmlFor="over100">Over 100</label>
 					</div>
-					<select>
+					<select
+						name="industry"
+						value={user.industry}
+						onChange={handleUser}>
 						<option>Accounting</option>
 						<option>Advertising/PR</option>
 						<option>Aerospace</option>
@@ -63,19 +87,14 @@ function S3LetsGetSetUp() {
 					</select>
 				</div>
 			</form>
-			<Link to="/onboarding/step-4">
-				<button>Next</button>
-			</Link>
-
+			<button type="submit" onClick={handleClick}>
+				Next
+			</button>
 			<div className="step-p-container">
 				<span className="previousarrow">
-					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-2">
-						<p>Previous step</p>
-					</Link>
+					{/* <i class="fas fa-arrow-left" /> */}
+					<button onClick={handlePrevious}>Previous step</button>
 				</span>
-
-				<p>Continue later</p>
 			</div>
 		</div>
 	);

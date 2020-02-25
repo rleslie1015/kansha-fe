@@ -1,8 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
-function S2CreateAccount() {
+import React, { useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
+
+function S2CreateAccount({ user, handleUser }) {
+	let history = useHistory();
+
+	const handleClick = () => {
+		history.push('/onboarding/step-3');
+	};
+
 	return (
 		<div>
 			<h1>Create Account</h1>
@@ -10,29 +15,36 @@ function S2CreateAccount() {
 				<div className="name-container">
 					<input
 						className="formname"
-						placeholder="First Name"></input>
-					<input className="formname" placeholder="Last Name"></input>
+						placeholder="First Name"
+						name="first_name"
+						value={user.first_name}
+						onChange={handleUser}></input>
+					<input
+						className="formname"
+						placeholder="Last Name"
+						name="last_name"
+						value={user.last_name}
+						onChange={handleUser}></input>
 				</div>
 
 				<input
 					className="jobtitle-input"
-					placeholder="Job Title"></input>
-				<input placeholder="Email"></input>
-				<input placeholder="Organization Name"></input>
+					placeholder="Job Title"
+					name="job_title"
+					value={user.job_title}
+					onChange={handleUser}></input>
+				<input
+					placeholder="Email"
+					name="email"
+					value={user.email}
+					onChange={handleUser}></input>
+				<input
+					placeholder="Organization Name"
+					name="org_name"
+					value={user.org_name}
+					onChange={handleUser}></input>
 			</form>
-			<Link to="/onboarding/step-3">
-				<button>Next</button>
-			</Link>
-
-			<div className="step-p-container">
-				<span className="previousarrow">
-					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-1">
-						<p>Previous step</p>
-					</Link>
-				</span>
-			</div>
-			<p>Continue later</p>
+			<button onClick={handleClick}>Next</button>
 		</div>
 	);
 }

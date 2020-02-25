@@ -55,7 +55,9 @@ function S4CUserUpload(props) {
 				<div {...getRootProps({ className: 'dropzone' })}>
 					<input {...getInputProps()} />
 					<i class="fas fa-cloud-upload-alt fa-3x"></i>
-					<p>Drag and drop file or browse</p>
+					<p>
+						Drag and drop file or <span>browse</span>
+					</p>
 				</div>
 				<div className="file-preview">{thumbs} </div>
 			</div>

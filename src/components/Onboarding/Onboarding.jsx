@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Router } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 
 import Nav from '../Landing/Nav';
 // import ProgressBar from './ProgressBar';
@@ -17,12 +17,29 @@ import S6AllDone from './S6AllDone';
 import onboardingPic from '../../assets/onboardingPic.png';
 
 function Onboarding() {
-	//manage state using a useState slice
+	const [user, setUser] = useState({
+		first_name: '',
+		last_name: '',
+		email: '',
+		job_title: '',
+		org_id: '',
+		user_type: '',
+		org_name: '',
+		company_size: '',
+		industry: '',
+		logo_url: '',
+		primary_color: '',
+	});
 
-	//navbar
-	//progress bar
-	//routes
-	//footer
+	//these slices will live in Upload components
+
+	// const [indUser, setIndUser] = useState();
+
+	// const [bulkFile, setBulkFile] = useState();
+
+	const handleUser = e => {
+		setUser({ ...user, [e.target.name]: e.target.value });
+	};
 
 	return (
 		<>
@@ -39,28 +56,54 @@ function Onboarding() {
 					<Route
 						path="/onboarding/step-2"
 						render={props => (
-							<S2CreateAccount {...props} />
+							<S2CreateAccount
+								{...props}
+								user={user}
+								handleUser={handleUser}
+							/>
 						)}></Route>
 					<Route
 						path="/onboarding/step-3"
-						render={props => <S3LetsGetSetUp {...props} />}></Route>
+						render={props => (
+							<S3LetsGetSetUp
+								{...props}
+								user={user}
+								handleUser={handleUser}
+							/>
+						)}></Route>
 					<Route
 						path="/onboarding/step-4"
 						render={props => <S4AUserUpload {...props} />}></Route>
 					<Route
 						path="/onboarding/step-4b"
-						render={props => <S4BUserUpload {...props} />}></Route>
+						render={props => (
+							<S4BUserUpload
+								{...props}
+								user={user}
+								setUser={setUser}
+							/>
+						)}></Route>
 					<Route
 						path="/onboarding/step-4c"
-						render={props => <S4CUserUpload {...props} />}></Route>
+						render={props => (
+							<S4CUserUpload
+								{...props}
+								user={user}
+								setUser={setUser}
+							/>
+						)}></Route>
 					<Route
 						path="/onboarding/step-5"
 						render={props => (
-							<S5AccountCustomization {...props} />
+							<S5AccountCustomization
+								{...props}
+								user={user}
+								handleUser={handleUser}
+							/>
 						)}></Route>
 					<Route
 						path="/onboarding/step-6"
-						render={props => <S6AllDone {...props} />}></Route>
+						render={() => <S6AllDone />}></Route>
 				</div>
 			</div>
 		</>

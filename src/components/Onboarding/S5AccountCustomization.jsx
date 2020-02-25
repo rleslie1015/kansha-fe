@@ -1,11 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import onboardingPic from '../../assets/onboardingPic.png';
-import ProgressBar from './ProgressBar';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function S5AccountCustomization() {
 	//onclick for i tag to initiate logo upload
 	//onclick for color-picker divs to select color
+
+	let history = useHistory();
+
+	const handleClick = () => {
+		history.push('/onboarding/step-6');
+	};
+
+	const handlePrevious = () => {
+		history.push('/onboarding/step-4');
+	};
+
+	const [org, setOrg] = useState();
+
+	const handleChanges = e => {
+		setOrg({ ...org, [e.target.name]: e.target.value });
+	};
 
 	return (
 		<div>
@@ -24,15 +38,11 @@ function S5AccountCustomization() {
 				<div id="purple" />
 				<div id="grey" />
 			</div>
-			<Link to="/onboarding/step-6">
-				<button>Next</button>
-			</Link>
+			<button onClick={handleClick}>Next</button>
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-4">
-						<p>Previous step</p>
-					</Link>
+					<button onClick={handlePrevious}>Previous step</button>
 				</span>
 
 				<p>Continue later</p>
