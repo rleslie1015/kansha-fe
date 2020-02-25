@@ -185,21 +185,42 @@ button {
 
 .bulk-upload-container {
 	.bulk-upload-title {
-		font-size: 5.3rem;
+		font-size: 4.8rem;
+		line-height: 5.8rem;
 		padding-bottom: 7rem;
+		font-weight: 300;
 	}
 	.dropzone {
 		background-color: #e5e5e5;
 		width: 51.5rem;
 		height: 25.8rem;
+		
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		cursor: pointer;
+		
+		p {
+		font-size: 2.4rem;
+		line-height: 2.8rem;
+		padding-top: 3rem;
+
+			span{
+				text-decoration: underline;
+				margin-left: 0rem;
+				font-size: 2.4rem;
+				line-height: 2.8rem;
+			}
+		}
 	}
 
 	.file-preview {
 		width: 51.5rem;
 		padding-top: 2rem;
 	}
+	
+	button {
+	cursor: pointer;}
+	
 }
