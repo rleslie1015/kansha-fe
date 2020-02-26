@@ -77,20 +77,12 @@ function Onboarding() {
 					<Route
 						path="/onboarding/step-4b"
 						render={props => (
-							<S4BUserUpload
-								{...props}
-								user={user}
-								setUser={setUser}
-							/>
+							<S4BUserUpload {...props} user={user} />
 						)}></Route>
 					<Route
 						path="/onboarding/step-4c"
 						render={props => (
-							<S4CUserUpload
-								{...props}
-								user={user}
-								setUser={setUser}
-							/>
+							<S4CUserUpload {...props} user={user} />
 						)}></Route>
 					<Route
 						path="/onboarding/step-5"

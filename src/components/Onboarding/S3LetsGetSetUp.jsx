@@ -92,8 +92,10 @@ function S3LetsGetSetUp({ user, handleUser }) {
 			</button>
 			<div className="step-p-container">
 				<span className="previousarrow">
-					{/* <i class="fas fa-arrow-left" /> */}
-					<button onClick={handlePrevious}>Previous step</button>
+					<i className="fas fa-arrow-left" />
+					<div onClick={handlePrevious}>
+						<p> Previous step</p>
+					</div>
 				</span>
 			</div>
 		</div>
