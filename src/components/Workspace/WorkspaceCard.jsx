@@ -1,8 +1,8 @@
 import React from 'react';
-import profile from '../assets/profile.png';
-import RecogModal from './RecogModal/RecogModal';
-import trashcan from '../assets/Trashcan.png';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import profile from '../../assets/profile.png';
+import RecogModal from '../RecogModal/RecogModal';
+import trashcan from '../../assets/Trashcan.png';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Link } from 'react-router-dom';
 
 export default function Workspace_Card(props) {

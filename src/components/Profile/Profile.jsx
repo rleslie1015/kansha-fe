@@ -3,7 +3,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 // import RecogModal from '../RecogModal/RecogModal';
-import SideBar from '../SideBar';
 
 export function Profile({ profile, isPeer }) {
 	const [badges, setBadges] = useState([]);
@@ -39,7 +38,6 @@ export function Profile({ profile, isPeer }) {
 
 	return (
 		<main className="profile-main-cont">
-			<SideBar />
 			<section className="container-entire-profile">
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
 				<section className="container-profile-card-and-badges">

@@ -1,5 +1,4 @@
 import React from 'react';
-// import clsx from 'clsx';
 import openMenu from '../../assets/open-menu.png';
 // import closeMenu from '../../assets/close-menu.png';
 import home from '../../assets/home.png';
