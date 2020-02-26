@@ -1,4 +1,3 @@
-//toggle rendering between one user account creation and bulk user account creation
 import React from 'react';
 
 import S4BUserUpload from '../Onboarding/S4BUserUpload';
@@ -10,7 +9,7 @@ function S4AUserUpload() {
 	let history = useHistory();
 
 	const handleClick = () => {
-		history.push('/onboarding/step-5');
+		history.push('/onboarding/step-4b');
 	};
 
 	const handlePrevious = () => {
@@ -32,6 +31,7 @@ function S4AUserUpload() {
 								value="yes"
 							/>
 							<label for="yes">Yes</label>
+						
 						</div>
 
 						<div>

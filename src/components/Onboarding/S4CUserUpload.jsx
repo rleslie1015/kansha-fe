@@ -1,4 +1,3 @@
-//bulk user account creation component
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
