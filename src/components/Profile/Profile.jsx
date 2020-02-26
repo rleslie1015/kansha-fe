@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Cropper } from '../FileUpload/FileCrop';
+// import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import RecogModal from '../RecogModal/RecogModal';
+// import RecogModal from '../RecogModal/RecogModal';
 import SideBar from '../SideBar';
 
 export function Profile({ profile, isPeer }) {
@@ -14,7 +14,6 @@ export function Profile({ profile, isPeer }) {
 			.get('/badges')
 			.then(res => {
 				setBadges(res.data);
-				console.log(badges, 'badges');
 			})
 			.catch(err => {
 				console.log(err);
@@ -38,8 +37,6 @@ export function Profile({ profile, isPeer }) {
 			}, {}),
 		[profile, badges],
 	);
-
-	console.log(userBadges);
 
 	return (
 		<div className="profile-main-cont">
@@ -85,6 +82,7 @@ export function Profile({ profile, isPeer }) {
 														src={
 															userBadges[id].badge
 														}
+														alt=""
 													/>
 												</div>
 											);
@@ -103,6 +101,7 @@ export function Profile({ profile, isPeer }) {
 																userBadges[id]
 																	.badge
 															}
+															alt=""
 														/>
 													</div>
 												</div>

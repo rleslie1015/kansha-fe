@@ -19,15 +19,15 @@ export default function Workspace_Card(props) {
 		}
 	};
 	return (
-		<div className="workspace-card-container">
+		<section className="workspace-card-container">
 			{props.team.map(user => {
 				if (props.profile.user_type === 'admin') {
 					return (
-						<div className="workspace-card">
+						<section className="workspace-card">
 							<div>
 								<img
 									className="workspace-card-image"
-									alt="profile picture"
+									alt="profile"
 									src={user.profile_picture}
 								/>
 								<div>
@@ -51,15 +51,15 @@ export default function Workspace_Card(props) {
 									</button>
 								</Link>
 							</div>
-						</div>
+						</section>
 					);
 				} else {
 					return (
-						<div className="workspace-card" key={user.id}>
-							<div className="user-info-container">
+						<section className="workspace-card" key={user.id}>
+							<section className="user-info-container">
 								<img
 									className="workspace-card-image"
-									alt="profile picture"
+									alt="profile"
 									src={user.profile_picture}
 								/>
 								<h5>
@@ -67,17 +67,17 @@ export default function Workspace_Card(props) {
 								</h5>
 								<h6>{user.job_title}</h6>
 								<h6>{user.department}</h6>
-							</div>
-							<div className="workspace-profile-icons">
+							</section>
+							<section className="workspace-profile-icons">
 								<RecogModal {...user} />
 								<Link to={`/profile/${user.id}`}>
 									<img alt="profile icon" src={profile} />
 								</Link>
-							</div>
-						</div>
+							</section>
+						</section>
 					);
 				}
 			})}
-		</div>
+		</section>
 	);
 }

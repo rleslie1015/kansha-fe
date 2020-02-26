@@ -1,7 +1,7 @@
 import React from 'react';
 // import clsx from 'clsx';
 import openMenu from '../../assets/open-menu.png';
-import closeMenu from '../../assets/close-menu.png';
+// import closeMenu from '../../assets/close-menu.png';
 import home from '../../assets/home.png';
 import profile from '../../assets/profile.png';
 import workspace from '../../assets/workspace.png';
@@ -13,31 +13,31 @@ import { connect } from 'react-redux';
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
 
-	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
+	// const handleDrawerOpen = () => {
+	// 	setOpen(true);
+	// };
 
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
 
 	return (
-		<div className="side-nav">
+		<section className="side-nav">
 			{/* This is the open menu button */}
 			{!open ? (
-				<div className="nav-open-menu">
+				<section className="nav-open-menu">
 					{/* <button */}
 					{/* aria-label="open drawer"
 							onClick={handleDrawerOpen}
 							edge="start"> */}
 					<img src={openMenu} alt="open menu icon" />
 					{/* </button> */}
-				</div>
+				</section>
 			) : (
 				/* this is the close menu button */
 				<div>
@@ -91,12 +91,12 @@ function Sidebar({ user }) {
 					button
 					onClick={() => signout()}
 					key="Sign Out">
-					<div className="nav-sign-out">
+					<section className="nav-sign-out">
 						<img src={signOut} alt="sign out icon" />
-					</div>
+					</section>
 				</li>
 			</ul>
-		</div>
+		</section>
 	);
 }
 

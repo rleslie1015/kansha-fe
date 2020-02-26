@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 // import clsx from 'clsx';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory /* useRouteMatch */ } from 'react-router-dom';
 
 export const SidebarLink = memo(({ name, path, open, icon }) => {
 	const history = useHistory();
-	const match = useRouteMatch(path);
+	// const match = useRouteMatch(path);
 
-	let { isExact } = match ? match : { isExact: false };
+	// let { isExact } = match ? match : { isExact: false };
 
 	return (
 		<li
@@ -14,9 +14,9 @@ export const SidebarLink = memo(({ name, path, open, icon }) => {
 			button
 			key={name}
 			onClick={() => history.push(path)}>
-			<div className="side-bar-link-div">
+			<section className="side-bar-link-div">
 				<img src={icon} alt="profile icon" />
-			</div>
+			</section>
 			{/* <p>{name}</p> */}
 		</li>
 	);

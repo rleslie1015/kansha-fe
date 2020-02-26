@@ -41,23 +41,23 @@ Fade.propTypes = {
 
 function RecogModal(props) {
 	console.log(props);
-	const [isTyping, setIsTyping] = useState(true);
-	const [badges, setBadges] = useState([]);
-	const [open, setOpen] = useState(false);
-	const [recog, setRecog] = useState({
+	const [isTyping] = useState(true);
+	const [, setBadges] = useState([]);
+	const [, setOpen] = useState(false);
+	const [recog] = useState({
 		message: '',
 		sender: props.user.profile.id,
 		recipient: props.id,
 		date: new Date(Date.now()),
 		badge_id: null,
 	});
-	const {
-		first_name,
-		last_name,
-		job_title,
-		department,
-		profile_picture,
-	} = props;
+	// const {
+	// 	first_name,
+	// 	last_name,
+	// 	job_title,
+	// 	department,
+	// 	profile_picture,
+	// } = props;
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -70,54 +70,57 @@ function RecogModal(props) {
 			});
 	}, []);
 
-	const handleChange = event => {
-		setRecog({ ...recog, [event.target.name]: event.target.value });
-	};
+	// const handleChange = event => {
+	// 	setRecog({ ...recog, [event.target.name]: event.target.value });
+	// };
 
-	const handleSubmit = event => {
-		props.sendRecog({ ...recog, date: new Date(Date.now()) });
-		handleClose();
-		alert('Recogniton has been sent');
-	};
+	// const handleSubmit = event => {
+	// 	props.sendRecog({ ...recog, date: new Date(Date.now()) });
+	// 	handleClose();
+	// 	alert('Recogniton has been sent');
+	// };
 
 	const handleOpen = () => {
 		setOpen(true);
 	};
 
-	const handleClose = () => {
-		setOpen(false);
-		setRecog({
-			message: '',
-			sender: props.user.profile.id,
-			recipient: props.id,
-			date: new Date(Date.now()),
-			badge_id: null,
-		});
-	};
+	// const handleClose = () => {
+	// 	setOpen(false);
+	// 	setRecog({
+	// 		message: '',
+	// 		sender: props.user.profile.id,
+	// 		recipient: props.id,
+	// 		date: new Date(Date.now()),
+	// 		badge_id: null,
+	// 	});
+	// };
 
-	const textField = () => {
-		setIsTyping(true);
-	};
+	// const textField = () => {
+	// 	setIsTyping(true);
+	// };
 
-	const badgePrompt = () => {
-		setIsTyping(false);
-	};
+	// const badgePrompt = () => {
+	// 	setIsTyping(false);
+	// };
 
-	const handleSwitch = badge_id => {
-		setRecog({ ...recog, badge_id });
-		setIsTyping(true);
-	};
+	// const handleSwitch = badge_id => {
+	// 	setRecog({ ...recog, badge_id });
+	// 	setIsTyping(true);
+	// };
 
-	const removeBadge = () => {
-		setRecog({ ...recog, badge_id: null });
-	};
+	// const removeBadge = () => {
+	// 	setRecog({ ...recog, badge_id: null });
+	// };
 
 	console.log(recog);
 
 	if (isTyping) {
 		return (
 			<div>
-				<button className="send-recog-btn" type="button" onClick={handleOpen}>
+				<button
+					className="send-recog-btn"
+					type="button"
+					onClick={handleOpen}>
 					<img src={send} alt="thank button" />
 				</button>
 				{/* <Modal
@@ -130,7 +133,7 @@ function RecogModal(props) {
 					timeout: 500,
 				}}>
 				<Fade in={open}>
-					<div className={classes.paper}>
+					<section className={classes.paper}>
 						<img
 							src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
 							onClick={handleClose}
@@ -174,7 +177,7 @@ function RecogModal(props) {
 								>
 								<RemoveIcon className={classes.removeFab} />
 								</div>
-								<img src={badges[recog.badge_id-1].badge_URL} className={classes.badgeImg} />
+								<img src={badges[recog.badge_id-1].badge_URL} className={classes.badgeImg} alt="" />
 							</Box>}
 							</div>
 						<Fab 
@@ -210,7 +213,7 @@ function RecogModal(props) {
 						timeout: 500,
 					}}>
 					<Fade in={open}>
-						<div className={classes.paper}>
+						<section className={classes.paper}>
 							<img
 								src="https://kansha-bucket.s3-us-west-1.amazonaws.com/x.png"
 								onClick={handleClose}
