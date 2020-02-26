@@ -19,7 +19,15 @@ import {
 } from '../actions/user-actions';
 
 const initialState = {
-	profile: null,
+	profile: {
+		first_name: '',
+		last_name: '',
+		org_name: '',
+		org_id: '',
+		job_title: '',
+		user_type: '',
+		department: '',
+	},
 	isOnboarding: false,
 	isOnboardingLoading: false,
 	isLoggingIn: false,

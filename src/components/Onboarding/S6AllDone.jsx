@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useHistory, useState } from 'react';
 import { Link } from 'react-router-dom';
-import onboardingPic from '../../assets/onboardingPic.png';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useDispatch } from 'react-redux';
 
-function S6AllDone() {
+//get from /profile endpoint and set that to redux state
+
+function S6AllDone({ user }) {
+	const dispatch = useDispatch();
+
+	// const [profile, setProfile] = useState({
+	// 	first_name: '',
+	// 	last_name: '',
+	// 	org_name: '',
+	// 	org_id: '',
+	// 	job_title: '',
+	// 	user_type: '',
+	// 	department: '',
+	// });
+
+	axiosWithAuth()
+		.get(`/profile/${user.id}`)
+		.then(res => {
+			//dispatch in here?
+			dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
+		})
+		.catch(err => console.log(err));
+
+	let history = useHistory();
+
+	const handlePrevious = () => {
+		history.push('/onboarding/step-5');
+	};
+	const handleClick = () => {
+		history.push(`/profile/${user.id}`);
+	};
+
 	return (
 		<div>
 			<h1>All done!</h1>
@@ -12,15 +44,15 @@ function S6AllDone() {
 			</h5>
 
 			<div className="button-container">
-				<button>Take the tour</button>
-				<button>Let me explore</button>
+				<button onClick={handleClick}>Take the tour</button>
+				<button onClick={handleClick}>Let me explore</button>
 			</div>
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-5">
+					<div onClick={handlePrevious}>
 						<p>Previous step</p>
-					</Link>
+					</div>
 				</span>
 			</div>
 		</div>

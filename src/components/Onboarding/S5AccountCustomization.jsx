@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+//put request to update existing organization
 
 function S5AccountCustomization({ user }) {
 	//onclick for i tag to initiate logo upload

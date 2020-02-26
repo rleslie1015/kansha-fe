@@ -59,6 +59,7 @@ function Onboarding() {
 							<S2CreateAccount
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>
@@ -68,6 +69,7 @@ function Onboarding() {
 							<S3LetsGetSetUp
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>
@@ -90,6 +92,7 @@ function Onboarding() {
 							<S5AccountCustomization
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>

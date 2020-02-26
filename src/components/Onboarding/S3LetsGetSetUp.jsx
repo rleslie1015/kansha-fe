@@ -1,7 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-function S3LetsGetSetUp({ user, handleUser }) {
+//post request to /organizations to create new org plus employee/user relationship
+
+function S3LetsGetSetUp({ user, setUser, handleUser }) {
 	console.log(user);
 	let history = useHistory();
 
@@ -13,8 +16,14 @@ function S3LetsGetSetUp({ user, handleUser }) {
 		history.push('/onboarding/step-2');
 	};
 
-	const handleSubmit = () => {
-		console.log('this is the user', user);
+	const handleSubmit = e => {
+		e.preventDefault();
+		axiosWithAuth()
+			.post('/organizations', user)
+			.then(res => {
+				setUser(res.data);
+			})
+			.catch(err => console.log(err));
 	};
 
 	return (
