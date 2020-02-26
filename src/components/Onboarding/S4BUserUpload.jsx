@@ -2,10 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import {ReactComponent as CloudUpload} from '../../assets/cloud-upload.svg';
+import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 
-function S4BUserUpload() {
-	return <div className="employee-add-container">
+function S4BUserUpload({ user }) {
+	return (
+		<div className="employee-add-container">
 			<h2 className="employee-upload-title">Employee information</h2>
 			<form className="add-employee-form">
 				<div className="name-container">
@@ -17,11 +18,13 @@ function S4BUserUpload() {
 
 				<input
 					className="jobtitle-input"
-					placeholder="Job Title"></input>	
+					placeholder="Job Title"></input>
 				<input placeholder="Email"></input>
 				<div className="employee-image-upload">
-				<p>Upload profile image <span>(optional)</span></p>
-				<CloudUpload/>
+					<p>
+						Upload profile image <span>(optional)</span>
+					</p>
+					<CloudUpload />
 				</div>
 				<button>Add more</button>
 			</form>
@@ -39,7 +42,7 @@ function S4BUserUpload() {
 				</span>
 			</div>
 			<p>Continue later</p>
-
-	</div>;
+		</div>
+	);
 }
 export default S4BUserUpload;

@@ -154,6 +154,7 @@ button {
 	width: 13rem;
 	padding: 10px;
 	color: $color-white;
+	border-radius: 8px;
 
 	&:hover {
 		background-color: #fa2c5a;
@@ -186,69 +187,67 @@ button {
 	width: 47%;
 }
 
-.admin-user-add-container{
-	.user-upload-title{
+.admin-user-add-container {
+	.user-upload-title {
 		font-size: 4.8rem;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
-		font-weight: 300;
+		// font-weight: 300;
 	}
 
-	.admin-add-employee-form{
+	.admin-add-employee-form {
 		height: 22rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		.upload-now-question{
+		.upload-now-question {
 			height: 8rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 		}
-		.how-upload-question{
+		.how-upload-question {
 			height: 8rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 		}
-		h6{
-			font-size:1.8rem;
+		h6 {
+			font-size: 1.8rem;
 		}
 
-		label{
+		label {
 			font-size: 1.6rem;
 		}
 	}
 }
 
-.employee-add-container{
-	.employee-upload-title{
+.employee-add-container {
+	.employee-upload-title {
 		font-size: 4.8rem;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
-		font-weight: 300;
-		}
+	}
 
-	.add-employee-form{
+	.add-employee-form {
 		display: flex;
 		flex-direction: column;
 		width: 90%;
 		margin-left: 0rem;
 
-		.employee-image-upload{
+		.employee-image-upload {
 			display: flex;
 			align-items: center;
 			font-size: 1.4rem;
 			padding-top: 3rem;
 
-			span{
+			span {
 				color: #757575;
 				margin-left: 0rem;
 				margin-right: 2rem;
 			}
 		}
 	}
-	
 }
 
 .bulk-upload-container {
@@ -256,25 +255,24 @@ button {
 		font-size: 4.8rem;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
-		font-weight: 300;
 	}
 	.dropzone {
 		background-color: #e5e5e5;
 		width: 51.5rem;
 		height: 25.8rem;
-		
+
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		
-		p {
-		font-size: 2.4rem;
-		line-height: 2.8rem;
-		padding-top: 3rem;
 
-			span{
+		p {
+			font-size: 2.4rem;
+			line-height: 2.8rem;
+			padding-top: 3rem;
+
+			span {
 				text-decoration: underline;
 				margin-left: 0rem;
 				font-size: 2.4rem;
@@ -289,6 +287,6 @@ button {
 	}
 
 	button {
-	cursor: pointer;}
-	
+		cursor: pointer;
+	}
 }
