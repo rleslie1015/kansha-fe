@@ -7,7 +7,6 @@ import {
 	loadLiveFeed,
 	liveFeedListeners,
 } from '../../store/actions/feed-actions';
-import SideBar from '../SideBar';
 
 // Adds compatibility for SSE to older browsers
 import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
@@ -31,32 +30,32 @@ const Feed = () => {
 	};
 
 	useEffect(() => {
-		// 	// Loads most current batch feed data
+		// Loads most current batch feed data
 		dispatch(loadLiveFeed());
-		// 	/*
-		// 	Constucting the url for live feed events
-		// 	For now the token is embedded as a query param
-		// 	This is to circumvent a limitation in the SSE API,
-		// 	that doesn't allow setting custom headers.
+		/*
+			Constucting the url for live feed events
+			For now the token is embedded as a query param
+			This is to circumvent a limitation in the SSE API,
+			that doesn't allow setting custom headers.
 
-		// 	This should be safe considering https still encrypts query parmas.
+			This should be safe considering https still encrypts query parmas.
 
-		// 	This token is added back to the Authorization header via a backend middleware
-		// 	*/
-		// 	const src = `${
-		// 		process.env.REACT_APP_BASE_URL
-		// 	}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
-		// 	const sse = new EventSource(src);
+			This token is added back to the Authorization header via a backend middleware
+			*/
+		const src = `${
+			process.env.REACT_APP_BASE_URL
+		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
+		const sse = new EventSource(src);
 
-		// 	sse.addEventListener('HEARTBEAT', console.dir);
+		// sse.addEventListener('HEARTBEAT', console.log);
 
-		// 	// Set's up event listeners inside of redux ac
-		// 	dispatch(liveFeedListeners(sse));
+		// Set's up event listeners inside of redux ac
+		dispatch(liveFeedListeners(sse));
 
-		// 	// Close the EventStream when component unmounts
-		// 	return function cleanup() {
-		// 		sse.close();
-		// 	};
+		// Close the EventStream when component unmounts
+		return function cleanup() {
+			sse.close();
+		};
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -66,14 +65,13 @@ const Feed = () => {
 				setBadges(res.data);
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	}, []);
 
 	return (
-		<div className="container-feed-card-and-comments">
-			<SideBar />
-			<div>
+		<section className="container-feed-card-and-comments">
+			<main className="home-main">
 				{feed.map(rec => (
 					<FeedCard
 						key={rec.id}
@@ -86,7 +84,7 @@ const Feed = () => {
 						active={rec.id === selectedRec}
 					/>
 				))}
-			</div>
+			</main>
 			{selectedRec && (
 				<FeedComments
 					close={closeFeedComments}
@@ -95,7 +93,7 @@ const Feed = () => {
 					id={selectedRec}
 				/>
 			)}
-		</div>
+		</section>
 	);
 };
 

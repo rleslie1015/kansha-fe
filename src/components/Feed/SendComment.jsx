@@ -16,15 +16,13 @@ export const SendComments = ({ id, scrollToBottom }) => {
 		scrollToBottom();
 	};
 	return (
-		<div>
-			<div>
-				<textarea
-					placeholder="Write a comment..."
-					value={newComment}
-					onChange={handleInput}
-				/>
-				<button onClick={handleSubmit}>Submit</button>
-			</div>
-		</div>
+		<section className="comment-box">
+			<textarea
+				placeholder="Write a comment..."
+				value={newComment}
+				onChange={handleInput}
+			/>
+			<button onClick={handleSubmit}>Submit</button>
+		</section>
 	);
 };

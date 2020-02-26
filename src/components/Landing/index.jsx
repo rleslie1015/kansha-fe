@@ -10,7 +10,7 @@ import ListOfFeatures from './ListOfFeatures';
 
 const Landing = () => {
 	return (
-		<div className="landing-page">
+		<main className="landing-page">
 			<Header />
 			<Main />
 			<WhyKansha />
@@ -19,7 +19,7 @@ const Landing = () => {
 			<ResultsYouCanSee />
 			<EnterEmail />
 			<Footer />
-		</div>
+		</main>
 	);
 };
 

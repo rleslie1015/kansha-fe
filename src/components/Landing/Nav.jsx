@@ -1,18 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../../utils/auth';
-import { Link } from 'react-router-dom';
-import HamburgerMenu from '../../assets/open-menu.png';
 
 const auth = new Auth();
 
 export default function Nav() {
+	const [clicked, setClicked] = useState(false);
+
 	return (
 		<nav className="nav">
 			<a href="#" onClick={auth.login}>
 				Login
 			</a>
-			<img className="nav-logo" src={HamburgerMenu} width="30" />
+			<button
+				className={`hamburger hamburger--collapse ${clicked &&
+					'is-active'}`}
+				type="button"
+				onClick={() => setClicked(!clicked)}>
+				<span className="hamburger-box" role="presentation">
+					<span className="hamburger-inner" role="presentation" />
+				</span>
+			</button>
 		</nav>
 	);
 }

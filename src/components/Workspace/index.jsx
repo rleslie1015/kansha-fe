@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import WorkspaceCard from './WorkspaceCard';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { connect } from 'react-redux';
-import SideBar from './SideBar';
 
 function Workspace(props) {
 	const [team, setTeam] = useState([]);
@@ -35,7 +34,6 @@ function Workspace(props) {
 
 	return (
 		<div className="workspace">
-			<SideBar />
 			<div className="workspace-container">
 				<div className="workspace-search-div">
 					<h1>Workspace</h1>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { update } from '../store/actions/user-actions';
-import SideBar from './SideBar';
 
 function Settings({ update, user }) {
 	const history = useHistory();
@@ -33,7 +32,6 @@ function Settings({ update, user }) {
 
 	return (
 		<div id="settings">
-			<SideBar />
 			<div className="settings-container">
 				<h3>Settings</h3>
 				<h5>Edit Profile</h5>

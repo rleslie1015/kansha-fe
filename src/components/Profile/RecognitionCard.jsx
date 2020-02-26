@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import trashcan from '../../assets/Trashcan.png';
@@ -30,7 +30,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 
 	if (profile.user_type === 'admin') {
 		return (
-			<div className="container-recognition-card container-recognition-card-admin">
+			<section className="container-recognition-card container-recognition-card-admin">
 				<div>
 					<img
 						src={
@@ -80,14 +80,14 @@ export function RecognitionCard({ recognition, sent, badge }) {
 					</div>
 					{badge && (
 						<div>
-							<img src={badge.badge_URL} alt={badge.badge_name} />
+							<img src={badge.badge_URL} alt="" />
 						</div>
 					)}
 					<div>
 						<p>{time}</p>
 					</div>
 				</div>
-			</div>
+			</section>
 		);
 	} else if (
 		profile.user_type === 'mod' &&
@@ -143,7 +143,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 					</div>
 					{badge && (
 						<div>
-							<img src={badge.badge_URL} alt={badge.badge_name} />
+							<img src={badge.badge_URL} alt="" />
 						</div>
 					)}
 					<div>
@@ -154,7 +154,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 		);
 	} else {
 		return (
-			<div className="container-recognition-card container-recognition-card-user">
+			<section className="container-recognition-card container-recognition-card-user">
 				<div>
 					<img
 						className="picture-profile-medium"
@@ -208,7 +208,7 @@ export function RecognitionCard({ recognition, sent, badge }) {
 						<p>{time}</p>
 					</div>
 				</div>
-			</div>
+			</section>
 		);
 	}
 }

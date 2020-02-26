@@ -1,23 +1,25 @@
 import React from 'react';
 import PeopleJumping from '../../assets/people-jumping.jpeg';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 export default function Main() {
+	const history = useHistory();
+
+	const handleClick = () => {
+		history.push('/onboarding');
+	};
+
 	return (
-		<div className="main-container-landing">
-			<div className="main-cta">
-				<p className="header-main-cta">Workplace recognition.</p>
-				<p className="header-secondary-cta">Redefined.</p>
-				<p className="text-main-cta">
+		<section className="main-container-landing">
+			<section>
+				<h2>Workplace recognition.</h2>
+				<h3>Redefined.</h3>
+				<p>
 					Making it easy to recognize your hardworking peers with
 					rewards and personalized messages.
 				</p>
-				<Link to="/onboarding">
-					<button className="btn-get-started">Join today</button>
-				</Link>
-			</div>
-			<div className="main-img">
-				<img src={PeopleJumping} alt="cta-image" />
-			</div>
-		</div>
+				<button onClick={handleClick}>Join today</button>
+			</section>
+			<img src={PeopleJumping} alt="group of people jumping" />
+		</section>
 	);
 }
