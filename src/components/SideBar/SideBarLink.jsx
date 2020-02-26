@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-// import clsx from 'clsx';
 import { useHistory /* useRouteMatch */ } from 'react-router-dom';
 
 export const SidebarLink = memo(({ name, path, open, icon }) => {
@@ -11,7 +10,6 @@ export const SidebarLink = memo(({ name, path, open, icon }) => {
 	return (
 		<li
 			className="side-nav-li"
-			button
 			key={name}
 			onClick={() => history.push(path)}>
 			<section className="side-bar-link-div">

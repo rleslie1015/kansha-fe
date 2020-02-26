@@ -88,7 +88,6 @@ function Sidebar({ user }) {
 				{/* this populates the sign out icon on the closed menu and text on the open menu */}
 				<li
 					className="sign-out-li"
-					button
 					onClick={() => signout()}
 					key="Sign Out">
 					<section className="nav-sign-out">

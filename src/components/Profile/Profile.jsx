@@ -7,7 +7,6 @@ import SideBar from '../SideBar';
 
 export function Profile({ profile, isPeer }) {
 	const [badges, setBadges] = useState([]);
-	console.log(profile, 'profile');
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -39,12 +38,12 @@ export function Profile({ profile, isPeer }) {
 	);
 
 	return (
-		<div className="profile-main-cont">
+		<main className="profile-main-cont">
 			<SideBar />
-			<div className="container-entire-profile">
+			<section className="container-entire-profile">
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
-				<div className="container-profile-card-and-badges">
-					<div className="container-profile-card">
+				<section className="container-profile-card-and-badges">
+					<section className="container-profile-card">
 						<img
 							className="profilepic"
 							src={profile.profile_picture}
@@ -55,7 +54,7 @@ export function Profile({ profile, isPeer }) {
 								<Cropper />
 							</div>
 						)} */}
-						<div className="profile-name-info">
+						<section className="profile-name-info">
 							<h5 className="profile-user-name">
 								{profile.first_name} {profile.last_name}
 							</h5>
@@ -65,10 +64,10 @@ export function Profile({ profile, isPeer }) {
 							<p className="profile-user-info">
 								{profile.department}
 							</p>
-						</div>
-					</div>
+						</section>
+					</section>
 					{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
-					<div className="container-badges">
+					<section className="container-badges">
 						<h5 className="title-badges">Badges</h5>
 						<div>
 							{badges && (
@@ -111,12 +110,12 @@ export function Profile({ profile, isPeer }) {
 								</>
 							)}
 						</div>
-					</div>
-				</div>
+					</section>
+				</section>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
-				<div className="activity-card">
+				<section className="activity-card">
 					<h5 className="title-activity-card">Activity</h5>
-					<div className="inner-activity-card">
+					<section className="inner-activity-card">
 						{profile &&
 							profile.rec
 								.sort(function(a, b) {
@@ -131,9 +130,9 @@ export function Profile({ profile, isPeer }) {
 										recognition={recognition}
 									/>
 								))}
-					</div>
-				</div>
-			</div>
-		</div>
+					</section>
+				</section>
+			</section>
+		</main>
 	);
 }

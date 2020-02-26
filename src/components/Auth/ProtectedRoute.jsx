@@ -1,13 +1,19 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Login } from './';
+import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-export const ProtectedRoute = ({ path, component: Component, refresh, ...props }) => {
-	return (
-		<Route
-			path={path}
-			{...props}
-			component={props => <Login {...props} refresh={refresh} component={Component} />}
-		/>
+// import { Login } from './';
+
+export const ProtectedRoute = ({ path, component: Component }) => {
+	const { error } = useSelector(({ user }) => ({
+		...user,
+	}));
+
+	return error ? (
+		<>
+			<Redirect to="/login" />
+		</>
+	) : (
+		<Route path={path} component={Component} />
 	);
 };

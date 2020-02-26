@@ -20,11 +20,11 @@ export const USER_ONBOARDING_FAILURE = 'USER_ONBOARDING_FAILURE';
 export const USER_UPDATE_PICTURE_START = 'USER_UPDATE_PICTURE_START';
 export const USER_UPDATE_PICTURE_SUCCESS = 'USER_UPDATE_PICTURE_SUCCESS';
 export const USER_UPDATE_PICTURE_FAILURE = 'USER_UPDATE_PICTURE_FAILURE';
-export const USER_UPDATE_PICTURE_BAD_CONTENT = 'USER_UPDATE_PICTURE_BAD_CONTENT';/* <- for when users attempt to upload bad file types */
+export const USER_UPDATE_PICTURE_BAD_CONTENT =
+	'USER_UPDATE_PICTURE_BAD_CONTENT'; /* <- for when users attempt to upload bad file types */
 export const USER_UPDATE_START = 'type: USER_UPDATE_START';
 export const USER_UPDATE_SUCCESS = 'type: USER_UPDATE_SUCCESS';
 export const USER_UPDATE_FAILURE = 'type: USER_UPDATE_FAILURE';
-
 
 // ACTION CREATORS
 
@@ -79,7 +79,7 @@ const finishLogin = dispatch => {
 		})
 		.catch(err => {
 			console.log(err);
-			dispatch({ type: USER_LOGIN_FAILURE, payload: err });
+			dispatch({ type: USER_LOGIN_FAILURE, payload: err.response });
 		});
 };
 
@@ -112,8 +112,8 @@ export const update = (id, creds) => dispatch => {
 		.catch(err => {
 			console.log(err);
 			dispatch({ type: USER_UPDATE_FAILURE });
-		})
-}
+		});
+};
 
 /* this handles a user uploading a profile photo */
 export const uploadPicture = data => dispatch => {
@@ -130,8 +130,7 @@ export const uploadPicture = data => dispatch => {
 		});
 };
 
-
 export const uploadBadContent = (badType, types) => dispatch => {
-	let payload = { badType, types }
-	dispatch({ type: USER_UPDATE_PICTURE_BAD_CONTENT, payload })
-}
+	let payload = { badType, types };
+	dispatch({ type: USER_UPDATE_PICTURE_BAD_CONTENT, payload });
+};
