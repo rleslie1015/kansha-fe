@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
-//post to /employees endpoint to create new employee
 
 import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 import { ReactComponent as AddMoreImg } from '../../assets/ic_outline-person-add.svg';
@@ -23,6 +20,7 @@ function S4BUserUpload({ user }) {
 		industry: user.industry,
 		logo_url: user.logo_url,
 		primary_color: user.primary_color,
+		department: 'X'
 	});
 
 	const [employees, setEmployees] = useState([]);
@@ -32,11 +30,10 @@ function S4BUserUpload({ user }) {
 		axiosWithAuth()
 			.post('/employees', employee)
 			.then(res => {
-
 				console.log(res);
-				// setEmployees( [...employees, employee]);
+				setEmployees([...employees, employee]);
 			})
-			.catch(err => console.log(err));
+			.catch(err => console.log(err.response));
 	}
 
 	const handleEmployee = e => {
