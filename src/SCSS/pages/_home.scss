@@ -1,0 +1,195 @@
+.container-feed-card-and-comments {
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+
+	a {
+		color: $color-primary;
+	}
+
+	.time {
+		font-size: 1.2rem;
+		color: $color-gray-light;
+	}
+
+	main {
+		margin-left: 8rem;
+		display: flex;
+		flex-direction: column;
+		padding-top: 20px;
+		width: 80%;
+
+		.container-feed-card {
+			background-color: $color-white-dark;
+			margin-bottom: 10px;
+			width: 95%;
+			display: flex;
+			justify-content: space-between;
+			min-height: 100px;
+			@include boxshadow();
+
+			.feed-card-pics {
+				position: relative;
+				height: 100%;
+				width: 10%;
+				min-width: 100px;
+				margin-top: 15px;
+
+				.sender {
+					position: relative;
+					left: 10px;
+				}
+
+				.recipient {
+					position: relative;
+				}
+			}
+
+			.feed-card-content {
+				display: flex;
+				flex-direction: column;
+				width: 90%;
+
+				.feed-card-top {
+					display: flex;
+					align-items: center;
+					flex-wrap: wrap;
+					width: 100%;
+					display: flex;
+					position: relative;
+					margin: 10px 0 5px;
+
+					button {
+						position: absolute;
+						right: 10px;
+						top: 5px;
+						width: 20px;
+						border: 0;
+						cursor: pointer;
+					}
+				}
+
+				> p {
+					width: 95%;
+				}
+			}
+
+			.feed-card-bottom {
+				display: flex;
+				position: relative;
+				width: 95%;
+				min-height: 50px;
+
+				img {
+					margin: 5px 0;
+				}
+
+				.reaction-buttons {
+					position: absolute;
+					right: -10px;
+					bottom: 10px;
+					display: flex;
+					width: 90px;
+					justify-content: space-evenly;
+
+					button {
+						border: 0;
+						display: flex;
+						align-items: center;
+						justify-content: space-evenly;
+						width: 48%;
+						cursor: pointer;
+						@include boxshadow();
+
+						svg {
+							fill: $color-primary-nav;
+							width: 30%;
+						}
+
+						.heart-full {
+							fill: $color-primary;
+						}
+
+						.heart-empty {
+							fill: transparent;
+							stroke: $color-primary;
+							stroke-width: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	aside.open {
+		height: 100vh;
+		width: 30%;
+
+		> button {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			border: 0;
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		h3 {
+			font-size: 2rem;
+			font-weight: 400;
+			background: $color-white-cement;
+			padding: 10px 0 10px 5px;
+		}
+
+		section:first-of-type {
+			display: flex;
+			flex-direction: column;
+
+			> div {
+				@include boxshadow();
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+				width: 95%;
+
+				img {
+					width: 30px;
+					border-radius: 50%;
+					margin: 0 5px;
+				}
+
+				> div {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					min-height: 75px;
+				}
+			}
+		}
+
+		section:last-of-type {
+			position: relative;
+			width: 95%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			@include boxshadow();
+
+			textarea {
+				border: 0;
+				width: 75%;
+				padding: 5px;
+			}
+
+			button {
+				margin-right: 5px;
+				border: 0;
+				cursor: pointer;
+			}
+		}
+	}
+
+	aside.closed {
+		width: 0;
+	}
+}

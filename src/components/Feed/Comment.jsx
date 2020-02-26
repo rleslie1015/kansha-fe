@@ -22,45 +22,28 @@ export const Comment = ({ comment, profile }) => {
 				});
 		}
 	};
-
-	if (profile.user_type === 'admin') {
-		return (
+	return (
+		<div>
+			<img src={comment.profile_picture} alt="sender" />
 			<div>
-				<div>
-					<img src={comment.profile_picture} alt="sender" />
-				</div>
-				<div>
-					<div>
-						<Link to={`/profile/${comment.user_id}`}>
-							{comment.first_name} {comment.last_name}
-						</Link>
-						<span>{time}</span>
+				<p>
+					<Link to={`/profile/${comment.user_id}`}>
+						{comment.first_name} {comment.last_name}
+					</Link>
+					&nbsp;{' '}
+					<span className="time" role="presentation">
+						{time}
+					</span>
+					{profile.user_type === 'admin' && (
 						<img
 							src={Trashcan}
 							alt="trash can icon"
 							onClick={() => handleDelete(comment.id)}
 						/>
-					</div>
-					<p>{comment.message}</p>
-				</div>
+					)}
+				</p>
+				<p>{comment.message}</p>
 			</div>
-		);
-	} else {
-		return (
-			<div>
-				<div>
-					<img src={comment.profile_picture} alt="sender" />
-				</div>
-				<div>
-					<div>
-						<Link to={`/profile/${comment.user_id}`}>
-							{comment.first_name} {comment.last_name}
-						</Link>
-						<span>{time}</span>
-					</div>
-					<p>{comment.message}</p>
-				</div>
-			</div>
-		);
-	}
+		</div>
+	);
 };

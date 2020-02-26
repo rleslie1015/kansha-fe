@@ -47,7 +47,7 @@ function Onboarding() {
 			<ProgressBar />
 			<div className="s1-parent-container">
 				<div className="s1-img">
-					<img src={onboardingPic}></img>
+					<img src={onboardingPic} alt="staff-meeting-pic"></img>
 				</div>
 				<div className="s1-getting-started">
 					<Route
@@ -59,6 +59,7 @@ function Onboarding() {
 							<S2CreateAccount
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>
@@ -68,6 +69,7 @@ function Onboarding() {
 							<S3LetsGetSetUp
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>
@@ -90,6 +92,7 @@ function Onboarding() {
 							<S5AccountCustomization
 								{...props}
 								user={user}
+								setUser={setUser}
 								handleUser={handleUser}
 							/>
 						)}></Route>

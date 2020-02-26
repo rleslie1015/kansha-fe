@@ -1,8 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import onboardingPic from '../../assets/onboardingPic.png';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function S6AllDone() {
+import { useDispatch } from 'react-redux';
+
+import { login } from '../../store/actions/user-actions';
+
+//get from /profile endpoint and set that to redux state
+
+function S6AllDone({ user }) {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(login());
+	}, [dispatch]);
+
+	let history = useHistory();
+
+	const handlePrevious = () => {
+		history.push('/onboarding/step-5');
+	};
+	const handleClick = () => {
+		history.push(`/`);
+	};
+
 	return (
 		<div>
 			<h1>All done!</h1>
@@ -12,15 +32,15 @@ function S6AllDone() {
 			</h5>
 
 			<div className="button-container">
-				<button>Take the tour</button>
-				<button>Let me explore</button>
+				<button onClick={handleClick}>Take the tour</button>
+				<button onClick={handleClick}>Let me explore</button>
 			</div>
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-5">
+					<div onClick={handlePrevious}>
 						<p>Previous step</p>
-					</Link>
+					</div>
 				</span>
 			</div>
 		</div>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+//post to /employees endpoint to create new employee
 
 import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 import { ReactComponent as AddMoreImg } from '../../assets/ic_outline-person-add.svg';

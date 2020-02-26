@@ -1,20 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Cropper } from '../FileUpload/FileCrop';
+// import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import RecogModal from '../RecogModal/RecogModal';
-import SideBar from '../SideBar';
+// import RecogModal from '../RecogModal/RecogModal';
 
 export function Profile({ profile, isPeer }) {
 	const [badges, setBadges] = useState([]);
-	console.log(profile, 'profile');
 
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/badges')
 			.then(res => {
 				setBadges(res.data);
-				console.log(badges, 'badges');
 			})
 			.catch(err => {
 				console.log(err);
@@ -39,15 +36,12 @@ export function Profile({ profile, isPeer }) {
 		[profile, badges],
 	);
 
-	console.log(userBadges);
-
 	return (
-		<div className="profile-main-cont">
-			<SideBar />
-			<div className="container-entire-profile">
+		<main className="profile-main-cont">
+			<section className="container-entire-profile">
 				{/* This is the profile card with the image on the top lefthand side, profile picture and "username" are coming from Auth0*/}
-				<div className="container-profile-card-and-badges">
-					<div className="container-profile-card">
+				<section className="container-profile-card-and-badges">
+					<section className="container-profile-card">
 						<img
 							className="profilepic"
 							src={profile.profile_picture}
@@ -58,7 +52,7 @@ export function Profile({ profile, isPeer }) {
 								<Cropper />
 							</div>
 						)} */}
-						<div className="profile-name-info">
+						<section className="profile-name-info">
 							<h5 className="profile-user-name">
 								{profile.first_name} {profile.last_name}
 							</h5>
@@ -68,10 +62,10 @@ export function Profile({ profile, isPeer }) {
 							<p className="profile-user-info">
 								{profile.department}
 							</p>
-						</div>
-					</div>
+						</section>
+					</section>
 					{/* This is the badges card at the bottom of the lefthand side, and is currently hardcoded with badge pictures */}
-					<div className="container-badges">
+					<section className="container-badges">
 						<h5 className="title-badges">Badges</h5>
 						<div>
 							{badges && (
@@ -85,6 +79,7 @@ export function Profile({ profile, isPeer }) {
 														src={
 															userBadges[id].badge
 														}
+														alt=""
 													/>
 												</div>
 											);
@@ -103,6 +98,7 @@ export function Profile({ profile, isPeer }) {
 																userBadges[id]
 																	.badge
 															}
+															alt=""
 														/>
 													</div>
 												</div>
@@ -112,12 +108,12 @@ export function Profile({ profile, isPeer }) {
 								</>
 							)}
 						</div>
-					</div>
-				</div>
+					</section>
+				</section>
 				{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
-				<div className="activity-card">
+				<section className="activity-card">
 					<h5 className="title-activity-card">Activity</h5>
-					<div className="inner-activity-card">
+					<section className="inner-activity-card">
 						{profile &&
 							profile.rec
 								.sort(function(a, b) {
@@ -132,9 +128,9 @@ export function Profile({ profile, isPeer }) {
 										recognition={recognition}
 									/>
 								))}
-					</div>
-				</div>
-			</div>
-		</div>
+					</section>
+				</section>
+			</section>
+		</main>
 	);
 }

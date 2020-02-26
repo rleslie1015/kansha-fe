@@ -1,25 +1,30 @@
 import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo39.png';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 const auth = new Auth();
 
 export default function Footer() {
 	return (
-		<div className="landing-footer-container">
-			<footer className="landing-footer">
-				<img className="kansha-logo" src={Logo} alt="kansha-logo" />
+		<footer className="landing-footer-container">
+			<div>
+				<section>
+					<section>
+						<Logo />
+						<h1>Kansha</h1>
+					</section>
+					<p>© Kansha. 2020. We love our users!</p>
+				</section>
 
 				<nav>
-					<a href="#">Login</a>
-					<a href="#">Team</a>
-					<a href="#">Contact</a>
+					<span onClick={auth.login} role="link">
+						Login
+					</span>
+					<Link to="/">Team</Link>
+					<Link to="/">Contact</Link>
 				</nav>
-			</footer>
-			<p className="landing-footer-copyright">
-				© Kansha. 2020. We love our users!
-			</p>
-		</div>
+			</div>
+		</footer>
 	);
 }

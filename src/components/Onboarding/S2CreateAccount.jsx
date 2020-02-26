@@ -1,10 +1,21 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-function S2CreateAccount({ user, handleUser }) {
+// post request to /users endpoint to create new user
+
+function S2CreateAccount({ user, setUser, handleUser }) {
 	let history = useHistory();
 
-	const handleClick = () => {
+	const handleSubmit = e => {
+		e.preventDefault();
+		axiosWithAuth()
+			.post('/users', user)
+			.then(res => {
+				console.log(res, `hello`);
+				setUser({ ...user, id: res.data[0] });
+			})
+			.catch(err => console.log(err));
 		history.push('/onboarding/step-3');
 	};
 
@@ -44,7 +55,9 @@ function S2CreateAccount({ user, handleUser }) {
 					value={user.org_name}
 					onChange={handleUser}></input>
 			</form>
-			<button onClick={handleClick}>Next</button>
+			<button type="submit" onClick={handleSubmit}>
+				Next
+			</button>
 		</div>
 	);
 }

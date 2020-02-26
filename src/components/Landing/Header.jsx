@@ -1,16 +1,15 @@
 import React from 'react';
-import hero from './images/hero-image.png';
 import Nav from './Nav';
-import Auth from '../../utils/auth';
-import Logo from '../../assets/logo39.png';
-
-const auth = new Auth();
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 export default function Header() {
 	return (
 		<header>
-			<div className="nav-container">
-				<img className="kansha-logo" src={Logo} alt="kansha-logo" />
+			<div>
+				<section>
+					<Logo />
+					<h1>Kansha</h1>
+				</section>
 				<Nav />
 			</div>
 		</header>

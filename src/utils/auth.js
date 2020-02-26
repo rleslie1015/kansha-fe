@@ -4,7 +4,7 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: process.env.REACT_APP_AUTH_DOMAIN,
 		clientID: process.env.REACT_APP_CLIENT_ID,
-		redirectUri: `${process.env.REACT_APP_REDIRECT_URI_BASE}/auth`,
+		redirectUri: process.env.REACT_APP_REDIRECT_URI_BASE,
 		audience: `https://${process.env.REACT_APP_AUTH_DOMAIN}/userinfo`,
 		responseType: 'token id_token',
 		scope: 'openid profile',
@@ -19,8 +19,8 @@ export default class Auth {
 	}
 
 	handleAuthentication(cb) {
-		console.log('foo')
-		this.auth0.parseHash((err, authResults) => {
+		console.log('foo');
+		return this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
 					authResults.expiresIn * 1000 + new Date().getTime(),
@@ -29,11 +29,12 @@ export default class Auth {
 				localStorage.setItem('id_token', authResults.idToken);
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
-				console.log('hello world')
-				cb()
+				window.location.reload();
+				console.log('hello world');
+				cb();
 			} else if (err) {
-				console.log(err)
-				cb(err)
+				console.log(err);
+				cb(err);
 			}
 		});
 	}
@@ -42,5 +43,4 @@ export default class Auth {
 		let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
 		return new Date().getTime() < expiresAt;
 	}
-
 }

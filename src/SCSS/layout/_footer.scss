@@ -1,40 +1,48 @@
-.landing-footer-container {
+footer {
+	width: 100%;
 	background-color: $color-primary-nav;
 	color: $color-white;
-	height: 190px;
-	display: flex;
-	flex-direction: column;
-	padding-left: 0.5rem;
-}
 
-.landing-footer {
-	display: flex;
-	background-color: $color-primary-nav;
-	color: $color-white;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin: $small;
-	nav {
+	> div {
+		margin: 0 auto;
+		width: 95%;
+		max-width: 1440px;
 		display: flex;
-		font-weight: 500;
-		margin-bottom: 1.3rem;
-		width: 33%;
-		justify-content: space-evenly;
-		a {
-			margin: 0.5rem;
-			height: 2.9rem;
-			font-size: 2.4rem;
-			&:hover {
-				color: $color-secondary;
+		justify-content: space-between;
+		align-items: center;
+		height: 200px;
+
+		> section {
+			display: flex;
+			flex-direction: column;
+
+			> section {
+				display: flex;
+				color: $color-white;
+				height: 100%;
+				align-items: center;
+				margin: 0 0 20px -10px;
+
+				svg {
+					margin-top: 10px;
+				}
+
+				h1 {
+					font-family: Lato;
+					font-style: normal;
+					font-weight: normal;
+					font-size: 2.4rem;
+					font-weight: 400;
+					line-height: 0;
+					user-select: none;
+				}
 			}
 		}
-	}
-}
 
-.landing-footer-copyright {
-	color: $color-white;
-	font-size: 0.8rem;
-	line-height: 1.3rem;
-	letter-spacing: -0.015em;
-	margin-left: 3%;
+		nav {
+			width: 20%;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
 }
