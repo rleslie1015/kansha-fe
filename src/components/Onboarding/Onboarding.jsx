@@ -47,7 +47,7 @@ function Onboarding() {
 			<ProgressBar />
 			<div className="s1-parent-container">
 				<div className="s1-img">
-					<img src={onboardingPic}></img>
+					<img src={onboardingPic} alt="staff-meeting-pic"></img>
 				</div>
 				<div className="s1-getting-started">
 					<Route

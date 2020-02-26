@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 //put request to update existing organization
 
@@ -18,11 +17,11 @@ function S5AccountCustomization({ user }) {
 		history.push('/onboarding/step-4');
 	};
 
-	const [org, setOrg] = useState();
+	// const [org, setOrg] = useState();
 
-	const handleChanges = e => {
-		setOrg({ ...org, [e.target.name]: e.target.value });
-	};
+	// const handleChanges = e => {
+	// 	setOrg({ ...org, [e.target.name]: e.target.value });
+	// };
 
 	return (
 		<div>

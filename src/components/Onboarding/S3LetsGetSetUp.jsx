@@ -8,10 +8,6 @@ function S3LetsGetSetUp({ user, setUser, handleUser }) {
 	console.log(user);
 	let history = useHistory();
 
-	const handleClick = () => {
-		history.push('/onboarding/step-4');
-	};
-
 	const handlePrevious = () => {
 		history.push('/onboarding/step-2');
 	};
@@ -19,11 +15,17 @@ function S3LetsGetSetUp({ user, setUser, handleUser }) {
 	const handleSubmit = e => {
 		e.preventDefault();
 		axiosWithAuth()
-			.post('/organizations', user)
+			.post('/organizations', {
+				name: user.org_name,
+				company_size: user.company_size,
+				industry: user.industry,
+			})
 			.then(res => {
+				console.log(res);
 				setUser(res.data);
 			})
 			.catch(err => console.log(err));
+		history.push('/onboarding/step-4');
 	};
 
 	return (
@@ -96,7 +98,7 @@ function S3LetsGetSetUp({ user, setUser, handleUser }) {
 					</select>
 				</div>
 			</form>
-			<button type="submit" onClick={handleClick}>
+			<button type="submit" onClick={handleSubmit}>
 				Next
 			</button>
 			<div className="step-p-container">

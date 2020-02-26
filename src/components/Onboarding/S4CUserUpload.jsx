@@ -1,7 +1,7 @@
 //bulk user account creation component
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+// import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 //post request to /employees to create employees
 
@@ -19,7 +19,7 @@ function S4CUserUpload({ user }) {
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
 				reader.onload = () => {
-					const binaryStr = reader.result;
+					// const binaryStr = reader.result;
 					setFile(file);
 				};
 				reader.readAsArrayBuffer(file);

@@ -40,7 +40,7 @@ Fade.propTypes = {
 };
 
 function RecogModal(props) {
-	console.log(props);
+	// console.log(props);
 	const [isTyping] = useState(true);
 	const [, setBadges] = useState([]);
 	const [, setOpen] = useState(false);
@@ -112,7 +112,7 @@ function RecogModal(props) {
 	// 	setRecog({ ...recog, badge_id: null });
 	// };
 
-	console.log(recog);
+	// console.log(recog);
 
 	if (isTyping) {
 		return (

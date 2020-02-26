@@ -20,7 +20,7 @@ function S1GetStarted() {
 				</li>
 				<li className="styled-li">
 					<div className="numbered-list">
-						<i class="fas fa-check"></i>
+						<i className="fas fa-check"></i>
 					</div>
 					That's it!
 				</li>

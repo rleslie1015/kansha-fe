@@ -1,8 +1,8 @@
 //toggle rendering between one user account creation and bulk user account creation
 import React from 'react';
 
-import S4BUserUpload from '../Onboarding/S4BUserUpload';
-import S4CUserUpload from '../Onboarding/S4CUserUpload';
+// import S4BUserUpload from '../Onboarding/S4BUserUpload';
+// import S4CUserUpload from '../Onboarding/S4CUserUpload';
 
 import { useHistory } from 'react-router-dom';
 
