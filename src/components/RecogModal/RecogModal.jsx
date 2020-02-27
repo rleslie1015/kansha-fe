@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import { sendRecog } from '../../store/actions/recog-actions';
+import { ReactComponent as SendIcon } from '../../assets/send.svg';
 import send from '../../assets/send.png';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -121,7 +122,7 @@ function RecogModal(props) {
 					className="send-recog-btn"
 					type="button"
 					onClick={handleOpen}>
-					<img src={send} alt="thank button" />
+					<SendIcon />
 				</button>
 				{/* <Modal
 				className={classes.modal}

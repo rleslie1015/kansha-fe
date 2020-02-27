@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import WorkspaceCard from './WorkspaceCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-function Workspace(props) {
+function Workspace() {
 	const [team, setTeam] = useState([]);
+	const [filter, setFilter] = useState('');
 
-	const [filteredTeam, setFilteredTeam] = useState([]);
-	// console.log(filteredTeam);
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -21,37 +23,27 @@ function Workspace(props) {
 			});
 	}, []);
 
-	const searchWorkPlaceHandler = e => {
-		console.log(e.target.value);
-
-		const user = team.filter(
-			t =>
-				t.first_name.toLowerCase().includes(e.target.value) ||
-				t.last_name.toLowerCase().includes(e.target.value),
-		);
-		setFilteredTeam(user);
-	};
-
 	return (
-		<div className="workspace">
-			<div className="workspace-container">
-				<div className="workspace-search-div">
-					<h1>Workspace</h1>
-					<div className="workplace-search-bar">
-						<input
-							placeholder="Search Workspace…"
-							onKeyUp={searchWorkPlaceHandler}
-							type="text"
-						/>
-					</div>
-				</div>
-				<WorkspaceCard
-					team={filteredTeam.length > 0 ? filteredTeam : team}
-					profile={props.profile}
-					setTeam={setTeam}
+		<main className="workspace">
+			<header>
+				<h1>Workspace</h1>
+				<input
+					placeholder="Search Workspace…"
+					value={filter}
+					onChange={e => setFilter(e.target.value)}
+					type="text"
 				/>
-			</div>
-		</div>
+			</header>
+			<ul className="workspace-card-container">
+				{team.map(user => (
+					<WorkspaceCard
+						key={user.id}
+						profile={user}
+						isAdmin={profile.user_type.toLowerCase() === 'admin'}
+					/>
+				))}
+			</ul>
+		</main>
 	);
 }
-export default connect(({ user }) => ({ ...user }), {})(Workspace);
+export default Workspace;
