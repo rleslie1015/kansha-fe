@@ -6,9 +6,10 @@ import { login, authorizeUser } from './store/actions/user-actions';
 
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
+import Onboarding from './components/Onboarding/Onboarding';
 
 import Landing from './components/Landing';
-import Onboarding from './components/Onboarding';
+// import Onboarding from './components/Onboarding';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
 import Feed from './components/Feed';
