@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -6,6 +6,30 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 function S2CreateAccount({ user, setUser, handleUser }) {
 	let history = useHistory();
+
+	// function validate(user) {
+	// 	return {
+	// 		first_name: user.first_name.length === 0,
+	// 		last_name: user.last_name.length === 0,
+	// 		job_title: user.job_title.length === 0,
+	// 		email: user.email.length === 0,
+	// 		org_name: user.org_name.length === 0,
+	// 	};
+	// }
+
+	useEffect(() => {
+		// const errors = validate(
+		// 	user.first_name,
+		// 	user.last_name,
+		// 	user.job_title,
+		// 	user.email,
+		// 	user.org_name,
+		// );
+		// const isDisabled = Object.keys(errors).some(x => errors[x]);
+		// return !isDisabled;
+	}, []);
+
+	function canBeSubmitted() {}
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -61,5 +85,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 		</div>
 	);
 }
+
+//disabled={!isDisabled}
 
 export default S2CreateAccount;

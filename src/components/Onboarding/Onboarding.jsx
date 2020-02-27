@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom';
 import Nav from '../Landing/Nav';
 import ProgressBar from './ProgressBar';
 
-//nested router goes here
 import S1GetStarted from './S1GetStarted';
 import S2CreateAccount from './S2CreateAccount';
 import S3LetsGetSetUp from './S3LetsGetSetUp';
@@ -30,12 +29,6 @@ function Onboarding() {
 		logo_url: '',
 		primary_color: '',
 	});
-
-	//these slices will live in Upload components
-
-	// const [indUser, setIndUser] = useState();
-
-	// const [bulkFile, setBulkFile] = useState();
 
 	const handleUser = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
