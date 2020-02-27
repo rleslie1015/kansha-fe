@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as AddMoreImg } from '../../assets/ic_outline-person-add.svg';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 function S4BUserUpload({ user }) {
+	let history = useHistory();
 
 	const [employee, setEmployee] = useState({
 		first_name: '',
@@ -23,9 +25,9 @@ function S4BUserUpload({ user }) {
 	});
 
 	const [employees, setEmployees] = useState([]);
+	const [submitted, setSubmitted ] = useState(false);
 
-	const handleSubmit = e => {
-		e.preventDefault();
+	const handleSubmit = () => {
 		axiosWithAuth()
 			.post('/employees', employee)
 			.then(res => {
@@ -33,13 +35,36 @@ function S4BUserUpload({ user }) {
 				setEmployees([...employees, employee]);
 			})
 			.catch(err => console.log(err.response));
+			setSubmitted(true);
+			setEmployee({
+				first_name: '',
+				last_name: '',
+				email: '',
+				job_title: '',
+				profile_picture: '',
+				org_id: user.org_id,
+				user_type: '',
+				org_name: user.org_name,
+				company_size: user.company_size,
+				industry: user.industry,
+				logo_url: user.logo_url,
+				primary_color: user.primary_color,
+				department: 'X'
+			})
+	}
 
+	const handleClick = () => {
+		if (submitted){
+			history.push("/onboarding/step-6");
+		} else {
+			handleSubmit();
+			history.push("/onboarding/step-6")
+		}
 	}
 
 	const handleEmployee = e => {
 		setEmployee({...employee, [e.target.name]: e.target.value})
 	}
-
 
 	return (
 		<div className="employee-add-container">
@@ -86,10 +111,8 @@ function S4BUserUpload({ user }) {
 				
 			</form>
 
-			<Link to="/onboarding/step-5">
-				<button>Next</button>
-			</Link>
-
+			<button onClick={handleClick}>Next</button>
+			
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />

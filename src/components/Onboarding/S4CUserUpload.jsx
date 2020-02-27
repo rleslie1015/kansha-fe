@@ -46,7 +46,7 @@ function S4CUserUpload({ user }) {
 			<div>{file && <button>Upload</button>}</div>
 			<div>{error}</div>
 
-			<Link to="/onboarding/step-5">
+			<Link to="/onboarding/step-6">
 				<button>Next</button>
 			</Link>
 

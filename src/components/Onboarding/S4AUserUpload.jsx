@@ -20,19 +20,18 @@ function S4AUserUpload() {
 	};
 
 	const handleUploadMethod = (e) => {
-		setUploadMethod(e.target.value)
-		console.log(uploadMethod);
+		setUploadMethod(e.target.value);
 	}
 
 	const handleClick = () => {
 		if(uploadNow === 'false'){
-			history.push('/onboarding/step-5');
+			history.push('/onboarding/step-6');
 		}else if(uploadMethod === 'manual'){
 			history.push('/onboarding/step-4b')
 		} else if(uploadMethod === 'bulk'){
 			history.push('/onboarding/step-4c')
 		} else{
-			history.push('/onboarding/step-5')
+			history.push('/onboarding/step-6')
 		}	
 		};
 
@@ -52,7 +51,6 @@ function S4AUserUpload() {
 								onChange={handleUploadNow}
 							/>
 							<label for="yes">Yes</label>
-						
 						</div>
 
 						<div>
