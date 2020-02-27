@@ -26,6 +26,19 @@ progress::-moz-progress-bar {
 	justify-content: space-evenly;
 	align-items: center;
 	margin: 10rem 0rem;
+
+	button {
+		margin: 6rem 0rem;
+		background-color: $color-secondary;
+		width: 13rem;
+		padding: 10px;
+		color: $color-white;
+		border-radius: 8px;
+
+		&:hover {
+			background-color: #fa2c5a;
+		}
+	}
 }
 
 .s1-getting-started {
@@ -148,19 +161,6 @@ progress::-moz-progress-bar {
 	width: 75%;
 }
 
-button {
-	margin: 6rem 0rem;
-	background-color: $color-secondary;
-	width: 13rem;
-	padding: 10px;
-	color: $color-white;
-	border-radius: 8px;
-
-	&:hover {
-		background-color: #fa2c5a;
-	}
-}
-
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -248,7 +248,7 @@ button {
 			}
 		}
 
-		.add-another-employee{
+		.add-another-employee {
 			width: 14rem;
 			padding-top: 3rem;
 			text-decoration: underline;
@@ -260,10 +260,10 @@ button {
 			cursor: pointer;
 		}
 
-		.success-employee-add{
+		.success-employee-add {
 			padding-top: 4rem;
 
-			h6{
+			h6 {
 				padding-bottom: 1.5rem;
 			}
 		}
