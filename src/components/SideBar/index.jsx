@@ -54,7 +54,7 @@ function Sidebar({ user }) {
 			)}
 			<SidebarLink path="/home" name="Home" icon={home} open={open} />
 			<SidebarLink
-				path="/profile"
+				path={`/profile/${user.profile.id}`}
 				name="Profile"
 				icon={profile}
 				open={open}
