@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
-import trashcan from '../../assets/Trashcan.png';
+import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -28,187 +28,41 @@ export function RecognitionCard({ recognition, sent, badge }) {
 		}
 	};
 
-	if (profile.user_type === 'admin') {
-		return (
-			<section className="container-recognition-card container-recognition-card-admin">
-				<div>
-					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
-						onClick={() => {
-							history.push(
-								`/profile/${
-									sent
-										? recognition.recipient
-										: recognition.sender
-								}`,
-							);
-						}}
-						alt="user avatar"
-					/>
-				</div>
+	return (
+		<section className="container-recognition-card">
+			<Link
+				to={`/profile/${
+					sent ? recognition.recipient : recognition.sender
+				}`}>
+				<img
+					src={
+						sent
+							? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+							: recognition.profile_pic
+					}
+					alt="user avatar"
+				/>
+			</Link>
 
+			<section>
+				{profile.user_type === 'admin' && (
+					<Trashcan onClick={handleDelete} />
+				)}
 				<div>
-					<div>
-						<img
-							src={trashcan}
-							alt="trash can icon"
-							onClick={() => handleDelete(recognition)}
-						/>
-					</div>
-					<div>
-						<div
-							onClick={() => {
-								history.push(
-									`/profile/${
-										sent
-											? recognition.recipient
-											: recognition.sender
-									}`,
-								);
-							}}>
-							{sent
-								? `Sent to ${recognition.first_name} ${recognition.last_name}`
-								: `${recognition.first_name} ${recognition.last_name}`}
-						</div>
-					</div>
-					<div>
-						<p>{recognition.message}</p>
-					</div>
-					{badge && (
-						<div>
-							<img src={badge.badge_URL} alt="" />
-						</div>
-					)}
-					<div>
-						<p>{time}</p>
-					</div>
+					<Link
+						to={`/profile/${
+							sent ? recognition.recipient : recognition.sender
+						}`}>
+						{sent
+							? `Sent to ${recognition.first_name} ${recognition.last_name}`
+							: `${recognition.first_name} ${recognition.last_name}`}
+					</Link>
+					<span className="time" role="presentation">
+						&nbsp;{time}
+					</span>
 				</div>
+				<p>{recognition.message}</p>
 			</section>
-		);
-	} else if (
-		profile.user_type === 'mod' &&
-		profile.department === recognition.department
-	) {
-		return (
-			<div>
-				<div>
-					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
-						onClick={() => {
-							history.push(
-								`/profile/${
-									sent
-										? recognition.recipient
-										: recognition.sender
-								}`,
-							);
-						}}
-						alt="user avatar"
-					/>
-				</div>
-				<div>
-					<div>
-						<img
-							src={trashcan}
-							alt="trash can icon"
-							onClick={() => handleDelete(recognition)}
-						/>
-					</div>
-					<div>
-						<div
-							onClick={() => {
-								history.push(
-									`/profile/${
-										sent
-											? recognition.recipient
-											: recognition.sender
-									}`,
-								);
-							}}>
-							{sent
-								? `Sent to ${recognition.first_name} ${recognition.last_name}`
-								: `${recognition.first_name} ${recognition.last_name}`}
-						</div>
-					</div>
-					<div>
-						<p>{recognition.message}</p>
-					</div>
-					{badge && (
-						<div>
-							<img src={badge.badge_URL} alt="" />
-						</div>
-					)}
-					<div>
-						<p>{time}</p>
-					</div>
-				</div>
-			</div>
-		);
-	} else {
-		return (
-			<section className="container-recognition-card container-recognition-card-user">
-				<div>
-					<img
-						className="picture-profile-medium"
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
-						onClick={() => {
-							history.push(
-								`/profile/${
-									sent
-										? recognition.recipient
-										: recognition.sender
-								}`,
-							);
-						}}
-						alt="user avatar"
-					/>
-				</div>
-				<div>
-					<div>
-						<div
-							onClick={() => {
-								history.push(
-									`/profile/${
-										sent
-											? recognition.recipient
-											: recognition.sender
-									}`,
-								);
-							}}>
-							{sent
-								? `Sent to ${recognition.first_name} ${recognition.last_name}`
-								: `${recognition.first_name} ${recognition.last_name}`}
-						</div>
-					</div>
-					<div>
-						<p>{recognition.message}</p>
-					</div>
-					{badge && (
-						<div>
-							<img
-								className="badge badge-recognition-card"
-								src={badge.badge_URL}
-								alt={badge.badge_name}
-							/>
-						</div>
-					)}
-					<div>
-						<p>{time}</p>
-					</div>
-				</div>
-			</section>
-		);
-	}
+		</section>
+	);
 }

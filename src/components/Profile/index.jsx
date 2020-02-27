@@ -9,24 +9,21 @@ export const PeerProfile = ({ match }) => {
 	const [profile, setProfile] = useState();
 
 	const { id } = match.params;
-    const { profile: userProfile } = useSelector(state => state.user);
+	const { profile: userProfile } = useSelector(state => state.user);
 
-    useEffect(() => {
-        if (userProfile.id.toString() !== id) {
-		    axiosWithAuth()
-			.get(`/profile/${id}`)
-            .then(({ data }) => setProfile(data.peer));
-        }
+	useEffect(() => {
+		if (userProfile.id.toString() !== id) {
+			axiosWithAuth()
+				.get(`/profile/${id}`)
+				.then(({ data }) => setProfile(data.peer));
+		}
 	}, [id, userProfile]);
 
 	if (userProfile.id.toString() === id) {
 		return <Redirect to="/profile" />;
 	}
 
-	
-
 	if (profile) {
-		console.log(profile);
 		return <Profile {...{ profile }} isPeer />;
 	} else {
 		return <>loading...</>;
