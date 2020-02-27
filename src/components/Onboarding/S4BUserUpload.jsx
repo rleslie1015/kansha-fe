@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 import { ReactComponent as AddMoreImg } from '../../assets/ic_outline-person-add.svg';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -34,6 +33,7 @@ function S4BUserUpload({ user }) {
 				setEmployees([...employees, employee]);
 			})
 			.catch(err => console.log(err.response));
+
 	}
 
 	const handleEmployee = e => {
@@ -71,12 +71,7 @@ function S4BUserUpload({ user }) {
 					name="email"
 					value={employee.email}
 					onChange={handleEmployee}></input>
-				<div className="employee-image-upload">
-					<p>
-						Upload profile image <span>(optional)</span>
-					</p>
-					<CloudUpload />
-				</div>
+			
 				<div type='submit' onClick={handleSubmit} className="add-another-employee"><AddMoreImg/>Add more</div>
 				
 				<div className="success-employee-add">
