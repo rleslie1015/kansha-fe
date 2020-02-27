@@ -9,7 +9,7 @@ import { ProtectedRoute } from './components/Auth';
 
 import Landing from './components/Landing';
 import Onboarding from './components/Onboarding';
-import { UserProfile, PeerProfile } from './components/Profile';
+import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
 import Feed from './components/Feed';
 import Workspace from './components/Workspace';
@@ -59,13 +59,8 @@ export const App = () => {
 				<Switch>
 					<ProtectedRoute exact path="/" component={Feed} />
 					<ProtectedRoute
-						path="/profile"
-						component={UserProfile}
-						exact
-					/>
-					<ProtectedRoute
 						path="/profile/:id"
-						component={PeerProfile}
+						component={UserProfile}
 					/>
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute path="/upload" component={FileUpload} />
