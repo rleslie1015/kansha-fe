@@ -156,6 +156,10 @@ button {
 	color: $color-white;
 	border-radius: 8px;
 
+	&:disabled {
+		opacity: 0.2;
+	}
+
 	&:hover {
 		background-color: #fa2c5a;
 	}
@@ -248,7 +252,7 @@ button {
 			}
 		}
 
-		.add-another-employee{
+		.add-another-employee {
 			width: 14rem;
 			padding-top: 3rem;
 			text-decoration: underline;
@@ -260,10 +264,10 @@ button {
 			cursor: pointer;
 		}
 
-		.success-employee-add{
+		.success-employee-add {
 			padding-top: 4rem;
 
-			h6{
+			h6 {
 				padding-bottom: 1.5rem;
 			}
 		}
@@ -308,5 +312,17 @@ button {
 
 	button {
 		cursor: pointer;
+	}
+}
+
+.color-form {
+	display: flex;
+	flex-direction: column;
+
+	.primary-color {
+		width: 6rem;
+		height: 2rem;
+		background-color: black;
+		border: 3px solid red;
 	}
 }
