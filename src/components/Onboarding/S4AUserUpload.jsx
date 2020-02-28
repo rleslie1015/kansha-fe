@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // // import S4BUserUpload from '../Onboarding/S4BUserUpload';
 // // import S4CUserUpload from '../Onboarding/S4CUserUpload';
@@ -6,15 +6,34 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 function S4AUserUpload() {
-	let history = useHistory();
+	const [ uploadNow, setUploadNow ] = useState('');
+	const [uploadMethod, setUploadMethod ] = useState('')
 
-	const handleClick = () => {
-		history.push('/onboarding/step-4b');
-	};
+	let history = useHistory();
 
 	const handlePrevious = () => {
 		history.push('/onboarding/step-3');
 	};
+
+	const handleUploadNow = (e) => {
+		setUploadNow(e.target.value)
+	};
+
+	const handleUploadMethod = (e) => {
+		setUploadMethod(e.target.value);
+	}
+
+	const handleClick = () => {
+		if(uploadNow === 'false'){
+			history.push('/onboarding/step-6');
+		}else if(uploadMethod === 'manual'){
+			history.push('/onboarding/step-4b')
+		} else if(uploadMethod === 'bulk'){
+			history.push('/onboarding/step-4c')
+		} else{
+			history.push('/onboarding/step-6')
+		}	
+		};
 
 	return (
 		<>
@@ -28,7 +47,8 @@ function S4AUserUpload() {
 								type="radio"
 								id="yes"
 								name="drone"
-								value="yes"
+								value="true"
+								onChange={handleUploadNow}
 							/>
 							<label for="yes">Yes</label>
 						</div>
@@ -38,11 +58,14 @@ function S4AUserUpload() {
 								type="radio"
 								id="no"
 								name="drone"
-								value="no"
+								value="false"
+								onChange={handleUploadNow}
 							/>
 							<label for="no">No</label>
 						</div>
 					</div>
+
+			{ uploadNow === "true" &&
 					<div className="how-upload-question">
 						<h6>How would you like to add them?</h6>
 						<div>
@@ -51,6 +74,7 @@ function S4AUserUpload() {
 								id="manual"
 								name="drone2"
 								value="manual"
+								onChange={handleUploadMethod}
 							/>
 							<label for="manual">
 								Manually enter employees (not recommended for
@@ -64,18 +88,17 @@ function S4AUserUpload() {
 								id="bulk"
 								name="drone2"
 								value="bulk"
+								onChange={handleUploadMethod}
 							/>
 							<label for="bulk">
 								Bulk Upload (click here to view a sample format
 								for you spreadsheet or csv)
 							</label>
 						</div>
-					</div>
+					</div>}
+					
 				</div>
 			</div>
-
-			{/* <S4BUserUpload />*/}
-			{/* <S4CUserUpload /> */}
 
 			<button onClick={handleClick}>Next</button>
 
