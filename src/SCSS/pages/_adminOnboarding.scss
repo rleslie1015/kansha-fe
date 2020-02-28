@@ -7,7 +7,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-	background-color: #c4c4c4;
+	background-color: $color-gray-light;
 	border-radius: 2px;
 }
 
@@ -18,7 +18,7 @@ progress::-webkit-progress-value {
 }
 
 progress::-moz-progress-bar {
-	background-color: #c4c4c4;
+	background-color: $color-gray-light;
 }
 .s1-parent-container {
 	display: flex;
@@ -36,7 +36,7 @@ progress::-moz-progress-bar {
 		border-radius: 8px;
 
 		&:hover {
-			background-color: #fa2c5a;
+			background-color: $color-primary;
 		}
 	}
 }
@@ -75,7 +75,7 @@ progress::-moz-progress-bar {
 			margin: 1.5rem 0rem;
 
 			.numbered-list {
-				background-color: lightgrey;
+				background-color: $color-white-dark;
 				width: 4rem;
 				height: 4rem;
 				border-radius: 50%;
@@ -161,6 +161,23 @@ progress::-moz-progress-bar {
 	width: 75%;
 }
 
+button {
+	margin: 6rem 0rem;
+	background-color: $color-secondary;
+	width: 13rem;
+	padding: 10px;
+	color: $color-white;
+	border-radius: 8px;
+
+	&:disabled {
+		opacity: 0.2;
+	}
+
+	&:hover {
+		background-color: $color-primary;
+	}
+}
+
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -242,7 +259,7 @@ progress::-moz-progress-bar {
 			padding-top: 3rem;
 
 			span {
-				color: #757575;
+				color: $color-gray-light;
 				margin-left: 0rem;
 				margin-right: 2rem;
 			}
@@ -276,8 +293,17 @@ progress::-moz-progress-bar {
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
 	}
+
+	.bulk-template-download {
+		padding: 1rem 0rem;
+		text-decoration: underline;
+		p {
+			font-size: 1.8rem;
+		}
+	}
+
 	.dropzone {
-		background-color: #e5e5e5;
+		background-color: $color-white-cement;
 		width: 51.5rem;
 		height: 25.8rem;
 
@@ -308,5 +334,17 @@ progress::-moz-progress-bar {
 
 	button {
 		cursor: pointer;
+	}
+}
+
+.color-form {
+	display: flex;
+	flex-direction: column;
+
+	.primary-color {
+		width: 6rem;
+		height: 2rem;
+		background-color: black;
+		border: 3px solid red;
 	}
 }

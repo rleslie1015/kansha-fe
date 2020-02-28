@@ -28,6 +28,7 @@ function Onboarding() {
 		industry: '',
 		logo_url: '',
 		primary_color: '',
+		secondary_color: '',
 	});
 
 	const handleUser = e => {
