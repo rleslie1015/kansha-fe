@@ -58,7 +58,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 
 	return (
 		<div>
-			<h1>Let's Get Set Up!</h1>
+			<h1>Let's get set up!</h1>
 			<form className="create-account-form">
 				<div className="name-container">
 					<input

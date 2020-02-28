@@ -104,7 +104,7 @@ function S4BUserUpload({ user }) {
 						<div>
 							<h6>Added Successfully!</h6>
 							{employees.map(person => (
-								<p>{person.first_name} {person.last_name} {person.email}</p>
+								<p>{person.first_name} {person.last_name} <span className='employee-email'>{person.email}</span></p>
 							))}
 						</div>}
 				</div>

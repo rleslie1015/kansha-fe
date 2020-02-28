@@ -2,12 +2,12 @@ progress {
 	border-radius: 5px;
 	width: 100px;
 	position: absolute;
-	right: 200px;
-	top: 70px;
+	right: 250px;
+	top:120px;
 }
 
 progress::-webkit-progress-bar {
-	background-color: $color-gray-light;
+	background-color: #cfcdcd;
 	border-radius: 2px;
 }
 
@@ -34,10 +34,23 @@ progress::-moz-progress-bar {
 		padding: 10px;
 		color: $color-white;
 		border-radius: 8px;
+		border: none;
+
+		&:disabled{
+			background-color: gray;
+
+			&:hover{
+				background-color: gray;
+			}
+		}
 
 		&:hover {
 			background-color: $color-primary;
 		}
+	}
+
+	.s1-img{
+		margin-bottom: 8%;
 	}
 }
 
@@ -214,12 +227,19 @@ progress::-moz-progress-bar {
 	   }
 	}
 
+
+	
+
 	.select-placeholder{
 		width: 40%;
 			color: rgba(51, 51, 51, 0.5);
 			font-style: italic;
 			font-weight: 600;
+			border: 1px solid #787878;
+			border-radius: 0px;
+			
 		}
+
 	
 
 	.formname {
@@ -332,6 +352,14 @@ progress::-moz-progress-bar {
 		.success-employee-add {
 			padding-top: 4rem;
 
+			p{
+				color: $color-gray-light;
+			.employee-email{
+				margin-left: 3rem;
+				}	
+			}
+			
+
 			h6 {
 				padding-bottom: 1.5rem;
 			}
@@ -365,6 +393,10 @@ progress::-moz-progress-bar {
 		align-items: center;
 		cursor: pointer;
 
+		.AddBulkIcon{
+			fill:#C91757;
+		}
+		
 		p {
 			font-size: 2.4rem;
 			line-height: 2.8rem;

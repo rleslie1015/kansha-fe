@@ -61,7 +61,7 @@ function S4CUserUpload({ user }) {
 			</div>
 			<div {...getRootProps({ className: 'dropzone' })}>
 				<input {...getInputProps()} />
-				<CloudUpload />
+				<CloudUpload className='AddBulkIcon'/>
 				<p>
 					Drag and drop file or <span>browse</span>
 				</p>
