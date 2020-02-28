@@ -161,23 +161,6 @@ progress::-moz-progress-bar {
 	width: 75%;
 }
 
-button {
-	margin: 6rem 0rem;
-	background-color: $color-secondary;
-	width: 13rem;
-	padding: 10px;
-	color: $color-white;
-	border-radius: 8px;
-
-	&:disabled {
-		opacity: 0.2;
-	}
-
-	&:hover {
-		background-color: $color-primary;
-	}
-}
-
 .button-container {
 	display: flex;
 	justify-content: center;

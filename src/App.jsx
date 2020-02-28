@@ -51,8 +51,8 @@ export const App = () => {
 	) : (
 		<Switch>
 			{init.error && <Route exact path="/" component={Landing} />}
-			<Route path="/onboarding" component={Onboarding} />
 			<Route path="/login" component={Login} />
+			<ProtectedRoute path="/onboarding" component={Onboarding} />
 			<Dashboard>
 				<Switch>
 					<ProtectedRoute exact path="/" component={Feed} />

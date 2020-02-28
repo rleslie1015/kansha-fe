@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
-import Nav from '../Landing/Nav';
+import Header from '../Landing/Header';
 import ProgressBar from './ProgressBar';
 
 import S1GetStarted from './S1GetStarted';
@@ -37,7 +37,7 @@ function Onboarding() {
 
 	return (
 		<>
-			<Nav />
+			<Header />
 			<ProgressBar />
 			<div className="s1-parent-container">
 				<div className="s1-img">
