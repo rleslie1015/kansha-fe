@@ -5,12 +5,10 @@ import Auth from '../../utils/auth';
 
 const auth = new Auth();
 
-function Login(props) {
+function Login() {
 	useEffect(() => {
-		console.log(props);
-		debugger;
 		auth.login();
-	}, [props]);
+	}, []);
 
 	return (
 		<Loader

@@ -7,7 +7,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-	background-color: #c4c4c4;
+	background-color: $color-gray-light;
 	border-radius: 2px;
 }
 
@@ -18,7 +18,7 @@ progress::-webkit-progress-value {
 }
 
 progress::-moz-progress-bar {
-	background-color: #c4c4c4;
+	background-color: $color-gray-light;
 }
 .s1-parent-container {
 	display: flex;
@@ -36,7 +36,7 @@ progress::-moz-progress-bar {
 		border-radius: 8px;
 
 		&:hover {
-			background-color: #fa2c5a;
+			background-color: $color-primary;
 		}
 	}
 }
@@ -75,7 +75,7 @@ progress::-moz-progress-bar {
 			margin: 1.5rem 0rem;
 
 			.numbered-list {
-				background-color: lightgrey;
+				background-color: $color-white-dark;
 				width: 4rem;
 				height: 4rem;
 				border-radius: 50%;
@@ -159,23 +159,6 @@ progress::-moz-progress-bar {
 .previousarrow {
 	display: flex;
 	width: 75%;
-}
-
-button {
-	margin: 6rem 0rem;
-	background-color: $color-secondary;
-	width: 13rem;
-	padding: 10px;
-	color: $color-white;
-	border-radius: 8px;
-
-	&:disabled {
-		opacity: 0.2;
-	}
-
-	&:hover {
-		background-color: #fa2c5a;
-	}
 }
 
 .button-container {
@@ -341,7 +324,7 @@ button {
 			align-items: center;
 			cursor: pointer;
 
-			.AddMoreIcon{
+			.AddMoreIcon {
 				fill:#C91757;
 			}
 		}
@@ -372,7 +355,7 @@ button {
 	}
 
 	.dropzone {
-		background-color: #e5e5e5;
+		background-color: $color-white-cement;
 		width: 51.5rem;
 		height: 25.8rem;
 

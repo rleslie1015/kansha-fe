@@ -1,83 +1,58 @@
-import React from 'react';
-import profile from '../../assets/profile.png';
-import RecogModal from '../RecogModal/RecogModal';
-import trashcan from '../../assets/Trashcan.png';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
+import { ReactComponent as SendIcon } from '../../assets/send.svg';
+import { ReactComponent as TrashIcon } from '../../assets/Trashcan.svg';
+import { useHistory } from 'react-router-dom';
 
-export default function Workspace_Card(props) {
-	const handleDelete = id => {
-		// this will need to be turned into a confirmation modal, like the one on the figma.
-		if (
-			window.confirm('Are you sure you would like to delete this user?')
-		) {
-			axiosWithAuth()
-				.delete(`/users/${id}`)
-				.then(() => {
-					props.setTeam(props.team.filter(user => !(user.id === id)));
-				});
-		}
-	};
+import Modal from '../Modal';
+import RecogModal from '../RecogModal';
+
+export default function Workspace_Card({ profile, isAdmin }) {
+	const history = useHistory();
+	const [modal, setModal] = useState(false);
+	// const handleDelete = id => {
+	// 	// this will need to be turned into a confirmation modal, like the one on the figma.
+	// 	if (
+	// 		window.confirm('Are you sure you would like to delete this user?')
+	// 	) {
+	// 		axiosWithAuth()
+	// 			.delete(`/users/${id}`)
+	// 			.then(() => {
+	// 				props.setTeam(props.team.filter(user => !(user.id === id)));
+	// 			});
+	// 	}
+	// };
 	return (
-		<section className="workspace-card-container">
-			{props.team.map(user => {
-				if (props.profile.user_type === 'admin') {
-					return (
-						<section className="workspace-card">
-							<div>
-								<img
-									className="workspace-card-image"
-									alt="profile"
-									src={user.profile_picture}
-								/>
-								<div>
-									<img
-										src={trashcan}
-										alt="trash can icon"
-										onClick={() => handleDelete(user.id)}
-									/>
-								</div>
-								<h5>
-									{user.first_name} {user.last_name}
-								</h5>
-								<h6>{user.job_title}</h6>
-								<h6 color="textSecondary">{user.department}</h6>
-							</div>
-							<div>
-								<RecogModal {...user} />
-								<Link to={`/profile/${user.id}`}>
-									<button variant="contained">
-										<img alt="profile icon" src={profile} />
-									</button>
-								</Link>
-							</div>
-						</section>
-					);
-				} else {
-					return (
-						<section className="workspace-card" key={user.id}>
-							<section className="user-info-container">
-								<img
-									className="workspace-card-image"
-									alt="profile"
-									src={user.profile_picture}
-								/>
-								<h5>
-									{user.first_name} {user.last_name}
-								</h5>
-								<h6>{user.job_title}</h6>
-								<h6>{user.department}</h6>
-							</section>
-							<section className="workspace-profile-icons">
-								<RecogModal {...user} />
-								<Link to={`/profile/${user.id}`}>
-									<img alt="profile icon" src={profile} />
-								</Link>
-							</section>
-						</section>
-					);
-				}
-			})}
-		</section>
+		<li className="workspace-card">
+			<section className="workspace-card-content">
+				{isAdmin && (
+					<button className="trash">
+						<TrashIcon />
+					</button>
+				)}
+				<img alt="profile" src={profile.profile_picture} />
+				<h5>
+					{profile.first_name} {profile.last_name}
+				</h5>
+				<h6>{profile.job_title}</h6>
+				<h6>{profile.department}</h6>
+			</section>
+			<section className="workspace-card-icons">
+				<button
+					onClick={() => {
+						setModal(!modal);
+					}}>
+					<SendIcon />
+				</button>
+				<button onClick={() => history.push(`/profile/${profile.id}`)}>
+					<ProfileIcon />
+				</button>
+			</section>
+			{modal && (
+				<Modal close={setModal}>
+					<RecogModal profile={profile} />
+				</Modal>
+			)}
+		</li>
 	);
 }

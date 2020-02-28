@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
-import Nav from '../Landing/Nav';
+import Header from '../Landing/Header';
 import ProgressBar from './ProgressBar';
 
 import S1GetStarted from './S1GetStarted';
@@ -14,7 +14,7 @@ import S5AccountCustomization from './S5AccountCustomization';
 import S6AllDone from './S6AllDone';
 import Footer from '../Landing/Footer.jsx'
 import onboardingPic from '../../assets/onboardingPic.png';
-import Header from '../Landing/Header.jsx';
+
 
 function Onboarding() {
 	const [user, setUser] = useState({
@@ -37,8 +37,8 @@ function Onboarding() {
 	};
 
 	return (
-		<><Header />
-			<Nav />
+		<>
+			<Header />
 			<ProgressBar />
 			<div className="s1-parent-container">
 				<div className="s1-img">
