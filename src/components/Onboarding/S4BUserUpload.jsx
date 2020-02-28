@@ -97,7 +97,7 @@ function S4BUserUpload({ user }) {
 					value={employee.email}
 					onChange={handleEmployee}></input>
 			
-				<div type='submit' onClick={handleSubmit} className="add-another-employee"><AddMoreImg/>Add more</div>
+				<div type='submit' onClick={handleSubmit} className="add-another-employee"><AddMoreImg className='AddMoreIcon'/>Add more</div>
 				
 				<div className="success-employee-add">
 					{employees.length !== 0 &&
