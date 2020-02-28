@@ -161,6 +161,23 @@ progress::-moz-progress-bar {
 	width: 75%;
 }
 
+button {
+	margin: 6rem 0rem;
+	background-color: $color-secondary;
+	width: 13rem;
+	padding: 10px;
+	color: $color-white;
+	border-radius: 8px;
+
+	&:disabled {
+		opacity: 0.2;
+	}
+
+	&:hover {
+		background-color: #fa2c5a;
+	}
+}
+
 .button-container {
 	display: flex;
 	justify-content: center;
@@ -276,6 +293,15 @@ progress::-moz-progress-bar {
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
 	}
+
+	.bulk-template-download {
+		padding: 1rem 0rem;
+		text-decoration: underline;
+		p {
+			font-size: 1.8rem;
+		}
+	}
+
 	.dropzone {
 		background-color: #e5e5e5;
 		width: 51.5rem;
@@ -308,5 +334,17 @@ progress::-moz-progress-bar {
 
 	button {
 		cursor: pointer;
+	}
+}
+
+.color-form {
+	display: flex;
+	flex-direction: column;
+
+	.primary-color {
+		width: 6rem;
+		height: 2rem;
+		background-color: black;
+		border: 3px solid red;
 	}
 }
