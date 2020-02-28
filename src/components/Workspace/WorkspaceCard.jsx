@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
 import { ReactComponent as SendIcon } from '../../assets/send.svg';
 import { ReactComponent as TrashIcon } from '../../assets/Trashcan.svg';
 import { useHistory } from 'react-router-dom';
 
+import Modal from '../Modal';
+import RecogModal from '../RecogModal';
+
 export default function Workspace_Card({ profile, isAdmin }) {
 	const history = useHistory();
+	const [modal, setModal] = useState(false);
 	// const handleDelete = id => {
 	// 	// this will need to be turned into a confirmation modal, like the one on the figma.
 	// 	if (
@@ -34,13 +38,21 @@ export default function Workspace_Card({ profile, isAdmin }) {
 				<h6>{profile.department}</h6>
 			</section>
 			<section className="workspace-card-icons">
-				<button onClick={() => {}}>
+				<button
+					onClick={() => {
+						setModal(!modal);
+					}}>
 					<SendIcon />
 				</button>
 				<button onClick={() => history.push(`/profile/${profile.id}`)}>
 					<ProfileIcon />
 				</button>
 			</section>
+			{modal && (
+				<Modal close={setModal}>
+					<RecogModal profile={profile} />
+				</Modal>
+			)}
 		</li>
 	);
 }

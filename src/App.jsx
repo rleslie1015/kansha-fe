@@ -22,38 +22,35 @@ import Dashboard from './components/Dashboard';
 const auth = new Auth();
 
 export const App = () => {
-	const [profileFetched, setProfileFetched] = useState({
-		fetched: false,
-		error: false,
-	});
-	const { profile, error, authenticated } = useSelector(({ user }) => ({
+	const [init, setInit] = useState({ fetched: false, error: false });
+	const { profile, error } = useSelector(({ user }) => ({
 		...user,
 	}));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (window.location.hash) {
-			dispatch(authorizeUser(auth));
-		} else {
-			dispatch(login());
+		if (!init.fetched) {
+			if (window.location.hash) {
+				dispatch(authorizeUser(auth));
+			} else {
+				dispatch(login());
+			}
 		}
-	}, [dispatch, authenticated]);
+	}, [dispatch, init]);
 
 	useEffect(() => {
-		if (profile) {
-			setProfileFetched({ fetched: true, error: false });
-		} else if (error) {
-			setProfileFetched({ fetched: true, error: true });
+		if (profile.id) {
+			setInit({ fetched: true, error: false });
+		} else {
+			setInit({ fetched: true, error: true });
 		}
-	}, [profile, error, setProfileFetched]);
+	}, [profile, error, setInit]);
 
-	return !profileFetched.fetched ? (
+	return !init.fetched ? (
 		<h1>Loading...</h1>
 	) : (
 		<Switch>
-			{profileFetched.error && (
-				<Route exact path="/" component={Landing} />
-			)}
+			{init.error && <Route exact path="/" component={Landing} />}
 			<Route path="/onboarding" component={Onboarding} />
 			<Route path="/login" component={Login} />
 			<Dashboard>
