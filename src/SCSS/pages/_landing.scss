@@ -259,6 +259,7 @@
 	margin: 75px auto;
 	max-width: 1440px;
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	padding: 30px;
@@ -306,5 +307,6 @@
 		letter-spacing: 0.15px;
 		height: 50px;
 		width: 15%;
+		cursor: pointer;
 	}
 }
