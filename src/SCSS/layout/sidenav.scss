@@ -1,54 +1,101 @@
 .side-nav {
 	background-color: $color-primary-nav;
-	width: 5.5rem;
+	width: 55px;
 	height: 100vh;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
+	z-index: 1;
+	transition: width 500ms ease;
 
-	.side-nav-li {
-		list-style-type: none;
+	.nav-hamburger {
+		position: absolute;
+		top: 10px;
+		left: 8px;
 		cursor: pointer;
-		width: 70%;
-		padding: 0.4rem;
+
+		> button {
+			padding: 5px;
+		}
+	}
+
+	.side-nav-profile {
+		color: $color-white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 150px;
+		margin-top: 20px;
+
+		img {
+			width: 40%;
+			border-radius: 50%;
+			margin: 10px 0;
+		}
+
+		p {
+			font-size: 2rem;
+		}
+	}
+
+	a {
+		color: $color-white;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+		width: 100%;
+		border-radius: 2px;
+		transition: all 300ms ease;
+
+		p {
+			margin-left: 10px;
+			font-size: 2rem;
+			white-space: nowrap;
+		}
+
+		&.active-link {
+			background: $color-secondary;
+		}
 
 		&:hover {
-			background-color: $color-primary;
-			border-radius: 0.3rem;
+			background: $color-secondary;
 		}
 	}
-	.nav-open-menu {
-		img {
-			background-color: $color-primary-nav;
-			border: none;
-			margin-bottom: 15rem;
-			width: 3rem;
-			cursor: pointer;
-		}
-	}
-	.sign-out-li {
-		list-style-type: none;
 
-		.nav-sign-out {
-			margin-top: 15rem;
-			img {
-				width: 3rem;
-				cursor: pointer;
-			}
+	nav {
+		height: 40%;
+		min-height: 300px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-around;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.fill-white {
+			fill: $color-white;
 		}
+	}
+
+	.nav-signout {
+		margin-bottom: 20px;
+		svg {
+			stroke: $color-white;
+		}
+	}
+
+	.hidden {
+		width: 0;
+		opacity: 0;
+		height: 150px;
+		margin-top: 20px;
 	}
 }
 
-.side-bar-link-div {
-	width: 100%;
-	border-radius: 1rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	img {
-		width: 3rem;
-	}
+.is-open {
+	width: 240px;
+	overflow: hidden;
 }
