@@ -1,123 +1,76 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { update } from '../store/actions/user-actions';
+import Modal from './Modal';
+import FileUpload from './FileUpload';
 
-function Settings({ update, user }) {
+function Settings() {
 	const history = useHistory();
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
+	const dispatch = useDispatch();
 
-	const initialState = {
-		first_name: user.profile.first_name,
-		last_name: user.profile.last_name,
-		job_title: user.profile.job_title,
-		department: user.profile.department,
-		org_name: user.profile.org_name,
-		user_type: user.profile.user_type,
-	};
-
-	const [form, setForm] = useState(initialState);
+	const [form, setForm] = useState({ first_name: '', last_name: '' });
+	const [modal, setModal] = useState(false);
 
 	const handleChange = event => {
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	const id = user.profile.id;
-
-	const handleSubmit = event => {
-		update(id, form);
-		window.setTimeout(() => {
-			history.push('/profile');
-		}, 50);
+	const handleSubmit = async e => {
+		e.preventDefault();
+		await dispatch(update(profile.id, form));
+		history.push(`/profile/${profile.id}`);
 	};
 
-	return (
-		<div id="settings">
-			<div className="settings-container">
-				<h3>Settings</h3>
-				<h5>Edit Profile</h5>
-				<div className="wrapper">
-					<form>
-						<div className="settings-form-changes">
-							<div>
-								<div className="form-first-row">
-									<input
-										label="First Name*"
-										placeholder="e.g. Jane"
-										name="first_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.first_name}
-									/>
-									<input
-										label="Last Name*"
-										placeholder="e.g. Doe"
-										name="last_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.last_name}
-									/>
-								</div>
-								<div className="form-second-row">
-									<input
-										label="Job Title*"
-										placeholder="e.g. Manager"
-										name="job_title"
-										margin="normal"
-										onChange={handleChange}
-										value={form.job_title}
-									/>
-									<select
-										defaultValue="standard"
-										value={form.user_type}
-										onChange={handleChange}
-										name="user_type"
-										margin="normal">
-										<option value="standard">
-											Standard
-										</option>
-										<option value="moderator">
-											Moderator
-										</option>
-										<option value="administrator">
-											Administrator
-										</option>
-									</select>
-								</div>
-								<div>
-									<input
-										label="Organization*"
-										placeholder="Organization Name"
-										name="org_name"
-										margin="normal"
-										onChange={handleChange}
-										value={form.org_name}
-									/>
-								</div>
+	useEffect(() => {
+		setForm({
+			first_name: profile.first_name,
+			last_name: profile.last_name,
+			profile_picture: profile.profile_picture,
+		});
+	}, [profile]);
 
-								<button
-									className="btn-onboarding-confirm"
-									onClick={handleSubmit}>
-									Save Changes
-								</button>
-							</div>
-						</div>
-					</form>
-					<div className="settings-profile">
-						<img
-							src={user.profile.profile_picture}
-							alt="user profile"
+	return (
+		<main id="settings">
+			<h3>Settings</h3>
+			<section>
+				<h4>Edit Profile</h4>
+				<form onSubmit={handleSubmit}>
+					<figure onClick={() => setModal(!modal)}>
+						<img src={profile.profile_picture} alt="user profile" />
+					</figure>
+					<div>
+						<input
+							label="First Name*"
+							placeholder="e.g. Jane"
+							name="first_name"
+							margin="normal"
+							onChange={handleChange}
+							value={form.first_name}
 						/>
-						<div className="settings-user-info">
-							<p>
-								{user.profile.first_name}{' '}
-								{user.profile.last_name}
-							</p>
-							<p>{user.profile.job_title}</p>
-						</div>
+						<input
+							label="Last Name*"
+							placeholder="e.g. Doe"
+							name="last_name"
+							margin="normal"
+							onChange={handleChange}
+							value={form.last_name}
+						/>
 					</div>
-				</div>
-			</div>
-		</div>
+					<button className="btn-onboarding-confirm" type="submit">
+						Save Changes
+					</button>
+				</form>
+			</section>
+			{modal && (
+				<Modal close={setModal}>
+					<FileUpload />
+				</Modal>
+			)}
+		</main>
 	);
 }
 

@@ -1,67 +1,67 @@
-form {
-	display: flex;
-	flex-direction: row;
-	width: 48%;
-	.settings-form-changes {
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	margin-bottom: 7rem;
-}
-
 #settings {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 8rem;
 
-	.settings-container {
-		margin: 7rem 0 0 8rem;
-		width: 80vw;
+	h3 {
+		font-size: 3.6rem;
+		margin: 1.6rem 0;
+	}
 
-		h3 {
-			font-size: 6rem;
-			margin-left: 4.5rem;
-			margin-bottom: 2.5rem;
+	> section {
+		@include boxshadow();
+		padding: 20px;
+		h4 {
+			font-size: 2.5rem;
+			margin-bottom: 1.6rem;
 		}
 
-		h5 {
-			font-size: 3.5rem;
-			margin-left: 4.5rem;
-		}
-
-		.settings-profile {
-			width: 48%;
+		form {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			background-color: white;
-			@include boxshadow();
-			margin-bottom: 4rem;
 
-			img {
-				border-radius: 50%;
-				width: 40%;
-				margin-top: 3rem;
+			figure {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				margin-bottom: 20px;
+
+				img {
+					width: 100%;
+					border-radius: 50%;
+				}
+
+				&:before {
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: $color-primary;
+					background-image: url('../../assets/camera-upload.svg');
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: 50%;
+					border-radius: 50%;
+					cursor: pointer;
+					opacity: 0;
+					transition: opacity 500ms ease;
+				}
+
+				&:hover {
+					&:before {
+						opacity: 0.6;
+					}
+				}
 			}
 
-			.settings-user-info {
-				margin-top: 3rem;
-				margin-bottom: 3rem;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
+			div {
+				margin: 10px 0;
+			}
 
-				p {
-					color: black;
-					font-size: 2.5rem;
-					align-self: center;
-				}
+			button {
+				margin: 10px 0;
 			}
 		}
 	}

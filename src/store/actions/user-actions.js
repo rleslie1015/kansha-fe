@@ -103,22 +103,25 @@ export const onboard = creds => dispatch => {
 /* This handles user updates */
 export const update = (id, creds) => dispatch => {
 	dispatch({ type: USER_UPDATE_START });
-	axiosWithAuth()
+	return axiosWithAuth()
 		.put(`users/${id}`, creds)
 		.then(res => {
 			/* This doesn't dispatch any payload because it is only updating state */
-			dispatch({ type: USER_UPDATE_SUCCESS, payload: res.data });
+			return dispatch({
+				type: USER_UPDATE_SUCCESS,
+				payload: res.data[0],
+			});
 		})
 		.catch(err => {
 			console.log(err);
-			dispatch({ type: USER_UPDATE_FAILURE });
+			return dispatch({ type: USER_UPDATE_FAILURE });
 		});
 };
 
 /* this handles a user uploading a profile photo */
 export const uploadPicture = data => dispatch => {
 	dispatch({ type: USER_UPDATE_PICTURE_START });
-	axiosWithAuth()
+	return axiosWithAuth()
 		.post('/profile-pic', data)
 		.then(({ data: { url } }) =>
 			/* returned url will be placed ins tate */
@@ -126,7 +129,10 @@ export const uploadPicture = data => dispatch => {
 		)
 		.catch(err => {
 			console.log(err);
-			dispatch({ type: USER_UPDATE_PICTURE_FAILURE, payload: err });
+			return dispatch({
+				type: USER_UPDATE_PICTURE_FAILURE,
+				payload: err,
+			});
 		});
 };
 
