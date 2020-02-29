@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
-import Trashcan from '../../assets/Trashcan.png';
+import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 export const Comment = ({ comment, profile }) => {
@@ -35,11 +35,7 @@ export const Comment = ({ comment, profile }) => {
 						{time}
 					</span>
 					{profile.user_type === 'admin' && (
-						<img
-							src={Trashcan}
-							alt="trash can icon"
-							onClick={() => handleDelete(comment.id)}
-						/>
+						<Trashcan onClick={() => handleDelete(comment.id)} />
 					)}
 				</p>
 				<p>{comment.message}</p>
