@@ -17,7 +17,7 @@ function S6AllDone({ user }) {
 	let history = useHistory();
 
 	const handlePrevious = () => {
-		history.push('/onboarding/step-5');
+		history.push('/onboarding/step-4');
 	};
 	const handleClick = () => {
 		history.push(`/`);
