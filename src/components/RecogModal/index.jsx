@@ -3,15 +3,19 @@ import { ReactComponent as AddBadgeIcon } from '../../assets/addbadge.svg';
 import { ReactComponent as CloseIcon } from '../../assets/closex.svg';
 import { sendRecog } from '../../store/actions/recog-actions';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-function RecogModal(props) {
+function RecogModal({ profile }) {
+	const dispatch = useDispatch();
+	const user = useSelector(({ user }) => ({
+		...user,
+	}));
 	const [isTyping, setIsTyping] = useState(true);
 	const [badges, setBadges] = useState([]);
 	const [recog, setRecog] = useState({
 		message: '',
-		sender: props.user.profile.id,
-		recipient: props.id,
+		sender: user.profile.id,
+		recipient: profile.id,
 		date: new Date(Date.now()),
 		badge_id: null,
 	});
@@ -21,7 +25,7 @@ function RecogModal(props) {
 		job_title,
 		department,
 		profile_picture,
-	} = props.profile;
+	} = profile;
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -39,7 +43,7 @@ function RecogModal(props) {
 	};
 
 	const handleSubmit = event => {
-		props.sendRecog({ ...recog, date: new Date(Date.now()) });
+		dispatch(sendRecog({ ...recog, date: new Date() }));
 		alert('Recogniton has been sent');
 	};
 
@@ -64,12 +68,13 @@ function RecogModal(props) {
 			</section>
 			{isTyping ? (
 				<form>
-					<input
+					<textarea
 						value={recog.message}
+						name="message"
 						onChange={handleChange}
-						aria-label="message"
+						aria-label="Type your message here"
 						placeholder="Type your message here..."
-						multiline
+						multiline="true"
 					/>
 					<section>
 						{recog.badge_id &&
@@ -89,10 +94,14 @@ function RecogModal(props) {
 								return acc;
 							}, [])}
 					</section>
-					<button onClick={() => setIsTyping(false)}>
+					<button
+						onClick={() => setIsTyping(false)}
+						className="corner-button">
 						<AddBadgeIcon />
 					</button>
-					<button>Send</button>
+					<button className="send-button" onClick={handleSubmit}>
+						Send
+					</button>
 				</form>
 			) : (
 				<div>
@@ -105,7 +114,9 @@ function RecogModal(props) {
 							/>
 						))}
 					</section>
-					<button onClick={() => setIsTyping(true)}>
+					<button
+						onClick={() => setIsTyping(true)}
+						className="corner-button">
 						<CloseIcon />
 					</button>
 				</div>
@@ -114,10 +125,4 @@ function RecogModal(props) {
 	);
 }
 
-const mapStateToProps = state => {
-	return {
-		...state,
-	};
-};
-
-export default connect(mapStateToProps, { sendRecog })(RecogModal);
+export default RecogModal;
