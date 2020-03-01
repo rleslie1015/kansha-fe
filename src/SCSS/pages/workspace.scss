@@ -114,4 +114,28 @@
 			}
 		}
 	}
+
+	.delete-modal {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		p {
+			font-size: 1.8rem;
+			font-weight: 600;
+			text-align: center;
+			margin: 15px 0;
+		}
+
+		button {
+			padding: 10px;
+			margin: 5px 0;
+			width: 200px;
+			cursor: pointer;
+			border: 0;
+			background: $color-primary;
+			font-weight: 600;
+			color: $color-white;
+		}
+	}
 }

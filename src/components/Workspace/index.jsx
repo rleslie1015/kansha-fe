@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import WorkspaceCard from './WorkspaceCard';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useSelector } from 'react-redux';
+
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+import WorkspaceCard from './WorkspaceCard';
 
 function Workspace() {
 	const [team, setTeam] = useState([]);
@@ -42,6 +44,7 @@ function Workspace() {
 						key={user.id}
 						profile={user}
 						isAdmin={profile.user_type.toLowerCase() === 'admin'}
+						setTeam={setTeam}
 					/>
 				))}
 			</ul>

@@ -6,10 +6,12 @@ import { useHistory } from 'react-router-dom';
 
 import Modal from '../Modal';
 import RecogModal from '../RecogModal';
+import ConfirmDelete from './ConfirmDelete';
 
-export default function Workspace_Card({ profile, isAdmin }) {
+export default function WorkspaceCard({ profile, isAdmin, setTeam }) {
 	const history = useHistory();
 	const [modal, setModal] = useState(false);
+	const [deleteModal, setDeleteModal] = useState(false);
 	// const handleDelete = id => {
 	// 	// this will need to be turned into a confirmation modal, like the one on the figma.
 	// 	if (
@@ -26,9 +28,22 @@ export default function Workspace_Card({ profile, isAdmin }) {
 		<li className="workspace-card">
 			<section className="workspace-card-content">
 				{isAdmin && (
-					<button className="trash">
-						<TrashIcon />
-					</button>
+					<>
+						<button
+							className="trash"
+							onClick={() => setDeleteModal(!deleteModal)}>
+							<TrashIcon />
+						</button>
+						{deleteModal && (
+							<Modal close={setDeleteModal}>
+								<ConfirmDelete
+									name={`${profile.first_name} ${profile.last_name}`}
+									id={profile.id}
+									setTeam={setTeam}
+								/>
+							</Modal>
+						)}
+					</>
 				)}
 				<img alt="profile" src={profile.profile_picture} />
 				<h5>
