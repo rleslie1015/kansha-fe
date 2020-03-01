@@ -26,12 +26,7 @@ function Sidebar({ user }) {
 				</p>
 			</section>
 			<nav>
-				<SidebarLink
-					path="/home"
-					name="Home"
-					icon={HomeIcon}
-					open={open}
-				/>
+				<SidebarLink path="/" name="Home" icon={HomeIcon} open={open} />
 				<SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
@@ -69,7 +64,7 @@ function Sidebar({ user }) {
 			</nav>
 			<section className="nav-signout" onClick={() => signout()}>
 				<SidebarLink
-					path="/"
+					path="/signout"
 					name="Sign Out"
 					icon={PowerIcon}
 					open={open}

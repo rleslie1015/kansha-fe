@@ -10,9 +10,7 @@ export const ProtectedRoute = ({ path, component: Component }) => {
 	}));
 
 	return error ? (
-		<>
-			<Redirect to="/login" />
-		</>
+		<Redirect to="/login" />
 	) : (
 		<Route path={path} component={Component} />
 	);

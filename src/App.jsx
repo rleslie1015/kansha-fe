@@ -7,7 +7,6 @@ import { login, authorizeUser } from './store/actions/user-actions';
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
 import Onboarding from './components/Onboarding/Onboarding';
-
 import Landing from './components/Landing';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
@@ -20,8 +19,12 @@ import Dashboard from './components/Dashboard';
 const auth = new Auth();
 
 export const App = () => {
-	const [init, setInit] = useState({ fetched: false, error: false });
-	const { profile, error } = useSelector(({ user }) => ({
+	const [init, setInit] = useState({
+		fetched: false,
+		error: false,
+		onboarding: false,
+	});
+	const { profile, error, isOnboarding } = useSelector(({ user }) => ({
 		...user,
 	}));
 	const dispatch = useDispatch();
@@ -38,19 +41,26 @@ export const App = () => {
 
 	useEffect(() => {
 		if (profile.id) {
-			setInit({ fetched: true, error: false });
-		} else {
-			setInit({ fetched: true, error: true });
+			setInit(prev => ({ ...prev, fetched: true }));
+		} else if (error) {
+			setInit(prev => ({ ...prev, fetched: true, error: true }));
+		} else if (isOnboarding) {
+			setInit(prev => ({ ...prev, fetched: true, onboarding: true }));
 		}
-	}, [profile, error, setInit]);
+	}, [profile, error, isOnboarding, setInit]);
 
-	return !init.fetched ? (
-		<h1>Loading...</h1>
-	) : (
-		<Switch>
-			{init.error && <Route exact path="/" component={Landing} />}
-			<Route path="/login" component={Login} />
-			<ProtectedRoute path="/onboarding" component={Onboarding} />
+	if (init.error) {
+		return (
+			<Switch>
+				<Route exact path="/" component={Landing} />
+				<Route path="/login" component={Login} />)
+				<Route default render={() => <Redirect to="/" />} />
+			</Switch>
+		);
+	} else if (init.onboarding) {
+		return <Route path="/onboarding" component={Onboarding} />;
+	} else if (init.fetched) {
+		return (
 			<Dashboard>
 				<Switch>
 					<ProtectedRoute exact path="/" component={Feed} />
@@ -64,7 +74,8 @@ export const App = () => {
 					<Route default render={() => <Redirect to="/" />} />
 				</Switch>
 			</Dashboard>
-			<Route default render={() => <Redirect to="/" />} />
-		</Switch>
-	);
+		);
+	} else {
+		return <h1>Loading...</h1>;
+	}
 };
