@@ -9,9 +9,10 @@
 		margin: 2rem;
 		font-size: 1.8rem;
 		color: $color-white;
+		transition: all 300ms ease;
 
 		&:hover {
-			color: $color-secondary;
+			color: $color-primary;
 		}
 	}
 }

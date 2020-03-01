@@ -2,6 +2,12 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+import {
+	FaInstagram,
+	FaTwitter,
+	FaFacebookF,
+	FaLinkedinIn,
+} from 'react-icons/fa';
 
 const auth = new Auth();
 
@@ -14,8 +20,33 @@ export default function Footer() {
 						<Logo />
 						<h1>Kansha</h1>
 					</section>
-					<p>© Kansha. 2020. We love our users!</p>
 				</section>
+				<ul>
+					<li>
+						<a href="#insta">
+							<span className="hidden">Instagram</span>
+							<FaInstagram />
+						</a>
+					</li>
+					<li>
+						<a href="#twitter">
+							<span className="hidden">Twitter</span>
+							<FaTwitter />
+						</a>
+					</li>
+					<li>
+						<a href="#fb">
+							<span className="hidden">Facebook</span>
+							<FaFacebookF />
+						</a>
+					</li>
+					<li>
+						<a href="#li">
+							<span className="hidden">LinkedIn</span>
+							<FaLinkedinIn />
+						</a>
+					</li>
+				</ul>
 
 				<nav>
 					<span onClick={auth.login} role="link">
@@ -24,6 +55,7 @@ export default function Footer() {
 					<Link to="/">Team</Link>
 					<Link to="/">Contact</Link>
 				</nav>
+				<p>© Kansha. {new Date().getFullYear()}. We love our users!</p>
 			</div>
 		</footer>
 	);
