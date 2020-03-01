@@ -12,16 +12,18 @@ function Workspace() {
 	}));
 
 	useEffect(() => {
-		axiosWithAuth()
-			.get('/users')
-			.then(res => {
-				setTeam(res.data);
-				console.log(res);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}, []);
+		const fetchData = async () => {
+			try {
+				const { data } = await axiosWithAuth().get(
+					`/employees/organizations?search=${filter}`,
+				);
+				setTeam(data.employees);
+			} catch (err) {
+				console.error(err);
+			}
+		};
+		fetchData();
+	}, [filter]);
 
 	return (
 		<main className="workspace">
