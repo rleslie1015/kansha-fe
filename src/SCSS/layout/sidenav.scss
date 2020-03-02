@@ -37,6 +37,7 @@
 
 		p {
 			font-size: 2rem;
+			word-wrap: unset;
 		}
 	}
 
@@ -93,6 +94,14 @@
 		opacity: 0;
 		height: 150px;
 		margin-top: 20px;
+
+		p {
+			width: 0;
+		}
+
+		img {
+			width: 0;
+		}
 	}
 }
 
