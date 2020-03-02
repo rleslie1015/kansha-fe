@@ -1,10 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Children, cloneElement } from 'react';
 
 const Modal = ({ close, children }) => {
 	const modal = useRef(null);
 
 	useEffect(() => {
-		modal.current.style.opacity = 0;
 		(function fadeIn() {
 			let val = parseFloat(modal.current.style.opacity);
 			if (!((val += 0.1) > 1)) {
@@ -25,6 +24,10 @@ const Modal = ({ close, children }) => {
 		})();
 	};
 
+	const mappedChildren = Children.map(children, child => {
+		return cloneElement(child, { close: close });
+	});
+
 	return (
 		<section className="modal" ref={modal} style={{ opacity: 0 }}>
 			<div role="presentation" onClick={closeModal} />
@@ -35,7 +38,7 @@ const Modal = ({ close, children }) => {
 					onClick={closeModal}>
 					&#9587;
 				</button>
-				{children}
+				{mappedChildren}
 			</section>
 		</section>
 	);

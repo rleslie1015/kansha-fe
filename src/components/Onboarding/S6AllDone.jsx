@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-
-import { login } from '../../store/actions/user-actions';
 
 //get from /profile endpoint and set that to redux state
 
 function S6AllDone({ user }) {
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(login());
-	}, [dispatch]);
-
 	let history = useHistory();
 
 	const handlePrevious = () => {
 		history.push('/onboarding/step-4');
 	};
 	const handleClick = () => {
-		history.push(`/`);
+		window.location.reload();
 	};
 
 	return (

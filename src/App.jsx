@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login, authorizeUser } from './store/actions/user-actions';
@@ -7,26 +7,28 @@ import { login, authorizeUser } from './store/actions/user-actions';
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
 import Onboarding from './components/Onboarding/Onboarding';
-
 import Landing from './components/Landing';
-// import Onboarding from './components/Onboarding';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
 import Feed from './components/Feed';
 import Workspace from './components/Workspace';
 import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
-import { Cropper } from './components/FileUpload/FileCrop';
 import Dashboard from './components/Dashboard';
 
 const auth = new Auth();
 
 export const App = () => {
-	const [init, setInit] = useState({ fetched: false, error: false });
-	const { profile, error } = useSelector(({ user }) => ({
+	const [init, setInit] = useState({
+		fetched: false,
+		error: false,
+		onboarding: false,
+	});
+	const { profile, error, isOnboarding } = useSelector(({ user }) => ({
 		...user,
 	}));
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	useEffect(() => {
 		if (!init.fetched) {
@@ -40,19 +42,27 @@ export const App = () => {
 
 	useEffect(() => {
 		if (profile.id) {
-			setInit({ fetched: true, error: false });
-		} else {
-			setInit({ fetched: true, error: true });
+			setInit(prev => ({ ...prev, fetched: true }));
+		} else if (error) {
+			setInit(prev => ({ ...prev, fetched: true, error: true }));
+		} else if (isOnboarding) {
+			setInit(prev => ({ ...prev, fetched: true, onboarding: true }));
+			history.push('/onboarding/step-1');
 		}
-	}, [profile, error, setInit]);
+	}, [profile, error, isOnboarding, setInit, history]);
 
-	return !init.fetched ? (
-		<h1>Loading...</h1>
-	) : (
-		<Switch>
-			{init.error && <Route exact path="/" component={Landing} />}
-			<Route path="/login" component={Login} />
-			<ProtectedRoute path="/onboarding" component={Onboarding} />
+	if (init.error) {
+		return (
+			<Switch>
+				<Route exact path="/" component={Landing} />
+				<Route path="/login" component={Login} />)
+				<Route default render={() => <Redirect to="/" />} />
+			</Switch>
+		);
+	} else if (init.onboarding) {
+		return <Route path="/onboarding" component={Onboarding} />;
+	} else if (init.fetched) {
+		return (
 			<Dashboard>
 				<Switch>
 					<ProtectedRoute exact path="/" component={Feed} />
@@ -63,11 +73,11 @@ export const App = () => {
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute path="/upload" component={FileUpload} />
 					<ProtectedRoute path="/settings" component={Settings} />
-					<ProtectedRoute path="/crop" component={Cropper} />
 					<Route default render={() => <Redirect to="/" />} />
 				</Switch>
 			</Dashboard>
-			<Route default render={() => <Redirect to="/" />} />
-		</Switch>
-	);
+		);
+	} else {
+		return <h1>Loading...</h1>;
+	}
 };

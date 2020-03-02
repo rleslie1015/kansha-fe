@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import WorkspaceCard from './WorkspaceCard';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useSelector } from 'react-redux';
+
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+import WorkspaceCard from './WorkspaceCard';
 
 function Workspace() {
 	const [team, setTeam] = useState([]);
@@ -12,16 +14,18 @@ function Workspace() {
 	}));
 
 	useEffect(() => {
-		axiosWithAuth()
-			.get('/users')
-			.then(res => {
-				setTeam(res.data);
-				console.log(res);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}, []);
+		const fetchData = async () => {
+			try {
+				const { data } = await axiosWithAuth().get(
+					`/employees/organizations?search=${filter}`,
+				);
+				setTeam(data.employees);
+			} catch (err) {
+				console.error(err);
+			}
+		};
+		fetchData();
+	}, [filter]);
 
 	return (
 		<main className="workspace">
@@ -40,6 +44,7 @@ function Workspace() {
 						key={user.id}
 						profile={user}
 						isAdmin={profile.user_type.toLowerCase() === 'admin'}
+						setTeam={setTeam}
 					/>
 				))}
 			</ul>
