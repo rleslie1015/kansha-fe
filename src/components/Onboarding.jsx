@@ -17,7 +17,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 
 	const handleSubmit = event => {
 		onboard(form);
-		history.push('/profile');
+		history.push('/dashboard');
 	};
 
 	if (!isOnboarding && profile) return <Redirect to="profile" />;
