@@ -1,3 +1,53 @@
 .admin-dashboard {
-	margin-left: 6rem;
+	margin-left: 5.5rem;
+	overflow: hidden;
+	display: flex;
+	color: $color-black;
+	padding: 2rem 2rem 2rem 0;
+	height: 100vh;
+	flex-direction: column;
+	background-color: $color-white;
+
+	.teams-reports {
+		display: flex;
+		justify-content: space-evenly;
+
+		height: 60%;
+	}
+}
+
+.admin-title {
+	color: $color-black;
+	font-weight: 600;
+	font-size: 2.4rem;
+}
+
+.teams {
+	width: 50%;
+	background-color: $color-white-dark;
+	margin: 1rem;
+	padding: 1rem;
+	@include boxshadow();
+}
+
+.reports {
+	width: 50%;
+	background-color: $color-white-dark;
+	margin: 1rem;
+	padding: 1rem;
+	@include boxshadow();
+}
+
+.activity {
+	background-color: $color-white-dark;
+	width: 100%;
+	margin: 1rem;
+	padding: 1rem;
+	@include boxshadow();
+}
+
+.activity-container {
+	display: flex;
+	justify-content: center;
+	height: 35%;
 }
