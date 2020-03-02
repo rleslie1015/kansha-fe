@@ -10,6 +10,7 @@ function S6AllDone({ user }) {
 		history.push('/onboarding/step-5');
 	};
 	const handleClick = () => {
+		history.push('/dashboard');
 		window.location.reload();
 	};
 

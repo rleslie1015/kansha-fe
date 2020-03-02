@@ -15,6 +15,7 @@ import Workspace from './components/Workspace';
 import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 const auth = new Auth();
 
@@ -69,6 +70,10 @@ export const App = () => {
 					<ProtectedRoute
 						path="/profile/:id"
 						component={UserProfile}
+					/>
+					<ProtectedRoute
+						path="/dashboard"
+						component={AdminDashboard}
 					/>
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute path="/upload" component={FileUpload} />
