@@ -1,17 +1,24 @@
 import React from 'react';
-import Auth from '../utils/auth';
-const auth = new Auth();
 
-export default function HamburgerMenu() {
-	const [anchorEl, setAnchorEl] = React.useState(null);
+const HamburgerMenu = ({ open, setOpen }) => {
+	return (
+		<button
+			className={`hamburger-landing hamburger hamburger--collapse ${open &&
+				'is-active'}`}
+			type="button"
+			onClick={() => setOpen(!open)}>
+			<span
+				className="hamburger-box"
+				role="presentation"
+				onClick={() => setOpen(!open)}>
+				<span
+					className="hamburger-inner"
+					role="presentation"
+					onClick={() => setOpen(!open)}
+				/>
+			</span>
+		</button>
+	);
+};
 
-	const handleClick = event => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	return <div></div>;
-}
+export default HamburgerMenu;
