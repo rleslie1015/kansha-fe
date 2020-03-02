@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login, authorizeUser } from './store/actions/user-actions';
@@ -28,6 +28,7 @@ export const App = () => {
 		...user,
 	}));
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	useEffect(() => {
 		if (!init.fetched) {
@@ -46,8 +47,9 @@ export const App = () => {
 			setInit(prev => ({ ...prev, fetched: true, error: true }));
 		} else if (isOnboarding) {
 			setInit(prev => ({ ...prev, fetched: true, onboarding: true }));
+			history.push('/onboarding/step-1');
 		}
-	}, [profile, error, isOnboarding, setInit]);
+	}, [profile, error, isOnboarding, setInit, history]);
 
 	if (init.error) {
 		return (
