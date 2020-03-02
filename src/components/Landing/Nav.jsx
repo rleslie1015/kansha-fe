@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React from 'react';
 import Auth from '../../utils/auth';
 import HamburgerMenu from './HamburgerMenu';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
@@ -23,9 +23,13 @@ export default function Nav() {
 					<h3>Kansha</h3>
 				</div>
 				<nav>
-					<a href="#">Team</a>
-					<a href="#">Contact</a>
-					<a className="login" href="#">
+					<a href="#" onClick={auth.login}>
+						Team
+					</a>
+					<a href="#" onClick={auth.login}>
+						Contact
+					</a>
+					<a onClick={auth.login} className="login" href="#">
 						Login
 					</a>
 				</nav>
