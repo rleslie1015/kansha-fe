@@ -9,19 +9,12 @@ import Activity from './Activity';
 
 const AdminDashboard = () => {
 	return (
-		<div>
-			<SideBar />
-			<div className="admin-dashboard">
-				<Header />
-				<main>
-					<div className="teams-reports">
-						<Teams />
-						<Reports />
-					</div>
-					<Activity />
-				</main>
-				<Footer />
+		<div className="admin-dashboard">
+			<div>
+				<Teams />
+				<Reports />
 			</div>
+			<Activity />
 		</div>
 	);
 };
