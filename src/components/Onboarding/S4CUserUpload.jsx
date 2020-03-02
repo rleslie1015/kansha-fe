@@ -22,7 +22,7 @@ function S4CUserUpload({ user }) {
 			.then(response => {
 				console.log(response);
 				setFile(null);
-				setError(response.data.message)
+				setError(response.data)
 			})
 			.catch(error => {
 				console.log(error.response);
@@ -35,7 +35,7 @@ function S4CUserUpload({ user }) {
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.type === 'text/csv') {
+			if (file.name.substr(file.name.Length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
@@ -61,7 +61,7 @@ function S4CUserUpload({ user }) {
 			</div>
 			<div {...getRootProps({ className: 'dropzone' })}>
 				<input {...getInputProps()} />
-				<CloudUpload className='AddBulkIcon'/>
+				<CloudUpload />
 				<p>
 					Drag and drop file or <span>browse</span>
 				</p>
