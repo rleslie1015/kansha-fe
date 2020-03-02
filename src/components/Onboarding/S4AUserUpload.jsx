@@ -77,8 +77,8 @@ function S4AUserUpload() {
 								onChange={handleUploadMethod}
 							/>
 							<label for="manual">
-								Manually enter employees (not recommended for
-								over 10 employees)
+								Manually enter employees <span className="gray-details">(not recommended for
+								over 10 employees)</span>
 							</label>
 						</div>
 
@@ -91,8 +91,8 @@ function S4AUserUpload() {
 								onChange={handleUploadMethod}
 							/>
 							<label for="bulk">
-								Bulk Upload (click here to view a sample format
-								for you spreadsheet or csv)
+								Bulk Upload <span className="gray-details">(click here to view a sample format
+								for you spreadsheet or csv)</span>
 							</label>
 						</div>
 					</div>}

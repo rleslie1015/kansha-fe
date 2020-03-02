@@ -2,12 +2,12 @@ progress {
 	border-radius: 5px;
 	width: 100px;
 	position: absolute;
-	right: 200px;
-	top: 70px;
+	right: 250px;
+	top:120px;
 }
 
 progress::-webkit-progress-bar {
-	background-color: $color-gray-light;
+	background-color: #cfcdcd;
 	border-radius: 2px;
 }
 
@@ -34,10 +34,25 @@ progress::-moz-progress-bar {
 		padding: 10px;
 		color: $color-white;
 		border-radius: 8px;
+		border: none;
+		cursor: pointer;
+
+
+		&:disabled{
+			background-color: gray;
+
+			&:hover{
+				background-color: gray;
+			}
+		}
 
 		&:hover {
 			background-color: $color-primary;
 		}
+	}
+
+	.s1-img{
+		margin-bottom: 8%;
 	}
 }
 
@@ -176,23 +191,88 @@ progress::-moz-progress-bar {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	width: 90%;
+	width: 70%;
+
+	h6{
+		font-size: 1.8rem;
+		color: $color-black;
+		font-weight: 500;
+		margin:15px 0px 15px 5px;
+	}
+
+	.org-size{
+		display: flex;
+		flex-direction: row;
+	}
+
+	label{
+		font-size: 1.6rem;
+		color: $color-black;
+		margin-right: 2.5rem;
+	}
+
+
+	.dropdown-container{
+		margin:15px 0px 15px 0px;
+	
+	}
+
+	.orgname-input{
+		border-radius: 0px;
+		border: 1px solid #787878;
+		width: 95.7%;
+
+		&::placeholder{
+			color: rgba(51, 51, 51, 0.5);;
+		   font-style: italic;
+		   font-weight: 600;
+	   }
+	}
+
+
+	
+
+	.select-placeholder{
+		appearance: none;
+		border-radius:0px;
+		border: 1px solid #787878;
+			width: 40%;
+			color: rgba(51, 51, 51, 0.5);
+			font-style: italic;
+			font-weight: 600;
+		}
+
+	
+
+	.formname {
+		width: 47%;
+		border-radius: 0px;
+		border: 1px solid #787878;
+	
+		&::placeholder{
+			color: rgba(51, 51, 51, 0.5);;
+		   font-style: italic;
+		   font-weight: 600;
+	   }
+	
+	
+	}
+	// .radio-div input[type="radio"] {
+	// 	opacity: 10;
+		
+	// 	width: 20;
+	//   }
 }
 
-.formname {
-	width: 47%;
-}
 
-.jobtitle-input {
-	width: 47%;
-}
+
+
 
 .admin-user-add-container {
 	.user-upload-title {
-		font-size: 4.8rem;
+		font-size: $large;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
-		// font-weight: 300;
 	}
 
 	.admin-add-employee-form {
@@ -211,20 +291,26 @@ progress::-moz-progress-bar {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+
+			.gray-details{
+				color: $color-gray-light;
+				margin-left: 0rem;
+				font-size: $small;
+			}
 		}
 		h6 {
 			font-size: 1.8rem;
 		}
 
 		label {
-			font-size: 1.6rem;
+			font-size: $small;
 		}
 	}
 }
 
 .employee-add-container {
 	.employee-upload-title {
-		font-size: 4.8rem;
+		font-size: $large;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
 	}
@@ -238,7 +324,7 @@ progress::-moz-progress-bar {
 		.employee-image-upload {
 			display: flex;
 			align-items: center;
-			font-size: 1.4rem;
+			font-size: $default-font-size;
 			padding-top: 3rem;
 
 			span {
@@ -249,19 +335,32 @@ progress::-moz-progress-bar {
 		}
 
 		.add-another-employee {
-			width: 14rem;
+			width: 11rem;
 			padding-top: 3rem;
 			text-decoration: underline;
-			font-size: 2.4rem;
+			font-size: 1.8rem;
 			font-weight: 500;
+			color:#C91757;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
+
+			.AddMoreIcon {
+				fill:#C91757;
+			}
 		}
 
 		.success-employee-add {
 			padding-top: 4rem;
+
+			p{
+				color: $color-gray-light;
+			.employee-email{
+				margin-left: 3rem;
+				}	
+			}
+			
 
 			h6 {
 				padding-bottom: 1.5rem;
@@ -272,7 +371,7 @@ progress::-moz-progress-bar {
 
 .bulk-upload-container {
 	.bulk-upload-title {
-		font-size: 4.8rem;
+		font-size: $large;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
 	}
@@ -296,6 +395,10 @@ progress::-moz-progress-bar {
 		align-items: center;
 		cursor: pointer;
 
+		.AddBulkIcon{
+			fill:#C91757;
+		}
+		
 		p {
 			font-size: 2.4rem;
 			line-height: 2.8rem;

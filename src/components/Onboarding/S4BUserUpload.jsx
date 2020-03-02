@@ -97,14 +97,14 @@ function S4BUserUpload({ user }) {
 					value={employee.email}
 					onChange={handleEmployee}></input>
 			
-				<div type='submit' onClick={handleSubmit} className="add-another-employee"><AddMoreImg/>Add more</div>
+				<div type='submit' onClick={handleSubmit} className="add-another-employee"><AddMoreImg className='AddMoreIcon'/>Add more</div>
 				
 				<div className="success-employee-add">
 					{employees.length !== 0 &&
 						<div>
 							<h6>Added Successfully!</h6>
 							{employees.map(person => (
-								<p>{person.first_name} {person.last_name} {person.email}</p>
+								<p>{person.first_name} {person.last_name} <span className='employee-email'>{person.email}</span></p>
 							))}
 						</div>}
 				</div>
