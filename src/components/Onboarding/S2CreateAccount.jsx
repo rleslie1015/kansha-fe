@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import searchBar from './searchBar';
+
+
+
 
 
 // post request to /users endpoint to create new user
@@ -21,40 +25,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 		}
 	}
 
-	// this is the post request to create a user
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	axiosWithAuth()
-	// 		.post('/users', user)
-	// 		.then(res => {
-	// 			console.log(res, `hello`);
-	// 			setUser({ ...user, id: res.data[0] });
-	// 		})
-	// 		.catch(err => console.log(err));
-	// 	history.push('/onboarding/step-4');
-	// };
-
-	// this is the post request to create an organization
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	axiosWithAuth()
-	// 		.post('/organizations', {
-	// 			name: user.org_name,
-	// 			company_size: user.company_size,
-	// 			industry: user.industry,
-	// 		})
-	// 		.then(res => {
-	// 			console.log(res);
-	// 			setUser({
-	// 				...user,
-	// 				id: res.data[0],
-	// 			});
-	// 		})
-	// 		.catch(err => console.log(err));
-	// 	history.push('/onboarding/step-4');
-	// };
+	
 
 	return (
 		<div>
@@ -142,7 +113,8 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				</div>
 				</div>
 				<div className='dropdown-container'>
-				<select
+					<searchBar user={user}/>
+				{/* <select
 				className="select-placeholder"
 					name="industry"
 					ref={register({ required: true })}
@@ -165,9 +137,12 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 					<option>IT/Computers/Technology</option>
 					<option>Legal</option>
 					<option>Medical/Health Services</option>
-				</select>
-				</div>
+				</select> */}
+		
 				{errors.industry && 'Industry is required'}
+				</div>
+
+				
 			</form>
 			<button
 				disabled={
