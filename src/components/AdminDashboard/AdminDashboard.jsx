@@ -1,8 +1,5 @@
 import React from 'react';
 
-import Footer from '../Landing/Footer';
-import Header from '../Landing/Header';
-import SideBar from '../SideBar';
 import Teams from './Teams';
 import Reports from './Reports';
 import Activity from './Activity';
