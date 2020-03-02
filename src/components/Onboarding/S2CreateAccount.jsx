@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import searchBar from './searchBar';
+import DropDown from "./DropDown.jsx"
 
 
 
@@ -11,6 +11,7 @@ import searchBar from './searchBar';
 // post request to /users endpoint to create new user
 
 function S2CreateAccount({ user, setUser, handleUser }) {
+	const [selection, setSelection] = useState("0")
 	const { register, errors, formState } = useForm({ mode: 'onChange' });
 
 	let history = useHistory();
@@ -113,31 +114,36 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				</div>
 				</div>
 				<div className='dropdown-container'>
-					<searchBar user={user}/>
-				{/* <select
+
+				<label className="industry-label" htmlFor="industry" >Select your industry</label>
+				<DropDown
 				className="select-placeholder"
 					name="industry"
 					ref={register({ required: true })}
 					DefaultValue={user.industry}
-					onChange={handleUser}>
-					<option className="placeholder-option"  value="" disabled selected hidden > Select your industry from dropdown</option>
-					<option>Accounting</option>
-					<option>Advertising/PR</option>
-					<option>Aerospace</option>
-					<option>Agriculture</option>
-					<option>Architecture</option>
-					<option>Airlines</option>
-					<option>Automotive</option>
-					<option>Banking/Finance</option>
-					<option>Business (general)</option>
-					<option>Communications</option>
-					<option>Education</option>
-					<option>Entertainment</option>
-					<option>Hospitality</option>
-					<option>IT/Computers/Technology</option>
-					<option>Legal</option>
-					<option>Medical/Health Services</option>
-				</select> */}
+					onChange={handleUser}
+					selection={selection} setSelection={setSelection}
+					id="industry"
+					placeholder="e.g. Accounting"
+					>
+					
+					<option value='Accounting'>Accounting</option>
+					<option value='Advertising/PR'>Advertising/PR</option>
+					<option value='Aerospace'>Aerospace</option>
+					<option value='Argiculture'>Agriculture</option>
+					<option value='Architecture'>Architecture</option>
+					<option value='Airlines'>Airlines</option>
+					<option value='Automotive'>Automotive</option>
+					<option value='Banking/Finance'>Banking/Finance</option>
+					<option value="Business (general)">Business (general)</option>
+					<option value="Communications">Communications</option>
+					<option value="Education">Education</option>
+					<option value="Entertainment">Entertainment</option>
+					<option value="Hospitality">Hospitality</option>
+					<option value="IT/Computers/Technology">IT/Computers/Technology</option>
+					<option value="Legal">Legal</option>
+					<option value= "Medical/Health Services">Medical/Health Services</option>
+				</DropDown>
 		
 				{errors.industry && 'Industry is required'}
 				</div>

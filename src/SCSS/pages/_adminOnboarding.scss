@@ -26,6 +26,7 @@ progress::-moz-progress-bar {
 	justify-content: space-evenly;
 	align-items: center;
 	margin: 10rem 0rem;
+	min-height: calc(100vh - 460px);
 
 	button {
 		margin: 6rem 0rem;
@@ -229,7 +230,10 @@ progress::-moz-progress-bar {
 	   }
 	}
 
-
+	.industry-label{
+		font-size: 1.8rem;
+		font-weight: 500;
+	}
 	
 
 	.select-placeholder{
