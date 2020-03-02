@@ -1,0 +1,152 @@
+footer {
+	width: 100%;
+	background-color: $color-primary-nav;
+	color: $color-white;
+
+	> div {
+		position: relative;
+		margin: 0 auto;
+		width: 95%;
+		max-width: 1440px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 200px;
+
+		@media (max-width: 630px) {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		> section {
+			display: flex;
+			flex-direction: column;
+
+			@media (max-width: 630px) {
+				align-items: center;
+				text-align: center;
+			}
+
+			> section {
+				display: flex;
+				color: $color-white;
+				height: 100%;
+				align-items: center;
+				margin-left: -10px;
+
+				@media (max-width: 630px) {
+					margin: 30px 0 10px;
+				}
+
+				svg {
+					margin-top: 10px;
+				}
+
+				h1 {
+					font-style: normal;
+					font-weight: normal;
+					font-size: 2.4rem;
+					font-weight: 400;
+					line-height: 0;
+					user-select: none;
+				}
+			}
+		}
+
+		nav {
+			width: 20%;
+			display: flex;
+			justify-content: space-between;
+
+			@media (max-width: 630px) {
+				margin: 30px 0 40px;
+			}
+
+			span {
+				cursor: pointer;
+				transition: all 300ms ease;
+				font-size: 1.8rem;
+
+				&:hover {
+					color: $color-primary;
+				}
+
+				@media (max-width: 630px) {
+					margin-bottom: 10px;
+				}
+			}
+
+			a {
+				transition: all 300ms ease;
+				font-size: 1.8rem;
+
+				&:hover {
+					color: $color-primary;
+				}
+
+				@media (max-width: 630px) {
+					margin-bottom: 10px;
+				}
+			}
+
+			@media (max-width: 750px) {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+		}
+
+		ul {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			width: 30%;
+			list-style-type: none;
+			height: 50px;
+
+			@media (max-width: 630px) {
+				margin-bottom: 50px;
+				order: 2;
+				width: 60%;
+			}
+
+			a {
+				width: 35px;
+				height: 35px;
+				padding: 5px;
+				display: inline-block;
+				background: $color-white;
+				border-radius: 50%;
+				transition: all 300ms ease;
+
+				&:hover {
+					background: $color-primary;
+				}
+
+				svg {
+					width: 100%;
+					height: auto;
+					fill: $color-primary-nav;
+				}
+			}
+
+			.hidden {
+				position: absolute;
+				left: -99999px;
+				height: 1px;
+				width: 1px;
+				overflow: hidden;
+			}
+		}
+
+		p {
+			position: absolute;
+			margin-top: 30px;
+
+			@media (max-width: 630px) {
+				bottom: 10px;
+			}
+		}
+	}
+}

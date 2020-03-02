@@ -1,0 +1,102 @@
+.side-nav {
+	background-color: $color-primary-nav;
+	width: 55px;
+	height: 100vh;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+	transition: width 500ms ease;
+
+	.nav-hamburger {
+		position: absolute;
+		top: 10px;
+		left: 8px;
+		cursor: pointer;
+
+		> button {
+			padding: 5px;
+		}
+	}
+
+	.side-nav-profile {
+		color: $color-white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 150px;
+		margin-top: 20px;
+
+		img {
+			width: 40%;
+			border-radius: 50%;
+			margin: 10px 0;
+		}
+
+		p {
+			font-size: 2rem;
+		}
+	}
+
+	a {
+		color: $color-white;
+		display: flex;
+		align-items: center;
+		padding: 10px;
+		width: 100%;
+		height: 40px;
+		border-radius: 2px;
+		transition: all 300ms ease;
+
+		p {
+			margin-left: 10px;
+			font-size: 2rem;
+			white-space: nowrap;
+		}
+
+		&.active-link {
+			background: $color-secondary;
+		}
+
+		&:hover {
+			background: $color-secondary;
+		}
+	}
+
+	nav {
+		height: 40%;
+		min-height: 300px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-around;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.fill-white {
+			fill: $color-white;
+		}
+	}
+
+	.nav-signout {
+		margin-bottom: 20px;
+		svg {
+			stroke: $color-white;
+		}
+	}
+
+	.hidden {
+		width: 0;
+		opacity: 0;
+		height: 150px;
+		margin-top: 20px;
+	}
+}
+
+.is-open {
+	width: 240px;
+	overflow: hidden;
+}

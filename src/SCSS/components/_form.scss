@@ -1,0 +1,20 @@
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input {
+	padding: 1.25rem;
+	margin: 0.5rem;
+	border-radius: 2px;
+	border: 1px solid $color-black;
+	color: $color-black;
+}
+
+select {
+	padding: 1.25rem;
+	margin: 0.5rem;
+	width: 20rem;
+	height: 4.5rem;
+	color: grey;
+}

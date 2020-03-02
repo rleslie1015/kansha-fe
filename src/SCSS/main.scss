@@ -1,0 +1,34 @@
+// abstracts
+@import './abstracts/mixins.scss';
+@import './abstracts/variables.scss';
+
+// base
+@import './base/base.scss';
+@import './base/typography.scss';
+
+// components
+@import './components/buttons.scss';
+@import './components/card.scss';
+@import './components/files.scss';
+@import './components/form.scss';
+@import './components/images.scss';
+@import './components/sidebar.scss';
+@import './components/modal.scss';
+@import './components/hamburger';
+
+// layout
+@import './layout/footer.scss';
+@import './layout/header.scss';
+@import './layout/nav.scss';
+@import './layout/sidenav.scss';
+
+// pages
+@import './pages/landing.scss';
+@import './pages/onboarding.scss';
+@import './pages/settings.scss';
+@import './pages/profile.scss';
+@import './pages/workspace.scss';
+@import './pages/adminOnboarding';
+@import './pages/home';
+@import './pages/recogModal.scss';
+@import './pages/fileUpload';

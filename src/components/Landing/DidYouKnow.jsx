@@ -1,0 +1,26 @@
+import React from 'react';
+
+export default function DidYouKnow() {
+	return (
+		<section className="didyouknow">
+			<figure>
+				<iframe
+					src="https://www.youtube.com/embed/8Ybqd9pAFk0"
+					frameBorder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowFullScreen
+					title="Kansha demonstration video"
+				/>
+			</figure>
+			<section>
+				<h2>Did you know...</h2>
+				<p>
+					Companies with robust employee recognition programs are
+					known to have 31% lower voluntary turnover than those that
+					don’t (Anderson, 2018).
+				</p>
+				<button className="btn-get-started">Get Started</button>
+			</section>
+		</section>
+	);
+}
