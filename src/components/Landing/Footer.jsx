@@ -52,8 +52,8 @@ export default function Footer() {
 					<span onClick={auth.login} role="link">
 						Login
 					</span>
-					<Link to="/">Team</Link>
-					<Link to="/">Contact</Link>
+					<span onClick={auth.login}>Team</span>
+					<span onClick={auth.login}>Contact</span>
 				</nav>
 				<p>© Kansha. {new Date().getFullYear()}. We love our users!</p>
 			</div>
