@@ -4,10 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import WorkspaceCard from './WorkspaceCard';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
-import WorkspaceCard from './WorkspaceCard';
-
 function Workspace() {
 	const [team, setTeam] = useState([]);
 	const [filter, setFilter] = useState('');
