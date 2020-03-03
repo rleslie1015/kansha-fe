@@ -37,6 +37,9 @@
 				font-size: 2.4rem;
 				font-weight: normal;
 				margin-bottom: 3rem;
+				&:hover {
+					color: $color-primary;
+				}
 			}
 			.login {
 				margin-top: 5rem;
@@ -82,6 +85,10 @@
 				font-size: 2.4rem;
 				font-weight: normal;
 				margin-bottom: 3rem;
+
+				&:hover {
+					color: $color-primary;
+				}
 			}
 			.login {
 				margin-top: 5rem;
