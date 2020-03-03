@@ -26,6 +26,7 @@ progress::-moz-progress-bar {
 	justify-content: space-evenly;
 	align-items: center;
 	margin: 10rem 0rem;
+	min-height: calc(100vh - 460px);
 
 	button {
 		margin: 6rem 0rem;
@@ -226,6 +227,12 @@ progress::-moz-progress-bar {
 		}
 	}
 
+	.industry-label {
+		font-size: 1.8rem;
+		font-weight: 500;
+		margin-left: 0.25rem;
+	}
+
 	.select-placeholder {
 		appearance: none;
 		border-radius: 0px;
@@ -404,6 +411,22 @@ progress::-moz-progress-bar {
 		padding-top: 2rem;
 	}
 
+	.bulk-success-container-names {
+		margin-top: 2rem;
+		height: 15rem;
+		overflow: auto;
+		width: 50rem;
+
+		table {
+			width: 50rem;
+			padding: 1rem 0rem;
+			color: $color-gray-light;
+
+			tr {
+				text-align: left;
+			}
+		}
+	}
 	button {
 		cursor: pointer;
 	}
@@ -420,3 +443,5 @@ progress::-moz-progress-bar {
 		border: 3px solid red;
 	}
 }
+
+// testing radio styles

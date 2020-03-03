@@ -25,6 +25,7 @@ function Workspace() {
 		};
 		fetchData();
 	}, [filter]);
+
 	const handleClick = () => {
 		history.push('/add-user');
 	};

@@ -12,7 +12,9 @@ export default function Main() {
 					Making it easy to recognize your hardworking peers with
 					rewards and personalized messages.
 				</p>
-				<button onClick={auth.login}>Join today</button>
+				<button className="btn-get-started" onClick={auth.login}>
+					Join today
+				</button>
 			</section>
 			<img src={PeopleJumping} alt="group of people jumping" />
 		</section>

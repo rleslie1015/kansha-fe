@@ -80,7 +80,6 @@ export const App = () => {
 					<ProtectedRoute path="/upload" component={FileUpload} />
 					<ProtectedRoute path="/settings" component={Settings} />
 					<ProtectedRoute path="/add-user" component={UserUpload} />
-
 					<Route default render={() => <Redirect to="/" />} />
 				</Switch>
 			</Dashboard>
