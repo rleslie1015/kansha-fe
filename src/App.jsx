@@ -7,6 +7,7 @@ import { login, authorizeUser } from './store/actions/user-actions';
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
 import Onboarding from './components/Onboarding/Onboarding';
+import UserUpload from './components/UserUpload/UserUpload';
 import Landing from './components/Landing';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
@@ -15,6 +16,7 @@ import Workspace from './components/Workspace';
 import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 const auth = new Auth();
 
@@ -70,9 +72,14 @@ export const App = () => {
 						path="/profile/:id"
 						component={UserProfile}
 					/>
+					<ProtectedRoute
+						path="/dashboard"
+						component={AdminDashboard}
+					/>
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute path="/upload" component={FileUpload} />
 					<ProtectedRoute path="/settings" component={Settings} />
+					<ProtectedRoute path="/add-user" component={UserUpload} />
 					<Route default render={() => <Redirect to="/" />} />
 				</Switch>
 			</Dashboard>

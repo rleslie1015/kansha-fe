@@ -1,63 +1,40 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import DropDown from './DropDown.jsx';
+
 
 // post request to /users endpoint to create new user
 
 function S2CreateAccount({ user, setUser, handleUser }) {
+	// const [selection, setSelection] = useState('0');
 	const { register, errors, formState } = useForm({ mode: 'onChange' });
-
+	console.log(user);
 	let history = useHistory();
+
+	function handleIndustry(value) {
+		setUser({ ...user, industry: value });
+	}
 
 	async function handleSubmit() {
 		try {
 			const res = await axiosWithAuth().post('/users', user);
-			setUser({ ...user, id: res.data[0], org_id: res.org_id });
+			setUser({
+				...user,
+				id: res.data[0],
+				org_id: res.org_id,
+				industry: res.selection,
+			});
 			history.push('/onboarding/step-4');
 		} catch (error) {
 			console.log(error);
 		}
 	}
 
-	// this is the post request to create a user
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	axiosWithAuth()
-	// 		.post('/users', user)
-	// 		.then(res => {
-	// 			console.log(res, `hello`);
-	// 			setUser({ ...user, id: res.data[0] });
-	// 		})
-	// 		.catch(err => console.log(err));
-	// 	history.push('/onboarding/step-4');
-	// };
-
-	// this is the post request to create an organization
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	axiosWithAuth()
-	// 		.post('/organizations', {
-	// 			name: user.org_name,
-	// 			company_size: user.company_size,
-	// 			industry: user.industry,
-	// 		})
-	// 		.then(res => {
-	// 			console.log(res);
-	// 			setUser({
-	// 				...user,
-	// 				id: res.data[0],
-	// 			});
-	// 		})
-	// 		.catch(err => console.log(err));
-	// 	history.push('/onboarding/step-4');
-	// };
-
 	return (
 		<div>
-			<h1>Let's Get Set Up!</h1>
+			<h1>Let's get set up!</h1>
 			<form className="create-account-form">
 				<div className="name-container">
 					<input
@@ -81,7 +58,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				</div>
 
 				<input
-					className="jobtitle-input"
+					className="formname"
 					ref={register({ required: true })}
 					placeholder="Job Title"
 					name="job_title"
@@ -91,6 +68,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 
 				<h6>What's your organization name?</h6>
 				<input
+					className="orgname-input"
 					placeholder="Organization Name"
 					ref={register({ required: true })}
 					name="org_name"
@@ -99,64 +77,83 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				{errors.org_name && 'Organization name is required'}
 
 				<h6>How big is your organization?</h6>
-				<input
-					type="radio"
-					ref={register({ required: true })}
-					id="lessthan20"
-					name="company_size"
-					defaultValue="less than 20"
-					onChange={handleUser}
-				/>
-				{errors.company_size && 'Company size is required'}
-				<label htmlFor="lessthan20">Less than 20</label>
-				<div>
-					<input
-						type="radio"
-						ref={register({ required: true })}
-						id="21100"
-						name="company_size"
-						defaultValue="21 to 100"
-						onChange={handleUser}
-					/>
-					{errors.company_size && 'Company size is required'}
-					<label htmlFor="21100">21-100</label>
-				</div>
+				<div className="org-size">
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="lessthan20"
+							name="company_size"
+							defaultValue="  less than 20"
+							onChange={handleUser}
+						/>
+					</div>
 
-				<div>
-					<input
-						type="radio"
-						ref={register({ required: true })}
-						id="over100"
-						name="company_size"
-						defaultValue="over 100"
-						onChange={handleUser}
-					/>
 					{errors.company_size && 'Company size is required'}
-					<label htmlFor="over100">Over 100</label>
+					<label htmlFor="lessthan20">Less than 20</label>
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="21100"
+							name="company_size"
+							defaultValue="  21 to 100"
+							onChange={handleUser}
+						/>
+						{errors.company_size && 'Company size is required'}
+						<label htmlFor="21100">21 - 100</label>
+					</div>
+
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="over100"
+							name="company_size"
+							defaultValue="  over 100"
+							onChange={handleUser}
+						/>
+						{errors.company_size && 'Company size is required'}
+						<label htmlFor="over100">Over 100</label>
+					</div>
 				</div>
-				<select
-					name="industry"
-					ref={register({ required: true })}
-					DefaultValue={user.industry}
-					onChange={handleUser}>
-					<option>Accounting</option>
-					<option>Advertising/PR</option>
-					<option>Aerospace</option>
-					<option>Agriculture</option>
-					<option>Architecture</option>
-					<option>Airlines</option>
-					<option>Automotive</option>
-					<option>Banking/Finance</option>
-					<option>Business (general)</option>
-					<option>Communications</option>
-					<option>Education</option>
-					<option>Entertainment</option>
-					<option>Hospitality</option>
-					<option>IT/Computers/Technology</option>
-					<option>Legal</option>
-					<option>Medical/Health Services</option>
-				</select>
-				{errors.industry && 'Industry is required'}
+				<div className="dropdown-container">
+					<label className="industry-label" htmlFor="industry">
+						Select your industry:
+					</label>
+					<DropDown
+						className="select-placeholder"
+						name="industry"
+						setSelection={handleIndustry}
+						onChange={handleUser}
+						id="industry"
+						placeholder="e.g. Accounting">
+						<option value="Accounting">Accounting</option>
+						<option value="Advertising/PR">Advertising/PR</option>
+						<option value="Aerospace">Aerospace</option>
+						<option value="Argiculture">Agriculture</option>
+						<option value="Architecture">Architecture</option>
+						<option value="Airlines">Airlines</option>
+						<option value="Automotive">Automotive</option>
+						<option value="Banking/Finance">Banking/Finance</option>
+						<option value="Business (general)">
+							Business (general)
+						</option>
+						<option value="Communications">Communications</option>
+						<option value="Education">Education</option>
+						<option value="Entertainment">Entertainment</option>
+						<option value="Hospitality">Hospitality</option>
+						<option value="IT/Computers/Technology">
+							IT/Computers/Technology
+						</option>
+						<option value="Legal">Legal</option>
+						<option value="Medical/Health Services">
+							Medical/Health Services
+						</option>
+					</DropDown>
+
+					{errors.industry && 'Industry is required'}
+				</div>
 			</form>
 			<button
 				disabled={

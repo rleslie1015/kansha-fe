@@ -6,8 +6,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function S4AUserUpload() {
-	const [ uploadNow, setUploadNow ] = useState('');
-	const [uploadMethod, setUploadMethod ] = useState('')
+	const [uploadNow, setUploadNow] = useState('');
+	const [uploadMethod, setUploadMethod] = useState('');
 
 	let history = useHistory();
 
@@ -15,25 +15,25 @@ function S4AUserUpload() {
 		history.push('/onboarding/step-3');
 	};
 
-	const handleUploadNow = (e) => {
-		setUploadNow(e.target.value)
+	const handleUploadNow = e => {
+		setUploadNow(e.target.value);
 	};
 
-	const handleUploadMethod = (e) => {
+	const handleUploadMethod = e => {
 		setUploadMethod(e.target.value);
-	}
+	};
 
 	const handleClick = () => {
-		if(uploadNow === 'false'){
+		if (uploadNow === 'false') {
 			history.push('/onboarding/step-6');
-		}else if(uploadMethod === 'manual'){
-			history.push('/onboarding/step-4b')
-		} else if(uploadMethod === 'bulk'){
-			history.push('/onboarding/step-4c')
-		} else{
-			history.push('/onboarding/step-6')
-		}	
-		};
+		} else if (uploadMethod === 'manual') {
+			history.push('/onboarding/step-4b');
+		} else if (uploadMethod === 'bulk') {
+			history.push('/onboarding/step-4c');
+		} else {
+			history.push('/onboarding/step-6');
+		}
+	};
 
 	return (
 		<>
@@ -50,7 +50,7 @@ function S4AUserUpload() {
 								value="true"
 								onChange={handleUploadNow}
 							/>
-							<label for="yes">Yes</label>
+							<label htmlFor="yes">Yes</label>
 						</div>
 
 						<div>
@@ -61,42 +61,47 @@ function S4AUserUpload() {
 								value="false"
 								onChange={handleUploadNow}
 							/>
-							<label for="no">No</label>
+							<label htmlFor="no">No</label>
 						</div>
 					</div>
 
-			{ uploadNow === "true" &&
-					<div className="how-upload-question">
-						<h6>How would you like to add them?</h6>
-						<div>
-							<input
-								type="radio"
-								id="manual"
-								name="drone2"
-								value="manual"
-								onChange={handleUploadMethod}
-							/>
-							<label for="manual">
-								Manually enter employees (not recommended for
-								over 10 employees)
-							</label>
-						</div>
+					{uploadNow === 'true' && (
+						<div className="how-upload-question">
+							<h6>How would you like to add them?</h6>
+							<div>
+								<input
+									type="radio"
+									id="manual"
+									name="drone2"
+									value="manual"
+									onChange={handleUploadMethod}
+								/>
+								<label htmlFor="manual">
+									Manually enter employees{' '}
+									<span className="gray-details">
+										(not recommended for over 10 employees)
+									</span>
+								</label>
+							</div>
 
-						<div>
-							<input
-								type="radio"
-								id="bulk"
-								name="drone2"
-								value="bulk"
-								onChange={handleUploadMethod}
-							/>
-							<label for="bulk">
-								Bulk Upload (click here to view a sample format
-								for you spreadsheet or csv)
-							</label>
+							<div>
+								<input
+									type="radio"
+									id="bulk"
+									name="drone2"
+									value="bulk"
+									onChange={handleUploadMethod}
+								/>
+								<label htmlFor="bulk">
+									Bulk Upload{' '}
+									<span className="gray-details">
+										(click here to view a sample format for
+										you spreadsheet or csv)
+									</span>
+								</label>
+							</div>
 						</div>
-					</div>}
-					
+					)}
 				</div>
 			</div>
 

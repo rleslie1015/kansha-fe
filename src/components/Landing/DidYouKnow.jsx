@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Auth from '../../utils/auth';
+const auth = new Auth();
 export default function DidYouKnow() {
 	return (
 		<section className="didyouknow">
@@ -19,7 +20,9 @@ export default function DidYouKnow() {
 					known to have 31% lower voluntary turnover than those that
 					don’t (Anderson, 2018).
 				</p>
-				<button className="btn-get-started">Get Started</button>
+				<button onClick={auth.login} className="btn-get-started">
+					Get Started
+				</button>
 			</section>
 		</section>
 	);

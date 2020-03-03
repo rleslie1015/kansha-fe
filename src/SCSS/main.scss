@@ -11,10 +11,13 @@
 @import './components/card.scss';
 @import './components/files.scss';
 @import './components/form.scss';
+@import './components/landing-sidebar';
 @import './components/images.scss';
 @import './components/sidebar.scss';
 @import './components/modal.scss';
 @import './components/hamburger';
+@import './components/dropDown';
+
 
 // layout
 @import './layout/footer.scss';
@@ -23,6 +26,7 @@
 @import './layout/sidenav.scss';
 
 // pages
+@import './pages/adminDashboard';
 @import './pages/landing.scss';
 @import './pages/onboarding.scss';
 @import './pages/settings.scss';
@@ -32,3 +36,4 @@
 @import './pages/home';
 @import './pages/recogModal.scss';
 @import './pages/fileUpload';
+@import './pages/userUpload';

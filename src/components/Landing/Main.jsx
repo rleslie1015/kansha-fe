@@ -1,13 +1,8 @@
 import React from 'react';
 import PeopleJumping from '../../assets/people-jumping.jpeg';
-import { useHistory } from 'react-router-dom';
+import Auth from '../../utils/auth';
+const auth = new Auth();
 export default function Main() {
-	const history = useHistory();
-
-	const handleClick = () => {
-		history.push('/onboarding');
-	};
-
 	return (
 		<section className="main-container-landing">
 			<section>
@@ -17,7 +12,9 @@ export default function Main() {
 					Making it easy to recognize your hardworking peers with
 					rewards and personalized messages.
 				</p>
-				<button onClick={handleClick}>Join today</button>
+				<button className="btn-get-started" onClick={auth.login}>
+					Join today
+				</button>
 			</section>
 			<img src={PeopleJumping} alt="group of people jumping" />
 		</section>

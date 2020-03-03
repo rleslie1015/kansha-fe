@@ -1,17 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
-import { useHistory } from 'react-router-dom';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 
-function S4CUserUpload({ user }) {
-	let history = useHistory();
-
+function BulkUser({ user }) {
 	const [error, setError] = useState('');
 	const [file, setFile] = useState(null);
-	const [userArray, setUserArray] = useState([]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -22,7 +18,6 @@ function S4CUserUpload({ user }) {
 			.post('/csv', data)
 			.then(response => {
 				console.log(response);
-				setUserArray(response.data.userArray);
 				setFile(null);
 				setError(response.data.message);
 			})
@@ -31,13 +26,9 @@ function S4CUserUpload({ user }) {
 			});
 	};
 
-	const handleNext = () => {
-		history.push('/onboarding/step-6');
-	};
-
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.name.substr(file.name.length - 3) === 'csv') {
+			if (file.name.substr(file.name.Length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
@@ -74,42 +65,26 @@ function S4CUserUpload({ user }) {
 				</p>
 			</div>
 			<div className="file-preview">{file?.path} </div>
-			<div>{file && <button onClick={handleSubmit}>Upload</button>}</div>
-			{userArray[0] && (
-				<>
-					<h6>{error}</h6>
-					<div className="bulk-success-container-names">
-						<table>
-							<tr>
-								<th>First name</th>
-								<th>Last name</th>
-								<th>Email</th>
-							</tr>
-							{userArray.map(person => {
-								return (
-									<tr>
-										<td>{person['First name']}</td>
-										<td>{person['Last name']}</td>
-										<td>{person['Email']}</td>
-									</tr>
-								);
-							})}
-						</table>
-					</div>
-				</>
-			)}
-
-			<button onClick={handleNext}>Next</button>
+			<div>
+				{file && (
+					<button
+						className="user-upload-buttons"
+						onClick={handleSubmit}>
+						Upload
+					</button>
+				)}
+			</div>
+			<div>{error}</div>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/onboarding/step-4">
-						<p>Previous step</p>
+					<Link to="/add-user">
+						<p>Previous Page</p>
 					</Link>
 				</span>
 			</div>
 		</div>
 	);
 }
-export default S4CUserUpload;
+export default BulkUser;
