@@ -12,10 +12,8 @@ import S4BUserUpload from './S4BUserUpload';
 import S4CUserUpload from './S4CUserUpload';
 import S5AccountCustomization from './S5AccountCustomization';
 import S6AllDone from './S6AllDone';
-import Footer from '../Landing/Footer.jsx'
+import Footer from '../Landing/Footer.jsx';
 import onboardingPic from '../../assets/onboardingPic.png';
-
-
 
 function Onboarding() {
 	const [user, setUser] = useState({
@@ -24,7 +22,8 @@ function Onboarding() {
 		email: '',
 		job_title: '',
 		org_id: '',
-		user_type: '',
+		user_type: 'admin',
+		department: 'x',
 		org_name: '',
 		company_size: '',
 		industry: '',
@@ -97,7 +96,7 @@ function Onboarding() {
 						render={() => <S6AllDone />}></Route>
 				</div>
 			</div>
-							<Footer />
+			<Footer />
 		</>
 	);
 }
