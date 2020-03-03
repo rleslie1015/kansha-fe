@@ -26,7 +26,7 @@ function UserUpload() {
 	};
 
 	return (
-		<div className="user-upload-container" style={{ marginLeft: '200px' }}>
+		<div className="user-upload-container">
 			<Route
 				exact
 				path="/add-user"

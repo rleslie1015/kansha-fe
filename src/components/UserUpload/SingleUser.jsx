@@ -123,13 +123,15 @@ function SingleUser({ user }) {
 				</div>
 			</form>
 
-			<button onClick={handleSubmit}>Add user</button>
+			<button className="user-upload-buttons" onClick={handleSubmit}>
+				Add user
+			</button>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/workspace">
-						<p>Go back to workspace</p>
+					<Link to="/add-user">
+						<p>Previous Page</p>
 					</Link>
 				</span>
 			</div>

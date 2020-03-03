@@ -11,24 +11,19 @@ function BulkOrSingle() {
 			<div className="admin-add-employee-form">
 				<div className="how-upload-question">
 					<h6>How would you like to add them?</h6>
-					<Link to="/add-user/single">
-						<i className="far fa-user"></i>
-						<p>Single</p>
-					</Link>
-					<Link to="/add-user/bulk">
-						<i className="fas fa-users"></i>
-						<p>Bulk</p>
-					</Link>
+					<div className="icon-div">
+						<Link to="/add-user/single" className="user-link">
+							<i id="user-icon" className="far fa-user"></i>
+							<h2>Single</h2>
+						</Link>
+					</div>
+					<div className="icon-div">
+						<Link to="/add-user/bulk" className="user-link">
+							<i id="users-icon" className="fas fa-users"></i>
+							<h2>Bulk</h2>
+						</Link>
+					</div>
 				</div>
-			</div>
-
-			<div className="step-p-container">
-				<span className="previousarrow">
-					<i class="fas fa-arrow-left" />
-					<Link to="/workspace">
-						<p>Go back to workspace</p>
-					</Link>
-				</span>
 			</div>
 		</div>
 	);

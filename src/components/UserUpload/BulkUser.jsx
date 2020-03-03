@@ -72,14 +72,22 @@ function BulkUser({ user }) {
 				</p>
 			</div>
 			<div className="file-preview">{file?.path} </div>
-			<div>{file && <button onClick={handleSubmit}>Upload</button>}</div>
+			<div>
+				{file && (
+					<button
+						className="user-upload-buttons"
+						onClick={handleSubmit}>
+						Upload
+					</button>
+				)}
+			</div>
 			<div>{error}</div>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
-					<Link to="/workspace">
-						<p>Go back to workspace</p>
+					<Link to="/add-user">
+						<p>Previous Page</p>
 					</Link>
 				</span>
 			</div>

@@ -35,14 +35,14 @@ function Workspace() {
 		<main className="workspace">
 			<header>
 				<h1>Workspace</h1>
-
-				<i
-					onClick={handleClick}
-					className="fas fa-user-plus"
-					style={{ display: 'flex' }}>
-					<p> Add Users</p>
-				</i>
-
+				{profile.user_type.toLowerCase() === 'admin' && (
+					<i
+						onClick={handleClick}
+						className="fas fa-user-plus"
+						style={{ display: 'flex' }}>
+						<p> Add Users</p>
+					</i>
+				)}
 				<input
 					placeholder="Search Workspace…"
 					value={filter}
