@@ -424,6 +424,16 @@ progress::-moz-progress-bar {
 		padding-top: 2rem;
 	}
 
+	.successful-upload-bulk-table{
+		width: 50rem;
+		overflow: auto;
+		padding: 2.5rem;
+
+		.table-titles{
+			vertical-align: left;
+		}
+	}
+
 	button {
 		cursor: pointer;
 	}

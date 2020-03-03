@@ -11,6 +11,7 @@ function S4CUserUpload({ user }) {
 
 	const [error, setError] = useState('');
 	const [file, setFile] = useState(null);
+	const [userArray, setUserArray] = useState([]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -21,8 +22,9 @@ function S4CUserUpload({ user }) {
 			.post('/csv', data)
 			.then(response => {
 				console.log(response);
+				setUserArray(response.data.userArray);
 				setFile(null);
-				setError(response.data)
+				setError(response.data.message)
 			})
 			.catch(error => {
 				console.log(error.response);
@@ -35,7 +37,7 @@ function S4CUserUpload({ user }) {
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.name.substr(file.name.Length - 3) === 'csv') {
+			if (file.name.substr(file.name.length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
@@ -68,6 +70,28 @@ function S4CUserUpload({ user }) {
 			</div>
 			<div className="file-preview">{file?.path} </div>
 			<div>{file && <button onClick={handleSubmit}>Upload</button>}</div>
+			{
+				userArray[0] && 
+				<>
+				<h6>Added Successfully!</h6>
+				<table className='successful-upload-bulk-table'>
+					<tr className='table-titles'>
+							<th>Firstname</th>
+							<th>Lastname</th> 
+							<th>Email</th>
+						</tr>
+						{userArray.map(person => {
+						return(
+						<tr>
+							<td>{person['First name']}</td>
+							<td>{person['Last name']}</td>
+							<td>{person['Email']}</td>
+						</tr>)
+					})}
+				</table>
+				</>
+			}
+			
 			<div>{error}</div>
 
 			
