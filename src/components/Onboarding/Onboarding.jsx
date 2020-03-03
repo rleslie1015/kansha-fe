@@ -16,6 +16,7 @@ import Footer from '../Landing/Footer.jsx'
 import onboardingPic from '../../assets/onboardingPic.png';
 
 
+
 function Onboarding() {
 	const [user, setUser] = useState({
 		first_name: '',
