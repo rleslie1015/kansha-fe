@@ -13,13 +13,13 @@ import DropDown from "./DropDown.jsx"
 function S2CreateAccount({ user, setUser, handleUser }) {
 	const [selection, setSelection] = useState("0")
 	const { register, errors, formState } = useForm({ mode: 'onChange' });
-
+	console.log(user)
 	let history = useHistory();
 
 	async function handleSubmit() {
 		try {
 			const res = await axiosWithAuth().post('/users', user);
-			setUser({ ...user, id: res.data[0], org_id: res.org_id });
+			setUser({ ...user, id: res.data[0], org_id: res.org_id, industry: res.selection });
 			history.push('/onboarding/step-4');
 		} catch (error) {
 			console.log(error);
@@ -115,14 +115,14 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				</div>
 				<div className='dropdown-container'>
 
-				<label className="industry-label" htmlFor="industry" >Select your industry</label>
+				<label className="industry-label" htmlFor="industry" >Select your industry:</label>
 				<DropDown
 				className="select-placeholder"
 					name="industry"
 					ref={register({ required: true })}
-					DefaultValue={user.industry}
-					onChange={handleUser}
+					defaultValue={user.industry}
 					selection={selection} setSelection={setSelection}
+					onChange={handleUser}
 					id="industry"
 					placeholder="e.g. Accounting"
 					>

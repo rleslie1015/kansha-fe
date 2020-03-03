@@ -2,6 +2,11 @@
 .custom-select {
   position: relative;
   font-family: Arial;
+  border: 1px solid #787878;
+  height: 4.2rem;
+  margin-top: 1.5rem;
+  width: 30.2rem;
+  
 
 }
 
@@ -13,7 +18,8 @@
   background-color: white;
   width: 30rem;
   height: 4rem;
-  margin-top: 1.5rem;
+
+
 
 }
 
@@ -21,8 +27,8 @@
 .select-selected:after {
   position: absolute;
   content: "";
-  top: 1.5rem;
-  right: -8rem;
+  top: 1.6rem;
+  right: 1.5rem;
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -49,6 +55,7 @@
   user-select: none;
 
 
+
 }
 
 /*style items (options):*/
@@ -63,6 +70,7 @@
   left: 0;
   right: 0;
   z-index: 99;
+ 
 }
 
 /*hide the items when the select box is closed:*/
@@ -77,6 +85,8 @@
 }
 
 .placeholder-div{
+  padding-top: 0.3rem;
+  font-size: 1.4rem;
   font-style: italic;
-  color: grey;
+  color: rgba(51, 51, 51, 0.5);
 }

@@ -1,12 +1,11 @@
 import React, {
-	useCallback,
 	useEffect,
 	useRef,
 	useState,
 	Children
   } from "react";
   
-  const DropDown = ({ children, selection, setSelection, id, placeholder }) => {
+  const DropDown = ({ children, selection, setSelection, id, placeholder, defaultValue }) => {
 	const select = useRef(null);
 	const fakeSelect = useRef(null);
 	const fakeOptions = useRef(null);
@@ -78,7 +77,7 @@ import React, {
 	});
   
 	return (
-	  <div className="custom-select" style={{ width: "200px" }}>
+	  <div className="custom-select" >
 		<select ref={select}>
 		  {console.log(selection)}
 		  {children}
