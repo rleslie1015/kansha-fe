@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import WorkspaceCard from './WorkspaceCard';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -8,7 +11,7 @@ import WorkspaceCard from './WorkspaceCard';
 function Workspace() {
 	const [team, setTeam] = useState([]);
 	const [filter, setFilter] = useState('');
-
+	const history = useHistory();
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
@@ -27,10 +30,22 @@ function Workspace() {
 		fetchData();
 	}, [filter]);
 
+	const handleClick = () => {
+		history.push('/add-user');
+	};
+
 	return (
 		<main className="workspace">
 			<header>
 				<h1>Workspace</h1>
+				{profile.user_type.toLowerCase() === 'admin' && (
+					<i
+						onClick={handleClick}
+						className="fas fa-user-plus"
+						style={{ display: 'flex' }}>
+						<p> Add Users</p>
+					</i>
+				)}
 				<input
 					placeholder="Search Workspace…"
 					value={filter}
