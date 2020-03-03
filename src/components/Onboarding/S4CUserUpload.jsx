@@ -24,16 +24,16 @@ function S4CUserUpload({ user }) {
 				console.log(response);
 				setUserArray(response.data.userArray);
 				setFile(null);
-				setError(response.data.message)
+				setError(response.data.message);
 			})
 			.catch(error => {
 				console.log(error.response);
-			});		
-	}
+			});
+	};
 
 	const handleNext = () => {
-		history.push("/onboarding/step-6");
-	}
+		history.push('/onboarding/step-6');
+	};
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
@@ -44,7 +44,6 @@ function S4CUserUpload({ user }) {
 				reader.onload = () => {
 					// const binaryStr = reader.result;
 					setFile(file);
-
 				};
 				reader.readAsArrayBuffer(file);
 			} else {
@@ -59,7 +58,13 @@ function S4CUserUpload({ user }) {
 		<div className="bulk-upload-container">
 			<h2 className="bulk-upload-title">Upload your spreadsheet.</h2>
 			<div className="bulk-template-download">
-				<Link to="/files/bulk_employee_upload_template.csv" target='_blank' download> <p>Download sample format</p></Link>
+				<Link
+					to="/files/bulk_employee_upload_template.csv"
+					target="_blank"
+					download>
+					{' '}
+					<p>Download sample format</p>
+				</Link>
 			</div>
 			<div {...getRootProps({ className: 'dropzone' })}>
 				<input {...getInputProps()} />
@@ -70,33 +75,31 @@ function S4CUserUpload({ user }) {
 			</div>
 			<div className="file-preview">{file?.path} </div>
 			<div>{file && <button onClick={handleSubmit}>Upload</button>}</div>
-			{
-				userArray[0] && 
+			{userArray[0] && (
 				<>
-				<h6>Added Successfully!</h6>
-				<table className='successful-upload-bulk-table'>
-					<tr className='table-titles'>
-							<th>Firstname</th>
-							<th>Lastname</th> 
-							<th>Email</th>
-						</tr>
-						{userArray.map(person => {
-						return(
-						<tr>
-							<td>{person['First name']}</td>
-							<td>{person['Last name']}</td>
-							<td>{person['Email']}</td>
-						</tr>)
-					})}
-				</table>
+					<h6>{error}</h6>
+					<div className="bulk-success-container-names">
+						<table>
+							<tr>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Email</th>
+							</tr>
+							{userArray.map(person => {
+								return (
+									<tr>
+										<td>{person['First name']}</td>
+										<td>{person['Last name']}</td>
+										<td>{person['Email']}</td>
+									</tr>
+								);
+							})}
+						</table>
+					</div>
 				</>
-			}
-			
-			<div>{error}</div>
+			)}
 
-			
-				<button onClick={handleNext}>Next</button>
-			
+			<button onClick={handleNext}>Next</button>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
