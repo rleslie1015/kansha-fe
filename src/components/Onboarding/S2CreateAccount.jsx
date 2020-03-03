@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
 
 // post request to /users endpoint to create new user
 
@@ -92,7 +91,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 
 				<h6>What's your organization name?</h6>
 				<input
-					className='orgname-input'
+					className="orgname-input"
 					placeholder="Organization Name"
 					ref={register({ required: true })}
 					name="org_name"
@@ -102,70 +101,78 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 
 				<h6>How big is your organization?</h6>
 				<div className="org-size">
-				<div className='radio-div'>
-					<input
-						type="radio"
-						ref={register({ required: true })}
-						id="lessthan20"
-						name="company_size"
-						defaultValue="  less than 20"
-						onChange={handleUser}
-					/>
-				</div>
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="lessthan20"
+							name="company_size"
+							defaultValue="  less than 20"
+							onChange={handleUser}
+						/>
+					</div>
 
-				{errors.company_size && 'Company size is required'}
-				<label htmlFor="lessthan20">Less than 20</label>
-				<div className='radio-div'>
-					<input
-						type="radio"
-						ref={register({ required: true })}
-						id="21100"
-						name="company_size"
-						defaultValue="  21 to 100"
-						onChange={handleUser}
-					/>
 					{errors.company_size && 'Company size is required'}
-					<label htmlFor="21100">21 - 100</label>
-				</div>
+					<label htmlFor="lessthan20">Less than 20</label>
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="21100"
+							name="company_size"
+							defaultValue="  21 to 100"
+							onChange={handleUser}
+						/>
+						{errors.company_size && 'Company size is required'}
+						<label htmlFor="21100">21 - 100</label>
+					</div>
 
-				<div className='radio-div'>
-					<input
-						type="radio"
+					<div className="radio-div">
+						<input
+							type="radio"
+							ref={register({ required: true })}
+							id="over100"
+							name="company_size"
+							defaultValue="  over 100"
+							onChange={handleUser}
+						/>
+						{errors.company_size && 'Company size is required'}
+						<label htmlFor="over100">Over 100</label>
+					</div>
+				</div>
+				<div className="dropdown-container">
+					<select
+						className="select-placeholder"
+						name="industry"
 						ref={register({ required: true })}
-						id="over100"
-						name="company_size"
-						defaultValue="  over 100"
-						onChange={handleUser}
-					/>
-					{errors.company_size && 'Company size is required'}
-					<label htmlFor="over100">Over 100</label>
-				</div>
-				</div>
-				<div className='dropdown-container'>
-				<select
-				className="select-placeholder"
-					name="industry"
-					ref={register({ required: true })}
-					DefaultValue={user.industry}
-					onChange={handleUser}>
-					<option className="placeholder-option"  value="" disabled selected hidden > Select your industry from dropdown</option>
-					<option>Accounting</option>
-					<option>Advertising/PR</option>
-					<option>Aerospace</option>
-					<option>Agriculture</option>
-					<option>Architecture</option>
-					<option>Airlines</option>
-					<option>Automotive</option>
-					<option>Banking/Finance</option>
-					<option>Business (general)</option>
-					<option>Communications</option>
-					<option>Education</option>
-					<option>Entertainment</option>
-					<option>Hospitality</option>
-					<option>IT/Computers/Technology</option>
-					<option>Legal</option>
-					<option>Medical/Health Services</option>
-				</select>
+						DefaultValue={user.industry}
+						onChange={handleUser}>
+						<option
+							className="placeholder-option"
+							value=""
+							disabled
+							selected
+							hidden>
+							{' '}
+							Select your industry from dropdown
+						</option>
+						<option>Accounting</option>
+						<option>Advertising/PR</option>
+						<option>Aerospace</option>
+						<option>Agriculture</option>
+						<option>Architecture</option>
+						<option>Airlines</option>
+						<option>Automotive</option>
+						<option>Banking/Finance</option>
+						<option>Business (general)</option>
+						<option>Communications</option>
+						<option>Education</option>
+						<option>Entertainment</option>
+						<option>Hospitality</option>
+						<option>IT/Computers/Technology</option>
+						<option>Legal</option>
+						<option>Medical/Health Services</option>
+					</select>
 				</div>
 				{errors.industry && 'Industry is required'}
 			</form>
@@ -177,7 +184,6 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 				onClick={handleSubmit}>
 				Next
 			</button>
-
 		</div>
 	);
 }

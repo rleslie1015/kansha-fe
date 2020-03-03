@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { ChromePicker } from 'react-color';
+// import { ChromePicker } from 'react-color';
 
 function S5AccountCustomization({ user, setUser, handleUser }) {
 	console.log(user);

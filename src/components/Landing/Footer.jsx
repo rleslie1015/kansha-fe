@@ -1,6 +1,5 @@
 import React from 'react';
 import Auth from '../../utils/auth';
-import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import {
 	FaInstagram,
@@ -52,8 +51,8 @@ export default function Footer() {
 					<span onClick={auth.login} role="link">
 						Login
 					</span>
-					<Link to="/">Team</Link>
-					<Link to="/">Contact</Link>
+					<span onClick={auth.login}>Team</span>
+					<span onClick={auth.login}>Contact</span>
 				</nav>
 				<p>© Kansha. {new Date().getFullYear()}. We love our users!</p>
 			</div>
