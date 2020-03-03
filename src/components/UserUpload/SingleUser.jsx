@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
 import { ReactComponent as AddMoreImg } from '../../assets/ic_outline-person-add.svg';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 function SingleUser({ user }) {
-	let history = useHistory();
-
 	const [employee, setEmployee] = useState({
 		first_name: '',
 		last_name: '',
@@ -52,15 +49,6 @@ function SingleUser({ user }) {
 			department: 'X',
 		});
 	};
-
-	// const handleClick = () => {
-	// 	if (submitted) {
-	// 		history.push('/onboarding/step-6');
-	// 	} else {
-	// 		handleSubmit();
-	// 		history.push('/onboarding/step-6');
-	// 	}
-	// };
 
 	const handleEmployee = e => {
 		setEmployee({ ...employee, [e.target.name]: e.target.value });

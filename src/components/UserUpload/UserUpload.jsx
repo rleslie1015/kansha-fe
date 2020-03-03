@@ -6,7 +6,7 @@ import SingleUser from './SingleUser';
 import BulkUser from './BulkUser';
 
 function UserUpload() {
-	const [user, setUser] = useState({
+	const [user] = useState({
 		first_name: '',
 		last_name: '',
 		email: '',
@@ -20,10 +20,6 @@ function UserUpload() {
 		primary_color: '',
 		secondary_color: '',
 	});
-
-	const handleUser = e => {
-		setUser({ ...user, [e.target.name]: e.target.value });
-	};
 
 	return (
 		<div className="user-upload-container">

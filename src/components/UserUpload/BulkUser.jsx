@@ -1,14 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
-import { useHistory } from 'react-router-dom';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 
 function BulkUser({ user }) {
-	let history = useHistory();
-
 	const [error, setError] = useState('');
 	const [file, setFile] = useState(null);
 
@@ -27,10 +24,6 @@ function BulkUser({ user }) {
 			.catch(error => {
 				console.log(error.response);
 			});
-	};
-
-	const handleNext = () => {
-		history.push('/workspace');
 	};
 
 	const onDrop = useCallback(acceptedFiles => {

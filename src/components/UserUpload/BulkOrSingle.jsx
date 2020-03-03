@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import SingleUser from './SingleUser';
-import BulkUser from './BulkUser';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 

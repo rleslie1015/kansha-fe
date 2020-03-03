@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import UserUpload from '../UserUpload/UserUpload';
 import WorkspaceCard from './WorkspaceCard';
-import { Link } from 'react-router-dom';
 
 function Workspace() {
 	const [team, setTeam] = useState([]);
