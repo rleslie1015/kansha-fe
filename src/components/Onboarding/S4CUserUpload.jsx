@@ -11,6 +11,7 @@ function S4CUserUpload({ user }) {
 
 	const [error, setError] = useState('');
 	const [file, setFile] = useState(null);
+	const [userArray, setUserArray] = useState([]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -21,28 +22,28 @@ function S4CUserUpload({ user }) {
 			.post('/csv', data)
 			.then(response => {
 				console.log(response);
+				setUserArray(response.data.userArray);
 				setFile(null);
-				setError(response.data)
+				setError(response.data.message);
 			})
 			.catch(error => {
 				console.log(error.response);
-			});		
-	}
+			});
+	};
 
 	const handleNext = () => {
-		history.push("/onboarding/step-6");
-	}
+		history.push('/onboarding/step-6');
+	};
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.name.substr(file.name.Length - 3) === 'csv') {
+			if (file.name.substr(file.name.length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
 				reader.onload = () => {
 					// const binaryStr = reader.result;
 					setFile(file);
-
 				};
 				reader.readAsArrayBuffer(file);
 			} else {
@@ -57,7 +58,13 @@ function S4CUserUpload({ user }) {
 		<div className="bulk-upload-container">
 			<h2 className="bulk-upload-title">Upload your spreadsheet.</h2>
 			<div className="bulk-template-download">
-				<Link to="/files/bulk_employee_upload_template.csv" target='_blank' download> <p>Download sample format</p></Link>
+				<Link
+					to="/files/bulk_employee_upload_template.csv"
+					target="_blank"
+					download>
+					{' '}
+					<p>Download sample format</p>
+				</Link>
 			</div>
 			<div {...getRootProps({ className: 'dropzone' })}>
 				<input {...getInputProps()} />
@@ -68,11 +75,31 @@ function S4CUserUpload({ user }) {
 			</div>
 			<div className="file-preview">{file?.path} </div>
 			<div>{file && <button onClick={handleSubmit}>Upload</button>}</div>
-			<div>{error}</div>
+			{userArray[0] && (
+				<>
+					<h6>{error}</h6>
+					<div className="bulk-success-container-names">
+						<table>
+							<tr>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Email</th>
+							</tr>
+							{userArray.map(person => {
+								return (
+									<tr>
+										<td>{person['First name']}</td>
+										<td>{person['Last name']}</td>
+										<td>{person['Email']}</td>
+									</tr>
+								);
+							})}
+						</table>
+					</div>
+				</>
+			)}
 
-			
-				<button onClick={handleNext}>Next</button>
-			
+			<button onClick={handleNext}>Next</button>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
