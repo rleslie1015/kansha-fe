@@ -4,7 +4,9 @@ const auth = new Auth();
 export default function EnterEmail() {
 	return (
 		<form className="container-enter-email">
-			<button onClick={auth.login}>Get Started</button>
+			<button className="btn-get-started" onClick={auth.login}>
+				Get Started
+			</button>
 		</form>
 	);
 }
