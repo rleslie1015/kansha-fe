@@ -56,7 +56,7 @@ function SingleUser({ user }) {
 
 	return (
 		<div className="employee-add-container">
-			<h2 className="employee-upload-title">Employee information</h2>
+			<h2 className="user-upload-title">Employee information</h2>
 			<form
 				id="add-employee-form"
 				name="add-employee-form"

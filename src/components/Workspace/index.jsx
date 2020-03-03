@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import WorkspaceCard from './WorkspaceCard';
 
@@ -35,12 +35,13 @@ function Workspace() {
 			<header>
 				<h1>Workspace</h1>
 				{profile.user_type.toLowerCase() === 'admin' && (
-					<i
-						onClick={handleClick}
-						className="fas fa-user-plus"
-						style={{ display: 'flex' }}>
+					<div className="add-users-container" onClick={handleClick}>
+						<i
+							id="add-user-icon"
+							className="fas fa-user-plus"
+							style={{ display: 'flex' }}></i>
 						<p> Add Users</p>
-					</i>
+					</div>
 				)}
 				<input
 					placeholder="Search Workspace…"

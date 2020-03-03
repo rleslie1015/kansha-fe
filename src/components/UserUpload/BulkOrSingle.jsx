@@ -11,7 +11,7 @@ function BulkOrSingle() {
 					<h6>How would you like to add them?</h6>
 					<div className="icon-div">
 						<Link to="/add-user/single" className="user-link">
-							<i id="user-icon" className="far fa-user"></i>
+							<i id="user-icon" className="fas fa-user"></i>
 							<h2>Single</h2>
 						</Link>
 					</div>
