@@ -3,7 +3,7 @@ progress {
 	width: 100px;
 	position: absolute;
 	right: 250px;
-	top:120px;
+	top: 120px;
 }
 
 progress::-webkit-progress-bar {
@@ -38,11 +38,10 @@ progress::-moz-progress-bar {
 		border: none;
 		cursor: pointer;
 
-
-		&:disabled{
+		&:disabled {
 			background-color: gray;
 
-			&:hover{
+			&:hover {
 				background-color: gray;
 			}
 		}
@@ -52,7 +51,7 @@ progress::-moz-progress-bar {
 		}
 	}
 
-	.s1-img{
+	.s1-img {
 		margin-bottom: 8%;
 	}
 }
@@ -194,85 +193,73 @@ progress::-moz-progress-bar {
 	justify-content: flex-start;
 	width: 70%;
 
-	h6{
+	h6 {
 		font-size: 1.8rem;
 		color: $color-black;
 		font-weight: 500;
-		margin:15px 0px 15px 5px;
+		margin: 15px 0px 15px 5px;
 	}
 
-	.org-size{
+	.org-size {
 		display: flex;
 		flex-direction: row;
 	}
 
-	label{
+	label {
 		font-size: 1.6rem;
 		color: $color-black;
 		margin-right: 2.5rem;
 	}
 
-
-	.dropdown-container{
-		margin:15px 0px 15px 0px;
-	
+	.dropdown-container {
+		margin: 15px 0px 15px 0px;
 	}
 
-	.orgname-input{
+	.orgname-input {
 		border-radius: 0px;
 		border: 1px solid #787878;
 		width: 95.7%;
 
-		&::placeholder{
-			color: rgba(51, 51, 51, 0.5);;
-		   font-style: italic;
-		   font-weight: 600;
-	   }
-	}
-
-	.industry-label{
-		font-size: 1.8rem;
-		font-weight: 500;
-		margin-left: 0.25rem;
-		
-	}
-	
-
-	.select-placeholder{
-		appearance: none;
-		border-radius:0px;
-		border: 1px solid #787878;
-			width: 40%;
+		&::placeholder {
 			color: rgba(51, 51, 51, 0.5);
 			font-style: italic;
 			font-weight: 600;
 		}
+	}
 
-	
+	.industry-label {
+		font-size: 1.8rem;
+		font-weight: 500;
+		margin-left: 0.25rem;
+	}
+
+	.select-placeholder {
+		appearance: none;
+		border-radius: 0px;
+		border: 1px solid #787878;
+		width: 40%;
+		color: rgba(51, 51, 51, 0.5);
+		font-style: italic;
+		font-weight: 600;
+	}
 
 	.formname {
 		width: 47%;
 		border-radius: 0px;
 		border: 1px solid #787878;
-	
-		&::placeholder{
-			color: rgba(51, 51, 51, 0.5);;
-		   font-style: italic;
-		   font-weight: 600;
-	   }
-	
-	
+
+		&::placeholder {
+			color: rgba(51, 51, 51, 0.5);
+			font-style: italic;
+			font-weight: 600;
+		}
 	}
 	// .radio-div input[type="radio"] {
 	// 	opacity: 10;
-		
+
 	// 	width: 20;
 	//   }
 }
-
-
-
-
 
 .admin-user-add-container {
 	.user-upload-title {
@@ -298,7 +285,7 @@ progress::-moz-progress-bar {
 			flex-direction: column;
 			justify-content: space-between;
 
-			.gray-details{
+			.gray-details {
 				color: $color-gray-light;
 				margin-left: 0rem;
 				font-size: $small;
@@ -319,6 +306,7 @@ progress::-moz-progress-bar {
 		font-size: $large;
 		line-height: 5.8rem;
 		padding-bottom: 7rem;
+		margin-left: 12rem;
 	}
 
 	.add-employee-form {
@@ -346,27 +334,26 @@ progress::-moz-progress-bar {
 			text-decoration: underline;
 			font-size: 1.8rem;
 			font-weight: 500;
-			color:#C91757;
+			color: #c91757;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			cursor: pointer;
 
 			.AddMoreIcon {
-				fill:#C91757;
+				fill: #c91757;
 			}
 		}
 
 		.success-employee-add {
 			padding-top: 4rem;
 
-			p{
+			p {
 				color: $color-gray-light;
-			.employee-email{
-				margin-left: 3rem;
-				}	
+				.employee-email {
+					margin-left: 3rem;
+				}
 			}
-			
 
 			h6 {
 				padding-bottom: 1.5rem;
@@ -401,10 +388,10 @@ progress::-moz-progress-bar {
 		align-items: center;
 		cursor: pointer;
 
-		.AddBulkIcon{
-			fill:#C91757;
+		.AddBulkIcon {
+			fill: #c91757;
 		}
-		
+
 		p {
 			font-size: 2.4rem;
 			line-height: 2.8rem;
@@ -424,6 +411,22 @@ progress::-moz-progress-bar {
 		padding-top: 2rem;
 	}
 
+	.bulk-success-container-names {
+		margin-top: 2rem;
+		height: 15rem;
+		overflow: auto;
+		width: 50rem;
+
+		table {
+			width: 50rem;
+			padding: 1rem 0rem;
+			color: $color-gray-light;
+
+			tr {
+				text-align: left;
+			}
+		}
+	}
 	button {
 		cursor: pointer;
 	}
@@ -442,4 +445,3 @@ progress::-moz-progress-bar {
 }
 
 // testing radio styles
-

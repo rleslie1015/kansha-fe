@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -7,10 +7,14 @@ import DropDown from './DropDown.jsx';
 // post request to /users endpoint to create new user
 
 function S2CreateAccount({ user, setUser, handleUser }) {
-	const [selection, setSelection] = useState('0');
+	// const [selection, setSelection] = useState('0');
 	const { register, errors, formState } = useForm({ mode: 'onChange' });
 	console.log(user);
 	let history = useHistory();
+
+	function handleIndustry(value) {
+		setUser({ ...user, industry: value });
+	}
 
 	async function handleSubmit() {
 		try {
@@ -119,10 +123,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 					<DropDown
 						className="select-placeholder"
 						name="industry"
-						ref={register({ required: true })}
-						defaultValue={user.industry}
-						selection={selection}
-						setSelection={setSelection}
+						setSelection={handleIndustry}
 						onChange={handleUser}
 						id="industry"
 						placeholder="e.g. Accounting">

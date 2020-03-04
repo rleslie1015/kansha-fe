@@ -22,17 +22,23 @@ function UserUpload() {
 	});
 
 	return (
-		<div className="user-upload-container">
-			<Route
-				exact
-				path="/add-user"
-				render={props => <BulkOrSingle {...props} />}></Route>
-			<Route
-				path="/add-user/single"
-				render={props => <SingleUser {...props} user={user} />}></Route>
-			<Route
-				path="/add-user/bulk"
-				render={props => <BulkUser {...props} user={user} />}></Route>
+		<div className="user-upload-container-outter">
+			<div className="user-upload-container">
+				<Route
+					exact
+					path="/add-user"
+					render={props => <BulkOrSingle {...props} />}></Route>
+				<Route
+					path="/add-user/single"
+					render={props => (
+						<SingleUser {...props} user={user} />
+					)}></Route>
+				<Route
+					path="/add-user/bulk"
+					render={props => (
+						<BulkUser {...props} user={user} />
+					)}></Route>
+			</div>
 		</div>
 	);
 }

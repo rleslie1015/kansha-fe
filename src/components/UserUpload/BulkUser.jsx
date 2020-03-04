@@ -28,7 +28,7 @@ function BulkUser({ user }) {
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.type === 'text/csv') {
+			if (file.name.substr(file.name.Length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
