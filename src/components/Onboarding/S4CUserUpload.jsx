@@ -88,9 +88,9 @@ function S4CUserUpload({ user }) {
 							{userArray.map(person => {
 								return (
 									<tr>
-										<td>{person['First name']}</td>
-										<td>{person['Last name']}</td>
-										<td>{person['Email']}</td>
+										<td>{person['first_name']}</td>
+										<td>{person['last_name']}</td>
+										<td>{person['email']}</td>
 									</tr>
 								);
 							})}
