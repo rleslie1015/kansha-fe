@@ -1,25 +1,3 @@
-progress {
-	border-radius: 5px;
-	width: 100px;
-	position: absolute;
-	right: 250px;
-	top: 120px;
-}
-
-progress::-webkit-progress-bar {
-	background-color: #cfcdcd;
-	border-radius: 2px;
-}
-
-progress::-webkit-progress-value {
-	background-color: $color-secondary;
-	border-radius: 2px;
-	transition: all 0.3s ease;
-}
-
-progress::-moz-progress-bar {
-	background-color: $color-gray-light;
-}
 .s1-parent-container {
 	display: flex;
 	flex-direction: row;
@@ -27,7 +5,28 @@ progress::-moz-progress-bar {
 	align-items: center;
 	margin: 10rem 0rem;
 	min-height: calc(100vh - 460px);
+	progress {
+		border-radius: 5px;
+		width: 100px;
+		position: absolute;
+		right: 250px;
+		top: 120px;
+	}
 
+	progress::-webkit-progress-bar {
+		background-color: #cfcdcd;
+		border-radius: 2px;
+	}
+
+	progress::-webkit-progress-value {
+		background-color: $color-secondary;
+		border-radius: 2px;
+		transition: all 0.3s ease;
+	}
+
+	progress::-moz-progress-bar {
+		background-color: $color-gray-light;
+	}
 	button {
 		margin: 6rem 0rem;
 		background-color: $color-secondary;
