@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/3f8a06f69c5b6436e9b6/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/kansha-fe/maintainability)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
