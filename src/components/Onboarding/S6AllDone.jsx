@@ -22,7 +22,7 @@ function S6AllDone({ user }) {
 			</h5>
 
 			<div className="button-container">
-				<button onClick={handleClick}>Take the tour</button>
+				{/* <button onClick={handleClick}>Take the tour</button> */}
 				<button onClick={handleClick}>Let me explore</button>
 			</div>
 			<div className="step-p-container">
