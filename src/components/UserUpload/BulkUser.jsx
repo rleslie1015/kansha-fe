@@ -8,6 +8,7 @@ import { ReactComponent as CloudUpload } from '../../assets/cloud-upload.svg';
 function BulkUser({ user }) {
 	const [error, setError] = useState('');
 	const [file, setFile] = useState(null);
+	const [userArray, setUserArray] = useState([]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -18,6 +19,7 @@ function BulkUser({ user }) {
 			.post('/csv', data)
 			.then(response => {
 				console.log(response);
+				setUserArray(response.data.userArray);
 				setFile(null);
 				setError(response.data.message);
 			})
@@ -28,7 +30,7 @@ function BulkUser({ user }) {
 
 	const onDrop = useCallback(acceptedFiles => {
 		acceptedFiles.forEach(file => {
-			if (file.name.substr(file.name.Length - 3) === 'csv') {
+			if (file.name.substr(file.name.length - 3) === 'csv') {
 				const reader = new FileReader();
 				reader.onabort = () => setError('file reading was aborted');
 				reader.onerror = () => setError('file reading has failed');
@@ -74,7 +76,30 @@ function BulkUser({ user }) {
 					</button>
 				)}
 			</div>
-			<div>{error}</div>
+			{userArray[0] && (
+				<>
+					<br />
+					<br /> <h6>{error}</h6>
+					<div className="bulk-success-container-names">
+						<table>
+							<tr>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>Email</th>
+							</tr>
+							{userArray.map(person => {
+								return (
+									<tr>
+										<td>{person['first_name']}</td>
+										<td>{person['last_name']}</td>
+										<td>{person['email']}</td>
+									</tr>
+								);
+							})}
+						</table>
+					</div>
+				</>
+			)}
 
 			<div className="step-p-container">
 				<span className="previousarrow">
