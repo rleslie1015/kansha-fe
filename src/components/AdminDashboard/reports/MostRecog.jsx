@@ -6,7 +6,7 @@ function MostRecog() {
 		axiosWithAuth()
 			.get('/reports/topemployees?time=years')
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 			})
 			.catch(err => {
 				console.log(err);
