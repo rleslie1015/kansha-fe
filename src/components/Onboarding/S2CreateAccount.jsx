@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import DropDown from './DropDown.jsx';
 
-
 // post request to /users endpoint to create new user
 
 function S2CreateAccount({ user, setUser, handleUser }) {
