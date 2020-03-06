@@ -30,7 +30,8 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"coverage": "env CI=true yarn test --coverage || true"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -50,5 +51,13 @@
 	"devDependencies": {
 		"enzyme": "^3.10.0",
 		"enzyme-adapter-react-16": "^1.15.1"
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"**/*.{js,jsx}",
+			"!**/node_modules/**",
+			"!**/vendor/**",
+			"!**/tests/**"
+		]
 	}
 }
