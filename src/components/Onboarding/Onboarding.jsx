@@ -39,8 +39,9 @@ function Onboarding() {
 	return (
 		<>
 			<Header />
-			<ProgressBar />
+
 			<div className="s1-parent-container">
+				<ProgressBar />
 				<div className="s1-img">
 					<img src={onboardingPic} alt="staff-meeting-pic"></img>
 				</div>

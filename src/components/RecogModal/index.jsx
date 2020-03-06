@@ -5,7 +5,7 @@ import { sendRecog } from '../../store/actions/recog-actions';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useDispatch, useSelector } from 'react-redux';
 
-function RecogModal({ profile }) {
+function RecogModal({ profile, close }) {
 	const dispatch = useDispatch();
 	const user = useSelector(({ user }) => ({
 		...user,
@@ -43,8 +43,10 @@ function RecogModal({ profile }) {
 	};
 
 	const handleSubmit = event => {
+		event.preventDefault();
 		dispatch(sendRecog({ ...recog, date: new Date() }));
 		alert('Recogniton has been sent');
+		close(false);
 	};
 
 	const handleSwitch = badge_id => {
@@ -81,14 +83,14 @@ function RecogModal({ profile }) {
 							badges.reduce((acc, badge) => {
 								if (recog.badge_id === badge.id) {
 									acc.push(
-										<>
+										<div key={badge.id}>
 											<span
 												role="img"
 												onClick={removeBadge}>
 												-
 											</span>
 											<img src={badge.badge_URL} alt="" />
-										</>,
+										</div>,
 									);
 								}
 								return acc;
@@ -110,6 +112,7 @@ function RecogModal({ profile }) {
 							<img
 								src={badge.badge_URL}
 								alt=""
+								key={badge.id}
 								onClick={() => handleSwitch(badge.id)}
 							/>
 						))}

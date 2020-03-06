@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import heart from '../../../assets/heart.png';
 
-function MostRecog() {
+function MostRecogGiven() {
 	const [filter, setFilter] = useState('weeks');
 	const [rank, setRank] = useState([]);
 	const [count, setCount] = useState();
@@ -12,7 +12,7 @@ function MostRecog() {
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get(`/reports/top?type=recipient&limit=5&time=${filter}`)
+			.get(`/reports/top?type=sender&limit=5&time=${filter}`)
 			.then(res => {
 				setRank(res.data.employees);
 				setCount(res.data.count);
@@ -80,4 +80,4 @@ function MostRecog() {
 		</div>
 	);
 }
-export default MostRecog;
+export default MostRecogGiven;

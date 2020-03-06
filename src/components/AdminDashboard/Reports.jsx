@@ -1,5 +1,7 @@
 import React from 'react';
 import MostRecog from './reports/MostRecog';
+import MostRecogGiven from './reports/MostRecogGiven';
+
 export default function Reports() {
 	return (
 		<div className="reports">
@@ -10,7 +12,9 @@ export default function Reports() {
 					<MostRecog />
 				</section>
 				<section className="container-team-engagement"></section>
-				<section className="container-thankful-engagement"></section>
+				<section className="container-thankful-engagement">
+					<MostRecogGiven />
+				</section>
 			</main>
 		</div>
 	);

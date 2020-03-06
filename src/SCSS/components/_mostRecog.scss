@@ -1,0 +1,76 @@
+.most-recog-container {
+	// border: 2px solid yellow;
+	select {
+		border: none;
+		font-weight: bold;
+		color: black;
+		font-size: 2rem;
+		width: 25rem;
+	}
+
+	.most-recog-individual {
+		width: 35rem;
+		display: flex;
+		// justify-content: space-between;
+		margin-bottom: 1rem;
+
+		// border: 2px solid red;
+
+		.most-rec-profile-pic {
+			width: 5rem;
+			height: 5rem;
+			border-radius: 100%;
+		}
+		.most-recog-name {
+			background-color: #fcf9f9;
+			border-bottom: 1px solid #d8d8d8;
+			width: 10rem;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			margin-left: 2rem;
+			// border: 2px solid blue;
+		}
+		.most-recog-progress {
+			// border: 2px solid pink;
+			width: 25rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-bottom: 1px solid #d8d8d8;
+			background-color: #fcf9f9;
+			progress {
+				border-radius: 5px;
+				width: 100px;
+			}
+
+			progress::-webkit-progress-bar {
+				background-color: #c4c4c4;
+				border-radius: 2px;
+			}
+
+			progress::-webkit-progress-value {
+				background-color: $color-primary;
+				border-radius: 2px;
+				transition: all 0.3s ease;
+			}
+
+			progress::-moz-progress-bar {
+				background-color: $color-gray-light;
+			}
+		}
+		.most-recog-heart {
+			background-color: #fcf9f9;
+			border-bottom: 1px solid #d8d8d8;
+			display: flex;
+			align-items: center;
+			// border: 2px solid purple;
+			width: 5rem;
+			.heart-img {
+				width: 2rem;
+				height: 2rem;
+				margin-top: 0.5rem;
+			}
+		}
+	}
+}
