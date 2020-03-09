@@ -7,6 +7,7 @@ import {
 	loadLiveFeed,
 	liveFeedListeners,
 } from '../../store/actions/feed-actions';
+import { ReactComponent as EmptyFeed } from '../../assets/EmptyFeed.svg';
 
 // Adds compatibility for SSE to older browsers
 import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
@@ -71,20 +72,27 @@ const Feed = () => {
 
 	return (
 		<section className="container-feed-card-and-comments">
-			<main className="home-main">
-				{feed.map(rec => (
-					<FeedCard
-						key={rec.id}
-						rec={rec}
-						badge={badges[rec.badge_id - 1]}
-						comments={comments[rec.id]}
-						reactions={reactions[rec.id]}
-						profile={profile}
-						setSelectedRec={setSelectedRec}
-						active={rec.id === selectedRec}
-					/>
-				))}
-			</main>
+			{!feed ? (
+				<main className="home-main">
+					{feed.map(rec => (
+						<FeedCard
+							key={rec.id}
+							rec={rec}
+							badge={badges[rec.badge_id - 1]}
+							comments={comments[rec.id]}
+							reactions={reactions[rec.id]}
+							profile={profile}
+							setSelectedRec={setSelectedRec}
+							active={rec.id === selectedRec}
+						/>
+					))}
+				</main>
+			) : (
+				<main className="empty-feed">
+					<EmptyFeed />
+					<h2>Nothing to display! Send a Reward to a peer!</h2>
+				</main>
+			)}
 			{selectedRec && (
 				<FeedComments
 					close={closeFeedComments}
