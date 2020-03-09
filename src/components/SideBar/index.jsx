@@ -26,7 +26,12 @@ function Sidebar({ user }) {
 				</p>
 			</section>
 			<nav>
-				<SidebarLink path="/" name="Home" icon={HomeIcon} open={open} />
+				<SidebarLink
+					path="/workspace"
+					name="Workspace"
+					icon={HomeIcon}
+					open={open}
+				/>
 				<SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
@@ -34,23 +39,10 @@ function Sidebar({ user }) {
 					open={open}
 					className="fill-white"
 				/>
+
 				<SidebarLink
-					path="/workspace"
-					name="Workspace"
-					icon={WorkspaceIcon}
-					open={open}
-					className="fill-white"
-				/>
-				<SidebarLink
-					path="/workspace#send_reward"
-					name="Send Reward"
-					icon={SendIcon}
-					open={open}
-					className="fill-white"
-				/>
-				<SidebarLink
-					path="/profile#history"
-					name="Rewards History"
+					path="/"
+					name="Feed"
 					icon={HistoryIcon}
 					open={open}
 				/>
