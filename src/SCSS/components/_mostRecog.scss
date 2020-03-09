@@ -1,35 +1,70 @@
 .most-recog-container {
 	// border: 2px solid yellow;
-	select {
-		border: none;
-		font-weight: bold;
-		color: black;
-		font-size: 2rem;
-		width: 25rem;
-	}
+	margin-top: 3rem;
 
+	.most-recog-title-container {
+		width: 38rem;
+		display: flex;
+		justify-content: space-between;
+		margin: 2rem 0rem;
+		// border: 2px solid yellow;
+
+		p {
+			width: 20rem;
+			font-size: 2.4rem;
+			font-weight: 300;
+		}
+
+		.limit-dropdown-container select {
+			appearance: button;
+			-webkit-appearance: button;
+			-moz-appearance: button;
+			// // background: transparent;
+			// margin-right: -1rem;
+
+			label {
+				font-size: 1.8rem;
+				font-weight: 300;
+			}
+			.dropdown-view {
+				background-color: #fff;
+				font-weight: 300;
+				border: none;
+				color: black;
+				width: 8rem;
+				font-size: 1.8rem;
+			}
+		}
+	}
+	// .limit-dropdown-container:after {
+	// 	content: '\2228';
+	// }
+	li:nth-child(2n) {
+		background-color: #f9f9f9;
+	}
 	.most-recog-individual {
 		width: 35rem;
 		display: flex;
-		// justify-content: space-between;
-		margin-bottom: 1rem;
 
-		// border: 2px solid red;
-
+		padding: 0.8rem;
 		.most-rec-profile-pic {
-			width: 5rem;
-			height: 5rem;
+			width: 30px;
+			height: 30px;
 			border-radius: 100%;
 		}
+
+		.most-rec-name-to-heart {
+			width: 32rem;
+			display: flex;
+			justify-content: space-between;
+		}
+
 		.most-recog-name {
-			background-color: #fcf9f9;
-			border-bottom: 1px solid #d8d8d8;
 			width: 10rem;
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
 			margin-left: 2rem;
-			// border: 2px solid blue;
 		}
 		.most-recog-progress {
 			// border: 2px solid pink;
@@ -37,15 +72,14 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			border-bottom: 1px solid #d8d8d8;
-			background-color: #fcf9f9;
+
 			progress {
 				border-radius: 5px;
 				width: 100px;
 			}
 
 			progress::-webkit-progress-bar {
-				background-color: #c4c4c4;
+				background-color: transparent;
 				border-radius: 2px;
 			}
 
@@ -60,8 +94,6 @@
 			}
 		}
 		.most-recog-heart {
-			background-color: #fcf9f9;
-			border-bottom: 1px solid #d8d8d8;
 			display: flex;
 			align-items: center;
 			// border: 2px solid purple;
