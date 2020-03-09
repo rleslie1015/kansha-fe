@@ -3,53 +3,41 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { Line } from 'react-chartjs-2';
 
 function TotalRecogGraph() {
-	const [graphData, setGraphData] = useState({
-		chartData: {
-			labels: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December',
-			],
-			datasets: [
-				{
-					label: 'Recognition',
-					data: [54, 103, 65, 78, 121, 93, 101, 143, 102, 67, 73, 78],
-					borderColor: 'rgb(201,23,87)',
-					borderWidth: 3,
-					hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-					hoverBorderColor: 'rgba(255,99,132,1)',
-					fill: false,
-					lineTension: 0.1,
-				},
-			],
-		},
-	});
+	const [graphData, setGraphData] = useState();
+	const [labels, setLabels] = useState();
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('/reports/range?time=weeks')
+			.get('/reports/range')
 			.then(res => {
-				console.log(res, 'range res');
+				setGraphData(Object.values(res.data.results).reverse());
+				setLabels(Object.keys(res.data.results).reverse());
 			})
-			.catch(err => {
-				console.log(err);
+			.catch(error => {
+				console.log(error);
 			});
 	}, []);
+
+	const data = {
+		labels: labels,
+		datasets: [
+			{
+				data: graphData,
+				borderColor: 'rgb(201,23,87)',
+				borderWidth: 3,
+				hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+				hoverBorderColor: 'rgba(255,99,132,1)',
+				fill: false,
+				lineTension: 0.3,
+			},
+		],
+	};
 
 	return (
 		<div className="Chart">
 			<h1>Recognition</h1>
 			<Line
-				data={graphData.chartData}
+				data={data}
 				options={{
 					responsive: true,
 					maintainAspectRatio: false,
@@ -74,6 +62,7 @@ function TotalRecogGraph() {
 							},
 						],
 					},
+					legend: false,
 					elements: {
 						point: {
 							radius: 0,
