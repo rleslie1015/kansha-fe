@@ -46,9 +46,10 @@ const TotalRecognitionChart = () => {
 		<div className="doughnut">
 			<h1>Participation</h1>
 			<h3 className="doughnut-text">
-				{Math.round(percentThanked)}% Participation
+				{Math.round(percentThanked)}% *Participation
 			</h3>
 			<Doughnut data={data} options={options} />
+			<h5>*percent of employees who have received thanks</h5>
 		</div>
 	);
 };
