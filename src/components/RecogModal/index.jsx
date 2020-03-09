@@ -45,7 +45,7 @@ function RecogModal({ profile, close }) {
 	const handleSubmit = event => {
 		event.preventDefault();
 		dispatch(sendRecog({ ...recog, date: new Date() }));
-		alert('Recogniton has been sent');
+		alert('Your Recognition has been sent!');
 		close(false);
 	};
 
