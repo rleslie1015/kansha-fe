@@ -29,3 +29,19 @@
 	margin-left: 4rem;
 	margin-top: 3rem;
 }
+
+.doughnut {
+	width: 50%;
+	height: 50%;
+	position: relative;
+	margin-top: 45px;
+
+	.doughnut-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		width: 10rem;
+	}
+}

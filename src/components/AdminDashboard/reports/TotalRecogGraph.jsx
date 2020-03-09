@@ -36,7 +36,7 @@ function TotalRecogGraph() {
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('/reports/range?time=years&number=1')
+			.get('/reports/range?time=weeks')
 			.then(res => {
 				console.log(res, 'range res');
 			})
@@ -47,6 +47,7 @@ function TotalRecogGraph() {
 
 	return (
 		<div className="Chart">
+			<h1>Recognition</h1>
 			<Line
 				data={graphData.chartData}
 				options={{

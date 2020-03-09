@@ -12,10 +12,6 @@ function MostRecog() {
 				console.log(err);
 			});
 	}, []);
-	return (
-		<div>
-			<h1>andrew was here</h1>
-		</div>
-	);
+	return <div></div>;
 }
 export default MostRecog;

@@ -1,6 +1,7 @@
 import React from 'react';
 import MostRecog from './reports/MostRecog';
 import TotalRecogGraph from './reports/TotalRecogGraph';
+import TotalRecognitionChart from './reports/TotalRecognitionChart';
 
 export default function Reports() {
 	return (
@@ -13,7 +14,9 @@ export default function Reports() {
 				<section className="container-thanked-leaderboard">
 					<MostRecog />
 				</section>
-				<section className="container-team-engagement"></section>
+				<section className="container-team-engagement">
+					<TotalRecognitionChart />
+				</section>
 				<section className="container-thankful-engagement"></section>
 			</main>
 		</div>
