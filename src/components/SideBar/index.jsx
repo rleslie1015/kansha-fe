@@ -27,7 +27,11 @@ function Sidebar({ user }) {
 			</section>
 			<nav>
 				<SidebarLink
-					path="/workspace"
+					path={
+						user.profile.user_type === 'admin'
+							? '/dashboard'
+							: '/workspace'
+					}
 					name="Workspace"
 					icon={HomeIcon}
 					open={open}
