@@ -13,6 +13,7 @@
 	color: $color-black;
 	font-weight: 600;
 	font-size: 2.4rem;
+	margin-bottom: 2rem;
 }
 
 .reports {
@@ -21,18 +22,27 @@
 }
 
 .Chart {
-	height: 33vh;
-	width: 50vw;
+	min-width: 30rem;
+	max-width: 100rem;
+	height: 40rem;
 	position: relative;
 	margin-left: 4rem;
 	margin-top: 3rem;
 }
 
 .doughnut {
-	width: 50%;
-	height: 50%;
 	position: relative;
 	margin-top: 45px;
+	// width: 25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	max-width: 100rem;
+
+	h1 {
+		margin-bottom: 2rem;
+		font-size: 2.4rem;
+	}
 
 	.doughnut-text {
 		position: absolute;
@@ -41,5 +51,17 @@
 		transform: translate(-50%, -50%);
 		text-align: center;
 		width: 10rem;
+		font-size: 1.8rem;
+
+		@media (min-width: 800px) {
+			font-size: 2.4rem;
+			width: 14rem;
+		}
+	}
+}
+
+.container-total-recog-graph {
+	h1 {
+		font-size: 2.4rem;
 	}
 }

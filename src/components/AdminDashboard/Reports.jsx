@@ -9,6 +9,7 @@ export default function Reports() {
 			<h1 className="admin-title">Reports</h1>
 			<main>
 				<section className="container-total-recog-graph">
+					<h1>Recognition</h1>
 					<TotalRecogGraph />
 				</section>
 				<section className="container-thanked-leaderboard">

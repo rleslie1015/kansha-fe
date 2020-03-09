@@ -24,18 +24,18 @@ function TotalRecogGraph() {
 			{
 				data: graphData,
 				borderColor: 'rgb(201,23,87)',
-				borderWidth: 3,
+				borderWidth: 5,
 				hoverBackgroundColor: 'rgba(255,99,132,0.4)',
 				hoverBorderColor: 'rgba(255,99,132,1)',
 				fill: false,
 				lineTension: 0.3,
+				borderCapStyle: 'round',
 			},
 		],
 	};
 
 	return (
 		<div className="Chart">
-			<h1>Recognition</h1>
 			<Line
 				data={data}
 				options={{
@@ -43,7 +43,7 @@ function TotalRecogGraph() {
 					maintainAspectRatio: false,
 					title: {
 						fontSize: 18,
-						display: true,
+						display: false,
 						text: 'Total Organization Recognitions',
 					},
 					scales: {
@@ -58,6 +58,11 @@ function TotalRecogGraph() {
 							{
 								gridLines: {
 									display: false,
+								},
+								scaleLabel: {
+									display: true,
+									labelString: 'Number of Recognitions',
+									fontSize: 16,
 								},
 							},
 						],
