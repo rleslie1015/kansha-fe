@@ -7,7 +7,7 @@
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	z-index: 99;
+
 	transition: width 500ms ease;
 	@include boxshadow();
 
@@ -66,6 +66,10 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
 	.rec-badge {

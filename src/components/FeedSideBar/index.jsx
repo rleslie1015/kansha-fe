@@ -21,8 +21,6 @@ function FeedSideBar() {
 		...user,
 	}));
 
-	console.log(feed);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
