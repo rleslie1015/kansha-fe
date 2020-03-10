@@ -27,7 +27,8 @@
 		.is-arrow-open:after {
 			position: absolute;
 			content: '';
-			top: 0.45rem;
+			top: 50%;
+			transform: translateY(-50%);
 			left: 3.5rem;
 			width: 0;
 			height: 0;
@@ -37,7 +38,8 @@
 		.is-arrow-closed:after {
 			position: absolute;
 			content: '';
-			top: 0.45rem;
+			top: 50%;
+			transform: translateY(-50%);
 			left: 3rem;
 			width: 0;
 			height: 0;
