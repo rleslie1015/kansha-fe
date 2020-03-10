@@ -1,9 +1,8 @@
 import React from 'react';
-
-import Teams from './Teams';
 import Reports from './Reports';
 import Activity from './Activity';
 import FeedSideBar from '../FeedSideBar';
+
 
 const AdminDashboard = () => {
 	return (

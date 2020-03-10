@@ -1,19 +1,18 @@
 import React from 'react';
 import Dropdown from '../../Onboarding/DropDown';
 
-function TimeDropdown({ handleFilter, filter }) {
+function TimeDropdown({ handleFilter, annual, week, month }) {
 	return (
 		<div className="dropdown-time-div">
 			<Dropdown
 				classNombre="custom-select dashboard"
 				setSelection={handleFilter}
-				placeholder="Weekly leader board"
+				placeholder={week}
 				name="filter"
-				value={filter}
 				id="cars">
-				<option value="weeks">Weekly leader board</option>
-				<option value="months">Monthly leader board</option>
-				<option value="years">Yearly leader board</option>
+				<option value="weeks">{week}</option>
+				<option value="months">{month}</option>
+				<option value="years">{annual}</option>
 			</Dropdown>
 		</div>
 	);
