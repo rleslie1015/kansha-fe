@@ -125,6 +125,7 @@ function S2CreateAccount({ user, setUser, handleUser }) {
 						name="industry"
 						setSelection={handleIndustry}
 						onChange={handleUser}
+						classNombre="custom-select"
 						id="industry"
 						placeholder="e.g. Accounting">
 						<option value="Accounting">Accounting</option>
