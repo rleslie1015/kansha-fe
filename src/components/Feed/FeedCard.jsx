@@ -29,9 +29,7 @@ export const FeedCard = memo(
 			) {
 				axiosWithAuth()
 					.delete(`/rec/${id}`)
-					.then(() => {
-						//matt do work here.... :)
-					});
+					.then(() => {});
 			}
 		};
 
