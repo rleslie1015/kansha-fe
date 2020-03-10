@@ -53,7 +53,9 @@ function FeedSideBar() {
 	return (
 		<aside className={`feed-bar${open ? ' is-rec-open' : ''}`}>
 			<div className="feed-headers" onClick={() => setOpen(!open)}>
-				<h2>Feed</h2>
+				<h2 className={`${open ? 'is-arrow-open' : 'is-arrow-closed'}`}>
+					Feed
+				</h2>
 				<h3 className={`${open ? 'recently-thanked-title' : 'hidden'}`}>
 					Recent Thankfulness
 				</h3>
