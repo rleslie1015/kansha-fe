@@ -44,8 +44,8 @@
 	}
 }
 
-.is-open {
-	width: 450px;
+.is-rec-open {
+	width: 400px;
 	overflow: hidden;
 }
 
@@ -77,7 +77,24 @@
 	.rec-message {
 		font-size: 1.6rem;
 		margin-left: 0.3rem;
-		min-width: 300px;
+		width: 300px;
+		height: 20px;
+		word-wrap: none;
+		overflow: hidden;
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			background: linear-gradient(
+				90deg,
+				rgba(255, 255, 255, 0) 0%,
+				$color-white-dark 100%
+			);
+			right: 0;
+			width: 25%;
+			height: 100%;
+		}
 	}
 
 	.hidden-rec {
