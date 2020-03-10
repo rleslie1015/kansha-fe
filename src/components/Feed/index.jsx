@@ -49,7 +49,7 @@ const Feed = () => {
 
 		// sse.addEventListener('HEARTBEAT', console.log);
 
-		// Set's up event listeners inside of redux ac
+		// Sets up event listeners inside of redux ac
 		dispatch(liveFeedListeners(sse));
 
 		// Close the EventStream when component unmounts

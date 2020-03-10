@@ -1,0 +1,86 @@
+.feed-bar {
+	background-color: $color-white-dark;
+	// border: 2px solid red;
+	width: 55px;
+	height: 100vh;
+	right: 0px;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	z-index: 99;
+	transition: width 500ms ease;
+	@include boxshadow();
+
+	.feed-headers {
+		display: flex;
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		margin-left: 1rem;
+		// margin-right: 2rem;
+		justify-content: space-between;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		.recently-thanked-title {
+			min-width: 150px;
+		}
+	}
+
+	.feed-rec-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.hidden {
+		width: 0;
+		opacity: 0;
+		height: 0;
+
+		p {
+			width: 0;
+		}
+	}
+}
+
+.is-open {
+	width: 450px;
+	overflow: hidden;
+}
+
+.recognition {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0.8rem 1.2rem;
+
+	.rec-badge-and-message {
+		display: flex;
+		flex-direction: row;
+		margin-left: 1rem;
+		border-left: 2px solid lightgrey;
+	}
+
+	.rec-profile-pic {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+	}
+
+	.rec-badge {
+		width: 25px;
+		height: 25px;
+		margin-left: 1rem;
+	}
+
+	.rec-message {
+		font-size: 1.6rem;
+		margin-left: 0.3rem;
+		min-width: 300px;
+	}
+
+	.hidden-rec {
+		display: none;
+	}
+}

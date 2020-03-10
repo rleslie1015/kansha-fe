@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import Hamburger from './Hamburger';
 import { ReactComponent as HomeIcon } from '../../assets/home.svg';
 import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
-import { ReactComponent as WorkspaceIcon } from '../../assets/workspacenav.svg';
-import { ReactComponent as SendIcon } from '../../assets/send.svg';
 import { ReactComponent as HistoryIcon } from '../../assets/history.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/settings.svg';
 import { ReactComponent as PowerIcon } from '../../assets/signout.svg';
+import { ReactComponent as TeamIcon } from '../../assets/workspacenav.svg';
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
 
@@ -34,6 +33,12 @@ function Sidebar({ user }) {
 					}
 					name="Workspace"
 					icon={HomeIcon}
+					open={open}
+				/>
+				<SidebarLink
+					path={'/workspace'}
+					name="Workspace"
+					icon={TeamIcon}
 					open={open}
 				/>
 				<SidebarLink
