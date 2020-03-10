@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { Line } from 'react-chartjs-2';
+import TimeDropdown from './TimeDropdown';
 
-function TotalRecogGraph() {
+function TotalRecogGraph({ lineFilter }) {
 	const [graphData, setGraphData] = useState();
 	const [labels, setLabels] = useState();
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('/reports/range')
+			.get(`/reports/range?time=${lineFilter}`)
 			.then(res => {
 				setGraphData(Object.values(res.data.results).reverse());
 				setLabels(Object.keys(res.data.results).reverse());
@@ -16,7 +17,7 @@ function TotalRecogGraph() {
 			.catch(error => {
 				console.log(error);
 			});
-	}, []);
+	}, [lineFilter]);
 
 	const data = {
 		labels: labels,

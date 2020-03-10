@@ -3,17 +3,21 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import axios from 'axios';
 import TotalRecognitionChart from './TotalRecognitionChart';
 
-const DoughnutCharts = () => {
+const DoughnutCharts = ({ doughnutFilter }) => {
 	const [percentThanked, setPercentThanked] = useState();
 	const [percentThankful, setPercentThankful] = useState();
 
 	useEffect(() => {
 		function getThanked() {
-			return axiosWithAuth().get('/reports/engagement');
+			return axiosWithAuth().get(
+				`/reports/engagement?person=recipient&time=${doughnutFilter}`,
+			);
 		}
 
 		function getThankful() {
-			return axiosWithAuth().get('/reports/engagement?person=sender');
+			return axiosWithAuth().get(
+				`/reports/engagement?person=sender&time=${doughnutFilter}`,
+			);
 		}
 
 		axios.all([getThanked(), getThankful()]).then(
@@ -22,7 +26,7 @@ const DoughnutCharts = () => {
 				setPercentThankful(thankful.data.percentThanked);
 			}),
 		);
-	}, []);
+	}, [doughnutFilter]);
 
 	const percentUnthanked = 100 - percentThanked;
 	const percentUnthankful = 100 - percentThankful;
