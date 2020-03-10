@@ -3,7 +3,7 @@ import heart from '../../../assets/heart.png';
 
 function RecogList({ rank, count }) {
 	return (
-		<ul>
+		<ul className="recog-list-container">
 			{rank.map(person => {
 				return (
 					<li
@@ -25,14 +25,12 @@ function RecogList({ rank, count }) {
 									max={count}></progress>
 							</div>
 							<div className="most-recog-heart">
-								<p>
-									{person.count}
-									<img
-										className="heart-img"
-										src={heart}
-										alt="heart icon"
-									/>
-								</p>
+								<p>{person.count} </p>
+								<img
+									className="heart-img"
+									src={heart}
+									alt="heart icon"
+								/>
 							</div>
 						</div>
 					</li>

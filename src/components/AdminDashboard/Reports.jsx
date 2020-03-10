@@ -6,8 +6,7 @@ export default function Reports() {
 	const [filter, setFilter] = useState('weeks');
 
 	const handleFilter = e => {
-		e.preventDefault();
-		setFilter(e.target.value);
+		setFilter(e);
 	};
 
 	return (
@@ -19,7 +18,7 @@ export default function Reports() {
 				<section className="container-team-engagement"></section>
 
 				<section className="container-leaderboard">
-					<div>
+					<div className="container-time-dropdown">
 						<TimeDropdown
 							filter={filter}
 							handleFilter={handleFilter}

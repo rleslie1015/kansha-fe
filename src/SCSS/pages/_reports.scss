@@ -3,13 +3,60 @@
 	background-color: $color-white;
 	@include boxshadow();
 	height: 90vh;
-	.container-leaderboard {
-		border: 2px solid red;
+	.container-time-dropdown {
 		width: 45%;
-		.dropdown-time-div select {
-			appearance: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
+
+		.custom-select {
+			width: 21.4rem;
+			border: none;
+			margin: 0;
+			padding-left: 5px;
+			font-weight: 600;
+
+			.select-selected {
+				padding: 0;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				font-size: 2rem;
+
+				&:after {
+					border: none;
+					content: '\2228';
+					color: $color-black;
+					font-size: 2rem;
+					font-weight: 100;
+					top: 21%;
+					right: 1rem;
+				}
+			}
+
+			.select-selected.select-arrow-active:after {
+				transform: rotate(180deg);
+				top: 75%;
+				right: 0rem;
+			}
+
+			.placeholder-div {
+				color: $color-black;
+				font-style: normal;
+				display: flex;
+				align-items: center;
+				font-size: 2rem;
+			}
+
+			.select-items {
+				width: 21.5rem;
+
+				> div {
+					padding: 5px;
+					height: 3rem;
+					font-size: 2rem;
+				}
+			}
+		}
+
+		.dropdown-time-div {
 			.dropdown-time {
 				background-color: #fff;
 				border: none;

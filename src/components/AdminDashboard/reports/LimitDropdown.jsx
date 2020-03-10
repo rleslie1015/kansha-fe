@@ -1,15 +1,16 @@
 import React from 'react';
 import Dropdown from '../../Onboarding/DropDown';
+
 function LimitDropdown({ handleLimit, limit }) {
 	return (
 		<div className="limit-dropdown-container">
-			<label>View:</label>
+			<label>View: </label>
 			<Dropdown
 				setSelection={handleLimit}
-				className="dropdown-view"
-				classNombre="dropdown-view-name"
+				classNombre="custom-select dashboard"
 				name="limit"
 				value={limit}
+				placeholder="Top 5"
 				id="limit-number">
 				<option value={5}>Top 5 </option>
 				<option value={10}>Top 10</option>
