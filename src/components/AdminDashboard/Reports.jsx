@@ -37,7 +37,7 @@ export default function Reports() {
 
 				<h1 className="participation-title">Participation</h1>
 				<TimeDropdown
-					annual="annual"
+					annual="Annual"
 					week="This week"
 					month="This month"
 					filter={doughnutFilter}
