@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@testing-library/jest-dom": "^5.1.1",
+		"@testing-library/react": "^9.5.0",
 		"auth0-js": "^9.12.2",
 		"axios": "^0.19.2",
 		"chart.js": "^2.9.3",
