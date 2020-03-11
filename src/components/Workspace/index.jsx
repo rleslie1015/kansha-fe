@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import WorkspaceCard from './WorkspaceCard';
 
