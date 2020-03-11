@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, Children } from 'react';
 
-const DropDown = ({ children, setSelection, id, placeholder }) => {
+const DropDown = ({ children, setSelection, id, placeholder, classNombre }) => {
 	const select = useRef(null);
 	const fakeSelect = useRef(null);
 	const fakeOptions = useRef(null);
@@ -58,7 +58,7 @@ const DropDown = ({ children, setSelection, id, placeholder }) => {
 	});
 
 	return (
-		<div className="custom-select">
+		<div className={classNombre}>
 			<select ref={select}>{children}</select>
 			<div
 				id={id}
