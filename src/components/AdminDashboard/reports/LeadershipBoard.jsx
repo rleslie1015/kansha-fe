@@ -31,7 +31,7 @@ function LeadershipBoard(props) {
 	return (
 		<div className="most-recog-container">
 			<div className="most-recog-title-container">
-				<p>{props.title}</p>
+				<h3>{props.title}</h3>
 				<LimitDropdown limit={limit} handleLimit={handleLimit} />
 			</div>
 

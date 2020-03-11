@@ -5,6 +5,7 @@
 
 .admin-dashboard {
 	margin-left: 7rem;
+	margin-right: 4.4rem;
 	overflow-x: hidden;
 	display: flex;
 	color: $color-black;
@@ -12,7 +13,13 @@
 	height: 100vh;
 	flex-direction: column;
 	background-color: $color-white;
-	width: 95%;
+	width: 100%;
+
+	h1 {
+		font-weight: 900;
+		font-size: 3.6rem;
+		margin-left: 3.5rem;
+	}
 }
 
 .admin-title {
@@ -53,11 +60,6 @@
 		text-align: center;
 		width: 10rem;
 		font-size: 1.8rem;
-
-		@media (min-width: 800px) {
-			font-size: 2.4rem;
-			width: 14rem;
-		}
 	}
 }
 
@@ -65,23 +67,28 @@
 	h5 {
 		text-align: center;
 		width: 100%;
-		font-size: 2.4rem;
+		font-size: 1.8rem;
 		margin-top: 2.5rem;
 	}
 }
 
 .container-total-recog-graph {
+	.title-container {
+		display: flex;
+
+		align-items: center;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 5rem;
+		height: 4.2rem;
+
+		h3 {
+			font-size: 2.4rem;
+		}
+	}
 	h1 {
 		font-size: 2.4rem;
 		font-weight: 500;
-	}
-
-	.participation-title {
-		margin-top: 8rem;
-	}
-
-	.recognition-title {
-		margin-top: 6.5rem;
 	}
 }
 

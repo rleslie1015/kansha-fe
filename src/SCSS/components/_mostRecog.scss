@@ -3,24 +3,24 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 
 	.recog-list-container {
 		overflow: auto;
 		height: 36rem;
-		width: 68rem;
+		width: 100%;
 	}
 
 	.most-recog-title-container {
-		width: 68rem;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin: 2rem 0rem;
 
-		p {
+		h3 {
 			width: 20rem;
 			font-size: 2.4rem;
-			font-weight: 300;
 		}
 		.custom-select {
 			width: 6rem;
@@ -57,8 +57,6 @@
 			.placeholder-div {
 				color: $color-black;
 				font-style: normal;
-				display: flex;
-				align-items: center;
 			}
 
 			.select-items {
@@ -108,7 +106,7 @@
 		background-color: #f9f9f9;
 	}
 	.most-recog-individual {
-		width: 65rem;
+		width: 100%;
 		display: flex;
 		justify-content: flex-start;
 		padding: 0.8rem;
@@ -119,7 +117,7 @@
 		}
 
 		.most-rec-name-to-heart {
-			width: 65rem;
+			width: 100%;
 			display: flex;
 			justify-content: space-between;
 		}
@@ -170,4 +168,8 @@
 			}
 		}
 	}
+}
+
+.reports .container-time-dropdown .custom-select .placeholder-div {
+	display: block !important;
 }
