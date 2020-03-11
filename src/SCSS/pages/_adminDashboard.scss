@@ -75,16 +75,19 @@
 .container-total-recog-graph {
 	.title-container {
 		display: flex;
-
 		align-items: center;
 		justify-content: space-between;
 		align-items: center;
-		margin-top: 5rem;
+		margin-top: 2rem;
 		height: 4.2rem;
 
 		h3 {
 			font-size: 2.4rem;
 		}
+	}
+
+	.participation-container {
+		margin-top: 7rem;
 	}
 	h1 {
 		font-size: 2.4rem;

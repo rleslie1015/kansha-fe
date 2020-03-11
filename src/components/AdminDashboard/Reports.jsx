@@ -37,7 +37,7 @@ export default function Reports() {
 					/>
 				</div>
 				<TotalRecogGraph lineFilter={lineFilter} />
-				<div className="title-container">
+				<div className="title-container participation-container">
 					<h3 className="participation-title">Participation</h3>
 					<TimeDropdown
 						annual="Annual"
