@@ -31,7 +31,7 @@ function Sidebar({ user }) {
 							? '/dashboard'
 							: '/workspace'
 					}
-					name="Workspace"
+					name="Teams"
 					icon={HomeIcon}
 					open={open}
 				/>
