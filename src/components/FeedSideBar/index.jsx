@@ -16,7 +16,7 @@ function FeedSideBar() {
 
 	const [badges, setBadges] = useState([]);
 
-	const { feed, profile } = useSelector(({ liveFeed, user }) => ({
+	const { feed } = useSelector(({ liveFeed, user }) => ({
 		...liveFeed,
 		...user,
 	}));

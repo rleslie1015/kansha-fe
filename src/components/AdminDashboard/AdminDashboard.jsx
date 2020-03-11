@@ -1,6 +1,5 @@
 import React from 'react';
 import Reports from './Reports';
-import Activity from './Activity';
 import FeedSideBar from '../FeedSideBar';
 
 const AdminDashboard = () => {
