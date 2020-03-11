@@ -98,6 +98,7 @@ export function Profile() {
 									badge={badges[recognition.badge_id - 1]}
 									profile={profile}
 									recognition={recognition}
+									setProfile={setProfile}
 								/>
 							))}
 				</section>

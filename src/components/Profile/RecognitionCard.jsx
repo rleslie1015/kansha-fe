@@ -1,29 +1,29 @@
 import React, { useMemo } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-export function RecognitionCard({ recognition, sent, badge }) {
+export function RecognitionCard({ recognition, sent, setProfile }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
-	const history = useHistory();
+
 	const profile = useSelector(state => state.user.profile);
 
-	const handleDelete = rec => {
-		// this will need to be turned into a confirmation modal, like the one on the figma.
+	const handleDelete = e => {
+		e.preventDefault();
 		if (
 			window.confirm(
 				'Are you sure you would like to delete this recognition?',
 			)
 		) {
 			axiosWithAuth()
-				.delete(`/rec/${rec.id}`)
+				.delete(`/rec/${recognition.id}`)
 				.then(() => {
-					// i dunno how to get the user id of said profile....
-					// is coming up object object
-					// will figure out later...
-					history.push(`/profile/${rec.sender}`);
+					setProfile(prev => ({
+						...prev,
+						rec: prev.rec.filter(rec => rec.id !== recognition.id),
+					}));
 				});
 		}
 	};

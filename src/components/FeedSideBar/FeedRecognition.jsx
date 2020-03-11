@@ -13,7 +13,11 @@ function FeedRecognition({ rec, badge, open }) {
 
 	return (
 		<div className="recognition" onClick={handleClick}>
-			<img className="rec-profile-pic" src={rec.recipient_picture} />
+			<img
+				alt="profile"
+				className="rec-profile-pic"
+				src={rec.recipient_picture}
+			/>
 			<div className="rec-badge-and-message">
 				{badge && (
 					<img
