@@ -1,38 +1,54 @@
 import React from "react";
-import { render,fireEvent } from "@testing-library/react";
+import { render,fireEvent, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import S4UserUpload from '../../components/Onboarding/S4AUserUpload';
-import {BrowserRouter} from 'react-router-dom'
+import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
+import {renderWithRouter} from '../testUtils';
 
 let S4Component = <BrowserRouter><S4UserUpload /></BrowserRouter>;
-test("S4UserUpload renders without crashing", () => {
-  render(S4Component);
-  
-});
 
-test('it displays add employees question', () => {
+
+
+afterEach(cleanup);
+
+describe('S4', () => {
+    it('matches snapshot', () => {
+    const tree = renderer.create(S4Component);
+    expect(tree.toJSON()).toMatchSnapshot();
+  })
+  
+  it('renders without crashing', () => {
+    render(S4Component);
+  });
+
+
+  it('should call props.onClick when clicked', () => {
+      
+    const { getByText, history } = renderWithRouter(<S4UserUpload />);
+    
+    const button = getByText(/Previous step/i);
+    // fireEvent.click(button);
+    console.log(history)
+    expect(history.location.pathname).toBe('/onboarding/step-2');
+  });
+
+    it('should call the next button when clicked', () => {
+    
+    const { getByText, history } = renderWithRouter(<S4UserUpload />);
+    
+    const nextButton = getByText(/Next/i);
+    fireEvent.click(nextButton);
+    expect(history.location.pathname).toBe('/onboarding/step-6');
+  });
+
+  it('it displays add employees question', () => {
     const { getByText, getAllByText } = render(S4Component);
     getByText(/Would you like to add employees now?/i);
     getByText(/yes/i);
     getAllByText(/no/i);
 
 })
-test("the next button is clickable", () => {
-    const button = jest.fn();
-    const { getByText } = render(
-        <BrowserRouter><S4UserUpload button={button}/></BrowserRouter>
-    );
-    const nextBtn = getByText(/next/i);
-    fireEvent.click(nextBtn);
-    expect(button).toHaveBeenCalled();
-  });
-  
 
-//   const toggleLocked = jest.fn();
-//   const { getByText } = render(
-//     <Controls closed={false} toggleLocked={toggleLocked} />
-//   );
-//   const lockedBtn = getByText(/lock gate/i);
-//   fireEvent.click(lockedBtn);
-//   expect(toggleLocked).not.toHaveBeenCalled();
-// });
+});
+

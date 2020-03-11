@@ -14,8 +14,8 @@ function S6AllDone({ user }) {
 	};
 
 	return (
-		<div>
-			<h1>All done!</h1>
+		<div data-test='S6Component'>
+			<h1 >All done!</h1>
 			<h5>
 				To make the most of your experience we recommend taking a quick
 				tour of your dashboard and finish organizing your teams.
@@ -23,13 +23,13 @@ function S6AllDone({ user }) {
 
 			<div className="button-container">
 				{/* <button onClick={handleClick}>Take the tour</button> */}
-				<button onClick={handleClick}>Let me explore</button>
+				<button onClick={handleClick} data-test="S6Button">Let me explore</button>
 			</div>
 			<div className="step-p-container">
 				<span className="previousarrow">
 					<i class="fas fa-arrow-left" />
 					<div onClick={handlePrevious}>
-						<p>Previous step</p>
+						<p className="testing">Previous step</p>
 					</div>
 				</span>
 			</div>

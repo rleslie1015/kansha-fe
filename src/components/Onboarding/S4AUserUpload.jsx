@@ -12,7 +12,7 @@ function S4AUserUpload() {
 	let history = useHistory();
 
 	const handlePrevious = () => {
-		history.push('/onboarding/step-3');
+		history.push('/onboarding/step-2');
 	};
 
 	const handleUploadNow = e => {
@@ -105,7 +105,7 @@ function S4AUserUpload() {
 				</div>
 			</div>
 
-			<button onClick={handleClick}>Next</button>
+			<button  onClick={handleClick}>Next</button>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
