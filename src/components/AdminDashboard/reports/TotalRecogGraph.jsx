@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { Line } from 'react-chartjs-2';
-import TimeDropdown from './TimeDropdown';
 
 function TotalRecogGraph({ lineFilter }) {
 	const [graphData, setGraphData] = useState();

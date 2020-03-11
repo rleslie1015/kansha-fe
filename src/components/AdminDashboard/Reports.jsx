@@ -25,24 +25,28 @@ export default function Reports() {
 	return (
 		<div className="reports">
 			<section className="container-total-recog-graph">
-				<h1 className="recognition-title">Recognition</h1>
-				<TimeDropdown
-					annual="Annual"
-					week="This week"
-					month="This month"
-					filter={lineFilter}
-					handleFilter={handleLineFilter}
-				/>
+				<h2 className="analytics-title">Analytics</h2>
+				<div className="title-container">
+					<h3 className="recognition-title">Recognition</h3>
+					<TimeDropdown
+						annual="Annual"
+						week="This week"
+						month="This month"
+						filter={lineFilter}
+						handleFilter={handleLineFilter}
+					/>
+				</div>
 				<TotalRecogGraph lineFilter={lineFilter} />
-
-				<h1 className="participation-title">Participation</h1>
-				<TimeDropdown
-					annual="Annual"
-					week="This week"
-					month="This month"
-					filter={doughnutFilter}
-					handleFilter={handleDoughnutFilter}
-				/>
+				<div className="title-container participation-container">
+					<h3 className="participation-title">Participation</h3>
+					<TimeDropdown
+						annual="Annual"
+						week="This week"
+						month="This month"
+						filter={doughnutFilter}
+						handleFilter={handleDoughnutFilter}
+					/>
+				</div>
 				<DoughnutCharts doughnutFilter={doughnutFilter} />
 			</section>
 

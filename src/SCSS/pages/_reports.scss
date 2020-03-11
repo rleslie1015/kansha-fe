@@ -1,21 +1,21 @@
 .reports {
 	width: 100%;
-	background-color: $color-white;
-	@include boxshadow();
-	height: auto;
-	// border: 2px solid red;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	margin-top: 1rem;
 	.container-total-recog-graph {
-		// border: 3px solid blue;
 		width: 45%;
-		padding: 3rem;
+
+		.analytics-title {
+			font-weight: 900;
+			font-size: 2.4rem;
+			height: 4.2rem;
+			width: 30rem;
+		}
 	}
 	.container-leaderboard {
-		// border: 3px solid green;
 		width: 45%;
-		padding: 3rem;
 	}
 	.container-time-dropdown {
 		width: 45%;
@@ -32,7 +32,8 @@
 				height: 100%;
 				display: flex;
 				align-items: center;
-				font-size: 2rem;
+				font-weight: 900;
+				font-size: 2.4rem;
 
 				&:after {
 					border: none;
@@ -40,8 +41,8 @@
 					color: $color-black;
 					font-size: 2rem;
 					font-weight: 100;
-					top: 21%;
-					right: 1rem;
+					top: 3%;
+					right: -3rem;
 					transition: 0.5s ease;
 				}
 			}
@@ -57,7 +58,11 @@
 				font-style: normal;
 				display: flex;
 				align-items: center;
-				font-size: 2rem;
+				font-size: 2.4rem;
+				font-weight: 900;
+				padding-top: 0;
+				height: 100%;
+				width: 100%;
 			}
 
 			.select-items {
