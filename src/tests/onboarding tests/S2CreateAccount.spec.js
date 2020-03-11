@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const setup = (props={user, setUser, handleUser}, state=null) => {
     return mount(<BrowserRouter>
-                        <S2CreateAccount {...props}/>
+                        <S2CreateAccount {...props} user={user}/>
                     </BrowserRouter>)
 }
 
