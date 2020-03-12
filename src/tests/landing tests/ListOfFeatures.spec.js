@@ -6,7 +6,13 @@ import ListOfFeatures from '../../components/Landing/ListOfFeatures';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('List of Features Title', () => {
+describe('List of Features Component', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(<ListOfFeatures />);
+
+		expect(wrapper.exists());
+	});
+
 	it('renders Recognize, motivate, and track accomplishments. as title', () => {
 		const wrapper = shallow(<ListOfFeatures />);
 

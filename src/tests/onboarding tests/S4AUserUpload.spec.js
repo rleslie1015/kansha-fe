@@ -15,10 +15,42 @@ let S4Component = (
 afterEach(cleanup);
 
 describe('S4', () => {
-	it('matches snapshot', () => {
-		const tree = renderer.create(S4Component);
-		expect(tree.toJSON()).toMatchSnapshot();
-	});
+  //   it('matches snapshot', () => {
+  //   const tree = renderer.create(S4Component);
+  //   expect(tree.toJSON()).toMatchSnapshot();
+  // })
+  
+  it('renders without crashing', () => {
+    render(S4Component);
+  });
+
+
+  it('should call props.onClick when clicked', () => {
+      
+    const { getByText, history } = renderWithRouter(<S4UserUpload />);
+    
+    const button = getByText(/Previous step/i);
+    // fireEvent.click(button);
+    console.log(history)
+    expect(history.location.pathname).toBe('/');
+  });
+
+    it('should call the next button when clicked', () => {
+    
+    const { getByText, history } = renderWithRouter(<S4UserUpload />);
+    
+    const nextButton = getByText(/Next/i);
+    fireEvent.click(nextButton);
+    expect(history.location.pathname).toBe('/onboarding/step-6');
+  });
+
+  it('it displays add employees question', () => {
+    const { getByText, getAllByText } = render(S4Component);
+    getByText(/Would you like to add employees now?/i);
+    getByText(/yes/i);
+    getAllByText(/no/i);
+
+})
 
 	it('renders without crashing', () => {
 		render(S4Component);

@@ -6,7 +6,13 @@ import Footer from '../../components/Landing/Footer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Footer Title', () => {
+describe('Footer Component', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(<Footer />);
+
+		expect(wrapper.exists());
+	});
+
 	it('renders Kansha on footer for h1', () => {
 		const wrapper = shallow(<Footer />);
 
