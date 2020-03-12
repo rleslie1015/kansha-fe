@@ -12,31 +12,16 @@ afterEach(cleanup);
 
 describe('Reports', () => {
 	it('renders without crashing', () => {
-		let initialState = {
-			feed: { feed: [{ recipient: 2, message: 'Hello' }] },
-		};
-
-		renderWithRouterAndRedux(<ReportsPage />, initialState);
+		renderWithRouterAndRedux(<ReportsPage />);
 	});
 
 	it('matches snapshot', () => {
-		let initialState = {
-			feed: { feed: [{ recipient: 2, message: 'Hello' }] },
-		};
-		const tree = renderer.create(
-			renderWithRouterAndRedux(<ReportsPage />, initialState),
-		);
+		const tree = renderer.create(renderWithRouterAndRedux(<ReportsPage />));
 		expect(tree.toJSON()).toMatchSnapshot();
 	});
 
 	it('displays header text', () => {
-		let initialState = {
-			feed: { feed: [{ recipient: 2, message: 'Hello' }] },
-		};
-		const { getByText } = renderWithRouterAndRedux(
-			<ReportsPage />,
-			initialState,
-		);
+		const { getByText } = renderWithRouterAndRedux(<ReportsPage />);
 		getByText(/Overview/i);
 		getByText(/Recognition/i);
 		getByText(/Participation/i);
