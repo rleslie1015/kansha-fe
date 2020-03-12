@@ -25,8 +25,21 @@ describe('Reports', () => {
 		render(<Provider store={store}>ReportsComponent</Provider>);
 	});
 
-	// it('matches snapshot', () => {
-	// 	const tree = renderer.create(Reports);
-	// 	expect(tree.toJSON()).toMatchSnapshot();
-	// });
+	it('matches snapshot', () => {
+		const tree = renderer.create(
+			<Provider store={store}>ReportsComponent</Provider>,
+		);
+		expect(tree.toJSON()).toMatchSnapshot();
+	});
+
+	it('it displays header text', () => {
+		const { getByText } = render(
+			<Provider store={store}>ReportsComponent</Provider>,
+		);
+		getByText(/Overview/i);
+		getByText(/Recognition/i);
+		getByText(/Participation/i);
+		getByText(/Most Thanked/i);
+		getByText(/Most Thankful/i);
+	});
 });

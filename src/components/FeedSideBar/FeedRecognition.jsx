@@ -21,6 +21,7 @@ function FeedRecognition({ rec, badge, open }) {
 			<div className="rec-badge-and-message">
 				{badge && (
 					<img
+						alt="badge"
 						className={`${open ? `rec-badge` : `hidden-rec`}`}
 						src={badge?.badge_URL}
 					/>
