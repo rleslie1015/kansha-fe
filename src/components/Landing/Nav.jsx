@@ -9,7 +9,7 @@ export default function Nav() {
 	const [open, setOpen] = React.useState(false);
 	return (
 		<nav className="nav">
-			<a href="#" onClick={auth.login}>
+			<a href="#" onClick={auth.login} data-test="login">
 				Login
 			</a>
 			<section
@@ -17,7 +17,9 @@ export default function Nav() {
 				onClick={() => setOpen(!open)}>
 				<HamburgerMenu open={open} setOpen={setOpen} />
 			</section>
-			<section className={`${open ? 'side-nav-landing' : 'hidden'}`}>
+			<section
+				data-test="side-nav-landing"
+				className={`${open ? 'side-nav-landing' : 'hidden'}`}>
 				<div className="title-nav">
 					<Logo />
 					<h3>Kansha</h3>
@@ -29,7 +31,11 @@ export default function Nav() {
 					<a href="#" onClick={auth.login}>
 						Contact
 					</a>
-					<a onClick={auth.login} className="login" href="#">
+					<a
+						onClick={auth.login}
+						className="login"
+						href="#"
+						data-test="login">
 						Login
 					</a>
 				</nav>
