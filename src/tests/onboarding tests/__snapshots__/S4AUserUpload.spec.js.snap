@@ -65,7 +65,6 @@ Array [
         className="fas fa-arrow-left"
       />
       <div
-        data-testid="button"
         onClick={[Function]}
       >
         <p>

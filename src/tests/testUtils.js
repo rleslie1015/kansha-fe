@@ -3,9 +3,6 @@ import { Router} from 'react-router-dom';
 import {render} from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
-export const findByTestAttr = (wrapper, val) => {
-    return wrapper.find(`[data-test="${val}"]`);
-}
 
 export const renderWithRouter = (
     ui,
