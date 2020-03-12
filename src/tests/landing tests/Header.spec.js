@@ -6,10 +6,18 @@ import Header from '../../components/Landing/Header';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-it('should render Kansha h1', () => {
-	const wrapper = shallow(<Header />);
-	const h1 = wrapper.find('h1');
-	const result = h1.text();
+describe('Header component', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(<Header />);
 
-	expect(result).toBe('Kansha');
+		expect(wrapper.exists());
+	});
+
+	it('should render Kansha h1', () => {
+		const wrapper = shallow(<Header />);
+		const h1 = wrapper.find('h1');
+		const result = h1.text();
+
+		expect(result).toBe('Kansha');
+	});
 });

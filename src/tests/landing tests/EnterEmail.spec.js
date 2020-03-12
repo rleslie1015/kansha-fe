@@ -7,6 +7,12 @@ import EnterEmail from '../../components/Landing/EnterEmail';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Enter Email component', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(<EnterEmail />);
+
+		expect(wrapper.exists());
+	});
+
 	it('renders form', () => {
 		const wrapper = shallow(<EnterEmail />);
 

@@ -6,7 +6,13 @@ import Nav from '../../components/Landing/Nav';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Nav Title', () => {
+describe('Nav component', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(<Nav />);
+
+		expect(wrapper.exists());
+	});
+
 	it('renders Kansha on Nav for h3', () => {
 		const wrapper = shallow(<Nav />);
 
