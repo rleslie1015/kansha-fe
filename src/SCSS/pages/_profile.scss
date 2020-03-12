@@ -2,6 +2,7 @@
 .container-entire-profile {
 	display: flex;
 	justify-content: space-evenly;
+	background-color: $color-white;
 	color: $color-black;
 	padding: 2rem 2rem 2rem 0;
 	width: 100%;
@@ -24,6 +25,7 @@
 			align-items: center;
 			padding: 20px;
 			margin-bottom: 50px;
+			background-color: $color-white-dark;
 			@include boxshadow();
 
 			img {
@@ -50,7 +52,7 @@
 		}
 	}
 	.container-badges {
-		background-color: $color-white;
+		background-color: $color-white-dark;
 		padding: 2rem 0 2rem 2rem;
 		@include boxshadow();
 
@@ -71,7 +73,7 @@
 // activity section of the page
 .activity-card {
 	width: 45%;
-	background-color: $color-white;
+	background-color: $color-white-dark;
 	margin-left: 1.6rem;
 	padding: 3rem;
 	height: 100%;
@@ -115,6 +117,10 @@
 					right: 5px;
 					top: 5px;
 					cursor: pointer;
+				}
+				p {
+					padding-top: 10px;
+					word-break: break-all;
 				}
 			}
 

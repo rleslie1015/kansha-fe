@@ -1,0 +1,145 @@
+.feed-bar {
+	background-color: $color-white;
+	// border: 2px solid red;
+	width: 55px;
+	height: 100vh;
+	right: 0px;
+	position: fixed;
+	display: flex;
+	border-left: 2px solid lightgray;
+	flex-direction: column;
+
+	transition: width 500ms ease;
+	@include boxshadow();
+
+	.feed-headers {
+		display: flex;
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		margin-left: 1rem;
+		// margin-right: 2rem;
+		justify-content: space-between;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		.is-arrow-open:after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			transform: translateY(-50%);
+			left: 3.5rem;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-color: transparent transparent transparent $color-secondary;
+		}
+		.is-arrow-closed:after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			transform: translateY(-50%);
+			left: 3rem;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-color: transparent $color-secondary transparent transparent;
+		}
+
+		.recently-thanked-title {
+			min-width: 150px;
+		}
+	}
+
+	.feed-rec-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.hidden {
+		width: 0;
+		opacity: 0;
+		height: 0;
+
+		p {
+			width: 0;
+		}
+	}
+}
+
+.is-rec-open {
+	width: 400px;
+	overflow: hidden;
+}
+
+.recognition {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 8px 10px;
+
+	&:nth-child(2n) {
+		background-color: $color-white;
+		padding: 8px 10px;
+		.rec-message:before {
+			background: linear-gradient(
+				90deg,
+				rgba(255, 255, 255, 0) 0%,
+				$color-white 100%
+			);
+		}
+	}
+
+	.rec-badge-and-message {
+		display: flex;
+		flex-direction: row;
+		margin-left: 1rem;
+		border-left: 2px solid lightgrey;
+	}
+
+	.rec-profile-pic {
+		min-width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		margin-left: 0.3rem;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.rec-badge {
+		width: 25px;
+		height: 25px;
+		margin-left: 1rem;
+	}
+
+	.rec-message {
+		font-size: 1.6rem;
+		margin-left: 0.3rem;
+		width: 300px;
+		height: 20px;
+		word-wrap: none;
+		overflow: hidden;
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			background: linear-gradient(
+				90deg,
+				rgba(255, 255, 255, 0) 0%,
+				$color-white-dark 100%
+			);
+			right: 0;
+			width: 25%;
+			height: 100%;
+		}
+	}
+
+	.hidden-rec {
+		display: none;
+	}
+}

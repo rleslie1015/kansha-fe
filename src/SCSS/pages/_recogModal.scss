@@ -69,12 +69,13 @@
 		}
 
 		.corner-button {
-			right: 25px;
-			bottom: 75px;
+			right: 40px;
+			bottom: 120px;
 		}
 
 		.send-button {
 			border: 0;
+			border-radius: 10px;
 			background: $color-secondary;
 			color: $color-white;
 			width: 50%;
