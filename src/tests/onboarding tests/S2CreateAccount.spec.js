@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
 import {renderWithRouter} from '../testUtils';
 
-let S2Component = <BrowserRouter><S2CreateAccount /></BrowserRouter>;
+let S2Component = <BrowserRouter><S2CreateAccount user={{first_name: "Joss", last_name: "Staneck", job_title: "manager", org_name: "kansha", org_name: "less than 20", industry: "accounting"  }} /></BrowserRouter>;
 
 
 
@@ -25,7 +25,7 @@ describe('S2', () => {
 
     it('should call the next button when clicked', () => {
     
-    const { getByText, history } = renderWithRouter(<S2CreateAccount />);
+    const { getByText, history } = renderWithRouter(<S2CreateAccount user={{first_name: "Joss", last_name: "Staneck", job_title: "manager", org_name: "kansha", org_name: "less than 20", industry: "accounting"  }} />);
     
     const nextButton = getByText(/Next/i);
     fireEvent.click(nextButton);
