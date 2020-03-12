@@ -7,17 +7,14 @@ import HelpModal from './HelpModal/HelpModal';
 
 const Dashboard = ({ children }) => {
 	const [helpModal, setHelpModal] = useState(false);
-	// const [title, setTitle] = useState('');
-	// const [content, setContent] = useState('');
-
-	let title = 'Creating Teams';
-	let content =
-		'Get started by creating teams! From 1 to 100, you can create unique team names, assign a manager, and monitor their recognition feeds! It’s as simple as selecting the team members, entering a team name and clicking a button!';
+	const [title, setTitle] = useState('Welcome, Samantha!');
+	const [content, setContent] = useState(
+		'We are excited that you are adding Kansha to your employee recognition program! We’ve included some helpful tips to get you started but you can explore on your own. Once you’ve begun creating teams and budgets your dashboard will conveniently provide an overview for you upon logging in. If you need help later on, you can find common answers in the help menu!',
+	);
 
 	let location = useLocation();
 
 	useEffect(() => {
-		console.log(location);
 		if (location.search.match('help')) {
 			setHelpModal(true);
 		}
@@ -29,7 +26,13 @@ const Dashboard = ({ children }) => {
 			{children}
 			{helpModal && (
 				<Modal close={setHelpModal}>
-					<HelpModal title={title} content={content} />
+					<HelpModal
+						title={title}
+						content={content}
+						setTitle={setTitle}
+						setContent={setContent}
+						setHelpModal={setHelpModal}
+					/>
 				</Modal>
 			)}
 		</>

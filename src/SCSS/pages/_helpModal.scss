@@ -1,10 +1,62 @@
 .help-modal-container {
+	display: flex;
 	h1 {
 		font-size: 4.8rem;
 		color: $color-black;
 	}
+
 	p {
 		font-size: 1.8rem;
 		color: $color-gray-light;
+	}
+
+	.modal-menu-container {
+		display: flex;
+		flex-direction: column;
+		width: 40rem;
+		cursor: pointer;
+		justify-content: space-between;
+		margin-top: 2rem;
+
+		svg {
+			width: 4.6rem;
+			height: 3.6rem;
+		}
+
+		h1 {
+			font-size: 2.4rem;
+			margin-left: 2rem;
+		}
+
+		.modal-div {
+			display: flex;
+			margin-bottom: 5rem;
+			padding-left: 2rem;
+
+			&:hover {
+				border-left: 6px solid $color-primary;
+				transition: border-left 0.2s ease-in-out;
+			}
+		}
+	}
+
+	.help-modal-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 50rem;
+
+		.modal-dash-link {
+			color: $color-primary;
+		}
+
+		h1 {
+			margin-bottom: 4rem;
+			font-weight: normal;
+		}
+
+		p {
+			line-height: 2.9rem;
+		}
 	}
 }
