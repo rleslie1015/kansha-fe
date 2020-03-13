@@ -4,6 +4,12 @@ import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { reduxReducer } from '../store';
+const mockStore = configureStore();
+
+const store = createStore(reduxReducer, applyMiddleware(thunk));
 
 export const findByTestAttr = (wrapper, val) => {
 	return wrapper.find(`[data-test="${val}"]`);
@@ -33,11 +39,8 @@ export const renderWithRouterAndRedux = (
 	{
 		route = '/',
 		history = createMemoryHistory({ initialEntries: [route] }),
-		initialState = { feed: { feed: [] } },
 	} = {},
 ) => {
-	const mockStore = configureStore();
-	let store = mockStore(initialState);
 	const Wrapper = ({ children }) => (
 		<Provider store={store}>
 			<Router history={history}>{children}</Router>

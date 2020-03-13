@@ -8,38 +8,20 @@ import { renderWithRouterAndRedux } from '../testUtils';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-let ReportsComponent = (
-	<BrowserRouter>
-		<ReportsPage />
-	</BrowserRouter>
-);
 afterEach(cleanup);
 
 describe('Reports', () => {
-	const mockStore = configureStore();
-	let store;
-
 	it('renders without crashing', () => {
-		store = mockStore({ feed: { feed: [] } });
-
-		renderWithRouterAndRedux(
-			<Provider store={store}>{ReportsComponent}</Provider>,
-		);
+		renderWithRouterAndRedux(<ReportsPage />);
 	});
 
 	it('matches snapshot', () => {
-		const tree = renderer.create(
-			renderWithRouterAndRedux(
-				<Provider store={store}>{ReportsComponent}</Provider>,
-			),
-		);
+		const tree = renderer.create(renderWithRouterAndRedux(<ReportsPage />));
 		expect(tree.toJSON()).toMatchSnapshot();
 	});
 
 	it('displays header text', () => {
-		const { getByText } = render(
-			<Provider store={store}>{ReportsComponent}</Provider>,
-		);
+		const { getByText } = renderWithRouterAndRedux(<ReportsPage />);
 		getByText(/Overview/i);
 		getByText(/Recognition/i);
 		getByText(/Participation/i);
