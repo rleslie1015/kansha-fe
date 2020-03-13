@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import SideBar from './SideBar';
 import Modal from './Modal';
@@ -18,12 +19,16 @@ const Dashboard = ({ children }) => {
 	);
 
 	let location = useLocation();
+	console.log(location);
+
+	let history = useHistory();
 
 	useEffect(() => {
 		if (location.search.match('help')) {
 			setHelpModal(true);
+			history.push(location.pathname);
 		}
-	}, [location]);
+	}, [location, history]);
 
 	return (
 		<>
