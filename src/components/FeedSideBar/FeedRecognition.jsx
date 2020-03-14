@@ -22,7 +22,6 @@ function FeedRecognition({ rec, badge, open }) {
 						alt="badge"
 						className={`${open ? `rec-badge` : `hidden-rec`}`}
 						src={badge?.badge_URL}
-						alt="badge"
 					/>
 				)}
 				<p
