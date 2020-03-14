@@ -1,31 +1,86 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup, act, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import 'jest-canvas-mock';
 import ReportsPage from '../../components/AdminDashboard/AdminDashboard';
 import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
 import { renderWithRouterAndRedux } from '../utils';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
+import mockAxios from 'axios';
 
 afterEach(cleanup);
 
-describe.skip('Reports', () => {
+describe('Reports', () => {
+	mockAxios.get.mockImplementation(url => {
+		switch (url) {
+			case '/reports/range?time=weeks':
+				return Promise.resolve({
+					data: {
+						count: 5,
+						results: {
+							Saturday: 0,
+							Friday: 0,
+							Thursday: 0,
+							Wednesday: 0,
+							Tuesday: 0,
+							Monday: 5,
+							Sunday: 0,
+						},
+					},
+				});
+			case '/reports/top?type=sender&limit=5&time=weeks':
+				return Promise.resolve({
+					data: {
+						count: 5,
+						employees: [
+							{
+								first_name: 'Kevin',
+								last_name: 'Smith',
+								sender: 4,
+								profile_picture:
+									'https://lh3.googleusercontent.com/a-/AOh14GhcGzXoKjtH51pnoKbaUvz5ml2bDBvSduG-bhYL-Q',
+								count: '5',
+							},
+						],
+					},
+				});
+			case '/reports/top?type=recipient&limit=5&time=weeks':
+				return Promise.resolve({
+					data: {
+						count: 5,
+						employees: [
+							{
+								first_name: 'Thor',
+								last_name: 'Odinson',
+								recipient: 6,
+								profile_picture:
+									'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatarblank.png',
+								count: '2',
+							},
+						],
+					},
+				});
+			default:
+				return Promise.resolve({ data: {} });
+		}
+	});
 	it('renders without crashing', () => {
-		renderWithRouterAndRedux(<ReportsPage />);
+		return wait(() => {
+			const { getByText } = renderWithRouterAndRedux(<ReportsPage />);
+			const overview = getByText(/Overview/);
+			expect(overview).toBeInTheDocument();
+		});
 	});
 
-	it('matches snapshot', () => {
-		const tree = renderer.create(renderWithRouterAndRedux(<ReportsPage />));
-		expect(tree.toJSON()).toMatchSnapshot();
-	});
-
-	it('displays header text', () => {
-		const { getByText } = renderWithRouterAndRedux(<ReportsPage />);
-		getByText(/Overview/i);
-		getByText(/Recognition/i);
-		getByText(/Participation/i);
-		getByText(/Most Thanked/i);
-		getByText(/Most Thankful/i);
+	it.skip('displays header text', () => {
+		return wait(() => {
+			const { getByText, getAllByText } = renderWithRouterAndRedux(
+				<ReportsPage />,
+			);
+			getByText(/Overview/i);
+			getAllByText(/Recognition/i);
+			getAllByText(/Participation/i);
+			getByText(/Most Thanked/i);
+			getByText(/Most Thankful/i);
+		});
 	});
 });

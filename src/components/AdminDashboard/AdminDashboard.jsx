@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 					<h1>Overview</h1>
 					<Reports />
 				</div>
-				<FeedSideBar />
+				{/* <FeedSideBar /> */}
 			</div>
 		</>
 	);

@@ -1,7 +1,10 @@
-export default {
-	get: jest.fn(() => Promise.resolve({ data: {} })),
-	post: jest.fn(() => Promise.resolve({ data: {} })),
-	put: jest.fn(() => Promise.resolve({ data: {} })),
-	delete: jest.fn(() => Promise.resolve({ data: {} })),
-	create: jest.fn(() => this),
-};
+const mockAxios = jest.genMockFromModule('axios');
+
+mockAxios.create = jest.fn(() => mockAxios);
+mockAxios.get = jest.fn(() => Promise.resolve({ data: {} }));
+mockAxios.all = jest.fn(array => Promise.all(array));
+mockAxios.spread = jest.fn(callback =>
+	jest.fn(arr => callback.apply(null, arr)),
+);
+
+export default mockAxios;

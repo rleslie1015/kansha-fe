@@ -3,8 +3,8 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 import { Line } from 'react-chartjs-2';
 
 function TotalRecogGraph({ lineFilter }) {
-	const [graphData, setGraphData] = useState();
-	const [labels, setLabels] = useState();
+	const [graphData, setGraphData] = useState([]);
+	const [labels, setLabels] = useState([]);
 
 	useEffect(() => {
 		axiosWithAuth()
