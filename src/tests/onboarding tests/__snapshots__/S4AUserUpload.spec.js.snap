@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`S4 matches snapshot 1`] = `
+Array [
+  <div
+    className="admin-user-add-container"
+  >
+    <h2
+      className="user-upload-title"
+    >
+      Add Employees
+    </h2>
+    <div
+      className="admin-add-employee-form"
+    >
+      <div
+        className="upload-now-question"
+      >
+        <h6>
+          Would you like to add employees now?
+        </h6>
+        <div>
+          <input
+            id="yes"
+            name="drone"
+            onChange={[Function]}
+            type="radio"
+            value="true"
+          />
+          <label
+            htmlFor="yes"
+          >
+            Yes
+          </label>
+        </div>
+        <div>
+          <input
+            id="no"
+            name="drone"
+            onChange={[Function]}
+            type="radio"
+            value="false"
+          />
+          <label
+            htmlFor="no"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <button
+    onClick={[Function]}
+  >
+    Next
+  </button>,
+  <div
+    className="step-p-container"
+  >
+    <span
+      className="previousarrow"
+    >
+      <i
+        className="fas fa-arrow-left"
+      />
+      <div
+        onClick={[Function]}
+      >
+        <p>
+           Previous step
+        </p>
+      </div>
+    </span>
+  </div>,
+  <p>
+    Continue later
+  </p>,
+]
+`;

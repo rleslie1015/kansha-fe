@@ -3,7 +3,7 @@ import Auth from '../../utils/auth';
 const auth = new Auth();
 export default function DidYouKnow() {
 	return (
-		<section className="didyouknow">
+		<section className="didyouknow" data-test='didyouknow'>
 			<figure>
 				<iframe
 					src="https://www.youtube.com/embed/8Ybqd9pAFk0"
@@ -20,7 +20,7 @@ export default function DidYouKnow() {
 					known to have 31% lower voluntary turnover than those that
 					don’t (Anderson, 2018).
 				</p>
-				<button onClick={auth.login} className="btn-get-started">
+				<button onClick={auth.login} className="btn-get-started" data-test='getstarted'>
 					Get Started
 				</button>
 			</section>

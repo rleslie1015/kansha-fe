@@ -6,6 +6,7 @@ const HamburgerMenu = ({ open, setOpen }) => {
 			className={`hamburger-landing hamburger hamburger--collapse ${open &&
 				'is-active'}`}
 			type="button"
+			data-test="hamburger-menu"
 			onClick={() => setOpen(!open)}>
 			<span
 				className="hamburger-box"
