@@ -13,7 +13,7 @@ exports[`S2 matches snapshot 1`] = `
     >
       <input
         className="formname"
-        defaultValue="Joss"
+        defaultValue="Vanessa"
         name="first_name"
         placeholder="First Name"
       />
@@ -192,6 +192,7 @@ exports[`S2 matches snapshot 1`] = `
         >
           <div
             className="placeholder-div"
+            onClick={[Function]}
           >
             e.g. Accounting
           </div>
