@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, fireEvent, cleanup, act, wait } from '@testing-library/react';
+import { cleanup, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-canvas-mock';
 import ReportsPage from '../../components/AdminDashboard/AdminDashboard';
-import renderer from 'react-test-renderer';
 import { renderWithRouterAndRedux } from '../utils';
 import mockAxios from 'axios';
 
