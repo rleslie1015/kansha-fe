@@ -6,5 +6,6 @@ mockAxios.all = jest.fn(array => Promise.all(array));
 mockAxios.spread = jest.fn(callback =>
 	jest.fn(arr => callback.apply(null, arr)),
 );
+mockAxios.delete = jest.fn(() => Promise.resolve({ data: {} }));
 
 export default mockAxios;

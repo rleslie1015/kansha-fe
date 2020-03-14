@@ -1,9 +1,13 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import { shallow } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { BrowserRouter } from 'react-router-dom';
+import mockAxios from 'axios';
+
 import { Comment } from '../../components/Feed/Comment';
+import { renderWithRouter } from '../utils';
 
 Enzyme.configure({ adapter: new Adapter() });
 const spy = jest.fn();
@@ -20,15 +24,17 @@ describe('Comment component', () => {
 
 		expect(wrapper.exists());
 	});
-});
 
-it.skip('onClick handleDelete', () => {
-	const wrapper = shallow(CommentComponent);
-
-	wrapper
-		.find('Trashcan')
-		.last()
-		.simulate('click');
-	wrapper.update();
-	expect(spy).toBeCalled();
+	it('onClick handleDelete', () => {
+		const { container } = renderWithRouter(
+			<Comment
+				comment={{ date: '2020/03/01' }}
+				profile={{ user_type: 'admin' }}
+			/>,
+		);
+		window.confirm = () => true;
+		const trashcan = container.querySelector('svg');
+		fireEvent.click(trashcan);
+		expect(mockAxios.delete).toHaveBeenCalled();
+	});
 });
