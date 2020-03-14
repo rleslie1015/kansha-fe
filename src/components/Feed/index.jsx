@@ -72,7 +72,7 @@ const Feed = () => {
 
 	return (
 		<section className="container-feed-card-and-comments">
-			{!feed ? (
+			{feed ? (
 				<main className="home-main">
 					{feed.map(rec => (
 						<FeedCard

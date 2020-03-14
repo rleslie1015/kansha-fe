@@ -42,15 +42,15 @@
 					font-size: 1.5rem;
 					font-weight: 100;
 					top: 25%;
-					right: 1rem;
+					right: -10px;
 					transition: 0.5s ease;
+					width: 20px;
+					height: fit-content;
 				}
 			}
 
 			.select-selected.select-arrow-active:after {
-				transform: rotate(180deg);
-				transform: scaley(-1);
-				top: 75%;
+				transform: rotateX(180deg);
 			}
 
 			.placeholder-div {
@@ -67,12 +67,11 @@
 				}
 			}
 		}
-		#limit-number {
-			width: 10rem;
-		}
+		// #limit-number {
+		// 	width: 10rem;
+		// }
 
 		.limit-dropdown-container {
-			width: 15rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -84,7 +83,7 @@
 			.custom-select .dashboard {
 				width: 8rem;
 			}
-			.limit-dropdown-container select {
+			select {
 				label {
 					font-size: 1.8rem;
 					font-weight: 300;

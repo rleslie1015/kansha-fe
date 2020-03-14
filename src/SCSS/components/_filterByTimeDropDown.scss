@@ -13,9 +13,8 @@
 
 			.select-selected {
 				padding: 0;
-				height: 100%;
 				display: flex;
-
+				align-items: center;
 				width: 10rem;
 
 				&:after {
@@ -25,15 +24,15 @@
 					font-size: 1.5rem;
 					font-weight: 100;
 					top: 25%;
-
+					width: 20px;
+					height: fit-content;
+					right: 0;
 					transition: 0.5s ease;
 				}
 			}
 
 			.select-selected.select-arrow-active:after {
-				transform: rotate(180deg);
-				transform: scaley(-1);
-				top: 75%;
+				transform: rotateX(180deg);
 			}
 
 			.placeholder-div {

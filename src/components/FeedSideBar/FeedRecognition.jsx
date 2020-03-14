@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 function FeedRecognition({ rec, badge, open }) {
-	// const [open, setOpen] = React.useState(false);
-
 	let history = useHistory();
 
 	const handleClick = e => {
@@ -23,6 +21,7 @@ function FeedRecognition({ rec, badge, open }) {
 					<img
 						className={`${open ? `rec-badge` : `hidden-rec`}`}
 						src={badge?.badge_URL}
+						alt="badge"
 					/>
 				)}
 				<p

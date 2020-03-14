@@ -22,7 +22,7 @@ function SingleUser({ user }) {
 	});
 
 	const [employees, setEmployees] = useState([]);
-	const [submitted, setSubmitted] = useState(false);
+	const [, setSubmitted] = useState(false);
 
 	const handleSubmit = () => {
 		axiosWithAuth()
