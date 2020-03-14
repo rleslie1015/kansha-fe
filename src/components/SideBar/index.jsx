@@ -7,6 +7,7 @@ import { ReactComponent as HistoryIcon } from '../../assets/history.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/settings.svg';
 import { ReactComponent as PowerIcon } from '../../assets/signout.svg';
 import { ReactComponent as TeamIcon } from '../../assets/workspacenav.svg';
+import { ReactComponent as HelpIcon } from '../../assets/HelpModalImgs/Help.svg';
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
 
@@ -61,6 +62,13 @@ function Sidebar({ user }) {
 					icon={SettingsIcon}
 					open={open}
 					className="fill-white"
+				/>
+				<SidebarLink
+					path="?help"
+					name="Get help"
+					icon={HelpIcon}
+					open={open}
+					className="help-btn"
 				/>
 			</nav>
 			<section className="nav-signout" onClick={() => signout()}>

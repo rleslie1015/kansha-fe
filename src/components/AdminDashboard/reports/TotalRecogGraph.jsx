@@ -64,6 +64,10 @@ function TotalRecogGraph({ lineFilter }) {
 									labelString: 'Number of Recognitions',
 									fontSize: 16,
 								},
+								ticks: {
+									beginAtZero: true,
+									stepSize: 1,
+								},
 							},
 						],
 					},
