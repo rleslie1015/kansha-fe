@@ -62,16 +62,16 @@ describe('Reports', () => {
 				return Promise.resolve({ data: {} });
 		}
 	});
-	it('renders without crashing', () => {
-		return wait(() => {
+	it('renders without crashing', async () => {
+		await wait(() => {
 			const { getByText } = renderWithRouterAndRedux(<ReportsPage />);
 			const overview = getByText(/Overview/);
 			expect(overview).toBeInTheDocument();
 		});
 	});
 
-	it.skip('displays header text', () => {
-		return wait(() => {
+	it('displays header text', async () => {
+		await wait(() => {
 			const { getByText, getAllByText } = renderWithRouterAndRedux(
 				<ReportsPage />,
 			);

@@ -5,6 +5,7 @@ const Modal = ({ close, children }) => {
 
 	useEffect(() => {
 		(function fadeIn() {
+			if (!modal.current) return null;
 			let val = parseFloat(modal.current.style.opacity);
 			if (!((val += 0.1) > 1)) {
 				modal.current.style.opacity = val;
