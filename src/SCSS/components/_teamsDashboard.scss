@@ -1,9 +1,57 @@
 .teams-dashboard {
 	border: 1px solid blue;
 	margin-left: 10rem;
+	margin-right: 10rem;
 
 	h1 {
 		font-size: 3.6rem;
 		color: $color-primary-nav;
+		margin-bottom: 5rem;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+		color: $color-primary-nav;
+	}
+
+	.teams-employee-card {
+		display: flex;
+		justify-content: space-around;
+		border: 1px solid green;
+
+		.teams-employee-details {
+			display: flex;
+			align-items: center;
+			width: 75rem;
+			border: 1px solid purple;
+
+			.teams {
+				margin-left: 20rem;
+			}
+
+			.job-title {
+				max-width: 15rem;
+				min-width: 15rem;
+			}
+		}
+	}
+
+	.teams-employee {
+		display: flex;
+		width: 250px;
+		align-items: center;
+		border: 1px solid red;
+
+		.teams-profile-picture {
+			margin-right: 2rem;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+		}
+	}
+
+	.teams-employee-icons {
+		align-items: center;
+		display: flex;
 	}
 }
