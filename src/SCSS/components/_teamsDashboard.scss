@@ -17,13 +17,17 @@
 	.teams-employee-card {
 		display: flex;
 		justify-content: space-around;
-		border: 1px solid green;
+		height: 6.2rem;
+		margin-bottom: 2rem;
+
+		// .teams-employee-details:nth-child(2) {
+		// 	// background: red;
+		// }
 
 		.teams-employee-details {
 			display: flex;
 			align-items: center;
 			width: 75rem;
-			border: 1px solid purple;
 
 			.teams {
 				margin-left: 20rem;
@@ -33,6 +37,11 @@
 				max-width: 15rem;
 				min-width: 15rem;
 			}
+
+			h3 {
+				font-size: 1.6rem;
+				color: $color-primary-nav;
+			}
 		}
 	}
 
@@ -40,13 +49,17 @@
 		display: flex;
 		width: 250px;
 		align-items: center;
-		border: 1px solid red;
 
 		.teams-profile-picture {
 			margin-right: 2rem;
 			border-radius: 50%;
 			width: 40px;
 			height: 40px;
+		}
+
+		h3 {
+			font-size: 1.6rem;
+			color: $color-primary-nav;
 		}
 	}
 

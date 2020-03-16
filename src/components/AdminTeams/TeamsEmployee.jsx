@@ -4,6 +4,7 @@ import React from 'react';
 import { ReactComponent as HideIcon } from '../../assets/TeamsIcons/hide.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
+import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 const TeamsEmployee = props => {
 	return (
@@ -20,7 +21,14 @@ const TeamsEmployee = props => {
 			</div>
 			<div className="teams-employee-details">
 				<h3 className="job-title">{props.data.job_title}</h3>
-				<h3 className="teams">Teams</h3>
+				<h3 className="teams">Teams (0)</h3>
+				<RecognitionIcon
+					style={{
+						marginLeft: '20rem',
+						height: '20px',
+						width: '20px',
+					}}
+				/>
 			</div>
 			<div className="teams-employee-icons">
 				<HideIcon style={{ marginRight: '2rem' }} />
