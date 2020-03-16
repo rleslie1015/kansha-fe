@@ -1,6 +1,5 @@
 .feed-bar {
 	background-color: $color-white;
-	// border: 2px solid red;
 	width: 55px;
 	height: 100vh;
 	right: 0px;
@@ -8,40 +7,43 @@
 	display: flex;
 	border-left: 2px solid lightgray;
 	flex-direction: column;
-
 	transition: width 500ms ease;
-	@include boxshadow();
+	z-index: 5;
 
 	.feed-headers {
 		display: flex;
 		margin-top: 3rem;
 		margin-bottom: 3rem;
 		margin-left: 1rem;
-		// margin-right: 2rem;
 		justify-content: space-between;
 		position: relative;
+		user-select: none;
 
 		&:hover {
 			cursor: pointer;
 		}
 
-		.is-arrow-open:after {
+		h2 {
+			margin-left: 5px;
+		}
+
+		.is-arrow-open:before {
 			position: absolute;
 			content: '';
 			top: 50%;
 			transform: translateY(-50%);
-			left: 3.5rem;
+			left: -6px;
 			width: 0;
 			height: 0;
 			border: 5px solid transparent;
 			border-color: transparent transparent transparent $color-secondary;
 		}
-		.is-arrow-closed:after {
+		.is-arrow-closed:before {
 			position: absolute;
 			content: '';
 			top: 50%;
 			transform: translateY(-50%);
-			left: 3rem;
+			left: -6px;
 			width: 0;
 			height: 0;
 			border: 5px solid transparent;

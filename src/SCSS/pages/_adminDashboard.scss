@@ -1,11 +1,5 @@
-.dashboard-layout {
-	display: flex;
-	flex-direction: row;
-}
-
 .admin-dashboard {
-	margin-left: 7rem;
-	margin-right: 4.4rem;
+	margin: 0 6rem;
 	overflow-x: hidden;
 	display: flex;
 	color: $color-black;
@@ -13,7 +7,6 @@
 	height: 100vh;
 	flex-direction: column;
 	background-color: $color-white;
-	width: 100%;
 
 	h1 {
 		font-weight: 900;

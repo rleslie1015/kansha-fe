@@ -1,6 +1,5 @@
 import React from 'react';
 import Reports from './Reports';
-import FeedSideBar from '../FeedSideBar';
 
 const AdminDashboard = () => {
 	return (
@@ -10,7 +9,6 @@ const AdminDashboard = () => {
 					<h1>Overview</h1>
 					<Reports />
 				</div>
-				<FeedSideBar />
 			</div>
 		</>
 	);

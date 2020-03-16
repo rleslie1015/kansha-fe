@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import SideBar from './SideBar';
 import Modal from './Modal';
 import HelpModal from './HelpModal/HelpModal';
+import FeedSideBar from './FeedSideBar';
 
 const Dashboard = ({ children }) => {
 	const { profile } = useSelector(({ user }) => ({
@@ -33,6 +34,7 @@ const Dashboard = ({ children }) => {
 	return (
 		<>
 			<SideBar />
+			<FeedSideBar />
 			{children}
 			{helpModal && (
 				<Modal close={setHelpModal}>

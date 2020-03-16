@@ -33,8 +33,7 @@
 				height: 100%;
 				display: flex;
 				align-items: center;
-				// width: 6rem;
-				// border: 2px solid red;
+
 				&:after {
 					border: none;
 					content: '\2228';
@@ -67,9 +66,6 @@
 				}
 			}
 		}
-		// #limit-number {
-		// 	width: 10rem;
-		// }
 
 		.limit-dropdown-container {
 			display: flex;
@@ -87,7 +83,6 @@
 				label {
 					font-size: 1.8rem;
 					font-weight: 300;
-					// 	margin-bottom: 0.5rem;
 				}
 				.dropdown-view {
 					background-color: #fff;
@@ -134,8 +129,10 @@
 			align-items: center;
 
 			progress {
+				border: 0;
 				border-radius: 5px;
 				width: 100px;
+				background: transparent;
 			}
 
 			progress::-webkit-progress-bar {
@@ -150,7 +147,9 @@
 			}
 
 			progress::-moz-progress-bar {
-				background-color: $color-gray-light;
+				background-color: $color-primary;
+				border-radius: 2px;
+				transition: all 0.3s ease;
 			}
 		}
 		.most-recog-heart {

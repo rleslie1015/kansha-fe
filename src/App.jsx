@@ -11,7 +11,7 @@ import UserUpload from './components/UserUpload/UserUpload';
 import Landing from './components/Landing';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
-import Feed from './components/Feed';
+// import Feed from './components/Feed';
 import Workspace from './components/Workspace';
 import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
@@ -67,7 +67,7 @@ export const App = () => {
 		return (
 			<Dashboard>
 				<Switch>
-					<ProtectedRoute exact path="/" component={Feed} />
+					<ProtectedRoute exact path="/" component={AdminDashboard} />
 					<ProtectedRoute
 						path="/profile/:id"
 						component={UserProfile}
