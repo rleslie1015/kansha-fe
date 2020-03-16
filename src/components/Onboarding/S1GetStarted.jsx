@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function S1GetStarted() {
 	return (
-		<div>
+		<div data-test="S1Component">
 			<h1>Getting Started</h1>
 			<h5>You're only a few steps away from getting started on Kansha</h5>
 			<ul className="list-container">
@@ -26,7 +26,7 @@ function S1GetStarted() {
 				</li>
 			</ul>
 			<Link to="/onboarding/step-2">
-				<button>Let's Go</button>
+				<button data-test="S1Button">Let's Go</button>
 			</Link>
 		</div>
 	);

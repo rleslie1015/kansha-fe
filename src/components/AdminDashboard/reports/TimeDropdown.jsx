@@ -8,8 +8,9 @@ function TimeDropdown({ handleFilter, annual, week, month }) {
 				classNombre="custom-select dashboard"
 				setSelection={handleFilter}
 				placeholder={week}
+				defaultValue="weeks"
 				name="filter"
-				id="cars">
+				id="limit-number">
 				<option value="weeks">{week}</option>
 				<option value="months">{month}</option>
 				<option value="years">{annual}</option>

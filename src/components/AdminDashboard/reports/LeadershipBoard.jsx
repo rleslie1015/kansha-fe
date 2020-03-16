@@ -21,7 +21,6 @@ function LeadershipBoard(props) {
 			.then(res => {
 				setRank(res.data.employees);
 				setCount(res.data.count);
-				console.log(res);
 			})
 			.catch(err => {
 				console.log(err);

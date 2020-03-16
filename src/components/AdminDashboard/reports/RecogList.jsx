@@ -4,11 +4,9 @@ import heart from '../../../assets/heart.png';
 function RecogList({ rank, count }) {
 	return (
 		<ul className="recog-list-container">
-			{rank.map(person => {
+			{rank.map((person, idx) => {
 				return (
-					<li
-						className="most-recog-individual"
-						key={person.recipient}>
+					<li className="most-recog-individual" key={idx}>
 						<img
 							className="most-rec-profile-pic"
 							src={person.profile_picture}

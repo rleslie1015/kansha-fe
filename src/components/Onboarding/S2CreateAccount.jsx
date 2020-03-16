@@ -7,9 +7,7 @@ import DropDown from './DropDown.jsx';
 // post request to /users endpoint to create new user
 
 function S2CreateAccount({ user, setUser, handleUser }) {
-	// const [selection, setSelection] = useState('0');
 	const { register, errors, formState } = useForm({ mode: 'onChange' });
-	console.log(user);
 	let history = useHistory();
 
 	function handleIndustry(value) {

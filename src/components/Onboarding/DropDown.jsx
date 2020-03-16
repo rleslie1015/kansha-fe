@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState, Children } from 'react';
 
-const DropDown = ({ children, setSelection, id, placeholder, classNombre }) => {
+const DropDown = ({
+	children,
+	setSelection,
+	id,
+	placeholder,
+	classNombre,
+	defaultValue,
+}) => {
 	const select = useRef(null);
 	const fakeSelect = useRef(null);
 	const fakeOptions = useRef(null);
-	const [current, setCurrent] = useState(
-		<div className="placeholder-div">{placeholder}</div>,
-	);
 
 	const optionClick = e => {
 		const s = select.current;
@@ -33,8 +37,17 @@ const DropDown = ({ children, setSelection, id, placeholder, classNombre }) => {
 	const selectClick = e => {
 		e.stopPropagation();
 		fakeOptions.current.classList.toggle('select-hide');
+		if (e.target.classList.contains('placeholder-div')) {
+			fakeSelect.current.classList.add('select-arrow-active');
+		}
 		e.target.classList.toggle('select-arrow-active');
 	};
+
+	const [current, setCurrent] = useState(
+		<div className="placeholder-div" onClick={selectClick}>
+			{placeholder}
+		</div>,
+	);
 
 	useEffect(() => {
 		const closeAllSelect = elmnt => {

@@ -8,7 +8,6 @@ export const Comment = ({ comment, profile }) => {
 	const time = useMemo(() => timeAgo(comment.date), [comment]);
 
 	const handleDelete = id => {
-		console.log(comment.rec_id);
 		// this will need to be turned into a confirmation modal, like the one on the figma.
 		if (
 			window.confirm(

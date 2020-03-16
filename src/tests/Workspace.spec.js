@@ -1,41 +1,56 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import { shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { wait, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import mockAxios from 'axios';
+
 import Workspace from '../components/Workspace';
-import { act } from 'react-dom/test-utils';
+import { renderWithRouterAndRedux } from './utils';
 
-Enzyme.configure({ adapter: new Adapter() });
-
-describe.skip('Workspace', () => {
-	let useEffect;
-
-	const mockUseEffect = () => {
-		useEffect.mockImplementationOnce(f => f());
-	};
-
-	useEffect = jest.spyOn(React, 'useEffect');
-	mockUseEffect();
-	mockUseEffect();
-
-	it('Find word Workspace on page', () => {
-		const wrapper = shallow(<Workspace />);
-		expect(wrapper.find('Workspace'));
+describe('Workspace', () => {
+	mockAxios.get.mockImplementation(() =>
+		Promise.resolve({
+			data: {
+				count: 1,
+				employees: [
+					{
+						id: 4,
+						first_name: 'Test',
+						last_name: 'User',
+						profile_picture: 'https://fake.image',
+						job_title: 'CEO',
+						user_type: 'admin',
+						department: 'x',
+						org_name: "Kevin's Funhouse",
+					},
+				],
+			},
+		}),
+	);
+	it('should find word Workspace on page', async () => {
+		await wait(() => {
+			const { getByText } = renderWithRouterAndRedux(<Workspace />);
+			getByText(/Workspace/);
+		});
 	});
 
-	it('it should fire a key press event in the search bar ', () => {
-		const wrapper = shallow(<Workspace />);
-
-		wrapper
-			.find()
-			.first()
-			.simulate('keypress', { key: 'a' });
-		expect(wrapper.prop('onKeyUp'));
+	it('should change input', async () => {
+		await wait(() => {
+			const { container } = renderWithRouterAndRedux(<Workspace />);
+			const input = container.querySelector('input');
+			expect(input.value).toBe('');
+			fireEvent.change(input, { target: { value: 'Test' } });
+			expect(input.value).toBe('Test');
+		});
 	});
 
-	it('it should find the icon in the search bar', () => {
-		const wrapper = shallow(<Workspace />);
-
-		expect(wrapper.find(<div></div>));
+	it('should call backend on input change', async () => {
+		await wait(() => {
+			const { container } = renderWithRouterAndRedux(<Workspace />);
+			const input = container.querySelector('input');
+			fireEvent.change(input, { target: { value: 'Test' } });
+			expect(mockAxios.get).toHaveBeenCalledWith(
+				'/employees/organizations?search=Test',
+			);
+		});
 	});
 });

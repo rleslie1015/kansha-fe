@@ -1,20 +1,18 @@
 // layout of the profile and peer profile page
 .container-entire-profile {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	background-color: $color-white;
 	color: $color-black;
-	padding: 2rem 2rem 2rem 0;
-	width: 100%;
+	padding: 2rem 0;
 	height: 100vh;
-	overflow: hidden;
+	margin: 0 8rem;
 
 	.container-profile-card-and-badges {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		width: 45%;
-		margin-left: 8rem;
 
 		.container-profile-card {
 			height: 45%;
