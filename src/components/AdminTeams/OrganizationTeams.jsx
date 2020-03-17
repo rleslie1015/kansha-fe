@@ -27,6 +27,12 @@ const OrganizationTeams = () => {
 				<button className="btn-filter">Employees</button>
 				<button className="btn-filter">Teams</button>
 				<button className="btn-filter">Hidden</button>
+				<input
+					type="text"
+					id="search"
+					name="search"
+					placeholder="Search"
+				/>
 			</div>
 			<div className="select-add-members">
 				<h3 className="select-all">Select All</h3>

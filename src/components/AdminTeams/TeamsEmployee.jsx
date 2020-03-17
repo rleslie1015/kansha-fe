@@ -10,6 +10,8 @@ const TeamsEmployee = props => {
 	return (
 		<tr className="teams-employee-card">
 			<td className="teams-employee">
+				<input type="checkbox" id="checkbox" />
+				<label for="checkbox"></label>
 				<img
 					src={props.data.profile_picture}
 					alt="profile img"
@@ -21,18 +23,21 @@ const TeamsEmployee = props => {
 			</td>
 			<td className="teams-employee-details">
 				<h3 className="job-title">{props.data.job_title}</h3>
+			</td>
+			<td className="teams-container">
 				<h3 className="teams">Teams (0)</h3>
+			</td>
+			<td className="recognition-btn">
 				<RecognitionIcon
 					style={{
-						marginLeft: '20rem',
 						height: '20px',
 						width: '20px',
 					}}
 				/>
 			</td>
 			<td className="teams-employee-icons">
-				<HideIcon style={{ marginRight: '2rem' }} />
-				<DeleteIcon style={{ marginRight: '2rem' }} />
+				<HideIcon style={{ marginRight: '20px' }} />
+				<DeleteIcon style={{ marginRight: '20px' }} />
 				<GroupIcon />
 			</td>
 		</tr>

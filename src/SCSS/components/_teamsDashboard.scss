@@ -1,8 +1,12 @@
 .teams-dashboard {
-	margin-left: 10rem;
+	margin-left: 13rem;
 	margin-right: 10rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 
 	.employees-table {
+		margin-top: 3rem;
 		width: 100%;
 	}
 
@@ -13,6 +17,7 @@
 		border-top: 1px solid $color-gray-light;
 		border-bottom: 1px solid $color-gray-light;
 		padding: 10px 0 10px 0;
+		width: 100%;
 
 		button {
 			margin-left: 2rem;
@@ -21,6 +26,12 @@
 		h3 {
 			color: $color-primary-nav;
 			font-size: 1.8rem;
+		}
+
+		#search {
+			border-radius: 0.5rem;
+			display: flex;
+			align-self: flex-end;
 		}
 	}
 
@@ -52,10 +63,10 @@
 	}
 
 	.teams-employee-card {
-		display: flex;
-		justify-content: space-around;
 		height: 6.2rem;
 		margin-bottom: 2rem;
+		display: flex;
+		justify-content: space-between;
 
 		// .teams-employee-details:nth-child(2) {
 		// 	// background: red;
@@ -64,7 +75,8 @@
 		.teams-employee-details {
 			display: flex;
 			align-items: center;
-			width: 75rem;
+			justify-content: center;
+			width: 20rem;
 
 			.teams {
 				margin-left: 20rem;
@@ -82,9 +94,20 @@
 		}
 	}
 
+	.teams-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.recognition-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.teams-employee {
 		display: flex;
-		width: 100%;
+		width: 20%;
 		align-items: center;
 		justify-content: flex-start;
 
@@ -99,10 +122,43 @@
 			font-size: 1.6rem;
 			color: $color-primary-nav;
 		}
-	}
 
-	.teams-employee-icons {
-		align-items: center;
-		display: flex;
+		// Checkbox Variable
+		$checkbox-width: 18px;
+
+		// Checkboxes
+		input[type='checkbox'] {
+			position: absolute;
+			left: -9999px;
+
+			& + label {
+				position: relative;
+				display: inline-block;
+				padding: 6px 10px 6px ($checkbox-width + 10);
+				cursor: pointer;
+
+				// Default State
+				&:before {
+					display: block;
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 50%;
+					margin: (-$checkbox-width/2) 0 0;
+					width: $checkbox-width;
+					height: $checkbox-width;
+					background-image: url('https://andycrone.com/media/2015/02/app-icons.png');
+					background-repeat: no-repeat;
+					background-size: 72px auto;
+				}
+			}
+
+			// Checked State
+			&:checked + label {
+				&:before {
+					background-position: (-$checkbox-width) 0;
+				}
+			}
+		}
 	}
 }
