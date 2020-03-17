@@ -5,6 +5,31 @@
 	flex-direction: column;
 	justify-content: flex-start;
 
+	.add-team-container {
+		display: flex;
+		justify-content: flex-end;
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: 0.7px solid $color-primary;
+			width: 18rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 0.5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
+	}
+
 	.employees-table {
 		margin-top: 3rem;
 		width: 100%;
@@ -20,6 +45,7 @@
 		width: 100%;
 
 		button {
+			padding: 0 1.2rem 0 1.2rem;
 			margin-left: 2rem;
 		}
 
@@ -28,10 +54,16 @@
 			font-size: 1.8rem;
 		}
 
-		#search {
-			border-radius: 0.5rem;
+		.employee-search-container {
 			display: flex;
-			align-self: flex-end;
+			justify-content: flex-end;
+			width: 190rem;
+
+			#search {
+				border: 1px solid $color-gray-light;
+				border-radius: 0.5rem;
+				width: 25rem;
+			}
 		}
 	}
 
@@ -112,7 +144,7 @@
 		justify-content: flex-start;
 
 		.teams-profile-picture {
-			margin-right: 2rem;
+			margin: 0 20px 0 20px;
 			border-radius: 50%;
 			width: 40px;
 			height: 40px;
@@ -123,41 +155,76 @@
 			color: $color-primary-nav;
 		}
 
-		// Checkbox Variable
-		$checkbox-width: 18px;
+		// css checkbox mixin
+		@mixin css-checkbox(
+			$size: '16px',
+			$selectedColor: #444,
+			$checkColor: #fff,
+			$valign: 'middle',
+			$rounded: 0.1rem
+		) {
+			display: none;
 
-		// Checkboxes
-		input[type='checkbox'] {
-			position: absolute;
-			left: -9999px;
+			&:checked + i {
+				background: #{$selectedColor};
+				border-color: $color-primary-nav;
 
-			& + label {
-				position: relative;
-				display: inline-block;
-				padding: 6px 10px 6px ($checkbox-width + 10);
-				cursor: pointer;
+				&:hover:after {
+					opacity: 1;
+				}
 
-				// Default State
-				&:before {
-					display: block;
-					content: '';
-					position: absolute;
-					left: 0;
-					top: 50%;
-					margin: (-$checkbox-width/2) 0 0;
-					width: $checkbox-width;
-					height: $checkbox-width;
-					background-image: url('https://andycrone.com/media/2015/02/app-icons.png');
-					background-repeat: no-repeat;
-					background-size: 72px auto;
+				&:after {
+					opacity: 1;
+					border-color: #{$checkColor};
 				}
 			}
 
-			// Checked State
-			&:checked + label {
-				&:before {
-					background-position: (-$checkbox-width) 0;
+			+ i {
+				box-sizing: border-box;
+				&:before,
+				&:after {
+					box-sizing: border-box;
 				}
+			}
+			+ i {
+				position: relative;
+				display: inline-block;
+				top: -1px;
+				width: #{$size};
+				height: #{$size};
+				margin: 0;
+				vertical-align: #{$valign};
+				border: 1px solid #999;
+				transition: background 200ms ease;
+				background: #f9f9f9;
+				font-size: #{$size};
+				cursor: pointer;
+
+				&:hover:after {
+					opacity: 0.2;
+				}
+
+				&:after {
+					content: '';
+					opacity: 0;
+					transform: translateZ(1px) rotate(-45deg);
+					outline: 1px solid transparent; // hack to prevent antialias atrifacts in firefox
+					position: absolute;
+					top: 22%;
+					left: 15%;
+					width: 0.68em;
+					height: 0.4em;
+					border: 0.15em solid #222;
+					border-top: none;
+					border-right: none;
+					background: rgba(0, 0, 0, 0);
+				}
+			}
+		}
+
+		label {
+			.css-checkbox {
+				@include css-checkbox(18px, $color-primary-nav);
 			}
 		}
 	}

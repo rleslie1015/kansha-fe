@@ -10,8 +10,10 @@ const TeamsEmployee = props => {
 	return (
 		<tr className="teams-employee-card">
 			<td className="teams-employee">
-				<input type="checkbox" id="checkbox" />
-				<label for="checkbox"></label>
+				<label>
+					<input type="checkbox" class="css-checkbox" />
+					<i></i>
+				</label>
 				<img
 					src={props.data.profile_picture}
 					alt="profile img"

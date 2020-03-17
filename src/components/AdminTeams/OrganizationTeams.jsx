@@ -20,19 +20,27 @@ const OrganizationTeams = () => {
 
 	return (
 		<div className="teams-dashboard">
-			<h1>Organization</h1>
-			<h2>Employees {`(${EmployeeCount})`}</h2>
+			<div className="header">
+				<h1>Organization</h1>
+				<div className="add-team-container">
+					<button>Create a Team</button>
+				</div>
+				<h2>Employees {`(${EmployeeCount})`}</h2>
+			</div>
+
 			<div className="employee-filter-container">
 				<h3>Filter:</h3>
 				<button className="btn-filter">Employees</button>
 				<button className="btn-filter">Teams</button>
 				<button className="btn-filter">Hidden</button>
-				<input
-					type="text"
-					id="search"
-					name="search"
-					placeholder="Search"
-				/>
+				<div className="employee-search-container">
+					<input
+						type="text"
+						id="search"
+						name="search"
+						placeholder="Search"
+					/>
+				</div>
 			</div>
 			<div className="select-add-members">
 				<h3 className="select-all">Select All</h3>
