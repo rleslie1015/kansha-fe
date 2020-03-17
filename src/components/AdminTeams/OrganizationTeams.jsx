@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useSelector } from 'react-redux';
 
 import TeamsEmployee from './TeamsEmployee';
 
 const OrganizationTeams = () => {
 	const [employees, setEmployees] = useState([]);
+
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -48,7 +53,13 @@ const OrganizationTeams = () => {
 			</div>
 			<table className="employees-table">
 				{employees.map(data => {
-					return <TeamsEmployee data={data} key={data.id} />;
+					return (
+						<TeamsEmployee
+							profile={data}
+							data={data}
+							key={data.id}
+						/>
+					);
 				})}
 			</table>
 		</div>
