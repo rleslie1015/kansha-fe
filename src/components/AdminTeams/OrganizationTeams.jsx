@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useSelector } from 'react-redux';
 
 import TeamsEmployee from './TeamsEmployee';
 
 const OrganizationTeams = () => {
 	const [employees, setEmployees] = useState([]);
-
-	const { profile } = useSelector(({ user }) => ({
-		...user,
-	}));
+	const [checked, setChecked] = useState(false);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -58,6 +54,8 @@ const OrganizationTeams = () => {
 							profile={data}
 							data={data}
 							key={data.id}
+							checked={checked}
+							setChecked={setChecked}
 						/>
 					);
 				})}

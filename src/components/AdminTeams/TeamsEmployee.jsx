@@ -10,7 +10,7 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 
-const TeamsEmployee = props => {
+const TeamsEmployee = ({ data, checked, setChecked, profile }) => {
 	const [modal, setModal] = useState(false);
 
 	return (
@@ -21,16 +21,16 @@ const TeamsEmployee = props => {
 					<i></i>
 				</label>
 				<img
-					src={props.data.profile_picture}
+					src={data.profile_picture}
 					alt="profile img"
 					className="teams-profile-picture"
 				/>
 				<h3>
-					{props.data.first_name} {props.data.last_name}
+					{data.first_name} {data.last_name}
 				</h3>
 			</td>
 			<td className="teams-employee-details">
-				<h3 className="job-title">{props.data.job_title}</h3>
+				<h3 className="job-title">{data.job_title}</h3>
 			</td>
 			<td className="teams-container">
 				<h3 className="teams">Teams (0)</h3>
@@ -45,7 +45,7 @@ const TeamsEmployee = props => {
 				/>
 				{modal && (
 					<Modal close={setModal}>
-						<RecogModal profile={props.profile} />
+						<RecogModal profile={profile} />
 					</Modal>
 				)}
 			</td>
