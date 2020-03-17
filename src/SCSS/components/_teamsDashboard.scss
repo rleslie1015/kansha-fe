@@ -1,7 +1,44 @@
 .teams-dashboard {
-	border: 1px solid blue;
 	margin-left: 10rem;
 	margin-right: 10rem;
+
+	.employees-table {
+		width: 100%;
+	}
+
+	.employee-filter-container {
+		display: flex;
+		align-items: center;
+		margin-top: 3rem;
+		border-top: 1px solid $color-gray-light;
+		border-bottom: 1px solid $color-gray-light;
+		padding: 10px 0 10px 0;
+
+		button {
+			margin-left: 2rem;
+		}
+
+		h3 {
+			color: $color-primary-nav;
+			font-size: 1.8rem;
+		}
+	}
+
+	.select-add-members {
+		display: flex;
+		flex-direction: row;
+
+		h3 {
+			color: $color-gray-light;
+			font-size: 1.4rem;
+			padding: 20px 0 3px 0;
+		}
+
+		.select-all {
+			margin-right: 12rem;
+			border-bottom: 1px solid $color-gray-light;
+		}
+	}
 
 	h1 {
 		font-size: 3.6rem;
@@ -47,8 +84,9 @@
 
 	.teams-employee {
 		display: flex;
-		width: 250px;
+		width: 100%;
 		align-items: center;
+		justify-content: flex-start;
 
 		.teams-profile-picture {
 			margin-right: 2rem;

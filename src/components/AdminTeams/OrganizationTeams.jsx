@@ -22,9 +22,21 @@ const OrganizationTeams = () => {
 		<div className="teams-dashboard">
 			<h1>Organization</h1>
 			<h2>Employees {`(${EmployeeCount})`}</h2>
-			{employees.map(data => {
-				return <TeamsEmployee data={data} key={data.id} />;
-			})}
+			<div className="employee-filter-container">
+				<h3>Filter:</h3>
+				<button className="btn-filter">Employees</button>
+				<button className="btn-filter">Teams</button>
+				<button className="btn-filter">Hidden</button>
+			</div>
+			<div className="select-add-members">
+				<h3 className="select-all">Select All</h3>
+				<h3>+ Add more members</h3>
+			</div>
+			<table className="employees-table">
+				{employees.map(data => {
+					return <TeamsEmployee data={data} key={data.id} />;
+				})}
+			</table>
 		</div>
 	);
 };

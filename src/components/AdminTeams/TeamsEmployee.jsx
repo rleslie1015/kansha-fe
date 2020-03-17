@@ -8,8 +8,8 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 
 const TeamsEmployee = props => {
 	return (
-		<div className="teams-employee-card">
-			<div className="teams-employee">
+		<tr className="teams-employee-card">
+			<td className="teams-employee">
 				<img
 					src={props.data.profile_picture}
 					alt="profile img"
@@ -18,8 +18,8 @@ const TeamsEmployee = props => {
 				<h3>
 					{props.data.first_name} {props.data.last_name}
 				</h3>
-			</div>
-			<div className="teams-employee-details">
+			</td>
+			<td className="teams-employee-details">
 				<h3 className="job-title">{props.data.job_title}</h3>
 				<h3 className="teams">Teams (0)</h3>
 				<RecognitionIcon
@@ -29,13 +29,13 @@ const TeamsEmployee = props => {
 						width: '20px',
 					}}
 				/>
-			</div>
-			<div className="teams-employee-icons">
+			</td>
+			<td className="teams-employee-icons">
 				<HideIcon style={{ marginRight: '2rem' }} />
 				<DeleteIcon style={{ marginRight: '2rem' }} />
 				<GroupIcon />
-			</div>
-		</div>
+			</td>
+		</tr>
 	);
 };
 
