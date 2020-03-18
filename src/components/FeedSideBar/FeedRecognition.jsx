@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useMemo } from 'react';
+import React, { useEffect, useState, memo, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
@@ -6,9 +6,21 @@ import { timeAgo } from '../../utils/timeago';
 import { ReactionButton } from '../Feed/ReactionButton';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
+import ReactionModal from './ReactionModal';
 
 export const FeedRecognition = memo(
-	({ rec, badge, comments, reactions, open, profile, setSelectedRec }) => {
+	({
+		rec,
+		badge,
+		comments,
+		reactions,
+		open,
+		profile,
+		setSelectedRec,
+		close,
+	}) => {
+		const [select, setSelect] = useState(false);
+
 		let history = useHistory();
 		const { id: rec_id } = rec;
 		const dispatch = useDispatch();
@@ -26,8 +38,25 @@ export const FeedRecognition = memo(
 			history.push(`/profile/${rec.recipient}`);
 		};
 
+		const handleComment = e => {
+			e.preventDefault();
+			setSelectedRec(rec_id);
+			setSelect(true);
+		};
+
 		return (
 			<div className="recognition" onClick={handleClick}>
+				{select && (
+					<ReactionModal
+						close={close}
+						setSelect={setSelect}
+						profile={profile}
+						rec={rec}
+						reactions={reactions}
+						badge={badge}
+						comments={comments}
+					/>
+				)}
 				<img
 					alt="profile"
 					className="rec-profile-pic"
@@ -65,7 +94,7 @@ export const FeedRecognition = memo(
 							className={`${
 								open ? `comment-button` : `hidden-rec`
 							}`}
-							onClick={() => setSelectedRec(rec_id)}>
+							onClick={handleComment}>
 							<AddComment />
 						</button>
 					)}

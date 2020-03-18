@@ -16,7 +16,7 @@ function FeedSideBar() {
 	const [selectedRec, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 
-	const { feed, comments, reactions, profile } = useSelector(
+	const { feed, comments, reactions, profile, close } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
 			...user,
@@ -66,6 +66,7 @@ function FeedSideBar() {
 				{feed.map(rec => (
 					<FeedRecognition
 						open={open}
+						close={close}
 						key={rec.id}
 						rec={rec}
 						badge={badges[rec.badge_id - 1]}
