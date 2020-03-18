@@ -10,6 +10,7 @@ const OrganizationHome = () => {
 	const [employees, setEmployees] = useState([]);
 	const [filter, setFilter] = useState('');
 	const [empCount, setEmpCount] = useState(null);
+	const [teamCount, setTeamCount] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [empButton, setEmpButton] = useState(true);
 	const [title, setTitle] = useState(titleArr[0]);
@@ -21,6 +22,7 @@ const OrganizationHome = () => {
 				console.log(res);
 				setEmployees(res.data.employees);
 				setEmpCount(res.data.count);
+				setTeamCount(0);
 			});
 	}, [filter, empCount]);
 
@@ -54,7 +56,7 @@ const OrganizationHome = () => {
 					<button>Create a Team</button>
 				</div>
 				<h2>
-					{title} {`(${empCount})`}
+					{title} {empButton ? `(${empCount})` : `(${teamCount})`}
 				</h2>
 			</div>
 
