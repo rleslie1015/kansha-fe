@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
 import { timeAgo } from '../../utils/timeago';
 import { ReactionButton } from '../Feed/ReactionButton';
+import { CommentButton } from '../Feed/CommentButton';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
 export const FeedRecognition = memo(
 	({ rec, badge, comments, reactions, open, profile, setSelectedRec }) => {
+		console.log(comments, 'comments');
 		let history = useHistory();
 		const { id: rec_id } = rec;
 		const dispatch = useDispatch();
@@ -51,23 +53,22 @@ export const FeedRecognition = memo(
 					{reactions && (
 						<>
 							<ReactionButton
-								className={`${
-									open ? `reaction-button` : `hidden-rec`
-								}`}
 								id={profile.id}
 								rec_id={rec_id}
 								reactions={reactions}
+								open={open}
 							/>
 						</>
 					)}
 					{comments && (
-						<button
-							className={`${
-								open ? `comment-button` : `hidden-rec`
-							}`}
-							onClick={() => setSelectedRec(rec_id)}>
-							<AddComment />
-						</button>
+						<>
+							<CommentButton
+								id={profile.id}
+								rec_id={rec_id}
+								comments={comments}
+								open={open}
+							/>
+						</>
 					)}
 				</div>
 			</div>

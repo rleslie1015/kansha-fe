@@ -1,17 +1,17 @@
 import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeReaction, reactToPost } from '../../store/actions/feed-actions';
-import { ReactComponent as Heart } from '../../assets/singleheart.svg';
+import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
-export const ReactionButton = ({ reactions, rec_id, id, open }) => {
+export const CommentButton = ({ comments, rec_id, id, open }) => {
 	const dispatch = useDispatch();
 	const userReaction = useMemo(
 		() =>
-			reactions.reduce(
+			comments.reduce(
 				(a, reaction) => (id === reaction.user_id ? reaction.id : a),
 				0,
 			),
-		[reactions, id],
+		[comments, id],
 	);
 
 	const handleReaction = () => {
@@ -29,7 +29,9 @@ export const ReactionButton = ({ reactions, rec_id, id, open }) => {
 				userReaction ? 'remove reaction to post' : 'react to post'
 			}
 			onClick={handleReaction}>
-			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
+			<AddComment
+				className={userReaction ? 'comment-full' : 'comment-empty'}
+			/>
 		</button>
 	);
 };
