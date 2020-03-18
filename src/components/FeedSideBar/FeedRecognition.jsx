@@ -1,12 +1,9 @@
-import React, { useEffect, memo, useMemo } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
-import { timeAgo } from '../../utils/timeago';
 import { ReactionButton } from '../Feed/ReactionButton';
 import { CommentButton } from '../Feed/CommentButton';
-import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
-import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
 export const FeedRecognition = memo(
 	({ rec, badge, comments, reactions, open, profile, setSelectedRec }) => {
@@ -21,7 +18,7 @@ export const FeedRecognition = memo(
 			}
 		}, [dispatch, rec_id, reactions, comments]);
 
-		const time = useMemo(() => timeAgo(rec.date), [rec]);
+		// const time = useMemo(() => timeAgo(rec.date), [rec]);
 
 		const handleClick = e => {
 			e.preventDefault();

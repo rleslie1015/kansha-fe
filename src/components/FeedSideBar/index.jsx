@@ -13,7 +13,7 @@ const EventSource = NativeEventSource || EventSourcePolyfill;
 
 function FeedSideBar() {
 	const [open, setOpen] = React.useState(false);
-	const [selectedRec, setSelectedRec] = useState();
+	const [, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 
 	const { feed, comments, reactions, profile } = useSelector(
