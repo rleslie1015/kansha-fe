@@ -8,7 +8,7 @@ export const CommentButton = ({ comments, rec_id, id, open }) => {
 	const userReaction = useMemo(
 		() =>
 			comments.reduce(
-				(a, reaction) => (id === reaction.user_id ? reaction.id : a),
+				(a, comment) => (id === comment.user_id ? comment.id : a),
 				0,
 			),
 		[comments, id],
@@ -24,7 +24,7 @@ export const CommentButton = ({ comments, rec_id, id, open }) => {
 
 	return (
 		<button
-			className={`${open ? `reaction-button` : `hidden-rec`}`}
+			className={`${open ? `comment-button` : `hidden-rec`}`}
 			aria-label={
 				userReaction ? 'remove reaction to post' : 'react to post'
 			}
