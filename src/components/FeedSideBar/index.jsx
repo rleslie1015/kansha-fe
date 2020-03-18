@@ -13,13 +13,17 @@ const EventSource = NativeEventSource || EventSourcePolyfill;
 
 function FeedSideBar() {
 	const [open, setOpen] = React.useState(false);
-
+	const [selectedRec, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 
-	const { feed } = useSelector(({ liveFeed, user }) => ({
-		...liveFeed,
-		...user,
-	}));
+	const { feed, rec, comments, reactions, profile } = useSelector(
+		({ liveFeed, user, comments, reaction }) => ({
+			...liveFeed,
+			...user,
+		}),
+	);
+
+	console.log(profile, 'profile');
 
 	const dispatch = useDispatch();
 
@@ -67,6 +71,8 @@ function FeedSideBar() {
 						key={rec.id}
 						rec={rec}
 						badge={badges[rec.badge_id - 1]}
+						profile={profile}
+						setSelectedRec={setSelectedRec}
 					/>
 				))}
 			</div>
