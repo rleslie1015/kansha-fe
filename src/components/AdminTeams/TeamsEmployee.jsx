@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Icon Imports
 import { ReactComponent as HideIcon } from '../../assets/TeamsIcons/hide.svg';
@@ -20,14 +21,18 @@ const TeamsEmployee = ({ data, checked, setChecked, profile }) => {
 					<input type="checkbox" className="css-checkbox" />
 					<i></i>
 				</label>
-				<img
-					src={data.profile_picture}
-					alt="profile img"
-					className="teams-profile-picture"
-				/>
-				<h3>
-					{data.first_name} {data.last_name}
-				</h3>
+				<Link to={`/profile/${profile.id}`}>
+					<div className="teams-employee-info">
+						<img
+							src={data.profile_picture}
+							alt="profile img"
+							className="teams-profile-picture"
+						/>
+						<h3>
+							{data.first_name} {data.last_name}
+						</h3>
+					</div>
+				</Link>
 			</td>
 			<td className="teams-employee-details">
 				<h3 className="job-title">{data.job_title}</h3>

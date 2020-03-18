@@ -153,6 +153,11 @@
 		align-items: center;
 		justify-content: flex-start;
 
+		.teams-employee-info {
+			display: flex;
+			align-items: center;
+		}
+
 		.teams-profile-picture {
 			margin: 0 20px 0 20px;
 			border-radius: 50%;

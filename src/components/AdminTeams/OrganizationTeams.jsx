@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 import TeamsEmployee from './TeamsEmployee';
@@ -12,14 +13,20 @@ const OrganizationTeams = () => {
 		axiosWithAuth()
 			.get(`/employees/organizations?search=${filter}`)
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				setEmployees(res.data.employees);
 			});
 	}, [filter]);
 
+	const history = useHistory();
+
+	const handleAddUserClick = () => {
+		history.push('/add-user');
+	};
+
 	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
-	console.log(employees, 'Employees Array');
+	// console.log(employees, 'Employees Array');
 
 	const EmployeeCount = employees.length;
 
@@ -51,7 +58,7 @@ const OrganizationTeams = () => {
 			</div>
 			<div className="select-add-members">
 				<h3 className="select-all">Select All</h3>
-				<h3>+ Add more members</h3>
+				<h3 onClick={handleAddUserClick}>+ Add more members</h3>
 			</div>
 			<table className="employees-table">
 				{employees.map(data => {
