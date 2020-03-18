@@ -11,8 +11,12 @@ import { ReactComponent as HelpIcon } from '../../assets/HelpModalImgs/Help.svg'
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
 
+// import { useHistory } from 'react-router-dom';
+
 function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
+
+	// let history = useHistory();
 
 	return (
 		<section className={`side-nav${open ? ' is-open' : ''}`}>

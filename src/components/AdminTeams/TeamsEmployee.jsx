@@ -17,7 +17,7 @@ const TeamsEmployee = ({ data, checked, setChecked, profile }) => {
 		<tr className="teams-employee-card">
 			<td className="teams-employee">
 				<label>
-					<input type="checkbox" class="css-checkbox" />
+					<input type="checkbox" className="css-checkbox" />
 					<i></i>
 				</label>
 				<img

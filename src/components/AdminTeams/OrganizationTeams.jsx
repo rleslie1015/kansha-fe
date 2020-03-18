@@ -15,6 +15,9 @@ const OrganizationTeams = () => {
 				setEmployees(res.data.employees);
 			});
 	}, []);
+
+	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
+
 	console.log(employees, 'Employees Array');
 
 	const EmployeeCount = employees.length;
