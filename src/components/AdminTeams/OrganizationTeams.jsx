@@ -6,15 +6,16 @@ import TeamsEmployee from './TeamsEmployee';
 const OrganizationTeams = () => {
 	const [employees, setEmployees] = useState([]);
 	const [checked, setChecked] = useState(false);
+	const [filter, setFilter] = useState('');
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('/employees/organizations')
+			.get(`/employees/organizations?search=${filter}`)
 			.then(res => {
 				console.log(res);
 				setEmployees(res.data.employees);
 			});
-	}, []);
+	}, [filter]);
 
 	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
@@ -39,6 +40,8 @@ const OrganizationTeams = () => {
 				<button className="btn-filter">Hidden</button>
 				<div className="employee-search-container">
 					<input
+						value={filter}
+						onChange={event => setFilter(event.target.value)}
 						type="text"
 						id="search"
 						name="search"
