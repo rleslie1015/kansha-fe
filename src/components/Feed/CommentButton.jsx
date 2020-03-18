@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { removeReaction, reactToPost } from '../../store/actions/feed-actions';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
-export const CommentButton = ({ comments, rec_id, id, open }) => {
+export const CommentButton = ({ comments, id, open, handleComment }) => {
 	const dispatch = useDispatch();
 	const userReaction = useMemo(
 		() =>
@@ -14,13 +14,13 @@ export const CommentButton = ({ comments, rec_id, id, open }) => {
 		[comments, id],
 	);
 
-	const handleReaction = () => {
-		if (userReaction) {
-			dispatch(removeReaction(userReaction, rec_id));
-		} else {
-			dispatch(reactToPost(rec_id));
-		}
-	};
+	// const handleReaction = () => {
+	// 	if (userReaction) {
+	// 		dispatch(removeReaction(userReaction, rec_id));
+	// 	} else {
+	// 		dispatch(reactToPost(rec_id));
+	// 	}
+	// };
 
 	return (
 		<button
@@ -28,7 +28,7 @@ export const CommentButton = ({ comments, rec_id, id, open }) => {
 			aria-label={
 				userReaction ? 'remove reaction to post' : 'react to post'
 			}
-			onClick={handleReaction}>
+			onClick={handleComment}>
 			<AddComment
 				className={userReaction ? 'comment-full' : 'comment-empty'}
 			/>

@@ -16,11 +16,39 @@
 			font-size: 3rem;
 		}
 
+		.rm-profile-pic {
+			width: 12rem;
+		}
+
 		.rm-job-title {
 			font-size: 1.8rem;
 		}
+
+		.rm-badge {
+			width: 9rem;
+		}
+
+		.rm-buttons {
+			display: flex;
+			margin-top: 1.5rem;
+		}
+		.rm-message {
+			font-size: 2rem;
+			margin-top: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
 	}
 
-	.rm-buttons {
+	.rm-comment-box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.rm-comments {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 1rem;
+		}
 	}
 }

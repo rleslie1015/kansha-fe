@@ -25,7 +25,9 @@ function ReactionModal({
 			<Modal close={handleClose}>
 				<section className="rm-parent-cont">
 					<div className="rm-user-info">
-						<img src={rec.recipient_picture}></img>
+						<img
+							className="rm-profile-pic"
+							src={rec.recipient_picture}></img>
 						<p>
 							<span>{rec.recipient_first}</span>
 
@@ -34,17 +36,17 @@ function ReactionModal({
 
 						<p className="rm-job_title">{profile.job_title}</p>
 						<p>{profile.teams}</p>
-						<img src={badge?.badge_URL} />
+						<img className="rm-badge" src={badge?.badge_URL} />
 						<div className="rm-buttons">
 							<ReactionButton reactions={reactions} />
 							<AddComment />
 						</div>
 
-						<p>{rec.message}</p>
+						<p className="rm-message">{rec.message}</p>
 					</div>
-					<div>
+					<div className="rm-comment-box">
 						<SendComments id={rec.id} />
-						<div>
+						<div className="rm-comments">
 							{comments.map(comm => (
 								<p>{comm.message}</p>
 							))}
