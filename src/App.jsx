@@ -17,6 +17,7 @@ import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import OrganizationHome from './components/AdminTeams/OrganizationHome';
 import OrganizationTeams from './components/AdminTeams/OrganizationTeams';
 
 const auth = new Auth();
@@ -78,6 +79,10 @@ export const App = () => {
 						component={AdminDashboard}
 					/>
 					<ProtectedRoute path="/workspace" component={Workspace} />
+					<ProtectedRoute
+						path="/organization"
+						component={OrganizationHome}
+					/>
 					<ProtectedRoute
 						path="/teams"
 						component={OrganizationTeams}

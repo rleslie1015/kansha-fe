@@ -4,7 +4,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	overflow-y: auto;
 
 	.add-team-container {
 		display: flex;
@@ -34,6 +33,42 @@
 	.employees-table {
 		margin-top: 3rem;
 		width: 100%;
+		overflow-y: auto;
+		display: block;
+		height: 95rem;
+		padding-right: 3rem;
+	}
+
+	.org-team-container {
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+
+		h1 {
+			font-size: 3.4rem;
+			color: $color-gray-light;
+			font-weight: normal;
+		}
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: 0.7px solid $color-primary;
+			width: 18rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 0.5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
 	}
 
 	.employee-filter-container {

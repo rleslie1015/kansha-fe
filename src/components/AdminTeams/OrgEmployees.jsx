@@ -11,7 +11,7 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 
-const TeamsEmployee = ({ data, checked, setChecked, profile }) => {
+const OrgEmployees = ({ data, checked, setChecked, profile }) => {
 	const [modal, setModal] = useState(false);
 
 	return (
@@ -63,4 +63,4 @@ const TeamsEmployee = ({ data, checked, setChecked, profile }) => {
 	);
 };
 
-export default TeamsEmployee;
+export default OrgEmployees;
