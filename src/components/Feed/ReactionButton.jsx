@@ -29,7 +29,6 @@ export const ReactionButton = ({ reactions, rec_id, id }) => {
 			}
 			onClick={handleReaction}>
 			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
-			{reactions && reactions.length}
 		</button>
 	);
 };

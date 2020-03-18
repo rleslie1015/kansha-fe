@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import FeedRecognition from './FeedRecognition';
+import { FeedRecognition } from './FeedRecognition';
 import {
 	loadLiveFeed,
 	liveFeedListeners,
@@ -16,14 +16,12 @@ function FeedSideBar() {
 	const [selectedRec, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 
-	const { feed, rec, comments, reactions, profile } = useSelector(
-		({ liveFeed, user, comments, reaction }) => ({
+	const { feed, comments, reactions, profile } = useSelector(
+		({ liveFeed, user }) => ({
 			...liveFeed,
 			...user,
 		}),
 	);
-
-	console.log(profile, 'profile');
 
 	const dispatch = useDispatch();
 
@@ -61,7 +59,7 @@ function FeedSideBar() {
 					Feed
 				</h2>
 				<h3 className={`${open ? 'recently-thanked-title' : 'hidden'}`}>
-					Recent Thankfulness
+					Recent Thanks
 				</h3>
 			</div>
 			<div className="feed-rec-list">
@@ -73,6 +71,8 @@ function FeedSideBar() {
 						badge={badges[rec.badge_id - 1]}
 						profile={profile}
 						setSelectedRec={setSelectedRec}
+						reactions={reactions[rec.id]}
+						comments={comments[rec.id]}
 					/>
 				))}
 			</div>

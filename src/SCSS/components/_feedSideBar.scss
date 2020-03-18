@@ -97,6 +97,7 @@
 	.rec-badge-and-message {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-evenly;
 		margin-left: 1rem;
 		border-left: 2px solid lightgrey;
 	}
@@ -133,11 +134,24 @@
 			background: linear-gradient(
 				90deg,
 				rgba(255, 255, 255, 0) 0%,
-				$color-white-dark 100%
+				$color-white 100%
 			);
 			right: 0;
 			width: 25%;
 			height: 100%;
+		}
+	}
+
+	.feed-reaction-buttons {
+		display: flex;
+
+		.reaction-button {
+			color: $color-secondary;
+			border: none;
+		}
+		.comment-button {
+			color: $color-secondary;
+			border: none;
 		}
 	}
 
