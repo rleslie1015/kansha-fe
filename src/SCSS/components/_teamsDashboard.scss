@@ -3,7 +3,6 @@
 	margin-right: 10rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
 
 	.add-team-container {
 		display: flex;
@@ -40,9 +39,10 @@
 	}
 
 	.org-team-container {
+		margin-top: 25rem;
 		display: flex;
 		flex-direction: column;
-		align-content: center;
+		align-items: center;
 
 		h1 {
 			font-size: 3.4rem;

@@ -22,7 +22,7 @@ const OrganizationHome = () => {
 				setEmployees(res.data.employees);
 				setEmpCount(res.data.count);
 			});
-	}, [filter]);
+	}, [filter, empCount]);
 
 	const history = useHistory();
 
