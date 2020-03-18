@@ -81,6 +81,7 @@
 	flex-direction: row;
 	align-items: center;
 	padding: 8px 10px;
+	width: 100%;
 
 	&:nth-child(2n) {
 		background-color: $color-white;
@@ -100,6 +101,11 @@
 		justify-content: space-evenly;
 		margin-left: 1rem;
 		border-left: 2px solid lightgrey;
+		width: 75%;
+	}
+
+	.feed-reaction-buttons {
+		width: 25%;
 	}
 
 	.rec-profile-pic {
@@ -146,12 +152,30 @@
 		display: flex;
 
 		.reaction-button {
-			color: $color-secondary;
 			border: none;
+			margin-right: 1.5rem;
+			color: rgba(0, 13, 34, 0.7);
+
+			.heart-full {
+				fill: $color-primary;
+			}
+
+			.heart-empty {
+				fill: rgba(0, 13, 34, 0.7);
+			}
 		}
 		.comment-button {
-			color: $color-secondary;
 			border: none;
+			margin-right: 1.5rem;
+			color: rgba(0, 13, 34, 0.7);
+
+			.comment-full {
+				fill: $color-primary;
+			}
+
+			.comment-empty {
+				fill: rgba(0, 13, 34, 0.7);
+			}
 		}
 	}
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState, memo, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
-import { timeAgo } from '../../utils/timeago';
 import { ReactionButton } from '../Feed/ReactionButton';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
@@ -31,7 +30,7 @@ export const FeedRecognition = memo(
 			}
 		}, [dispatch, rec_id, reactions, comments]);
 
-		const time = useMemo(() => timeAgo(rec.date), [rec]);
+		// const time = useMemo(() => timeAgo(rec.date), [rec]);
 
 		const handleClick = e => {
 			e.preventDefault();
@@ -80,23 +79,22 @@ export const FeedRecognition = memo(
 					{reactions && (
 						<>
 							<ReactionButton
-								className={`${
-									open ? `reaction-button` : `hidden-rec`
-								}`}
 								id={profile.id}
 								rec_id={rec_id}
 								reactions={reactions}
+								open={open}
 							/>
 						</>
 					)}
 					{comments && (
-						<button
-							className={`${
-								open ? `comment-button` : `hidden-rec`
-							}`}
-							onClick={handleComment}>
-							<AddComment />
-						</button>
+						<>
+							<CommentButton
+								id={profile.id}
+								rec_id={rec_id}
+								comments={comments}
+								open={open}
+							/>
+						</>
 					)}
 				</div>
 			</div>
