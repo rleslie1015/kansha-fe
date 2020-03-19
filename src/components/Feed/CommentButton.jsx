@@ -1,7 +1,13 @@
 import React, { useMemo } from 'react';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
-export const CommentButton = ({ comments, id, open, handleComment }) => {
+export const CommentButton = ({
+	comments,
+	id,
+	open,
+	handleComment,
+	inModal,
+}) => {
 	const userComment = useMemo(
 		() =>
 			comments.reduce(
@@ -19,6 +25,7 @@ export const CommentButton = ({ comments, id, open, handleComment }) => {
 			<AddComment
 				className={userComment ? 'comment-full' : 'comment-empty'}
 			/>
+			{inModal && <p>{comments.length}</p>}
 		</button>
 	);
 };

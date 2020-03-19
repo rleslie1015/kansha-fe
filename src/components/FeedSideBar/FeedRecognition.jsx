@@ -77,25 +77,21 @@ export const FeedRecognition = memo(
 				</div>
 				<div className="feed-reaction-buttons">
 					{reactions && (
-						<>
-							<ReactionButton
-								id={profile.id}
-								rec_id={rec_id}
-								reactions={reactions}
-								open={open}
-							/>
-						</>
+						<ReactionButton
+							id={profile.id}
+							rec_id={rec_id}
+							reactions={reactions}
+							open={open}
+						/>
 					)}
 					{comments && (
-						<>
-							<CommentButton
-								id={profile.id}
-								rec_id={rec_id}
-								comments={comments}
-								open={open}
-								handleComment={handleComment}
-							/>
-						</>
+						<CommentButton
+							id={profile.id}
+							rec_id={rec_id}
+							comments={comments}
+							open={open}
+							handleComment={handleComment}
+						/>
 					)}
 				</div>
 			</div>

@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import { removeReaction, reactToPost } from '../../store/actions/feed-actions';
 import { ReactComponent as Heart } from '../../assets/singleheart.svg';
 
-export const ReactionButton = ({ reactions, rec_id, id, open }) => {
+export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 	const dispatch = useDispatch();
-	console.log(reactions, 'reactions');
 	const userReaction = useMemo(
 		() =>
 			reactions.reduce(
@@ -31,6 +30,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open }) => {
 			}
 			onClick={handleReaction}>
 			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
+			{inModal && <p>{reactions.length}</p>}
 		</button>
 	);
 };
