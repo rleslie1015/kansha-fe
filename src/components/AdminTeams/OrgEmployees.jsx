@@ -11,13 +11,40 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 
-const OrgEmployees = ({ data, checked, setChecked, profile }) => {
+const OrgEmployees = ({
+	data,
+	checked,
+	setChecked,
+	profile,
+	empButton,
+	teamMemberArray,
+	employees,
+}) => {
 	const [modal, setModal] = useState(false);
+
+	const addTeamMember = () => {
+		if (checked) {
+			employees.map(person => {
+				if (data.id === person.id) {
+					teamMemberArray.push(person);
+				}
+				return teamMemberArray;
+			});
+			console.log(teamMemberArray, 'array');
+		}
+	};
 
 	return (
 		<tr className="teams-employee-card">
 			<td className="teams-employee">
-				<label>
+				<label
+					onClick={() => {
+						setChecked(!checked);
+						addTeamMember();
+					}}
+					style={
+						empButton ? { display: 'none' } : { display: 'block' }
+					}>
 					<input type="checkbox" className="css-checkbox" />
 					<i></i>
 				</label>

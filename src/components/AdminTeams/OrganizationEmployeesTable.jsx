@@ -5,6 +5,9 @@ const OrganizationEmployeesTable = ({
 	checked,
 	setChecked,
 	employees,
+	empButton,
+	teamMemberArray,
+	setTeamMemberArray,
 	setPage,
 	setLimit,
 	limit,
@@ -20,6 +23,10 @@ const OrganizationEmployeesTable = ({
 						key={data.id}
 						checked={checked}
 						setChecked={setChecked}
+						empButton={empButton}
+						employees={employees}
+						teamMemberArray={teamMemberArray}
+						setTeamMemberArray={setTeamMemberArray}
 					/>
 				);
 			})}

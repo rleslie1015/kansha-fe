@@ -53,6 +53,7 @@ const OrganizationHome = () => {
 	if (empButton) {
 		table = (
 			<OrganizationEmployeesTable
+				empButton={empButton}
 				employees={employees}
 				checked={checked}
 				setChecked={setChecked}
@@ -63,7 +64,13 @@ const OrganizationHome = () => {
 			/>
 		);
 	} else if (createTeamsBtn) {
-		table = <CreateTeam employees={employees} />;
+		table = (
+			<CreateTeam
+				setChecked={setChecked}
+				checked={checked}
+				employees={employees}
+			/>
+		);
 	} else if (!createTeamsBtn) {
 		table = <OrganizationTeams />;
 	}
