@@ -11,12 +11,12 @@ import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 
 const EventSource = NativeEventSource || EventSourcePolyfill;
 
-function FeedSideBar() {
+function FeedSideBar({ close }) {
 	const [open, setOpen] = React.useState(false);
 	const [, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
-
-	const { feed, comments, reactions, profile, close } = useSelector(
+	const [modal, setModal] = useState(false);
+	const { feed, comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
 			...user,
@@ -66,7 +66,7 @@ function FeedSideBar() {
 				{feed.map(rec => (
 					<FeedRecognition
 						open={open}
-						close={close}
+						close={setModal}
 						key={rec.id}
 						rec={rec}
 						badge={badges[rec.badge_id - 1]}
