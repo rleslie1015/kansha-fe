@@ -34,3 +34,63 @@
 		}
 	}
 }
+
+.profile-modal {
+	width: 100rem;
+	height: 50rem;
+
+	.profile-header {
+		display: flex;
+
+		.profile-picture {
+			border-radius: 50%;
+			margin-right: 4.2rem;
+		}
+
+		.person-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			h1 {
+				font-weight: 900;
+				font-size: 3.6rem;
+			}
+
+			h2 {
+				color: $color-gray-light;
+				font-size: 2.4rem;
+				margin-top: 0.5rem;
+			}
+
+			h3 {
+				margin-top: 0.5rem;
+				font-weight: 500;
+				font-size: 2rem;
+			}
+		}
+	}
+	.profile-main {
+		display: flex;
+		width: 100%;
+		margin-top: 2rem;
+		.profile-badges {
+			width: 50%;
+
+			h2 {
+				font-size: 3.4rem;
+				color: $color-primary;
+			}
+		}
+
+		.profile-activity {
+			width: 50%;
+
+			h2 {
+				font-size: 3.4rem;
+				color: $color-primary;
+			}
+		}
+	}
+}

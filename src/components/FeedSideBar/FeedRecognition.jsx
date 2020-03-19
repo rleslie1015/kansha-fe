@@ -5,7 +5,7 @@ import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from '../Feed/ReactionButton';
 import ReactionModal from './ReactionModal';
 import { CommentButton } from '../Feed/CommentButton';
-
+import ProfileModal from './ProfileModal';
 export const FeedRecognition = memo(
 	({
 		rec,
@@ -15,10 +15,11 @@ export const FeedRecognition = memo(
 		open,
 		profile,
 		setSelectedRec,
+		setSelectedProfile,
 		close,
 	}) => {
 		const [select, setSelect] = useState(false);
-
+		const [profileSelect, setProfileSelect] = useState(false);
 		let history = useHistory();
 		const { id: rec_id } = rec;
 		const dispatch = useDispatch();
@@ -29,11 +30,10 @@ export const FeedRecognition = memo(
 			}
 		}, [dispatch, rec_id, reactions, comments]);
 
-		// const time = useMemo(() => timeAgo(rec.date), [rec]);
-
 		const handleClick = e => {
 			e.preventDefault();
-			history.push(`/profile/${rec.recipient}`);
+			setSelectedProfile(profile.id);
+			setProfileSelect(true);
 		};
 
 		const handleComment = e => {
@@ -43,7 +43,18 @@ export const FeedRecognition = memo(
 		};
 
 		return (
-			<div className="recognition" onClick={handleClick}>
+			<div className="recognition">
+				{profileSelect && (
+					<ProfileModal
+						close={close}
+						setProfileSelect={setProfileSelect}
+						profile={profile}
+						rec={rec}
+						reactions={reactions}
+						badge={badge}
+						comments={comments}
+					/>
+				)}
 				{select && (
 					<ReactionModal
 						close={close}
@@ -59,6 +70,7 @@ export const FeedRecognition = memo(
 					alt="profile"
 					className="rec-profile-pic"
 					src={rec.recipient_picture}
+					onClick={handleClick}
 				/>
 				<div className="rec-badge-and-message">
 					{badge && (
