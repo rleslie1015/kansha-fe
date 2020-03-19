@@ -1,7 +1,15 @@
 import React from 'react';
 import OrgEmployees from './OrgEmployees';
 
-const OrganizationEmployeesTable = ({ checked, setChecked, employees }) => {
+const OrganizationEmployeesTable = ({
+	checked,
+	setChecked,
+	employees,
+	setPage,
+	setLimit,
+	limit,
+	page,
+}) => {
 	return (
 		<table className="employees-table">
 			{employees.map(data => {

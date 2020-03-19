@@ -1,0 +1,20 @@
+.create-team-container {
+	display: flex;
+	flex-direction: row;
+
+	.create-team-employees-list {
+		width: 50%;
+	}
+
+	.create-team {
+		width: 50%;
+	}
+
+	.recognition-btn {
+		display: none;
+	}
+
+	.teams-employee-icons {
+		display: none;
+	}
+}
