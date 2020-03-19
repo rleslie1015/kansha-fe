@@ -23,7 +23,7 @@ function ReactionModal({
 		close(false);
 	};
 
-	const reversedComments = comments.reverse();
+	// const reversedComments = comments.reverse();
 
 	return (
 		<>
@@ -80,7 +80,7 @@ function ReactionModal({
 						/>
 						{messageSent && (
 							<div className="rm-comments">
-								{reversedComments.map(comm => (
+								{comments.map(comm => (
 									<RMComments
 										key={comm.id}
 										pic={comm.profile_picture}
