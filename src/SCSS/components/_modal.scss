@@ -91,6 +91,30 @@
 				font-size: 3.4rem;
 				color: $color-primary;
 			}
+
+			.inner-activity-card {
+				height: 24rem;
+				overflow-y: scroll;
+				.container-recognition-card {
+					display: flex;
+					align-items: center;
+					margin: 1rem 0;
+					max-width: 55rem;
+
+					a {
+						img {
+							width: 3.5rem;
+							border-radius: 50%;
+							margin-right: 1rem;
+						}
+					}
+				}
+			}
 		}
 	}
+}
+
+.activity-section {
+	display: flex;
+	align-items: flex-end;
 }

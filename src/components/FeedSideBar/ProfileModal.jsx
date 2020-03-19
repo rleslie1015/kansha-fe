@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../../components/Modal';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 import { ReactionButton } from '../../components/Feed/ReactionButton';
 import { SendComments } from '../Feed/SendComment';
-
+import { RecognitionCard } from '../Profile/RecognitionCard';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 function ProfileModal({
 	profile,
 	rec,
 	reactions,
 	comments,
 	badge,
+	badges,
 	close,
 	setProfileSelect,
 }) {
@@ -17,26 +19,24 @@ function ProfileModal({
 		setProfileSelect(false);
 		close(false);
 	};
-	console.log(rec, 'rec');
 
-	/*id: 767
-sub: "google-oauth2|112250268762727639307"
-first_name: "Joscelyn"
-last_name: "Stancek"
-profile_picture: "https://lh6.googleusercontent.com/-DXV638e0msA/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcLpIrYUK3qmQBMp2URcys-Izrejw/photo.jpg"
-department: "Team Awesome"
-email: "Jos O"
-recipient: 47
-sender: 48
-message: "Thanks a lot!"
-date: "2020-03-18T22:08:10.622Z"
-badge_id: 5
-org_id: 4
-org_name: "Lambda"
-recipient_last: "Gillies"
-recipient_first: "Aaron"
-recipient_job_title: "Software Engineer"
-recipient_picture: "https://kansha-bucket.s3.us-west-1.amazonaws.com/1583441408751"*/
+	const profileId = rec.recipient;
+	const [profileInfo, setProfileInfo] = useState({});
+	const [profileBadges, setProfileBadges] = useState([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const { data: profileData } = await axiosWithAuth().get(
+				`/profile/${profileId}`,
+			);
+			setProfileInfo(profileData.peer);
+			const { data: badgeData } = await axiosWithAuth().get('/badges');
+			setProfileBadges(badgeData);
+		};
+		fetchData();
+	}, [profileId]);
+	console.log(rec, 'rec');
+	console.log(profile, 'profile');
 
 	return (
 		<>
@@ -61,6 +61,30 @@ recipient_picture: "https://kansha-bucket.s3.us-west-1.amazonaws.com/15834414087
 						</div>
 						<div className="profile-activity">
 							<h2>Activity</h2>
+							<section className="inner-activity-card">
+								{profileInfo.rec &&
+									profileInfo.rec
+										.sort(function(a, b) {
+											return (
+												new Date(b.date) -
+												new Date(a.date)
+											);
+										})
+										.map(recognition => (
+											<RecognitionCard
+												key={recognition.id}
+												sent={false}
+												badge={
+													badges[
+														recognition.badge_id - 1
+													]
+												}
+												profile={profileInfo}
+												recognition={recognition}
+												setProfileInfo={setProfileInfo}
+											/>
+										))}
+							</section>
 						</div>
 					</main>
 				</div>

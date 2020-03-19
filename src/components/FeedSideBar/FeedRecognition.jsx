@@ -10,6 +10,7 @@ export const FeedRecognition = memo(
 	({
 		rec,
 		badge,
+		badges,
 		comments,
 		reactions,
 		open,
@@ -53,6 +54,7 @@ export const FeedRecognition = memo(
 						reactions={reactions}
 						badge={badge}
 						comments={comments}
+						badges={badges}
 					/>
 				)}
 				{select && (

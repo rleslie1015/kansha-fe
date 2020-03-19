@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 export function RecognitionCard({ recognition, sent, setProfile }) {
+	console.log(recognition, 'recognition');
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 	const profile = useSelector(state => state.user.profile);
@@ -44,24 +45,31 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 				/>
 			</Link>
 
-			<section>
+			<section className="activity-section">
 				{profile.user_type === 'admin' && (
 					<Trashcan onClick={handleDelete} />
 				)}
 				<div>
-					<Link
-						to={`/profile/${
-							sent ? recognition.recipient : recognition.sender
-						}`}>
-						{sent
-							? `Sent to ${recognition.first_name} ${recognition.last_name}`
-							: `${recognition.first_name} ${recognition.last_name}`}
-					</Link>
-					<span className="time" role="presentation">
-						&nbsp;{time}
-					</span>
+					<div>
+						<Link
+							to={`/profile/${
+								sent
+									? recognition.recipient
+									: recognition.sender
+							}`}>
+							{sent
+								? `Sent to ${recognition.first_name} ${recognition.last_name}`
+								: `${recognition.first_name} ${recognition.last_name}`}
+						</Link>
+						<span className="time" role="presentation">
+							&nbsp;{time}
+						</span>
+					</div>
+					<p>{recognition.message}</p>
 				</div>
-				<p>{recognition.message}</p>
+				<div>
+					<p>{recognition.badge_id}</p>
+				</div>
 			</section>
 		</section>
 	);

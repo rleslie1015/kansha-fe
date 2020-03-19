@@ -76,6 +76,7 @@ function FeedSideBar({ close }) {
 						setSelectedProfile={setSelectedProfile}
 						reactions={reactions[rec.id]}
 						comments={comments[rec.id]}
+						badges={badges}
 					/>
 				))}
 			</div>
