@@ -16,7 +16,7 @@ function FeedSideBar() {
 	const [, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 
-	const { feed, comments, reactions, profile, close } = useSelector(
+	const { feed, comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
 			...user,

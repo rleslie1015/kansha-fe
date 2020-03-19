@@ -15,7 +15,7 @@ function ReactionModal({
 }) {
 	console.log(rec);
 
-	const handleClose = () => {
+	const handleClose = ({ close }) => {
 		setSelect(false);
 		close(false);
 	};
