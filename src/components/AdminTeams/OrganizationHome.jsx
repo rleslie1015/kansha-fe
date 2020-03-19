@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+// Component imports
+
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import OrganizationTeams from './OrganizationTeams';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const OrganizationHome = () => {
 	const titleArr = ['Employees', 'Teams'];
@@ -32,16 +35,17 @@ const OrganizationHome = () => {
 		history.push('/add-user');
 	};
 
+	// Ordering employees array alphabetically
 	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
-	// console.log(employees, 'Employees Array');
-
+	// Dynamically rendering component based on which filter button is selected
 	let table;
 	if (empButton) {
 		table = (
 			<OrganizationEmployeesTable
 				employees={employees}
 				checked={checked}
+				setChecked={setChecked}
 			/>
 		);
 	} else {

@@ -258,7 +258,7 @@
 					content: '';
 					opacity: 0;
 					transform: translateZ(1px) rotate(-45deg);
-					outline: 1px solid transparent; // hack to prevent antialias atrifacts in firefox
+					outline: 1px solid transparent;
 					position: absolute;
 					top: 22%;
 					left: 15%;
