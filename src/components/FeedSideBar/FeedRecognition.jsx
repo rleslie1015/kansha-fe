@@ -1,10 +1,8 @@
-import React, { useEffect, useState, memo, useMemo } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from '../Feed/ReactionButton';
-import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
-import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 import ReactionModal from './ReactionModal';
 import { CommentButton } from '../Feed/CommentButton';
 
@@ -90,11 +88,11 @@ export const FeedRecognition = memo(
 					{comments && (
 						<>
 							<CommentButton
-								handleComment={handleComment}
 								id={profile.id}
 								rec_id={rec_id}
 								comments={comments}
 								open={open}
+								handleComment={handleComment}
 							/>
 						</>
 					)}

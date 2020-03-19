@@ -25,6 +25,7 @@ function ReactionModal({
 				<section className="rm-parent-cont">
 					<div className="rm-user-info">
 						<img
+							alt="recipient"
 							className="rm-profile-pic"
 							src={rec.recipient_picture}></img>
 						<p>
@@ -35,7 +36,11 @@ function ReactionModal({
 
 						<p className="rm-job_title">{profile.job_title}</p>
 						<p>{profile.teams}</p>
-						<img className="rm-badge" src={badge?.badge_URL} />
+						<img
+							alt="badge"
+							className="rm-badge"
+							src={badge?.badge_URL}
+						/>
 						<div className="rm-buttons">
 							<ReactionButton reactions={reactions} />
 							<AddComment />

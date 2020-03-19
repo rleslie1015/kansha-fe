@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addComment } from '../../store/actions/feed-actions';
-import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 
 export const SendComments = ({ id, scrollToBottom }) => {
 	const [newComment, setNewComment] = useState('');
