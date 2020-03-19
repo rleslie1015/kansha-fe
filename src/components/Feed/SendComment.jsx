@@ -23,14 +23,16 @@ export const SendComments = ({ id, scrollToBottom }) => {
 		scrollToBottom();
 	};
 	return (
-		<section className="comment-box">
+		<section className="rm-comment-box">
 			<textarea
 				//we want to be able to use the AddComment svg inside the placeholder
 				placeholder={`Type message here`}
 				value={newComment}
 				onChange={handleInput}
 			/>
-			<button onClick={handleSubmit}>Send</button>
+			<button className="btn-modal" onClick={handleSubmit}>
+				Send
+			</button>
 		</section>
 	);
 };

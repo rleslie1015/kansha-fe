@@ -104,10 +104,6 @@
 		width: 75%;
 	}
 
-	.feed-reaction-buttons {
-		width: 25%;
-	}
-
 	.rec-profile-pic {
 		min-width: 25px;
 		height: 25px;
@@ -150,6 +146,7 @@
 
 	.feed-reaction-buttons {
 		display: flex;
+		width: 25%;
 
 		.reaction-button {
 			border: none;

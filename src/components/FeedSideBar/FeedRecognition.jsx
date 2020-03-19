@@ -55,6 +55,7 @@ export const FeedRecognition = memo(
 						reactions={reactions}
 						badge={badge}
 						comments={comments}
+						open={open}
 					/>
 				)}
 				<img

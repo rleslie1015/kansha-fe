@@ -11,7 +11,7 @@ import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 
 const EventSource = NativeEventSource || EventSourcePolyfill;
 
-function FeedSideBar({ close }) {
+function FeedSideBar() {
 	const [open, setOpen] = React.useState(false);
 	const [, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);

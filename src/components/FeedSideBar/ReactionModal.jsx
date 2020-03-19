@@ -12,6 +12,7 @@ function ReactionModal({
 	badge,
 	close,
 	setSelect,
+	open,
 }) {
 	console.log(close, 'close');
 	const handleClose = () => {
@@ -37,7 +38,7 @@ function ReactionModal({
 						<p>{profile.teams}</p>
 						<img className="rm-badge" src={badge?.badge_URL} />
 						<div className="rm-buttons">
-							<ReactionButton reactions={reactions} />
+							<ReactionButton reactions={reactions} open={open} />
 							<AddComment />
 						</div>
 
