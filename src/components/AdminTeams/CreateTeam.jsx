@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 
-const CreateTeam = ({ employees, checked, setChecked, teamMemberArray }) => {
+const CreateTeam = ({
+	employees,
+	checked,
+	setChecked,
+	teamMemberArray,
+	setTeamMemberArray,
+}) => {
 	const [teamName, setTeamName] = useState('');
 
 	const handleChange = event => {
@@ -13,6 +19,7 @@ const CreateTeam = ({ employees, checked, setChecked, teamMemberArray }) => {
 	};
 
 	console.log(teamMemberArray, 'team member array');
+	console.log(setTeamMemberArray, 'setter function');
 
 	return (
 		<div className="create-team-container">
@@ -21,7 +28,7 @@ const CreateTeam = ({ employees, checked, setChecked, teamMemberArray }) => {
 					checked={checked}
 					employees={employees}
 					teamMemberArray={teamMemberArray}
-					// setTeamMemberArray={setTeamMemberArray}
+					setTeamMemberArray={setTeamMemberArray}
 				/>
 			</div>
 			<div className="create-team">

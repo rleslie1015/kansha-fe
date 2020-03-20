@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Icon Imports
@@ -30,10 +30,8 @@ const OrgEmployees = ({
 				if (data.id === person.id) {
 					teamMemberArray.push(person);
 				}
-				setTeamMemberArray(teamMemberArray);
 				return teamMemberArray;
 			});
-			console.log(teamMemberArray, `OrgEmployees array`);
 		}
 	};
 

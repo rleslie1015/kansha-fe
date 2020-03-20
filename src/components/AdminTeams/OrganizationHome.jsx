@@ -54,7 +54,7 @@ const OrganizationHome = () => {
 		table = (
 			<OrganizationEmployeesTable
 				teamMemberArray={teamMemberArray}
-				setTeamMemberArray={setTeamMemberArray}
+				// setTeamMemberArray={setTeamMemberArray}
 				empButton={empButton}
 				employees={employees}
 				setLimit={setLimit}
@@ -66,6 +66,7 @@ const OrganizationHome = () => {
 	} else if (createTeamsBtn) {
 		table = (
 			<CreateTeam
+				setTeamMemberArray={setTeamMemberArray}
 				teamMemberArray={teamMemberArray}
 				employees={employees}
 			/>
