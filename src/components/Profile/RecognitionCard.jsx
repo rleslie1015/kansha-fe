@@ -5,12 +5,16 @@ import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-export function RecognitionCard({ recognition, sent, setProfile }) {
-	console.log(recognition, 'recognition');
+export function RecognitionCard({
+	recognition,
+	sent,
+	setProfile,
+	profileBadges,
+}) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 	const profile = useSelector(state => state.user.profile);
-
+	console.log(profileBadges, 'profileBadges');
 	const handleDelete = e => {
 		e.preventDefault();
 		if (
@@ -28,6 +32,14 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 				});
 		}
 	};
+
+	if (typeof recognition.badge_id === 'number') {
+		var thisBadge = profileBadges.find(
+			bdg => bdg.id === recognition.badge_id,
+		);
+
+		console.log(thisBadge, 'thisBadge');
+	}
 
 	return (
 		<section className="container-recognition-card">
@@ -49,7 +61,7 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 				{profile.user_type === 'admin' && (
 					<Trashcan onClick={handleDelete} />
 				)}
-				<div>
+				<div className="recognition-message">
 					<div>
 						<Link
 							to={`/profile/${
@@ -68,7 +80,12 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 					<p>{recognition.message}</p>
 				</div>
 				<div>
-					<p>{recognition.badge_id}</p>
+					<img
+						className="activity-badge"
+						src={thisBadge?.badge_URL}
+						alt={thisBadge?.badge_name}
+						width="50px"
+					/>
 				</div>
 			</section>
 		</section>

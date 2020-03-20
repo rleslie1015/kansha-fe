@@ -5,7 +5,7 @@ import { ReactComponent as Heart } from '../../assets/singleheart.svg';
 
 export const ReactionButton = ({ reactions, rec_id, id, open }) => {
 	const dispatch = useDispatch();
-	console.log(reactions, 'reactions');
+
 	const userReaction = useMemo(
 		() =>
 			reactions.reduce(

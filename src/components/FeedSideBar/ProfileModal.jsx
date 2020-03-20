@@ -35,9 +35,7 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-	console.log(rec, 'rec');
-	console.log(profile, 'profile');
-
+	console.log(profileBadges, 'profileBadges');
 	return (
 		<>
 			<Modal close={handleClose}>
@@ -74,6 +72,7 @@ function ProfileModal({
 											<RecognitionCard
 												key={recognition.id}
 												sent={false}
+												profileBadges={badges}
 												badge={
 													badges[
 														recognition.badge_id - 1

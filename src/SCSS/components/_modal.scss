@@ -116,5 +116,22 @@
 
 .activity-section {
 	display: flex;
-	align-items: flex-end;
+
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+
+	.recognition-message {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+
+		width: 50%;
+	}
+
+	.activity-badge {
+		margin-left: 20%;
+	}
 }
