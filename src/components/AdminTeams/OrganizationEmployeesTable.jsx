@@ -6,6 +6,9 @@ const OrganizationEmployeesTable = ({
 	empButton,
 	teamMemberArray,
 	setTeamMemberArray,
+	checked,
+	setChecked,
+	addTeamMember,
 }) => {
 	return (
 		<table className="employees-table">
@@ -19,6 +22,9 @@ const OrganizationEmployeesTable = ({
 						employees={employees}
 						teamMemberArray={teamMemberArray}
 						setTeamMemberArray={setTeamMemberArray}
+						checked={checked}
+						setChecked={setChecked}
+						addTeamMember={addTeamMember}
 					/>
 				);
 			})}

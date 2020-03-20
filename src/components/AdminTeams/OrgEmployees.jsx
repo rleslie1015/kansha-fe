@@ -18,29 +18,32 @@ const OrgEmployees = ({
 	employees,
 	teamMemberArray,
 	setTeamMemberArray,
+	checked,
+	setChecked,
+	addTeamMember,
 }) => {
 	const [modal, setModal] = useState(false);
-	const [checked, setChecked] = useState(true);
+	// const [checked, setChecked] = useState(true);
 
 	// console.log(teamMemberArray, 'array');
 
-	const addTeamMember = () => {
-		if (checked) {
-			employees.map(person => {
-				if (data.id === person.id) {
-					teamMemberArray.push(person);
-				}
-				return teamMemberArray;
-			});
-		}
-	};
+	// const checkId = () => {
+	// 	employees.map(person => {
+
+	// 	})
+	// 			if (data.id === person.id) {
+	// 				addTeamMember
+	// 			}
+
+	// 	}
+	// };
 
 	return (
 		<tr className="teams-employee-card">
 			<td className="teams-employee">
 				<label
 					onClick={() => {
-						addTeamMember();
+						addTeamMember(data.id);
 						setChecked(false);
 					}}
 					style={

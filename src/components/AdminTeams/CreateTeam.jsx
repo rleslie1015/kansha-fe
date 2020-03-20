@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
+import { Link } from 'react-router-dom';
 
 const CreateTeam = ({
 	employees,
@@ -7,6 +8,7 @@ const CreateTeam = ({
 	setChecked,
 	teamMemberArray,
 	setTeamMemberArray,
+	addTeamMember,
 }) => {
 	const [teamName, setTeamName] = useState('');
 
@@ -26,9 +28,11 @@ const CreateTeam = ({
 			<div className="create-team-employees-list">
 				<OrganizationEmployeesTable
 					checked={checked}
+					setChecked={setChecked}
 					employees={employees}
 					teamMemberArray={teamMemberArray}
 					setTeamMemberArray={setTeamMemberArray}
+					addTeamMember={addTeamMember}
 				/>
 			</div>
 			<div className="create-team">
@@ -49,7 +53,20 @@ const CreateTeam = ({
 			</div>
 			<div>
 				{teamMemberArray.map(team => {
-					return <h1>{team.first_name}</h1>;
+					return (
+						<Link to={`/profile/${team.id}`}>
+							<div className="teams-employee-info">
+								<img
+									src={team.profile_picture}
+									alt="profile img"
+									className="teams-profile-picture"
+								/>
+								<h3>
+									{team.first_name} {team.last_name}
+								</h3>
+							</div>
+						</Link>
+					);
 				})}
 			</div>
 		</div>

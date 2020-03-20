@@ -21,6 +21,7 @@ const OrganizationHome = () => {
 	// Counts
 	const [empCount, setEmpCount] = useState(null);
 	const [teamCount, setTeamCount] = useState(null);
+	const [checked, setChecked] = useState(true);
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
@@ -40,6 +41,19 @@ const OrganizationHome = () => {
 	}, [filter, empCount, limit, page]);
 
 	const history = useHistory();
+
+	// Function to add a team member in create team component
+	const addTeamMember = param => {
+		if (checked) {
+			employees.map(person => {
+				if (param === person.id) {
+					teamMemberArray.push(person);
+				}
+				return teamMemberArray;
+			});
+			console.log(teamMemberArray);
+		}
+	};
 
 	const handleAddUserClick = () => {
 		history.push('/add-user');
@@ -61,6 +75,9 @@ const OrganizationHome = () => {
 				setPage={setPage}
 				limit={limit}
 				page={page}
+				checked={checked}
+				setChecked={setChecked}
+				addTeamMember={addTeamMember}
 			/>
 		);
 	} else if (createTeamsBtn) {
@@ -69,6 +86,8 @@ const OrganizationHome = () => {
 				setTeamMemberArray={setTeamMemberArray}
 				teamMemberArray={teamMemberArray}
 				employees={employees}
+				addTeamMember={addTeamMember}
+				setChecked={setChecked}
 			/>
 		);
 	} else if (!createTeamsBtn) {
