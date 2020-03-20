@@ -4,6 +4,7 @@ import { ReactComponent as CloseIcon } from '../../assets/closex.svg';
 import { sendRecog } from '../../store/actions/recog-actions';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../../components/Modal';
 
 function RecogModal({ profile, close }) {
 	const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function RecogModal({ profile, close }) {
 		...user,
 	}));
 	const [isTyping, setIsTyping] = useState(true);
+	const [sent, setSent] = useState(false);
 	const [badges, setBadges] = useState([]);
 	const [recog, setRecog] = useState({
 		message: '',
@@ -45,8 +47,8 @@ function RecogModal({ profile, close }) {
 	const handleSubmit = event => {
 		event.preventDefault();
 		dispatch(sendRecog({ ...recog, date: new Date() }));
-		alert('Your Recognition has been sent!');
-		close(false);
+
+		setSent(true);
 	};
 
 	const handleSwitch = badge_id => {
@@ -58,8 +60,21 @@ function RecogModal({ profile, close }) {
 		setRecog({ ...recog, badge_id: null });
 	};
 
+	const handleClose = () => {
+		setSent(false);
+		close(false);
+	};
+
 	return (
 		<section className="rec-modal">
+			{sent && (
+				<Modal close={handleClose}>
+					<p>Your recognition has been sent!</p>
+					<button className="btn-modal" onClick={handleClose}>
+						Ok
+					</button>
+				</Modal>
+			)}
 			<section>
 				<img src={profile_picture} alt="" />
 				<h5>
