@@ -22,7 +22,6 @@ const OrganizationHome = () => {
 	const [empCount, setEmpCount] = useState(null);
 	const [teamCount, setTeamCount] = useState(null);
 	// employees state
-	const [checked, setChecked] = useState(false);
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
 
@@ -55,8 +54,6 @@ const OrganizationHome = () => {
 			<OrganizationEmployeesTable
 				empButton={empButton}
 				employees={employees}
-				checked={checked}
-				setChecked={setChecked}
 				setLimit={setLimit}
 				setPage={setPage}
 				limit={limit}
@@ -64,13 +61,7 @@ const OrganizationHome = () => {
 			/>
 		);
 	} else if (createTeamsBtn) {
-		table = (
-			<CreateTeam
-				setChecked={setChecked}
-				checked={checked}
-				employees={employees}
-			/>
-		);
+		table = <CreateTeam employees={employees} />;
 	} else if (!createTeamsBtn) {
 		table = <OrganizationTeams />;
 	}

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 
 const CreateTeam = ({ employees, checked, setChecked }) => {
-	const [teamMemberArray, setTeamMemberArray] = useState([]);
 	const [teamName, setTeamName] = useState('');
+	const [teamMemberArray, setTeamMemberArray] = useState([]);
 
 	console.log(teamMemberArray, 'new team array');
 
@@ -19,7 +19,6 @@ const CreateTeam = ({ employees, checked, setChecked }) => {
 		<div className="create-team-container">
 			<div className="create-team-employees-list">
 				<OrganizationEmployeesTable
-					setChecked={setChecked}
 					checked={checked}
 					employees={employees}
 					teamMemberArray={teamMemberArray}
@@ -42,7 +41,11 @@ const CreateTeam = ({ employees, checked, setChecked }) => {
 				</button>
 				<div className="create-team-picked"></div>
 			</div>
-			<div>{teamMemberArray.map(team => {})}</div>
+			<div>
+				{/* {teamMemberArray.map(team => {
+					return <h1>{team.first_name}</h1>;
+				})} */}
+			</div>
 		</div>
 	);
 };

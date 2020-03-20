@@ -7,20 +7,19 @@ import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
-//
+// Modal imports
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 
 const OrgEmployees = ({
 	data,
-	checked,
-	setChecked,
 	profile,
 	empButton,
-	teamMemberArray,
 	employees,
+	teamMemberArray,
 }) => {
 	const [modal, setModal] = useState(false);
+	const [checked, setChecked] = useState(true);
 
 	const addTeamMember = () => {
 		if (checked) {
@@ -30,7 +29,7 @@ const OrgEmployees = ({
 				}
 				return teamMemberArray;
 			});
-			console.log(teamMemberArray, 'array');
+			console.log(teamMemberArray);
 		}
 	};
 
@@ -39,8 +38,8 @@ const OrgEmployees = ({
 			<td className="teams-employee">
 				<label
 					onClick={() => {
-						setChecked(!checked);
 						addTeamMember();
+						setChecked(false);
 					}}
 					style={
 						empButton ? { display: 'none' } : { display: 'block' }
