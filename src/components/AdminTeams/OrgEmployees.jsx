@@ -17,9 +17,12 @@ const OrgEmployees = ({
 	empButton,
 	employees,
 	teamMemberArray,
+	setTeamMemberArray,
 }) => {
 	const [modal, setModal] = useState(false);
 	const [checked, setChecked] = useState(true);
+
+	// console.log(teamMemberArray, 'array');
 
 	const addTeamMember = () => {
 		if (checked) {
@@ -27,9 +30,10 @@ const OrgEmployees = ({
 				if (data.id === person.id) {
 					teamMemberArray.push(person);
 				}
+				setTeamMemberArray(teamMemberArray);
 				return teamMemberArray;
 			});
-			console.log(teamMemberArray);
+			console.log(teamMemberArray, `OrgEmployees array`);
 		}
 	};
 

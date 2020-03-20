@@ -24,6 +24,7 @@ const OrganizationHome = () => {
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
+	const [teamMemberArray, setTeamMemberArray] = useState([]);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -52,6 +53,8 @@ const OrganizationHome = () => {
 	if (empButton) {
 		table = (
 			<OrganizationEmployeesTable
+				teamMemberArray={teamMemberArray}
+				setTeamMemberArray={setTeamMemberArray}
 				empButton={empButton}
 				employees={employees}
 				setLimit={setLimit}
@@ -61,7 +64,12 @@ const OrganizationHome = () => {
 			/>
 		);
 	} else if (createTeamsBtn) {
-		table = <CreateTeam employees={employees} />;
+		table = (
+			<CreateTeam
+				teamMemberArray={teamMemberArray}
+				employees={employees}
+			/>
+		);
 	} else if (!createTeamsBtn) {
 		table = <OrganizationTeams />;
 	}

@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 
-const CreateTeam = ({ employees, checked, setChecked }) => {
+const CreateTeam = ({ employees, checked, setChecked, teamMemberArray }) => {
 	const [teamName, setTeamName] = useState('');
-	const [teamMemberArray, setTeamMemberArray] = useState([]);
-
-	console.log(teamMemberArray, 'new team array');
 
 	const handleChange = event => {
 		setTeamName(event.target.value);
@@ -15,6 +12,8 @@ const CreateTeam = ({ employees, checked, setChecked }) => {
 		console.log(teamName);
 	};
 
+	console.log(teamMemberArray, 'team member array');
+
 	return (
 		<div className="create-team-container">
 			<div className="create-team-employees-list">
@@ -22,7 +21,7 @@ const CreateTeam = ({ employees, checked, setChecked }) => {
 					checked={checked}
 					employees={employees}
 					teamMemberArray={teamMemberArray}
-					setTeamMemberArray={setTeamMemberArray}
+					// setTeamMemberArray={setTeamMemberArray}
 				/>
 			</div>
 			<div className="create-team">
@@ -42,9 +41,9 @@ const CreateTeam = ({ employees, checked, setChecked }) => {
 				<div className="create-team-picked"></div>
 			</div>
 			<div>
-				{/* {teamMemberArray.map(team => {
+				{teamMemberArray.map(team => {
 					return <h1>{team.first_name}</h1>;
-				})} */}
+				})}
 			</div>
 		</div>
 	);
