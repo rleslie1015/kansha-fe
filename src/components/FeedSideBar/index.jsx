@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import FeedRecognition from './FeedRecognition';
+import { FeedRecognition } from './FeedRecognition';
 import {
 	loadLiveFeed,
 	liveFeedListeners,
@@ -13,13 +13,15 @@ const EventSource = NativeEventSource || EventSourcePolyfill;
 
 function FeedSideBar() {
 	const [open, setOpen] = React.useState(false);
-
+	const [, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
-
-	const { feed } = useSelector(({ liveFeed, user }) => ({
-		...liveFeed,
-		...user,
-	}));
+	const [, setModal] = useState(false);
+	const { feed, comments, reactions, profile } = useSelector(
+		({ liveFeed, user }) => ({
+			...liveFeed,
+			...user,
+		}),
+	);
 
 	const dispatch = useDispatch();
 
@@ -57,16 +59,21 @@ function FeedSideBar() {
 					Feed
 				</h2>
 				<h3 className={`${open ? 'recently-thanked-title' : 'hidden'}`}>
-					Recent Thankfulness
+					Recent Thanks
 				</h3>
 			</div>
 			<div className="feed-rec-list">
 				{feed.map(rec => (
 					<FeedRecognition
 						open={open}
+						close={setModal}
 						key={rec.id}
 						rec={rec}
 						badge={badges[rec.badge_id - 1]}
+						profile={profile}
+						setSelectedRec={setSelectedRec}
+						reactions={reactions[rec.id]}
+						comments={comments[rec.id]}
 					/>
 				))}
 			</div>

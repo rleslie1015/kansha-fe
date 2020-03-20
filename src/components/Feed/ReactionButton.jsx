@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { removeReaction, reactToPost } from '../../store/actions/feed-actions';
 import { ReactComponent as Heart } from '../../assets/singleheart.svg';
 
-export const ReactionButton = ({ reactions, rec_id, id }) => {
+export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 	const dispatch = useDispatch();
 	const userReaction = useMemo(
 		() =>
@@ -24,12 +24,13 @@ export const ReactionButton = ({ reactions, rec_id, id }) => {
 
 	return (
 		<button
+			className={`${open ? `reaction-button` : `hidden-rec`}`}
 			aria-label={
 				userReaction ? 'remove reaction to post' : 'react to post'
 			}
 			onClick={handleReaction}>
 			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
-			{reactions && reactions.length}
+			{inModal && <p>{reactions.length}</p>}
 		</button>
 	);
 };
