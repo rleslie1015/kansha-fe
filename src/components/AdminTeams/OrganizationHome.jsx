@@ -10,7 +10,6 @@ import CreateTeam from './CreateTeam';
 
 const OrganizationHome = () => {
 	const titleArr = ['Employees', 'Teams'];
-
 	// Button states
 	const [empButton, setEmpButton] = useState(true);
 	const [createTeamsBtn, setCreateTeamsBtn] = useState(false);
@@ -21,11 +20,13 @@ const OrganizationHome = () => {
 	// Counts
 	const [empCount, setEmpCount] = useState(null);
 	const [teamCount, setTeamCount] = useState(null);
-	const [checked, setChecked] = useState(true);
+	const [checked, setChecked] = useState(false);
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
 	const [teamMemberArray, setTeamMemberArray] = useState([]);
+
+	const history = useHistory();
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -33,25 +34,24 @@ const OrganizationHome = () => {
 				`/employees/organizations?search=${filter}&limit=${limit}&page=${page}`,
 			)
 			.then(res => {
-				console.log(res);
 				setEmployees(res.data.employees);
 				setEmpCount(res.data.count);
 				setTeamCount(0);
 			});
-	}, [filter, empCount, limit, page]);
+	}, [filter, limit, page]);
 
-	const history = useHistory();
-
-	// Function to add a team member in create team component
+	// Function to add a team member to array in create team component
 	const addTeamMember = param => {
+		setChecked(!checked);
 		if (checked) {
 			employees.map(person => {
 				if (param === person.id) {
-					teamMemberArray.push(person);
+					if (teamMemberArray.indexOf(person) === -1) {
+						teamMemberArray.push(person);
+					}
 				}
 				return teamMemberArray;
 			});
-			console.log(teamMemberArray);
 		}
 	};
 
@@ -67,17 +67,12 @@ const OrganizationHome = () => {
 	if (empButton) {
 		table = (
 			<OrganizationEmployeesTable
-				teamMemberArray={teamMemberArray}
-				// setTeamMemberArray={setTeamMemberArray}
 				empButton={empButton}
 				employees={employees}
 				setLimit={setLimit}
 				setPage={setPage}
 				limit={limit}
 				page={page}
-				checked={checked}
-				setChecked={setChecked}
-				addTeamMember={addTeamMember}
 			/>
 		);
 	} else if (createTeamsBtn) {
@@ -87,7 +82,6 @@ const OrganizationHome = () => {
 				teamMemberArray={teamMemberArray}
 				employees={employees}
 				addTeamMember={addTeamMember}
-				setChecked={setChecked}
 			/>
 		);
 	} else if (!createTeamsBtn) {

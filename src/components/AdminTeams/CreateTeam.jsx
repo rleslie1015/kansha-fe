@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
 const CreateTeam = ({
 	employees,
-	checked,
-	setChecked,
 	teamMemberArray,
 	setTeamMemberArray,
 	addTeamMember,
@@ -20,15 +18,10 @@ const CreateTeam = ({
 		console.log(teamName);
 	};
 
-	console.log(teamMemberArray, 'team member array');
-	console.log(setTeamMemberArray, 'setter function');
-
 	return (
 		<div className="create-team-container">
 			<div className="create-team-employees-list">
 				<OrganizationEmployeesTable
-					checked={checked}
-					setChecked={setChecked}
 					employees={employees}
 					teamMemberArray={teamMemberArray}
 					setTeamMemberArray={setTeamMemberArray}
@@ -50,24 +43,38 @@ const CreateTeam = ({
 					save team
 				</button>
 				<div className="create-team-picked"></div>
-			</div>
-			<div>
-				{teamMemberArray.map(team => {
-					return (
-						<Link to={`/profile/${team.id}`}>
-							<div className="teams-employee-info">
-								<img
-									src={team.profile_picture}
-									alt="profile img"
-									className="teams-profile-picture"
-								/>
-								<h3>
-									{team.first_name} {team.last_name}
-								</h3>
-							</div>
-						</Link>
-					);
-				})}
+				<div className="added-team-list">
+					{teamMemberArray.map(team => {
+						return (
+							<table>
+								<tbody>
+									<tr className="teams-employee-card">
+										<td className="teams-employee">
+											<Link to={`/profile/${team.id}`}>
+												<div className="teams-employee-info">
+													<img
+														src={
+															team.profile_picture
+														}
+														alt="profile img"
+														className="teams-profile-picture"
+													/>
+													<h3>
+														{team.first_name}{' '}
+														{team.last_name}
+													</h3>
+												</div>
+											</Link>
+										</td>
+										<td className="teams-container">
+											<h3 className="teams">Teams (0)</h3>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

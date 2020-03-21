@@ -4,10 +4,6 @@ import OrgEmployees from './OrgEmployees';
 const OrganizationEmployeesTable = ({
 	employees,
 	empButton,
-	teamMemberArray,
-	setTeamMemberArray,
-	checked,
-	setChecked,
 	addTeamMember,
 }) => {
 	return (
@@ -19,11 +15,6 @@ const OrganizationEmployeesTable = ({
 						data={data}
 						key={data.id}
 						empButton={empButton}
-						employees={employees}
-						teamMemberArray={teamMemberArray}
-						setTeamMemberArray={setTeamMemberArray}
-						checked={checked}
-						setChecked={setChecked}
 						addTeamMember={addTeamMember}
 					/>
 				);
