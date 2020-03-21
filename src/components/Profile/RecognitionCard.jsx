@@ -4,7 +4,8 @@ import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+import { CommentButton } from '../Feed/CommentButton';
+import { ReactionButton } from '../Feed/ReactionButton';
 export function RecognitionCard({
 	recognition,
 	sent,
@@ -87,6 +88,7 @@ export function RecognitionCard({
 						width="50px"
 					/>
 				</div>
+				<div></div>
 			</section>
 		</section>
 	);

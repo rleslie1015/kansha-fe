@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../components/Modal';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
-import { ReactionButton } from '../../components/Feed/ReactionButton';
+
 import { SendComments } from '../Feed/SendComment';
 import { RecognitionCard } from '../Profile/RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
 function ProfileModal({
 	profile,
 	rec,
