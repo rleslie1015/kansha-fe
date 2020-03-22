@@ -98,11 +98,16 @@ const OrganizationHome = () => {
 							setCreateTeamsBtn(true);
 							setEmpButton(false);
 						}}>
-						Create a Team
+						{!createTeamsBtn ? 'Create a team' : 'Save'}
 					</button>
 				</div>
 				<h2>
-					{title} {empButton ? `(${empCount})` : `(${teamCount})`}
+					{title}{' '}
+					{empButton
+						? `(${empCount})`
+						: `(${teamCount})` && createTeamsBtn
+						? `(${empCount})`
+						: `(${teamCount})`}
 				</h2>
 			</div>
 			<div className="employee-filter-container">

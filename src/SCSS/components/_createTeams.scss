@@ -10,12 +10,28 @@
 		width: 50%;
 	}
 
-	.recognition-btn {
-		display: none;
+	.create-team-add-name {
+		margin-top: -2.7rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		input {
+			border: 1px solid $color-gray-light;
+			border-radius: 6px;
+			width: 24.7rem;
+		}
+
+		h2 {
+			font-size: 1.8rem;
+			color: $color-primary-nav;
+			font-weight: normal;
+		}
 	}
 
 	.teams-employee-icons {
-		display: none;
+		display: flex;
+		align-items: center;
 	}
 
 	.added-team-list {
