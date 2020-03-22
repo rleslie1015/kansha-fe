@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import RecogModal from '../RecogModal/index';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const CreateTeam = ({
 	employees,
@@ -17,16 +18,34 @@ const CreateTeam = ({
 	setTeamMemberArray,
 	addTeamMember,
 }) => {
-	const [teamName, setTeamName] = useState('');
 	const [modal, setModal] = useState(false);
+	const [team, setTeam] = useState({
+		name: '',
+		newMembersArray: teamMemberArray,
+	});
+	const [teamName, setTeamName] = useState('');
 
-	// const handleChange = event => {
-	// 	setTeamName(event.target.value);
-	// };
+	const handleChange = event => {
+		setTeamName(event.target.value);
+	};
 
-	// const handleSubmit = () => {
-	// 	console.log(teamName);
-	// };
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/teams')
+			.then(res => {
+				// console.log(res);
+			})
+			.catch(error => console.log(error.response));
+	});
+
+	const handleSubmit = () => {
+		axiosWithAuth()
+			.post('/teams', team)
+			.then(res => {
+				console.log(res);
+			})
+			.catch(error => console.log(error.response));
+	};
 
 	// Length of team to be added
 	const teamLength = teamMemberArray.length;
@@ -44,18 +63,18 @@ const CreateTeam = ({
 			<div className="create-team">
 				<div className="create-team-add-name">
 					<input
+						onChange={handleChange}
 						type="text"
 						id="save-team"
-						name="teamname"
+						name="name"
 						placeholder="Team Name"
 					/>
+					{/* <button onClick={handleSubmit}>submit</button> */}
 					<h2>{`Selected (${teamLength})`}</h2>
 				</div>
 				<div className="create-team-picked"></div>
 				<div className="added-team-list">
 					{teamMemberArray.map(team => {
-						console.log(team, 'team info for modal');
-						console.log(teamMemberArray);
 						return (
 							<table>
 								<tbody>
@@ -79,19 +98,19 @@ const CreateTeam = ({
 										</td>
 										<td className="recognition-btn">
 											<RecognitionIcon
-												onClick={() => setModal(!modal)}
+												// onClick={() => setModal(!modal)}
 												style={{
 													height: '20px',
 													width: '20px',
 												}}
 											/>
-											{modal && (
+											{/* {modal && (
 												<Modal close={setModal}>
 													<RecogModal
 														profile={team}
 													/>
 												</Modal>
-											)}
+											)} */}
 										</td>
 										<td className="teams-container">
 											<h3>Role</h3>
