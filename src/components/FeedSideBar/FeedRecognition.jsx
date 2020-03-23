@@ -7,7 +7,6 @@ import ReactionModal from './ReactionModal';
 import { CommentButton } from '../Feed/CommentButton';
 import ProfileModal from './ProfileModal';
 
-
 export const FeedRecognition = memo(
 	({
 		rec,
@@ -20,6 +19,7 @@ export const FeedRecognition = memo(
 		setSelectedRec,
 		setSelectedProfile,
 		close,
+		allReactions,
 	}) => {
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
@@ -53,10 +53,13 @@ export const FeedRecognition = memo(
 						setProfileSelect={setProfileSelect}
 						profile={profile}
 						rec={rec}
-						reactions={reactions}
 						badge={badge}
 						comments={comments}
 						badges={badges}
+						id={profile.id}
+						rec_id={rec_id}
+						reactions={reactions}
+						open={open}
 					/>
 				)}
 				{select && (

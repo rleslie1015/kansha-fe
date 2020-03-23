@@ -4,8 +4,7 @@ import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { CommentButton } from '../Feed/CommentButton';
-import { ReactionButton } from '../Feed/ReactionButton';
+
 export function RecognitionCard({
 	recognition,
 	sent,
@@ -18,6 +17,7 @@ export function RecognitionCard({
 	profileRecs,
 	profileId,
 	id,
+	rec_id,
 }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -93,22 +93,6 @@ export function RecognitionCard({
 						src={thisBadge?.badge_URL}
 						alt={thisBadge?.badge_name}
 						width="50px"
-					/>
-				</div>
-				<div className="rm-buttons">
-					<ReactionButton
-						reactions={reactions}
-						open={open}
-						inModal={true}
-						rec_id={recognition.id}
-						id={id}
-					/>
-
-					<CommentButton
-						comments={comments}
-						open={open}
-						inModal={true}
-						rec_id={recognition.id}
 					/>
 				</div>
 			</section>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Modal from '../../components/Modal';
 import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
-
+import { CommentButton } from '../Feed/CommentButton';
+import { ReactionButton } from '../Feed/ReactionButton';
 import { SendComments } from '../Feed/SendComment';
 import { RecognitionCard } from '../Profile/RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -36,7 +37,7 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-	console.log(rec, 'rec');
+	console.log(profileInfo.rec, 'recognitions');
 
 	const userBadges = useMemo(() => {
 		const array = [];
@@ -131,25 +132,50 @@ function ProfileModal({
 											);
 										})
 										.map(recognition => (
-											<RecognitionCard
-												key={recognition.id}
-												sent={false}
-												profileBadges={badges}
-												badge={
-													badges[
-														recognition.badge_id - 1
-													]
-												}
-												profileRecs={profileInfo.rec}
-												recognition={recognition}
-												setProfileInfo={setProfileInfo}
-												reactions={reactions}
-												rec={rec}
-												comments={comments}
-												open={true}
-												profileId={profileId}
-												id={profile.id}
-											/>
+											<>
+												<RecognitionCard
+													key={recognition.id}
+													sent={false}
+													profileBadges={badges}
+													badge={
+														badges[
+															recognition.badge_id -
+																1
+														]
+													}
+													profileRecs={
+														profileInfo.rec
+													}
+													recognition={recognition}
+													setProfileInfo={
+														setProfileInfo
+													}
+													reactions={reactions}
+													rec={rec}
+													comments={comments}
+													open={true}
+													profileId={profileId}
+													id={profile.id}
+													rec_id={recognition.id}
+												/>
+												<div className="rm-buttons">
+													<ReactionButton
+														reactions={reactions}
+														open={true}
+														inModal={true}
+														rec_id={recognition.id}
+														id={profile.id}
+													/>
+
+													<CommentButton
+														comments={comments}
+														open={true}
+														inModal={true}
+														rec_id={recognition.id}
+														id={profile.id}
+													/>
+												</div>
+											</>
 										))}
 							</section>
 						</div>
