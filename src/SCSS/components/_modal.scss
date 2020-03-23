@@ -71,21 +71,56 @@
 			}
 		}
 	}
+
 	.profile-main {
 		display: flex;
 		width: 100%;
 		margin-top: 2rem;
+		justify-content: space-between;
 		.profile-badges {
-			width: 50%;
+			width: 45%;
+			ul {
+				display: flex;
+				width: 100%;
+				padding: 2rem 0;
+				flex-wrap: wrap;
 
-			h2 {
-				font-size: 3.4rem;
-				color: $color-primary;
+				height: 24rem;
+				overflow-y: scroll;
+
+				.badge-profile {
+					width: 14rem;
+				}
+			}
+
+			.badges-title-container {
+				width: 100%;
+				display: flex;
+				align-items: center;
+
+				.badges-title {
+					font-size: 3.4rem;
+					color: $color-primary;
+				}
+				.number-of-badges {
+					color: $color-primary;
+					font-size: 1.8rem;
+					margin-left: 2rem;
+					background-color: $color-white;
+					@include boxshadow();
+					border-radius: 229px;
+					width: 5rem;
+					text-align: center;
+					height: 3rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
 			}
 		}
 
 		.profile-activity {
-			width: 50%;
+			width: 45%;
 
 			h2 {
 				font-size: 3.4rem;
@@ -133,5 +168,37 @@
 
 	.activity-badge {
 		margin-left: 20%;
+	}
+}
+
+.rm-buttons {
+	display: flex;
+	margin-left: 15%;
+	align-items: center;
+	.reaction-button {
+		border: none;
+		margin-right: 1.5rem;
+		color: rgba(0, 13, 34, 0.7);
+
+		.heart-full {
+			fill: $color-primary;
+		}
+
+		.heart-empty {
+			fill: rgba(0, 13, 34, 0.7);
+		}
+	}
+	.comment-button {
+		border: none;
+		margin-right: 1.5rem;
+		color: rgba(0, 13, 34, 0.7);
+
+		.comment-full {
+			fill: $color-primary;
+		}
+
+		.comment-empty {
+			fill: rgba(0, 13, 34, 0.7);
+		}
 	}
 }

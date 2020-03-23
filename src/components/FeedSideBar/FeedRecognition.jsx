@@ -6,6 +6,8 @@ import { ReactionButton } from '../Feed/ReactionButton';
 import ReactionModal from './ReactionModal';
 import { CommentButton } from '../Feed/CommentButton';
 import ProfileModal from './ProfileModal';
+
+
 export const FeedRecognition = memo(
 	({
 		rec,

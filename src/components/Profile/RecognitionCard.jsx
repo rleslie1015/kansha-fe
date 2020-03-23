@@ -11,11 +11,15 @@ export function RecognitionCard({
 	sent,
 	setProfile,
 	profileBadges,
+	reactions,
+	rec,
+	open,
+	comments,
 }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 	const profile = useSelector(state => state.user.profile);
-	console.log(profileBadges, 'profileBadges');
+
 	const handleDelete = e => {
 		e.preventDefault();
 		if (
@@ -38,8 +42,6 @@ export function RecognitionCard({
 		var thisBadge = profileBadges.find(
 			bdg => bdg.id === recognition.badge_id,
 		);
-
-		console.log(thisBadge, 'thisBadge');
 	}
 
 	return (
@@ -88,7 +90,23 @@ export function RecognitionCard({
 						width="50px"
 					/>
 				</div>
-				<div></div>
+				<div className="rm-buttons">
+					<ReactionButton
+						reactions={reactions}
+						open={open}
+						inModal={true}
+						rec_id={rec.id}
+						id={profile.id}
+					/>
+
+					<CommentButton
+						comments={comments}
+						open={open}
+						inModal={true}
+						rec_id={rec.id}
+						id={profile.id}
+					/>
+				</div>
 			</section>
 		</section>
 	);
