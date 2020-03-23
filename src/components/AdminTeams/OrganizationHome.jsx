@@ -40,6 +40,10 @@ const OrganizationHome = () => {
 			});
 	}, [filter, limit, page]);
 
+	employees.map(emp => {
+		return (emp.team_role = 'manager');
+	});
+
 	// Function to add a team member to array in create team component
 	const addTeamMember = param => {
 		setChecked(!checked);

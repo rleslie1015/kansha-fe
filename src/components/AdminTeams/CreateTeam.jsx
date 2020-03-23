@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
@@ -18,34 +18,34 @@ const CreateTeam = ({
 	setTeamMemberArray,
 	addTeamMember,
 }) => {
-	const [modal, setModal] = useState(false);
-	const [team, setTeam] = useState({
-		name: '',
-		newMembersArray: teamMemberArray,
+	// const [modal, setModal] = useState(false);
+	// const [name, setName] = useState('willys');
+	const [newTeam, setNewTeam] = useState({
+		name: 'Walmart',
+		newMembersArray: [],
 	});
-	const [teamName, setTeamName] = useState('');
 
-	const handleChange = event => {
-		setTeamName(event.target.value);
-	};
-
-	useEffect(() => {
-		axiosWithAuth()
-			.get('/teams')
-			.then(res => {
-				// console.log(res);
-			})
-			.catch(error => console.log(error.response));
+	let teamArr = teamMemberArray.map(emp => {
+		let newMember = {
+			user_id: emp.id,
+			team_role: emp.team_role,
+		};
+		return newMember;
 	});
+
+	console.log(teamArr, 'team member array');
 
 	const handleSubmit = () => {
+		setNewTeam({ ...newTeam, newMembersArray: teamArr });
 		axiosWithAuth()
-			.post('/teams', team)
+			.post('/teams', { ...newTeam, newMembersArray: teamArr })
 			.then(res => {
 				console.log(res);
 			})
 			.catch(error => console.log(error.response));
 	};
+
+	console.log(newTeam);
 
 	// Length of team to be added
 	const teamLength = teamMemberArray.length;
@@ -63,13 +63,16 @@ const CreateTeam = ({
 			<div className="create-team">
 				<div className="create-team-add-name">
 					<input
-						onChange={handleChange}
+						// value={teamName}
+						// onChange={handleChange}
 						type="text"
 						id="save-team"
 						name="name"
 						placeholder="Team Name"
 					/>
-					{/* <button onClick={handleSubmit}>submit</button> */}
+					<button type="submit" onClick={handleSubmit}>
+						submit
+					</button>
 					<h2>{`Selected (${teamLength})`}</h2>
 				</div>
 				<div className="create-team-picked"></div>
