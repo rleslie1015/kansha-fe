@@ -40,15 +40,12 @@ const OrganizationHome = () => {
 			});
 	}, [filter, limit, page]);
 
-	employees.map(emp => {
-		return (emp.team_role = 'manager');
-	});
-
 	// Function to add a team member to array in create team component
 	const addTeamMember = param => {
 		setChecked(!checked);
 		if (checked) {
 			employees.map(person => {
+				person.team_role = 'member';
 				if (param === person.id) {
 					if (teamMemberArray.indexOf(person) === -1) {
 						teamMemberArray.push(person);
@@ -58,6 +55,8 @@ const OrganizationHome = () => {
 			});
 		}
 	};
+
+	// Need to build a function here that will parse the teamMemberArray for only team_role and user_id and send the object to the backend.
 
 	const handleAddUserClick = () => {
 		history.push('/add-user');

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
 // Modal import
-import Modal from '../Modal';
-import RecogModal from '../RecogModal/index';
+// import Modal from '../Modal';
+// import RecogModal from '../RecogModal/index';
 
 // Icon import
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
@@ -19,7 +19,6 @@ const CreateTeam = ({
 	addTeamMember,
 }) => {
 	// const [modal, setModal] = useState(false);
-	// const [name, setName] = useState('willys');
 	const [newTeam, setNewTeam] = useState({
 		name: 'Walmart',
 		newMembersArray: [],
@@ -33,10 +32,7 @@ const CreateTeam = ({
 		return newMember;
 	});
 
-	console.log(teamArr, 'team member array');
-
 	const handleSubmit = () => {
-		setNewTeam({ ...newTeam, newMembersArray: teamArr });
 		axiosWithAuth()
 			.post('/teams', { ...newTeam, newMembersArray: teamArr })
 			.then(res => {
@@ -44,8 +40,6 @@ const CreateTeam = ({
 			})
 			.catch(error => console.log(error.response));
 	};
-
-	console.log(newTeam);
 
 	// Length of team to be added
 	const teamLength = teamMemberArray.length;
@@ -70,9 +64,7 @@ const CreateTeam = ({
 						name="name"
 						placeholder="Team Name"
 					/>
-					<button type="submit" onClick={handleSubmit}>
-						submit
-					</button>
+					<button onClick={handleSubmit}>submit</button>
 					<h2>{`Selected (${teamLength})`}</h2>
 				</div>
 				<div className="create-team-picked"></div>
