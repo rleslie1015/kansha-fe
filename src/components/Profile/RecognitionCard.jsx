@@ -15,6 +15,9 @@ export function RecognitionCard({
 	rec,
 	open,
 	comments,
+	profileRecs,
+	profileId,
+	id,
 }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -43,6 +46,8 @@ export function RecognitionCard({
 			bdg => bdg.id === recognition.badge_id,
 		);
 	}
+
+	console.log(profileRecs, 'profileRecs');
 
 	return (
 		<section className="container-recognition-card">
@@ -95,16 +100,15 @@ export function RecognitionCard({
 						reactions={reactions}
 						open={open}
 						inModal={true}
-						rec_id={rec.id}
-						id={profile.id}
+						rec_id={recognition.id}
+						id={id}
 					/>
 
 					<CommentButton
 						comments={comments}
 						open={open}
 						inModal={true}
-						rec_id={rec.id}
-						id={profile.id}
+						rec_id={recognition.id}
 					/>
 				</div>
 			</section>

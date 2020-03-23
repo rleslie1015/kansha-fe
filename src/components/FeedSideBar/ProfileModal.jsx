@@ -36,7 +36,7 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-	console.log(profileInfo, 'profileInfo');
+	console.log(rec, 'rec');
 
 	const userBadges = useMemo(() => {
 		const array = [];
@@ -140,13 +140,15 @@ function ProfileModal({
 														recognition.badge_id - 1
 													]
 												}
-												profile={profileInfo}
+												profileRecs={profileInfo.rec}
 												recognition={recognition}
 												setProfileInfo={setProfileInfo}
 												reactions={reactions}
 												rec={rec}
 												comments={comments}
 												open={true}
+												profileId={profileId}
+												id={profile.id}
 											/>
 										))}
 							</section>
