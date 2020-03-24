@@ -37,25 +37,27 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-	console.log(profileInfo.rec, 'recognitions');
 
+	console.log(profile.rec, 'profile.rec');
 	const userBadges = useMemo(() => {
 		const array = [];
 		if (profileInfo.rec) {
 			for (const rec of profileInfo.rec) {
-				if (profileId === rec.sender) continue;
-				const { badge_id } = rec;
-				const badge = badges.find(bdg => bdg.id === badge_id);
-				const exist = array.find(bdg => bdg.id === badge_id);
-				if (exist) {
-					array[array.indexOf(exist)].count++;
-					continue;
-				}
-				array.push({
-					id: badge_id,
-					badge: badge?.badge_URL,
-					count: 1,
-				});
+
+					if (profileId === rec.sender) continue;
+					const { badge_id } = rec;
+					const badge = badges.find(bdg => bdg.id === badge_id);
+					const exist = array.find(bdg => bdg.id === badge_id);
+					if (exist) {
+						array[array.indexOf(exist)].count++;
+						continue;
+					}
+					array.push({
+						id: badge_id,
+						badge: badge?.badge_URL,
+						count: 1,
+					});
+				
 			}
 		}
 		return array;
@@ -104,6 +106,7 @@ function ProfileModal({
 								{badges && (
 									<>
 										{userBadges.map(badge => {
+											if (badge.badge) {
 											return (
 												<Badge
 													key={badge.id}
@@ -114,7 +117,9 @@ function ProfileModal({
 														alt="badge"
 													/>
 												</Badge>
+											
 											);
+											}
 										})}
 									</>
 								)}

@@ -47,8 +47,6 @@ export function RecognitionCard({
 		);
 	}
 
-	console.log(profileRecs, 'profileRecs');
-
 	return (
 		<section className="container-recognition-card">
 			<Link

@@ -71,7 +71,7 @@ function ReactionModal({
 						<p className="rm-message">{rec.message}</p>
 					</div>
 					<div className="rm-comment-box">
-						<SendComments
+						{/* <SendComments
 							id={rec.id}
 							messageSent={messageSent}
 							setMessageSent={setMessageSent}
@@ -86,7 +86,7 @@ function ReactionModal({
 									/>
 								))}
 							</div>
-						)}
+						)} */}
 					</div>
 				</section>
 			</Modal>
