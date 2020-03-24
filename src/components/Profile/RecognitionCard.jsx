@@ -5,7 +5,20 @@ import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-export function RecognitionCard({ recognition, sent, setProfile }) {
+export function RecognitionCard({
+	recognition,
+	sent,
+	setProfile,
+	profileBadges,
+	reactions,
+	rec,
+	open,
+	comments,
+	profileRecs,
+	profileId,
+	id,
+	rec_id,
+}) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 	const profile = useSelector(state => state.user.profile);
@@ -28,6 +41,14 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 		}
 	};
 
+	if (typeof recognition.badge_id === 'number') {
+		var thisBadge = profileBadges.find(
+			bdg => bdg.id === recognition.badge_id,
+		);
+	}
+
+	console.log(profileRecs, 'profileRecs');
+
 	return (
 		<section className="container-recognition-card">
 			<Link
@@ -44,24 +65,36 @@ export function RecognitionCard({ recognition, sent, setProfile }) {
 				/>
 			</Link>
 
-			<section>
+			<section className="activity-section">
 				{profile.user_type === 'admin' && (
 					<Trashcan onClick={handleDelete} />
 				)}
-				<div>
-					<Link
-						to={`/profile/${
-							sent ? recognition.recipient : recognition.sender
-						}`}>
-						{sent
-							? `Sent to ${recognition.first_name} ${recognition.last_name}`
-							: `${recognition.first_name} ${recognition.last_name}`}
-					</Link>
-					<span className="time" role="presentation">
-						&nbsp;{time}
-					</span>
+				<div className="recognition-message">
+					<div>
+						<Link
+							to={`/profile/${
+								sent
+									? recognition.recipient
+									: recognition.sender
+							}`}>
+							{sent
+								? `Sent to ${recognition.first_name} ${recognition.last_name}`
+								: `${recognition.first_name} ${recognition.last_name}`}
+						</Link>
+						<span className="time" role="presentation">
+							&nbsp;{time}
+						</span>
+					</div>
+					<p>{recognition.message}</p>
 				</div>
-				<p>{recognition.message}</p>
+				<div>
+					<img
+						className="activity-badge"
+						src={thisBadge?.badge_URL}
+						alt={thisBadge?.badge_name}
+						width="50px"
+					/>
+				</div>
 			</section>
 		</section>
 	);

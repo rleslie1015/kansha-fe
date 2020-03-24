@@ -16,8 +16,6 @@ function ReactionModal({
 	setSelect,
 	open,
 }) {
-	const [messageSent, setMessageSent] = useState(false);
-
 	const handleClose = () => {
 		setSelect(false);
 		close(false);
