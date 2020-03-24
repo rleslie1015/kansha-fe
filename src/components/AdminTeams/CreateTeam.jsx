@@ -29,6 +29,7 @@ const CreateTeam = ({
 			user_id: emp.id,
 			team_role: emp.team_role,
 		};
+		console.log(newMember);
 		return newMember;
 	});
 
