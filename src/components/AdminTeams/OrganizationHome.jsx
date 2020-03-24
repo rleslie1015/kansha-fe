@@ -13,6 +13,7 @@ const OrganizationHome = () => {
 	// Button states
 	const [empButton, setEmpButton] = useState(true);
 	const [createTeamsBtn, setCreateTeamsBtn] = useState(false);
+	const [teamsBtn, setTeamsBtn] = useState(false);
 	// Query states
 	const [filter, setFilter] = useState('');
 	const [limit, setLimit] = useState(20);
@@ -28,6 +29,7 @@ const OrganizationHome = () => {
 
 	const history = useHistory();
 
+	// Grab Employees for a user's organization and set to state
 	useEffect(() => {
 		axiosWithAuth()
 			.get(
@@ -87,7 +89,7 @@ const OrganizationHome = () => {
 				addTeamMember={addTeamMember}
 			/>
 		);
-	} else if (!createTeamsBtn) {
+	} else if (teamsBtn) {
 		table = <OrganizationTeams />;
 	}
 
@@ -137,6 +139,7 @@ const OrganizationHome = () => {
 					onClick={() => {
 						setEmpButton(false);
 						setCreateTeamsBtn(false);
+						setTeamsBtn(true);
 						setTitle(titleArr[1]);
 					}}
 					className="btn-filter">
