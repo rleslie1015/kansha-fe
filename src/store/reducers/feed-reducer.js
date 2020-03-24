@@ -68,6 +68,13 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
+				reactions: {
+					...state.reactions,
+					[action.payload.rec_id]: [
+						...state.reactions[action.payload.rec_id],
+						action.payload,
+					],
+				},
 			};
 		case FEED_REACT_FAILURE:
 			return {
@@ -119,15 +126,17 @@ export const feedReducer = (state = initialState, action) => {
 				feed: [action.payload, ...state.feed],
 			};
 		case FEED_EVENT_NEW_REACTION:
+			//console.log(action.payload);
 			return {
 				...state,
+				/*,
 				reactions: {
 					...state.reactions,
 					[action.payload.rec_id]: [
 						...state.reactions[action.payload.rec_id],
 						action.payload,
 					],
-				},
+				},*/
 			};
 		case FEED_EVENT_NEW_COMMENT:
 			return {
@@ -144,7 +153,9 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				feed: state.feed.filter(rec => !(rec.id === parseInt(action.payload.id)))
+				feed: state.feed.filter(
+					rec => !(rec.id === parseInt(action.payload.id)),
+				),
 			};
 		case FEED_EVENT_REMOVE_REACTION:
 			return {

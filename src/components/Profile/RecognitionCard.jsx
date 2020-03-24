@@ -1,28 +1,24 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { CommentButton } from '../Feed/CommentButton';
+import { ReactionButton } from '../Feed/ReactionButton';
 
 export function RecognitionCard({
 	recognition,
 	sent,
 	setProfile,
 	profileBadges,
-	reactions,
-	rec,
-	open,
-	comments,
-	profileRecs,
 	profileId,
-	id,
-	rec_id,
 }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 	const profile = useSelector(state => state.user.profile);
-
+	const [reactions, setReactions] = useState([]);
+	const [comments, setComments] = useState([]);
 	const handleDelete = e => {
 		e.preventDefault();
 		if (
@@ -46,7 +42,34 @@ export function RecognitionCard({
 			bdg => bdg.id === recognition.badge_id,
 		);
 	}
-	console.log(sent, 'sent');
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const reactions = await axiosWithAuth().get(
+				`/reactions/${recognition.id}`,
+			);
+			const comments = await axiosWithAuth().get(
+				`/comments/${recognition.id}`,
+			);
+			setReactions(reactions.data);
+			setComments(comments.data);
+		};
+		fetchData();
+	}, [recognition.id]);
+	// console.log(reactions, 'reactions');
+	// console.log(comments, 'comments');
+
+	// make functions for liking and unliking a post
+
+	// function likePost() {
+
+	// }
+
+	// function unLikePost(reactionId, reaction) {
+	// 	const index = reactions.indexOf(reaction);
+	// 	reactions.spice(1, index);
+	// }
+
 	return (
 		<section className="container-recognition-card">
 			<Link
@@ -103,6 +126,23 @@ export function RecognitionCard({
 					/>
 				</div>
 			</section>
+			<div className="rm-buttons">
+				<ReactionButton
+					reactions={reactions}
+					open={true}
+					inModal={true}
+					rec_id={recognition.id}
+					id={profileId}
+				/>
+
+				<CommentButton
+					comments={comments}
+					open={true}
+					inModal={true}
+					rec_id={recognition.id}
+					id={profileId}
+				/>
+			</div>
 		</section>
 	);
 }

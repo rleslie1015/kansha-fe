@@ -19,7 +19,6 @@ export const FeedRecognition = memo(
 		setSelectedRec,
 		setSelectedProfile,
 		close,
-		allReactions,
 	}) => {
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);

@@ -1,30 +1,28 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Modal from '../../components/Modal';
-import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
-import { CommentButton } from '../Feed/CommentButton';
-import { ReactionButton } from '../Feed/ReactionButton';
-import { SendComments } from '../Feed/SendComment';
 import { RecognitionCard } from '../Profile/RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Badge } from '../Profile/styled';
+
 function ProfileModal({
-	profile,
-	rec,
-	reactions,
-	comments,
-	badge,
-	badges,
-	close,
-	setProfileSelect,
+	profile, // this is the profile info for the logged in user
+	rec, // this is the info for the activity card that the user clicked on
+	reactions, // this is an array of heart reactions for the card the user clicked on
+	comments, // this is an array of comments for the card the user clicked on
+	badges, // this a list of all the badges in the system
+	close, // function
+	setProfileSelect, // function
 }) {
+	// this handles the profile modal closing
 	const handleClose = () => {
 		setProfileSelect(false);
 		close(false);
 	};
-
+	// this is the id number of the user whose profile we're looking at
 	const profileId = rec.recipient;
+
+	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
-	// const [profileBadges, setProfileBadges] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -32,13 +30,13 @@ function ProfileModal({
 				`/profile/${profileId}`,
 			);
 			setProfileInfo(profileData.peer);
-			// const { data: badgeData } = await axiosWithAuth().get('/badges');
-			// setProfileBadges(badgeData);
+			// get reactions
+			// get comments
 		};
 		fetchData();
 	}, [profileId]);
 
-	console.log(profile.rec, 'profile.rec');
+	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];
 		if (profileInfo.rec) {
@@ -61,12 +59,15 @@ function ProfileModal({
 		return array;
 	}, [profileInfo, badges, profileId]);
 
+	// numberOfBadges refers to the number of badges that belong to the user whose profile we're looking at
 	let numberOfBadges = 0;
 	for (let bdg of userBadges) {
 		numberOfBadges += bdg.count;
 	}
 
-	console.log(userBadges, 'userBadges');
+	// get request for recognitions for the user whose profile we're looking at
+	// map over those and use each one as data for each activity card
+
 	return (
 		<>
 			<Modal close={handleClose}>
@@ -138,44 +139,14 @@ function ProfileModal({
 														recognition.sender
 													}
 													profileBadges={badges}
-													badge={
-														badges[
-															recognition.badge_id -
-																1
-														]
-													}
-													profileRecs={
-														profileInfo.rec
-													}
 													recognition={recognition}
 													setProfileInfo={
 														setProfileInfo
 													}
-													reactions={reactions}
-													rec={rec}
-													comments={comments}
-													open={true}
 													profileId={profileId}
-													id={profile.id}
-													rec_id={recognition.id}
+													comments={comments}
+													reactions={reactions}
 												/>
-												<div className="rm-buttons">
-													<ReactionButton
-														reactions={reactions}
-														open={true}
-														inModal={true}
-														rec_id={recognition.id}
-														id={profile.id}
-													/>
-
-													<CommentButton
-														comments={comments}
-														open={true}
-														inModal={true}
-														rec_id={recognition.id}
-														id={profile.id}
-													/>
-												</div>
 											</div>
 										))}
 							</section>
