@@ -43,21 +43,19 @@ function ProfileModal({
 		const array = [];
 		if (profileInfo.rec) {
 			for (const rec of profileInfo.rec) {
-
-					if (profileId === rec.sender) continue;
-					const { badge_id } = rec;
-					const badge = badges.find(bdg => bdg.id === badge_id);
-					const exist = array.find(bdg => bdg.id === badge_id);
-					if (exist) {
-						array[array.indexOf(exist)].count++;
-						continue;
-					}
-					array.push({
-						id: badge_id,
-						badge: badge?.badge_URL,
-						count: 1,
-					});
-				
+				if (profileId === rec.sender) continue;
+				const { badge_id } = rec;
+				const badge = badges.find(bdg => bdg.id === badge_id);
+				const exist = array.find(bdg => bdg.id === badge_id);
+				if (exist) {
+					array[array.indexOf(exist)].count++;
+					continue;
+				}
+				array.push({
+					id: badge_id,
+					badge: badge?.badge_URL,
+					count: 1,
+				});
 			}
 		}
 		return array;
@@ -95,11 +93,7 @@ function ProfileModal({
 							<div className="badges-title-container">
 								<h2 className="badges-title">Badges</h2>
 								<div className="number-of-badges">
-									<h2>
-										{numberOfBadges > 10
-											? '10+'
-											: numberOfBadges}
-									</h2>
+									<h2>{numberOfBadges}</h2>
 								</div>
 							</div>
 							<ul>
@@ -107,18 +101,17 @@ function ProfileModal({
 									<>
 										{userBadges.map(badge => {
 											if (badge.badge) {
-											return (
-												<Badge
-													key={badge.id}
-													count={badge.count}>
-													<img
-														className="badge-profile"
-														src={badge.badge}
-														alt="badge"
-													/>
-												</Badge>
-											
-											);
+												return (
+													<Badge
+														key={badge.id}
+														count={badge.count}>
+														<img
+															className="badge-profile"
+															src={badge.badge}
+															alt="badge"
+														/>
+													</Badge>
+												);
 											}
 										})}
 									</>
@@ -137,10 +130,13 @@ function ProfileModal({
 											);
 										})
 										.map(recognition => (
-											<>
+											<div className="container-card-and-buttons">
 												<RecognitionCard
 													key={recognition.id}
-													sent={false}
+													sent={
+														profileId ===
+														recognition.sender
+													}
 													profileBadges={badges}
 													badge={
 														badges[
@@ -180,7 +176,7 @@ function ProfileModal({
 														id={profile.id}
 													/>
 												</div>
-											</>
+											</div>
 										))}
 							</section>
 						</div>

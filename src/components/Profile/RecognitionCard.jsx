@@ -46,7 +46,7 @@ export function RecognitionCard({
 			bdg => bdg.id === recognition.badge_id,
 		);
 	}
-
+	console.log(sent, 'sent');
 	return (
 		<section className="container-recognition-card">
 			<Link
@@ -64,10 +64,10 @@ export function RecognitionCard({
 			</Link>
 
 			<section className="activity-section">
-				{profile.user_type === 'admin' && (
-					<Trashcan onClick={handleDelete} />
-				)}
 				<div className="recognition-message">
+					{profile.user_type === 'admin' && (
+						<Trashcan onClick={handleDelete} />
+					)}
 					<div>
 						<Link
 							to={`/profile/${
@@ -75,9 +75,17 @@ export function RecognitionCard({
 									? recognition.recipient
 									: recognition.sender
 							}`}>
-							{sent
-								? `Sent to ${recognition.first_name} ${recognition.last_name}`
-								: `${recognition.first_name} ${recognition.last_name}`}
+							{sent ? (
+								<p>
+									Sent to{' '}
+									<span>
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
+								</p>
+							) : (
+								`${recognition.first_name} ${recognition.last_name}`
+							)}
 						</Link>
 						<span className="time" role="presentation">
 							&nbsp;{time}
@@ -85,6 +93,7 @@ export function RecognitionCard({
 					</div>
 					<p>{recognition.message}</p>
 				</div>
+
 				<div>
 					<img
 						className="activity-badge"
