@@ -37,8 +37,8 @@ function Sidebar({ user }) {
 					open={open}
 				/>
 				<SidebarLink
-					path={'/workspace'}
-					name="Workspace"
+					path={'/organization'}
+					name="Organization Workspace"
 					icon={TeamIcon}
 					open={open}
 				/>
