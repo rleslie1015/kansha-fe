@@ -38,13 +38,13 @@ function Sidebar({ user }) {
 					icon={TeamIcon}
 					open={open}
 				/>
-				<SidebarLink
+				{/* <SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
 					icon={ProfileIcon}
 					open={open}
 					className="fill-white"
-				/>
+				/> */}
 
 				{/* <SidebarLink
 					path="/"
