@@ -2,7 +2,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
@@ -31,6 +31,24 @@ export function RecognitionCard({
 
 	const reactions = reactionsAll[recognition.id];
 	const comments = commentsAll[recognition.id];
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(loadLiveFeed());
+
+		const src = `${
+			process.env.REACT_APP_BASE_URL
+		}/feed/live/?token=Bearer ${localStorage.getItem('id_token')}`;
+
+		const sse = new EventSource(src);
+
+		dispatch(liveFeedListeners(sse));
+
+		return function cleanup() {
+			sse.close();
+		};
+	}, [dispatch]);
 
 	//const profile = useSelector(state => state.user.profile);
 	//const [reactions, setReactions] = useState([]);
