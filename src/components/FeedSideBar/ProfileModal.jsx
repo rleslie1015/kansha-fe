@@ -10,12 +10,19 @@ function ProfileModal({
 	comments, // this is an array of comments for the card the user clicked on
 	badges, // this a list of all the badges in the system
 	close, // function
-	setProfileSelect, // function
+	setProfileSelect, // function that determines whether the modal is open
+	setSelect,
 }) {
 	// this handles the profile modal closing
 	const handleClose = () => {
 		setProfileSelect(false);
 		close(false);
+	};
+
+	const handleCommentClick = () => {
+		setSelect(true);
+		setProfileSelect(false);
+		close(true);
 	};
 
 	// this is the id number of the user whose profile we're looking at
@@ -103,6 +110,7 @@ function ProfileModal({
 							comments={comments}
 							profile={profile}
 							profileInfo={profileInfo}
+							handleCommentClick={handleCommentClick}
 						/>
 					</main>
 				</div>

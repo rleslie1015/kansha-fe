@@ -7,6 +7,7 @@ function Activity({
 	comments,
 	profile,
 	profileInfo,
+	handleCommentClick,
 }) {
 	return (
 		<div className="profile-activity">
@@ -28,6 +29,7 @@ function Activity({
 									profileId={profileId}
 									comments={comments}
 									profile={profile}
+									handleCommentClick={handleCommentClick}
 								/>
 							</div>
 						))}

@@ -15,6 +15,7 @@ export const RecognitionCard = memo(
 		profileBadges,
 		profileId,
 		setProfileInfo,
+		handleCommentClick,
 	}) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -119,13 +120,15 @@ export const RecognitionCard = memo(
 						id={profile.id}
 					/>
 
-					<CommentButton
-						comments={comments}
-						open={true}
-						inModal={true}
-						rec_id={recognition.id}
-						id={profile.id}
-					/>
+					<div onClick={handleCommentClick}>
+						<CommentButton
+							comments={comments}
+							open={true}
+							inModal={true}
+							rec_id={recognition.id}
+							id={profile.id}
+						/>
+					</div>
 				</div>
 			</section>
 		);
