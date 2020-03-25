@@ -70,10 +70,10 @@ export const feedReducer = (state = initialState, action) => {
 				isLoading: false,
 				reactions: {
 					...state.reactions,
-					[action.payload.rec_id]: [
+					/*[action.payload.rec_id]: [
 						...state.reactions[action.payload.rec_id],
 						action.payload,
-					],
+					],*/
 				},
 			};
 		case FEED_REACT_FAILURE:
@@ -91,12 +91,14 @@ export const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
+				/*
 				reactions: {
 					...state.reactions,
 					[action.payload.rec_id]: state.reactions[
 						action.payload.rec_id
 					].filter(r => !(r.id === action.payload.id)),
 				},
+				*/
 			};
 		case FEED_REACT_REMOVE_FAILURE:
 			return {
@@ -129,14 +131,13 @@ export const feedReducer = (state = initialState, action) => {
 			//console.log(action.payload);
 			return {
 				...state,
-				/*,
 				reactions: {
 					...state.reactions,
 					[action.payload.rec_id]: [
 						...state.reactions[action.payload.rec_id],
 						action.payload,
 					],
-				},*/
+				},
 			};
 		case FEED_EVENT_NEW_COMMENT:
 			return {

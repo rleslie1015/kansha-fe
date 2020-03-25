@@ -145,7 +145,6 @@ function ProfileModal({
 													}
 													profileId={profileId}
 													comments={comments}
-													reactions={reactions}
 												/>
 											</div>
 										))}

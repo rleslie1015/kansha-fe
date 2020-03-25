@@ -6,6 +6,10 @@ import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
+import {
+	loadLiveFeed,
+	liveFeedListeners,
+} from '../../store/actions/feed-actions';
 
 export function RecognitionCard({
 	recognition,
@@ -16,9 +20,22 @@ export function RecognitionCard({
 }) {
 	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
-	const profile = useSelector(state => state.user.profile);
-	const [reactions, setReactions] = useState([]);
-	const [comments, setComments] = useState([]);
+	const {
+		comments: commentsAll,
+		reactions: reactionsAll,
+		profile,
+	} = useSelector(({ liveFeed, user }) => ({
+		...liveFeed,
+		...user,
+	}));
+
+	const reactions = reactionsAll[recognition.id];
+	const comments = commentsAll[recognition.id];
+
+	//const profile = useSelector(state => state.user.profile);
+	//const [reactions, setReactions] = useState([]);
+	//const [comments, setComments] = useState([]);
+
 	const handleDelete = e => {
 		e.preventDefault();
 		if (
@@ -43,6 +60,7 @@ export function RecognitionCard({
 		);
 	}
 
+	/*
 	useEffect(() => {
 		const fetchData = async () => {
 			const reactions = await axiosWithAuth().get(
@@ -56,6 +74,7 @@ export function RecognitionCard({
 		};
 		fetchData();
 	}, [recognition.id]);
+	*/
 	// console.log(reactions, 'reactions');
 	// console.log(comments, 'comments');
 
