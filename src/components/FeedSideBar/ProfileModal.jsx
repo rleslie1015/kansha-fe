@@ -137,7 +137,7 @@ function ProfileModal({
 												<RecognitionCard
 													key={recognition.id}
 													sent={
-														profileId ===
+														profile.id ===
 														recognition.sender
 													}
 													profileBadges={badges}
