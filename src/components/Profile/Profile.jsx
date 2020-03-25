@@ -3,13 +3,27 @@ import { useParams } from 'react-router-dom';
 // import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+import Activity from '../FeedSideBar/Activity';
+import Badges from '../FeedSideBar/Badges';
+import { useSelector } from 'react-redux';
 import { Badge } from './styled';
 
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
 	const [profile, setProfile] = useState({});
+
+
+
+    const {
+		comments,
+		reactions,
+		feed,
+      
+    } = useSelector(({ liveFeed, user }) => ({
+        ...liveFeed,
+        ...user,
+    }));
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -47,6 +61,11 @@ export function Profile() {
 		return array;
 	}, [profile, badges]);
 
+	let numberOfBadges = 0;
+	for (let bdg of userBadges) {
+		numberOfBadges += bdg.count;
+	}
+
 	return (
 		<main className="container-entire-profile">
 			<section className="container-profile-card-and-badges">
@@ -60,28 +79,43 @@ export function Profile() {
 						<p>{profile.department}</p>
 					</section>
 				</section> */}
-				<section className="container-badges">
+				{/* <section className="container-badges">
 					<h5 className="title-badges">Badges</h5>
 					<ul>
 						{badges && (
 							<>
 								{userBadges.map(badge => {
 									return (
-										<Badge
-											key={badge.id}
-											count={badge.count}>
-											<img
-												className="badge badge-profile"
-												src={badge.badge}
-												alt=""
-											/>
-										</Badge>
+										<Badges badges={badges} userBadges={userBadges} />
 									);
 								})}
 							</>
 						)}
 					</ul>
-				</section>
+					
+				</section> */}
+				<main className="profile-main">
+						<div className="profile-badges">
+							<div className="badges-title-container">
+								<h2 className="badges-title">Badges</h2>
+								<div className="number-of-badges">
+									<h2>{numberOfBadges}</h2>
+								</div>
+							</div>
+							<Badges badges={badges} userBadges={userBadges} />
+						</div>
+						{/* {feed.map(rec => ( */}
+						<Activity
+							profileBadges={badges}
+							setProfileInfo={setProfile}
+							profileId={id}
+							comments={comments}
+							reactions={reactions}
+							profile={profile}
+							profileInfo={profile}
+						/>
+						{/* ))} */}
+					</main>
 			</section>
 			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
 			<section className="activity-card">
