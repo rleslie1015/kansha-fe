@@ -16,12 +16,12 @@ function ReactionModal({
 	setSelect,
 	open,
 }) {
+	const [messageSent, setMessageSent] = useState(false);
+
 	const handleClose = () => {
 		setSelect(false);
 		close(false);
 	};
-
-	// const reversedComments = comments.reverse();
 
 	return (
 		<>
@@ -71,7 +71,7 @@ function ReactionModal({
 						<p className="rm-message">{rec.message}</p>
 					</div>
 					<div className="rm-comment-box">
-						{/* <SendComments
+						<SendComments
 							id={rec.id}
 							messageSent={messageSent}
 							setMessageSent={setMessageSent}
@@ -86,12 +86,11 @@ function ReactionModal({
 									/>
 								))}
 							</div>
-						)} */}
+						)}
 					</div>
 				</section>
 			</Modal>
 		</>
 	);
 }
-
 export default ReactionModal;
