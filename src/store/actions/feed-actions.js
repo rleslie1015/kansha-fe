@@ -135,7 +135,6 @@ export const liveFeedListeners = sse => dispatch => {
 	);
 
 	sse.addEventListener(FEED_EVENT_NEW_REACTION, event => {
-		debugger;
 		dispatch({
 			type: FEED_EVENT_NEW_REACTION,
 			payload: JSON.parse(event.data),

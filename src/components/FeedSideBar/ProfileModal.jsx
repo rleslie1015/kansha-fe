@@ -18,7 +18,6 @@ function ProfileModal({
 		close(false);
 	};
 
-	debugger;
 	// this is the id number of the user whose profile we're looking at
 	const profileId = rec.recipient;
 
@@ -65,9 +64,6 @@ function ProfileModal({
 	for (let bdg of userBadges) {
 		numberOfBadges += bdg.count;
 	}
-
-	// get request for recognitions for the user whose profile we're looking at
-	// map over those and use each one as data for each activity card
 
 	return (
 		<>

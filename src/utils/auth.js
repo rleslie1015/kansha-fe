@@ -19,7 +19,6 @@ export default class Auth {
 	}
 
 	handleAuthentication(cb) {
-		console.log('foo');
 		return this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				let expiresAt = JSON.stringify(
@@ -30,7 +29,6 @@ export default class Auth {
 				localStorage.setItem('expires_at', expiresAt);
 				window.location.hash = '';
 				window.location.reload();
-				console.log('hello world');
 				cb();
 			} else if (err) {
 				console.log(err);

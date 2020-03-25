@@ -128,7 +128,6 @@ export const feedReducer = (state = initialState, action) => {
 				feed: [action.payload, ...state.feed],
 			};
 		case FEED_EVENT_NEW_REACTION:
-			//console.log(action.payload);
 			return {
 				...state,
 				reactions: {

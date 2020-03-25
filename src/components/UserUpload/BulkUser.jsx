@@ -18,7 +18,6 @@ function BulkUser({ user }) {
 		axiosWithAuth()
 			.post('/csv', data)
 			.then(response => {
-				console.log(response);
 				setUserArray(response.data.userArray);
 				setFile(null);
 				setError(response.data.message);
