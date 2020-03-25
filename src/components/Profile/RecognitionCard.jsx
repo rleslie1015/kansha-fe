@@ -15,27 +15,7 @@ export const RecognitionCard = memo(
 		profileBadges,
 		profileId,
 		setProfileInfo,
-		/*rec,
-		badge,
-		badges,
-		comments,
-		reactions,
-		open,
-		profile,
-		setSelectedRec,
-		setSelectedProfile,
-		close,*/
 	}) => {
-		//function RecognitionCard({
-		/*
-	recognition,
-	sent,
-	setProfile,
-	profileBadges,
-	profileId,
-}) {
-	*/
-
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -52,60 +32,31 @@ export const RecognitionCard = memo(
 
 		console.log('modal reactions', reactions);
 
-		const handleDelete = e => {
-			e.preventDefault();
-			if (
-				window.confirm(
-					'Are you sure you would like to delete this recognition?',
-				)
-			) {
-				axiosWithAuth()
-					.delete(`/rec/${recognition.id}`)
-					.then(() => {
-						setProfileInfo(prev => ({
-							...prev,
-							rec: prev.rec.filter(
-								rec => rec.id !== recognition.id,
-							),
-						}));
-					});
-			}
-		};
+		// const handleDelete = e => {
+		// 	e.preventDefault();
+		// 	if (
+		// 		window.confirm(
+		// 			'Are you sure you would like to delete this recognition?',
+		// 		)
+		// 	) {
+		// 		axiosWithAuth()
+		// 			.delete(`/rec/${recognition.id}`)
+		// 			.then(() => {
+		// 				setProfileInfo(prev => ({
+		// 					...prev,
+		// 					rec: prev.rec.filter(
+		// 						rec => rec.id !== recognition.id,
+		// 					),
+		// 				}));
+		// 			});
+		// 	}
+		// };
 
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
-
-		/*
-	useEffect(() => {
-		const fetchData = async () => {
-			const reactions = await axiosWithAuth().get(
-				`/reactions/${recognition.id}`,
-			);
-			const comments = await axiosWithAuth().get(
-				`/comments/${recognition.id}`,
-			);
-			setReactions(reactions.data);
-			setComments(comments.data);
-		};
-		fetchData();
-	}, [recognition.id]);
-	*/
-		// console.log(reactions, 'reactions');
-		// console.log(comments, 'comments');
-
-		// make functions for liking and unliking a post
-
-		// function likePost() {
-
-		// }
-
-		// function unLikePost(reactionId, reaction) {
-		// 	const index = reactions.indexOf(reaction);
-		// 	reactions.spice(1, index);
-		// }
 
 		return (
 			<section className="container-recognition-card">
@@ -121,9 +72,9 @@ export const RecognitionCard = memo(
 
 				<section className="activity-section">
 					<div className="recognition-message">
-						{profile.user_type === 'admin' && (
+						{/* {profile.user_type === 'admin' && (
 							<Trashcan onClick={handleDelete} />
-						)}
+						)} */}
 						<div>
 							<Link
 								to={`/profile/${
