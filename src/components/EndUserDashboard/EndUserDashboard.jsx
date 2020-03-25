@@ -1,26 +1,38 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import Modal from '../../components/Modal';
+import React, { useState, useEffect, useMemo, memo } from 'react';
+// import Modal from '../Modal';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import Activity from './Activity';
-import Badges from './Badges';
+import Activity from '../FeedSideBar/Activity';
+import Badges from '../FeedSideBar/Badges';
+import { useSelector } from 'react-redux';
 
-function ProfileModal({
-	profile, // this is the profile info for the logged in user
-	rec, // this is the info for the activity card that the user clicked on
-	comments, // this is an array of comments for the card the user clicked on
-	badges, // this a list of all the badges in the system
-	close, // function
-	setProfileSelect, // function
-}) {
-	// this handles the profile modal closing
-	const handleClose = () => {
-		setProfileSelect(false);
-		close(false);
-	};
+const EndUserDashboard = () => {
+// memo(
+// 	({
+// 	user_profile, // this is the profile info for the logged in user
+// 	rec, // this is the info for the activity card that the user clicked on
+// 	comments, // this is an array of comments for the card the user clicked on
+// 	badges, // this a list of all the badges in the system
+// 	close, // function
+// 	setProfileSelect, // function
+// }) => {
+
+    const {
+        comments,
+        reactions,
+		profile,
+		rec,
+		badges,
+    } = useSelector(({ liveFeed, user }) => ({
+        ...liveFeed,
+        ...user,
+    }));
+console.log(rec)
 
 	// this is the id number of the user whose profile we're looking at
-	const profileId = rec.recipient;
-console.log(profile, "this is the profile")
+	const profileId = profile.id;
+
+	console.log(profileId);
+
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
 
@@ -67,9 +79,9 @@ console.log(profile, "this is the profile")
 
 	return (
 		<>
-			<Modal close={handleClose}>
+			{/* <Modal close={handleClose}> */}
 				<div className="profile-modal">
-					<section className="profile-header">
+					{/* <section className="profile-header">
 						<img
 							className="profile-picture"
 							alt={rec.recipient_first}
@@ -85,7 +97,7 @@ console.log(profile, "this is the profile")
 									: null}
 							</h3>
 						</div>
-					</section>
+					</section> */}
 					<main className="profile-main">
 						<div className="profile-badges">
 							<div className="badges-title-container">
@@ -106,8 +118,11 @@ console.log(profile, "this is the profile")
 						/>
 					</main>
 				</div>
-			</Modal>
+			{/* </Modal> */}
 		</>
-	);
-}
-export default ProfileModal;
+		);
+				
+	}
+// );
+
+export default EndUserDashboard;

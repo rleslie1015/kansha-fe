@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 // import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-// import RecogModal from '../RecogModal/RecogModal';
 
 import { Badge } from './styled';
 
@@ -18,11 +17,13 @@ export function Profile() {
 				`/profile/${id}`,
 			);
 			setProfile(profileData.peer);
+
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
 		};
 		fetchData();
 	}, [id]);
+
 
 	const userBadges = useMemo(() => {
 		const array = [];
@@ -49,7 +50,7 @@ export function Profile() {
 	return (
 		<main className="container-entire-profile">
 			<section className="container-profile-card-and-badges">
-				<section className="container-profile-card">
+				{/* <section className="container-profile-card">
 					<img src={profile.profile_picture} alt="user profile" />
 					<section className="profile-name-info">
 						<h5>
@@ -58,7 +59,7 @@ export function Profile() {
 						<p>{profile.job_title}</p>
 						<p>{profile.department}</p>
 					</section>
-				</section>
+				</section> */}
 				<section className="container-badges">
 					<h5 className="title-badges">Badges</h5>
 					<ul>
@@ -85,7 +86,7 @@ export function Profile() {
 			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
 			<section className="activity-card">
 				<h5 className="title-activity-card">Activity</h5>
-				<section className="inner-activity-card">
+				{/* <section className="inner-activity-card">
 					{profile.rec &&
 						profile.rec
 							.sort(function(a, b) {
@@ -101,7 +102,7 @@ export function Profile() {
 									setProfile={setProfile}
 								/>
 							))}
-				</section>
+				</section> */}
 			</section>
 		</main>
 	);

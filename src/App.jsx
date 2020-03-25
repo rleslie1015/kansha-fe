@@ -18,7 +18,7 @@ import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import OrganizationHome from './components/AdminTeams/OrganizationHome';
-import {EndUserPage} from './components/EndUserDashboard/EndUserPage';
+import EndUserDashboard from './components/EndUserDashboard/EndUserDashboard';
 
 const auth = new Auth();
 
@@ -70,7 +70,7 @@ export const App = () => {
 			<Dashboard>
 				<Switch>
 					<ProtectedRoute exact path="/" component={AdminDashboard} />
-					<ProtectedRoute exact path="/enduserdashboard" component={EndUserPage} />
+					<ProtectedRoute exact path="/enduserdashboard" component={EndUserDashboard} />
 					<ProtectedRoute
 						path="/profile/:id"
 						component={UserProfile}
