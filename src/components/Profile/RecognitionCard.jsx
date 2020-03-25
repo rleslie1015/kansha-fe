@@ -1,16 +1,11 @@
-import React, { useMemo, useEffect, useState, memo } from 'react';
+import React, { useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
-
-import {
-	loadLiveFeed,
-	liveFeedListeners,
-} from '../../store/actions/feed-actions';
 
 export const RecognitionCard = memo(
 	({

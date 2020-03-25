@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from '../../components/Modal';
-import { ReactComponent as AddComment } from '../../assets/addcomment.svg';
 import { ReactionButton } from '../../components/Feed/ReactionButton';
 import { SendComments } from '../Feed/SendComment';
 import { CommentButton } from '../Feed/CommentButton';

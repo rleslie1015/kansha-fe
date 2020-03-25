@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Modal from '../../components/Modal';
-import { RecognitionCard } from '../Profile/RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { Badge } from '../Profile/styled';
 import Activity from './Activity';
 import Badges from './Badges';
 
 function ProfileModal({
 	profile, // this is the profile info for the logged in user
 	rec, // this is the info for the activity card that the user clicked on
-	reactions, // this is an array of heart reactions for the card the user clicked on
 	comments, // this is an array of comments for the card the user clicked on
 	badges, // this a list of all the badges in the system
 	close, // function

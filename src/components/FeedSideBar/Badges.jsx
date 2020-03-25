@@ -17,6 +17,8 @@ function Badges({ userBadges, badges }) {
 									/>
 								</Badge>
 							);
+						} else {
+							return null;
 						}
 					})}
 				</>

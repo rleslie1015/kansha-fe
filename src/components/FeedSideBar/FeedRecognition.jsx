@@ -1,5 +1,4 @@
 import React, { useEffect, useState, memo } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from '../Feed/ReactionButton';
@@ -22,12 +21,10 @@ export const FeedRecognition = memo(
 	}) => {
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
-		let history = useHistory();
 		const { id: rec_id } = rec;
 		const dispatch = useDispatch();
 
 		useEffect(() => {
-			debugger;
 			if (!(reactions || comments)) {
 				dispatch(loadPostData(rec_id));
 			}
