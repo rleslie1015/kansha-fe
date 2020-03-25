@@ -27,6 +27,7 @@ export const FeedRecognition = memo(
 		const dispatch = useDispatch();
 
 		useEffect(() => {
+			debugger;
 			if (!(reactions || comments)) {
 				dispatch(loadPostData(rec_id));
 			}

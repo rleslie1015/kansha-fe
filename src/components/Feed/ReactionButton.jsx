@@ -17,6 +17,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 	);
 
 	const handleReaction = () => {
+		debugger;
 		if (userReaction) {
 			dispatch(removeReaction(userReaction, rec_id));
 		} else {

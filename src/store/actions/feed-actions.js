@@ -134,12 +134,13 @@ export const liveFeedListeners = sse => dispatch => {
 		}),
 	);
 
-	sse.addEventListener(FEED_EVENT_NEW_REACTION, event =>
+	sse.addEventListener(FEED_EVENT_NEW_REACTION, event => {
+		debugger;
 		dispatch({
 			type: FEED_EVENT_NEW_REACTION,
 			payload: JSON.parse(event.data),
-		}),
-	);
+		});
+	});
 
 	// Listening for REMOVE events
 	sse.addEventListener(FEED_EVENT_REMOVE_REC, event =>

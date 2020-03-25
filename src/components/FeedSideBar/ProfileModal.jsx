@@ -18,6 +18,8 @@ function ProfileModal({
 		setProfileSelect(false);
 		close(false);
 	};
+
+	debugger;
 	// this is the id number of the user whose profile we're looking at
 	const profileId = rec.recipient;
 
@@ -145,6 +147,7 @@ function ProfileModal({
 													}
 													profileId={profileId}
 													comments={comments}
+													profile={profile}
 												/>
 											</div>
 										))}
