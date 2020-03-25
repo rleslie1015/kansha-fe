@@ -14,6 +14,7 @@ export const RecognitionCard = memo(
 		setProfile,
 		profileBadges,
 		profileId,
+		setProfileInfo,
 		/*rec,
 		badge,
 		badges,
@@ -34,6 +35,7 @@ export const RecognitionCard = memo(
 	profileId,
 }) {
 	*/
+
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -50,10 +52,6 @@ export const RecognitionCard = memo(
 
 		console.log('modal reactions', reactions);
 
-		//const profile = useSelector(state => state.user.profile);
-		//const [reactions, setReactions] = useState([]);
-		//const [comments, setComments] = useState([]);
-
 		const handleDelete = e => {
 			e.preventDefault();
 			if (
@@ -64,7 +62,7 @@ export const RecognitionCard = memo(
 				axiosWithAuth()
 					.delete(`/rec/${recognition.id}`)
 					.then(() => {
-						setProfile(prev => ({
+						setProfileInfo(prev => ({
 							...prev,
 							rec: prev.rec.filter(
 								rec => rec.id !== recognition.id,
@@ -111,19 +109,15 @@ export const RecognitionCard = memo(
 
 		return (
 			<section className="container-recognition-card">
-				<Link
-					to={`/profile/${
-						sent ? recognition.recipient : recognition.sender
-					}`}>
-					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
-						alt="user avatar"
-					/>
-				</Link>
+				<img
+					src={
+						sent
+							? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+							: recognition.profile_pic
+					}
+					alt="user avatar"
+					width="35px"
+				/>
 
 				<section className="activity-section">
 					<div className="recognition-message">
