@@ -14,6 +14,7 @@ const EventSource = NativeEventSource || EventSourcePolyfill;
 function FeedSideBar() {
 	const [open, setOpen] = React.useState(false);
 	const [, setSelectedRec] = useState();
+	const [, setSelectedProfile] = useState();
 	const [badges, setBadges] = useState([]);
 	const [, setModal] = useState(false);
 	const { feed, comments, reactions, profile } = useSelector(
@@ -72,8 +73,10 @@ function FeedSideBar() {
 						badge={badges[rec.badge_id - 1]}
 						profile={profile}
 						setSelectedRec={setSelectedRec}
+						setSelectedProfile={setSelectedProfile}
 						reactions={reactions[rec.id]}
 						comments={comments[rec.id]}
+						badges={badges}
 					/>
 				))}
 			</div>

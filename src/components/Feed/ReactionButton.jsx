@@ -5,6 +5,8 @@ import { ReactComponent as Heart } from '../../assets/singleheart.svg';
 
 export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 	const dispatch = useDispatch();
+
+	// checks whether the current logged in user is among those who liekd the post
 	const userReaction = useMemo(
 		() =>
 			reactions.reduce(
@@ -18,7 +20,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 		if (userReaction) {
 			dispatch(removeReaction(userReaction, rec_id));
 		} else {
-			dispatch(reactToPost(rec_id));
+			dispatch(reactToPost(id, rec_id));
 		}
 	};
 
