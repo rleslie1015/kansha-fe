@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
 // Modal import
-import Modal from '../Modal';
-import RecogModal from '../RecogModal/index';
+// import Modal from '../Modal';
+// import RecogModal from '../RecogModal/index';
 
 // Icon import
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
@@ -18,29 +18,24 @@ const CreateTeam = ({
 	setTeamMemberArray,
 	addTeamMember,
 }) => {
-	const [modal, setModal] = useState(false);
-	const [team, setTeam] = useState({
-		name: '',
-		newMembersArray: teamMemberArray,
+	// const [modal, setModal] = useState(false);
+	const [newTeam, setNewTeam] = useState({
+		name: 'Walmart',
+		newMembersArray: [],
 	});
-	const [teamName, setTeamName] = useState('');
 
-	const handleChange = event => {
-		setTeamName(event.target.value);
-	};
-
-	useEffect(() => {
-		axiosWithAuth()
-			.get('/teams')
-			.then(res => {
-				// console.log(res);
-			})
-			.catch(error => console.log(error.response));
+	let teamArr = teamMemberArray.map(emp => {
+		let newMember = {
+			user_id: emp.id,
+			team_role: emp.team_role,
+		};
+		console.log(newMember);
+		return newMember;
 	});
 
 	const handleSubmit = () => {
 		axiosWithAuth()
-			.post('/teams', team)
+			.post('/teams', { ...newTeam, newMembersArray: teamArr })
 			.then(res => {
 				console.log(res);
 			})
@@ -63,13 +58,14 @@ const CreateTeam = ({
 			<div className="create-team">
 				<div className="create-team-add-name">
 					<input
-						onChange={handleChange}
+						// value={teamName}
+						// onChange={handleChange}
 						type="text"
 						id="save-team"
 						name="name"
 						placeholder="Team Name"
 					/>
-					{/* <button onClick={handleSubmit}>submit</button> */}
+					<button onClick={handleSubmit}>submit</button>
 					<h2>{`Selected (${teamLength})`}</h2>
 				</div>
 				<div className="create-team-picked"></div>

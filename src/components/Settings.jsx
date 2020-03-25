@@ -22,7 +22,7 @@ function Settings() {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		await dispatch(update(profile.id, form));
-		history.push(`/profile/${profile.id}`);
+		// history.push(`/profile/${profile.id}`);
 	};
 
 	useEffect(() => {

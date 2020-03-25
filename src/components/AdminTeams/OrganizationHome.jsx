@@ -13,6 +13,7 @@ const OrganizationHome = () => {
 	// Button states
 	const [empButton, setEmpButton] = useState(true);
 	const [createTeamsBtn, setCreateTeamsBtn] = useState(false);
+	const [teamsBtn, setTeamsBtn] = useState(false);
 	// Query states
 	const [filter, setFilter] = useState('');
 	const [limit, setLimit] = useState(20);
@@ -28,6 +29,7 @@ const OrganizationHome = () => {
 
 	const history = useHistory();
 
+	// Grab Employees for a user's organization and set to state
 	useEffect(() => {
 		axiosWithAuth()
 			.get(
@@ -45,6 +47,7 @@ const OrganizationHome = () => {
 		setChecked(!checked);
 		if (checked) {
 			employees.map(person => {
+				person.team_role = 'member';
 				if (param === person.id) {
 					if (teamMemberArray.indexOf(person) === -1) {
 						teamMemberArray.push(person);
@@ -54,6 +57,8 @@ const OrganizationHome = () => {
 			});
 		}
 	};
+
+	// Need to build a function here that will parse the teamMemberArray for only team_role and user_id and send the object to the backend.
 
 	const handleAddUserClick = () => {
 		history.push('/add-user');
@@ -84,7 +89,7 @@ const OrganizationHome = () => {
 				addTeamMember={addTeamMember}
 			/>
 		);
-	} else if (!createTeamsBtn) {
+	} else if (teamsBtn) {
 		table = <OrganizationTeams />;
 	}
 
@@ -134,6 +139,7 @@ const OrganizationHome = () => {
 					onClick={() => {
 						setEmpButton(false);
 						setCreateTeamsBtn(false);
+						setTeamsBtn(true);
 						setTitle(titleArr[1]);
 					}}
 					className="btn-filter">
