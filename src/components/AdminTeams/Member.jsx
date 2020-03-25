@@ -1,20 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
+import { Link } from 'react-router-dom';
+import DeleteModal from './DeleteModal';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon import
+import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
+import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
-function Member({ modal, setModal, profile, teamDetails }) {
+function Member({ profile, teamDetails, member, setTeamDetails }) {
+	const [modal, setModal] = useState(false);
+
+	const [deleteModal, setDeleteModal] = useState(false);
+	console.log(profile);
+
+	const handleDeleteClick = e => {
+		e.preventDefault();
+		setDeleteModal(true);
+	};
+
+	const handleDeleteTeamMember = e => {
+		e.preventDefault();
+		axiosWithAuth()
+			.delete(`/teams/members/${member.id}`)
+			.then(() => {
+				setTeamDetails(previous => ({
+					...previous,
+					team_members: previous.team_members.filter(
+						tm => tm.id !== member.id,
+					),
+				}));
+				setDeleteModal(false);
+			});
+	};
+
 	return (
-		<table>
-			{/* <tr className="indiv-team">
+		<>
+			{deleteModal && (
+				<DeleteModal
+					setDeleteModal={setDeleteModal}
+					handleDeleteTeamMember={handleDeleteTeamMember}
+				/>
+			)}
+
+			<tr className="indiv-team">
 				<td>
-					{member.first_name} {member.last_name}
+					<Link to={`/profile/${member.id}`}>
+						<div className="teams-employee-info">
+							<img
+								src={member.profile_picture}
+								alt="profile img"
+								className="teams-profile-picture"
+							/>
+							<h3>
+								{member.first_name} {member.last_name}
+							</h3>
+						</div>
+					</Link>
 				</td>
-				<td>{member.team_role}</td>
-				{/* <td>{teamDetails.name}</td> */}
-			{/* <td className="recognition-btn">
+				<td className="recognition-btn">
 					<RecognitionIcon
 						onClick={() => setModal(!modal)}
 						style={{
@@ -28,8 +74,17 @@ function Member({ modal, setModal, profile, teamDetails }) {
 						</Modal>
 					)}
 				</td>
-			</tr> */}
-		</table>
+				<td>{member.team_role}</td>
+				<td>{teamDetails.name}</td>
+				<td className="icons">
+					<DeleteIcon
+						onClick={handleDeleteClick}
+						style={{ marginRight: '2rem' }}
+					/>
+					<GroupIcon />
+				</td>
+			</tr>
+		</>
 	);
 }
 

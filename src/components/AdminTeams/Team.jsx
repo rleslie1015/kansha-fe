@@ -10,15 +10,25 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 // Modal imports
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
+import DeleteModal from './DeleteModal';
 
-function Team({ name, id, managers, count, profile }) {
+function Team({ name, id, managers, count, profile, setTeams }) {
 	const [modal, setModal] = useState(false);
-
+	const [deleteTeamFromOrg, setDeleteTeamFromOrg] = useState(false);
+	const [deleteModal, setDeleteModal] = useState(false);
 	const history = useHistory();
 
-	const handleDelete = e => {
+	//delete not functioning yet!!
+	const handleDeleteTeam = e => {
 		e.preventDefault();
 		axiosWithAuth().delete(`/teams/${id}`);
+		// .then(() => {
+		// 	setTeams(previous => ({
+		// 		...previous,
+		// 		teams: previous.teams.filter(tms => tms.id !== id),
+		// 	}));
+		// 	setDeleteModal(false);
+		// });
 	};
 
 	const handleClick = e => {
@@ -26,43 +36,60 @@ function Team({ name, id, managers, count, profile }) {
 		history.push(`/teams/${id}`);
 	};
 
+	const handleDeleteClick = e => {
+		e.preventDefault();
+		setDeleteModal(true);
+	};
+
 	return (
-		<tr className="team-list-table">
-			<td className="team-name">
-				<h3>{name}</h3>
-			</td>
-			<td className="team-icons">
-				<SettingsIcon />
-				<TeamsIcon onClick={handleClick} />
-			</td>
-			<td className="recognition-btn">
-				<RecognitionIcon
-					onClick={() => setModal(!modal)}
-					style={{
-						height: '20px',
-						width: '20px',
-					}}
+		<>
+			{deleteModal && (
+				<DeleteModal
+					setDeleteModal={setDeleteModal}
+					deleteTeamFromOrg={deleteTeamFromOrg}
+					handleDeleteTeam={handleDeleteTeam}
 				/>
-				{modal && (
+			)}
+			<tr className="team-list-table">
+				<td className="team-name">
+					<h3>{name}</h3>
+				</td>
+				<td className="team-icons">
+					<SettingsIcon />
+					<TeamsIcon onClick={handleClick} />
+				</td>
+				<td className="recognition-btn">
+					<RecognitionIcon
+						onClick={() => setModal(!modal)}
+						style={{
+							height: '20px',
+							width: '20px',
+						}}
+					/>
+					{/* {modal && (
 					<Modal close={setModal}>
 						<RecogModal profile={profile} />
 					</Modal>
-				)}
-			</td>
-			<td>
-				<h5>
-					Manager: <span>{`${managers}`}</span>
-				</h5>
-			</td>
-			<td>
-				<h5>{`Members (${count})`}</h5>
-			</td>
-			<td>
-				<button className="btn-remove" onClick={handleDelete}>
-					Remove
-				</button>
-			</td>
-		</tr>
+				)} */}
+				</td>
+				<td>
+					<h5>
+						Manager: <span>{`${managers}`}</span>
+					</h5>
+				</td>
+				<td>
+					<h5>{`Members (${count})`}</h5>
+				</td>
+				<td>
+					<button
+						className="btn-remove"
+						onClick={handleDeleteClick}
+						deleteTeamFromOrg={deleteTeamFromOrg}>
+						Remove
+					</button>
+				</td>
+			</tr>
+		</>
 	);
 }
 

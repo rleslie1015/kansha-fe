@@ -11,7 +11,7 @@ const OrganizationTeams = ({ teams, setTeams }) => {
 			.then(res => {
 				setTeams(res.data);
 			});
-	}, []);
+	}, [teams]);
 
 	return (
 		<table className="org-team-container">
@@ -24,6 +24,7 @@ const OrganizationTeams = ({ teams, setTeams }) => {
 							name={team.name}
 							managers={team.managers}
 							count={team.count}
+							setTeams={setTeams}
 						/>
 					))
 				) : (

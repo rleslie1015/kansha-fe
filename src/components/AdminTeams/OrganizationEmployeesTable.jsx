@@ -12,8 +12,8 @@ const OrganizationEmployeesTable = ({
 				{employees.map(data => {
 					return (
 						<OrgEmployees
-							profile={data}
-							data={data}
+							id={data.id}
+							employee={data}
 							key={data.id}
 							empButton={empButton}
 							addTeamMember={addTeamMember}

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 //component should render list of employees from one team
 
-import { ReactComponent as HideIcon } from '../../assets/TeamsIcons/hide.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
@@ -15,7 +14,10 @@ function TeamMemberList({ profile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 
+	const [loadingState, setLoadingState] = useState(true);
+
 	let location = useLocation();
+	const history = useHistory();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,6 +26,7 @@ function TeamMemberList({ profile }) {
 					`${location.pathname}`,
 				);
 				setTeamDetails(data);
+				setLoadingState(false);
 			} catch (err) {
 				console.log(err);
 			}
@@ -31,47 +34,59 @@ function TeamMemberList({ profile }) {
 		fetchData();
 	}, []);
 
+	const handleBack = e => {
+		e.preventDefault();
+		history.push('/organization');
+	};
+
 	console.log(teamDetails, 'team details object');
 
-	return (
-		<section className="teams-dashboard">
-			<div className="header">
-				<h1>Hello</h1>
-				<div className="add-team-container">
-					<button>Create Team</button>
+	if (loadingState === true) {
+		return <div>'Loading...'</div>;
+	} else {
+		return (
+			<section className="teams-dashboard">
+				<div className="header">
+					<div className="teams-name-button">
+						<h1>{teamDetails.name}</h1>
+						<button onClick={handleBack}>All Teams</button>
+					</div>
+					<h2>Members</h2>
 				</div>
-				<h2>Members</h2>
-			</div>
-			<div className="employee-filter-container">
-				<h3>Filter:</h3>
-				<button className="btn-filter">Members</button>
-				<div className="employee-search-container">
-					<input
-						// value={filter}
-						// onChange={event => setFilter(event.target.value)}
-						type="text"
-						id="search"
-						name="search"
-						placeholder="Search"
-					/>
-				</div>
-			</div>
-			<tbody>
-				{/* {members.map(member => {
-					return (
-						<Member
-							key={member.id}
-							member={member}
-							modal={modal}
-							setModal={setModal}
-							profile={profile}
-							teamDetails={teamDetails}
+				<div className="employee-filter-container">
+					<h3>Filter:</h3>
+					<button className="btn-filter">Members</button>
+					<div className="employee-search-container">
+						<input
+							// value={filter}
+							// onChange={event => setFilter(event.target.value)}
+							type="text"
+							id="search"
+							name="search"
+							placeholder="Search"
 						/>
-					);
-				})} */}
-			</tbody>
-		</section>
-	);
+					</div>
+				</div>
+				<table className="team-member-table">
+					<tbody>
+						{teamDetails.team_members.map(member => {
+							return (
+								<Member
+									key={member.id}
+									member={member}
+									modal={modal}
+									setModal={setModal}
+									profile={member}
+									teamDetails={teamDetails}
+									setTeamDetails={setTeamDetails}
+								/>
+							);
+						})}
+					</tbody>
+				</table>
+			</section>
+		);
+	}
 }
 
 export default TeamMemberList;

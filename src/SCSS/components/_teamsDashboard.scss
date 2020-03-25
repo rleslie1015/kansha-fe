@@ -4,6 +4,31 @@
 	display: flex;
 	flex-direction: column;
 
+	.teams-name-button {
+		display: flex;
+		margin-top: 4rem;
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: 0.7px solid $color-primary;
+			width: 13rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
+	}
+
 	.add-team-container {
 		display: flex;
 		justify-content: flex-end;
@@ -225,10 +250,16 @@
 	.teams-container {
 		display: flex;
 		align-items: center;
+		width: 20rem;
 
 		h3 {
 			font-size: 1.6rem;
 			color: $color-primary-nav;
+		}
+
+		.team-dropdown {
+			display: flex;
+			flex-direction: column;
 		}
 	}
 
@@ -339,6 +370,43 @@
 		label {
 			.css-checkbox {
 				@include css-checkbox(18px, $color-primary-nav);
+			}
+		}
+	}
+
+	.team-member-table {
+		margin-top: 5rem;
+		display: flex;
+		justify-content: space-between;
+
+		tbody {
+			width: 100%;
+
+			.indiv-team {
+				display: flex;
+				align-content: center;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 1.7rem;
+
+				.teams-employee-info {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+
+					img {
+						border-radius: 50%;
+						height: 30px;
+						width: 30px;
+					}
+
+					h3 {
+						margin-left: 3rem;
+						width: 25rem;
+						font-size: 1.6rem;
+						color: $color-primary-nav;
+					}
+				}
 			}
 		}
 	}
