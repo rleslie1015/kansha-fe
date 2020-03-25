@@ -32,6 +32,7 @@
 			display: flex;
 			margin-bottom: 5rem;
 			padding-left: 2rem;
+			border-left: 6px solid transparent;
 
 			&:hover {
 				border-left: 6px solid $color-primary;
