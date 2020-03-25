@@ -3,6 +3,8 @@ import Modal from '../../components/Modal';
 import { RecognitionCard } from '../Profile/RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Badge } from '../Profile/styled';
+import Activity from './Activity';
+import Badges from './Badges';
 
 function ProfileModal({
 	profile, // this is the profile info for the logged in user
@@ -99,60 +101,16 @@ function ProfileModal({
 									<h2>{numberOfBadges}</h2>
 								</div>
 							</div>
-							<ul>
-								{badges && (
-									<>
-										{userBadges.map(badge => {
-											if (badge.badge) {
-												return (
-													<Badge
-														key={badge.id}
-														count={badge.count}>
-														<img
-															className="badge-profile"
-															src={badge.badge}
-															alt="badge"
-														/>
-													</Badge>
-												);
-											}
-										})}
-									</>
-								)}
-							</ul>
+							<Badges badges={badges} userBadges={userBadges} />
 						</div>
-						<div className="profile-activity">
-							<h2>Activity</h2>
-							<section className="inner-activity-card">
-								{profileInfo.rec &&
-									profileInfo.rec
-										.sort(function(a, b) {
-											return (
-												new Date(b.date) -
-												new Date(a.date)
-											);
-										})
-										.map(recognition => (
-											<div className="container-card-and-buttons">
-												<RecognitionCard
-													key={recognition.id}
-													sent={
-														profile.id ===
-														recognition.sender
-													}
-													profileBadges={badges}
-													recognition={recognition}
-													setProfileInfo={
-														setProfileInfo
-													}
-													profileId={profileId}
-													comments={comments}
-													profile={profile}
-												/>
-											</div>
-										))}
-							</section>
-						</div>
+						<Activity
+							profileBadges={badges}
+							setProfileInfo={setProfileInfo}
+							profileId={profileId}
+							comments={comments}
+							profile={profile}
+							profileInfo={profileInfo}
+						/>
 					</main>
 				</div>
 			</Modal>
