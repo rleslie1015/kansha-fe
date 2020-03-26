@@ -12,7 +12,7 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 
 function Member({ profile, teamDetails, member, setTeamDetails }) {
 	const [modal, setModal] = useState(false);
-
+	console.log(member);
 	const [deleteModal, setDeleteModal] = useState(false);
 
 	const handleDeleteClick = e => {
