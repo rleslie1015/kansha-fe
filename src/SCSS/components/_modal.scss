@@ -34,3 +34,214 @@
 		}
 	}
 }
+
+.profile-modal {
+	width: 100rem;
+	height: 50rem;
+
+	.profile-header {
+		display: flex;
+
+		.profile-picture {
+			border-radius: 50%;
+			margin-right: 4.2rem;
+		}
+
+		.person-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+
+			h1 {
+				font-weight: 900;
+				font-size: 3.6rem;
+			}
+
+			h2 {
+				color: $color-gray-light;
+				font-size: 2.4rem;
+				margin-top: 0.5rem;
+			}
+
+			h3 {
+				margin-top: 0.5rem;
+				font-weight: 500;
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.profile-main {
+		display: flex;
+		width: 100%;
+		margin-top: 2rem;
+		justify-content: space-between;
+		.profile-badges {
+			width: 40%;
+			ul {
+				display: flex;
+				width: 100%;
+				padding: 2rem 0;
+				flex-wrap: wrap;
+
+				height: 24rem;
+				overflow-y: scroll;
+
+				.badge-profile {
+					width: 14rem;
+				}
+			}
+
+			.badges-title-container {
+				width: 100%;
+				display: flex;
+				align-items: center;
+
+				.badges-title {
+					font-size: 3.4rem;
+					color: $color-primary;
+				}
+				.number-of-badges {
+					color: $color-primary;
+					font-size: 1.8rem;
+					margin-left: 2rem;
+					background-color: $color-white;
+					@include boxshadow();
+					border-radius: 229px;
+					width: 5rem;
+					text-align: center;
+					height: 3rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+		}
+
+		.profile-activity {
+			width: 55%;
+
+			h2 {
+				font-size: 3.4rem;
+				color: $color-primary;
+			}
+
+			.inner-activity-card {
+				height: 24rem;
+				overflow-y: scroll;
+				.container-recognition-card {
+					display: flex;
+					align-items: center;
+					margin: 1rem 0;
+					max-width: 55rem;
+					a {
+						img {
+							width: 3.5rem;
+							border-radius: 50%;
+							margin-right: 1rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.inner-activity-card {
+	width: 100%;
+	.container-card-and-buttons {
+		display: flex;
+		align-items: center;
+
+		&:nth-child(2n) {
+			background-color: #f9f9f9;
+		}
+		.container-recognition-card {
+			width: 100%;
+			display: flex;
+			align-items: flex-end;
+
+			img {
+				margin-right: 1rem;
+			}
+			.activity-section {
+				display: flex;
+
+				position: relative;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+
+				.recognition-message {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+
+					width: 70%;
+
+					div {
+						width: 100%;
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+
+						a {
+							color: $color-primary;
+						}
+						.time {
+							margin-left: 0.5rem;
+						}
+					}
+				}
+
+				.activity-badge {
+					margin-left: 40%;
+				}
+			}
+		}
+		.rm-buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 25%;
+
+			.reaction-button {
+				border: none;
+				margin-right: 1.5rem;
+				color: rgba(0, 13, 34, 0.7);
+				display: flex;
+				justify-content: space-between;
+
+				p {
+					margin-left: 1rem;
+				}
+				.heart-full {
+					fill: $color-primary;
+				}
+
+				.heart-empty {
+					fill: rgba(0, 13, 34, 0.7);
+				}
+			}
+			.comment-button {
+				display: flex;
+				border: none;
+				margin-right: 1.5rem;
+				color: rgba(0, 13, 34, 0.7);
+				justify-content: space-between;
+				p {
+					margin-left: 1rem;
+				}
+				.comment-full {
+					fill: $color-primary;
+				}
+
+				.comment-empty {
+					fill: rgba(0, 13, 34, 0.7);
+				}
+			}
+		}
+	}
+}

@@ -15,7 +15,7 @@ import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 const EventSource = NativeEventSource || EventSourcePolyfill;
 
 const Feed = () => {
-	// const [selectedRec, setSelectedRec] = useState();
+	const [selectedRec, setSelectedRec] = useState();
 	const [badges, setBadges] = useState([]);
 	const { feed, comments, reactions, profile } = useSelector(
 		({ liveFeed, user }) => ({

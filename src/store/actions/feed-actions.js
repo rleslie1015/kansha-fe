@@ -72,12 +72,15 @@ export const loadPostData = id => dispatch => {
 // Mostly used to help keep all async code inside the store, and log errors
 // Could be used for a loading state
 
-export const reactToPost = rec_id => dispatch => {
+export const reactToPost = (id, rec_id) => dispatch => {
 	dispatch({ type: FEED_REACT_START });
 	axiosWithAuth()
 		.post('/reactions', { rec_id, date: new Date(Date.now()) })
 		.then(() => {
-			dispatch({ type: FEED_REACT_SUCCESS });
+			dispatch({
+				type: FEED_REACT_SUCCESS,
+				payload: { id, rec_id },
+			});
 		})
 		.catch(err => {
 			dispatch({ type: FEED_REACT_FAILURE, payload: err });
@@ -131,12 +134,12 @@ export const liveFeedListeners = sse => dispatch => {
 		}),
 	);
 
-	sse.addEventListener(FEED_EVENT_NEW_REACTION, event =>
+	sse.addEventListener(FEED_EVENT_NEW_REACTION, event => {
 		dispatch({
 			type: FEED_EVENT_NEW_REACTION,
 			payload: JSON.parse(event.data),
-		}),
-	);
+		});
+	});
 
 	// Listening for REMOVE events
 	sse.addEventListener(FEED_EVENT_REMOVE_REC, event =>

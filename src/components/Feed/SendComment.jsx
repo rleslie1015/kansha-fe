@@ -18,7 +18,6 @@ export const SendComments = ({
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		console.log(newComment);
 		dispatch(addComment(id, newComment, sendSuccess));
 		setMessageSent(true);
 		//on handleSumbit, also setState to having sent message so to close the textarea

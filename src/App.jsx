@@ -70,6 +70,7 @@ export const App = () => {
 			<Dashboard>
 				<Switch>
 					<ProtectedRoute exact path="/" component={AdminDashboard} />
+					<ProtectedRoute exact path="/enduserdashboard" component={EndUserDashboard} />
 					<ProtectedRoute
 						path="/profile/:id"
 						component={UserProfile}
