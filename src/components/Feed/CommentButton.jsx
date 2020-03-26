@@ -9,12 +9,15 @@ export const CommentButton = ({
 	inModal,
 }) => {
 	const userComment = useMemo(
-		() =>
+		() =>{
+		if(comments) {
 			comments.reduce(
 				(a, comment) => (id === comment.user_id ? comment.id : a),
 				0,
-			),
-		[comments, id],
+			)
+			}else{
+				return 0
+			}},[comments, id]
 	);
 
 	return (
@@ -25,7 +28,7 @@ export const CommentButton = ({
 			<AddComment
 				className={userComment ? 'comment-full' : 'comment-empty'}
 			/>
-			{inModal && <p>{comments.length}</p>}
+			{inModal && <p>{comments?.length}</p>}
 		</button>
 	);
 };

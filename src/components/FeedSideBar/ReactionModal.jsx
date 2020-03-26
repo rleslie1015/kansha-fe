@@ -22,8 +22,6 @@ function ReactionModal({
 		close(false);
 	};
 
-	// const reversedComments = comments.reverse();
-
 	return (
 		<>
 			<Modal close={handleClose}>
@@ -94,5 +92,4 @@ function ReactionModal({
 		</>
 	);
 }
-
 export default ReactionModal;

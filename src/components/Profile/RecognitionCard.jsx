@@ -1,68 +1,146 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { CommentButton } from '../Feed/CommentButton';
+import { ReactionButton } from '../Feed/ReactionButton';
 
-export function RecognitionCard({ recognition, sent, setProfile }) {
-	const time = useMemo(() => timeAgo(recognition.date), [recognition]);
+export const RecognitionCard = memo(
+	({
+		recognition,
+		sent,
+		setProfile,
+		profileBadges,
+		profileId,
+		setProfileInfo,
+		handleCommentClick,
+		handleNewProfileClick,
+		isLoading,
+	}) => {
+		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
-	const profile = useSelector(state => state.user.profile);
+		const {
+			comments: commentsAll,
+			reactions: reactionsAll,
+			profile,
+		} = useSelector(({ liveFeed, user }) => ({
+			...liveFeed,
+			...user,
+		}));
 
-	const handleDelete = e => {
-		e.preventDefault();
-		if (
-			window.confirm(
-				'Are you sure you would like to delete this recognition?',
-			)
-		) {
-			axiosWithAuth()
-				.delete(`/rec/${recognition.id}`)
-				.then(() => {
-					setProfile(prev => ({
-						...prev,
-						rec: prev.rec.filter(rec => rec.id !== recognition.id),
-					}));
-				});
+		const reactions = reactionsAll[recognition.id];
+		const comments = commentsAll[recognition.id];
+
+
+		// const handleDelete = e => {
+		// 	e.preventDefault();
+		// 	if (
+		// 		window.confirm(
+		// 			'Are you sure you would like to delete this recognition?',
+		// 		)
+		// 	) {
+		// 		axiosWithAuth()
+		// 			.delete(`/rec/${recognition.id}`)
+		// 			.then(() => {
+		// 				setProfileInfo(prev => ({
+		// 					...prev,
+		// 					rec: prev.rec.filter(
+		// 						rec => rec.id !== recognition.id,
+		// 					),
+		// 				}));
+		// 			});
+		// 	}
+		// };
+
+		if (typeof recognition.badge_id === 'number') {
+			var thisBadge = profileBadges.find(
+				bdg => bdg.id === recognition.badge_id,
+			);
 		}
-	};
+		console.log(recognition, 'recognition');
+		return (
+			<section className="container-recognition-card">
+				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
+				>
+					<img
+						src={
+							sent
+								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+								: recognition.profile_pic
+						}
+						alt="user avatar"
+						width="35px"
+					/>
+				</a>
 
-	return (
-		<section className="container-recognition-card">
-			<Link
-				to={`/profile/${
-					sent ? recognition.recipient : recognition.sender
-				}`}>
-				<img
-					src={
-						sent
-							? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-							: recognition.profile_pic
-					}
-					alt="user avatar"
-				/>
-			</Link>
+				<section className="activity-section">
+					<div className="recognition-message">
+						{/* {profile.user_type === 'admin' && (
+							<Trashcan onClick={handleDelete} />
+						)} */}
+						<div>
+							{sent ? (
+								<p>
+									Sent to{' '}
+									{/* <a
+										onClick={handleNewProfileClick(
+											recognition.sender,
+										)}> */}
+									<span>
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
+									{/* </a> */}
+								</p>
+							) : (
+								// <a
+								// 	onClick={handleNewProfileClick(
+								// 		recognition.sender,
+								// 	)}
+								<>
+									{' '}
+									{recognition.first_name}{' '}
+									{recognition.last_name}
+								</>
+							)}
+							<span className="time" role="presentation">
+								&nbsp;{time}
+							</span>
+						</div>
+						<p>{recognition.message}</p>
+					</div>
 
-			<section>
-				{profile.user_type === 'admin' && (
-					<Trashcan onClick={handleDelete} />
-				)}
-				<div>
-					<Link
-						to={`/profile/${
-							sent ? recognition.recipient : recognition.sender
-						}`}>
-						{sent
-							? `Sent to ${recognition.first_name} ${recognition.last_name}`
-							: `${recognition.first_name} ${recognition.last_name}`}
-					</Link>
-					<span className="time" role="presentation">
-						&nbsp;{time}
-					</span>
+					<div>
+						<img
+							className="activity-badge"
+							src={thisBadge?.badge_URL}
+							alt={thisBadge?.badge_name}
+							width="50px"
+						/>
+					</div>
+				</section>
+				<div className="rm-buttons">
+					<ReactionButton
+						reactions={reactions}
+						open={true}
+						inModal={true}
+						rec_id={recognition.id}
+						id={profile.id}
+					/>
+
+					<div onClick={handleCommentClick}>
+						<CommentButton
+							comments={comments}
+							open={true}
+							inModal={true}
+							rec_id={recognition.id}
+							id={profile.id}
+						/>
+					</div>
 				</div>
-				<p>{recognition.message}</p>
 			</section>
-		</section>
-	);
-}
+		);
+	},
+);
