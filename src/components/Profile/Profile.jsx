@@ -9,14 +9,14 @@ import { useSelector } from 'react-redux';
 import { Badge } from './styled';
 import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
 import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
+import ProfileTeamList from './ProfileTeamList';
+
 
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
 	const [profile, setProfile] = useState({});
-
-
-
+	
     const {
 		comments, 
 		reactions,
@@ -42,7 +42,7 @@ export function Profile() {
 		fetchData();
 	}, [id]);
 
-	console.log(profile, "this is the profile")
+	// console.log(profile, "this is the profile")
 	const userBadges = useMemo(() => {
 		const array = [];
 		if (profile.rec) {
@@ -73,7 +73,8 @@ export function Profile() {
 	return (
 		<main className="container-entire-profile">
 			
-				<section className="my-team-members"></section>
+				 <section className="my-team-members"> 
+			<ProfileTeamList profile={profile}/></section> 
 				{feed.length > 0 ? (
 				<section className="container-badges">
 		

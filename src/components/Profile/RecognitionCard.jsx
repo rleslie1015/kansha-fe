@@ -59,7 +59,7 @@ export const RecognitionCard = memo(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
-		console.log(recognition, 'recognition');
+
 		return (
 			<section className="container-recognition-card">
 				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/

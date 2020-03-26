@@ -7,36 +7,53 @@ import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import Member from '../AdminTeams/Member';
+import Dropdown from '../Onboarding/DropDown';
 
 // Modal imports
 
-function TeamMemberList({ profile }) {
+function ProfileTeamList({ profile }) {
 	const [modal, setModal] = useState(false);
-	const [teamDetails, setTeamDetails] = useState();
+    const [teamDetails, setTeamDetails] = useState();
+	const [loadingState, setLoadingState] = useState();
+	const [team, setTeam ] = useState();
 
-	const [loadingState, setLoadingState] = useState(true);
-
+	
 	let location = useLocation();
 	const history = useHistory();
 
+const teamList = profile.teams;   
+
+let placeholderId = teamList && teamList[0].team_id
+ const stringPh = JSON.stringify(placeholderId)
+console.log(stringPh, "this is the stringph")
+
+const [selectedTeam, setSelectedTeam ] = useState();
+
+console.log(selectedTeam, "this my friends is the selected team")
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const { data } = await axiosWithAuth().get(
-					`${location.pathname}`,
-				);
-				console.log(location.pathname, "this is the location")
-				setTeamDetails(data);
-				setLoadingState(false);
-			} catch (err) {
-				console.log(err);
-			}
+
+	
+
+			const fetchData = async () => {
+			const teamData = await axiosWithAuth().get(
+				`/teams/${selectedTeam}`,
+			);
+			setTeamDetails(teamData);
 		};
 		fetchData();
-	}, []);
+    }, [selectedTeam]);
 
-console.log(teamDetails, "this is their team details");
+const handleName = id => {
+	setSelectedTeam(id);
+}
 
+let placeholderTeam = teamList && teamList[0].name;
+
+
+
+    // console.log(selectedTeam, "this is the selected team")
+    
 	const handleBack = e => {
 		e.preventDefault();
 		history.push('/organization');
@@ -49,13 +66,28 @@ console.log(teamDetails, "this is their team details");
 	} else {
 		return (
 			<section className="teams-dashboard">
-				<div className="header">
+				{/* <div className="header">
 					<div className="teams-name-button">
 						<h1>{teamDetails.name}</h1>
 						<button onClick={handleBack}>All Teams</button>
 					</div>
 					<h2>Members</h2>
-				</div>
+				</div> */}
+				
+            <div className="dropdown-time-div">
+			<Dropdown
+				classNombre="custom-select dashboard"
+				setSelection={handleName}
+				// placeholder={placeholderTeam}
+				// defaultValue={placeholderId}
+			
+			>
+		
+					{teamList?.map(team => {
+                       return <option value={team.team_id}>{team.name}</option>
+                    })}
+			</Dropdown>
+		</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>
 					<button className="btn-filter">Members</button>
@@ -72,7 +104,7 @@ console.log(teamDetails, "this is their team details");
 				</div>
 				<table className="team-member-table">
 					<tbody>
-						{teamDetails.team_members.map(member => {
+						{teamDetails?.data.team_members.map(member => {
 							return (
 								<Member
 									key={member.id}
@@ -92,4 +124,4 @@ console.log(teamDetails, "this is their team details");
 	}
 }
 
-export default TeamMemberList;
+export default ProfileTeamList;
