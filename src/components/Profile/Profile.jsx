@@ -3,14 +3,30 @@ import { useParams } from 'react-router-dom';
 // import { Cropper } from '../FileUpload/FileCrop';
 import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-// import RecogModal from '../RecogModal/RecogModal';
-
+import Activity from '../FeedSideBar/Activity';
+import Badges from '../FeedSideBar/Badges';
+import { useSelector } from 'react-redux';
 import { Badge } from './styled';
+import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
+import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
 
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
 	const [profile, setProfile] = useState({});
+
+
+
+    const {
+		comments, 
+		reactions,
+		feed,
+      
+    } = useSelector(({ liveFeed, user }) => ({
+        ...liveFeed,
+        ...user,
+	}));
+
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -18,12 +34,15 @@ export function Profile() {
 				`/profile/${id}`,
 			);
 			setProfile(profileData.peer);
+			console.log('profile data', profileData);
+
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
 		};
 		fetchData();
 	}, [id]);
 
+	console.log(profile, "this is the profile")
 	const userBadges = useMemo(() => {
 		const array = [];
 		if (profile.rec) {
@@ -46,63 +65,74 @@ export function Profile() {
 		return array;
 	}, [profile, badges]);
 
+	let numberOfBadges = 0;
+	for (let bdg of userBadges) {
+		numberOfBadges += bdg.count;
+	}
+
 	return (
 		<main className="container-entire-profile">
-			<section className="container-profile-card-and-badges">
-				<section className="container-profile-card">
-					<img src={profile.profile_picture} alt="user profile" />
-					<section className="profile-name-info">
-						<h5>
-							{profile.first_name} {profile.last_name}
-						</h5>
-						<p>{profile.job_title}</p>
-						<p>{profile.department}</p>
-					</section>
-				</section>
+			
+				<section className="my-team-members"></section>
+				{feed.length > 0 ? (
 				<section className="container-badges">
-					<h5 className="title-badges">Badges</h5>
-					<ul>
-						{badges && (
-							<>
-								{userBadges.map(badge => {
-									return (
-										<Badge
-											key={badge.id}
-											count={badge.count}>
-											<img
-												className="badge badge-profile"
-												src={badge.badge}
-												alt=""
-											/>
-										</Badge>
-									);
-								})}
-							</>
+		
+
+					
+							<div className="badges-title-container">
+							
+							<h1 className="title-badges">My badges</h1>
+									<h2>{numberOfBadges}</h2>
+						
+							</div>
+							<div className="profile-badges">
+							<Badges badges={badges} userBadges={userBadges} />
+						</div>
+				
+					
+				</section>
+					) : (
+						<main className="empty-feed">
+						<EmptyFeed />
+			
+				
+					</main>
 						)}
-					</ul>
-				</section>
-			</section>
+				<main className="profile-main">
+						
+		
+					</main>
+			
 			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
+			{console.log(feed, "feed")}
+				{feed.length > 0 ? (
 			<section className="activity-card">
-				<h5 className="title-activity-card">Activity</h5>
-				<section className="inner-activity-card">
-					{profile.rec &&
-						profile.rec
-							.sort(function(a, b) {
-								return new Date(b.date) - new Date(a.date);
-							})
-							.map(recognition => (
-								<RecognitionCard
-									key={recognition.id}
-									sent={profile.id === recognition.sender}
-									badge={badges[recognition.badge_id - 1]}
-									profile={profile}
-									recognition={recognition}
-									setProfile={setProfile}
-								/>
-							))}
-				</section>
-			</section>
+				<h5 className="title-activity-card">My activity</h5>
+		
+				<section className="profile-activity-card">
+				
+						<Activity
+							profileBadges={badges}
+							setProfileInfo={setProfile}
+							profileId={id}
+							comments={comments}
+							profile={profile}
+							profileInfo={profile}
+						/>
+					</section>	
+			
+					
+			
+						
+							
+				</section> 	
+					) : (
+						<main className="empty-feed">
+					<EmptyActivity />
+				
+				</main>
+					)}
+			
 		</main>
 	);
 }

@@ -8,13 +8,19 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 
 	// checks whether the current logged in user is among those who liekd the post
 	const userReaction = useMemo(
-		() =>
-			reactions.reduce(
+		() => {
+			if(reactions) {
+			return reactions.reduce(
 				(a, reaction) => (id === reaction.user_id ? reaction.id : a),
 				0,
-			),
-		[reactions, id],
-	);
+			)
+			
+			}else{
+				return 0
+			}}, [reactions, id]
+		
+		);
+	console.log(reactions)
 
 	const handleReaction = () => {
 		if (userReaction) {
@@ -32,7 +38,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 			}
 			onClick={handleReaction}>
 			<Heart className={userReaction ? 'heart-full' : 'heart-empty'} />
-			{inModal && <p>{reactions.length}</p>}
+			{inModal && <p>{reactions?.length}</p>}
 		</button>
 	);
 };
