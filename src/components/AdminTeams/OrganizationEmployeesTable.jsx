@@ -8,17 +8,19 @@ const OrganizationEmployeesTable = ({
 }) => {
 	return (
 		<table className="employees-table">
-			{employees.map(data => {
-				return (
-					<OrgEmployees
-						profile={data}
-						data={data}
-						key={data.id}
-						empButton={empButton}
-						addTeamMember={addTeamMember}
-					/>
-				);
-			})}
+			<tbody>
+				{employees.map(data => {
+					return (
+						<OrgEmployees
+							id={data.id}
+							employee={data}
+							key={data.id}
+							empButton={empButton}
+							addTeamMember={addTeamMember}
+						/>
+					);
+				})}
+			</tbody>
 		</table>
 	);
 };

@@ -1,23 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-const OrganizationTeams = () => {
-	const [teams, setTeams] = useState([]);
-	const [teamCount, setTeamCount] = useState(null);
+// Component imports
+import Team from './Team';
 
+const OrganizationTeams = ({ teams, setTeams }) => {
 	useEffect(() => {
 		axiosWithAuth()
-			.get('/teams')
+			.get('/teams/')
 			.then(res => {
-				console.log(res);
 				setTeams(res.data);
 			});
-	}, []);
+	}, [teams]);
+
 	return (
-		<div className="org-team-container">
-			<h1>You currently have no teams to view.</h1>
-			<button>Create a Team</button>
-		</div>
+		<table className="org-team-container">
+			<tbody>
+				{teams ? (
+					teams.map(team => (
+						<Team
+							key={team.id}
+							id={team.id}
+							name={team.name}
+							managers={team.managers}
+							count={team.count}
+							setTeams={setTeams}
+						/>
+					))
+				) : (
+					<div>
+						<h1>You currently have no teams to view.</h1>
+						<button>Create a Team</button>
+					</div>
+				)}
+			</tbody>
+		</table>
 	);
 };
 

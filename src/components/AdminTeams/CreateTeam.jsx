@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
@@ -19,23 +19,30 @@ const CreateTeam = ({
 	addTeamMember,
 }) => {
 	// const [modal, setModal] = useState(false);
-	const [newTeam, setNewTeam] = useState({
-		name: 'Walmart',
-		newMembersArray: [],
+	const [teamName, setTeamName] = useState('');
+
+	console.log(teamMemberArray);
+
+	let teamArr = [];
+
+	teamMemberArray.map(member => {
+		let newMember = {
+			user_id: member.id,
+			team_role: member.team_role,
+		};
+
+		teamArr.push(newMember);
+		return teamArr;
 	});
 
-	let teamArr = teamMemberArray.map(emp => {
-		let newMember = {
-			user_id: emp.id,
-			team_role: emp.team_role,
-		};
-		console.log(newMember);
-		return newMember;
-	});
+	let newTeam = {
+		name: teamName,
+		newMembersArray: teamArr,
+	};
 
 	const handleSubmit = () => {
 		axiosWithAuth()
-			.post('/teams', { ...newTeam, newMembersArray: teamArr })
+			.post('/teams', newTeam)
 			.then(res => {
 				console.log(res);
 			})
@@ -58,8 +65,8 @@ const CreateTeam = ({
 			<div className="create-team">
 				<div className="create-team-add-name">
 					<input
-						// value={teamName}
-						// onChange={handleChange}
+						value={teamName}
+						onChange={e => setTeamName(e.target.value)}
 						type="text"
 						id="save-team"
 						name="name"

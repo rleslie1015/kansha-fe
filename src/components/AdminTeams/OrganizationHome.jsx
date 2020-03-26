@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useSelector } from 'react-redux';
 
 // Component imports
 
@@ -20,14 +21,17 @@ const OrganizationHome = () => {
 	const [page, setPage] = useState(1);
 	// Counts
 	const [empCount, setEmpCount] = useState(null);
-	const [teamCount, setTeamCount] = useState(null);
 	const [checked, setChecked] = useState(false);
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
 	const [teamMemberArray, setTeamMemberArray] = useState([]);
+	// Teams state
+	const [teams, setTeams] = useState([]);
 
 	const history = useHistory();
+
+	let teamCount = teams.length;
 
 	// Grab Employees for a user's organization and set to state
 	useEffect(() => {
@@ -38,9 +42,11 @@ const OrganizationHome = () => {
 			.then(res => {
 				setEmployees(res.data.employees);
 				setEmpCount(res.data.count);
-				setTeamCount(0);
 			});
 	}, [filter, limit, page]);
+
+	// Ordering employees array alphabetically
+	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
 	// Function to add a team member to array in create team component
 	const addTeamMember = param => {
@@ -58,14 +64,9 @@ const OrganizationHome = () => {
 		}
 	};
 
-	// Need to build a function here that will parse the teamMemberArray for only team_role and user_id and send the object to the backend.
-
 	const handleAddUserClick = () => {
 		history.push('/add-user');
 	};
-
-	// Ordering employees array alphabetically
-	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
 	// Dynamically rendering component based on which filter button is selected
 	let table;
@@ -87,10 +88,11 @@ const OrganizationHome = () => {
 				teamMemberArray={teamMemberArray}
 				employees={employees}
 				addTeamMember={addTeamMember}
+				teams={teams}
 			/>
 		);
 	} else if (teamsBtn) {
-		table = <OrganizationTeams />;
+		table = <OrganizationTeams teams={teams} setTeams={setTeams} />;
 	}
 
 	return (
@@ -122,6 +124,7 @@ const OrganizationHome = () => {
 						setEmpButton(true);
 						setTitle(titleArr[0]);
 						setCreateTeamsBtn(false);
+						setTeamsBtn(false);
 					}}
 					className="btn-filter">
 					Employees
@@ -160,8 +163,24 @@ const OrganizationHome = () => {
 				</div>
 			</div>
 			<div className="select-add-members">
-				<h3 className="select-all">Select All</h3>
-				<h3 onClick={handleAddUserClick}>+ Add more members</h3>
+				<h3
+					style={
+						teamsBtn
+							? { visibility: 'hidden' }
+							: { display: 'block' }
+					}
+					className="select-all">
+					Select All
+				</h3>
+				<h3
+					style={
+						teamsBtn
+							? { visibility: 'hidden' }
+							: { display: 'block' }
+					}
+					onClick={handleAddUserClick}>
+					+ Add more members
+				</h3>
 			</div>
 			{table}
 		</div>
