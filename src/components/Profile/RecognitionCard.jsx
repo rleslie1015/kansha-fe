@@ -16,6 +16,8 @@ export const RecognitionCard = memo(
 		profileId,
 		setProfileInfo,
 		handleCommentClick,
+		handleNewProfileClick,
+		isLoading,
 	}) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -30,8 +32,6 @@ export const RecognitionCard = memo(
 
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
-
-		console.log('modal reactions', reactions);
 
 		// const handleDelete = e => {
 		// 	e.preventDefault();
@@ -58,18 +58,21 @@ export const RecognitionCard = memo(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
-
+		console.log(recognition, 'recognition');
 		return (
 			<section className="container-recognition-card">
-				<img
-					src={
-						sent
-							? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-							: recognition.profile_pic
-					}
-					alt="user avatar"
-					width="35px"
-				/>
+				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
+				>
+					<img
+						src={
+							sent
+								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+								: recognition.profile_pic
+						}
+						alt="user avatar"
+						width="35px"
+					/>
+				</a>
 
 				<section className="activity-section">
 					<div className="recognition-message">
@@ -77,24 +80,30 @@ export const RecognitionCard = memo(
 							<Trashcan onClick={handleDelete} />
 						)} */}
 						<div>
-							<Link
-								to={`/profile/${
-									sent
-										? recognition.recipient
-										: recognition.sender
-								}`}>
-								{sent ? (
-									<p>
-										Sent to{' '}
-										<span>
-											{recognition.first_name}{' '}
-											{recognition.last_name}
-										</span>
-									</p>
-								) : (
-									`${recognition.first_name} ${recognition.last_name}`
-								)}
-							</Link>
+							{sent ? (
+								<p>
+									Sent to{' '}
+									{/* <a
+										onClick={handleNewProfileClick(
+											recognition.sender,
+										)}> */}
+									<span>
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
+									{/* </a> */}
+								</p>
+							) : (
+								// <a
+								// 	onClick={handleNewProfileClick(
+								// 		recognition.sender,
+								// 	)}
+								<>
+									{' '}
+									{recognition.first_name}{' '}
+									{recognition.last_name}
+								</>
+							)}
 							<span className="time" role="presentation">
 								&nbsp;{time}
 							</span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadPostData } from '../../store/actions/feed-actions';
 import { ReactionButton } from '../Feed/ReactionButton';
@@ -41,7 +41,13 @@ export const FeedRecognition = memo(
 			setSelectedRec(rec_id);
 			setSelect(true);
 		};
+		const [profileId, setProfileId] = useState(rec.recipient);
 
+		//handleNewProfileClick doesn't work because the id of the sender isn't always consistent with the recognition's profile picture
+		// const handleNewProfileClick = profileId => {
+		// 	console.log('profileId', profileId);
+		// 	setProfileId(profileId);
+		// };
 		return (
 			<div className="recognition">
 				{profileSelect && (
@@ -58,6 +64,8 @@ export const FeedRecognition = memo(
 						rec_id={rec_id}
 						reactions={reactions}
 						open={open}
+						profileId={profileId}
+						// handleNewProfileClick={handleNewProfileClick}
 					/>
 				)}
 
