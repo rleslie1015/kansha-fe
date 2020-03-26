@@ -1,4 +1,4 @@
-import React, { useMemo, memo } from 'react';
+import React, { useMemo, memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { timeAgo } from '../../utils/timeago';
 import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
@@ -51,6 +51,10 @@ export const RecognitionCard = memo(
 		const comments = commentsAll[recognition.id];
 
 		console.log('modal reactions', reactions);
+		console.log('reactionsAll', reactionsAll)
+		console.log('commentsAll', commentsAll)
+		console.log('recognition', recognition)
+
 
 		const handleDelete = e => {
 			e.preventDefault();

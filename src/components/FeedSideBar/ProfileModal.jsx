@@ -35,7 +35,7 @@ console.log(profile, "this is the profile")
 		};
 		fetchData();
 	}, [profileId]);
-
+console.log(profileInfo, "this is the profileInfo")
 	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];
