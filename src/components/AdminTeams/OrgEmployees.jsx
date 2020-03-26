@@ -6,21 +6,25 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
-import { ReactComponent as DropdownIcon } from '../../assets/dropdown.svg';
+// import { ReactComponent as DropdownIcon } from '../../assets/dropdown.svg';
 
 // Modal imports
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 import DeleteModal from './DeleteModal';
 
-const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
+const OrgEmployees = ({
+	employee,
+	empButton,
+	addTeamMember,
+	id,
+	setEmployees,
+}) => {
 	const [modal, setModal] = useState(false);
 	const [teamInfo, setTeamInfo] = useState([]);
-
-	const [deleteMemberFromOrg, setDeleteMemberFromOrg] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
 
-	const [showTeams, setShowTeams] = useState(false);
+	// const [showTeams, setShowTeams] = useState(false);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -29,9 +33,7 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 				setTeamInfo(res.data.peer);
 			})
 			.catch(error => console.log(error.response));
-	}, []);
-
-	console.log(teamInfo, 'member information');
+	}, [id]);
 
 	const handleDeleteClick = e => {
 		e.preventDefault();
@@ -42,7 +44,13 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 
 	const handleDeleteOrgMember = e => {
 		e.preventDefault();
-		axiosWithAuth().delete(`/${employee.id}`);
+		axiosWithAuth()
+			.delete(`/users/${id}`)
+			.then(() => {
+				setEmployees(previous =>
+					previous.filter(emps => emps.id !== id),
+				);
+			});
 	};
 
 	return (
@@ -50,15 +58,15 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 			{deleteModal && (
 				<DeleteModal
 					setDeleteModal={setDeleteModal}
-					deleteMemberFromOrg={deleteMemberFromOrg}
+					deleteMemberFromOrg={true}
 					handleDeleteOrgMember={handleDeleteOrgMember}
 				/>
 			)}
 			<tr className="teams-employee-card">
 				<td className="teams-employee">
 					<label
-						onClick={() => {
-							addTeamMember(employee.id);
+						onClick={e => {
+							addTeamMember(e, employee.id);
 						}}
 						style={
 							empButton
@@ -88,9 +96,11 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 					{teamInfo.teams ? (
 						<>
 							<h3 className="teams">{`Teams (${teamInfo.teams.length})`}</h3>
-							{teamInfo.teams.map(team => {
+							{/* {teamInfo.teams.map(team => {
 								return (
-									<div className="team-dropdown">
+									<div
+										className="team-dropdown"
+										key={team.id}>
 										<DropdownIcon
 											style={{
 												marginLeft: '5rem',
@@ -107,7 +117,7 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 										) : null}
 									</div>
 								);
-							})}
+							})} */}
 						</>
 					) : (
 						<h3 className="teams">Teams (0)</h3>
@@ -129,7 +139,7 @@ const OrgEmployees = ({ data, employee, empButton, addTeamMember, id }) => {
 				</td>
 				<td className="teams-employee-icons">
 					<DeleteIcon
-						style={{ marginRight: '20px' }}
+						style={{ marginRight: '20px', cursor: 'pointer' }}
 						onClick={handleDeleteClick}
 					/>
 					<GroupIcon />

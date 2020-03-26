@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Modal from '../Modal';
-import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 
 function DeleteModal({
 	deleteMemberFromOrg,
@@ -19,7 +18,7 @@ function DeleteModal({
 	return (
 		<Modal close={handleClose}>
 			{deleteMemberFromOrg ? (
-				<section>
+				<section className="delete-container">
 					<h5>
 						Are you sure you want to permanently delete this member
 						from your organization? This action cannot be undone.
@@ -27,7 +26,7 @@ function DeleteModal({
 					<button onClick={handleDeleteOrgMember}>Delete</button>
 				</section>
 			) : deleteTeamFromOrg ? (
-				<section>
+				<section className="delete-container">
 					<h5>
 						Are you sure you want to permanently delete this team
 						from your organization? This action cannot be undone.
@@ -35,7 +34,7 @@ function DeleteModal({
 					<button onClick={handleDeleteTeam}>Delete</button>
 				</section>
 			) : (
-				<section>
+				<section className="delete-container">
 					<h5>
 						Are you sure you want to delete this member from your
 						team?
