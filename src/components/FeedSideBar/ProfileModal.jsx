@@ -10,7 +10,10 @@ function ProfileModal({
 	comments, // this is an array of comments for the card the user clicked on
 	badges, // this a list of all the badges in the system
 	close, // function
-	setProfileSelect, // function
+	setProfileSelect, // function that determines whether the modal is open
+	setSelect,
+	// handleNewProfileClick,
+	profileId,
 }) {
 	// this handles the profile modal closing
 	const handleClose = () => {
@@ -18,8 +21,14 @@ function ProfileModal({
 		close(false);
 	};
 
+	const handleCommentClick = () => {
+		setSelect(true);
+		setProfileSelect(false);
+		close(true);
+	};
+	const [isLoading, setIsLoading] = useState(false);
+
 	// this is the id number of the user whose profile we're looking at
-	const profileId = rec.recipient;
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
@@ -30,8 +39,6 @@ function ProfileModal({
 				`/profile/${profileId}`,
 			);
 			setProfileInfo(profileData.peer);
-			// get reactions
-			// get comments
 		};
 		fetchData();
 	}, [profileId]);
@@ -72,13 +79,13 @@ function ProfileModal({
 					<section className="profile-header">
 						<img
 							className="profile-picture"
-							alt={rec.recipient_first}
-							src={rec.recipient_picture}
+							alt={profileInfo.first_name}
+							src={profileInfo.profile_picture}
 							width="173px"
 						/>
 						<div className="person-info">
-							<h1>{rec.recipient_first}</h1>
-							<h2>{rec.recipient_job_title}</h2>
+							<h1>{profileInfo.first_name}</h1>
+							{/* <h2>{rec.recipient_job_title}</h2> */}
 							<h3>
 								{profileInfo.team_name
 									? profileInfo.team_name
@@ -103,6 +110,9 @@ function ProfileModal({
 							comments={comments}
 							profile={profile}
 							profileInfo={profileInfo}
+							handleCommentClick={handleCommentClick}
+							isLoading={isLoading}
+							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>
 				</div>

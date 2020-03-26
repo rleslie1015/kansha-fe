@@ -15,27 +15,10 @@ export const RecognitionCard = memo(
 		profileBadges,
 		profileId,
 		setProfileInfo,
-		/*rec,
-		badge,
-		badges,
-		comments,
-		reactions,
-		open,
-		profile,
-		setSelectedRec,
-		setSelectedProfile,
-		close,*/
+		handleCommentClick,
+		handleNewProfileClick,
+		isLoading,
 	}) => {
-		//function RecognitionCard({
-		/*
-	recognition,
-	sent,
-	setProfile,
-	profileBadges,
-	profileId,
-}) {
-	*/
-
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -50,99 +33,77 @@ export const RecognitionCard = memo(
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
 
-		console.log('modal reactions', reactions);
-
-		const handleDelete = e => {
-			e.preventDefault();
-			if (
-				window.confirm(
-					'Are you sure you would like to delete this recognition?',
-				)
-			) {
-				axiosWithAuth()
-					.delete(`/rec/${recognition.id}`)
-					.then(() => {
-						setProfileInfo(prev => ({
-							...prev,
-							rec: prev.rec.filter(
-								rec => rec.id !== recognition.id,
-							),
-						}));
-					});
-			}
-		};
+		// const handleDelete = e => {
+		// 	e.preventDefault();
+		// 	if (
+		// 		window.confirm(
+		// 			'Are you sure you would like to delete this recognition?',
+		// 		)
+		// 	) {
+		// 		axiosWithAuth()
+		// 			.delete(`/rec/${recognition.id}`)
+		// 			.then(() => {
+		// 				setProfileInfo(prev => ({
+		// 					...prev,
+		// 					rec: prev.rec.filter(
+		// 						rec => rec.id !== recognition.id,
+		// 					),
+		// 				}));
+		// 			});
+		// 	}
+		// };
 
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
-
-		/*
-	useEffect(() => {
-		const fetchData = async () => {
-			const reactions = await axiosWithAuth().get(
-				`/reactions/${recognition.id}`,
-			);
-			const comments = await axiosWithAuth().get(
-				`/comments/${recognition.id}`,
-			);
-			setReactions(reactions.data);
-			setComments(comments.data);
-		};
-		fetchData();
-	}, [recognition.id]);
-	*/
-		// console.log(reactions, 'reactions');
-		// console.log(comments, 'comments');
-
-		// make functions for liking and unliking a post
-
-		// function likePost() {
-
-		// }
-
-		// function unLikePost(reactionId, reaction) {
-		// 	const index = reactions.indexOf(reaction);
-		// 	reactions.spice(1, index);
-		// }
-
+		console.log(recognition, 'recognition');
 		return (
 			<section className="container-recognition-card">
-				<img
-					src={
-						sent
-							? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-							: recognition.profile_pic
-					}
-					alt="user avatar"
-					width="35px"
-				/>
+				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
+				>
+					<img
+						src={
+							sent
+								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
+								: recognition.profile_pic
+						}
+						alt="user avatar"
+						width="35px"
+					/>
+				</a>
 
 				<section className="activity-section">
 					<div className="recognition-message">
-						{profile.user_type === 'admin' && (
+						{/* {profile.user_type === 'admin' && (
 							<Trashcan onClick={handleDelete} />
-						)}
+						)} */}
 						<div>
-							<Link
-								to={`/profile/${
-									sent
-										? recognition.recipient
-										: recognition.sender
-								}`}>
-								{sent ? (
-									<p>
-										Sent to{' '}
-										<span>
-											{recognition.first_name}{' '}
-											{recognition.last_name}
-										</span>
-									</p>
-								) : (
-									`${recognition.first_name} ${recognition.last_name}`
-								)}
-							</Link>
+							{sent ? (
+								<p>
+									Sent to{' '}
+									{/* <a
+										onClick={handleNewProfileClick(
+											recognition.sender,
+										)}> */}
+									<span>
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
+									{/* </a> */}
+								</p>
+							) : (
+								// <a
+								// 	onClick={handleNewProfileClick(
+								// 		recognition.sender,
+								// 	)}
+								<>
+									{' '}
+									{recognition.first_name}{' '}
+									{recognition.last_name}
+								</>
+							)}
 							<span className="time" role="presentation">
 								&nbsp;{time}
 							</span>
@@ -168,13 +129,15 @@ export const RecognitionCard = memo(
 						id={profile.id}
 					/>
 
-					<CommentButton
-						comments={comments}
-						open={true}
-						inModal={true}
-						rec_id={recognition.id}
-						id={profile.id}
-					/>
+					<div onClick={handleCommentClick}>
+						<CommentButton
+							comments={comments}
+							open={true}
+							inModal={true}
+							rec_id={recognition.id}
+							id={profile.id}
+						/>
+					</div>
 				</div>
 			</section>
 		);
