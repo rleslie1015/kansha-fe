@@ -7,6 +7,10 @@ function Activity({
 	comments,
 	profile,
 	profileInfo,
+	handleCommentClick,
+	handleNewProfileClick,
+	sent,
+	isLoading,
 }) {
 	return (
 		<div className="profile-activity">
@@ -21,13 +25,18 @@ function Activity({
 							<div className="container-card-and-buttons">
 								<RecognitionCard
 									key={recognition.id}
-									sent={profile.id === recognition.sender}
+									sent={sent}
 									profileBadges={profileBadges}
 									recognition={recognition}
 									setProfileInfo={setProfileInfo}
 									profileId={profileId}
 									comments={comments}
 									profile={profile}
+									handleCommentClick={handleCommentClick}
+									isLoading={isLoading}
+									// handleNewProfileClick={
+									// 	handleNewProfileClick
+									// }
 								/>
 							</div>
 						))}
