@@ -54,23 +54,26 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 				</td>
 				<td className="team-icons">
 					<SettingsIcon />
-					<TeamsIcon onClick={handleClick} />
+					<TeamsIcon
+						onClick={handleClick}
+						style={{ cursor: 'pointer' }}
+					/>
 				</td>
-				<td className="recognition-btn">
+				<td className="manager-container">
 					<RecognitionIcon
 						onClick={() => setModal(!modal)}
 						style={{
 							height: '20px',
 							width: '20px',
+							marginRight: '10px',
+							cursor: 'pointer',
 						}}
 					/>
 					{/* {modal && (
-					<Modal close={setModal}>
-						<RecogModal profile={profile} />
-					</Modal>
-				)} */}
-				</td>
-				<td style={{ width: '100px' }}>
+						<Modal close={setModal}>
+							<RecogModal profile={profile} />
+						</Modal>
+					)} */}
 					<h5>
 						Manager:{' '}
 						{managers.map(manager => (

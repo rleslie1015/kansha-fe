@@ -1,18 +1,26 @@
 .teams-dashboard {
-	margin-left: 13rem;
+	margin-left: 9rem;
 	margin-right: 10rem;
 	display: flex;
 	flex-direction: column;
 
+	padding: 2rem 2rem 2rem 0rem;
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 170px;
+	}
+
 	.teams-name-button {
 		display: flex;
-		margin-top: 4rem;
 
 		button {
 			color: $color-primary;
 			background-color: $color-white;
-			border: 0.7px solid $color-primary;
-			width: 13rem;
+			border: none;
+			width: 17rem;
 			height: 4rem;
 			margin-top: 0.5rem;
 			margin-left: 5rem;
@@ -81,8 +89,13 @@
 				align-content: left;
 				margin: 1rem 0rem;
 
+				.manager-container {
+					width: 200px;
+					display: flex;
+				}
+
 				h5 {
-					font-size: 1.4rem;
+					font-size: 1.6rem;
 					color: $color-primary-nav;
 
 					span {
@@ -92,8 +105,11 @@
 
 				.team-name {
 					width: 150px;
-					font-size: 1.8rem;
-					color: $color-primary-nav;
+
+					h3 {
+						font-size: 1.8rem;
+						color: $color-primary-nav;
+					}
 				}
 
 				.team-icons {
@@ -133,13 +149,13 @@
 
 		.btn-remove {
 			color: white;
-			background-color: #757575;
-			border: #757575;
+			background-color: $color-gray-light;
+			border: none;
+			opacity: 0.6;
 
 			&:hover {
-				color: #757575;
-				background-color: white;
-				border: 0.5px solid #757575;
+				background-color: $color-gray-light;
+				opacity: 1;
 			}
 		}
 	}
@@ -388,6 +404,11 @@
 				align-items: center;
 				justify-content: space-between;
 				margin-bottom: 1.7rem;
+
+				h3 {
+					font-size: 1.6rem;
+					color: $color-primary-nav;
+				}
 
 				.teams-employee-info {
 					display: flex;

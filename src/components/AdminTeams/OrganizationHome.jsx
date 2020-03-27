@@ -64,6 +64,9 @@ const OrganizationHome = () => {
 	// Ordering employees array alphabetically
 	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
+	// Ordering teams in organization alphabetically
+	teams.sort((a, b) => a.name.localeCompare(b.name));
+
 	// Function to add a team member to array in create team component
 	const addTeamMember = (e, param) => {
 		e.preventDefault();

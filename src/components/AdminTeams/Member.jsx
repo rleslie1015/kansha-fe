@@ -73,8 +73,12 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 						</Modal>
 					)}
 				</td>
-				<td>{member.team_role}</td>
-				<td>{teamDetails.name}</td>
+				<td>
+					<h3>{member.team_role}</h3>
+				</td>
+				<td>
+					<h3>{teamDetails.name}</h3>
+				</td>
 				<td className="icons">
 					<DeleteIcon
 						onClick={handleDeleteClick}
