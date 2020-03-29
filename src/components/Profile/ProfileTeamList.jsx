@@ -13,47 +13,41 @@ import Dropdown from '../Onboarding/DropDown';
 
 function ProfileTeamList({ profile }) {
 	const [modal, setModal] = useState(false);
-    const [teamDetails, setTeamDetails] = useState();
+	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
-	const [team, setTeam ] = useState();
+	const [team, setTeam] = useState();
 
-	
 	let location = useLocation();
 	const history = useHistory();
 
-const teamList = profile.teams;   
+	const teamList = profile.teams;
 
-let placeholderId = teamList && teamList[0].team_id
- const stringPh = JSON.stringify(placeholderId)
-console.log(stringPh, "this is the stringph")
+	let placeholderId = teamList && teamList[0].team_id;
+	const stringPh = JSON.stringify(placeholderId);
+	console.log(stringPh, 'this is the stringph');
 
-const [selectedTeam, setSelectedTeam ] = useState();
+	const [selectedTeam, setSelectedTeam] = useState();
 
-console.log(selectedTeam, "this my friends is the selected team")
+	console.log(selectedTeam, 'this my friends is the selected team');
 
 	useEffect(() => {
-
-	
-
-			const fetchData = async () => {
+		const fetchData = async () => {
 			const teamData = await axiosWithAuth().get(
 				`/teams/${selectedTeam}`,
 			);
 			setTeamDetails(teamData);
 		};
 		fetchData();
-    }, [selectedTeam]);
+	}, [selectedTeam]);
 
-const handleName = id => {
-	setSelectedTeam(id);
-}
+	const handleName = id => {
+		setSelectedTeam(id);
+	};
 
-let placeholderTeam = teamList && teamList[0].name;
+	let placeholderTeam = teamList && teamList[0].name;
 
+	// console.log(selectedTeam, "this is the selected team")
 
-
-    // console.log(selectedTeam, "this is the selected team")
-    
 	const handleBack = e => {
 		e.preventDefault();
 		history.push('/organization');
@@ -73,21 +67,23 @@ let placeholderTeam = teamList && teamList[0].name;
 					</div>
 					<h2>Members</h2>
 				</div> */}
-				
-            <div className="dropdown-time-div">
-			<Dropdown
-				classNombre="custom-select dashboard"
-				setSelection={handleName}
-				// placeholder={placeholderTeam}
-				// defaultValue={placeholderId}
-			
-			>
-		
-					{teamList?.map(team => {
-                       return <option value={team.team_id}>{team.name}</option>
-                    })}
-			</Dropdown>
-		</div>
+
+				<div className="dropdown-time-div">
+					<Dropdown
+						classNombre="custom-select dashboard"
+						setSelection={handleName}
+						// placeholder={placeholderTeam}
+						// defaultValue={placeholderId}
+					>
+						{teamList?.map(team => {
+							return (
+								<option value={team.team_id}>
+									{team.name}
+								</option>
+							);
+						})}
+					</Dropdown>
+				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>
 					<button className="btn-filter">Members</button>
