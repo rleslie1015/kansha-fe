@@ -17,6 +17,7 @@ function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
 
 	// let history = useHistory();
+	console.log(user, 'user');
 
 	return (
 		<section className={`side-nav${open ? ' is-open' : ''}`}>
@@ -31,7 +32,11 @@ function Sidebar({ user }) {
 			</section>
 			<nav>
 				<SidebarLink
-					path="/"
+					path={
+						user.profile.user_type === 'admin'
+							? '/'
+							: `/profile/${user.profile.id}`
+					}
 					name="Dashboard"
 					icon={HomeIcon}
 					open={open}
