@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useSelector } from 'react-redux';
 
 // Component imports
 
@@ -21,17 +20,34 @@ const OrganizationHome = () => {
 	const [page, setPage] = useState(1);
 	// Counts
 	const [empCount, setEmpCount] = useState(null);
-	const [checked, setChecked] = useState(false);
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
 	const [teamMemberArray, setTeamMemberArray] = useState([]);
+	const [role, setRole] = useState('');
 	// Teams state
 	const [teams, setTeams] = useState([]);
+	const [teamName, setTeamName] = useState('');
 
 	const history = useHistory();
 
 	let teamCount = teams.length;
+
+	const handleSubmit = () => {
+		let newTeam = {
+			name: teamName,
+			newMembersArray: teamMemberArray,
+		};
+		console.log(teamMemberArray);
+		axiosWithAuth()
+			.post('/teams', newTeam)
+			.then(res => {
+				setTeamsBtn(true);
+				setCreateTeamsBtn(false);
+				history.push(`/teams/${res.data.id}`);
+			})
+			.catch(error => console.log(error.response));
+	};
 
 	// Grab Employees for a user's organization and set to state
 	useEffect(() => {
@@ -49,18 +65,24 @@ const OrganizationHome = () => {
 	employees.sort((a, b) => a.first_name.localeCompare(b.first_name));
 
 	// Function to add a team member to array in create team component
-	const addTeamMember = param => {
-		setChecked(!checked);
-		if (checked) {
-			employees.map(person => {
-				person.team_role = 'member';
-				if (param === person.id) {
-					if (teamMemberArray.indexOf(person) === -1) {
-						teamMemberArray.push(person);
-					}
-				}
-				return teamMemberArray;
-			});
+	const addTeamMember = (e, param) => {
+		e.preventDefault();
+		let checkbox = e.target.previousSibling;
+		if (!checkbox) {
+			checkbox = e.target;
+		}
+
+		const emp = employees.find(em => em.id === param);
+		const alreadyAdded = teamMemberArray.find(tm => tm.id === param);
+		if (alreadyAdded) {
+			setTeamMemberArray(teamMemberArray.filter(tm => tm.id !== param));
+			checkbox.checked = false;
+		} else {
+			setTeamMemberArray([
+				...teamMemberArray,
+				{ ...emp, user_id: emp.id, team_role: 'member' },
+			]);
+			checkbox.checked = true;
 		}
 	};
 
@@ -79,6 +101,7 @@ const OrganizationHome = () => {
 				setPage={setPage}
 				limit={limit}
 				page={page}
+				setEmployees={setEmployees}
 			/>
 		);
 	} else if (createTeamsBtn) {
@@ -89,25 +112,42 @@ const OrganizationHome = () => {
 				employees={employees}
 				addTeamMember={addTeamMember}
 				teams={teams}
+				teamName={teamName}
+				setTeamName={setTeamName}
+				role={role}
+				setRole={setRole}
 			/>
 		);
 	} else if (teamsBtn) {
-		table = <OrganizationTeams teams={teams} setTeams={setTeams} />;
+		table = (
+			<OrganizationTeams
+				teams={teams}
+				setTeams={setTeams}
+				setCreateTeamsBtn={setCreateTeamsBtn}
+			/>
+		);
+	}
+
+	let createButton;
+	if (createTeamsBtn) {
+		createButton = <button onClick={handleSubmit}>Save</button>;
+	} else if (!createTeamsBtn) {
+		createButton = (
+			<button
+				onClick={() => {
+					setCreateTeamsBtn(true);
+					setEmpButton(false);
+				}}>
+				Create a Team
+			</button>
+		);
 	}
 
 	return (
 		<div className="teams-dashboard">
 			<div className="header">
 				<h1>Organization</h1>
-				<div className="add-team-container">
-					<button
-						onClick={() => {
-							setCreateTeamsBtn(true);
-							setEmpButton(false);
-						}}>
-						{!createTeamsBtn ? 'Create a team' : 'Save'}
-					</button>
-				</div>
+				<div className="add-team-container">{createButton}</div>
 				<h2>
 					{title}{' '}
 					{empButton
@@ -153,6 +193,11 @@ const OrganizationHome = () => {
 				</button>
 				<div className="employee-search-container">
 					<input
+						style={
+							teamsBtn
+								? { visibility: 'hidden' }
+								: { display: 'block' }
+						}
 						value={filter}
 						onChange={event => setFilter(event.target.value)}
 						type="text"

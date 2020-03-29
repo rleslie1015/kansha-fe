@@ -4,10 +4,14 @@
 
 	.create-team-employees-list {
 		width: 50%;
+		padding-top: 3rem;
 	}
 
 	.create-team {
 		width: 50%;
+		border-left: 1px solid $color-gray-light;
+		padding-left: 2.5rem;
+		padding-top: 1.5rem;
 	}
 
 	.create-team-add-name {
@@ -20,6 +24,7 @@
 			border: 1px solid $color-gray-light;
 			border-radius: 6px;
 			width: 24.7rem;
+			margin-bottom: 2rem;
 		}
 
 		h2 {

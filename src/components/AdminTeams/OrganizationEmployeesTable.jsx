@@ -5,6 +5,7 @@ const OrganizationEmployeesTable = ({
 	employees,
 	empButton,
 	addTeamMember,
+	setEmployees,
 }) => {
 	return (
 		<table className="employees-table">
@@ -12,11 +13,12 @@ const OrganizationEmployeesTable = ({
 				{employees.map(data => {
 					return (
 						<OrgEmployees
+							key={data.id}
 							id={data.id}
 							employee={data}
-							key={data.id}
 							empButton={empButton}
 							addTeamMember={addTeamMember}
+							setEmployees={setEmployees}
 						/>
 					);
 				})}

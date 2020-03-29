@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 import { Link } from 'react-router-dom';
 
@@ -10,47 +10,34 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const CreateTeam = ({
 	employees,
 	teamMemberArray,
 	setTeamMemberArray,
 	addTeamMember,
+	teamName,
+	setTeamName,
 }) => {
 	// const [modal, setModal] = useState(false);
-	const [teamName, setTeamName] = useState('');
-
-	console.log(teamMemberArray);
-
-	let teamArr = [];
-
-	teamMemberArray.map(member => {
-		let newMember = {
-			user_id: member.id,
-			team_role: member.team_role,
-		};
-
-		teamArr.push(newMember);
-		return teamArr;
-	});
-
-	let newTeam = {
-		name: teamName,
-		newMembersArray: teamArr,
-	};
-
-	const handleSubmit = () => {
-		axiosWithAuth()
-			.post('/teams', newTeam)
-			.then(res => {
-				console.log(res);
-			})
-			.catch(error => console.log(error.response));
-	};
 
 	// Length of team to be added
 	const teamLength = teamMemberArray.length;
+
+	const handleRoleChange = (e, id) => {
+		const { value } = e.target;
+		setTeamMemberArray(prev => {
+			return prev.map(tm => {
+				if (tm.id === id) {
+					return {
+						...tm,
+						team_role: value,
+					};
+				}
+				return tm;
+			});
+		});
+	};
 
 	return (
 		<div className="create-team-container">
@@ -72,14 +59,13 @@ const CreateTeam = ({
 						name="name"
 						placeholder="Team Name"
 					/>
-					<button onClick={handleSubmit}>submit</button>
 					<h2>{`Selected (${teamLength})`}</h2>
 				</div>
 				<div className="create-team-picked"></div>
 				<div className="added-team-list">
 					{teamMemberArray.map(team => {
 						return (
-							<table>
+							<table key={team.id}>
 								<tbody>
 									<tr className="teams-employee-card">
 										<td className="teams-employee">
@@ -116,7 +102,18 @@ const CreateTeam = ({
 											)} */}
 										</td>
 										<td className="teams-container">
-											<h3>Role</h3>
+											<select
+												onChange={e =>
+													handleRoleChange(e, team.id)
+												}
+												value={team.team_role}>
+												<option value="member">
+													Member
+												</option>
+												<option value="manager">
+													Manager
+												</option>
+											</select>
 										</td>
 										<td className="teams-container">
 											<h3 className="teams">Teams (0)</h3>

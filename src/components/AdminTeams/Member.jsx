@@ -12,9 +12,8 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 
 function Member({ profile, teamDetails, member, setTeamDetails }) {
 	const [modal, setModal] = useState(false);
-
+	console.log(member);
 	const [deleteModal, setDeleteModal] = useState(false);
-	console.log(profile);
 
 	const handleDeleteClick = e => {
 		e.preventDefault();
@@ -24,12 +23,12 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 	const handleDeleteTeamMember = e => {
 		e.preventDefault();
 		axiosWithAuth()
-			.delete(`/teams/members/${member.id}`)
+			.delete(`/teams/members/${member.member_id}`)
 			.then(() => {
 				setTeamDetails(previous => ({
 					...previous,
 					team_members: previous.team_members.filter(
-						tm => tm.id !== member.id,
+						tm => tm.member_id !== member.member_id,
 					),
 				}));
 				setDeleteModal(false);
@@ -79,9 +78,8 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 				<td className="icons">
 					<DeleteIcon
 						onClick={handleDeleteClick}
-						style={{ marginRight: '2rem' }}
+						style={{ marginRight: '2rem', cursor: 'pointer' }}
 					/>
-					<GroupIcon />
 				</td>
 			</tr>
 		</>

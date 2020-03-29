@@ -30,7 +30,7 @@ const Modal = ({ close, children }) => {
 	});
 
 	return (
-		<section className="modal" ref={modal} style={{ opacity: 0 }}>
+		<div className="modal" ref={modal} style={{ opacity: 0 }}>
 			<div role="presentation" onClick={closeModal} />
 			<section>
 				<button
@@ -41,7 +41,7 @@ const Modal = ({ close, children }) => {
 				</button>
 				{mappedChildren}
 			</section>
-		</section>
+		</div>
 	);
 };
 
