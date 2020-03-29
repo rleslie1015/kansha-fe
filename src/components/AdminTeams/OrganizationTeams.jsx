@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Component imports
 import Team from './Team';
 
-const OrganizationTeams = ({ teams, setTeams }) => {
+const OrganizationTeams = ({ teams, setTeams, setCreateTeamsBtn }) => {
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/teams/')
 			.then(res => {
 				setTeams(res.data);
 			});
-	}, [teams]);
+	}, [setTeams, setCreateTeamsBtn]);
 
 	return (
 		<table className="org-team-container">
 			<tbody>
 				{teams ? (
-					teams.map(team => (
-						<Team
-							key={team.id}
-							id={team.id}
-							name={team.name}
-							managers={team.managers}
-							count={team.count}
-							setTeams={setTeams}
-						/>
-					))
+					teams.map(team => {
+						return (
+							<Team
+								key={team.id}
+								id={team.id}
+								name={team.name}
+								managers={team.teamManagers}
+								count={team.count}
+								setTeams={setTeams}
+							/>
+						);
+					})
 				) : (
 					<div>
 						<h1>You currently have no teams to view.</h1>

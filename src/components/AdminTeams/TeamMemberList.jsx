@@ -3,14 +3,16 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useLocation, useHistory } from 'react-router-dom';
 //component should render list of employees from one team
 
+
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import Member from '../AdminTeams/Member';
 
+
 // Modal imports
 
-function TeamMemberList({ profile }) {
+function TeamMemberList() {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 
@@ -33,7 +35,7 @@ function TeamMemberList({ profile }) {
 			}
 		};
 		fetchData();
-	}, []);
+	}, [location.pathname]);
 
 console.log(teamDetails, "this is their team details");
 
@@ -41,8 +43,6 @@ console.log(teamDetails, "this is their team details");
 		e.preventDefault();
 		history.push('/organization');
 	};
-
-	console.log(teamDetails, 'team details object');
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
@@ -72,7 +72,7 @@ console.log(teamDetails, "this is their team details");
 				</div>
 				<table className="team-member-table">
 					<tbody>
-						{teamDetails.team_members.map(member => {
+						{teamDetails?.team_members?.map(member => {
 							return (
 								<Member
 									key={member.id}

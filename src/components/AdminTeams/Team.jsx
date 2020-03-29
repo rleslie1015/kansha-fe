@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -8,27 +8,24 @@ import { ReactComponent as TeamsIcon } from '../../assets/TeamsIcons/Vector.svg'
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 // Modal imports
-import Modal from '../Modal';
-import RecogModal from '../RecogModal/index';
+// import Modal from '../Modal';
+// import RecogModal from '../RecogModal/index';
 import DeleteModal from './DeleteModal';
 
 function Team({ name, id, managers, count, profile, setTeams }) {
 	const [modal, setModal] = useState(false);
-	const [deleteTeamFromOrg, setDeleteTeamFromOrg] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const history = useHistory();
 
 	//delete not functioning yet!!
 	const handleDeleteTeam = e => {
 		e.preventDefault();
-		axiosWithAuth().delete(`/teams/${id}`);
-		// .then(() => {
-		// 	setTeams(previous => ({
-		// 		...previous,
-		// 		teams: previous.teams.filter(tms => tms.id !== id),
-		// 	}));
-		// 	setDeleteModal(false);
-		// });
+		axiosWithAuth()
+			.delete(`/teams/${id}`)
+			.then(() => {
+				setTeams(previous => previous.filter(tms => tms.id !== id));
+				setDeleteModal(false);
+			});
 	};
 
 	const handleClick = e => {
@@ -39,6 +36,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);
+		// setDeleteTeamFromOrg(true);
 	};
 
 	return (
@@ -46,7 +44,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 			{deleteModal && (
 				<DeleteModal
 					setDeleteModal={setDeleteModal}
-					deleteTeamFromOrg={deleteTeamFromOrg}
+					deleteTeamFromOrg={true}
 					handleDeleteTeam={handleDeleteTeam}
 				/>
 			)}
@@ -72,19 +70,19 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 					</Modal>
 				)} */}
 				</td>
-				<td>
+				<td style={{ width: '100px' }}>
 					<h5>
-						Manager: <span>{`${managers}`}</span>
+						Manager:{' '}
+						{managers.map(manager => (
+							<span key={manager.id}>{manager.first_name}</span>
+						))}
 					</h5>
 				</td>
 				<td>
 					<h5>{`Members (${count})`}</h5>
 				</td>
 				<td>
-					<button
-						className="btn-remove"
-						onClick={handleDeleteClick}
-						deleteTeamFromOrg={deleteTeamFromOrg}>
+					<button className="btn-remove" onClick={handleDeleteClick}>
 						Remove
 					</button>
 				</td>
