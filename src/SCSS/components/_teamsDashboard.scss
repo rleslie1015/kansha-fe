@@ -87,7 +87,8 @@
 				justify-content: space-between;
 				align-items: center;
 				align-content: left;
-				margin: 1rem 0rem;
+				margin-top: 1rem;
+				margin-bottom: 2rem;
 
 				.manager-container {
 					width: 200px;
@@ -156,10 +157,15 @@
 			background-color: $color-gray-light;
 			border: none;
 			opacity: 0.6;
+			font-size: 1.8rem;
+			border-radius: 6px;
+			width: 14rem;
+			height: 4rem;
 
 			&:hover {
 				background-color: $color-gray-light;
 				opacity: 1;
+				cursor: pointer;
 			}
 		}
 	}
