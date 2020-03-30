@@ -15,6 +15,8 @@ function ProfileModal({
 	// handleNewProfileClick,
 	profileId,
 }) {
+
+	console.log(profileId, "profileId")
 	// this handles the profile modal closing
 	const handleClose = () => {
 		setProfileSelect(false);
@@ -28,7 +30,6 @@ function ProfileModal({
 	};
 	const [isLoading, setIsLoading] = useState(false);
 
-	// this is the id number of the user whose profile we're looking at
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});

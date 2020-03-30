@@ -10,45 +10,45 @@
 	height: 100vh;
 	margin: 0 8rem;
 
+	.my-team-members {
+		width: 100%;
+		min-height: 30rem;
+		margin: 0;
 
-.my-team-members{
-	border:2px solid red;
-	width:100%;
-	height:25rem;
-}
-	
+		.teams-dashboard {
+			margin: 0;
+			overflow-y: scroll;
+		}
+	}
+
 	.container-badges {
-		
-		width:45%;
+		width: 45%;
 		height: 50%;
 		margin-left: 3rem;
-	
-		.badges-title-container{
+
+		.badges-title-container {
 			display: flex;
 			color: $color-primary;
-			
-			h1{
+
+			h1 {
 				font-size: 3rem;
 				margin-left: 2rem;
 				font-weight: 500;
 			}
-			h2{
+			h2 {
 				font-size: 2rem;
 				margin-left: 2rem;
-				padding:.8rem;
+				padding: 0.8rem;
 				@include boxshadow();
-					 border-radius: 229px;
-					 width:5rem;
-					 display: flex;
-					 align-items: center;
-					 justify-content: center;
-				
-				
+				border-radius: 229px;
+				width: 5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
-		
 		}
-	
-		.profile-badges{
+
+		.profile-badges {
 			width: 100%;
 			ul {
 				display: flex;
@@ -58,25 +58,18 @@
 
 				height: 36rem;
 				overflow-y: scroll;
-				
-
-				
 			}
-		
-		 }
+		}
 	}
-	
-
 }
 
 // activity section of the page
 .activity-card {
 	width: 45%;
 	height: 50%;
-	
 
 	.title-activity-card {
-font-weight: 500;
+		font-weight: 500;
 		font-size: 3rem;
 		color: $color-primary;
 	}
@@ -88,40 +81,39 @@ font-weight: 500;
 		height: 90%;
 		overflow-x: hidden;
 		overflow: auto;
-	
-h2{
-	display:none;
-}
-.profile-activity{
-	width: 100%;
 
-}
-.inner-activity-card{
-	width: 100%;
-
-	.container-card-and-buttons{
-		width: 100%;
-		
-		.container-recognition-card {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
+		h2 {
+			display: none;
+		}
+		.profile-activity {
 			width: 100%;
-		
-			padding: 10px;
-	
-.activity-badge{
-	width: 50px;
-	display: flex;
-	align-items: flex-end;
-}
+		}
+		.inner-activity-card {
+			width: 100%;
 
-			img {
-				width: 40px;
-				border-radius: 50%;
+			.container-card-and-buttons {
+				width: 100%;
+
+				.container-recognition-card {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					width: 100%;
+
+					padding: 10px;
+
+					.activity-badge {
+						width: 50px;
+						display: flex;
+						align-items: flex-end;
+					}
+
+					img {
+						width: 40px;
+						border-radius: 50%;
+					}
+				}
 			}
 		}
-	}
-}
 	}
 }
