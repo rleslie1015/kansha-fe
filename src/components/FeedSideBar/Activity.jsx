@@ -1,5 +1,6 @@
 import React from 'react';
 import { RecognitionCard } from '../Profile/RecognitionCard';
+
 function Activity({
 	profileBadges,
 	setProfileInfo,
@@ -32,8 +33,8 @@ function Activity({
 									profileId={profileId}
 									comments={comments}
 									profile={profile}
-									handleCommentClick={handleCommentClick}
 									isLoading={isLoading}
+									rec={recognition}
 									// handleNewProfileClick={
 									// 	handleNewProfileClick
 									// }

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
+import ReactionModal from '../FeedSideBar/ReactionModal';
 
 export const RecognitionCard = memo(
 	({
@@ -15,7 +16,6 @@ export const RecognitionCard = memo(
 		profileBadges,
 		profileId,
 		setProfileInfo,
-		handleCommentClick,
 		handleNewProfileClick,
 		isLoading,
 	}) => {
@@ -33,6 +33,10 @@ export const RecognitionCard = memo(
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
 
+		const handleCommentClick = () => {
+			setSelect(true);
+			setModal(true);
+		};
 
 		// const handleDelete = e => {
 		// 	e.preventDefault();
@@ -54,14 +58,29 @@ export const RecognitionCard = memo(
 		// 	}
 		// };
 
+		const [, setModal] = useState(false);
+		const [open, setOpen] = React.useState(false);
+
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
-
+		const [select, setSelect] = useState(false);
 		return (
 			<section className="container-recognition-card">
+				{select && (
+					<ReactionModal
+						close={setModal}
+						setSelect={setSelect}
+						profile={profile}
+						rec={recognition}
+						reactions={reactions}
+						badge={thisBadge}
+						comments={comments}
+						open={open}
+					/>
+				)}
 				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
 				>
 					<img
@@ -129,7 +148,7 @@ export const RecognitionCard = memo(
 						rec_id={recognition.id}
 						id={profile.id}
 					/>
-
+					{/**/}
 					<div onClick={handleCommentClick}>
 						<CommentButton
 							comments={comments}

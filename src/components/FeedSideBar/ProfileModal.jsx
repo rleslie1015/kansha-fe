@@ -21,11 +21,6 @@ function ProfileModal({
 		close(false);
 	};
 
-	const handleCommentClick = () => {
-		setSelect(true);
-		setProfileSelect(false);
-		close(true);
-	};
 	const [isLoading, setIsLoading] = useState(false);
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
@@ -108,7 +103,6 @@ function ProfileModal({
 							comments={comments}
 							profile={profile}
 							profileInfo={profileInfo}
-							handleCommentClick={handleCommentClick}
 							isLoading={isLoading}
 							// handleNewProfileClick={handleNewProfileClick}
 						/>

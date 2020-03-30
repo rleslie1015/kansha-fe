@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 // import { Cropper } from '../FileUpload/FileCrop';
-import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Activity from '../FeedSideBar/Activity';
 import Badges from '../FeedSideBar/Badges';
 import { useSelector } from 'react-redux';
-import { Badge } from './styled';
 import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
 import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
 import ProfileTeamList from './ProfileTeamList';
-
+import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
