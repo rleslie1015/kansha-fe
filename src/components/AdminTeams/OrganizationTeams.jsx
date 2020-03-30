@@ -26,13 +26,16 @@ const OrganizationTeams = ({ teams, setTeams, setCreateTeamsBtn }) => {
 								managers={team.teamManagers}
 								count={team.count}
 								setTeams={setTeams}
+								profile={team}
 							/>
 						);
 					})
 				) : (
 					<div>
 						<h1>You currently have no teams to view.</h1>
-						<button>Create a Team</button>
+						<button className="org-team-button">
+							Create a Team
+						</button>
 					</div>
 				)}
 			</tbody>

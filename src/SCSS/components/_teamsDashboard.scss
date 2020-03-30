@@ -92,6 +92,10 @@
 				.manager-container {
 					width: 200px;
 					display: flex;
+
+					.corner-button {
+						margin-right: 15px;
+					}
 				}
 
 				h5 {
@@ -127,7 +131,7 @@
 			font-weight: normal;
 		}
 
-		button {
+		.org-team-button {
 			color: $color-primary;
 			background-color: $color-white;
 			border: 0.7px solid $color-primary;

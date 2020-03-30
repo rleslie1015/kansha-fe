@@ -8,8 +8,8 @@ import { ReactComponent as TeamsIcon } from '../../assets/TeamsIcons/Vector.svg'
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 // Modal imports
-// import Modal from '../Modal';
-// import RecogModal from '../RecogModal/index';
+import Modal from '../Modal';
+import RecogModal from '../RecogModal/index';
 import DeleteModal from './DeleteModal';
 
 function Team({ name, id, managers, count, profile, setTeams }) {
@@ -69,11 +69,15 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 							cursor: 'pointer',
 						}}
 					/>
-					{/* {modal && (
-						<Modal close={setModal}>
-							<RecogModal profile={profile} />
-						</Modal>
-					)} */}
+					{managers.map(mgr => {
+						return (
+							modal && (
+								<Modal close={setModal}>
+									<RecogModal profile={mgr} />
+								</Modal>
+							)
+						);
+					})}
 					<h5>
 						Manager:{' '}
 						{managers.map(manager => (
