@@ -64,7 +64,6 @@ export function Profile() {
 			numberOfBadges += bdg.count;
 		}
 	}
-	console.log(userBadges, 'badges');
 
 	return (
 		<main className="container-entire-profile">
@@ -88,8 +87,6 @@ export function Profile() {
 			)}
 			<main className="profile-main"></main>
 
-			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
-			{console.log(feed, 'feed')}
 			{feed.length > 0 ? (
 				<section className="activity-card">
 					<h5 className="title-activity-card">My activity</h5>

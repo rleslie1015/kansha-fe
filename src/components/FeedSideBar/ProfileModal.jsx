@@ -15,8 +15,6 @@ function ProfileModal({
 	// handleNewProfileClick,
 	profileId,
 }) {
-
-	console.log(profileId, "profileId")
 	// this handles the profile modal closing
 	const handleClose = () => {
 		setProfileSelect(false);
@@ -30,7 +28,6 @@ function ProfileModal({
 	};
 	const [isLoading, setIsLoading] = useState(false);
 
-
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
 
@@ -43,7 +40,7 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-console.log(profileInfo, "this is the profileInfo")
+
 	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];

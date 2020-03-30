@@ -17,7 +17,6 @@ function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
 
 	// let history = useHistory();
-	console.log(user, 'user');
 
 	return (
 		<section className={`side-nav${open ? ' is-open' : ''}`}>

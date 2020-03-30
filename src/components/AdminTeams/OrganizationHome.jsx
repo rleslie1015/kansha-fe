@@ -38,7 +38,7 @@ const OrganizationHome = () => {
 			name: teamName,
 			newMembersArray: teamMemberArray,
 		};
-		console.log(teamMemberArray);
+
 		axiosWithAuth()
 			.post('/teams', newTeam)
 			.then(res => {
