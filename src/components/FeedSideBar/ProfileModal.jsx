@@ -26,7 +26,7 @@ function ProfileModal({
 		setProfileSelect(false);
 		close(true);
 	};
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading] = useState(false);
 
 	// this is the id number of the user whose profile we're looking at
 
@@ -42,7 +42,6 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-console.log(profileInfo, "this is the profileInfo")
 	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];

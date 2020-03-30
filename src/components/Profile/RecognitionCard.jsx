@@ -1,9 +1,6 @@
-import React, { useMemo, memo, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo, memo } from 'react';
 import { timeAgo } from '../../utils/timeago';
-import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
 
@@ -33,7 +30,6 @@ export const RecognitionCard = memo(
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
 
-
 		// const handleDelete = e => {
 		// 	e.preventDefault();
 		// 	if (
@@ -62,7 +58,7 @@ export const RecognitionCard = memo(
 		console.log(recognition, 'recognition');
 		return (
 			<section className="container-recognition-card">
-				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
+				<a /* onClick={() => handleNewProfileClick(recognition.sender)} */
 				>
 					<img
 						src={

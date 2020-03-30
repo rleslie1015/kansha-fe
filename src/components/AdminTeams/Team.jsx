@@ -53,7 +53,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 					<h3>{name}</h3>
 				</td>
 				<td className="team-icons">
-					<SettingsIcon />
+					<SettingsIcon style={{ cursor: 'pointer' }} />
 					<TeamsIcon
 						onClick={handleClick}
 						style={{ cursor: 'pointer' }}

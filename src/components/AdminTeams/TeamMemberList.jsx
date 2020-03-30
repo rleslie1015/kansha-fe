@@ -19,6 +19,9 @@ function TeamMemberList() {
 				const { data } = await axiosWithAuth().get(
 					`${location.pathname}?search=${filter}`,
 				);
+				data.team_members.sort((a, b) =>
+					a.first_name.localeCompare(b.first_name),
+				);
 				setTeamDetails(data);
 				setLoadingState(false);
 			} catch (err) {

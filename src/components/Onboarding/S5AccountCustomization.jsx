@@ -4,19 +4,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 // import { ChromePicker } from 'react-color';
 
 function S5AccountCustomization({ user, setUser, handleUser }) {
-	console.log(user);
-
 	let history = useHistory();
-
-	// const logoUpload = e => {
-	// 	e.preventDefault();
-	// 	setUser([...user, user.logo_url]);
-	// };
-
-	// const showPicker = e => {
-	// 	e.preventDefault();
-	// 	console.log('you clicked me');
-	// };
 
 	const handleSubmit = e => {
 		e.preventDefault();

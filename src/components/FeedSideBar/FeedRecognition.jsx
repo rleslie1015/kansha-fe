@@ -41,7 +41,7 @@ export const FeedRecognition = memo(
 			setSelectedRec(rec_id);
 			setSelect(true);
 		};
-		const [profileId, setProfileId] = useState(rec.recipient);
+		const [profileId] = useState(rec.recipient);
 
 		//handleNewProfileClick doesn't work because the id of the sender isn't always consistent with the recognition's profile picture
 		// const handleNewProfileClick = profileId => {

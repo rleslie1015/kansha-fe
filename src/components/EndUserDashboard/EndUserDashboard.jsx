@@ -6,32 +6,25 @@ import Badges from '../FeedSideBar/Badges';
 import { useSelector } from 'react-redux';
 
 const EndUserDashboard = () => {
-// memo(
-// 	({
-// 	user_profile, // this is the profile info for the logged in user
-// 	rec, // this is the info for the activity card that the user clicked on
-// 	comments, // this is an array of comments for the card the user clicked on
-// 	badges, // this a list of all the badges in the system
-// 	close, // function
-// 	setProfileSelect, // function
-// }) => {
+	// memo(
+	// 	({
+	// 	user_profile, // this is the profile info for the logged in user
+	// 	rec, // this is the info for the activity card that the user clicked on
+	// 	comments, // this is an array of comments for the card the user clicked on
+	// 	badges, // this a list of all the badges in the system
+	// 	close, // function
+	// 	setProfileSelect, // function
+	// }) => {
 
-    const {
-        comments,
-        reactions,
-		profile,
-		rec,
-		badges,
-    } = useSelector(({ liveFeed, user }) => ({
-        ...liveFeed,
-        ...user,
-    }));
-console.log(rec)
+	const { comments, reactions, profile, rec, badges } = useSelector(
+		({ liveFeed, user }) => ({
+			...liveFeed,
+			...user,
+		}),
+	);
 
 	// this is the id number of the user whose profile we're looking at
 	const profileId = profile.id;
-
-	console.log(profileId);
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
@@ -80,8 +73,8 @@ console.log(rec)
 	return (
 		<>
 			{/* <Modal close={handleClose}> */}
-				<div className="profile-modal">
-					{/* <section className="profile-header">
+			<div className="profile-modal">
+				{/* <section className="profile-header">
 						<img
 							className="profile-picture"
 							alt={rec.recipient_first}
@@ -98,31 +91,30 @@ console.log(rec)
 							</h3>
 						</div>
 					</section> */}
-					<main className="profile-main">
-						<div className="profile-badges">
-							<div className="badges-title-container">
-								<h2 className="badges-title">Badges</h2>
-								<div className="number-of-badges">
-									<h2>{numberOfBadges}</h2>
-								</div>
+				<main className="profile-main">
+					<div className="profile-badges">
+						<div className="badges-title-container">
+							<h2 className="badges-title">Badges</h2>
+							<div className="number-of-badges">
+								<h2>{numberOfBadges}</h2>
 							</div>
-							<Badges badges={badges} userBadges={userBadges} />
 						</div>
-						<Activity
-							profileBadges={badges}
-							setProfileInfo={setProfileInfo}
-							profileId={profileId}
-							comments={comments}
-							profile={profile}
-							profileInfo={profileInfo}
-						/>
-					</main>
-				</div>
+						<Badges badges={badges} userBadges={userBadges} />
+					</div>
+					<Activity
+						profileBadges={badges}
+						setProfileInfo={setProfileInfo}
+						profileId={profileId}
+						comments={comments}
+						profile={profile}
+						profileInfo={profileInfo}
+					/>
+				</main>
+			</div>
 			{/* </Modal> */}
 		</>
-		);
-				
-	}
+	);
+};
 // );
 
 export default EndUserDashboard;

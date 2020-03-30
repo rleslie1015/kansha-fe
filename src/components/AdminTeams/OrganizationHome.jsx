@@ -19,7 +19,7 @@ const OrganizationHome = () => {
 	const [limit, setLimit] = useState(20);
 	const [page, setPage] = useState(1);
 	// Counts
-	const [empCount, setEmpCount] = useState(null);
+	const [empCount, setEmpCount] = useState(0);
 	// employees state
 	const [title, setTitle] = useState(titleArr[0]);
 	const [employees, setEmployees] = useState([]);
@@ -127,6 +127,9 @@ const OrganizationHome = () => {
 				teams={teams}
 				setTeams={setTeams}
 				setCreateTeamsBtn={setCreateTeamsBtn}
+				setTitle={setTitle}
+				titleArr={titleArr}
+				setTeamsBtn={setTeamsBtn}
 			/>
 		);
 	}
@@ -140,6 +143,7 @@ const OrganizationHome = () => {
 				onClick={() => {
 					setCreateTeamsBtn(true);
 					setEmpButton(false);
+					setTitle(titleArr[0]);
 				}}>
 				Create a Team
 			</button>
@@ -173,15 +177,6 @@ const OrganizationHome = () => {
 					Employees
 				</button>
 				<button
-					className="btn-filter"
-					style={
-						createTeamsBtn
-							? { display: 'block' }
-							: { display: 'none' }
-					}>
-					Role
-				</button>
-				<button
 					onClick={() => {
 						setEmpButton(false);
 						setCreateTeamsBtn(false);
@@ -211,15 +206,6 @@ const OrganizationHome = () => {
 				</div>
 			</div>
 			<div className="select-add-members">
-				<h3
-					style={
-						teamsBtn
-							? { visibility: 'hidden' }
-							: { display: 'block' }
-					}
-					className="select-all">
-					Select All
-				</h3>
 				<h3
 					style={
 						teamsBtn

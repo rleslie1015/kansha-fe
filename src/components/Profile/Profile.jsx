@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 // import { Cropper } from '../FileUpload/FileCrop';
-import { RecognitionCard } from './RecognitionCard';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Activity from '../FeedSideBar/Activity';
 import Badges from '../FeedSideBar/Badges';
 import { useSelector } from 'react-redux';
-import { Badge } from './styled';
 import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
 import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
 
@@ -15,18 +13,10 @@ export function Profile() {
 	const { id } = useParams();
 	const [profile, setProfile] = useState({});
 
-
-
-    const {
-		comments, 
-		reactions,
-		feed,
-      
-    } = useSelector(({ liveFeed, user }) => ({
-        ...liveFeed,
-        ...user,
+	const { comments, feed } = useSelector(({ liveFeed, user }) => ({
+		...liveFeed,
+		...user,
 	}));
-
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,7 +24,6 @@ export function Profile() {
 				`/profile/${id}`,
 			);
 			setProfile(profileData.peer);
-			console.log('profile data', profileData);
 
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
@@ -42,7 +31,6 @@ export function Profile() {
 		fetchData();
 	}, [id]);
 
-	console.log(profile, "this is the profile")
 	const userBadges = useMemo(() => {
 		const array = [];
 		if (profile.rec) {
@@ -72,45 +60,30 @@ export function Profile() {
 
 	return (
 		<main className="container-entire-profile">
-			
-				<section className="my-team-members"></section>
-				{feed.length > 0 ? (
+			<section className="my-team-members"></section>
+			{feed.length > 0 ? (
 				<section className="container-badges">
-		
-
-					
-							<div className="badges-title-container">
-							
-							<h1 className="title-badges">My badges</h1>
-									<h2>{numberOfBadges}</h2>
-						
-							</div>
-							<div className="profile-badges">
-							<Badges badges={badges} userBadges={userBadges} />
-						</div>
-				
-					
+					<div className="badges-title-container">
+						<h1 className="title-badges">My badges</h1>
+						<h2>{numberOfBadges}</h2>
+					</div>
+					<div className="profile-badges">
+						<Badges badges={badges} userBadges={userBadges} />
+					</div>
 				</section>
-					) : (
-						<main className="empty-feed">
-						<EmptyFeed />
-			
-				
-					</main>
-						)}
-				<main className="profile-main">
-						
-		
-					</main>
-			
+			) : (
+				<main className="empty-feed">
+					<EmptyFeed />
+				</main>
+			)}
+			<main className="profile-main"></main>
+
 			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
-			{console.log(feed, "feed")}
-				{feed.length > 0 ? (
-			<section className="activity-card">
-				<h5 className="title-activity-card">My activity</h5>
-		
-				<section className="profile-activity-card">
-				
+			{feed.length > 0 ? (
+				<section className="activity-card">
+					<h5 className="title-activity-card">My activity</h5>
+
+					<section className="profile-activity-card">
 						<Activity
 							profileBadges={badges}
 							setProfileInfo={setProfile}
@@ -119,20 +92,13 @@ export function Profile() {
 							profile={profile}
 							profileInfo={profile}
 						/>
-					</section>	
-			
-					
-			
-						
-							
-				</section> 	
-					) : (
-						<main className="empty-feed">
+					</section>
+				</section>
+			) : (
+				<main className="empty-feed">
 					<EmptyActivity />
-				
 				</main>
-					)}
-			
+			)}
 		</main>
 	);
 }

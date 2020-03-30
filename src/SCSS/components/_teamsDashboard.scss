@@ -168,6 +168,12 @@
 				cursor: pointer;
 			}
 		}
+
+		.empty-team-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	.employee-filter-container {

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { update } from '../store/actions/user-actions';
 import Modal from './Modal';
 import FileUpload from './FileUpload';
 
 function Settings() {
-	const history = useHistory();
+	// const history = useHistory();
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
