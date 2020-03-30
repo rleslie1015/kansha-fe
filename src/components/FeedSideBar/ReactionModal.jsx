@@ -7,6 +7,7 @@ import RMComments from './RMComments';
 
 function ReactionModal({
 	profile,
+	picture,
 	rec,
 	reactions,
 	comments,
@@ -21,7 +22,7 @@ function ReactionModal({
 		setSelect(false);
 		close(false);
 	};
-
+	console.log(rec, 'rec');
 	return (
 		<>
 			<Modal close={handleClose}>
@@ -30,11 +31,12 @@ function ReactionModal({
 						<img
 							alt="recipient"
 							className="rm-profile-pic"
-							src={rec.recipient_picture}></img>
+							src={picture}
+						/>
 						<p>
-							<span>{rec.recipient_first}</span>
+							<span>{rec.first_name}</span>
 
-							<span>{rec.recipient_last}</span>
+							<span>{rec.last_name}</span>
 						</p>
 
 						<p className="rm-job_title">

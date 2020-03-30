@@ -79,6 +79,7 @@ export const RecognitionCard = memo(
 						badge={thisBadge}
 						comments={comments}
 						open={open}
+						picture={recognition.profile_pic}
 					/>
 				)}
 				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
