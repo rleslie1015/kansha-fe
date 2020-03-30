@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Hamburger from './Hamburger';
 import { ReactComponent as HomeIcon } from '../../assets/home.svg';
-import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
+// import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
 // import { ReactComponent as HistoryIcon } from '../../assets/history.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/settings.svg';
 import { ReactComponent as PowerIcon } from '../../assets/signout.svg';
@@ -11,8 +11,13 @@ import { ReactComponent as HelpIcon } from '../../assets/HelpModalImgs/Help.svg'
 import { SidebarLink } from './SideBarLink';
 import { signout } from '../Auth';
 
+// import { useHistory } from 'react-router-dom';
+
 function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
+
+	// let history = useHistory();
+	console.log(user, 'user');
 
 	return (
 		<section className={`side-nav${open ? ' is-open' : ''}`}>
@@ -27,24 +32,28 @@ function Sidebar({ user }) {
 			</section>
 			<nav>
 				<SidebarLink
-					path="/"
+					path={
+						user.profile.user_type === 'admin'
+							? '/'
+							: `/profile/${user.profile.id}`
+					}
 					name="Dashboard"
 					icon={HomeIcon}
 					open={open}
 				/>
 				<SidebarLink
-					path={'/workspace'}
-					name="Workspace"
+					path={'/organization'}
+					name="Organization Workspace"
 					icon={TeamIcon}
 					open={open}
 				/>
-				<SidebarLink
+				{/* <SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
 					icon={ProfileIcon}
 					open={open}
 					className="fill-white"
-				/>
+				/> */}
 
 				{/* <SidebarLink
 					path="/"

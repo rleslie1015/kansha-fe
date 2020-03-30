@@ -7,6 +7,7 @@ import {
 	FaFacebookF,
 	FaLinkedinIn,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const auth = new Auth();
 
@@ -51,7 +52,7 @@ export default function Footer() {
 					<span onClick={auth.login} role="link">
 						Login
 					</span>
-					<span onClick={auth.login}>Team</span>
+					<Link to="/aboutus">Team</Link>
 					<span onClick={auth.login}>Contact</span>
 				</nav>
 				<p>© Kansha. {new Date().getFullYear()}. We love our users!</p>

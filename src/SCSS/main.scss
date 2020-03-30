@@ -20,7 +20,10 @@
 @import './components/dropDown';
 @import './components/mostRecog';
 @import './components/feedSideBar';
+@import './components/teamsDashboard';
+@import './components/createTeams';
 @import './components/reactionModel';
+@import './components/deleteModal';
 
 // layout
 @import './layout/footer.scss';
@@ -29,6 +32,7 @@
 @import './layout/sidenav.scss';
 
 // pages
+@import './pages/aboutUs.scss';
 @import './pages/adminDashboard';
 @import './pages/landing.scss';
 @import './pages/onboarding.scss';

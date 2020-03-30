@@ -445,3 +445,49 @@
 		}
 	}
 }
+
+.about-us-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	main {
+		.labs-21-section,
+		.labs-19-section {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			.labs-21-team-lead {
+				text-align: center;
+			}
+			h2 {
+				text-align: left;
+				font-size: 6rem;
+			}
+			.labs-21-team,
+			.labs-19-team {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+
+			.team-member-profile {
+				text-align: center;
+			}
+		}
+	}
+}
+
+.labs-21-section {
+	margin-bottom: 10rem;
+}
+
+.aboutUs-picture {
+	width: 30rem;
+	border-radius: 50%;
+	margin: 2rem;
+}

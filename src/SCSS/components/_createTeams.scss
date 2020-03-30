@@ -1,0 +1,46 @@
+.create-team-container {
+	display: flex;
+	flex-direction: row;
+
+	.create-team-employees-list {
+		width: 50%;
+		padding-top: 3rem;
+	}
+
+	.create-team {
+		width: 50%;
+		border-left: 1px solid $color-gray-light;
+		padding-left: 2.5rem;
+		padding-top: 1.5rem;
+	}
+
+	.create-team-add-name {
+		margin-top: -2.7rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		input {
+			border: 1px solid $color-gray-light;
+			border-radius: 6px;
+			width: 24.7rem;
+			margin-bottom: 2rem;
+		}
+
+		h2 {
+			font-size: 1.8rem;
+			color: $color-primary-nav;
+			font-weight: normal;
+		}
+	}
+
+	.teams-employee-icons {
+		display: flex;
+		align-items: center;
+	}
+
+	.added-team-list {
+		display: flex;
+		flex-direction: column;
+	}
+}

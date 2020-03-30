@@ -1,0 +1,434 @@
+.teams-dashboard {
+	margin-left: 9rem;
+	margin-right: 10rem;
+	display: flex;
+	flex-direction: column;
+
+	padding: 2rem 2rem 2rem 0rem;
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 170px;
+	}
+
+	.teams-name-button {
+		display: flex;
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: none;
+			width: 17rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
+	}
+
+	.add-team-container {
+		display: flex;
+		justify-content: flex-end;
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: 0.7px solid $color-primary;
+			width: 18rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 0.5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
+	}
+
+	.employees-table {
+		margin-top: 3rem;
+		width: 100%;
+		height: 95rem;
+		padding-right: 3rem;
+
+		tbody {
+			width: 100%;
+		}
+	}
+
+	.org-team-container {
+		margin-top: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		tbody {
+			width: 100%;
+
+			.team-list-table {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				align-content: left;
+				margin: 1rem 0rem;
+
+				.manager-container {
+					width: 200px;
+					display: flex;
+				}
+
+				h5 {
+					font-size: 1.6rem;
+					color: $color-primary-nav;
+
+					span {
+						color: $color-gray-light;
+					}
+				}
+
+				.team-name {
+					width: 150px;
+
+					h3 {
+						font-size: 1.8rem;
+						color: $color-primary-nav;
+					}
+				}
+
+				.team-icons {
+					display: flex;
+					justify-content: space-between;
+					width: 60px;
+					align-items: center;
+				}
+			}
+		}
+
+		h1 {
+			font-size: 3.4rem;
+			color: $color-gray-light;
+			font-weight: normal;
+		}
+
+		button {
+			color: $color-primary;
+			background-color: $color-white;
+			border: 0.7px solid $color-primary;
+			width: 18rem;
+			height: 4rem;
+			margin-top: 0.5rem;
+			margin-left: 0.5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: all 300ms ease;
+			font-size: 2rem;
+			padding: 0 20px 0 20px;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-primary;
+			}
+		}
+
+		.btn-remove {
+			color: white;
+			background-color: $color-gray-light;
+			border: none;
+			opacity: 0.6;
+
+			&:hover {
+				background-color: $color-gray-light;
+				opacity: 1;
+			}
+		}
+	}
+
+	.employee-filter-container {
+		display: flex;
+		align-items: center;
+		margin-top: 3rem;
+		border-top: 1px solid $color-gray-light;
+		border-bottom: 1px solid $color-gray-light;
+		padding: 10px 0 10px 0;
+		width: 100%;
+
+		button {
+			padding: 0 1.2rem 0 1.2rem;
+			margin-left: 2rem;
+		}
+
+		h3 {
+			color: $color-primary-nav;
+			font-size: 1.8rem;
+		}
+
+		.employee-search-container {
+			display: flex;
+			justify-content: flex-end;
+			width: 190rem;
+
+			#search {
+				border: 1px solid $color-gray-light;
+				border-radius: 0.5rem;
+				width: 25rem;
+			}
+		}
+	}
+
+	.select-add-members {
+		display: flex;
+		flex-direction: row;
+		width: 50%;
+
+		h3 {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		h3 {
+			color: $color-gray-light;
+			font-size: 1.4rem;
+			padding: 20px 0 3px 0;
+		}
+
+		.select-all {
+			margin-right: 12rem;
+			border-bottom: 1px solid $color-gray-light;
+		}
+	}
+
+	h1 {
+		font-size: 3.6rem;
+		color: $color-primary-nav;
+		margin-bottom: 5rem;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+		color: $color-primary-nav;
+	}
+
+	.teams-employee-card {
+		height: 6.2rem;
+		margin-bottom: 2rem;
+		display: flex;
+		justify-content: space-between;
+
+		// .teams-employee-details:nth-child(2) {
+		// 	// background: red;
+		// }
+
+		.teams-employee-icons {
+			display: flex;
+			align-items: center;
+		}
+
+		.teams-employee-details {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 20rem;
+
+			.teams {
+				margin-left: 20rem;
+			}
+
+			.job-title {
+				max-width: 15rem;
+				min-width: 15rem;
+			}
+
+			h3 {
+				font-size: 1.6rem;
+				color: $color-primary-nav;
+			}
+		}
+	}
+
+	.teams-container {
+		display: flex;
+		align-items: center;
+		width: 20rem;
+
+		h3 {
+			font-size: 1.6rem;
+			color: $color-primary-nav;
+		}
+
+		.team-dropdown {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.recognition-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.teams-employee {
+		display: flex;
+		width: 20%;
+		align-items: center;
+		justify-content: flex-start;
+
+		.teams-employee-info {
+			display: flex;
+			align-items: center;
+		}
+
+		.teams-profile-picture {
+			margin: 0 20px 0 0;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+		}
+
+		h3 {
+			font-size: 1.6rem;
+			color: $color-primary-nav;
+		}
+
+		label {
+			margin-right: 20px;
+		}
+
+		// css checkbox mixin
+		@mixin css-checkbox(
+			$size: '16px',
+			$selectedColor: #444,
+			$checkColor: #fff,
+			$valign: 'middle',
+			$rounded: 0.1rem
+		) {
+			display: none;
+
+			&:checked + i {
+				background: #{$selectedColor};
+				border-color: $color-primary-nav;
+
+				&:hover:after {
+					opacity: 1;
+				}
+
+				&:after {
+					opacity: 1;
+					border-color: #{$checkColor};
+				}
+			}
+
+			+ i {
+				box-sizing: border-box;
+				&:before,
+				&:after {
+					box-sizing: border-box;
+				}
+			}
+			+ i {
+				position: relative;
+				display: inline-block;
+				top: -1px;
+				width: #{$size};
+				height: #{$size};
+				margin: 0;
+				vertical-align: #{$valign};
+				border: 1px solid $color-primary-nav;
+				transition: background 200ms ease;
+				background: #f9f9f9;
+				font-size: #{$size};
+				cursor: pointer;
+
+				&:hover:after {
+					opacity: 0.2;
+				}
+
+				&:after {
+					content: '';
+					opacity: 0;
+					transform: translateZ(1px) rotate(-45deg);
+					outline: 1px solid transparent;
+					position: absolute;
+					top: 22%;
+					left: 15%;
+					width: 0.68em;
+					height: 0.4em;
+					border: 0.15em solid #222;
+					border-top: none;
+					border-right: none;
+					background: rgba(0, 0, 0, 0);
+				}
+			}
+		}
+
+		label {
+			.css-checkbox {
+				@include css-checkbox(18px, $color-primary-nav);
+			}
+		}
+	}
+
+	.team-member-table {
+		margin-top: 5rem;
+		display: flex;
+		justify-content: space-between;
+
+		tbody {
+			width: 100%;
+
+			.indiv-team {
+				display: flex;
+				align-content: center;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 1.7rem;
+
+				h3 {
+					font-size: 1.6rem;
+					color: $color-primary-nav;
+				}
+
+				.teams-employee-info {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+
+					img {
+						border-radius: 50%;
+						height: 30px;
+						width: 30px;
+					}
+
+					h3 {
+						margin-left: 3rem;
+						width: 25rem;
+						font-size: 1.6rem;
+						color: $color-primary-nav;
+					}
+				}
+			}
+		}
+	}
+}

@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login, authorizeUser } from './store/actions/user-actions';
-
+import AboutUs from './components/Landing/AboutUs';
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
 import Onboarding from './components/Onboarding/Onboarding';
@@ -17,6 +17,8 @@ import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
 import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import OrganizationHome from './components/AdminTeams/OrganizationHome';
+import TeamMemberList from './components/AdminTeams/TeamMemberList';
 
 const auth = new Auth();
 
@@ -58,6 +60,7 @@ export const App = () => {
 			<Switch>
 				<Route exact path="/" component={Landing} />
 				<Route path="/login" component={Login} />)
+				<Route path="/aboutus" component={AboutUs} />)
 				<Route default render={() => <Redirect to="/" />} />
 			</Switch>
 		);
@@ -77,6 +80,16 @@ export const App = () => {
 						component={AdminDashboard}
 					/>
 					<ProtectedRoute path="/workspace" component={Workspace} />
+					<ProtectedRoute
+						exact
+						path="/organization"
+						component={OrganizationHome}
+					/>
+					<ProtectedRoute
+						exact
+						path="/teams/:id"
+						component={TeamMemberList}
+					/>
 					<ProtectedRoute path="/upload" component={FileUpload} />
 					<ProtectedRoute path="/settings" component={Settings} />
 					<ProtectedRoute path="/add-user" component={UserUpload} />

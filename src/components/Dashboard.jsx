@@ -20,6 +20,7 @@ const Dashboard = ({ children }) => {
 	);
 
 	let location = useLocation();
+	// console.log(location);
 
 	let history = useHistory();
 

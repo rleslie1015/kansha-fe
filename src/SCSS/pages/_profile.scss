@@ -1,69 +1,64 @@
 // layout of the profile and peer profile page
 .container-entire-profile {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
+	align-items: flex-start;
 	background-color: $color-white;
 	color: $color-black;
 	padding: 2rem 0;
 	height: 100vh;
 	margin: 0 8rem;
 
-	.container-profile-card-and-badges {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 45%;
+	.my-team-members {
+		width: 100%;
+		min-height: 30rem;
+		margin: 0;
 
-		.container-profile-card {
-			height: 45%;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
-			margin-bottom: 50px;
-			background-color: $color-white-dark;
-			@include boxshadow();
-
-			img {
-				height: 50%;
-				border-radius: 50%;
-			}
-
-			.profile-name-info {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-
-				h5 {
-					font-size: 2.5rem;
-					margin: 3% 0;
-				}
-
-				p {
-					margin: 1% 0;
-					font-size: 2.2rem;
-				}
-			}
+		.teams-dashboard {
+			margin: 0;
+			overflow-y: scroll;
 		}
 	}
-	.container-badges {
-		background-color: $color-white-dark;
-		padding: 2rem 0 2rem 2rem;
-		@include boxshadow();
 
-		.title-badges {
-			font-size: 2.4rem;
-			font-weight: 500;
+	.container-badges {
+		width: 45%;
+		height: 50%;
+		margin-left: 3rem;
+
+		.badges-title-container {
+			display: flex;
+			color: $color-primary;
+
+			h1 {
+				font-size: 3rem;
+				margin-left: 2rem;
+				font-weight: 500;
+			}
+			h2 {
+				font-size: 2rem;
+				margin-left: 2rem;
+				padding: 0.8rem;
+				@include boxshadow();
+				border-radius: 229px;
+				width: 5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 		}
 
-		ul {
-			display: flex;
+		.profile-badges {
 			width: 100%;
-			padding: 2rem 0;
-			overflow-y: auto;
+			ul {
+				display: flex;
+				width: 100%;
+				padding: 2rem 0;
+				flex-wrap: wrap;
+
+				height: 36rem;
+				overflow-y: scroll;
+			}
 		}
 	}
 }
@@ -71,60 +66,53 @@
 // activity section of the page
 .activity-card {
 	width: 45%;
-	background-color: $color-white-dark;
-	margin-left: 1.6rem;
-	padding: 3rem;
-	height: 100%;
-	@include boxshadow();
+	height: 50%;
 
 	.title-activity-card {
 		font-weight: 500;
-		font-size: 2.4rem;
-		padding: 2rem;
+		font-size: 3rem;
+		color: $color-primary;
 	}
-	.inner-activity-card {
+	.profile-activity-card {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
 		height: 90%;
 		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: auto;
 
-		.container-recognition-card {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			width: 95%;
-			margin-bottom: 15px;
-			padding: 10px;
+		h2 {
+			display: none;
+		}
+		.profile-activity {
+			width: 100%;
+		}
+		.inner-activity-card {
+			width: 100%;
 
-			@include boxshadow();
+			.container-card-and-buttons {
+				width: 100%;
 
-			> section {
-				position: relative;
-				width: 90%;
-				margin-left: 10px;
+				.container-recognition-card {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					width: 100%;
 
-				a {
-					color: $color-primary;
+					padding: 10px;
+
+					.activity-badge {
+						width: 50px;
+						display: flex;
+						align-items: flex-end;
+					}
+
+					img {
+						width: 40px;
+						border-radius: 50%;
+					}
 				}
-
-				svg {
-					position: absolute;
-					right: 5px;
-					top: 5px;
-					cursor: pointer;
-				}
-				p {
-					padding-top: 10px;
-					word-break: break-all;
-				}
-			}
-
-			img {
-				width: 40px;
-				border-radius: 50%;
 			}
 		}
 	}
