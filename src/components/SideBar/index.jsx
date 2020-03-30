@@ -41,12 +41,15 @@ function Sidebar({ user }) {
 					icon={HomeIcon}
 					open={open}
 				/>
-				<SidebarLink
-					path={'/organization'}
-					name="Organization Workspace"
-					icon={TeamIcon}
-					open={open}
-				/>
+
+				{user.profile.user_type === 'admin' ? (
+					<SidebarLink
+						path={'/organization'}
+						name="Teams"
+						icon={TeamIcon}
+						open={open}
+					/>
+				) : null}
 				{/* <SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
@@ -68,13 +71,15 @@ function Sidebar({ user }) {
 					open={open}
 					className="fill-white"
 				/>
-				<SidebarLink
-					path="?help"
-					name="Get help"
-					icon={HelpIcon}
-					open={open}
-					className="help-btn"
-				/>
+				{user.profile.user_type === 'admin' ? (
+					<SidebarLink
+						path="?help"
+						name="Get help"
+						icon={HelpIcon}
+						open={open}
+						className="help-btn"
+					/>
+				) : null}
 			</nav>
 			<section className="nav-signout" onClick={() => signout()}>
 				<SidebarLink
