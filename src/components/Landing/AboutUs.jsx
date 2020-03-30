@@ -69,11 +69,6 @@ export default function AboutUs() {
 
 	const labs19 = [
 		{
-			name: 'Cori Paris',
-			job: 'Web Developer',
-			imageUrl: cori,
-		},
-		{
 			name: 'Ty Lippe',
 			job: 'Web Developer',
 			imageUrl: ty,
@@ -153,6 +148,15 @@ export default function AboutUs() {
 				</section>
 				<section className="labs-19-section">
 					<h2>Labs 19</h2>
+					<div className="labs-19-team-lead">
+						<img
+							className="aboutUs-picture"
+							src={cori}
+							alt="cori paris"
+						/>
+						{/* <h3>Cori Paris</h3>
+						<h4>Team Lead</h4> */}
+					</div>
 					<div className="labs-19-team">
 						{labs19.map(data => {
 							return (
