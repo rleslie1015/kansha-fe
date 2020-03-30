@@ -54,7 +54,7 @@ function ReactionModal({
 						<div className="rm-buttons">
 							<ReactionButton
 								reactions={reactions}
-								open={open}
+								open={true}
 								inModal={true}
 								rec_id={rec.id}
 								id={profile.id}
@@ -62,7 +62,7 @@ function ReactionModal({
 
 							<CommentButton
 								comments={comments}
-								open={open}
+								open={true}
 								inModal={true}
 								rec_id={rec.id}
 								id={profile.id}
