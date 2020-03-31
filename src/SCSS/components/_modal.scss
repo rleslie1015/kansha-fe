@@ -233,7 +233,7 @@
 			color: $color-primary;
 		}
 		.number-of-badges {
-			color: $color-primary;
+			color: $color-primary !important;
 			font-size: 1.8rem;
 			margin-left: 2rem;
 			background-color: $color-white;

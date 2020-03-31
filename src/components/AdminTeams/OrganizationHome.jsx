@@ -151,7 +151,7 @@ const OrganizationHome = () => {
 			<div className="header">
 				<h1>Organization</h1>
 				<div className="add-team-container">{createButton}</div>
-				<h2>
+				<h2 className="members-number">
 					{title}{' '}
 					{empButton
 						? `(${empCount})`

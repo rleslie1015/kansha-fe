@@ -223,7 +223,6 @@
 
 	h2 {
 		font-size: 2.4rem;
-		color: $color-primary-nav;
 	}
 
 	.teams-employee-card {
@@ -431,4 +430,8 @@
 			}
 		}
 	}
+}
+
+.members-number {
+	color: $color-primary-nav;
 }

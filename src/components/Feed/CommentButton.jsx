@@ -19,7 +19,6 @@ export const CommentButton = ({
 		}
 	}, [comments, id]);
 
-	console.log(userComment, 'userComment');
 	return (
 		<button
 			className={`${open ? `comment-button` : `hidden-rec`}`}

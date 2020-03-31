@@ -62,7 +62,7 @@ function TeamMemberList() {
 								handleBack
 							}>{`All Teams (${teamLength})`}</button>
 					</div>
-					<h2>{`Members (${teamDetails.team_members.length})`}</h2>
+					<h2 className="members-number">{`Members (${teamDetails.team_members.length})`}</h2>
 				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>

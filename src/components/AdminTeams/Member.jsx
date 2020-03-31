@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
-import { Link } from 'react-router-dom';
+import ProfileModal from '../FeedSideBar/ProfileModal';
 import DeleteModal from './DeleteModal';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -15,10 +15,19 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
-
+	const [profileSelect, setProfileSelect] = useState(false);
+	const [badges, setBadges] = useState([]);
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);
+	};
+
+	const handleProfileClick = e => {
+		console.log('hello');
+
+		e.preventDefault();
+
+		setProfileSelect(true);
 	};
 
 	const handleDeleteTeamMember = e => {
@@ -35,6 +44,16 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 				setDeleteModal(false);
 			});
 	};
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+	}, []);
 
 	return (
 		<>
@@ -45,9 +64,22 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 				/>
 			)}
 
+			{profileSelect && (
+				<ProfileModal
+					close={setModal}
+					setProfileSelect={setProfileSelect}
+					profile={profile}
+					badges={badges}
+					profileId={profile.id}
+				/>
+			)}
+
 			<tr className="indiv-team">
 				<td>
-					<Link to={`/profile/${member.id}`}>
+					<a
+						onClick={e => {
+							handleProfileClick(e);
+						}}>
 						<div className="teams-employee-info">
 							<img
 								src={member.profile_picture}
@@ -58,7 +90,7 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 								{member.first_name} {member.last_name}
 							</h3>
 						</div>
-					</Link>
+					</a>
 				</td>
 				<td className="recognition-btn">
 					<RecognitionIcon

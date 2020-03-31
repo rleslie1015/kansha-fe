@@ -25,7 +25,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 			dispatch(reactToPost(id, rec_id));
 		}
 	};
-	console.log(userReaction, 'userReaction');
+
 	return (
 		<button
 			className={`${open ? `reaction-button` : `hidden-rec`}`}
