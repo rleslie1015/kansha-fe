@@ -36,12 +36,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## Project Overview
-
-[Trello Board](https://trello.com/b/47q9LIO5/kansha)
-
+###Labs 21
+[Trello Board](https://trello.com/b/AZKBscuK/kansha-labs-21)
 [Product Canvas](https://www.notion.so/Kansha-fdf86e4459934f979df4eefd5c409b4a)
+[UX Design Files](https://www.figma.com/file/plY8UaoINAhmgXaaD49t1X/Kansha%2C-Vickie?node-id=177%3A12)
 
-[UX Design files](https://www.figma.com/file/EtD3IAhwlPsT91V1oAJ1QX/Labs18_Kansha%2C-Gizella-%26-Ahmar?node-id=533%3A1360)
+
+###Labs 19
+[Trello Board](https://trello.com/b/47q9LIO5/kansha)
+[Product Canvas](https://www.notion.so/Kansha-fdf86e4459934f979df4eefd5c409b4a)
+[UX Design Files](https://www.figma.com/file/EtD3IAhwlPsT91V1oAJ1QX/Labs18_Kansha%2C-Gizella-%26-Ahmar?node-id=533%3A1360)
 
 Kansha Rewards is an app that was designed to increase satisfaction and productivity in the workplace by allowing employees to send recognition and badges to their peers in an app.  The badges appear on the profile page, and the recognition appears on both the profile page and a live feed of all recognition, where employees will also be able to send a reaction and/or comment on the recognition.
 
