@@ -32,7 +32,7 @@ function Sidebar({ user }) {
 			<nav>
 				<SidebarLink
 					path={
-						user.profile.user_type === 'admin'
+						user.profile.user_type.toLowerCase() === 'admin'
 							? '/'
 							: `/profile/${user.profile.id}`
 					}
@@ -41,7 +41,7 @@ function Sidebar({ user }) {
 					open={open}
 				/>
 
-				{user.profile.user_type === 'admin' ? (
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
 					<SidebarLink
 						path={'/organization'}
 						name="Teams"
@@ -70,7 +70,8 @@ function Sidebar({ user }) {
 					open={open}
 					className="fill-white"
 				/>
-				{user.profile.user_type === 'admin' ? (
+
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
 					<SidebarLink
 						path="?help"
 						name="Get help"

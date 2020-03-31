@@ -10,17 +10,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
-	({
-		recognition,
-		sent,
-		setProfile,
-		profileBadges,
-		profileId,
-		setProfileInfo,
-		handleNewProfileClick,
-		isLoading,
-		inModal,
-	}) => {
+	({ recognition, sent, profileBadges, inModal }) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {

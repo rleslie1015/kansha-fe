@@ -6,12 +6,9 @@ import Badges from './Badges';
 
 function ProfileModal({
 	profile, // this is the profile info for the logged in user
-	rec, // this is the info for the activity card that the user clicked on
-	comments, // this is an array of comments for the card the user clicked on
 	badges, // this a list of all the badges in the system
 	close, // function
 	setProfileSelect, // function that determines whether the modal is open
-	setSelect,
 	// handleNewProfileClick,
 	profileId,
 }) {
@@ -102,7 +99,6 @@ function ProfileModal({
 							profileBadges={badges}
 							setProfileInfo={setProfileInfo}
 							profileId={profileId}
-							comments={comments}
 							profile={profile}
 							profileInfo={profileInfo}
 							isLoading={isLoading}

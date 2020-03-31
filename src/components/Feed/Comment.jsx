@@ -33,7 +33,7 @@ export const Comment = ({ comment, profile }) => {
 					<span className="time" role="presentation">
 						{time}
 					</span>
-					{profile.user_type === 'admin' && (
+					{profile.user_type.toLowerCase() === 'admin' && (
 						<Trashcan onClick={() => handleDelete(comment.id)} />
 					)}
 				</p>
