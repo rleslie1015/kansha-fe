@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Hamburger from './Hamburger';
 import { ReactComponent as HomeIcon } from '../../assets/home.svg';
-// import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
+import { ReactComponent as ProfileIcon } from '../../assets/profile.svg';
 // import { ReactComponent as HistoryIcon } from '../../assets/history.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/settings.svg';
 import { ReactComponent as PowerIcon } from '../../assets/signout.svg';
@@ -49,13 +49,15 @@ function Sidebar({ user }) {
 						open={open}
 					/>
 				) : null}
-				{/* <SidebarLink
-					path={`/profile/${user.profile.id}`}
-					name="Profile"
-					icon={ProfileIcon}
-					open={open}
-					className="fill-white"
-				/> */}
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
+					<SidebarLink
+						path={`/profile`}
+						name="Profile"
+						icon={ProfileIcon}
+						open={open}
+						className="fill-white"
+					/>
+				) : null}
 
 				{/* <SidebarLink
 					path="/"
