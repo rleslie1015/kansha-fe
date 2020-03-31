@@ -69,7 +69,7 @@ const CreateTeam = ({
 								<tbody>
 									<tr className="teams-employee-card">
 										<td className="teams-employee">
-											<Link to={`/profile/${team.id}`}>
+											<a>
 												<div className="teams-employee-info">
 													<img
 														src={
@@ -83,7 +83,7 @@ const CreateTeam = ({
 														{team.last_name}
 													</h3>
 												</div>
-											</Link>
+											</a>
 										</td>
 										<td className="recognition-btn">
 											<RecognitionIcon

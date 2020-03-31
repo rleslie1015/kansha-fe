@@ -11,6 +11,7 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
 import DeleteModal from './DeleteModal';
+import ProfileModal from '../FeedSideBar/ProfileModal';
 
 const OrgEmployees = ({
 	employee,
@@ -22,7 +23,7 @@ const OrgEmployees = ({
 	const [modal, setModal] = useState(false);
 	const [teamInfo, setTeamInfo] = useState([]);
 	const [deleteModal, setDeleteModal] = useState(false);
-
+	const [badges, setBadges] = useState([]);
 	// const [showTeams, setShowTeams] = useState(false);
 
 	useEffect(() => {
@@ -34,10 +35,23 @@ const OrgEmployees = ({
 			.catch(error => console.log(error.response));
 	}, [id]);
 
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+	}, []);
+
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);
 	};
+
+	const [profileSelect, setProfileSelect] = useState(false);
 
 	//not working yet
 
@@ -52,6 +66,14 @@ const OrgEmployees = ({
 			});
 	};
 
+	const handleProfileClick = e => {
+		console.log('hello');
+
+		e.preventDefault();
+
+		setProfileSelect(true);
+	};
+
 	return (
 		<>
 			{deleteModal && (
@@ -59,6 +81,15 @@ const OrgEmployees = ({
 					setDeleteModal={setDeleteModal}
 					deleteMemberFromOrg={true}
 					handleDeleteOrgMember={handleDeleteOrgMember}
+				/>
+			)}
+			{profileSelect && (
+				<ProfileModal
+					close={setModal}
+					setProfileSelect={setProfileSelect}
+					profile={employee}
+					badges={badges}
+					profileId={employee.id}
 				/>
 			)}
 			<tr className="teams-employee-card">
@@ -75,7 +106,10 @@ const OrgEmployees = ({
 						<input type="checkbox" className="css-checkbox" />
 						<i></i>
 					</label>
-					<Link to={`/profile/${employee.id}`}>
+					<a
+						onClick={e => {
+							handleProfileClick(e);
+						}}>
 						<div className="teams-employee-info">
 							<img
 								src={employee.profile_picture}
@@ -86,7 +120,7 @@ const OrgEmployees = ({
 								{employee.first_name} {employee.last_name}
 							</h3>
 						</div>
-					</Link>
+					</a>
 				</td>
 				<td className="teams-employee-details">
 					<h3 className="job-title">{employee.job_title}</h3>

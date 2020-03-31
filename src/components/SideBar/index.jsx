@@ -31,17 +31,24 @@ function Sidebar({ user }) {
 			</section>
 			<nav>
 				<SidebarLink
-					path="/"
+					path={
+						user.profile.user_type.toLowerCase() === 'admin'
+							? '/'
+							: `/profile/${user.profile.id}`
+					}
 					name="Dashboard"
 					icon={HomeIcon}
 					open={open}
 				/>
-				<SidebarLink
-					path={'/organization'}
-					name="Organization Workspace"
-					icon={TeamIcon}
-					open={open}
-				/>
+
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
+					<SidebarLink
+						path={'/organization'}
+						name="Teams"
+						icon={TeamIcon}
+						open={open}
+					/>
+				) : null}
 				{/* <SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
@@ -63,13 +70,16 @@ function Sidebar({ user }) {
 					open={open}
 					className="fill-white"
 				/>
-				<SidebarLink
-					path="?help"
-					name="Get help"
-					icon={HelpIcon}
-					open={open}
-					className="help-btn"
-				/>
+
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
+					<SidebarLink
+						path="?help"
+						name="Get help"
+						icon={HelpIcon}
+						open={open}
+						className="help-btn"
+					/>
+				) : null}
 			</nav>
 			<section className="nav-signout" onClick={() => signout()}>
 				<SidebarLink

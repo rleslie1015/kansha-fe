@@ -15,7 +15,6 @@ function S5AccountCustomization({ user, setUser, handleUser }) {
 				logo_url: user.logo_url,
 			})
 			.then(res => {
-				console.log(res);
 				setUser(res.data);
 			})
 			.catch(err => {

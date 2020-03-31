@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../Modal';
 import RecogModal from '../RecogModal/index';
-import { Link } from 'react-router-dom';
+import ProfileModal from '../FeedSideBar/ProfileModal';
 import DeleteModal from './DeleteModal';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
@@ -9,13 +9,23 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
-function Member({ profile, teamDetails, member, setTeamDetails }) {
+function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
-
+	const [isAdmin, setIsAdmin] = useState(false);
+	const [profileSelect, setProfileSelect] = useState(false);
+	const [badges, setBadges] = useState([]);
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);
+	};
+
+	const handleProfileClick = e => {
+		console.log('hello');
+
+		e.preventDefault();
+
+		setProfileSelect(true);
 	};
 
 	const handleDeleteTeamMember = e => {
@@ -32,6 +42,16 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 				setDeleteModal(false);
 			});
 	};
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/badges')
+			.then(res => {
+				setBadges(res.data);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+	}, []);
 
 	return (
 		<>
@@ -42,9 +62,22 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 				/>
 			)}
 
+			{profileSelect && (
+				<ProfileModal
+					close={setModal}
+					setProfileSelect={setProfileSelect}
+					profile={profile}
+					badges={badges}
+					profileId={profile.id}
+				/>
+			)}
+
 			<tr className="indiv-team">
 				<td>
-					<Link to={`/profile/${member.id}`}>
+					<a
+						onClick={e => {
+							handleProfileClick(e);
+						}}>
 						<div className="teams-employee-info">
 							<img
 								src={member.profile_picture}
@@ -55,7 +88,7 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 								{member.first_name} {member.last_name}
 							</h3>
 						</div>
-					</Link>
+					</a>
 				</td>
 				<td className="recognition-btn">
 					<RecognitionIcon
@@ -77,12 +110,17 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 				<td>
 					<h3>{teamDetails.name}</h3>
 				</td>
-				<td className="icons">
-					<DeleteIcon
-						onClick={handleDeleteClick}
-						style={{ marginRight: '2rem', cursor: 'pointer' }}
-					/>
-				</td>
+				{myProfile.user_type.toLowerCase() === 'admin' && (
+					<td className="icons">
+						<DeleteIcon
+							onClick={handleDeleteClick}
+							style={{
+								marginRight: '2rem',
+								cursor: 'pointer',
+							}}
+						/>
+					</td>
+				)}
 			</tr>
 		</>
 	);

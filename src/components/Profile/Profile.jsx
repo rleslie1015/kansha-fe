@@ -7,23 +7,29 @@ import Badges from '../FeedSideBar/Badges';
 import { useSelector } from 'react-redux';
 import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
 import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
-
+import ProfileTeamList from './ProfileTeamList';
+import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
-	const [profile, setProfile] = useState({});
+  
+	const [profileData, setProfileData] = useState({});
 
-	const { comments, feed } = useSelector(({ liveFeed, user }) => ({
-		...liveFeed,
-		...user,
-	}));
+	const { comments, profile, reactions, feed } = useSelector(
+		({ liveFeed, user }) => ({
+			...liveFeed,
+			...user,
+		}),
+	);
+
+	console.log(profile, 'hello profile');
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const { data: profileData } = await axiosWithAuth().get(
 				`/profile/${id}`,
 			);
-			setProfile(profileData.peer);
+			setProfileData(profileData.peer);
 
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
@@ -33,9 +39,9 @@ export function Profile() {
 
 	const userBadges = useMemo(() => {
 		const array = [];
-		if (profile.rec) {
-			for (const rec of profile.rec) {
-				if (profile.id === rec.sender) continue;
+		if (profileData.rec) {
+			for (const rec of profileData.rec) {
+				if (profileData.id === rec.sender) continue;
 				const { badge_id } = rec;
 				const badge = badges.find(bdg => bdg.id === badge_id);
 				const exist = array.find(bdg => bdg.id === badge_id);
@@ -51,18 +57,22 @@ export function Profile() {
 			}
 		}
 		return array;
-	}, [profile, badges]);
+	}, [profileData, badges]);
 
 	let numberOfBadges = 0;
 	for (let bdg of userBadges) {
-		numberOfBadges += bdg.count;
+		if (bdg.badge) {
+			numberOfBadges += bdg.count;
+		}
 	}
 
 	return (
 		<main className="container-entire-profile">
-			<section className="my-team-members"></section>
+			<section className="my-team-members">
+				<ProfileTeamList myProfile={profile} profile={profileData} />
+			</section>
 			{feed.length > 0 ? (
-				<section className="container-badges">
+				<section className="main-container-badges">
 					<div className="badges-title-container">
 						<h1 className="title-badges">My badges</h1>
 						<h2>{numberOfBadges}</h2>
@@ -76,21 +86,19 @@ export function Profile() {
 					<EmptyFeed />
 				</main>
 			)}
-			<main className="profile-main"></main>
 
-			{/* This is the activity container on the righthand side and is currently hardcoded with rewards entries */}
 			{feed.length > 0 ? (
 				<section className="activity-card">
 					<h5 className="title-activity-card">My activity</h5>
-
-					<section className="profile-activity-card">
+					<section id="profile-activity-card">
 						<Activity
 							profileBadges={badges}
-							setProfileInfo={setProfile}
+							setProfileInfo={setProfileData}
 							profileId={id}
 							comments={comments}
-							profile={profile}
-							profileInfo={profile}
+							profile={profileData}
+							profileInfo={profileData}
+							inModal={false}
 						/>
 					</section>
 				</section>

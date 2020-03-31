@@ -3,7 +3,7 @@ import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login, authorizeUser } from './store/actions/user-actions';
-
+import AboutUs from './components/Landing/AboutUs';
 import Auth from './utils/auth';
 import { ProtectedRoute } from './components/Auth';
 import Onboarding from './components/Onboarding/Onboarding';
@@ -60,6 +60,7 @@ export const App = () => {
 			<Switch>
 				<Route exact path="/" component={Landing} />
 				<Route path="/login" component={Login} />)
+				<Route path="/aboutus" component={AboutUs} />)
 				<Route default render={() => <Redirect to="/" />} />
 			</Switch>
 		);

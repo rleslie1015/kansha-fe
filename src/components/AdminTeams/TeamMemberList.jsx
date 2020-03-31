@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useLocation, useHistory } from 'react-router-dom';
-import Member from './Member';
+
+import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
+import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
+import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
+import Member from '../AdminTeams/Member';
 
 function TeamMemberList() {
 	const [modal, setModal] = useState(false);
@@ -19,9 +23,11 @@ function TeamMemberList() {
 				const { data } = await axiosWithAuth().get(
 					`${location.pathname}?search=${filter}`,
 				);
+
 				data.team_members.sort((a, b) =>
 					a.first_name.localeCompare(b.first_name),
 				);
+
 				setTeamDetails(data);
 				setLoadingState(false);
 			} catch (err) {
@@ -60,7 +66,7 @@ function TeamMemberList() {
 								handleBack
 							}>{`All Teams (${teamLength})`}</button>
 					</div>
-					<h2>{`Members (${teamDetails.team_members.length})`}</h2>
+					<h2 className="members-number">{`Members (${teamDetails.team_members.length})`}</h2>
 				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>
