@@ -12,33 +12,34 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
-	const [profile, setProfile] = useState({});
+	const [profileData, setProfileData] = useState({});
 
-	const { comments, reactions, feed } = useSelector(({ liveFeed, user }) => ({
-		...liveFeed,
-		...user,
-	}));
+	const { comments, profile, reactions, feed } = useSelector(
+		({ liveFeed, user }) => ({
+			...liveFeed,
+			...user,
+		}),
+	);
+
+	console.log(profile, 'hello profile');
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const { data: profileData } = await axiosWithAuth().get(
 				`/profile/${id}`,
 			);
-			setProfile(profileData.peer);
-			console.log('profile data', profileData);
-
+			setProfileData(profileData.peer);
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
 		};
 		fetchData();
 	}, [id]);
 
-	// console.log(profile, "this is the profile")
 	const userBadges = useMemo(() => {
 		const array = [];
-		if (profile.rec) {
-			for (const rec of profile.rec) {
-				if (profile.id === rec.sender) continue;
+		if (profileData.rec) {
+			for (const rec of profileData.rec) {
+				if (profileData.id === rec.sender) continue;
 				const { badge_id } = rec;
 				const badge = badges.find(bdg => bdg.id === badge_id);
 				const exist = array.find(bdg => bdg.id === badge_id);
@@ -54,7 +55,7 @@ export function Profile() {
 			}
 		}
 		return array;
-	}, [profile, badges]);
+	}, [profileData, badges]);
 
 	let numberOfBadges = 0;
 	for (let bdg of userBadges) {
@@ -66,7 +67,7 @@ export function Profile() {
 	return (
 		<main className="container-entire-profile">
 			<section className="my-team-members">
-				<ProfileTeamList profile={profile} />
+				<ProfileTeamList myProfile={profile} profile={profileData} />
 			</section>
 			{feed.length > 0 ? (
 				<section className="container-badges">
@@ -92,11 +93,11 @@ export function Profile() {
 					<section className="profile-activity-card">
 						<Activity
 							profileBadges={badges}
-							setProfileInfo={setProfile}
+							setProfileInfo={setProfileData}
 							profileId={id}
 							comments={comments}
-							profile={profile}
-							profileInfo={profile}
+							profile={profileData}
+							profileInfo={profileData}
 						/>
 					</section>
 				</section>

@@ -10,10 +10,11 @@ import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
-function Member({ profile, teamDetails, member, setTeamDetails }) {
+function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [modal, setModal] = useState(false);
 
 	const [deleteModal, setDeleteModal] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	const handleDeleteClick = e => {
 		e.preventDefault();
@@ -79,12 +80,14 @@ function Member({ profile, teamDetails, member, setTeamDetails }) {
 				<td>
 					<h3>{teamDetails.name}</h3>
 				</td>
-				<td className="icons">
-					<DeleteIcon
-						onClick={handleDeleteClick}
-						style={{ marginRight: '2rem', cursor: 'pointer' }}
-					/>
-				</td>
+				{myProfile.user_type === 'admin' && (
+					<td className="icons">
+						<DeleteIcon
+							onClick={handleDeleteClick}
+							style={{ marginRight: '2rem', cursor: 'pointer' }}
+						/>
+					</td>
+				)}
 			</tr>
 		</>
 	);

@@ -11,13 +11,11 @@ import Dropdown from '../Onboarding/DropDown';
 
 // Modal imports
 
-function ProfileTeamList({ profile }) {
+function ProfileTeamList({ profile, myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
-	const [team, setTeam] = useState();
 
-	let location = useLocation();
 	const history = useHistory();
 
 	const teamList = profile.teams;
@@ -103,6 +101,7 @@ function ProfileTeamList({ profile }) {
 									profile={member}
 									teamDetails={teamDetails}
 									setTeamDetails={setTeamDetails}
+									myProfile={myProfile}
 								/>
 							);
 						})}
