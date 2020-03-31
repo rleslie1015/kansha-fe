@@ -18,6 +18,7 @@ export const RecognitionCard = memo(
 		setProfileInfo,
 		handleNewProfileClick,
 		isLoading,
+		inModal,
 	}) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -36,6 +37,10 @@ export const RecognitionCard = memo(
 		const handleCommentClick = () => {
 			setSelect(true);
 			setModal(true);
+		};
+
+		const handleProfileClick = () => {
+			console.log('hello');
 		};
 
 		// const handleDelete = e => {
@@ -82,8 +87,7 @@ export const RecognitionCard = memo(
 						picture={recognition.profile_pic}
 					/>
 				)}
-				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
-				>
+				<a onClick={e => (inModal ? null : handleProfileClick())}>
 					<img
 						src={
 							sent
@@ -94,7 +98,6 @@ export const RecognitionCard = memo(
 						width="35px"
 					/>
 				</a>
-
 				<section className="activity-section">
 					<div className="recognition-message">
 						{/* {profile.user_type === 'admin' && (
@@ -116,7 +119,7 @@ export const RecognitionCard = memo(
 								</p>
 							) : (
 								// <a
-								// 	onClick={handleNewProfileClick(
+								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
 								<>

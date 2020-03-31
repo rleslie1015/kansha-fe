@@ -98,6 +98,7 @@ export function Profile() {
 							comments={comments}
 							profile={profileData}
 							profileInfo={profileData}
+							inModal={false}
 						/>
 					</section>
 				</section>

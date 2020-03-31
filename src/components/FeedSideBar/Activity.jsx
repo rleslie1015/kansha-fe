@@ -12,6 +12,7 @@ function Activity({
 	handleNewProfileClick,
 	sent,
 	isLoading,
+	inModal,
 }) {
 	return (
 		<div className="profile-activity">
@@ -35,6 +36,7 @@ function Activity({
 									profile={profile}
 									isLoading={isLoading}
 									rec={recognition}
+									inModal={inModal}
 									// handleNewProfileClick={
 									// 	handleNewProfileClick
 									// }
