@@ -4,6 +4,7 @@ import RecogModal from '../RecogModal/index';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 import DeleteModal from './DeleteModal';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useSelector } from 'react-redux';
 
 // Icon import
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
@@ -15,6 +16,9 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [profileSelect, setProfileSelect] = useState(false);
 	const [badges, setBadges] = useState([]);
+
+	console.log(myProfile, 'user profile');
+
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);

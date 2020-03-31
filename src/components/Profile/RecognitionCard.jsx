@@ -1,4 +1,4 @@
-import React, { useMemo, memo } from 'react';
+import React, { useMemo, memo, useState } from 'react';
 import { timeAgo } from '../../utils/timeago';
 import { useSelector } from 'react-redux';
 import { CommentButton } from '../Feed/CommentButton';
@@ -21,7 +21,6 @@ export const RecognitionCard = memo(
 
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
-
 
 		const handleCommentClick = () => {
 			setSelect(true);

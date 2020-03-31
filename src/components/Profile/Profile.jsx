@@ -12,7 +12,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
-  
+
 	const [profileData, setProfileData] = useState({});
 
 	const { comments, profile, reactions, feed } = useSelector(
