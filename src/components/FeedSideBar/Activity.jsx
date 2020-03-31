@@ -1,5 +1,6 @@
 import React from 'react';
 import { RecognitionCard } from '../Profile/RecognitionCard';
+
 function Activity({
 	profileBadges,
 	setProfileInfo,
@@ -11,10 +12,11 @@ function Activity({
 	handleNewProfileClick,
 	sent,
 	isLoading,
+	inModal,
 }) {
 	return (
 		<div className="profile-activity">
-			<h2>Activity</h2>
+			{inModal ? <h2 className="activity-header">Activity</h2> : null}
 			<section className="inner-activity-card">
 				{profileInfo.rec &&
 					profileInfo.rec
@@ -32,8 +34,9 @@ function Activity({
 									profileId={profileId}
 									comments={comments}
 									profile={profile}
-									handleCommentClick={handleCommentClick}
 									isLoading={isLoading}
+									rec={recognition}
+									inModal={inModal}
 									// handleNewProfileClick={
 									// 	handleNewProfileClick
 									// }

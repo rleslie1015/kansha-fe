@@ -7,8 +7,6 @@ import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import Member from '../AdminTeams/Member';
 
-
-
 function TeamMemberList() {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
@@ -25,7 +23,7 @@ function TeamMemberList() {
 				const { data } = await axiosWithAuth().get(
 					`${location.pathname}?search=${filter}`,
 				);
-				console.log(location.pathname, "this is the location")
+
 				setTeamDetails(data);
 				setLoadingState(false);
 			} catch (err) {
@@ -46,8 +44,6 @@ function TeamMemberList() {
 	// Getting total number of teams in an organization for header display
 	const teamLength = teamCount.length;
 
-console.log(teamDetails, "this is their team details");
-
 	const handleBack = e => {
 		e.preventDefault();
 		history.push('/organization');
@@ -66,7 +62,7 @@ console.log(teamDetails, "this is their team details");
 								handleBack
 							}>{`All Teams (${teamLength})`}</button>
 					</div>
-					<h2>{`Members (${teamDetails.team_members.length})`}</h2>
+					<h2 className="members-number">{`Members (${teamDetails.team_members.length})`}</h2>
 				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>

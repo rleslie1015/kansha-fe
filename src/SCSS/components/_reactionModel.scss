@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 600px;
-	height: 600px;
+	height: 650px;
 
 	.rm-user-info {
 		display: flex;
@@ -20,7 +20,8 @@
 		}
 
 		.rm-profile-pic {
-			width: 12rem;
+			width: 12rem !important;
+			border-radius: 50%;
 		}
 
 		.rm-job-title {
@@ -28,7 +29,7 @@
 		}
 
 		.rm-badge {
-			width: 9rem;
+			width: 9rem !important;
 		}
 
 		.rm-buttons {

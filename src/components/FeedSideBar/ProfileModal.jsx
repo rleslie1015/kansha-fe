@@ -6,30 +6,19 @@ import Badges from './Badges';
 
 function ProfileModal({
 	profile, // this is the profile info for the logged in user
-	rec, // this is the info for the activity card that the user clicked on
-	comments, // this is an array of comments for the card the user clicked on
 	badges, // this a list of all the badges in the system
 	close, // function
 	setProfileSelect, // function that determines whether the modal is open
-	setSelect,
 	// handleNewProfileClick,
 	profileId,
 }) {
-
-	console.log(profileId, "profileId")
 	// this handles the profile modal closing
 	const handleClose = () => {
 		setProfileSelect(false);
 		close(false);
 	};
 
-	const handleCommentClick = () => {
-		setSelect(true);
-		setProfileSelect(false);
-		close(true);
-	};
 	const [isLoading, setIsLoading] = useState(false);
-
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
@@ -43,7 +32,9 @@ function ProfileModal({
 		};
 		fetchData();
 	}, [profileId]);
-console.log(profileInfo, "this is the profileInfo")
+
+	console.log(profileId, 'profileId');
+	console.log(profileInfo, 'profileInfo');
 	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];
@@ -108,11 +99,10 @@ console.log(profileInfo, "this is the profileInfo")
 							profileBadges={badges}
 							setProfileInfo={setProfileInfo}
 							profileId={profileId}
-							comments={comments}
 							profile={profile}
 							profileInfo={profileInfo}
-							handleCommentClick={handleCommentClick}
 							isLoading={isLoading}
+							inModal={true}
 							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>

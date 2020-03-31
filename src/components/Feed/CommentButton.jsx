@@ -8,17 +8,16 @@ export const CommentButton = ({
 	handleComment,
 	inModal,
 }) => {
-	const userComment = useMemo(
-		() =>{
-		if(comments) {
-			comments.reduce(
+	const userComment = useMemo(() => {
+		if (comments) {
+			return comments.reduce(
 				(a, comment) => (id === comment.user_id ? comment.id : a),
 				0,
-			)
-			}else{
-				return 0
-			}},[comments, id]
-	);
+			);
+		} else {
+			return 0;
+		}
+	}, [comments, id]);
 
 	return (
 		<button

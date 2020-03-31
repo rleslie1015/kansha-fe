@@ -11,24 +11,19 @@ import Dropdown from '../Onboarding/DropDown';
 
 // Modal imports
 
-function ProfileTeamList({ profile }) {
+function ProfileTeamList({ profile, myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
-	const [team, setTeam] = useState();
 
-	let location = useLocation();
 	const history = useHistory();
 
 	const teamList = profile.teams;
 
 	let placeholderId = teamList && teamList[0].team_id;
 	const stringPh = JSON.stringify(placeholderId);
-	console.log(stringPh, 'this is the stringph');
 
 	const [selectedTeam, setSelectedTeam] = useState();
-
-	console.log(selectedTeam, 'this my friends is the selected team');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -46,14 +41,10 @@ function ProfileTeamList({ profile }) {
 
 	let placeholderTeam = teamList && teamList[0].name;
 
-	// console.log(selectedTeam, "this is the selected team")
-
 	const handleBack = e => {
 		e.preventDefault();
 		history.push('/organization');
 	};
-
-	console.log(teamDetails, 'team details object');
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
@@ -110,6 +101,7 @@ function ProfileTeamList({ profile }) {
 									profile={member}
 									teamDetails={teamDetails}
 									setTeamDetails={setTeamDetails}
+									myProfile={myProfile}
 								/>
 							);
 						})}

@@ -17,7 +17,6 @@ function Sidebar({ user }) {
 	const [open, setOpen] = React.useState(false);
 
 	// let history = useHistory();
-	console.log(user, 'user');
 
 	return (
 		<section className={`side-nav${open ? ' is-open' : ''}`}>
@@ -33,7 +32,7 @@ function Sidebar({ user }) {
 			<nav>
 				<SidebarLink
 					path={
-						user.profile.user_type === 'admin'
+						user.profile.user_type.toLowerCase() === 'admin'
 							? '/'
 							: `/profile/${user.profile.id}`
 					}
@@ -41,12 +40,15 @@ function Sidebar({ user }) {
 					icon={HomeIcon}
 					open={open}
 				/>
-				<SidebarLink
-					path={'/organization'}
-					name="Organization Workspace"
-					icon={TeamIcon}
-					open={open}
-				/>
+
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
+					<SidebarLink
+						path={'/organization'}
+						name="Teams"
+						icon={TeamIcon}
+						open={open}
+					/>
+				) : null}
 				{/* <SidebarLink
 					path={`/profile/${user.profile.id}`}
 					name="Profile"
@@ -68,13 +70,16 @@ function Sidebar({ user }) {
 					open={open}
 					className="fill-white"
 				/>
-				<SidebarLink
-					path="?help"
-					name="Get help"
-					icon={HelpIcon}
-					open={open}
-					className="help-btn"
-				/>
+
+				{user.profile.user_type.toLowerCase() === 'admin' ? (
+					<SidebarLink
+						path="?help"
+						name="Get help"
+						icon={HelpIcon}
+						open={open}
+						className="help-btn"
+					/>
+				) : null}
 			</nav>
 			<section className="nav-signout" onClick={() => signout()}>
 				<SidebarLink
