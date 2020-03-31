@@ -16,7 +16,7 @@ function Activity({
 }) {
 	return (
 		<div className="profile-activity">
-			<h2 className="activity-header">Activity</h2>
+			{inModal ? <h2 className="activity-header">Activity</h2> : null}
 			<section className="inner-activity-card">
 				{profileInfo.rec &&
 					profileInfo.rec

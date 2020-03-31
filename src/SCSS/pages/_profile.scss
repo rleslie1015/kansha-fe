@@ -132,10 +132,20 @@
 		height: 90%;
 		overflow-x: hidden;
 		overflow: auto;
-		border: 1px solid purple;
 	}
 }
 
-#root .container-entire-profile #profile-activity-card .profile-activity {
-	border: 1px solid dodgerblue;
+#root
+	.container-entire-profile
+	.activity-card
+	#profile-activity-card
+	.profile-activity {
+	width: 100%;
+}
+
+.profile-main {
+	display: flex;
+	width: 100%;
+	margin-top: 2rem;
+	justify-content: space-between;
 }
