@@ -89,7 +89,7 @@ export function Profile() {
 				<section className="activity-card">
 					<h5 className="title-activity-card">My activity</h5>
 
-					<section className="profile-activity-card">
+					<section id="profile-activity-card">
 						<Activity
 							profileBadges={badges}
 							setProfileInfo={setProfileData}

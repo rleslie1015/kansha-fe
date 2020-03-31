@@ -124,7 +124,7 @@
 		font-size: 3rem;
 		color: $color-primary;
 	}
-	.profile-activity-card {
+	#profile-activity-card {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -132,5 +132,10 @@
 		height: 90%;
 		overflow-x: hidden;
 		overflow: auto;
+		border: 1px solid purple;
 	}
+}
+
+#root .container-entire-profile #profile-activity-card .profile-activity {
+	border: 1px solid dodgerblue;
 }
