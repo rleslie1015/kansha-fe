@@ -48,6 +48,7 @@ export const FeedRecognition = memo(
 		// 	console.log('profileId', profileId);
 		// 	setProfileId(profileId);
 		// };
+
 		return (
 			<div className="recognition">
 				{profileSelect && (
@@ -79,6 +80,7 @@ export const FeedRecognition = memo(
 						badge={badge}
 						comments={comments}
 						open={open}
+						picture={rec.profile_picture}
 					/>
 				)}
 				<img

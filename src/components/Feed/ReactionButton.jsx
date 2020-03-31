@@ -7,20 +7,16 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 	const dispatch = useDispatch();
 
 	// checks whether the current logged in user is among those who liekd the post
-	const userReaction = useMemo(
-		() => {
-			if(reactions) {
+	const userReaction = useMemo(() => {
+		if (reactions) {
 			return reactions.reduce(
 				(a, reaction) => (id === reaction.user_id ? reaction.id : a),
 				0,
-			)
-			
-			}else{
-				return 0
-			}}, [reactions, id]
-		
-		);
-	console.log(reactions)
+			);
+		} else {
+			return 0;
+		}
+	}, [reactions, id]);
 
 	const handleReaction = () => {
 		if (userReaction) {
@@ -29,7 +25,7 @@ export const ReactionButton = ({ reactions, rec_id, id, open, inModal }) => {
 			dispatch(reactToPost(id, rec_id));
 		}
 	};
-
+	console.log(userReaction, 'userReaction');
 	return (
 		<button
 			className={`${open ? `reaction-button` : `hidden-rec`}`}

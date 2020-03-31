@@ -21,7 +21,7 @@
 		}
 	}
 
-	.container-badges {
+	.main-container-badges {
 		width: 45%;
 		height: 50%;
 		margin-left: 3rem;
@@ -63,17 +63,68 @@
 	}
 }
 
-// activity section of the page
-.activity-card {
-	width: 45%;
-	height: 50%;
+// // // activity section of the page
+// .activity-card {
 
+// }
+
+// .container-entire-profile {
+// 	.title-activity-card {
+
+// 	}
+// 	.profile-activity-card {
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: flex-start;
+// 		align-items: center;
+// 		height: 90%;
+// 		overflow-x: hidden;
+// 		overflow: auto;
+
+// 		.profile-activity {
+// 			width: 100%;
+// 		}
+// 		.inner-activity-card {
+// 			width: 100%;
+
+// 			.container-card-and-buttons {
+// 				width: 100%;
+
+// 				.container-recognition-card {
+// 					display: flex;
+// 					justify-content: flex-start;
+// 					align-items: center;
+// 					width: 100%;
+
+// 					padding: 10px;
+
+// 					.activity-badge {
+// 						width: 50px;
+// 						display: flex;
+// 						align-items: flex-end;
+// 					}
+
+// 					img {
+// 						width: 40px;
+// 						border-radius: 50%;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+.container-entire-profile {
+	.activity-card {
+		width: 45%;
+		height: 50%;
+	}
 	.title-activity-card {
 		font-weight: 500;
 		font-size: 3rem;
 		color: $color-primary;
 	}
-	.profile-activity-card {
+	#profile-activity-card {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -81,39 +132,20 @@
 		height: 90%;
 		overflow-x: hidden;
 		overflow: auto;
-
-		h2 {
-			display: none;
-		}
-		.profile-activity {
-			width: 100%;
-		}
-		.inner-activity-card {
-			width: 100%;
-
-			.container-card-and-buttons {
-				width: 100%;
-
-				.container-recognition-card {
-					display: flex;
-					justify-content: flex-start;
-					align-items: center;
-					width: 100%;
-
-					padding: 10px;
-
-					.activity-badge {
-						width: 50px;
-						display: flex;
-						align-items: flex-end;
-					}
-
-					img {
-						width: 40px;
-						border-radius: 50%;
-					}
-				}
-			}
-		}
 	}
+}
+
+#root
+	.container-entire-profile
+	.activity-card
+	#profile-activity-card
+	.profile-activity {
+	width: 100%;
+}
+
+.profile-main {
+	display: flex;
+	width: 100%;
+	margin-top: 2rem;
+	justify-content: space-between;
 }

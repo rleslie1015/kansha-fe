@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
+import ReactionModal from '../FeedSideBar/ReactionModal';
+import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
 	({
@@ -15,9 +17,9 @@ export const RecognitionCard = memo(
 		profileBadges,
 		profileId,
 		setProfileInfo,
-		handleCommentClick,
 		handleNewProfileClick,
 		isLoading,
+		inModal,
 	}) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
@@ -33,6 +35,18 @@ export const RecognitionCard = memo(
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
 
+		const handleCommentClick = () => {
+			setSelect(true);
+			setModal(true);
+		};
+
+		const handleProfileClick = e => {
+			console.log('hello');
+
+			e.preventDefault();
+
+			setProfileSelect(true);
+		};
 
 		// const handleDelete = e => {
 		// 	e.preventDefault();
@@ -54,16 +68,50 @@ export const RecognitionCard = memo(
 		// 	}
 		// };
 
+		const [, setModal] = useState(false);
+		const [open, setOpen] = React.useState(false);
+
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
 				bdg => bdg.id === recognition.badge_id,
 			);
 		}
+		const [select, setSelect] = useState(false);
+		const [profileSelect, setProfileSelect] = useState(false);
 
 		return (
 			<section className="container-recognition-card">
-				<a /*onClick={() => handleNewProfileClick(recognition.sender)}*/
-				>
+				{select && (
+					<ReactionModal
+						close={setModal}
+						setSelect={setSelect}
+						profile={profile}
+						rec={recognition}
+						reactions={reactions}
+						badge={thisBadge}
+						comments={comments}
+						open={open}
+						picture={recognition.profile_pic}
+					/>
+				)}
+				{profileSelect && (
+					<ProfileModal
+						close={setModal}
+						setProfileSelect={setProfileSelect}
+						setSelect={setSelect}
+						profile={profile}
+						rec={recognition}
+						badge={thisBadge}
+						comments={comments}
+						badges={profileBadges}
+						id={profile.id}
+						rec_id={recognition.id}
+						reactions={reactions}
+						open={open}
+						profileId={profile.id}
+					/>
+				)}
+				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
 					<img
 						src={
 							sent
@@ -74,7 +122,6 @@ export const RecognitionCard = memo(
 						width="35px"
 					/>
 				</a>
-
 				<section className="activity-section">
 					<div className="recognition-message">
 						{/* {profile.user_type === 'admin' && (
@@ -96,7 +143,7 @@ export const RecognitionCard = memo(
 								</p>
 							) : (
 								// <a
-								// 	onClick={handleNewProfileClick(
+								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
 								<>
@@ -129,7 +176,7 @@ export const RecognitionCard = memo(
 						rec_id={recognition.id}
 						id={profile.id}
 					/>
-
+					{/**/}
 					<div onClick={handleCommentClick}>
 						<CommentButton
 							comments={comments}
