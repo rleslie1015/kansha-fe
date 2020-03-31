@@ -7,12 +7,10 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon import
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [modal, setModal] = useState(false);
-
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [profileSelect, setProfileSelect] = useState(false);

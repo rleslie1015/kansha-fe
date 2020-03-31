@@ -12,6 +12,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
+  
 	const [profileData, setProfileData] = useState({});
 
 	const { comments, profile, reactions, feed } = useSelector(
@@ -29,6 +30,7 @@ export function Profile() {
 				`/profile/${id}`,
 			);
 			setProfileData(profileData.peer);
+
 			const { data: badgeData } = await axiosWithAuth().get('/badges');
 			setBadges(badgeData);
 		};
@@ -88,7 +90,6 @@ export function Profile() {
 			{feed.length > 0 ? (
 				<section className="activity-card">
 					<h5 className="title-activity-card">My activity</h5>
-
 					<section id="profile-activity-card">
 						<Activity
 							profileBadges={badges}

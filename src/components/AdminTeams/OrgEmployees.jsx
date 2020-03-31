@@ -4,7 +4,6 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon Imports
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 // import { ReactComponent as DropdownIcon } from '../../assets/dropdown.svg';
 
@@ -176,7 +175,6 @@ const OrgEmployees = ({
 						style={{ marginRight: '20px', cursor: 'pointer' }}
 						onClick={handleDeleteClick}
 					/>
-					<GroupIcon />
 				</td>
 			</tr>
 		</>

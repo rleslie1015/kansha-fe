@@ -1,9 +1,6 @@
-import React, { useMemo, memo, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo, memo } from 'react';
 import { timeAgo } from '../../utils/timeago';
-import { ReactComponent as Trashcan } from '../../assets/Trashcan.svg';
 import { useSelector } from 'react-redux';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
 import ReactionModal from '../FeedSideBar/ReactionModal';
@@ -25,6 +22,7 @@ export const RecognitionCard = memo(
 		const reactions = reactionsAll[recognition.id];
 		const comments = commentsAll[recognition.id];
 
+
 		const handleCommentClick = () => {
 			setSelect(true);
 			setModal(true);
@@ -37,7 +35,6 @@ export const RecognitionCard = memo(
 
 			setProfileSelect(true);
 		};
-
 		// const handleDelete = e => {
 		// 	e.preventDefault();
 		// 	if (
