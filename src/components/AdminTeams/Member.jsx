@@ -112,11 +112,14 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 				<td>
 					<h3>{teamDetails.name}</h3>
 				</td>
-				{myProfile.user_type === 'admin' && (
+				{myProfile.user_type.toLowerCase() === 'admin' && (
 					<td className="icons">
 						<DeleteIcon
 							onClick={handleDeleteClick}
-							style={{ marginRight: '2rem', cursor: 'pointer' }}
+							style={{
+								marginRight: '2rem',
+								cursor: 'pointer',
+							}}
 						/>
 					</td>
 				)}
