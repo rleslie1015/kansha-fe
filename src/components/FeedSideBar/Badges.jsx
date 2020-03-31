@@ -14,6 +14,7 @@ function Badges({ userBadges, badges }) {
 										className="badge-profile"
 										src={badge.badge}
 										alt="badge"
+										width="140"
 									/>
 								</Badge>
 							);

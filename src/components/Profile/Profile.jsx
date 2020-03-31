@@ -70,7 +70,7 @@ export function Profile() {
 				<ProfileTeamList myProfile={profile} profile={profileData} />
 			</section>
 			{feed.length > 0 ? (
-				<section className="container-badges">
+				<section className="main-container-badges">
 					<div className="badges-title-container">
 						<h1 className="title-badges">My badges</h1>
 						<h2>{numberOfBadges}</h2>
@@ -84,7 +84,6 @@ export function Profile() {
 					<EmptyFeed />
 				</main>
 			)}
-			<main className="profile-main"></main>
 
 			{feed.length > 0 ? (
 				<section className="activity-card">

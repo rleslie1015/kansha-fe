@@ -16,7 +16,7 @@ function Activity({
 }) {
 	return (
 		<div className="profile-activity">
-			<h2>Activity</h2>
+			<h2 className="activity-header">Activity</h2>
 			<section className="inner-activity-card">
 				{profileInfo.rec &&
 					profileInfo.rec

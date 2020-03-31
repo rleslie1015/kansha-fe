@@ -7,6 +7,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { CommentButton } from '../Feed/CommentButton';
 import { ReactionButton } from '../Feed/ReactionButton';
 import ReactionModal from '../FeedSideBar/ReactionModal';
+import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
 	({
@@ -39,8 +40,12 @@ export const RecognitionCard = memo(
 			setModal(true);
 		};
 
-		const handleProfileClick = () => {
+		const handleProfileClick = e => {
 			console.log('hello');
+
+			e.preventDefault();
+
+			setProfileSelect(true);
 		};
 
 		// const handleDelete = e => {
@@ -72,6 +77,8 @@ export const RecognitionCard = memo(
 			);
 		}
 		const [select, setSelect] = useState(false);
+		const [profileSelect, setProfileSelect] = useState(false);
+
 		return (
 			<section className="container-recognition-card">
 				{select && (
@@ -87,7 +94,24 @@ export const RecognitionCard = memo(
 						picture={recognition.profile_pic}
 					/>
 				)}
-				<a onClick={e => (inModal ? null : handleProfileClick())}>
+				{profileSelect && (
+					<ProfileModal
+						close={setModal}
+						setProfileSelect={setProfileSelect}
+						setSelect={setSelect}
+						profile={profile}
+						rec={recognition}
+						badge={thisBadge}
+						comments={comments}
+						badges={profileBadges}
+						id={profile.id}
+						rec_id={recognition.id}
+						reactions={reactions}
+						open={open}
+						profileId={profile.id}
+					/>
+				)}
+				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
 					<img
 						src={
 							sent
