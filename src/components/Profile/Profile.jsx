@@ -11,10 +11,9 @@ import ProfileTeamList from './ProfileTeamList';
 import ReactionModal from '../FeedSideBar/ReactionModal';
 export function Profile() {
 	const [badges, setBadges] = useState([]);
-	const { id } = useParams();
+	// const { id } = useParams();
 
 	const [profileData, setProfileData] = useState({});
-
 	const { comments, profile, reactions, feed } = useSelector(
 		({ liveFeed, user }) => ({
 			...liveFeed,
@@ -22,7 +21,7 @@ export function Profile() {
 		}),
 	);
 
-	console.log(profile, 'hello profile');
+	const id = profile.id;
 
 	useEffect(() => {
 		const fetchData = async () => {
