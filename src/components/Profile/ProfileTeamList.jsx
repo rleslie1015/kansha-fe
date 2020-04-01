@@ -4,25 +4,31 @@ import { useHistory } from 'react-router-dom';
 //component should render list of employees from one team
 import Member from '../AdminTeams/Member';
 import Dropdown from '../Onboarding/DropDown';
-
+import { useSelector } from 'react-redux';
+import OrgEmployees from '../AdminTeams/OrgEmployees';
 // Icon Imports
 import { ReactComponent as EmptyTeams } from '../../assets/emptyTeams.svg';
 
 // Modal imports
 
-function ProfileTeamList({ profile, myProfile }) {
+function ProfileTeamList({ myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
+	const [organizationMembers, setOrganizationMembers] = useState([]);
 
-	const history = useHistory();
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
 
-	const teamList = profile.teams;
+	const [teamList, setTeamList] = useState(
+		profile.teams ? profile.teams : null,
+	);
 
-	let placeholderId = teamList && teamList[0].team_id;
-	const stringPh = JSON.stringify(placeholderId);
-
-	const [selectedTeam, setSelectedTeam] = useState();
+	const [selectedTeam, setSelectedTeam] = useState(
+		teamList ? teamList[0] : null,
+	);
+	console.log(selectedTeam, 'selectedTeam');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -37,34 +43,30 @@ function ProfileTeamList({ profile, myProfile }) {
 	const handleName = id => {
 		setSelectedTeam(id);
 	};
+	useEffect(() => {
+		const fetchData = async () => {
+			const orgData = await axiosWithAuth().get(
+				`/employees/organizations`,
+			);
+			setOrganizationMembers(orgData.data.employees);
+		};
 
-	let placeholderTeam = teamList && teamList[0].name;
-
-	const handleBack = e => {
-		e.preventDefault();
-		history.push('/organization');
-	};
-
+		//handleName(selectedTeam.id);
+		setSelectedTeam(teamList ? teamList[0] : null);
+		fetchData();
+	}, []);
+	console.log(organizationMembers, 'organizationMembers');
+	console.log(selectedTeam, 'selectedTeam');
+	console.log(setSelectedTeam.id, 'setSElectedTeam.id');
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
 	} else {
 		return (
 			<section className="teams-dashboard">
-				{/* <div className="header">
-					<div className="teams-name-button">
-						<h1>{teamDetails.name}</h1>
-						<button onClick={handleBack}>All Teams</button>
-					</div>
-					<h2>Members</h2>
-				</div> */}
-
 				<div className="dropdown-time-div">
 					<Dropdown
 						classNombre="custom-select dashboard"
-						setSelection={handleName}
-						// placeholder={placeholderTeam}
-						// defaultValue={placeholderId}
-					>
+						setSelection={handleName}>
 						{teamList?.map(team => {
 							return (
 								<option value={team.team_id}>
@@ -88,7 +90,7 @@ function ProfileTeamList({ profile, myProfile }) {
 						/>
 					</div>
 				</div>
-				{teamList?.length > 0 ? (
+				{teamList ? (
 					<table className="team-member-table">
 						<tbody>
 							{teamDetails?.data.team_members.map(member => {
@@ -108,10 +110,20 @@ function ProfileTeamList({ profile, myProfile }) {
 						</tbody>
 					</table>
 				) : (
-					<div className="empty-team-container">
-						<EmptyTeams />
-						<h1>No Teams to display yet!</h1>
-					</div>
+					<table className="team-member-table">
+						<tbody>
+							{organizationMembers.map(member => {
+								return (
+									<OrgEmployees
+										key={member.id}
+										id={member.id}
+										employee={member}
+										onDashboard={true}
+									/>
+								);
+							})}
+						</tbody>
+					</table>
 				)}
 			</section>
 		);
