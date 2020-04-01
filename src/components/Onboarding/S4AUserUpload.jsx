@@ -105,7 +105,7 @@ function S4AUserUpload() {
 				</div>
 			</div>
 
-			<button  onClick={handleClick}>Next</button>
+			<button onClick={handleClick}>Next</button>
 
 			<div className="step-p-container">
 				<span className="previousarrow">
@@ -115,7 +115,6 @@ function S4AUserUpload() {
 					</div>
 				</span>
 			</div>
-			<p>Continue later</p>
 		</>
 	);
 }

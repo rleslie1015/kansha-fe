@@ -81,6 +81,7 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 							src={member.profile_picture}
 							alt="profile img"
 							className="teams-profile-picture"
+							style={{ cursor: 'pointer' }}
 						/>
 						<h3>
 							{member.first_name} {member.last_name}

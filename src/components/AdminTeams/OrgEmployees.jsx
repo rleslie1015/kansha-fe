@@ -115,6 +115,7 @@ const OrgEmployees = ({
 								src={employee.profile_picture}
 								alt="profile img"
 								className="teams-profile-picture"
+								style={{ cursor: 'pointer' }}
 							/>
 							<h3>
 								{employee.first_name} {employee.last_name}
@@ -159,10 +160,15 @@ const OrgEmployees = ({
 				<td className="recognition-btn">
 					<RecognitionIcon
 						onClick={() => setModal(!modal)}
-						style={{
-							height: '20px',
-							width: '20px',
-						}}
+						style={
+							!empButton
+								? { display: 'none' }
+								: {
+										display: 'block',
+										width: '20px',
+										height: '20px',
+								  }
+						}
 					/>
 					{modal && (
 						<Modal close={setModal}>
@@ -172,7 +178,15 @@ const OrgEmployees = ({
 				</td>
 				<td className="teams-employee-icons">
 					<DeleteIcon
-						style={{ marginRight: '20px', cursor: 'pointer' }}
+						style={
+							!empButton
+								? { display: 'none' }
+								: {
+										display: 'block',
+										marginRight: '20px',
+										cursor: 'pointer',
+								  }
+						}
 						onClick={handleDeleteClick}
 					/>
 				</td>
