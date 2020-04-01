@@ -163,12 +163,14 @@
 
 			.heart-empty {
 				fill: rgba(0, 13, 34, 0.7);
+				cursor: pointer;
 			}
 		}
 		.comment-button {
 			border: none;
 			margin-right: 1.5rem;
 			color: rgba(0, 13, 34, 0.7);
+			cursor: pointer;
 
 			.comment-full {
 				fill: $color-primary;

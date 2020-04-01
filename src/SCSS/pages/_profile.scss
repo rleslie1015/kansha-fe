@@ -40,9 +40,9 @@
 			color: $color-primary;
 
 			h1 {
-				font-size: 3rem;
+				font-size: 3.4rem;
 				margin-left: 2rem;
-				font-weight: 500;
+				font-weight: normal;
 			}
 			h2 {
 				font-size: 2rem;
@@ -82,8 +82,8 @@
 		}
 	}
 	.title-activity-card {
-		font-weight: 500;
-		font-size: 3rem;
+		font-weight: normal;
+		font-size: 3.4rem;
 		color: $color-primary;
 	}
 	#profile-activity-card {
@@ -94,6 +94,14 @@
 		height: 90%;
 		overflow-x: hidden;
 		overflow: auto;
+		margin-top: 2rem;
+
+		.rec-info {
+			p {
+				color: $color-primary;
+				font-size: 1.6rem;
+			}
+		}
 	}
 }
 

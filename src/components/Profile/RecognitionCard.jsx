@@ -34,25 +34,6 @@ export const RecognitionCard = memo(
 
 			setProfileSelect(true);
 		};
-		// const handleDelete = e => {
-		// 	e.preventDefault();
-		// 	if (
-		// 		window.confirm(
-		// 			'Are you sure you would like to delete this recognition?',
-		// 		)
-		// 	) {
-		// 		axiosWithAuth()
-		// 			.delete(`/rec/${recognition.id}`)
-		// 			.then(() => {
-		// 				setProfileInfo(prev => ({
-		// 					...prev,
-		// 					rec: prev.rec.filter(
-		// 						rec => rec.id !== recognition.id,
-		// 					),
-		// 				}));
-		// 			});
-		// 	}
-		// };
 
 		const [, setModal] = useState(false);
 		const [open, setOpen] = React.useState(false);
@@ -113,7 +94,7 @@ export const RecognitionCard = memo(
 						{/* {profile.user_type === 'admin' && (
 							<Trashcan onClick={handleDelete} />
 						)} */}
-						<div>
+						<div className="rec-info">
 							{sent ? (
 								<p>
 									Sent to{' '}
@@ -132,17 +113,19 @@ export const RecognitionCard = memo(
 								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
-								<>
-									{' '}
+								<p>
+									From {''}
 									{recognition.first_name}{' '}
 									{recognition.last_name}
-								</>
+								</p>
 							)}
 							<span className="time" role="presentation">
 								&nbsp;{time}
 							</span>
 						</div>
-						<p>{recognition.message}</p>
+						<p style={{ marginTop: '3px', fontSize: '1.4rem' }}>
+							{recognition.message}
+						</p>
 					</div>
 
 					<div>

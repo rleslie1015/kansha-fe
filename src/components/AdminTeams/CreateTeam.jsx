@@ -107,22 +107,16 @@ const CreateTeam = ({
 													handleRoleChange(e, team.id)
 												}
 												value={team.team_role}>
-												<option value="member">
+												<option value="Member">
 													Member
 												</option>
-												<option value="manager">
+												<option value="Manager">
 													Manager
 												</option>
 											</select>
 										</td>
 										<td className="teams-container">
 											<h3 className="teams">Teams (0)</h3>
-										</td>
-										<td className="teams-employee-icons">
-											<DeleteIcon
-												style={{ marginRight: '20px' }}
-											/>
-											<GroupIcon />
 										</td>
 									</tr>
 								</tbody>

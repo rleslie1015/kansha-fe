@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 //component should render list of employees from one team
-
-import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
-import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import Member from '../AdminTeams/Member';
 import Dropdown from '../Onboarding/DropDown';
+
+// Icon Imports
+import { ReactComponent as EmptyTeams } from '../../assets/emptyTeams.svg';
 
 // Modal imports
 
@@ -89,24 +88,31 @@ function ProfileTeamList({ profile, myProfile }) {
 						/>
 					</div>
 				</div>
-				<table className="team-member-table">
-					<tbody>
-						{teamDetails?.data.team_members.map(member => {
-							return (
-								<Member
-									key={member.id}
-									member={member}
-									modal={modal}
-									setModal={setModal}
-									profile={member}
-									teamDetails={teamDetails}
-									setTeamDetails={setTeamDetails}
-									myProfile={myProfile}
-								/>
-							);
-						})}
-					</tbody>
-				</table>
+				{teamList?.length > 0 ? (
+					<table className="team-member-table">
+						<tbody>
+							{teamDetails?.data.team_members.map(member => {
+								return (
+									<Member
+										key={member.id}
+										member={member}
+										modal={modal}
+										setModal={setModal}
+										profile={member}
+										teamDetails={teamDetails}
+										setTeamDetails={setTeamDetails}
+										myProfile={myProfile}
+									/>
+								);
+							})}
+						</tbody>
+					</table>
+				) : (
+					<div className="empty-team-container">
+						<EmptyTeams />
+						<h1>No Teams to display yet!</h1>
+					</div>
+				)}
 			</section>
 		);
 	}

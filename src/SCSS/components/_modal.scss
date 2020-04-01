@@ -96,6 +96,7 @@
 					margin: 1rem 0;
 					max-width: 55rem;
 					a {
+						cursor: pointer;
 						img {
 							width: 3.5rem;
 							border-radius: 50%;
@@ -121,6 +122,7 @@
 			width: 100%;
 			display: flex;
 			align-items: center;
+			margin-top: 1rem;
 
 			img {
 				margin-right: 1rem;
@@ -189,6 +191,7 @@
 
 				.heart-empty {
 					fill: rgba(0, 13, 34, 0.7);
+					cursor: pointer;
 				}
 			}
 			.comment-button {
@@ -197,6 +200,7 @@
 				margin-right: 1.5rem;
 				color: rgba(0, 13, 34, 0.7);
 				justify-content: space-between;
+				cursor: pointer;
 				p {
 					margin-left: 1rem;
 				}

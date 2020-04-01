@@ -3,8 +3,19 @@
 	margin-right: 10rem;
 	display: flex;
 	flex-direction: column;
-
 	padding: 2rem 2rem 2rem 0rem;
+
+	.empty-team-container {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		h1 {
+			font-weight: normal;
+			font-size: 2.4rem;
+			color: $color-primary-nav;
+		}
+	}
 
 	.header {
 		display: flex;

@@ -66,8 +66,15 @@ function RecogModal({ profile, close }) {
 	};
 
 	return sent ? (
-		<div>
-			<p>Your recognition has been sent!</p>
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+			}}>
+			<p style={{ fontSize: '1.6rem' }}>
+				Your recognition has been sent!
+			</p>
 			<button className="btn-modal" onClick={handleClose}>
 				Ok
 			</button>
