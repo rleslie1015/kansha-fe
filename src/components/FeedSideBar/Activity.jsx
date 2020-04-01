@@ -31,7 +31,7 @@ function Activity({
 									profileBadges={profileBadges}
 									recognition={recognition}
 									setProfileInfo={setProfileInfo}
-									profileId={profileId}
+									profileId={recognition.recipient}
 									comments={comments}
 									profile={profile}
 									isLoading={isLoading}
