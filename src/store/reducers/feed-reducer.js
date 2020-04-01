@@ -165,7 +165,7 @@ export const feedReducer = (state = initialState, action) => {
 					...state.reactions,
 					[action.payload.rec_id]: state.reactions[
 						action.payload.rec_id
-					].filter(r => !(r.id === parseInt(action.payload.id))),
+					]?.filter(r => !(r.id === parseInt(action.payload.id))),
 				},
 			};
 		case FEED_EVENT_REMOVE_COMMENT:

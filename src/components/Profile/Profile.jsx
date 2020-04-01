@@ -11,7 +11,7 @@ import ProfileTeamList from './ProfileTeamList';
 
 export function Profile() {
 	const [badges, setBadges] = useState([]);
-	const { id } = useParams();
+	// const { id } = useParams();
 
 	const [profileData, setProfileData] = useState({});
 
@@ -20,7 +20,7 @@ export function Profile() {
 		...user,
 	}));
 
-	console.log(profile, 'hello profile');
+	const id = profile.id;
 
 	useEffect(() => {
 		const fetchData = async () => {

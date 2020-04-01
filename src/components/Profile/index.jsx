@@ -8,20 +8,20 @@ import { useSelector } from 'react-redux';
 export const PeerProfile = ({ match }) => {
 	const [profile, setProfile] = useState();
 
-	const { id } = match.params;
+	// const { id } = match.params;
 	const { profile: userProfile } = useSelector(state => state.user);
 
-	useEffect(() => {
-		if (userProfile.id.toString() !== id) {
-			axiosWithAuth()
-				.get(`/profile/${id}`)
-				.then(({ data }) => setProfile(data.peer));
-		}
-	}, [id, userProfile]);
+	// useEffect(() => {
+	// 	if (userProfile.id.toString() !== id) {
+	// 		axiosWithAuth()
+	// 			.get(`/profile/${profile.id}`)
+	// 			.then(({ data }) => setProfile(data.peer));
+	// 	}
+	// }, [id, userProfile]);
 
-	if (userProfile.id.toString() === id) {
-		return <Redirect to="/profile" />;
-	}
+	// if (userProfile.id.toString() === id) {
+	// 	return <Redirect to="/profile" />;
+	// }
 
 	if (profile) {
 		return <Profile {...{ profile }} isPeer />;
