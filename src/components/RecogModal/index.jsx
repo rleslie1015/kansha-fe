@@ -65,16 +65,15 @@ function RecogModal({ profile, close }) {
 		close(false);
 	};
 
-	return (
+	return sent ? (
+		<div>
+			<p>Your recognition has been sent!</p>
+			<button className="btn-modal" onClick={handleClose}>
+				Ok
+			</button>
+		</div>
+	) : (
 		<section className="rec-modal">
-			{sent && (
-				<Modal close={handleClose}>
-					<p>Your recognition has been sent!</p>
-					<button className="btn-modal" onClick={handleClose}>
-						Ok
-					</button>
-				</Modal>
-			)}
 			<section>
 				<img src={profile_picture} alt="" />
 				<h5>
