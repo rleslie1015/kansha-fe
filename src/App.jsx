@@ -84,10 +84,7 @@ export const App = () => {
 						path="/profile"
 						component={UserProfile}
 					/>
-					<ProtectedRoute
-						path="/dashboard"
-						component={AdminDashboard}
-					/>
+
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute
 						exact
