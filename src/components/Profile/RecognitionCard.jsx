@@ -34,25 +34,6 @@ export const RecognitionCard = memo(
 
 			setProfileSelect(true);
 		};
-		// const handleDelete = e => {
-		// 	e.preventDefault();
-		// 	if (
-		// 		window.confirm(
-		// 			'Are you sure you would like to delete this recognition?',
-		// 		)
-		// 	) {
-		// 		axiosWithAuth()
-		// 			.delete(`/rec/${recognition.id}`)
-		// 			.then(() => {
-		// 				setProfileInfo(prev => ({
-		// 					...prev,
-		// 					rec: prev.rec.filter(
-		// 						rec => rec.id !== recognition.id,
-		// 					),
-		// 				}));
-		// 			});
-		// 	}
-		// };
 
 		const [, setModal] = useState(false);
 		const [open, setOpen] = React.useState(false);
@@ -133,7 +114,8 @@ export const RecognitionCard = memo(
 								// 		recognition.sender,
 								// 	)}
 								<p>
-									From {recognition.first_name}{' '}
+									From {''}
+									{recognition.first_name}{' '}
 									{recognition.last_name}
 								</p>
 							)}

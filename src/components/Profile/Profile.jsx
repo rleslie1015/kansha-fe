@@ -69,42 +69,44 @@ export function Profile() {
 			<section className="my-team-members">
 				<ProfileTeamList myProfile={profile} profile={profileData} />
 			</section>
-			{profile.rec.length > 0 && profile.rec.badge_id !== null ? (
-				<section className="main-container-badges">
-					<div className="badges-title-container">
-						<h1 className="title-badges">My badges</h1>
-						<h2>{numberOfBadges}</h2>
-					</div>
-					<div className="profile-badges">
-						<Badges badges={badges} userBadges={userBadges} />
-					</div>
-				</section>
-			) : (
-				<main className="empty-feed">
-					<EmptyFeed />
-				</main>
-			)}
-
-			{feed.length > 0 ? (
-				<section className="activity-card">
-					<h5 className="title-activity-card">My activity</h5>
-					<section id="profile-activity-card">
-						<Activity
-							profileBadges={badges}
-							setProfileInfo={setProfileData}
-							profileId={id}
-							comments={comments}
-							profile={profileData}
-							profileInfo={profileData}
-							inModal={false}
-						/>
+			<div className="badges-and-activity">
+				{profile.rec.length > 0 && profile.rec.badge_id !== null ? (
+					<section className="main-container-badges">
+						<div className="badges-title-container">
+							<h1 className="title-badges">My badges</h1>
+							<h2>{numberOfBadges}</h2>
+						</div>
+						<div className="profile-badges">
+							<Badges badges={badges} userBadges={userBadges} />
+						</div>
 					</section>
-				</section>
-			) : (
-				<main className="empty-feed">
-					<EmptyActivity />
-				</main>
-			)}
+				) : (
+					<main className="empty-feed">
+						<EmptyFeed />
+					</main>
+				)}
+
+				{feed.length > 0 ? (
+					<section className="activity-card">
+						<h5 className="title-activity-card">My activity</h5>
+						<section id="profile-activity-card">
+							<Activity
+								profileBadges={badges}
+								setProfileInfo={setProfileData}
+								profileId={id}
+								comments={comments}
+								profile={profileData}
+								profileInfo={profileData}
+								inModal={false}
+							/>
+						</section>
+					</section>
+				) : (
+					<main className="empty-feed">
+						<EmptyActivity />
+					</main>
+				)}
+			</div>
 		</main>
 	);
 }

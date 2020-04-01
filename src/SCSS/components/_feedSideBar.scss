@@ -10,6 +10,10 @@
 	transition: width 500ms ease;
 	z-index: 5;
 
+	@media (max-width: 720px) {
+		display: none;
+	}
+
 	.feed-headers {
 		display: flex;
 		margin-top: 3rem;
