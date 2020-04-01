@@ -4,7 +4,14 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 // Component imports
 import Team from './Team';
 
-const OrganizationTeams = ({ teams, setTeams, setCreateTeamsBtn }) => {
+const OrganizationTeams = ({
+	teams,
+	setTeams,
+	setCreateTeamsBtn,
+	setTitle,
+	titleArr,
+	setTeamsBtn,
+}) => {
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/teams/')
@@ -16,7 +23,7 @@ const OrganizationTeams = ({ teams, setTeams, setCreateTeamsBtn }) => {
 	return (
 		<table className="org-team-container">
 			<tbody>
-				{teams ? (
+				{teams.length > 0 ? (
 					teams.map(team => {
 						return (
 							<Team
@@ -26,13 +33,22 @@ const OrganizationTeams = ({ teams, setTeams, setCreateTeamsBtn }) => {
 								managers={team.teamManagers}
 								count={team.count}
 								setTeams={setTeams}
+								profile={team}
 							/>
 						);
 					})
 				) : (
-					<div>
+					<div className="empty-team-container">
 						<h1>You currently have no teams to view.</h1>
-						<button>Create a Team</button>
+						<button
+							onClick={() => {
+								setCreateTeamsBtn(true);
+								setTitle(titleArr[0]);
+								setTeamsBtn(false);
+							}}
+							className="org-team-button">
+							Create a Team
+						</button>
 					</div>
 				)}
 			</tbody>

@@ -70,9 +70,18 @@ export const App = () => {
 		return (
 			<Dashboard>
 				<Switch>
-					<ProtectedRoute exact path="/" component={AdminDashboard} />
 					<ProtectedRoute
-						path="/profile/:id"
+						exact
+						path="/"
+						component={
+							profile.user_type.toLowerCase() === 'admin'
+								? AdminDashboard
+								: UserProfile
+						}
+					/>
+					<ProtectedRoute
+						exact
+						path="/profile"
 						component={UserProfile}
 					/>
 					<ProtectedRoute

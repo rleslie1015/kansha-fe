@@ -7,16 +7,14 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon import
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [modal, setModal] = useState(false);
-
 	const [deleteModal, setDeleteModal] = useState(false);
-	const [isAdmin, setIsAdmin] = useState(false);
 	const [profileSelect, setProfileSelect] = useState(false);
 	const [badges, setBadges] = useState([]);
+
 	const handleDeleteClick = e => {
 		e.preventDefault();
 		setDeleteModal(true);
@@ -76,21 +74,18 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 
 			<tr className="indiv-team">
 				<td>
-					<a
-						onClick={e => {
-							handleProfileClick(e);
-						}}>
-						<div className="teams-employee-info">
-							<img
-								src={member.profile_picture}
-								alt="profile img"
-								className="teams-profile-picture"
-							/>
-							<h3>
-								{member.first_name} {member.last_name}
-							</h3>
-						</div>
-					</a>
+					<div
+						className="teams-employee-info"
+						onClick={handleProfileClick}>
+						<img
+							src={member.profile_picture}
+							alt="profile img"
+							className="teams-profile-picture"
+						/>
+						<h3>
+							{member.first_name} {member.last_name}
+						</h3>
+					</div>
 				</td>
 				<td className="recognition-btn">
 					<RecognitionIcon

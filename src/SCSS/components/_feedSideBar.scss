@@ -10,6 +10,10 @@
 	transition: width 500ms ease;
 	z-index: 5;
 
+	@media (max-width: 720px) {
+		display: none;
+	}
+
 	.feed-headers {
 		display: flex;
 		margin-top: 3rem;
@@ -159,12 +163,14 @@
 
 			.heart-empty {
 				fill: rgba(0, 13, 34, 0.7);
+				cursor: pointer;
 			}
 		}
 		.comment-button {
 			border: none;
 			margin-right: 1.5rem;
 			color: rgba(0, 13, 34, 0.7);
+			cursor: pointer;
 
 			.comment-full {
 				fill: $color-primary;

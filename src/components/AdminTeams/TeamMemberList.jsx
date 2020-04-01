@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
@@ -17,11 +18,19 @@ function TeamMemberList() {
 	let location = useLocation();
 	const history = useHistory();
 
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const { data } = await axiosWithAuth().get(
 					`${location.pathname}?search=${filter}`,
+				);
+
+				data.team_members.sort((a, b) =>
+					a.first_name.localeCompare(b.first_name),
 				);
 
 				setTeamDetails(data);
@@ -88,6 +97,7 @@ function TeamMemberList() {
 									modal={modal}
 									setModal={setModal}
 									profile={member}
+									myProfile={profile}
 									teamDetails={teamDetails}
 									setTeamDetails={setTeamDetails}
 								/>

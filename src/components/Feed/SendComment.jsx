@@ -33,7 +33,7 @@ export const SendComments = ({
 				<section className="rm-comment-box">
 					<textarea
 						//we want to be able to use the AddComment svg inside the placeholder
-						placeholder={`Type message here`}
+						placeholder="Type message here"
 						value={newComment}
 						onChange={handleInput}
 						maxLength="140"
