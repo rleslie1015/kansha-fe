@@ -37,6 +37,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Overview
 ### Labs 21
+
+[Database Schema](https://dbdiagram.io/d/5e4ad5579e76504e0ef18d3e)
+
 [Trello Board](https://trello.com/b/AZKBscuK/kansha-labs-21)
 
 [Product Canvas](https://www.notion.so/Kansha-fdf86e4459934f979df4eefd5c409b4a)
