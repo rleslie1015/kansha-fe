@@ -8,19 +8,17 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as EmptyFeed } from '../../assets/NoBadgeFeed.svg';
 import { ReactComponent as EmptyActivity } from '../../assets/noactivity.svg';
 import ProfileTeamList from './ProfileTeamList';
-import ReactionModal from '../FeedSideBar/ReactionModal';
+
 export function Profile() {
 	const [badges, setBadges] = useState([]);
 	const { id } = useParams();
 
 	const [profileData, setProfileData] = useState({});
 
-	const { comments, profile, reactions, feed } = useSelector(
-		({ liveFeed, user }) => ({
-			...liveFeed,
-			...user,
-		}),
-	);
+	const { comments, profile, feed } = useSelector(({ liveFeed, user }) => ({
+		...liveFeed,
+		...user,
+	}));
 
 	console.log(profile, 'hello profile');
 
@@ -71,7 +69,7 @@ export function Profile() {
 			<section className="my-team-members">
 				<ProfileTeamList myProfile={profile} profile={profileData} />
 			</section>
-			{feed.length > 0 ? (
+			{profile.rec.length > 0 && profile.rec.badge_id !== null ? (
 				<section className="main-container-badges">
 					<div className="badges-title-container">
 						<h1 className="title-badges">My badges</h1>

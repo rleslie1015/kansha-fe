@@ -113,7 +113,7 @@ export const RecognitionCard = memo(
 						{/* {profile.user_type === 'admin' && (
 							<Trashcan onClick={handleDelete} />
 						)} */}
-						<div>
+						<div className="rec-info">
 							{sent ? (
 								<p>
 									Sent to{' '}
@@ -132,17 +132,18 @@ export const RecognitionCard = memo(
 								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
-								<>
-									{' '}
-									{recognition.first_name}{' '}
+								<p>
+									From {recognition.first_name}{' '}
 									{recognition.last_name}
-								</>
+								</p>
 							)}
 							<span className="time" role="presentation">
 								&nbsp;{time}
 							</span>
 						</div>
-						<p>{recognition.message}</p>
+						<p style={{ marginTop: '3px', fontSize: '1.4rem' }}>
+							{recognition.message}
+						</p>
 					</div>
 
 					<div>
