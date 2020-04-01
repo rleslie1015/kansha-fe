@@ -4,7 +4,6 @@ import RecogModal from '../RecogModal/index';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 import DeleteModal from './DeleteModal';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useSelector } from 'react-redux';
 
 // Icon import
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
@@ -13,11 +12,8 @@ import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recog
 function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
-	const [isAdmin, setIsAdmin] = useState(false);
 	const [profileSelect, setProfileSelect] = useState(false);
 	const [badges, setBadges] = useState([]);
-
-	console.log(myProfile, 'user profile');
 
 	const handleDeleteClick = e => {
 		e.preventDefault();
@@ -78,21 +74,18 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 
 			<tr className="indiv-team">
 				<td>
-					<a
-						onClick={e => {
-							handleProfileClick(e);
-						}}>
-						<div className="teams-employee-info">
-							<img
-								src={member.profile_picture}
-								alt="profile img"
-								className="teams-profile-picture"
-							/>
-							<h3>
-								{member.first_name} {member.last_name}
-							</h3>
-						</div>
-					</a>
+					<div
+						className="teams-employee-info"
+						onClick={handleProfileClick}>
+						<img
+							src={member.profile_picture}
+							alt="profile img"
+							className="teams-profile-picture"
+						/>
+						<h3>
+							{member.first_name} {member.last_name}
+						</h3>
+					</div>
 				</td>
 				<td className="recognition-btn">
 					<RecognitionIcon
