@@ -1,21 +1,10 @@
 import React from 'react';
 import { RecognitionCard } from '../Profile/RecognitionCard';
 
-function Activity({
-	profileBadges,
-	setProfileInfo,
-	profileId,
-	comments,
-	profile,
-	profileInfo,
-	handleCommentClick,
-	handleNewProfileClick,
-	sent,
-	isLoading,
-	inModal,
-}) {
+function Activity({ profileBadges, profileInfo, sent, isLoading, inModal }) {
 	return (
 		<div className="profile-activity">
+			{/*The reason why it's checking whether it's in the modal is do that on the end user dashboard there aren't two Activity headers */}
 			{inModal ? <h2 className="activity-header">Activity</h2> : null}
 			<section className="inner-activity-card">
 				{profileInfo.rec &&
@@ -30,16 +19,8 @@ function Activity({
 									sent={sent}
 									profileBadges={profileBadges}
 									recognition={recognition}
-									setProfileInfo={setProfileInfo}
-									profileId={profileId}
-									comments={comments}
-									profile={profile}
 									isLoading={isLoading}
-									rec={recognition}
 									inModal={inModal}
-									// handleNewProfileClick={
-									// 	handleNewProfileClick
-									// }
 								/>
 							</div>
 						))}
