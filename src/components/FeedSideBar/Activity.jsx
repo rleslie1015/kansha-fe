@@ -27,13 +27,12 @@ function Activity({
 							<div className="container-card-and-buttons">
 								<RecognitionCard
 									key={recognition.id}
-									sent={sent}
 									profileBadges={profileBadges}
 									recognition={recognition}
 									setProfileInfo={setProfileInfo}
 									profileId={recognition.recipient}
 									comments={comments}
-									profile={profile}
+									profileData={profile}
 									isLoading={isLoading}
 									rec={recognition}
 									inModal={inModal}

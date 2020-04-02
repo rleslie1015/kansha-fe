@@ -7,7 +7,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
-	({ recognition, sent, profileBadges, inModal }) => {
+	({ recognition, sent, profileBadges, inModal, profileData }) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -45,6 +45,12 @@ export const RecognitionCard = memo(
 		}
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
+
+		console.log(profileData, 'profile data');
+
+		inModal
+			? (sent = recognition.sender !== profileData.id)
+			: (sent = recognition.sender === profileData.id);
 
 		return (
 			<section className="container-recognition-card">
@@ -84,11 +90,7 @@ export const RecognitionCard = memo(
 				)}
 				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
 					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
+						src={recognition.profile_pic}
 						alt="user avatar"
 						width="35px"
 						style={{ cursor: 'pointer' }}
@@ -120,12 +122,18 @@ export const RecognitionCard = memo(
 								// 	)}
 								<p
 									style={{
-										color: '#c91757',
-										fontSize: '1.6rem',
+										color: '#0f0f33',
+										fontSize: '1.4rem',
 									}}>
 									From {''}
-									{recognition.first_name}{' '}
-									{recognition.last_name}
+									<span
+										style={{
+											color: '#c91757',
+											fontSize: '1.4rem',
+										}}>
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
 								</p>
 							)}
 							<span className="time" role="presentation">
