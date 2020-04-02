@@ -23,6 +23,8 @@ function ProfileTeamList({ myProfile }) {
 		...user,
 	}));
 
+	console.log(profile, 'profile');
+
 	// function useForceUpdate() {
 	// 	const [value, setValue] = useState(0); // integer state
 	// 	return () => setValue(value => ++value); // update the state to force render
@@ -67,18 +69,23 @@ function ProfileTeamList({ myProfile }) {
 	} else {
 		return (
 			<section className="teams-dashboard">
+				<h2 className="teams-dashboard-title">
+					{teamList ? 'Teams' : `${profile.org_name} Members`}
+				</h2>
 				<div className="dropdown-time-div">
-					<Dropdown
-						classNombre="custom-select dashboard"
-						setSelection={handleName}>
-						{teamList?.map(team => {
-							return (
-								<option value={team.team_id}>
-									{team.name}
-								</option>
-							);
-						})}
-					</Dropdown>
+					{teamList ? (
+						<Dropdown
+							classNombre="custom-select dashboard"
+							setSelection={handleName}>
+							{teamList?.map(team => {
+								return (
+									<option value={team.team_id}>
+										{team.name}
+									</option>
+								);
+							})}
+						</Dropdown>
+					) : null}
 				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>
