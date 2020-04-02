@@ -103,6 +103,7 @@ function ProfileModal({
 							profileInfo={profileInfo}
 							isLoading={isLoading}
 							inModal={true}
+
 							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>

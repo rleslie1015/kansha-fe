@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import Loader from 'react-loader-spinner';
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
@@ -59,7 +59,15 @@ function TeamMemberList() {
 	};
 
 	if (loadingState === true) {
-		return <div>'Loading...'</div>;
+		return (
+			<Loader
+				type="Rings"
+				color="#c91757"
+				height={100}
+				width={100}
+				timeout={10000}
+			/>
+		);
 	} else {
 		return (
 			<section className="teams-dashboard">

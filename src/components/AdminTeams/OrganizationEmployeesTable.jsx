@@ -19,6 +19,7 @@ const OrganizationEmployeesTable = ({
 							empButton={empButton}
 							addTeamMember={addTeamMember}
 							setEmployees={setEmployees}
+							onDashboard={false}
 						/>
 					);
 				})}

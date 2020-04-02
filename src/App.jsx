@@ -19,6 +19,7 @@ import Dashboard from './components/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import OrganizationHome from './components/AdminTeams/OrganizationHome';
 import TeamMemberList from './components/AdminTeams/TeamMemberList';
+import Loader from 'react-loader-spinner';
 
 const auth = new Auth();
 
@@ -84,10 +85,7 @@ export const App = () => {
 						path="/profile"
 						component={UserProfile}
 					/>
-					<ProtectedRoute
-						path="/dashboard"
-						component={AdminDashboard}
-					/>
+
 					<ProtectedRoute path="/workspace" component={Workspace} />
 					<ProtectedRoute
 						exact
@@ -107,6 +105,14 @@ export const App = () => {
 			</Dashboard>
 		);
 	} else {
-		return <h1>Loading...</h1>;
+		return (
+			<Loader
+				type="Rings"
+				color="#c91757"
+				height={100}
+				width={100}
+				timeout={10000}
+			/>
+		);
 	}
 };
