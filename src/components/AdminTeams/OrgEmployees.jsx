@@ -19,13 +19,14 @@ const OrgEmployees = ({
 	addTeamMember,
 	id,
 	setEmployees,
+	onDashboard,
 }) => {
 	const [modal, setModal] = useState(false);
 	const [teamInfo, setTeamInfo] = useState([]);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [badges, setBadges] = useState([]);
 	// const [showTeams, setShowTeams] = useState(false);
-
+	console.log(onDashboard, 'onDashboard');
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`profile/${id}`)
@@ -94,18 +95,20 @@ const OrgEmployees = ({
 			)}
 			<tr className="teams-employee-card">
 				<td className="teams-employee">
-					<label
-						onClick={e => {
-							addTeamMember(e, employee.id);
-						}}
-						style={
-							empButton
-								? { display: 'none' }
-								: { display: 'block' }
-						}>
-						<input type="checkbox" className="css-checkbox" />
-						<i></i>
-					</label>
+					{onDashboard ? null : (
+						<label
+							onClick={e => {
+								addTeamMember(e, employee.id);
+							}}
+							style={
+								empButton
+									? { display: 'none' }
+									: { display: 'block' }
+							}>
+							<input type="checkbox" className="css-checkbox" />
+							<i></i>
+						</label>
+					)}
 					<a
 						onClick={e => {
 							handleProfileClick(e);
