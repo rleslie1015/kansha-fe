@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon Imports
@@ -20,6 +19,7 @@ const OrgEmployees = ({
 	id,
 	setEmployees,
 	onDashboard,
+	createTeamsBtn,
 }) => {
 	const [modal, setModal] = useState(false);
 	const [teamInfo, setTeamInfo] = useState([]);
@@ -90,6 +90,7 @@ const OrgEmployees = ({
 					profile={employee}
 					badges={badges}
 					profileId={employee.id}
+					inModal={false}
 				/>
 			)}
 			<tr className="teams-employee-card">
@@ -163,8 +164,8 @@ const OrgEmployees = ({
 					<RecognitionIcon
 						onClick={() => setModal(!modal)}
 						style={
-							!empButton
-								? { display: 'none' }
+							!empButton && createTeamsBtn
+								? { display: 'block' }
 								: {
 										display: 'block',
 										width: '20px',
