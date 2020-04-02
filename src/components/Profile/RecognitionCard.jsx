@@ -91,6 +91,7 @@ export const RecognitionCard = memo(
 						}
 						alt="user avatar"
 						width="35px"
+						style={{ cursor: 'pointer' }}
 					/>
 				</a>
 				<section className="activity-section">
@@ -117,7 +118,11 @@ export const RecognitionCard = memo(
 								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
-								<p>
+								<p
+									style={{
+										color: '#c91757',
+										fontSize: '1.6rem',
+									}}>
 									From {''}
 									{recognition.first_name}{' '}
 									{recognition.last_name}
@@ -127,7 +132,12 @@ export const RecognitionCard = memo(
 								&nbsp;{time}
 							</span>
 						</div>
-						<p style={{ marginTop: '3px', fontSize: '1.4rem' }}>
+						<p
+							style={{
+								marginTop: '3px',
+								fontSize: '1.4rem',
+								color: '#000d22',
+							}}>
 							{recognition.message}
 						</p>
 					</div>

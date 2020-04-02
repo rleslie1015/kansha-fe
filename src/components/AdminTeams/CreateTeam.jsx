@@ -1,6 +1,5 @@
 import React from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
-import { Link } from 'react-router-dom';
 
 // Modal import
 // import Modal from '../Modal';
@@ -8,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 // Icon import
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
-import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
 
 const CreateTeam = ({
 	employees,
