@@ -16,6 +16,7 @@ function ProfileTeamList({ myProfile }) {
 	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
 	const [organizationMembers, setOrganizationMembers] = useState([]);
+	const [filter, setFilter] = useState('');
 
 	useSelector(state => console.log(state));
 
@@ -46,7 +47,7 @@ function ProfileTeamList({ myProfile }) {
 			setTeamDetails(teamData);
 		};
 		fetchData();
-	}, [selectedTeam, profile, teamList]);
+	}, [selectedTeam, profile, teamList, filter]);
 
 	const handleName = id => {
 		setSelectedTeam(id);
@@ -54,7 +55,7 @@ function ProfileTeamList({ myProfile }) {
 	useEffect(() => {
 		const fetchData = async () => {
 			const orgData = await axiosWithAuth().get(
-				`/employees/organizations`,
+				`/employees/organizations?search=${filter}`,
 			);
 			setOrganizationMembers(orgData.data.employees);
 		};
@@ -62,7 +63,9 @@ function ProfileTeamList({ myProfile }) {
 		// setSelectedTeam(teamList ? teamList[0] : null);
 		handleName(selectedTeam?.id);
 		fetchData();
-	}, []);
+	}, [filter, selectedTeam]);
+
+	console.log(profile.teams);
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
@@ -75,6 +78,7 @@ function ProfileTeamList({ myProfile }) {
 				<div className="dropdown-time-div">
 					{teamList ? (
 						<Dropdown
+							placeholder={profile.teams[0].name}
 							classNombre="custom-select dashboard"
 							setSelection={handleName}>
 							{teamList?.map(team => {
@@ -92,12 +96,17 @@ function ProfileTeamList({ myProfile }) {
 					<button className="btn-filter">Members</button>
 					<div className="employee-search-container">
 						<input
-							// value={filter}
-							// onChange={event => setFilter(event.target.value)}
+							style={
+								profile.teams
+									? { display: 'none' }
+									: { display: 'block' }
+							}
+							value={filter}
+							onChange={event => setFilter(event.target.value)}
 							type="text"
 							id="search"
 							name="search"
-							placeholder="Search"
+							placeholder="Search for member"
 						/>
 					</div>
 				</div>
