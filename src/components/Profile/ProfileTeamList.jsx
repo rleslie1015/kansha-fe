@@ -9,8 +9,6 @@ import OrgEmployees from '../AdminTeams/OrgEmployees';
 // Icon Imports
 import { ReactComponent as EmptyTeams } from '../../assets/emptyTeams.svg';
 
-// Modal imports
-
 function ProfileTeamList({ myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
