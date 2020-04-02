@@ -41,7 +41,7 @@ function Onboarding({ onboard, profile, isOnboarding, isOnboardingLoading }) {
 					<div>
 						<Loader
 							type="Rings"
-							color="#EE4D71"
+							color="#c91757"
 							height={100}
 							width={100}
 						/>
