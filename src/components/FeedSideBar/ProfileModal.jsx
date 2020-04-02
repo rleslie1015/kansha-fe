@@ -64,7 +64,7 @@ function ProfileModal({
 	for (let bdg of userBadges) {
 		numberOfBadges += bdg.count;
 	}
-
+  
 	if (inModal !== false) {
 		inModal = true;
 	}
@@ -108,6 +108,9 @@ function ProfileModal({
 							profileInfo={profileInfo}
 							isLoading={isLoading}
 							inModal={inModal}
+		
+
+
 							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>
