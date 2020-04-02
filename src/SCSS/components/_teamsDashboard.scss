@@ -417,9 +417,11 @@
 	}
 
 	.team-member-table {
-		margin-top: 5rem;
+		margin-top: 3rem;
 		display: flex;
 		justify-content: space-between;
+		overflow-y: scroll;
+		height: 30rem;
 
 		tbody {
 			width: 100%;

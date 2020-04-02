@@ -26,7 +26,6 @@ const OrgEmployees = ({
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [badges, setBadges] = useState([]);
 	// const [showTeams, setShowTeams] = useState(false);
-	console.log(onDashboard, 'onDashboard');
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`profile/${id}`)
