@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+import { useDispatch } from 'react-redux';
+import { finishLogin } from '../../store/actions/user-actions';
 // Icon Imports
 import { ReactComponent as SettingsIcon } from '../../assets/TeamsIcons/teamsettings.svg';
 import { ReactComponent as TeamsIcon } from '../../assets/TeamsIcons/Vector.svg';
@@ -16,7 +17,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 	const [modal, setModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const history = useHistory();
-
+	const dispatch = useDispatch();
 	//delete not functioning yet!!
 	const handleDeleteTeam = e => {
 		e.preventDefault();
@@ -25,6 +26,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 			.then(() => {
 				setTeams(previous => previous.filter(tms => tms.id !== id));
 				setDeleteModal(false);
+				finishLogin(dispatch);
 			});
 	};
 

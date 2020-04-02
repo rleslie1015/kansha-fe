@@ -17,12 +17,19 @@ function ProfileTeamList({ myProfile }) {
 	const [loadingState, setLoadingState] = useState();
 	const [organizationMembers, setOrganizationMembers] = useState([]);
 
+	useSelector(state => console.log(state));
+
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
 
+	// function useForceUpdate() {
+	// 	const [value, setValue] = useState(0); // integer state
+	// 	return () => setValue(value => ++value); // update the state to force render
+	// }
+
 	const [teamList, setTeamList] = useState(
-		profile.teams ? profile.teams : null,
+		profile.teams && profile.teams.length > 0 ? profile.teams : null,
 	);
 
 	const [selectedTeam, setSelectedTeam] = useState(
@@ -37,7 +44,7 @@ function ProfileTeamList({ myProfile }) {
 			setTeamDetails(teamData);
 		};
 		fetchData();
-	}, [selectedTeam, profile.teams]);
+	}, [selectedTeam, profile, teamList]);
 
 	const handleName = id => {
 		setSelectedTeam(id);

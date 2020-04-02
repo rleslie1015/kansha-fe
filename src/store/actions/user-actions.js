@@ -61,7 +61,7 @@ export const login = () => dispatch => {
 	finishLogin(dispatch);
 };
 
-const finishLogin = dispatch => {
+export const finishLogin = dispatch => {
 	/* Using the auth0 token we hit our /profile endpoint */
 	axiosWithAuth()
 		.get('/profile')
