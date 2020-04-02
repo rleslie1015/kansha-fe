@@ -26,10 +26,9 @@ function ProfileTeamList({ myProfile }) {
 	);
 
 	const [selectedTeam, setSelectedTeam] = useState(
-		teamList ? teamList[0] : null,
+		teamList ? teamList[0].team_id : null,
 	);
 	console.log(selectedTeam, 'selectedTeam');
-
 	useEffect(() => {
 		const fetchData = async () => {
 			const teamData = await axiosWithAuth().get(
@@ -38,7 +37,7 @@ function ProfileTeamList({ myProfile }) {
 			setTeamDetails(teamData);
 		};
 		fetchData();
-	}, [selectedTeam]);
+	}, [selectedTeam, profile.teams]);
 
 	const handleName = id => {
 		setSelectedTeam(id);
@@ -51,13 +50,11 @@ function ProfileTeamList({ myProfile }) {
 			setOrganizationMembers(orgData.data.employees);
 		};
 
-		//handleName(selectedTeam.id);
-		setSelectedTeam(teamList ? teamList[0] : null);
+		// setSelectedTeam(teamList ? teamList[0] : null);
+		handleName(selectedTeam?.id);
 		fetchData();
 	}, []);
-	console.log(organizationMembers, 'organizationMembers');
-	console.log(selectedTeam, 'selectedTeam');
-	console.log(setSelectedTeam.id, 'setSElectedTeam.id');
+
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
 	} else {
@@ -93,7 +90,7 @@ function ProfileTeamList({ myProfile }) {
 				{teamList ? (
 					<table className="team-member-table">
 						<tbody>
-							{teamDetails?.data.team_members.map(member => {
+							{teamDetails?.data.team_members?.map(member => {
 								return (
 									<Member
 										key={member.id}

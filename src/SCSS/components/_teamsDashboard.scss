@@ -421,7 +421,7 @@
 		display: flex;
 		justify-content: space-between;
 		overflow-y: scroll;
-		height: 30rem;
+		max-height: 30rem;
 
 		tbody {
 			width: 100%;
