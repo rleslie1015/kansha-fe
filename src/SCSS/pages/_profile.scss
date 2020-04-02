@@ -96,8 +96,18 @@
 		margin-top: 2rem;
 
 		.rec-info {
-			p {
+			span {
 				color: $color-primary;
+				font-size: 1.6rem;
+			}
+
+			p {
+				color: $color-primary-nav;
+				font-size: 1.6rem;
+			}
+
+			.time {
+				color: $color-primary-nav;
 				font-size: 1.6rem;
 			}
 		}
@@ -133,7 +143,7 @@
 }
 
 .teams-dashboard-title {
-	color: $color-primary;
+	color: $color-primary-nav;
 	font-size: 3.4rem !important;
 	font-weight: normal;
 }
