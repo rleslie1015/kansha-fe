@@ -64,8 +64,6 @@ function ProfileModal({
 		numberOfBadges += bdg.count;
 	}
 
-	console.log(profileInfo, 'Profile info');
-
 	return (
 		<>
 			<Modal close={handleClose}>
@@ -105,6 +103,7 @@ function ProfileModal({
 							profileInfo={profileInfo}
 							isLoading={isLoading}
 							inModal={true}
+
 							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>
