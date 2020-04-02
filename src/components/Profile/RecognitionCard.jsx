@@ -75,7 +75,11 @@ export const RecognitionCard = memo(
 						rec_id={recognition.id}
 						reactions={reactions}
 						open={open}
-						profileId={profile.id}
+						profileId={
+							recognition.sender === profile.id
+								? recognition.recipient
+								: recognition.sender
+						}
 					/>
 				)}
 				<a onClick={e => (inModal ? null : handleProfileClick(e))}>

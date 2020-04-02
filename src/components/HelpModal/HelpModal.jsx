@@ -10,7 +10,7 @@ const HelpModal = ({ title, content, setTitle, setContent, setHelpModal }) => {
 				<Link
 					className="modal-dash-link"
 					onClick={() => setHelpModal(false)}
-					to="/dashboard">
+					to="/">
 					Take me to my dashboard
 				</Link>
 				<h1>{title}</h1>

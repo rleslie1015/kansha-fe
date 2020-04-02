@@ -21,7 +21,6 @@
 
 		.teams-dashboard {
 			margin: 0;
-			overflow-y: scroll;
 		}
 	}
 
@@ -75,7 +74,7 @@
 .container-entire-profile {
 	.activity-card {
 		width: 45%;
-		height: 50%;
+		height: 60rem;
 
 		@media (max-width: 720px) {
 			width: 100%;
@@ -131,4 +130,10 @@
 		align-items: center;
 		justify-content: center;
 	}
+}
+
+.teams-dashboard-title {
+	color: $color-primary;
+	font-size: 3.4rem !important;
+	font-weight: normal;
 }
