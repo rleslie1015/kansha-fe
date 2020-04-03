@@ -6,7 +6,6 @@ import Modal from './Modal';
 import FileUpload from './FileUpload';
 
 function Settings() {
-	// const history = useHistory();
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
@@ -15,14 +14,13 @@ function Settings() {
 	const [form, setForm] = useState({ first_name: '', last_name: '' });
 	const [modal, setModal] = useState(false);
 
-	const handleChange = event => {
+	const handleChange = (event) => {
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await dispatch(update(profile.id, form));
-		// history.push(`/profile/${profile.id}`);
 	};
 
 	useEffect(() => {
@@ -74,7 +72,7 @@ function Settings() {
 	);
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		...state,
 	};

@@ -7,18 +7,18 @@ import TimeDropdown from './reports/TimeDropdown';
 export default function Reports() {
 	const [filter, setFilter] = useState('weeks');
 
-	const handleFilter = e => {
+	const handleFilter = (e) => {
 		setFilter(e);
 	};
 	const [lineFilter, setLineFilter] = useState('weeks');
 
-	const handleLineFilter = e => {
+	const handleLineFilter = (e) => {
 		setLineFilter(e);
 	};
 
 	const [doughnutFilter, setDoughnutFilter] = useState('weeks');
 
-	const handleDoughnutFilter = e => {
+	const handleDoughnutFilter = (e) => {
 		setDoughnutFilter(e);
 	};
 

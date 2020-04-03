@@ -30,13 +30,13 @@ export const FeedRecognition = memo(
 			}
 		}, [dispatch, rec_id, reactions, comments]);
 
-		const handleClick = e => {
+		const handleClick = (e) => {
 			e.preventDefault();
 			setSelectedProfile(profile.id);
 			setProfileSelect(true);
 		};
 
-		const handleComment = e => {
+		const handleComment = (e) => {
 			e.preventDefault();
 			setSelectedRec(rec_id);
 			setSelect(true);
@@ -60,7 +60,6 @@ export const FeedRecognition = memo(
 						reactions={reactions}
 						open={open}
 						profileId={profileId}
-						// handleNewProfileClick={handleNewProfileClick}
 					/>
 				)}
 
