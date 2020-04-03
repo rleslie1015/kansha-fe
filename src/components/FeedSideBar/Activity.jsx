@@ -33,7 +33,7 @@ function Activity({
 									setProfileInfo={setProfileInfo}
 									profileId={recognition.recipient}
 									comments={comments}
-									profile={profile}
+									profileData={profile}
 									isLoading={isLoading}
 									rec={recognition}
 									inModal={inModal}
