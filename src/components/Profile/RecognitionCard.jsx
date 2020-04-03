@@ -7,7 +7,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
-	({ recognition, sent, profileBadges, inModal }) => {
+	({ recognition, sent, profileBadges, inModal, profileData }) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -45,6 +45,10 @@ export const RecognitionCard = memo(
 		}
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
+		
+		inModal
+			? (sent = recognition.sender !== profileData.id)
+			: (sent = recognition.sender === profileData.id);
 
 		return (
 			<section className="container-recognition-card">
