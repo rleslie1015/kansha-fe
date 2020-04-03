@@ -18,27 +18,26 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 	const [deleteModal, setDeleteModal] = useState(false);
 	const history = useHistory();
 	const dispatch = useDispatch();
-	//delete not functioning yet!!
-	const handleDeleteTeam = e => {
+
+	const handleDeleteTeam = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
 			.delete(`/teams/${id}`)
 			.then(() => {
-				setTeams(previous => previous.filter(tms => tms.id !== id));
+				setTeams((previous) => previous.filter((tms) => tms.id !== id));
 				setDeleteModal(false);
 				finishLogin(dispatch);
 			});
 	};
 
-	const handleClick = e => {
+	const handleClick = (e) => {
 		e.preventDefault();
 		history.push(`/teams/${id}`);
 	};
 
-	const handleDeleteClick = e => {
+	const handleDeleteClick = (e) => {
 		e.preventDefault();
 		setDeleteModal(true);
-		// setDeleteTeamFromOrg(true);
 	};
 
 	return (
@@ -71,7 +70,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 							cursor: 'pointer',
 						}}
 					/>
-					{managers.map(mgr => {
+					{managers.map((mgr) => {
 						return (
 							modal && (
 								<Modal close={setModal}>
@@ -82,7 +81,7 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 					})}
 					<h5>
 						Manager:{' '}
-						{managers.map(manager => (
+						{managers.map((manager) => (
 							<span key={manager.id}>{manager.first_name}</span>
 						))}
 					</h5>

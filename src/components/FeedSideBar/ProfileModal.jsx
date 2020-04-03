@@ -9,7 +9,6 @@ function ProfileModal({
 	badges, // this a list of all the badges in the system
 	close, // function
 	setProfileSelect, // function that determines whether the modal is open
-	// handleNewProfileClick,
 	profileId,
 	inModal,
 }) {
@@ -41,8 +40,8 @@ function ProfileModal({
 			for (const rec of profileInfo.rec) {
 				if (profileId === rec.sender) continue;
 				const { badge_id } = rec;
-				const badge = badges.find(bdg => bdg.id === badge_id);
-				const exist = array.find(bdg => bdg.id === badge_id);
+				const badge = badges.find((bdg) => bdg.id === badge_id);
+				const exist = array.find((bdg) => bdg.id === badge_id);
 				if (exist) {
 					array[array.indexOf(exist)].count++;
 					continue;

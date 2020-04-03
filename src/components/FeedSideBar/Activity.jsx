@@ -4,12 +4,9 @@ import { RecognitionCard } from '../Profile/RecognitionCard';
 function Activity({
 	profileBadges,
 	setProfileInfo,
-	profileId,
 	comments,
 	profile,
 	profileInfo,
-	handleCommentClick,
-	handleNewProfileClick,
 	sent,
 	isLoading,
 	inModal,
@@ -20,10 +17,10 @@ function Activity({
 			<section className="inner-activity-card">
 				{profileInfo.rec &&
 					profileInfo.rec
-						.sort(function(a, b) {
+						.sort(function (a, b) {
 							return new Date(b.date) - new Date(a.date);
 						})
-						.map(recognition => (
+						.map((recognition) => (
 							<div className="container-card-and-buttons">
 								<RecognitionCard
 									key={recognition.id}
@@ -37,9 +34,6 @@ function Activity({
 									isLoading={isLoading}
 									rec={recognition}
 									inModal={inModal}
-									// handleNewProfileClick={
-									// 	handleNewProfileClick
-									// }
 								/>
 							</div>
 						))}

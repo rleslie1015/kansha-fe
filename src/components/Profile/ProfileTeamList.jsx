@@ -18,11 +18,6 @@ function ProfileTeamList({ myProfile }) {
 		...user,
 	}));
 
-	// function useForceUpdate() {
-	// 	const [value, setValue] = useState(0); // integer state
-	// 	return () => setValue(value => ++value); // update the state to force render
-	// }
-
 	const [teamList] = useState(
 		profile.teams && profile.teams.length > 0 ? profile.teams : null,
 	);
@@ -41,7 +36,7 @@ function ProfileTeamList({ myProfile }) {
 		fetchData();
 	}, [selectedTeam, profile, teamList, filter]);
 
-	const handleName = id => {
+	const handleName = (id) => {
 		setSelectedTeam(id);
 	};
 	useEffect(() => {
@@ -52,7 +47,6 @@ function ProfileTeamList({ myProfile }) {
 			setOrganizationMembers(orgData.data.employees);
 		};
 
-		// setSelectedTeam(teamList ? teamList[0] : null);
 		handleName(selectedTeam?.id);
 		fetchData();
 	}, [filter, selectedTeam]);
@@ -71,7 +65,7 @@ function ProfileTeamList({ myProfile }) {
 							placeholder={profile.teams[0].name}
 							classNombre="custom-select dashboard"
 							setSelection={handleName}>
-							{teamList?.map(team => {
+							{teamList?.map((team) => {
 								return (
 									<option value={team.team_id}>
 										{team.name}
@@ -92,7 +86,7 @@ function ProfileTeamList({ myProfile }) {
 									: { display: 'block' }
 							}
 							value={filter}
-							onChange={event => setFilter(event.target.value)}
+							onChange={(event) => setFilter(event.target.value)}
 							type="text"
 							id="search"
 							name="search"
@@ -103,7 +97,7 @@ function ProfileTeamList({ myProfile }) {
 				{teamList ? (
 					<table className="team-member-table">
 						<tbody>
-							{teamDetails?.data.team_members?.map(member => {
+							{teamDetails?.data.team_members?.map((member) => {
 								return (
 									<Member
 										key={member.id}
@@ -122,7 +116,7 @@ function ProfileTeamList({ myProfile }) {
 				) : (
 					<table className="team-member-table">
 						<tbody>
-							{organizationMembers.map(member => {
+							{organizationMembers.map((member) => {
 								return (
 									<OrgEmployees
 										key={member.id}

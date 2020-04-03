@@ -20,8 +20,7 @@ export const FeedCard = memo(
 		}, [dispatch, rec_id, reactions, comments]);
 		const time = useMemo(() => timeAgo(rec.date), [rec]);
 
-		const handleDelete = id => {
-			// this will need to be turned into a confirmation modal, like the one on the figma.
+		const handleDelete = (id) => {
 			if (
 				window.confirm(
 					'Are you sure you would like to delete this recognition?',

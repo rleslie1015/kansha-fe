@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-
-// import { Cropper } from '../FileUpload/FileCrop';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Activity from '../FeedSideBar/Activity';
 import Badges from '../FeedSideBar/Badges';
@@ -11,7 +9,6 @@ import ProfileTeamList from './ProfileTeamList';
 
 export function Profile() {
 	const [badges, setBadges] = useState([]);
-	// const { id } = useParams();
 
 	const [profileData, setProfileData] = useState({});
 	const { comments, profile, feed } = useSelector(({ liveFeed, user }) => ({
@@ -40,8 +37,8 @@ export function Profile() {
 			for (const rec of profileData.rec) {
 				if (profileData.id === rec.sender) continue;
 				const { badge_id } = rec;
-				const badge = badges.find(bdg => bdg.id === badge_id);
-				const exist = array.find(bdg => bdg.id === badge_id);
+				const badge = badges.find((bdg) => bdg.id === badge_id);
+				const exist = array.find((bdg) => bdg.id === badge_id);
 				if (exist) {
 					array[array.indexOf(exist)].count++;
 					continue;

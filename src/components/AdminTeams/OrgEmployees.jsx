@@ -4,7 +4,6 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 // Icon Imports
 import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
-// import { ReactComponent as DropdownIcon } from '../../assets/dropdown.svg';
 
 // Modal imports
 import Modal from '../Modal';
@@ -25,28 +24,28 @@ const OrgEmployees = ({
 	const [teamInfo, setTeamInfo] = useState([]);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [badges, setBadges] = useState([]);
-	// const [showTeams, setShowTeams] = useState(false);
+
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`profile/${id}`)
-			.then(res => {
+			.then((res) => {
 				setTeamInfo(res.data.peer);
 			})
-			.catch(error => console.log(error.response));
+			.catch((error) => console.log(error.response));
 	}, [id]);
 
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/badges')
-			.then(res => {
+			.then((res) => {
 				setBadges(res.data);
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 			});
 	}, []);
 
-	const handleDeleteClick = e => {
+	const handleDeleteClick = (e) => {
 		e.preventDefault();
 		setDeleteModal(true);
 	};
@@ -55,18 +54,18 @@ const OrgEmployees = ({
 
 	//not working yet
 
-	const handleDeleteOrgMember = e => {
+	const handleDeleteOrgMember = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
 			.delete(`/users/${id}`)
 			.then(() => {
-				setEmployees(previous =>
-					previous.filter(emps => emps.id !== id),
+				setEmployees((previous) =>
+					previous.filter((emps) => emps.id !== id),
 				);
 			});
 	};
 
-	const handleProfileClick = e => {
+	const handleProfileClick = (e) => {
 		e.preventDefault();
 
 		setProfileSelect(true);
@@ -95,7 +94,7 @@ const OrgEmployees = ({
 				<td className="teams-employee">
 					{onDashboard ? null : (
 						<label
-							onClick={e => {
+							onClick={(e) => {
 								addTeamMember(e, employee.id);
 							}}
 							style={
@@ -109,7 +108,7 @@ const OrgEmployees = ({
 					)}
 					<a
 						href="#"
-						onClick={e => {
+						onClick={(e) => {
 							handleProfileClick(e);
 						}}>
 						<div className="teams-employee-info">
@@ -132,28 +131,6 @@ const OrgEmployees = ({
 					{teamInfo.teams ? (
 						<>
 							<h3 className="teams">{`Teams (${teamInfo.teams.length})`}</h3>
-							{/* {teamInfo.teams.map(team => {
-								return (
-									<div
-										className="team-dropdown"
-										key={team.id}>
-										<DropdownIcon
-											style={{
-												marginLeft: '5rem',
-												cursor: 'pointer',
-											}}
-											onClick={() =>
-												setShowTeams(!showTeams)
-											}
-										/>
-										{showTeams ? (
-											<div>
-												<p>{team.name}</p>
-											</div>
-										) : null}
-									</div>
-								);
-							})} */}
 						</>
 					) : (
 						<h3 className="teams">Teams (0)</h3>

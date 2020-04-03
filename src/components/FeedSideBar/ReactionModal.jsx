@@ -14,7 +14,6 @@ function ReactionModal({
 	badge,
 	close,
 	setSelect,
-	open,
 }) {
 	const [messageSent, setMessageSent] = useState(false);
 
@@ -79,7 +78,7 @@ function ReactionModal({
 						/>
 						{messageSent && (
 							<div className="rm-comments">
-								{comments.map(comm => (
+								{comments.map((comm) => (
 									<RMComments
 										key={comm.id}
 										pic={comm.profile_picture}
