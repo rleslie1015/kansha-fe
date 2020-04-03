@@ -8,7 +8,7 @@ export default function Header() {
 		<header>
 			<div>
 				{' '}
-				<Link to="/">
+				<Link className="landing-logo-left" to="/">
 					<section>
 						<Logo />
 						<h1>Kansha</h1>

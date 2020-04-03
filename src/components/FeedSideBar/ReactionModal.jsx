@@ -22,7 +22,7 @@ function ReactionModal({
 		setSelect(false);
 		close(false);
 	};
-	console.log(rec, 'rec');
+
 	return (
 		<>
 			<Modal close={handleClose}>

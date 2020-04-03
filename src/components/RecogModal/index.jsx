@@ -4,7 +4,6 @@ import { ReactComponent as CloseIcon } from '../../assets/closex.svg';
 import { sendRecog } from '../../store/actions/recog-actions';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from '../../components/Modal';
 
 function RecogModal({ profile, close }) {
 	const dispatch = useDispatch();

@@ -1,42 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useHistory } from 'react-router-dom';
 //component should render list of employees from one team
 import Member from '../AdminTeams/Member';
 import Dropdown from '../Onboarding/DropDown';
 import { useSelector } from 'react-redux';
 import OrgEmployees from '../AdminTeams/OrgEmployees';
 // Icon Imports
-import { ReactComponent as EmptyTeams } from '../../assets/emptyTeams.svg';
 
 function ProfileTeamList({ myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
-	const [loadingState, setLoadingState] = useState();
+	const [loadingState] = useState();
 	const [organizationMembers, setOrganizationMembers] = useState([]);
 	const [filter, setFilter] = useState('');
-
-	useSelector(state => console.log(state));
 
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
-
-	console.log(profile, 'profile');
 
 	// function useForceUpdate() {
 	// 	const [value, setValue] = useState(0); // integer state
 	// 	return () => setValue(value => ++value); // update the state to force render
 	// }
 
-	const [teamList, setTeamList] = useState(
+	const [teamList] = useState(
 		profile.teams && profile.teams.length > 0 ? profile.teams : null,
 	);
 
 	const [selectedTeam, setSelectedTeam] = useState(
 		teamList ? teamList[0].team_id : null,
 	);
-	console.log(selectedTeam, 'selectedTeam');
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const teamData = await axiosWithAuth().get(
@@ -62,8 +56,6 @@ function ProfileTeamList({ myProfile }) {
 		handleName(selectedTeam?.id);
 		fetchData();
 	}, [filter, selectedTeam]);
-
-	console.log(profile.teams);
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
