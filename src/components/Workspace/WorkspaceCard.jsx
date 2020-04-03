@@ -12,7 +12,7 @@ export default function WorkspaceCard({ profile, isAdmin, setTeam }) {
 	const history = useHistory();
 	const [modal, setModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
-	console.log(profile);
+
 	// const handleDelete = id => {
 	// 	// this will need to be turned into a confirmation modal, like the one on the figma.
 	// 	if (

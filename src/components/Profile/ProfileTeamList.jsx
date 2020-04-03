@@ -14,8 +14,6 @@ function ProfileTeamList({ myProfile }) {
 	const [organizationMembers, setOrganizationMembers] = useState([]);
 	const [filter, setFilter] = useState('');
 
-	useSelector(state => console.log(state));
-
 	const { profile } = useSelector(({ user }) => ({
 		...user,
 	}));
@@ -58,8 +56,6 @@ function ProfileTeamList({ myProfile }) {
 		handleName(selectedTeam?.id);
 		fetchData();
 	}, [filter, selectedTeam]);
-
-	console.log(profile.teams);
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;

@@ -67,8 +67,6 @@ const OrgEmployees = ({
 	};
 
 	const handleProfileClick = e => {
-		console.log('hello');
-
 		e.preventDefault();
 
 		setProfileSelect(true);

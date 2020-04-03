@@ -21,8 +21,6 @@ function Member({ profile, teamDetails, member, setTeamDetails, myProfile }) {
 	};
 
 	const handleProfileClick = e => {
-		console.log('hello');
-
 		e.preventDefault();
 
 		setProfileSelect(true);
