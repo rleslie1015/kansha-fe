@@ -44,6 +44,7 @@ export const RecognitionCard = memo(
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
 
+		// Below I need to switch who is considered the sender based on whether we're looking at the user's dashboard or whether the user is opening someone else's dashboard in a modal
 		inModal
 			? (sent = recognition.sender !== profileData.id)
 			: (sent = recognition.sender === profileData.id);
