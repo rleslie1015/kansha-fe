@@ -36,7 +36,7 @@ export const RecognitionCard = memo(
 		};
 
 		const [, setModal] = useState(false);
-		const [open, setOpen] = React.useState(false);
+		const [open] = React.useState(false);
 
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(

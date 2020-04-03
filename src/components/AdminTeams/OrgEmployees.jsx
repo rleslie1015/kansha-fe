@@ -110,6 +110,7 @@ const OrgEmployees = ({
 						</label>
 					)}
 					<a
+						href="#"
 						onClick={e => {
 							handleProfileClick(e);
 						}}>
