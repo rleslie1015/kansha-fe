@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // Icon Imports
@@ -19,13 +18,14 @@ const OrgEmployees = ({
 	addTeamMember,
 	id,
 	setEmployees,
+	onDashboard,
+	createTeamsBtn,
 }) => {
 	const [modal, setModal] = useState(false);
 	const [teamInfo, setTeamInfo] = useState([]);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [badges, setBadges] = useState([]);
 	// const [showTeams, setShowTeams] = useState(false);
-
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`profile/${id}`)
@@ -90,22 +90,25 @@ const OrgEmployees = ({
 					profile={employee}
 					badges={badges}
 					profileId={employee.id}
+					inModal={false}
 				/>
 			)}
 			<tr className="teams-employee-card">
 				<td className="teams-employee">
-					<label
-						onClick={e => {
-							addTeamMember(e, employee.id);
-						}}
-						style={
-							empButton
-								? { display: 'none' }
-								: { display: 'block' }
-						}>
-						<input type="checkbox" className="css-checkbox" />
-						<i></i>
-					</label>
+					{onDashboard ? null : (
+						<label
+							onClick={e => {
+								addTeamMember(e, employee.id);
+							}}
+							style={
+								empButton
+									? { display: 'none' }
+									: { display: 'block' }
+							}>
+							<input type="checkbox" className="css-checkbox" />
+							<i></i>
+						</label>
+					)}
 					<a
 						onClick={e => {
 							handleProfileClick(e);
@@ -115,6 +118,7 @@ const OrgEmployees = ({
 								src={employee.profile_picture}
 								alt="profile img"
 								className="teams-profile-picture"
+								style={{ cursor: 'pointer' }}
 							/>
 							<h3>
 								{employee.first_name} {employee.last_name}
@@ -159,10 +163,15 @@ const OrgEmployees = ({
 				<td className="recognition-btn">
 					<RecognitionIcon
 						onClick={() => setModal(!modal)}
-						style={{
-							height: '20px',
-							width: '20px',
-						}}
+						style={
+							!empButton && createTeamsBtn
+								? { display: 'block' }
+								: {
+										display: 'block',
+										width: '20px',
+										height: '20px',
+								  }
+						}
 					/>
 					{modal && (
 						<Modal close={setModal}>
@@ -172,7 +181,15 @@ const OrgEmployees = ({
 				</td>
 				<td className="teams-employee-icons">
 					<DeleteIcon
-						style={{ marginRight: '20px', cursor: 'pointer' }}
+						style={
+							!empButton
+								? { display: 'none' }
+								: {
+										display: 'block',
+										marginRight: '20px',
+										cursor: 'pointer',
+								  }
+						}
 						onClick={handleDeleteClick}
 					/>
 				</td>

@@ -5,8 +5,15 @@
 	height: 200px;
 	align-items: center;
 
+	.delete-text-cont {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+
 	h5 {
-		font-size: 2.5rem;
+		color: $color-primary-nav;
+		font-size: 1.6rem;
 		width: 80%;
 		align-content: center;
 	}

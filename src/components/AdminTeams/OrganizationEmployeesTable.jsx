@@ -6,6 +6,7 @@ const OrganizationEmployeesTable = ({
 	empButton,
 	addTeamMember,
 	setEmployees,
+	createTeamsBtn,
 }) => {
 	return (
 		<table className="employees-table">
@@ -19,6 +20,8 @@ const OrganizationEmployeesTable = ({
 							empButton={empButton}
 							addTeamMember={addTeamMember}
 							setEmployees={setEmployees}
+							onDashboard={false}
+							createTeamsBtn={createTeamsBtn}
 						/>
 					);
 				})}

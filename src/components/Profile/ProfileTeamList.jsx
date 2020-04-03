@@ -4,26 +4,39 @@ import { useHistory } from 'react-router-dom';
 //component should render list of employees from one team
 import Member from '../AdminTeams/Member';
 import Dropdown from '../Onboarding/DropDown';
-
+import { useSelector } from 'react-redux';
+import OrgEmployees from '../AdminTeams/OrgEmployees';
 // Icon Imports
 import { ReactComponent as EmptyTeams } from '../../assets/emptyTeams.svg';
 
-// Modal imports
-
-function ProfileTeamList({ profile, myProfile }) {
+function ProfileTeamList({ myProfile }) {
 	const [modal, setModal] = useState(false);
 	const [teamDetails, setTeamDetails] = useState();
 	const [loadingState, setLoadingState] = useState();
+	const [organizationMembers, setOrganizationMembers] = useState([]);
+	const [filter, setFilter] = useState('');
 
-	const history = useHistory();
+	useSelector(state => console.log(state));
 
-	const teamList = profile.teams;
+	const { profile } = useSelector(({ user }) => ({
+		...user,
+	}));
 
-	let placeholderId = teamList && teamList[0].team_id;
-	const stringPh = JSON.stringify(placeholderId);
+	console.log(profile, 'profile');
 
-	const [selectedTeam, setSelectedTeam] = useState();
+	// function useForceUpdate() {
+	// 	const [value, setValue] = useState(0); // integer state
+	// 	return () => setValue(value => ++value); // update the state to force render
+	// }
 
+	const [teamList, setTeamList] = useState(
+		profile.teams && profile.teams.length > 0 ? profile.teams : null,
+	);
+
+	const [selectedTeam, setSelectedTeam] = useState(
+		teamList ? teamList[0].team_id : null,
+	);
+	console.log(selectedTeam, 'selectedTeam');
 	useEffect(() => {
 		const fetchData = async () => {
 			const teamData = await axiosWithAuth().get(
@@ -32,66 +45,73 @@ function ProfileTeamList({ profile, myProfile }) {
 			setTeamDetails(teamData);
 		};
 		fetchData();
-	}, [selectedTeam]);
+	}, [selectedTeam, profile, teamList, filter]);
 
 	const handleName = id => {
 		setSelectedTeam(id);
 	};
+	useEffect(() => {
+		const fetchData = async () => {
+			const orgData = await axiosWithAuth().get(
+				`/employees/organizations?search=${filter}`,
+			);
+			setOrganizationMembers(orgData.data.employees);
+		};
 
-	let placeholderTeam = teamList && teamList[0].name;
+		// setSelectedTeam(teamList ? teamList[0] : null);
+		handleName(selectedTeam?.id);
+		fetchData();
+	}, [filter, selectedTeam]);
 
-	const handleBack = e => {
-		e.preventDefault();
-		history.push('/organization');
-	};
+	console.log(profile.teams);
 
 	if (loadingState === true) {
 		return <div>'Loading...'</div>;
 	} else {
 		return (
 			<section className="teams-dashboard">
-				{/* <div className="header">
-					<div className="teams-name-button">
-						<h1>{teamDetails.name}</h1>
-						<button onClick={handleBack}>All Teams</button>
-					</div>
-					<h2>Members</h2>
-				</div> */}
-
+				<h2 className="teams-dashboard-title">
+					{teamList ? 'Teams' : `${profile.org_name} Members`}
+				</h2>
 				<div className="dropdown-time-div">
-					<Dropdown
-						classNombre="custom-select dashboard"
-						setSelection={handleName}
-						// placeholder={placeholderTeam}
-						// defaultValue={placeholderId}
-					>
-						{teamList?.map(team => {
-							return (
-								<option value={team.team_id}>
-									{team.name}
-								</option>
-							);
-						})}
-					</Dropdown>
+					{teamList ? (
+						<Dropdown
+							placeholder={profile.teams[0].name}
+							classNombre="custom-select dashboard"
+							setSelection={handleName}>
+							{teamList?.map(team => {
+								return (
+									<option value={team.team_id}>
+										{team.name}
+									</option>
+								);
+							})}
+						</Dropdown>
+					) : null}
 				</div>
 				<div className="employee-filter-container">
 					<h3>Filter:</h3>
 					<button className="btn-filter">Members</button>
 					<div className="employee-search-container">
 						<input
-							// value={filter}
-							// onChange={event => setFilter(event.target.value)}
+							style={
+								profile.teams
+									? { display: 'none' }
+									: { display: 'block' }
+							}
+							value={filter}
+							onChange={event => setFilter(event.target.value)}
 							type="text"
 							id="search"
 							name="search"
-							placeholder="Search"
+							placeholder="Search for member"
 						/>
 					</div>
 				</div>
-				{teamList?.length > 0 ? (
+				{teamList ? (
 					<table className="team-member-table">
 						<tbody>
-							{teamDetails?.data.team_members.map(member => {
+							{teamDetails?.data.team_members?.map(member => {
 								return (
 									<Member
 										key={member.id}
@@ -108,10 +128,20 @@ function ProfileTeamList({ profile, myProfile }) {
 						</tbody>
 					</table>
 				) : (
-					<div className="empty-team-container">
-						<EmptyTeams />
-						<h1>No Teams to display yet!</h1>
-					</div>
+					<table className="team-member-table">
+						<tbody>
+							{organizationMembers.map(member => {
+								return (
+									<OrgEmployees
+										key={member.id}
+										id={member.id}
+										employee={member}
+										onDashboard={true}
+									/>
+								);
+							})}
+						</tbody>
+					</table>
 				)}
 			</section>
 		);

@@ -3,6 +3,8 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import HamburgerMenu from './HamburgerMenu';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+
 const auth = new Auth();
 
 export default function Nav() {
@@ -25,9 +27,7 @@ export default function Nav() {
 					<h3>Kansha</h3>
 				</div>
 				<nav>
-					<a href="#" onClick={auth.login}>
-						Team
-					</a>
+					<Link to="/aboutus">Team</Link>
 					<a href="#" onClick={auth.login}>
 						Contact
 					</a>

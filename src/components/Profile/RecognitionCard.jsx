@@ -7,7 +7,7 @@ import ReactionModal from '../FeedSideBar/ReactionModal';
 import ProfileModal from '../FeedSideBar/ProfileModal';
 
 export const RecognitionCard = memo(
-	({ recognition, sent, profileBadges, inModal }) => {
+	({ recognition, sent, profileBadges, inModal, profileData }) => {
 		const time = useMemo(() => timeAgo(recognition.date), [recognition]);
 
 		const {
@@ -45,6 +45,10 @@ export const RecognitionCard = memo(
 		}
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
+
+		inModal
+			? (sent = recognition.sender !== profileData.id)
+			: (sent = recognition.sender === profileData.id);
 
 		return (
 			<section className="container-recognition-card">
@@ -84,13 +88,10 @@ export const RecognitionCard = memo(
 				)}
 				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
 					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
+						src={recognition.profile_pic}
 						alt="user avatar"
 						width="35px"
+						style={{ cursor: 'pointer' }}
 					/>
 				</a>
 				<section className="activity-section">
@@ -106,7 +107,7 @@ export const RecognitionCard = memo(
 										onClick={handleNewProfileClick(
 											recognition.sender,
 										)}> */}
-									<span>
+									<span className="rec-info-name">
 										{recognition.first_name}{' '}
 										{recognition.last_name}
 									</span>
@@ -119,15 +120,22 @@ export const RecognitionCard = memo(
 								// 	)}
 								<p>
 									From {''}
-									{recognition.first_name}{' '}
-									{recognition.last_name}
+									<span className="rec-info-name">
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
 								</p>
 							)}
 							<span className="time" role="presentation">
 								&nbsp;{time}
 							</span>
 						</div>
-						<p style={{ marginTop: '3px', fontSize: '1.4rem' }}>
+						<p
+							style={{
+								marginTop: '3px',
+								fontSize: '1.4rem',
+								color: '#000d22',
+							}}>
 							{recognition.message}
 						</p>
 					</div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-
+import { finishLogin } from '../../store/actions/user-actions';
+import { useDispatch } from 'react-redux';
 // Component imports
 
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
@@ -33,6 +34,8 @@ const OrganizationHome = () => {
 
 	let teamCount = teams.length;
 
+	const dispatch = useDispatch();
+
 	const handleSubmit = () => {
 		let newTeam = {
 			name: teamName,
@@ -45,6 +48,8 @@ const OrganizationHome = () => {
 				setTeamsBtn(true);
 				setCreateTeamsBtn(false);
 				history.push(`/teams/${res.data.id}`);
+
+				finishLogin(dispatch);
 			})
 			.catch(error => console.log(error.response));
 	};
@@ -105,6 +110,7 @@ const OrganizationHome = () => {
 				limit={limit}
 				page={page}
 				setEmployees={setEmployees}
+				createTeamsBtn={createTeamsBtn}
 			/>
 		);
 	} else if (createTeamsBtn) {

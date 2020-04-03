@@ -11,6 +11,7 @@ function ProfileModal({
 	setProfileSelect, // function that determines whether the modal is open
 	// handleNewProfileClick,
 	profileId,
+	inModal,
 }) {
 	// this handles the profile modal closing
 	const handleClose = () => {
@@ -63,6 +64,10 @@ function ProfileModal({
 	for (let bdg of userBadges) {
 		numberOfBadges += bdg.count;
 	}
+  
+	if (inModal !== false) {
+		inModal = true;
+	}
 
 	return (
 		<>
@@ -102,7 +107,10 @@ function ProfileModal({
 							profile={profile}
 							profileInfo={profileInfo}
 							isLoading={isLoading}
-							inModal={true}
+							inModal={inModal}
+		
+
+
 							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>
