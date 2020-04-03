@@ -31,11 +31,7 @@ function Sidebar({ user }) {
 			</section>
 			<nav>
 				<SidebarLink
-					path={
-						user.profile.user_type.toLowerCase() === 'admin'
-							? '/'
-							: `/profile/${user.profile.id}`
-					}
+					path={'/'}
 					name="Dashboard"
 					icon={HomeIcon}
 					open={open}

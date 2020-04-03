@@ -45,7 +45,7 @@ export const RecognitionCard = memo(
 		}
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
-		
+
 		inModal
 			? (sent = recognition.sender !== profileData.id)
 			: (sent = recognition.sender === profileData.id);
@@ -88,11 +88,7 @@ export const RecognitionCard = memo(
 				)}
 				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
 					<img
-						src={
-							sent
-								? 'https://kansha-bucket.s3-us-west-1.amazonaws.com/avatar.png'
-								: recognition.profile_pic
-						}
+						src={recognition.profile_pic}
 						alt="user avatar"
 						width="35px"
 						style={{ cursor: 'pointer' }}
@@ -111,7 +107,7 @@ export const RecognitionCard = memo(
 										onClick={handleNewProfileClick(
 											recognition.sender,
 										)}> */}
-									<span>
+									<span className="rec-info-name">
 										{recognition.first_name}{' '}
 										{recognition.last_name}
 									</span>
@@ -122,14 +118,12 @@ export const RecognitionCard = memo(
 								// 	onClick={handleProfileClick(
 								// 		recognition.sender,
 								// 	)}
-								<p
-									style={{
-										color: '#c91757',
-										fontSize: '1.6rem',
-									}}>
+								<p>
 									From {''}
-									{recognition.first_name}{' '}
-									{recognition.last_name}
+									<span className="rec-info-name">
+										{recognition.first_name}{' '}
+										{recognition.last_name}
+									</span>
 								</p>
 							)}
 							<span className="time" role="presentation">
