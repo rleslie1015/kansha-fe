@@ -19,7 +19,7 @@ function ProfileModal({
 		close(false);
 	};
 
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading] = useState(false);
 
 	// profileInfo holds detailed information about the user whose profile we're looking at
 	const [profileInfo, setProfileInfo] = useState({});
@@ -34,8 +34,6 @@ function ProfileModal({
 		fetchData();
 	}, [profileId]);
 
-	console.log(profileId, 'profileId');
-	console.log(profileInfo, 'profileInfo');
 	// userbadges holds all of the badges that belong to the user whose profile we're looking at
 	const userBadges = useMemo(() => {
 		const array = [];
@@ -64,7 +62,7 @@ function ProfileModal({
 	for (let bdg of userBadges) {
 		numberOfBadges += bdg.count;
 	}
-  
+
 	if (inModal !== false) {
 		inModal = true;
 	}
@@ -108,8 +106,6 @@ function ProfileModal({
 							profileInfo={profileInfo}
 							isLoading={isLoading}
 							inModal={inModal}
-		
-
 
 							// handleNewProfileClick={handleNewProfileClick}
 						/>

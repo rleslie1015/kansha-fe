@@ -28,7 +28,6 @@ function SingleUser({ user }) {
 		axiosWithAuth()
 			.post('/employees', employee)
 			.then(res => {
-				console.log(res);
 				setEmployees([...employees, employee]);
 			})
 			.catch(err => console.log(err.response));

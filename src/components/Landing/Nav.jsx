@@ -11,7 +11,11 @@ export default function Nav() {
 	const [open, setOpen] = React.useState(false);
 	return (
 		<nav className="nav">
-			<a href="#" onClick={auth.login} data-test="login">
+			<a
+				href="#"
+				className="nav-login-button"
+				onClick={auth.login}
+				data-test="login">
 				Login
 			</a>
 			<section

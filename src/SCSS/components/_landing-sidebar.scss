@@ -38,6 +38,8 @@
 				font-size: 2.4rem;
 				font-weight: normal;
 				margin-bottom: 3rem;
+				cursor: pointer;
+				transition: all 300ms ease;
 				&:hover {
 					color: $color-primary;
 				}

@@ -67,8 +67,6 @@ const OrgEmployees = ({
 	};
 
 	const handleProfileClick = e => {
-		console.log('hello');
-
 		e.preventDefault();
 
 		setProfileSelect(true);
@@ -110,6 +108,7 @@ const OrgEmployees = ({
 						</label>
 					)}
 					<a
+						href="#"
 						onClick={e => {
 							handleProfileClick(e);
 						}}>

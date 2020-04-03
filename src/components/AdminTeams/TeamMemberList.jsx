@@ -3,9 +3,6 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { ReactComponent as DeleteIcon } from '../../assets/TeamsIcons/delete.svg';
-import { ReactComponent as GroupIcon } from '../../assets/TeamsIcons/Group.svg';
-import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 import Member from '../AdminTeams/Member';
 
 function TeamMemberList() {

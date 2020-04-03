@@ -28,15 +28,13 @@ export const RecognitionCard = memo(
 		};
 
 		const handleProfileClick = e => {
-			console.log('hello');
-
 			e.preventDefault();
 
 			setProfileSelect(true);
 		};
 
 		const [, setModal] = useState(false);
-		const [open, setOpen] = React.useState(false);
+		const [open] = React.useState(false);
 
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
