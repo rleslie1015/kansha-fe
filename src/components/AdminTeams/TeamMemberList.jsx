@@ -42,7 +42,7 @@ function TeamMemberList() {
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/teams/')
-			.then(res => {
+			.then((res) => {
 				setTeamCount(res.data);
 			});
 	}, []);
@@ -50,7 +50,7 @@ function TeamMemberList() {
 	// Getting total number of teams in an organization for header display
 	const teamLength = teamCount.length;
 
-	const handleBack = e => {
+	const handleBack = (e) => {
 		e.preventDefault();
 		history.push('/organization');
 	};
@@ -84,7 +84,7 @@ function TeamMemberList() {
 					<div className="employee-search-container">
 						<input
 							value={filter}
-							onChange={event => setFilter(event.target.value)}
+							onChange={(event) => setFilter(event.target.value)}
 							type="text"
 							id="search"
 							name="search"
@@ -94,7 +94,7 @@ function TeamMemberList() {
 				</div>
 				<table className="team-member-table">
 					<tbody>
-						{teamDetails?.team_members?.map(member => {
+						{teamDetails?.team_members?.map((member) => {
 							return (
 								<Member
 									key={member.id}

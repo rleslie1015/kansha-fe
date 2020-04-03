@@ -27,7 +27,7 @@ export const RecognitionCard = memo(
 			setModal(true);
 		};
 
-		const handleProfileClick = e => {
+		const handleProfileClick = (e) => {
 			e.preventDefault();
 
 			setProfileSelect(true);
@@ -38,12 +38,13 @@ export const RecognitionCard = memo(
 
 		if (typeof recognition.badge_id === 'number') {
 			var thisBadge = profileBadges.find(
-				bdg => bdg.id === recognition.badge_id,
+				(bdg) => bdg.id === recognition.badge_id,
 			);
 		}
 		const [select, setSelect] = useState(false);
 		const [profileSelect, setProfileSelect] = useState(false);
 
+		// Below I need to switch who is considered the sender based on whether we're looking at the user's dashboard or whether the user is opening someone else's dashboard in a modal
 		inModal
 			? (sent = recognition.sender !== profileData.id)
 			: (sent = recognition.sender === profileData.id);
@@ -84,7 +85,7 @@ export const RecognitionCard = memo(
 						}
 					/>
 				)}
-				<a onClick={e => (inModal ? null : handleProfileClick(e))}>
+				<a onClick={(e) => (inModal ? null : handleProfileClick(e))}>
 					<img
 						src={recognition.profile_pic}
 						alt="user avatar"
@@ -101,21 +102,12 @@ export const RecognitionCard = memo(
 							{sent ? (
 								<p>
 									Sent to{' '}
-									{/* <a
-										onClick={handleNewProfileClick(
-											recognition.sender,
-										)}> */}
 									<span className="rec-info-name">
 										{recognition.first_name}{' '}
 										{recognition.last_name}
 									</span>
-									{/* </a> */}
 								</p>
 							) : (
-								// <a
-								// 	onClick={handleProfileClick(
-								// 		recognition.sender,
-								// 	)}
 								<p>
 									From {''}
 									<span className="rec-info-name">

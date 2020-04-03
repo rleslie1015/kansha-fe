@@ -11,7 +11,6 @@ import UserUpload from './components/UserUpload/UserUpload';
 import Landing from './components/Landing';
 import { UserProfile } from './components/Profile';
 import { Login } from './components/Auth';
-// import Feed from './components/Feed';
 import Workspace from './components/Workspace';
 import FileUpload from './components/FileUpload';
 import Settings from './components/Settings';
@@ -47,11 +46,11 @@ export const App = () => {
 
 	useEffect(() => {
 		if (profile.id) {
-			setInit(prev => ({ ...prev, fetched: true }));
+			setInit((prev) => ({ ...prev, fetched: true }));
 		} else if (error) {
-			setInit(prev => ({ ...prev, fetched: true, error: true }));
+			setInit((prev) => ({ ...prev, fetched: true, error: true }));
 		} else if (isOnboarding) {
-			setInit(prev => ({ ...prev, fetched: true, onboarding: true }));
+			setInit((prev) => ({ ...prev, fetched: true, onboarding: true }));
 			history.push('/onboarding/step-1');
 		}
 	}, [profile, error, isOnboarding, setInit, history]);

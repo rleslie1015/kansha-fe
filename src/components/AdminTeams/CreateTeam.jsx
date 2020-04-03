@@ -1,11 +1,6 @@
 import React from 'react';
 import OrganizationEmployeesTable from './OrganizationEmployeesTable';
 
-// Modal import
-// import Modal from '../Modal';
-// import RecogModal from '../RecogModal/index';
-
-// Icon import
 import { ReactComponent as RecognitionIcon } from '../../assets/TeamsIcons/recognition.svg';
 
 const CreateTeam = ({
@@ -16,15 +11,13 @@ const CreateTeam = ({
 	teamName,
 	setTeamName,
 }) => {
-	// const [modal, setModal] = useState(false);
-
 	// Length of team to be added
 	const teamLength = teamMemberArray.length;
 
 	const handleRoleChange = (e, id) => {
 		const { value } = e.target;
-		setTeamMemberArray(prev => {
-			return prev.map(tm => {
+		setTeamMemberArray((prev) => {
+			return prev.map((tm) => {
 				if (tm.id === id) {
 					return {
 						...tm,
@@ -50,7 +43,7 @@ const CreateTeam = ({
 				<div className="create-team-add-name">
 					<input
 						value={teamName}
-						onChange={e => setTeamName(e.target.value)}
+						onChange={(e) => setTeamName(e.target.value)}
 						type="text"
 						id="save-team"
 						name="name"
@@ -60,7 +53,7 @@ const CreateTeam = ({
 				</div>
 				<div className="create-team-picked"></div>
 				<div className="added-team-list">
-					{teamMemberArray.map(team => {
+					{teamMemberArray.map((team) => {
 						return (
 							<table key={team.id}>
 								<tbody>
@@ -84,23 +77,15 @@ const CreateTeam = ({
 										</td>
 										<td className="recognition-btn">
 											<RecognitionIcon
-												// onClick={() => setModal(!modal)}
 												style={{
 													height: '20px',
 													width: '20px',
 												}}
 											/>
-											{/* {modal && (
-												<Modal close={setModal}>
-													<RecogModal
-														profile={team}
-													/>
-												</Modal>
-											)} */}
 										</td>
 										<td className="teams-container">
 											<select
-												onChange={e =>
+												onChange={(e) =>
 													handleRoleChange(e, team.id)
 												}
 												value={team.team_role}>

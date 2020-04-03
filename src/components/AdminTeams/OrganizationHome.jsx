@@ -44,14 +44,16 @@ const OrganizationHome = () => {
 
 		axiosWithAuth()
 			.post('/teams', newTeam)
-			.then(res => {
+			.then((res) => {
 				setTeamsBtn(true);
 				setCreateTeamsBtn(false);
 				history.push(`/teams/${res.data.id}`);
 
 				finishLogin(dispatch);
+				/* I added this "finishLogin(dispatch)" here because I needed the state to refresh before a user checks their profile.
+				However, it's hacky. I highly recommend updating the store instead so that other components will update without refresh */
 			})
-			.catch(error => console.log(error.response));
+			.catch((error) => console.log(error.response));
 	};
 
 	// Grab Employees for a user's organization and set to state
@@ -60,7 +62,7 @@ const OrganizationHome = () => {
 			.get(
 				`/employees/organizations?search=${filter}&limit=${limit}&page=${page}`,
 			)
-			.then(res => {
+			.then((res) => {
 				setEmployees(res.data.employees);
 				setEmpCount(res.data.count);
 			});
@@ -80,10 +82,10 @@ const OrganizationHome = () => {
 			checkbox = e.target;
 		}
 
-		const emp = employees.find(em => em.id === param);
-		const alreadyAdded = teamMemberArray.find(tm => tm.id === param);
+		const emp = employees.find((em) => em.id === param);
+		const alreadyAdded = teamMemberArray.find((tm) => tm.id === param);
 		if (alreadyAdded) {
-			setTeamMemberArray(teamMemberArray.filter(tm => tm.id !== param));
+			setTeamMemberArray(teamMemberArray.filter((tm) => tm.id !== param));
 			checkbox.checked = false;
 		} else {
 			setTeamMemberArray([
@@ -203,7 +205,7 @@ const OrganizationHome = () => {
 								: { display: 'block' }
 						}
 						value={filter}
-						onChange={event => setFilter(event.target.value)}
+						onChange={(event) => setFilter(event.target.value)}
 						type="text"
 						id="search"
 						name="search"
