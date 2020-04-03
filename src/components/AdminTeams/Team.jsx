@@ -27,6 +27,8 @@ function Team({ name, id, managers, count, profile, setTeams }) {
 				setTeams((previous) => previous.filter((tms) => tms.id !== id));
 				setDeleteModal(false);
 				finishLogin(dispatch);
+				/* I added this "finishLogin(dispatch)" here because I needed the state to refresh before a user checks their profile.
+				However, it's hacky. I highly recommend updating the store instead so that other components will update without refresh */
 			});
 	};
 

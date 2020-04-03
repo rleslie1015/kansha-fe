@@ -4,6 +4,13 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Activity from './Activity';
 import Badges from './Badges';
 
+/* ProfileModal deals with files in the Feed, FeedSideBar, and Profile directories.
+ 
+ What further complicates matters is that ProfileModal isn't just being used inside of the feed side bar. 
+ it's also used so users can open the modal inside of the teams dashboard and the end user dashboard. 
+ 
+ I highly recommend restructuring the directories so that you don't need to flip around.
+ */
 function ProfileModal({
 	profile, // this is the profile info for the logged in user
 	badges, // this a list of all the badges in the system
@@ -62,6 +69,12 @@ function ProfileModal({
 		numberOfBadges += bdg.count;
 	}
 
+	// Below, i'm checking to see if ProfileModal's parent explicitly told this component that the profile modal won't be opened inside of another modal
+	// The reason why is because the logic for which recognitions were sent and which were received depends on whether the currently logged-in user
+	// is looking at their own profile or someone else's profile.
+	// Additionally, if the ProfileModal is already inside of another modal, then I don't want the user to be able to open someone else's
+	// profile modal inside of a profile modal. that would be turtles all the way down!
+
 	if (inModal !== false) {
 		inModal = true;
 	}
@@ -105,8 +118,6 @@ function ProfileModal({
 							profileInfo={profileInfo}
 							isLoading={isLoading}
 							inModal={inModal}
-
-							// handleNewProfileClick={handleNewProfileClick}
 						/>
 					</main>
 				</div>

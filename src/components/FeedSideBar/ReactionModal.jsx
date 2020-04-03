@@ -41,6 +41,8 @@ function ReactionModal({
 						<p className="rm-job_title">
 							{rec.recipient_job_title}
 						</p>
+
+						{/* I started the process of displaying the user's teams inside of their profile modal but didn't finish */}
 						{/* <p>{profile.teams}</p> */}
 						{badge && (
 							<img
