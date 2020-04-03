@@ -110,6 +110,7 @@ const OrganizationHome = () => {
 				limit={limit}
 				page={page}
 				setEmployees={setEmployees}
+				createTeamsBtn={createTeamsBtn}
 			/>
 		);
 	} else if (createTeamsBtn) {
